@@ -1,0 +1,53 @@
+@mainBrandColor: #2DA6B0;
+@secondBrandColor: #19CEC8;
+@inverseBrandColor: #FFFFFF;
+
+@linkColor: @mainBrandColor;
+@linkHoverColor: darken(@linkColor, 10%);
+
+// Override Bootstrap defaults
+a {
+  color: @mainBrandColor;
+}
+a:hover,
+a:focus {
+  color: @linkHoverColor;
+}
+
+
+.inverse {
+    background-color: @mainBrandColor;
+    color: white;
+
+    a {
+      color: @inverseBrandColor;
+    }
+    a:hover,
+    a:focus {
+      color: @linkHoverColor;
+    }
+}
+
+.hero {
+    padding-top: 110px;
+    padding-bottom: 40px;
+    text-align: center;
+
+    h1 {
+        font-size: 21px;
+    }
+
+    .logo {
+        width: 270px;
+        padding-bottom: 20px;
+    }
+}
+
+#common-nav{
+    margin-bottom: 0px;
+    background-color: @secondBrandColor;
+
+    .logo {
+        width: 60px;
+    }
+}
