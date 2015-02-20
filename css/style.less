@@ -7,17 +7,28 @@
 @linkColor: @mainBrandColor;
 @linkHoverColor: darken(@linkColor, 10%);
 @wellColor: #F9F9F9;
+@textColor: #6F7E81;
+@headingsColor: rgb(21, 91, 103);
 
 // Helper vars
 @vpad: 20px;
 
 // Override Bootstrap defaults
+body {
+    color: @textColor;
+    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 a {
   color: @mainBrandColor;
 }
 a:hover,
 a:focus {
   color: @linkHoverColor;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: @headingsColor;
 }
 
 pre {
