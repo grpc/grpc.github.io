@@ -1,9 +1,15 @@
+// Colors
 @mainBrandColor: #2DA6B0;
-@secondBrandColor: #19CEC8;
+@secondBrandColor: #197E8B;
+@thirdBrandColor: #E7F3F4;
 @inverseBrandColor: #FFFFFF;
 
 @linkColor: @mainBrandColor;
 @linkHoverColor: darken(@linkColor, 10%);
+@wellColor: #F9F9F9;
+
+// Helper vars
+@vpad: 20px;
 
 // Override Bootstrap defaults
 a {
@@ -12,6 +18,17 @@ a {
 a:hover,
 a:focus {
   color: @linkHoverColor;
+}
+
+pre {
+    background-color: @wellColor;
+    border: none;
+    font-size: 9px;
+}
+
+// Shared
+.vpad {
+    padding-top: @vpad;
 }
 
 
@@ -29,7 +46,7 @@ a:focus {
 }
 
 .hero {
-    padding-top: 110px;
+    padding-top: 80px;
     padding-bottom: 40px;
     text-align: center;
 
@@ -41,6 +58,13 @@ a:focus {
         width: 270px;
         padding-bottom: 20px;
     }
+}
+
+.hero-bar {
+    text-align: center;
+    background-color: @thirdBrandColor;
+    padding-bottom: 10px;
+    padding-top: 20px;
 }
 
 #common-nav{

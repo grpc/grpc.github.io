@@ -41,38 +41,10 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Link</a></li>
-            
-            <!-- Dropdown Example
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-                <li class="divider"></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li>
-             -->
-          </ul>
-
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Link</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-            </li>
+            <li><a href="https://github.com/grpc">github.com/grpc</a></li>
+            <li><a href="https://github.com/grpc/grpc-common">Documentation</a></li>
+            <li><a href="https://github.com/grpc/grpc-common/blob/master/PROTOCOL-HTTP2.md">Protocol</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
@@ -81,44 +53,56 @@
     <div class="hero inverse">
       <div class="container">
         <img class="logo" src="img/grpc_inverse.svg" alt="GRPC">
-        <h1>A high performance, open source, general RPC that puts mobile and HTTP/2 first.</h1>
-
-        <div>
-          <a class="btn" href="https://github.com/grpc/grpc" title="gRPC on Github">GitHub gRPC</a>
-          <a class="btn" href="https://github.com/grpc/grpc-java" title="gRPC Java on Github">GitHub gRPC Java</a>
-          <a class="btn" href="https://github.com/grpc/grpc-go" title="gRPC Go on Github">GitHub gRPC Go</a>
-        </div>
+        <p class="lead">A high performance, open source, general RPC that puts mobile and HTTP/2 first.</lead>
       </div>
     </div>
 
-    <div class="container">
-      <h2>Another tagline</h2>
-      <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-      tempor incididunt ut labore et dolore magna aliqua.
-      <a href="#">Sample link.</a>
-      </p>
+    <div class="hero-bar">
+      <div class="container">
+        <p>Source code on GitHub:
+          <a href="https://github.com/grpc/grpc" title="gRPC on Github"> grpc</a>, 
+          <a href="https://github.com/grpc/grpc-java" title="gRPC Java on Github">grpc-java</a>, 
+          <a href="https://github.com/grpc/grpc-go" title="gRPC Go on Github">grpc-go</a>.
+        </p>
+      </div>
+    </div>
 
+    <div class="container vpad">
       <div class="row">
         <div class="col-sm-4">
-          <h3>Feature</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. <a href="#">Sample link.</a></p>
+          <h3>Powerful IDL</h3>
+          <p>
+            Define your service using Protocol Buffers, a powerful binary serialization toolset and language with support for canonical mapping to REST.
+<pre>
+message HelloRequest {
+  string greeting = 1;
+}
+
+message HelloResponse {
+  string reply = 1;
+}
+
+service HelloService {
+  rpc SayHello(HelloRequest) returns (HelloResponse) {}
+}
+</pre>
+          </p>
         </div>
         <div class="col-sm-4">
-          <h3>Feature</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. <a href="#">Sample link.</a></p>
+          <h3>Generate Clients and Servers</h3>
+          <p>Automatically generate idiomatic client and server stubs for your service in a variety of languages.</p>
+          <p>
+            gRPC currently supports <a href="https://github.com/grpc/grpc">C</a>, <a href="https://github.com/grpc/grpc-java">Java</a> and <a href="https://github.com/grpc/grpc-go">Go</a> with a host of additional languages layered on top of the C core:<br> <a href="https://github.com/grpc/grpc">C++</a>, <a href="https://github.com/grpc/grpc">Node.js</a>, <a href="https://github.com/grpc/grpc">Python</a>, <a href="https://github.com/grpc/grpc">Ruby</a>, <a href="https://github.com/grpc/grpc">Objective-C</a>, <a href="https://github.com/grpc/grpc">PHP</a> and <a href="https://github.com/grpc/grpc">C#</a>
+          </p>
         </div>
         <div class="col-sm-4">
-          <h3>Feature</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-          consequat. <a href="#">Sample link.</a></p>
+          <h3>HTTP/2</h3>
+          <p>
+            Building on HTTP/2 standards brings many capabilities such as bidirectional streaming, flow control, header compression, multiplexing requests over a single TCP connection and more.
+          </p>
+          <p>
+            These features save battery life and data usage on mobile while speeding up services and web applications running in the cloud.
+          </p>
         </div>
       </div>
     </div>
