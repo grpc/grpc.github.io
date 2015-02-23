@@ -47,6 +47,10 @@ pre {
     background-color: @mainBrandColor;
     color: white;
 
+    &.inverse-light {
+        background-color: @thirdBrandColor;
+    }
+
     a {
       color: @inverseBrandColor;
     }
@@ -77,6 +81,16 @@ pre {
     padding-bottom: 10px;
     padding-top: 20px;
     margin-bottom: 20px;
+}
+
+.page-title-bar{
+    background-color: @thirdBrandColor;
+    padding-top: 20px;
+    padding-bottom: 30px;
+
+    h1, h2, h3, h4, h5, h6 {
+        color: @mainBrandColor;
+    }
 }
 
 #common-nav{
