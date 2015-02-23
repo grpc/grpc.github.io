@@ -4,11 +4,11 @@ title: grpc.io
 ---
 
 
-      <div class="row">
-        <div class="col-sm-4">
-          <h3>Powerful IDL</h3>
-          <p>
-            Define your service using Protocol Buffers, a powerful binary serialization toolset and language with support for canonical mapping to REST.
+<div class="row">
+  <div class="col-sm-4">
+    <h3>Powerful IDL</h3>
+    <p>
+      Define your service using Protocol Buffers, a powerful binary serialization toolset and language with support for canonical mapping to REST.
 <pre>
 message HelloRequest {
   string greeting = 1;
@@ -22,22 +22,32 @@ service HelloService {
   rpc SayHello(HelloRequest) returns (HelloResponse) {}
 }
 </pre>
-          </p>
-        </div>
-        <div class="col-sm-4">
-          <h3>Generate Clients and Servers</h3>
-          <p>Automatically generate idiomatic client and server stubs for your service in a variety of languages.</p>
-          <p>
-            gRPC currently supports <a href="https://github.com/grpc/grpc">C</a>, <a href="https://github.com/grpc/grpc-java">Java</a> and <a href="https://github.com/grpc/grpc-go">Go</a> with a host of additional languages layered on top of the C core:<br> <a href="https://github.com/grpc/grpc">C++</a>, <a href="https://github.com/grpc/grpc">Node.js</a>, <a href="https://github.com/grpc/grpc">Python</a>, <a href="https://github.com/grpc/grpc">Ruby</a>, <a href="https://github.com/grpc/grpc">Objective-C</a>, <a href="https://github.com/grpc/grpc">PHP</a> and <a href="https://github.com/grpc/grpc">C#</a>
-          </p>
-        </div>
-        <div class="col-sm-4">
-          <h3>HTTP/2</h3>
-          <p>
-            Building on HTTP/2 standards brings many capabilities such as bidirectional streaming, flow control, header compression, multiplexing requests over a single TCP connection and more.
-          </p>
-          <p>
-            These features save battery life and data usage on mobile while speeding up services and web applications running in the cloud.
-          </p>
-        </div>
-      </div>
+    </p>
+  </div>
+  <div class="col-sm-4">
+    <h3>Generate Clients and Servers</h3>
+    <p>Automatically generate idiomatic client and server stubs for your service in a variety of languages.</p>
+    <p>
+      gRPC currently supports 
+      <a href="https://github.com/grpc/grpc">C</a>, 
+      <a href="https://github.com/grpc/grpc-java">Java</a> and 
+      <a href="https://github.com/grpc/grpc-go">Go</a> with a host of additional languages layered on top of the C core:<br> 
+      <a href="https://github.com/grpc/grpc/tree/master/src/cpp">C++</a>, 
+      <a href="https://github.com/grpc/grpc/tree/master/src/node">Node.js</a>, 
+      <a href="https://github.com/grpc/grpc/tree/master/src/python">Python</a>, 
+      <a href="https://github.com/grpc/grpc/tree/master/src/ruby">Ruby</a>, 
+      <a href="https://github.com/grpc/grpc/tree/master/src/objective-c">Objective-C</a>, 
+      <a href="https://github.com/grpc/grpc/tree/master/src/php">PHP</a> and 
+      <a href="https://github.com/grpc/grpc/tree/master/src/csharp">C#</a>
+    </p>
+  </div>
+  <div class="col-sm-4">
+    <h3>HTTP/2</h3>
+    <p>
+      Building on HTTP/2 standards brings many capabilities such as bidirectional streaming, flow control, header compression, multiplexing requests over a single TCP connection and more.
+    </p>
+    <p>
+      These features save battery life and data usage on mobile while speeding up services and web applications running in the cloud.
+    </p>
+  </div>
+</div>
