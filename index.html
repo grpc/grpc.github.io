@@ -4,11 +4,11 @@ title: grpc.io
 ---
 
 
-<div class="row">
+<div class="row landing-context">
   <div class="col-sm-4">
     <h3>Powerful IDL</h3>
     <p>
-      Define your service using Protocol Buffers, a powerful binary serialization toolset and language with support for canonical mapping to REST.
+      Define your service using Protocol Buffers, a powerful binary serialization toolset and language.
 <pre>
 message HelloRequest {
   string greeting = 1;
@@ -19,29 +19,25 @@ message HelloResponse {
 }
 
 service HelloService {
-  rpc SayHello(HelloRequest) returns (HelloResponse) {}
+  rpc SayHello(HelloRequest) returns (HelloResponse);
 }
 </pre>
     </p>
   </div>
   <div class="col-sm-4">
-    <h3>Generate Clients and Servers</h3>
+    <h3>Libraries in ten languages</h3>
     <p>Automatically generate idiomatic client and server stubs for your service in a variety of languages.</p>
     <p>
-      gRPC currently supports 
-      <a href="https://github.com/grpc/grpc">C</a>, 
-      <a href="https://github.com/grpc/grpc-java">Java</a> and 
-      <a href="https://github.com/grpc/grpc-go">Go</a> with a host of additional languages layered on top of the C core:
+      gRPC has libraries in: <br><span class="lang-list">{% include lang-list.html %}</span>
     </p>
-    <p>{% include lang-list.html %}</p>
   </div>
   <div class="col-sm-4">
     <h3>HTTP/2</h3>
     <p>
-      Building on HTTP/2 standards brings many capabilities such as bidirectional streaming, flow control, header compression, multiplexing requests over a single TCP connection and more.
+      Building on the <a href="https://http2.github.io/">HTTP/2 standard</a> brings many capabilities such as bidirectional streaming, flow control, header compression, multiplexing requests over a single TCP connection and more.
     </p>
     <p>
-      These features save battery life and data usage on mobile while speeding up services and web applications running in the cloud.
+      These features save battery life and data usage on mobile devices while speeding up services and web applications running in the cloud.
     </p>
   </div>
 </div>
