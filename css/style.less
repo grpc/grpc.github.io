@@ -1,0 +1,127 @@
+// Colors
+@mainBrandColor: #2DA6B0;
+@secondBrandColor: #197E8B;
+@thirdBrandColor: #E7F3F4;
+@inverseBrandColor: #FFFFFF;
+
+@linkColor: @mainBrandColor;
+@linkHoverColor: darken(@linkColor, 10%);
+@wellColor: #F9F9F9;
+@textColor: #6F7E81;
+@headingsColor: rgb(21, 91, 103);
+
+// Helper vars
+@vpad: 20px;
+
+// Override Bootstrap defaults
+body {
+    color: @textColor;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: @mainBrandColor;
+}
+a:hover,
+a:focus {
+  color: @linkHoverColor;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: @headingsColor;
+}
+
+pre {
+    background-color: @wellColor;
+    border: none;
+    font-size: 9px;
+}
+
+// Shared
+.vpad {
+    padding-top: @vpad;
+}
+
+
+.inverse {
+    background-color: @mainBrandColor;
+    color: white;
+
+    &.inverse-light {
+        background-color: @thirdBrandColor;
+    }
+
+    a {
+      color: @inverseBrandColor;
+    }
+    a:hover,
+    a:focus {
+      color: @linkHoverColor;
+    }
+}
+
+.hero {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    text-align: center;
+
+    h1 {
+        font-size: 21px;
+    }
+
+    .logo {
+        width: 270px;
+        padding-bottom: 20px;
+    }
+}
+
+.hero-bar {
+    text-align: center;
+    background-color: @thirdBrandColor;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.page-title-bar{
+    background-color: @thirdBrandColor;
+    padding-top: 20px;
+    padding-bottom: 30px;
+
+    h1, h2, h3, h4, h5, h6 {
+        color: @mainBrandColor;
+    }
+}
+
+.page-spacer {
+    height: 100px;
+}
+
+#common-nav{
+    margin-bottom: 0px;
+    background-color: @secondBrandColor;
+
+    .logo {
+        width: 60px;
+    }
+}
+
+// Landing page
+.landing-context {
+    .lang-list {
+        font-size: 18px;
+    }
+}
+
+// Docs layout specific
+.docs-side-nav {
+    margin-top: 40px;
+}
+
+// FAQ page
+.faq-context {
+    h4 {
+        margin-top: 30px;
+    }
+}
