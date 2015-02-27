@@ -53,6 +53,18 @@ title: FAQ
     <h4>How does gRPC help in mobile application development?</h4>
     <p>gRPC and Protobuf provide an easy way to precisely define a service and auto generate reliable client libraries for iOS, Android and the servers providing the back end. The clients can take advantage of advanced streaming and connection features which help save bandwidth, do more over fewer TCP connections and save CPU usage and battery life.</p>
 
+    <h4>Why is gRPC better than any binary blob over HTTP/2?</h4>
+    <p>This is largely what gRPC is on the wire. However gRPC is also a set of libraries that will provide higher-level features consistently across platforms that common HTTP libraries typically do not. Examples of such features include:
+        <ul>
+            <li>interaction with flow-control at the application layer</li>
+            <li>cascading call-cancellation</li>
+            <li>load balancing &amp; failover</li>
+        </ul>
+    </p>
+
+    <h4>Why is gRPC better/worse than REST?</h4>
+    <p>gRPC largely follows HTTP semantics over HTTP/2 but we explicitly allow for full-duplex streaming. We diverge from typical REST conventions as we use static paths for performance reasons during call dispatch as parsing call parameters from paths, query parameters and payload body adds latency and complexity. We have also formalized a set of errors that we believe are more directly applicable to API uses cases than the HTTP status codes.</p>
+
     <h4>How do you pronounce gRPC?</h4>
     <p>Gee-Arr-Pee-See</p>
 
