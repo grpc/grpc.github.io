@@ -6,8 +6,9 @@
 
 @linkColor: @mainBrandColor;
 @linkHoverColor: darken(@linkColor, 10%);
+@codeColor: darken(@linkColor, 20%);
 @wellColor: #F9F9F9;
-@textColor: #6F7E81;
+@textColor: #4f5a5c;
 @headingsColor: rgb(21, 91, 103);
 
 // Helper vars
@@ -34,10 +35,19 @@ h1, h2, h3, h4, h5, h6 {
     color: @headingsColor;
 }
 
+p, li {line-height: 22px;}
+
+code {
+    color: @codeColor;
+    background-color: @inverseBrandColor;
+    font-size: 14px;
+}
+
 pre {
     background-color: @wellColor;
+    color: #000000;
     border: none;
-    font-size: 9px;
+    font-size: 14px;
 }
 
 // Shared
