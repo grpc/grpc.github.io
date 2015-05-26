@@ -7,6 +7,7 @@
 @linkColor: @mainBrandColor;
 @linkHoverColor: darken(@linkColor, 10%);
 @codeColor: darken(@linkColor, 20%);
+@codeBkColor: #D8FAF6;
 @wellColor: #F9F9F9;
 @textColor: #6F7E81;
 @headingsColor: rgb(21, 91, 103);
@@ -44,7 +45,7 @@ code {
 }
 
 pre {
-    background-color: @wellColor;
+    background-color: @codeBkColor;
     color: #000000;
     border: none;
     font-size: 14px;
@@ -124,6 +125,10 @@ pre {
 .landing-context {
     .lang-list {
         font-size: 18px;
+    }
+
+    pre {
+        font-size: 9px;
     }
 }
 
