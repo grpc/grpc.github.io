@@ -3,9 +3,11 @@ layout: docs
 title: gRPC Basics - Go
 ---
 
-# gRPC Basics: Go
+<h1 class="page-header">gRPC Basics: Go</h1>
 
-This tutorial provides a basic Go programmer's introduction to working with gRPC. By walking through this example you'll learn how to:
+<p class="lead">This tutorial provides a basic Go programmer's introduction to working with gRPC.</p>
+
+By walking through this example you'll learn how to:
 
 - Define a service in a .proto file.
 - Generate server and client code using the protocol buffer compiler.

@@ -3,9 +3,9 @@ layout: docs
 title: Python Quick Start
 ---
 
-# gRPC in 3 minutes (Python)
+<h1 class="page-header">gRPC in 3 minutes (Python)</h1>
 
-This is a quick introduction with a simple example and installation instructions: for a more complete tutorial see [gRPC Basics: Python](/docs/tutorials/basic/python.html).
+<p class="lead">This is a quick introduction with a simple example and installation instructions: for a more complete tutorial see <a href="/docs/tutorials/basic/python.html">gRPC Basics: Python</a>.</p>
 
 ### Install gRPC
 Make sure you have built gRPC Python from source on your system. Follow the instructions here:

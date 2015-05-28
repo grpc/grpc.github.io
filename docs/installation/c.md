@@ -3,9 +3,8 @@ layout: docs
 title: C++ Quick Start
 ---
 
-# gRPC in 3 minutes (C++)
-
-This document will get you started with gRPC in C++, including a quick example.
+<h1 class="page-header">gRPC in 3 minutes (C++)</h1>
+<p class="lead">This document will get you started with gRPC in C++, including a quick example.</p>
 
 ## Installation
 

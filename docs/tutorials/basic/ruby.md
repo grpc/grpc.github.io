@@ -3,15 +3,17 @@ layout: docs
 title: gRPC Basics - Ruby
 ---
 
-# gRPC Basics: Ruby
+<h1 class="page-header">gRPC Basics: Ruby</h1>
 
-This tutorial provides a basic Ruby programmer's introduction to working with gRPC. By walking through this example you'll learn how to:
+<p class="lead">This tutorial provides a basic Ruby programmer's introduction to working with gRPC.</p>
+
+By walking through this example you'll learn how to:
 
 - Define a service in a .proto file.
 - Generate server and client code using the protocol buffer compiler.
 - Use the Ruby gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/index.html) and are familiar with [protocol buffers] (https://developers.google.com/protocol-buffers/docs/overview). Note that the example in this tutorial uses the proto3 version of the protocol buffers language, which is currently in alpha release: you can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and see the [release notes](https://github.com/google/protobuf/releases) for the new version in the protocol buffers Github repository.
+It assumes that you have read the [Overview](/docs/index.html) and are familiar with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the example in this tutorial uses the proto3 version of the protocol buffers language, which is currently in alpha release: you can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and see the [release notes](https://github.com/google/protobuf/releases) for the new version in the protocol buffers Github repository.
 
 This isn't a comprehensive guide to using gRPC in Ruby: more reference documentation is coming soon.
 
@@ -40,7 +42,7 @@ You also should have the relevant tools installed to generate the server and cli
 
 ## Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/index.html)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers] (https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`grpc-common/protos/route_guide.proto`](https://github.com/grpc/grpc-common/blob/master/protos/route_guide.proto).
+Our first step (as you'll know from the [Overview](/docs/index.html)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`grpc-common/protos/route_guide.proto`](https://github.com/grpc/grpc-common/blob/master/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -184,7 +186,7 @@ Finally, let's look at our bidirectional streaming RPC `route_chat`.
     q = EnumeratorQueue.new(self)
   ...
     return q.each_item
-  end 
+  end
 ```
 
 Here the method receives an [Enumerable](http://ruby-doc.org//core-2.2.0/Enumerable.html), but also returns an [Enumerator](http://ruby-doc.org//core-2.2.0/Enumerator.html) that yields the responses.  The implementation demonstrates how to set these up so that the requests and responses can be handled concurrently.  Although each side will always get the other's messages in the order they were written, both the client and server can read and write in any order — the streams operate completely independently.

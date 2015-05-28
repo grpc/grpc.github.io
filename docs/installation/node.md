@@ -3,10 +3,9 @@ layout: docs
 title: Node.js Quick Start
 ---
 
-gRPC in 3 minutes (Node.js)
-===========================
+<h1 class="page-header">gRPC in 3 minutes (Node.js)</h1>
 
-This document will get you started with gRPC in Node.js, including a quick example.
+<p class="lead">This document will get you started with gRPC in Node.js, including a quick example.</p>
 
 Prerequisites
 -------------
