@@ -18,7 +18,7 @@
 // Override Bootstrap defaults
 body {
     color: @textColor;
-    font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -53,6 +53,11 @@ pre {
     color: #000000;
     border: none;
     font-size: 14px;
+}
+
+// Fix Bootstrap mobile menu colors on inverse navbar.
+.navbar-toggle .icon-bar {
+  background-color: @inverseBrandColor;
 }
 
 // Shared
@@ -145,5 +150,36 @@ pre {
 body.faq {
     h4 {
         margin-top: 30px;
+    }
+}
+
+// Blog posts list page (all posts)
+.postdate {
+    margin-bottom: 20px;
+    font-size: 12px;
+    // Tuck in the date field closer to headline.
+    position: relative;
+    top:-5px;
+}
+
+body.postslist{
+    .posts-side-nav {
+        margin-top: 20px;
+    }
+
+    article.post {
+        margin-bottom: 40px;
+    }
+}
+
+// Blog post layout (single post)
+body.post {
+    article.post {
+        margin-top: 40px;
+        font-size: 120%;
+    }
+
+    .page-title-bar {
+        padding-bottom: 0;
     }
 }
