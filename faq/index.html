@@ -1,9 +1,11 @@
 ---
-layout: docs
+layout: default
 title: FAQ
+bodyclass: faq
 ---
-<div class="faq-context">
-
+<div class="row">
+  <!-- Constrain readable sections to 7 unit wide columns for improved readability. -->
+  <div class="col-md-7">
     <h4>What is gRPC?</h4>
     <p>gRPC is a modern, open source remote procedure call (RPC) framework that can run anywhere. It enables client and server applications to communicate transparently, and makes it easier to build connected systems.</p>
 
@@ -66,6 +68,6 @@ title: FAQ
     <p>gRPC largely follows HTTP semantics over HTTP/2 but we explicitly allow for full-duplex streaming. We diverge from typical REST conventions as we use static paths for performance reasons during call dispatch as parsing call parameters from paths, query parameters and payload body adds latency and complexity. We have also formalized a set of errors that we believe are more directly applicable to API uses cases than the HTTP status codes.</p>
 
     <h4>How do you pronounce gRPC?</h4>
-    <p>Jee-Arr-Pee-See</p>
-
+    <p>Jee-Arr-Pee-See.</p>
+  </div>
 </div>

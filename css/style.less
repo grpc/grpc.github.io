@@ -6,6 +6,8 @@
 
 @linkColor: @mainBrandColor;
 @linkHoverColor: darken(@linkColor, 10%);
+@codeColor: darken(@linkColor, 20%);
+@codeBkColor: #ebfaf8;
 @wellColor: #F9F9F9;
 @textColor: #6F7E81;
 @headingsColor: rgb(21, 91, 103);
@@ -26,15 +28,31 @@ a:hover,
 a:focus {
   color: @linkHoverColor;
 }
+a.external:after {
+    content: "▸"
+}
+a.disabled {
+    color: #CCCCCC;
+}
+
 
 h1, h2, h3, h4, h5, h6 {
     color: @headingsColor;
 }
 
+p, li {line-height: 22px;}
+
+code {
+    color: @codeColor;
+    background-color: @inverseBrandColor;
+    font-size: 14px;
+}
+
 pre {
-    background-color: @wellColor;
+    background-color: @codeBkColor;
+    color: #000000;
     border: none;
-    font-size: 9px;
+    font-size: 14px;
 }
 
 // Fix Bootstrap mobile menu colors on inverse navbar.
@@ -117,6 +135,10 @@ pre {
     .lang-list {
         font-size: 18px;
     }
+
+    pre {
+        font-size: 9px;
+    }
 }
 
 // Docs layout specific
@@ -125,7 +147,7 @@ pre {
 }
 
 // FAQ page
-.faq-context {
+body.faq {
     h4 {
         margin-top: 30px;
     }
