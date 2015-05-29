@@ -3,10 +3,9 @@ layout: docs
 title: Go Quick Start
 ---
 
-gRPC in 3 minutes (Go)
-======================
+<h1 class="page-header">gRPC in 3 minutes (Go)</h1>
 
-This document will get you started with gRPC in Go, including a quick example.
+<p class="lead">This document will get you started with gRPC in Go, including a quick example.</p>
 
 Prerequisites
 -------------

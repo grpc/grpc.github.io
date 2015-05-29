@@ -3,10 +3,11 @@ layout: docs
 title: Authentication
 ---
 
-# Authentication
+<h1 class="page-header">Authentication</h1>
 
-gRPC is designed to plug-in a number of authentication mechanisms. This document provides a quick overview 
-of the various auth mechanisms supported, discusses the API with some examples, and concludes with a discussion of extensibility. More documentation and examples are coming soon!
+<p class="lead">gRPC is designed to plug-in a number of authentication mechanisms. This document provides a quick overview of the various auth mechanisms supported, discusses the API with some examples, and concludes with a discussion of extensibility.</p>
+
+More documentation and examples are coming soon!
 
 ## Supported auth mechanisms
 

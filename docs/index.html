@@ -5,8 +5,7 @@ title: Documentation
 
 <h1 class="page-header">Overview</h1>
 
-<p>Welcome to the developer documentation for gRPC, a language-neutral,
-platform-neutral remote procedure call (RPC) system developed at Google.</p>
+<p class="lead">Welcome to the developer documentation for gRPC, a language-neutral, platform-neutral, open source, remote procedure call (RPC) system initially developed at Google.</p>
 
 <p>This document introduces you to gRPC with a quick overview and a simple
 Hello World example. You'll find more tutorials and guides in this site - more documentation and more languages are coming soon!</p>
@@ -66,7 +65,7 @@ documentation</a>.</p>
 <a id="protocol-buffer-versions"></a>Protocol buffer versions</h4>
 
 <p>While protocol buffers have been available for open source users for some
-time, our examples use a new flavour of protocol buffers called proto3,
+time, our examples use a new flavor of protocol buffers called proto3,
 which has a slightly simplified syntax, some useful new features, and supports
 lots more languages. This is currently available as an alpha release in
 Java, C++, Java_nano (Android Java), Python, and Ruby from <a href="https://github.com/google/protobuf/releases">the protocol buffers Github
@@ -197,15 +196,13 @@ message HelloReply {
 <a id="generating-grpc-code"></a>Generating gRPC code</h3>
 
 <p>Once we've defined our service, we use the protocol buffer compiler
-<code>protoc</code> to generate the special client and server code we need to create
-our application - right now we're going to generate Java code, though you
+<code>protoc</code> to generate the special client and server code we need to create our application - right now we're going to generate Java code, though you
 can generate gRPC code in any gRPC-supported language (as you'll see later
 in this example). The generated code contains both stub code for clients to
 use and an abstract interface for servers to implement, both with the method
 defined in our <code>Greeter</code> service.</p>
 
-<p>(If you didn't install the gRPC plugins and protoc on your system and are just reading along with
-the example, you can skip this step and move
+<p>(If you didn't install the gRPC plugins and protoc on your system and are just reading along with the example, you can skip this step and move
 onto the next one where we examine the generated code.)</p>
 
 <p>For simplicity, we've provided a <a href="https://github.com/grpc/grpc-java/blob/master/examples/build.gradle">Gradle build file</a> with our Java examples that runs <code>protoc</code> for you with the appropriate plugin, input, and output:</p>
@@ -449,7 +446,7 @@ it's written in a different language.</p>
 
 <ul>
 <li>Find out how to install gRPC and get started in each language's <a href="#quickstart">quick start</a>.</li>
-<li>Follow the tutorial(s) for your favourite language(s).
+<li>Follow the tutorial(s) for your favorite language(s).
 <li>
 <a href="guides/auth.html">gRPC Authentication Support</a> introduces authentication support in gRPC with supported mechanisms and examples.</li>
 <li>More documentation is coming soon!

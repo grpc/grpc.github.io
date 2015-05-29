@@ -3,14 +3,16 @@ layout: docs
 title: gRPC Basics - Node.js
 ---
 
-# gRPC Basics: Node.js
+<h1 class="page-header">gRPC Basics: Node.js</h1>
 
-This tutorial provides a basic Node.js programmer's introduction to working with gRPC. By walking through this example you'll learn how to:
+<p class="lead">This tutorial provides a basic Node.js programmer's introduction to working with gRPC.</p>
+
+By walking through this example you'll learn how to:
 
 - Define a service in a .proto file.
 - Use the Node.js gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/index.html) and are familiar with [protocol buffers] (https://developers.google.com/protocol-buffers/docs/overview). Note that the example in this tutorial uses the [proto3](https://github.com/google/protobuf/releases) version of the protocol buffers language, which is currently in alpha release: you can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and see the [release notes](https://github.com/google/protobuf/releases) for the new version in the protocol buffers Github repository.
+It assumes that you have read the [Overview](/docs/index.html) and are familiar with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the example in this tutorial uses the [proto3](https://github.com/google/protobuf/releases) version of the protocol buffers language, which is currently in alpha release: you can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and see the [release notes](https://github.com/google/protobuf/releases) for the new version in the protocol buffers Github repository.
 This isn't a comprehensive guide to using gRPC in Node.js: more reference documentation is coming soon.
 
 ## Why use gRPC?
@@ -38,7 +40,7 @@ You also should have the relevant tools installed to generate the server and cli
 
 ## Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/index.html)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers] (https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`grpc-common/protos/route_guide.proto`](https://github.com/grpc/grpc-common/blob/master/protos/route_guide.proto).
+Our first step (as you'll know from the [Overview](/docs/index.html)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`grpc-common/protos/route_guide.proto`](https://github.com/grpc/grpc-common/blob/master/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
