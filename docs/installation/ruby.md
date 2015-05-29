@@ -3,9 +3,10 @@ layout: docs
 title: Ruby Quick Start
 ---
 
-<h1 class="page-header">gRPC in 3 minutes (Ruby)</h1>
+gRPC in 3 minutes (Ruby)
+========================
 
-<p class="lead">This document will get you started with gRPC in Ruby, including a quick example.</p>
+This document will get you started with gRPC in Ruby, including a quick example.
 
 Prerequisites
 -------------
