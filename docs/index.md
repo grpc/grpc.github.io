@@ -8,7 +8,7 @@ title: Documentation
 <p class="lead">Welcome to the developer documentation for gRPC, a language-neutral, platform-neutral, open source, remote procedure call (RPC) system initially developed at Google.</p>
 
 This document introduces you to gRPC with a quick overview and a simple
-Hello World example. You'll find more tutorials and reference docs in this repository - more documentation is coming soon!
+Hello World example. You'll find more tutorials and reference docs in this site - more documentation is coming soon!
 
 <div id="toc"></div>
 
@@ -99,7 +99,7 @@ This is an introductory example rather than a comprehensive tutorial, so
 don't worry if you're not a Go or
 Java developer - the concepts are similar for all languages, and you can
 find more implementations of our Hello World example in other languages (and full tutorials where available) in
-the [language-specific folders](#quickstart) in this repository. Complete tutorials and
+the [language-specific folders](#quickstart) in the `grpc-common` repository. Complete tutorials and
 reference documentation for all gRPC languages are coming soon.
 
 <a name="setup"></a>
@@ -392,7 +392,7 @@ Finally, let's look at one of gRPC's most useful features - interoperability
 between code in different languages. So far, we've just looked at Java code
 generated from and implementing our `Greeter` service definition. However,
 as you'll see if you look at the language-specific subdirectories
-in this repository, we've also generated and implemented `Greeter`
+in the `grpc-common` repository, we've also generated and implemented `Greeter`
 in some of gRPC's other supported languages. Each service
 and client uses interface code generated from the same proto
 that we used for the Java example.
