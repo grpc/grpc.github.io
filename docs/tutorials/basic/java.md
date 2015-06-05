@@ -17,6 +17,8 @@ It assumes that you have read the [Overview](/docs/index.html) and are familiar 
 
 This isn't a comprehensive guide to using gRPC in Java: more reference documentation is coming soon.
 
+<div id="toc"></div>
+
 ## Why use gRPC?
 
 Our example is a simple route mapping application that lets clients get information about features on their route, create a summary of their route, and exchange route information such as traffic updates with the server and other clients.
@@ -503,6 +505,5 @@ As with our client-side streaming example, we both get and return a `StreamObser
 ## Try it out!
 
 Follow the instructions in the example directory [README](https://github.com/grpc/grpc-java/blob/master/examples/README.md) to build and run the client and server.
-
 
 
