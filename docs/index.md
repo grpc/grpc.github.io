@@ -23,7 +23,7 @@ To get up and running with gRPC straight away, see the quick start for your chos
 * [Node.js](/docs/installation/node.html)
 * [Android Java](https://github.com/grpc/grpc-common/tree/master/java/android) (draft)
 * [Python](/docs/installation/python.html)
-* [C#](docs/installation/csharp.html)
+* [C#](/docs/installation/csharp.html)
 
 You can find out about the gRPC source code repositories in
 [grpc](https://github.com/grpc/grpc). Most of our example code (plus more draft documentation) lives in [grpc-common](https://github.com/grpc/grpc-common).
@@ -97,10 +97,10 @@ than how to install and run a few git commands.
 
 This is an introductory example rather than a comprehensive tutorial, so
 don't worry if you're not a Go or
-Java developer - the concepts are similar for all languages, and you can
-find more implementations of our Hello World example in other languages (and full tutorials where available) in
-the [language-specific folders](#quickstart) in the `grpc-common` repository. Complete tutorials and
-reference documentation for all gRPC languages are coming soon.
+Java developer - the concepts are similar for all languages, and you can see more
+implementations of our Hello World example in each language's
+[quick start](#quickstart). There are also further tutorials in this site, and
+reference documentation for all gRPC languages is coming soon.
 
 <a name="setup"></a>
 ### Setup
