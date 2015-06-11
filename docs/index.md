@@ -64,7 +64,7 @@ documentation](https://developers.google.com/protocol-buffers/docs/overview).
 #### Protocol buffer versions
 
 While protocol buffers have been available for open source users for some
-time, our examples use a new flavour of protocol buffers called proto3,
+time, our examples use a new flavor of protocol buffers called proto3,
 which has a slightly simplified syntax, some useful new features, and supports
 lots more languages. This is currently available as an alpha release in
 Java, C++, Java_nano (Android Java), Python, and Ruby from [the protocol buffers Github
@@ -443,5 +443,6 @@ $ greeter_client
 ```
 ## Read more!
 
-- You can find links to language-specific tutorials, examples, and other docs in each language's [quick start](#quickstart).
+- Find out how to install gRPC and get started in each language's [quick start](#quickstart).
+- Follow the tutorial(s) for your favorite language(s).
 - [gRPC Authentication Support](https://github.com/grpc/grpc-common/blob/master/grpc-auth-support.md) introduces authentication support in gRPC with supported mechanisms and examples.
