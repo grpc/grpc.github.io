@@ -17,6 +17,7 @@ It assumes that you have read the [Overview](/docs/index.html) and are familiar 
 
 This isn't a comprehensive guide to using gRPC in Python: more reference documentation is coming soon.
 
+<div id="toc"></div>
 
 ## Why use gRPC?
 

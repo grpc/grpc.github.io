@@ -9,6 +9,8 @@ title: Authentication
 
 More documentation and examples are coming soon!
 
+<div id="toc"></div>
+
 ## Supported auth mechanisms
 
 ### SSL/TLS

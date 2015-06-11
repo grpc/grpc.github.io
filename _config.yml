@@ -2,4 +2,4 @@ markdown:
   redcarpet
 
 redcarpet:
-  extensions: ["highlight"]
+  extensions: ["highlight", "with_toc_data"]

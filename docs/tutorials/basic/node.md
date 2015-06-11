@@ -13,7 +13,10 @@ By walking through this example you'll learn how to:
 - Use the Node.js gRPC API to write a simple client and server for your service.
 
 It assumes that you have read the [Overview](/docs/index.html) and are familiar with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the example in this tutorial uses the [proto3](https://github.com/google/protobuf/releases) version of the protocol buffers language, which is currently in alpha release: you can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and see the [release notes](https://github.com/google/protobuf/releases) for the new version in the protocol buffers Github repository.
+
 This isn't a comprehensive guide to using gRPC in Node.js: more reference documentation is coming soon.
+
+<div id="toc"></div>
 
 ## Why use gRPC?
 
