@@ -97,10 +97,10 @@ than how to install and run a few git commands.
 
 This is an introductory example rather than a comprehensive tutorial, so
 don't worry if you're not a Go or
-Java developer - the concepts are similar for all languages, and you can
-find more implementations of our Hello World example in other languages (and full tutorials where available) in
-the [language-specific folders](#quickstart) in the `grpc-common` repository. Complete tutorials and
-reference documentation for all gRPC languages are coming soon.
+Java developer - the concepts are similar for all languages, and you can see more
+implementations of our Hello World example in each language's
+[quick start](#quickstart). There are also further tutorials in this site, and
+reference documentation for all gRPC languages is coming soon.
 
 <a name="setup"></a>
 ### Setup
