@@ -23,7 +23,7 @@ To get up and running with gRPC straight away, see the quick start for your chos
 * [Node.js](/docs/installation/node.html)
 * [Android Java](https://github.com/grpc/grpc-common/tree/master/java/android) (draft)
 * [Python](/docs/installation/python.html)
-* [C#](docs/installation/csharp.html)
+* [C#](/docs/installation/csharp.html)
 
 You can find out about the gRPC source code repositories in
 [grpc](https://github.com/grpc/grpc). Most of our example code (plus more draft documentation) lives in [grpc-common](https://github.com/grpc/grpc-common).
