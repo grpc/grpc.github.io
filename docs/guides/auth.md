@@ -13,13 +13,15 @@ More documentation and examples are coming soon!
 
 ## Supported auth mechanisms
 
-### SSL/TLS
+###SSL/TLS
+
 gRPC has SSL/TLS integration and promotes the use of SSL/TLS to authenticate the server,
 and encrypt all the data exchanged between the client and the server. Optional
 mechanisms are available for clients to provide certificates to accomplish mutual
 authentication.
 
-### OAuth 2.0
+###OAuth 2.0
+
 gRPC provides a generic mechanism (described below) to attach metadata to requests
 and responses. This mechanism can be used to attach OAuth 2.0 Access Tokens to
 RPCs being made at a client. Additional support for acquiring Access Tokens while
@@ -27,6 +29,7 @@ accessing Google APIs through gRPC is provided for certain auth flows, demonstra
 through code examples below.
 
 ## API
+
 To reduce complexity and minimize API clutter, gRPC works with a unified concept of
 a Credentials object. Users construct gRPC credentials using corresponding bootstrap
 credentials (e.g., SSL client certs or Service Account Keys), and use the
@@ -35,21 +38,21 @@ credential supplied, the channel uses the credentials during the initial SSL/TLS
 handshake with the server, or uses  the credential to generate and attach Access
 Tokens to each request being made on the channel.
 
-### SSL/TLS for server authentication and encryption
+###SSL/TLS for server authentication and encryption
 
 This is the simplest authentication scenario, where a client just wants to
 authenticate the server and encrypt all data.
 
-```cpp
+```
 SslCredentialsOptions ssl_opts;  // Options to override SSL params, empty by default
 // Create the credentials object by providing service account key in constructor
-std::unique_ptr&lt;Credentials&gt; creds = CredentialsFactory::SslCredentials(ssl_opts);
+std::unique_ptr<Credentials> creds = CredentialsFactory::SslCredentials(ssl_opts);
 // Create a channel using the credentials created in the previous step
-std::shared_ptr&lt;ChannelInterface&gt; channel = CreateChannel(server_name, creds, channel_args);
+std::shared_ptr<ChannelInterface> channel = CreateChannel(server_name, creds, channel_args);
 // Create a stub on the channel
-std::unique_ptr&lt;Greeter::Stub&gt; stub(Greeter::NewStub(channel));
+std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 // Make actual RPC calls on the stub.
-grpc::Status s = stub-&gt;sayHello(&context, *request, response);
+grpc::Status s = stub->sayHello(&context, *request, response);
 ```
 
 For advanced use cases such as modifying the root CA or using client certs,
@@ -57,7 +60,7 @@ the corresponding options can be set in the SslCredentialsOptions parameter
 passed to the factory method.
 
 
-### Authenticating with Google
+###Authenticating with Google
 
 gRPC applications can use a simple API to create a credential that works in various deployment scenarios.
 
@@ -99,9 +102,9 @@ A deeper integration can be achieved by plugging in a gRPC credentials implement
 These authentication mechanisms will be available in all gRPC's supported languages.
 The following sections demonstrate how authentication and authorization features described above appear in each language: more languages are coming soon.
 
-### SSL/TLS for server authentication and encryption (Ruby)
+###SSL/TLS for server authentication and encryption (Ruby)
 
-```
+```ruby
 # Base case - No encryption
 stub = Helloworld::Greeter::Stub.new('localhost:50051')
 ...
@@ -125,7 +128,7 @@ var channel = new Channel("localhost:50051", credentials);
 var client = new Greeter.GreeterClient(channel);
 ```
 
-### Authenticating with Google (Ruby)
+###Authenticating with Google (Ruby)
 
 ```ruby
 # Base case - No encryption/authorization
@@ -143,7 +146,7 @@ stub = Helloworld::Greeter::Stub.new('localhost:50051',
                                      update_metadata: authorization.updater_proc)
 ```
 
-### Authenticating with Google (Node.js)
+###Authenticating with Google (Node.js)
 
 ```
 // Base case - No encryption/authorization
@@ -186,4 +189,26 @@ if (authorization.IsCreateScopedRequired)
 }
 var client = new Greeter.GreeterClient(channel,
         new StubConfiguration(OAuth2InterceptorFactory.Create(credential)));
+```
+
+###Authenticating with Google (PHP)
+
+```php
+// Base case - No encryption/authorization
+$client = new helloworld\GreeterClient(
+  new Grpc\BaseStub('localhost:50051', []));
+...
+
+// Authenticating with Google
+// the environment variable "GOOGLE_APPLICATION_CREDENTIALS" needs to be set
+$scope = "https://www.googleapis.com/auth/grpc-testing";
+$auth = Google\Auth\ApplicationDefaultCredentials::getCredentials($scope);
+$opts = [
+  'credentials' => Grpc\Credentials::createSsl(file_get_contents('ca.pem'));
+  'update_metadata' => $auth->getUpdateMetadataFunc(),
+];
+
+$client = new helloworld\GreeterClient(
+  new Grpc\BaseStub('localhost:50051', $opts));
+
 ```
