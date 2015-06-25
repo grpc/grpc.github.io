@@ -30,11 +30,13 @@ With gRPC you can define your service once in a .proto file and implement client
 
 The example code for our tutorial is in [grpc/grpc-common/php/route_guide](https://github.com/grpc/grpc-common/tree/master/php/route_guide). To download the example, clone the `grpc-common` repository by running the following command:
 
+```
 $ git clone https://github.com/grpc/grpc-common.git
 ```
 
 Then change your current directory to `grpc-common/php/route_guide`:
 
+```
 $ cd grpc-common/php/route_guide
 ```
 
@@ -48,7 +50,7 @@ You also should have the relevant tools installed to generate the client interfa
 
 To try the sample app, we need a gRPC server running locally. Let's compile and run, for example, the Node.js server in this repository:
 
-
+```
 $ cd ../../node
 $ npm install
 $ cd route_guide
@@ -57,7 +59,7 @@ $ nodejs ./route_guide_server.js --db_path=route_guide_db.json
 
 Run the PHP client (in a different terminal):
 
-
+```
 $ ./run_route_guide_client.sh
 ```
 
