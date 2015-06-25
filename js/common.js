@@ -9,6 +9,12 @@ $(document).ready(function() {
     $('#toc').toc({ listType: 'ul' });
 });
 
+// Prettyprint
+$('pre').addClass("prettyprint");
+$.getScript("https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js", function(){
+});
+
+
 // TOC script
 // https://github.com/ghiculescu/jekyll-table-of-contents
 (function($){
