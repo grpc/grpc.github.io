@@ -81,6 +81,7 @@ Then you define `rpc` methods inside your service definition, specifying their r
 ```
 
 - A *bidirectionally-streaming RPC* where both sides send a sequence of messages using a read-write stream. The two streams operate independently, so clients and servers can read and write in whatever order they like: for example, the server could wait to receive all the client messages before writing its responses, or it could alternately read a message then write a message, or some other combination of reads and writes. The order of messages in each stream is preserved. You specify this type of method by placing the `stream` keyword before both the request and the response.
+
 ```protobuf
 
   // Accepts a stream of RouteNotes sent while a route is being traversed,
@@ -112,6 +113,7 @@ $ protoc -I ../../protos --python_out=. --grpc_out=. --plugin=protoc-gen-grpc=`w
 ```
 
 Note that as we've already provided a version of the generated code in the example repository, running this command regenerates the appropriate file rather than creates a new one. The generated code file is called `route_guide_pb2.py` and contains:
+
 - classes for the messages defined in route_guide.proto
 - abstract classes for the service defined in route_guide.proto
    - `EarlyAdopterRouteGuideServicer`, which defines the interface for implementations of the RouteGuide service
