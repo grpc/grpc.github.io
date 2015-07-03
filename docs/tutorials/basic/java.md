@@ -143,7 +143,7 @@ There are two parts to making our `RouteGuide` service do its job:
 - Implementing the service interface generated from our service definition: doing the actual "work" of our service.
 - Running a gRPC server to listen for requests from clients and return the service responses.
 
-You can find our example `RouteGuide` server in [grpc-java/examples/src/main/java/io/grpc/examples/RouteGuideServer.java](https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/RouteGuideServer.java). Let's take a closer look at how it works.
+You can find our example `RouteGuide` server in [grpc-java/examples/src/main/java/io/grpc/examples/RouteGuideServer.java](https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/routeguide/RouteGuideServer.java). Let's take a closer look at how it works.
 
 ### Implementing RouteGuide
 
@@ -160,13 +160,13 @@ private static class RouteGuideService implements RouteGuideGrpc.RouteGuide {
 ```java
     @Override
     public void getFeature(Point request, StreamObserver<Feature> responseObserver) {
-      responseObserver.onValue(getFeature(request));
+      responseObserver.onValue(checkFeature(request));
       responseObserver.onCompleted();
     }
 
 ...
 
-    private Feature getFeature(Point location) {
+    private Feature checkFeature(Point location) {
       for (Feature feature : features) {
         if (feature.getLocation().getLatitude() == location.getLatitude()
             && feature.getLocation().getLongitude() == location.getLongitude()) {
@@ -185,7 +185,7 @@ private static class RouteGuideService implements RouteGuideGrpc.RouteGuide {
 
 To return our response to the client and complete the call:
 
-1. We construct and populate a `Feature` response object to return to the client, as specified in our service definition. In this example, we do this in a separate private `getFeature()` method.
+1. We construct and populate a `Feature` response object to return to the client, as specified in our service definition. In this example, we do this in a separate private `checkFeature()` method.
 2. We use the response observer's `onValue()` method to return the `Feature`.
 3. We use the response observer's `onCompleted()` method to specify that we've finished dealing with the RPC.
 
@@ -221,7 +221,7 @@ private final Collection<Feature> features;
 
 Like the simple RPC, this method gets a request object (the `Rectangle` in which our client wants to find `Feature`s) and a `StreamObserver` response observer.
 
-This time, we get as many `Feature` objects as we need to return to the client (in this case, we select them from the service's feature collection based on whether they're inside our request `Rectangle`), and write them each in turn to the response observer using its `Write()` method. Finally, as in our simple RPC, we use the response observer's `onCompleted()` method to tell gRPC that we've finished writing responses.
+This time, we get as many `Feature` objects as we need to return to the client (in this case, we select them from the service's feature collection based on whether they're inside our request `Rectangle`), and write them each in turn to the response observer using its `onValue()` method. Finally, as in our simple RPC, we use the response observer's `onCompleted()` method to tell gRPC that we've finished writing responses.
 
 #### Client-side streaming RPC
 Now let's look at something a little more complicated: the client-side streaming method `RecordRoute`, where we get a stream of `Point`s from the client and return a single `RouteSummary` with information about their trip.
@@ -239,7 +239,7 @@ Now let's look at something a little more complicated: the client-side streaming
         @Override
         public void onValue(Point point) {
           pointCount++;
-          if (RouteGuideUtil.exists(getFeature(point))) {
+          if (RouteGuideUtil.exists(checkFeature(point))) {
             featureCount++;
           }
           // For each point after the first, add the incremental distance from the previous point
@@ -270,6 +270,7 @@ Now let's look at something a little more complicated: the client-side streaming
 As you can see, like the previous method types our method gets a `StreamObserver` response observer parameter, but this time it returns a `StreamObserver` for the client to write its `Point`s. 
 
 In the method body we instantiate an anonymous `StreamObserver` to return, in which we:
+
 - Override the `onValue()` method to get features and other information each time the client writes a `Point` to the message stream.
 - Override the `onCompleted()` method (called when the *client* has finished writing messages) to populate and build our `RouteSummary`. We then call our method's own response observer's `onValue()` with our `RouteSummary`, and then call its `onCompleted()` method to finish the call from the server side.
 
@@ -333,11 +334,12 @@ To do this, we:
 <a name="client"></a>
 ## Creating the client
 
-In this section, we'll look at creating a Java client for our `RouteGuide` service. You can see our complete example client code in [grpc-java/examples/src/main/java/io/grpc/examples/RouteGuideClient.java](https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/RouteGuideClient.java).
+In this section, we'll look at creating a Java client for our `RouteGuide` service. You can see our complete example client code in [grpc-java/examples/src/main/java/io/grpc/examples/RouteGuideClient.java](https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/routeguide/RouteGuideClient.java).
 
 ### Creating a stub
 
-To call service methods, we first need to create a *stub*, or rather, two stubs: 
+To call service methods, we first need to create a *stub*, or rather, two stubs:
+
 - a *blocking/synchronous* stub: this means that the RPC call waits for the server to respond, and will either return a response or raise an exception.
 - a *non-blocking/asynchronous* stub that makes non-blocking calls to the server, where the response is returned asynchronously. You can make certain types of streaming call only using the asynchronous stub.
 
@@ -445,6 +447,7 @@ Now for something a little more complicated: the client-side streaming method `R
 ```
 
 As you can see, to call this method we need to create a `StreamObserver`, which implements a special interface for the server to call with its `RouteSummary` response. In our `StreamObserver` we:
+
 - Override the `onValue()` method to print out the returned information when the server writes a `RouteSummary` to the message stream.
 - Override the `onCompleted()` method (called when the *server* has completed the call on its side) to set a `SettableFuture` that we can check to see if the server has finished writing.
 
