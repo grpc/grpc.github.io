@@ -115,6 +115,7 @@ $ protoc -I ../../protos --ruby_out=lib --grpc_out=lib --plugin=protoc-gen-grpc=
 ```
 
 Running this command regenerates the following files in the lib directory:
+
 - `lib/route_guide.pb` defines a module `Examples::RouteGuide`
   - This contain all the protocol buffer code to populate, serialize, and retrieve our request and response message types
 - `lib/route_guide_services.pb`, extends `Examples::RouteGuide` with stub and service classes
