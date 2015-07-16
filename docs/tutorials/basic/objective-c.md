@@ -29,11 +29,13 @@ gRPC and proto3 are specially suited for mobile clients: gRPC is implemented on 
 ## Example code and setup
 
 The example code for our tutorial is in [grpc/grpc-common/objective-c/route_guide](https://github.com/grpc/grpc-common/tree/master/objective-c/route_guide). To download the example, clone the `grpc-common` repository by running the following command:
+
 ```
 $ git clone https://github.com/grpc/grpc-common.git
 ```
 
 Then change your current directory to `grpc-common/objective-c/route_guide`:
+
 ```
 $ cd grpc-common/objective-c/route_guide
 ```
@@ -84,12 +86,14 @@ service RouteGuide {
 Then you define `rpc` methods inside your service definition, specifying their request and response types. Protocol buffers let you define four kinds of service method, all of which are used in the `RouteGuide` service:
 
 - A *simple RPC* where the client sends a request to the server and receives a response later, just like a normal remote procedure call.
+- 
 ```protobuf
    // Obtains the feature at a given position.
    rpc GetFeature(Point) returns (Feature) {}
 ```
 
 - A *response-streaming RPC* where the client sends a request to the server and gets back a stream of response messages. You specify a response-streaming method by placing the `stream` keyword before the *response* type.
+- 
 ```protobuf
   // Obtains the Features available within the given Rectangle.  Results are
   // streamed rather than returned at once (e.g. in a response message with a
@@ -99,6 +103,7 @@ Then you define `rpc` methods inside your service definition, specifying their r
 ```
 
 - A *request-streaming RPC* where the client sends a sequence of messages to the server. Once the client has finished writing the messages, it waits for the server to read them all and return its response. You specify a request-streaming method by placing the `stream` keyword before the *request* type.
+- 
 ```protobuf
   // Accepts a stream of Points on a route being traversed, returning a
   // RouteSummary when traversal is completed.
@@ -106,6 +111,7 @@ Then you define `rpc` methods inside your service definition, specifying their r
 ```
 
 - A *bidirectional streaming RPC* where both sides send a sequence of messages to the other. The two streams operate independently, so clients and servers can read and write in whatever order they like: for example, the server could wait to receive all the client messages before writing its responses, or it could alternately read a message then write a message, or some other combination of reads and writes. The order of messages in each stream is preserved. You specify this type of method by placing the `stream` keyword before both the request and the response.
+- 
 ```protobuf
   // Accepts a stream of RouteNotes sent while a route is being traversed,
   // while receiving other RouteNotes (e.g. from other users).
@@ -113,6 +119,7 @@ Then you define `rpc` methods inside your service definition, specifying their r
 ```
 
 Our .proto file also contains protocol buffer message type definitions for all the request and response types used in our service methods - for example, here's the `Point` message type:
+
 ```protobuf
 // Points are represented as latitude-longitude pairs in the E7 representation
 // (degrees multiplied by 10**7 and rounded to the nearest integer).
@@ -125,6 +132,7 @@ message Point {
 ```
 
 You can specify a prefix to be used for your generated classes by adding the `objc_class_prefix` option at the top of the file. For example:
+
 ```protobuf
 option objc_class_prefix = "RTG";
 ```
@@ -155,6 +163,7 @@ Running this command generates the following files under `Pods/RouteGuide/`:
 - `RouteGuide.pbrpc.m`, which contains the implementation of your service classes.
 
 These contain:
+
 - All the protocol buffer code to populate, serialize, and retrieve our request and response message types.
 - A class called `RTGRouteGuide` that lets clients call the methods defined in the `RouteGuide` service.
 
