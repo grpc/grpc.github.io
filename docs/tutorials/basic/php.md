@@ -158,6 +158,7 @@ require dirname(__FILE__) . '/route_guide.php';
 ```
 
 The file contains:
+
 - All the protocol buffer code to populate, serialize, and retrieve our request and response message types.
 - A class called `examples\RouteGuideClient` that lets clients call the methods defined in the `RouteGuide` service.
 
