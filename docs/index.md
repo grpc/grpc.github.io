@@ -175,7 +175,7 @@ $ git clone https://github.com/grpc/grpc-common.git
 <p>Change your current directory to <code>grpc-common/python/helloworld</code>
 
 <pre>
-$ cd grpc-common/cpp/helloworld/
+$ cd grpc-common/python/helloworld/
 </pre>
 </div>
   <div id="go_source">
