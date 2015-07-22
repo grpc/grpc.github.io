@@ -12,22 +12,26 @@ Hello World example. You'll find more tutorials and reference docs in this site 
 
 <div id="toc"></div>
 
+<!--=========================================================================-->
 <a name="quickstart"></a>
 ## Quick start
-To get up and running with gRPC straight away, see the quick start for your chosen language, which provides links to installation instructions and more:
+To get up and running with gRPC straight away, see the quick start for your chosen language, which provides links to installation instructions, quick instructions for building the example used in this guide, and more:
 
 * [C++](/docs/installation/c.html)
 * [Java](/docs/installation/java.html)
 * [Go](/docs/installation/go.html)
+* [Python](/docs/installation/python.html)
 * [Ruby](/docs/installation/ruby.html)
 * [Node.js](/docs/installation/node.html)
 * [Android Java](https://github.com/grpc/grpc-common/tree/master/java/android) (draft)
-* [Python](/docs/installation/python.html)
 * [C#](/docs/installation/csharp.html)
+* [Objective-C](/docs/installation/objective-c.html)
+* [PHP](/docs/installation/php.html)
 
 You can find out about the gRPC source code repositories in
 [grpc](https://github.com/grpc/grpc). Most of our example code (plus more draft documentation) lives in [grpc-common](https://github.com/grpc/grpc-common).
 
+<!--=========================================================================-->
 ## What is gRPC?
 
 In gRPC a *client* application can directly call
@@ -39,7 +43,7 @@ parameters and return types. On the server side, the server implements this
 interface and runs a gRPC server to handle client calls. On the client side,
 the client has a *stub* that provides exactly the same methods as the server.
 
-<img src="../img/grpc_concept_diagram_00.png" class="img-responsive" alt="gRPC diagram">
+![gRPC diagram](../img/grpc_concept_diagram_00.png)
 
 gRPC clients and servers can run and talk to each other in a variety of
 environments - from servers inside Google to your own desktop - and can
@@ -75,6 +79,7 @@ the major differences from the current default version in the [release notes](ht
 In general, while you *can* use proto2 (the current default protocol buffers version), we recommend that you use proto3 with gRPC as it lets you use the full range of gRPC-supported languages, as well as avoiding compatibility
 issues with proto2 clients talking to proto3 servers and vice versa.
 
+<!--=========================================================================-->
 <a name="hello"></a>
 ## Hello gRPC!
 
@@ -98,6 +103,7 @@ Note that server code for our example isn't available in all gRPC languages, as 
 This is an introductory example rather than a comprehensive tutorial for any particular language. You can find more in-depth tutorials in this site, and
 reference documentation for all gRPC languages is coming soon.
 
+<!--=================================-->
 <a name="setup"></a>
 ### Setup
 
@@ -216,7 +222,7 @@ $ npm install
 $ git clone https://github.com/grpc/grpc-common.git
 </pre>
 
-<p>Change your current directory to <code>grpc-common/csharp</code>, then open <code>Greeter.sln</code> from Visual Studio (or Monodevelop on Linux). See the <a href="/docs/installation/csharp.html">C# Quickstart</a> for platform-specific setup.</p>
+<p>Open <code>Greeter.sln</code> from Visual Studio (or Monodevelop on Linux). See the <a href="/docs/installation/csharp.html">C# Quickstart</a> for platform-specific setup.</p>
   </div>
 <div id="objective-c_source">
 <p>The example code for this lives in the <code>grpc-common</code> GitHub repository. Clone this repository to your local machine by running the following command:</p>
@@ -237,11 +243,12 @@ $ git clone https://github.com/grpc/grpc-common.git
 
 <p>Change your current directory to <code>grpc-common/php</code>.</p>
 
+<p class="note">While most of our Hello World examples use the same .proto file, the PHP example has its own copy of <code>helloworld.proto</code> because it currently depends on some proto2 syntax. There is no proto3 support for PHP yet.</p>
   </div>
 </div>
 
 
-
+<!--=================================-->
 <a name="servicedef"></a>
 ### Defining a service
 
@@ -288,6 +295,7 @@ message HelloReply {
 
 ```
 
+<!--=================================-->
 <a name="generating"></a>
 ### Generating gRPC code
 
@@ -414,29 +422,70 @@ var hello_proto = grpc.load(PROTO_PATH).helloworld;</pre>
 ```
   </div>
   <div id="csharp_generate">
-Coming soon 
+
+- To generate the code on Windows, we use `protoc.exe` and `grpc_csharp_plugin.exe` binaries that are shipped with the `Grpc.Tools` NuGet package under the `tools` directory.
+Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this example it has been already done for you. The following command should be run from the `csharp/route_guide` directory:
 
 ```
-snippet
+> packages\Grpc.Tools.0.5.0\tools\protoc -I Greeter/protos --csharp_out=Greeter --grpc_out=Greeter --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.5.0\tools\grpc_csharp_plugin.exe Greeter/protos/helloworld.proto
 ```
+
+- On Linux/MacOS, we rely on `protoc` and `grpc_csharp_plugin` being installed by Linuxbrew/Homebrew. Run this command from the route_guide directory:
+
+```
+$ protoc -I Greeter/protos --csharp_out=Greeter --grpc_out=Greeter --plugin=protoc-gen-grpc=`which grpc_csharp_plugin` Greeter/protos/helloworld.proto
+```
+
+Running the appropriate command for your OS regenerates the following files in the Greeter directory:
+
+- `Greeter/Helloworld.cs` defines a namespace `helloworld`
+  - This contains all the protocol buffer code to populate, serialize, and retrieve our request and response message types
+- `Greeter/HelloworldGrpc.cs`, provides stub and service classes, including:
+   - an interface `Greeter.IGreeter` to inherit from when defining RouteGuide service implementations
+   - a class `Greeter.GreeterClient` that can be used to access remote RouteGuide instances
+
 
   </div>
 <div id="objective-c_generate">
-Coming soon
+For simplicity, we've provided a [Podspec file](https://github.com/grpc/grpc-common/blob/master/objective-c/helloworld/HelloWorld.podspec) that runs protoc for you with the appropriate plugin, input, and output, and describes how to compile the generated files. You just need to run in `grpc-common/objective-c/route_guide`:
+
+```
+$ pod install
+```
+
+You can then open the XCode workspace created by Cocoapods to see the generated code. Running the command generates:
+
+- `Helloworld.pbobjc.h`, the header which declares your generated message classes.
+- `Helloworld.pbobjc.m`, which contains the implementation of your message classes.
+- `Helloworld.pbrpc.h`, the header which declares your generated service classes.
+- `Helloworld.pbrpc.m`, which contains the implementation of your service classes.
+
 </div>
+
   <div id="php_generate">
-Coming soon
+gRPC PHP uses the [protoc-gen-php](https://github.com/datto/protobuf-php) tool to generate code from .proto files. You can find out how to install this in the [PHP Quickstart](/docs/installation/php.html). To generate the code for our Greeter service, run:
+
+```
+protoc-gen-php -i . -o . ./helloworld.proto
+```
+
+This generates `helloworld.php`, which contains:
+
+- All the protocol buffer code to populate, serialize, and retrieve our request and response message types.
+- A class called `GreeterClient` that lets clients call the methods defined in the `Greeter` service.
+
+
   </div>
 </div>
 
 
-
+<!--=================================-->
 <a name="server"></a>
 ### Writing a server
 
 Now let's write some code! First we'll create a server application to implement
-our service. Note that we're not going to go into a lot of detail about how
-to create a server in this section. More detailed information will be in the
+our service (which, you'll remember, we can do in all gRPC languages except Objective-C and PHP). We're not going to go into a lot of detail about how
+to create a server in this section - more detailed information will be in the
 tutorial for your chosen language.
 
 #### Service implementation
@@ -586,8 +635,25 @@ function sayHello(call, callback) {
 
   </div>
   <div id="csharp_service">
-Coming soon
-  </div>
+<p><a href="https://github.com/grpc/grpc-common/blob/master/csharp/GreeterServer/Program.cs">GreeterServer/Program.cs</a> implements our <code>Greeter</code> service's required behaviour.
+<p>Our server has a <code>GreeterImpl</code> class, which implements the <code>IGreeter</code> interface that we <a href="#generating">generated</a> from our proto
+service definition by implementing the method <code>SayHello</code>:</p>
+<pre>
+public Task<HelloReply> SayHello(ServerCallContext context, HelloRequest request)
+{
+    var reply = new HelloReply.Builder { Message = "Hello " + request.Name }.Build();
+    return Task.FromResult(reply);
+}
+</pre>
+
+<p>To return our response to the client and complete the call:</p>
+<ul>
+<li>We construct and populate a <code>HelloReply</code> response object with our exciting
+message, as specified in our interface definition.</li>
+<li>We return the <code>HelloReply</code> to the client.</li>
+</ul>
+
+</div>
 </div>
 
 
@@ -708,7 +774,12 @@ function main() {
 
   </div>
   <div id="csharp_server">
-Coming soon
+<p><a href="https://github.com/grpc/grpc-common/blob/master/csharp/GreeterServer/Program.cs">GreeterServer/Program.cs</a> also provides this for our C# example.
+<pre>Server server = new Server();
+server.AddServiceDefinition(Greeter.BindService(new GreeterImpl()));
+int port = server.AddListeningPort("localhost", 50051);
+server.Start();
+</pre>
   </div>
 </div>
 
@@ -717,6 +788,7 @@ implementation that we created to a port. Then we start the server running: the 
 requests from `Greeter` service clients on our specified port. We'll cover
 how all this works in a bit more detail in our language-specific documentation.
 
+<!--=================================-->
 <a name="client"></a>
 ### Writing a client
 
@@ -821,13 +893,32 @@ func main() {
 
   </div>
   <div id="csharp_connect">
-Coming soon
+<pre>using (Channel channel = new Channel("127.0.0.1:50051"))
+{
+    var client = Greeter.NewStub(channel);
+    ...
+}</pre>
   </div>
   <div id="objective-c_connect">
-Coming soon
+
+```
+#import <HelloWorld/Helloworld.pbrpc.h>
+
+static NSString * const kHostAddress = @"http://localhost:50051";
+HLWGreeter *client = [[HLWGreeter alloc] initWithHost:kHostAddress];
+```
+
+In Objective-C, we can do this in a single step using our generated `HLWGreeter` class's designated initializer, which expects a `NSString *` with the server address and port.
+
   </div>
   <div id="php_connect">
-Coming soon
+
+```
+$client = new helloworld\GreeterClient(
+      new Grpc\BaseStub('localhost:50051', []));
+```
+In PHP, we can do this in a single step using the `GreeterClient` class's constructor.
+
   </div>
 </div>
 
@@ -908,17 +999,32 @@ log.Printf("Greeting: %s", r.Message)</pre>
 
   </div>
   <div id="csharp_call">
-Coming soon
+<pre>var reply = client.SayHello(new HelloRequest.Builder { Name = user }.Build());
+Console.WriteLine("Greeting: " + reply.Message);</pre>
+<p>You can see the complete example code in <a href="https://github.com/grpc/grpc-common/blob/master/csharp/GreeterClient/Program.cs">GreeterClient/Program.cs</a>.</p>
+
   </div>
   <div id="objective-c_call">
-Coming soon
+<pre>    HLWHelloRequest *request = [HLWHelloRequest message];
+    request.name = @"Objective-C";
+    [client sayHelloWithRequest:request handler:^(HLWHelloReply *response, NSError *error) {
+      NSLog(@"%@", response.message);
+    }];</pre>
+<p>You can see the complete example code in <a href="https://github.com/grpc/grpc-common/tree/master/objective-c/helloworld">grpc-common/objective-c/helloworld</a>.</p>
+
   </div>
   <div id="php_call">
-Coming soon
+<pre>  $request = new helloworld\HelloRequest();
+  $request->setName($name);
+  list($reply, $status) = $client->SayHello($request)->wait();
+  $message = $reply->getMessage();</pre>
+
+<p>You can see the complete client code in <a href="https://github.com/grpc/grpc-common/blob/master/php/greeter_client.php">greeter_client.php</a>.</p>
+
   </div>
 </div>
 
-
+<!--=================================-->
 <a name="run"></a>
 ### Try it out!
 
@@ -973,7 +1079,13 @@ Then run the server, which will listen on port 50051:
 
   </div>
   <div id="csharp_runserver">
-Coming soon
+<p>Build the solution. Then from <code>grpc-common/csharp</code>:
+
+```
+> cd GreeterServer/bin/Debug
+> GreeterServer.exe
+```
+
   </div>
 </div>
 
@@ -1025,16 +1137,29 @@ Then run the client:
 
 </div>
   <div id="csharp_runclient">
-Coming soon
+<p>Build the solution. Then from <code>grpc-common/csharp</code>:
+
+```
+> cd GreeterClient/bin/Debug
+> GreeterClient.exe
+```
+
 </div>
   <div id="objective-c_runclient">
-Coming soon
+<p>Open the XCode workspace created by Cocoapods, and run the app. You can see the results in XCode's log console.</p>
+
 </div>
   <div id="php_runclient">
-Coming soon
+<p>You can run the client from <code>grpc-common/php</code> using:
+
+```
+$ ./run_greeter_client.sh
+```
+
 </div>
 </div>
 
+<!--=========================================================================-->
 ## Read more!
 
 - Find out how to install gRPC and get started in each language's [quick start](#quickstart).
