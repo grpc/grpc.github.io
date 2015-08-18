@@ -117,7 +117,7 @@ In a gRPC call, both the client and server can finish the RPC successfully, mean
 
 ### Cancelling RPCs
 
-Either the client or the server can cancel an RPC at any time. A cancellation terminates the RPC immediately so that no further work is done. It is *not* an "undo": changes made before the cancellation will not be rolled back. The only situation where you can't cancel is if you have chosen, for example, to call a blocking RPC and do not have program control.
+Either the client or the server can cancel an RPC at any time. A cancellation terminates the RPC immediately so that no further work is done. It is *not* an "undo": changes made before the cancellation will not be rolled back. Of course, RPCs invoked via a blocking RPC method call cannot be cancelled because program control is not returned to the application until after the RPC has terminated.
 
 <a name="metadata"></a>
 ### Metadata
