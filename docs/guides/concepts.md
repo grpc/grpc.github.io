@@ -113,11 +113,11 @@ How the deadline is specified varies from language to language - for example, a 
 
 ### RPC termination
 
-In a gRPC call, both the client and server can finish the RPC successfully, meaning that the call is complete on *their side*. This means that, for example, you could have an RPC that finishes successfully on the server side ("I have sent all my responses!") but fails on the client side ("The responses arrived after my deadline!"). It's also possible for a server to decide to complete before a client has sent all its requests.
+In gRPC, both the client and server make independent and local determinations of the success of the call, and their conclusions may not match. This means that, for example, you could have an RPC that finishes successfully on the server side ("I have sent all my responses!") but fails on the client side ("The responses arrived after my deadline!"). It's also possible for a server to decide to complete before a client has sent all its requests.
 
 ### Cancelling RPCs
 
-Either the client or the server can cancel an RPC at any time. A cancellation terminates the RPC immediately so that no further work is done. It is *not* an "undo": changes made before the cancellation will not be rolled back. Of course, RPCs invoked via a blocking RPC method call cannot be cancelled because program control is not returned to the application until after the RPC has terminated.
+Either the client or the server can cancel an RPC at any time. A cancellation terminates the RPC immediately so that no further work is done. It is *not* an "undo": changes made before the cancellation will not be rolled back. Of course, RPCs invoked via a synchronous RPC method call cannot be cancelled because program control is not returned to the application until after the RPC has terminated.
 
 <a name="metadata"></a>
 ### Metadata
