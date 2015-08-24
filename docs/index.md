@@ -418,7 +418,7 @@ The Node.js library dynamically generates service descriptors and client stub de
 
 ```
 var grpc = require('grpc');
-var hello_proto = grpc.load(PROTO_PATH).helloworld;</pre>
+var hello_proto = grpc.load(PROTO_PATH).helloworld;
 ```
   </div>
   <div id="csharp_generate">
