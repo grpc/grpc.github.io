@@ -18,7 +18,7 @@ Install
  - Clone this repository
 
    ```sh
-   $ git clone https://github.com/grpc/grpc-common.git
+   $ git clone https://github.com/grpc/grpc.git
    ```
 
  - Download the grpc debian packages from the [latest grpc release](https://github.com/grpc/grpc/releases) and install them.
@@ -33,7 +33,7 @@ Install
  - Install this package's dependencies
 
    ```sh
-   $ cd grpc-common/node
+   $ cd examples/node
    $ npm install
    ```
 
@@ -57,7 +57,7 @@ Try it!
 Note
 ----
 
-The <a href="https://github.com/grpc/grpc-common/tree/master/node">grpc-common/node</a> directory has its own copy of `helloworld.proto` because it currently depends on
+The <a href="https://github.com/grpc/grpc/tree/master/examples/node">examples/node</a> directory has its own copy of `helloworld.proto` because it currently depends on
 some Protocol Buffer 2.0 syntax that is deprecated in Protocol Buffer 3.0.
 
 Tutorial

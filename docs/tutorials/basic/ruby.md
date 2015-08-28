@@ -27,16 +27,16 @@ With gRPC we can define our service once in a .proto file and implement clients 
 
 ## Example code and setup
 
-The example code for our tutorial is in [grpc/grpc-common/ruby/route_guide](https://github.com/grpc/grpc-common/tree/master/ruby/route_guide). To download the example, clone the `grpc-common` repository by running the following command:
+The example code for our tutorial is in [grpc/grpc/examples/ruby/route_guide](https://github.com/grpc/grpc/tree/master/examples/ruby/route_guide). To download the example, clone the `grpc` repository by running the following command:
 
 ```
-$ git clone https://github.com/grpc/grpc-common.git
+$ git clone https://github.com/grpc/grpc.git
 ```
 
-Then change your current directory to `grpc-common/ruby/route_guide`:
+Then change your current directory to `examples/ruby/route_guide`:
 
 ```
-$ cd grpc-common/ruby/route_guide
+$ cd examples/ruby/route_guide
 ```
 
 You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Ruby quick start guide](/docs/installation/ruby.html).
@@ -44,7 +44,7 @@ You also should have the relevant tools installed to generate the server and cli
 
 ## Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/index.html)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`grpc-common/protos/route_guide.proto`](https://github.com/grpc/grpc-common/blob/master/protos/route_guide.proto).
+Our first step (as you'll know from the [Overview](/docs/index.html)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/master/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -132,7 +132,7 @@ There are two parts to making our `RouteGuide` service do its job:
 - Implementing the service interface generated from our service definition: doing the actual "work" of our service.
 - Running a gRPC server to listen for requests from clients and return the service responses.
 
-You can find our example `RouteGuide` server in [grpc-common/ruby/route_guide/route_guide_server.rb](https://github.com/grpc/grpc-common/blob/master/ruby/route_guide/route_guide_server.rb). Let's take a closer look at how it works.
+You can find our example `RouteGuide` server in [examples/ruby/route_guide/route_guide_server.rb](https://github.com/grpc/grpc/blob/master/examples/ruby/route_guide/route_guide_server.rb). Let's take a closer look at how it works.
 
 ### Implementing RouteGuide
 
@@ -215,7 +215,7 @@ As you can see, we build and start our server using a `GRPC::RpcServer`. To do t
 <a name="client"></a>
 ## Creating the client
 
-In this section, we'll look at creating a Ruby client for our `RouteGuide` service. You can see our complete example client code in [grpc-common/ruby/route_guide/route_guide_client.rb](https://github.com/grpc/grpc-common/blob/master/ruby/route_guide/route_guide_client.rb).
+In this section, we'll look at creating a Ruby client for our `RouteGuide` service. You can see our complete example client code in [examples/ruby/route_guide/route_guide_client.rb](https://github.com/grpc/grpc/blob/master/examples/ruby/route_guide/route_guide_client.rb).
 
 ### Creating a stub
 
@@ -285,19 +285,19 @@ Although it's not shown well by this example, each enumerable is independent of 
 Build client and server:
 
 ```
-$ # from grpc-common/ruby
+$ # from examples/ruby
 $ gem install bundler && bundle install
 ```
 Run the server, which will listen on port 50051:
 
 ```
-$ # from grpc-common/ruby
+$ # from examples/ruby
 $ bundle exec route_guide/route_guide_server.rb ../node/route_guide/route_guide_db.json &
 ```
 Run the client (in a different terminal):
 
 ```
-$ # from grpc-common/ruby
+$ # from examples/ruby
 $ bundle exec route_guide/route_guide_client.rb ../node/route_guide/route_guide_db.json &
 ```
 
