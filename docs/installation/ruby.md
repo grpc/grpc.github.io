@@ -25,7 +25,7 @@ $ # and that the rvm command is installed
 Install
 -------
 
-- Clone the [grpc-common](https://github.com/grpc/grpc-common) repository, which contains all our examples.
+- Clone the [grpc](https://github.com/grpc/grpc) repository, which contains all our examples.
 - Use bundler to install the example package's dependencies
 
 ```sh
@@ -60,5 +60,5 @@ Tutorial
 
 You can find a more detailed tutorial in [gRPC Basics: Ruby](/docs/tutorials/basic/ruby.html)
 
-[helloworld.proto]:https://github.com/grpc/grpc-common/blob/master/protos/helloworld.proto
+[helloworld.proto]:https://github.com/grpc/grpc/blob/master/examples/protos/helloworld.proto
 [RVM]:https://www.rvm.io/

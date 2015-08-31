@@ -27,23 +27,23 @@ With gRPC you can define your service once in a .proto file and implement client
 
 ## Example code and setup
 
-The example code for this tutorial is in [grpc/grpc-common/python/route_guide](https://github.com/grpc/grpc-common/tree/master/python/route_guide). To download the example, clone the `grpc-common` repository by running the following command:
+The example code for this tutorial is in [grpc/grpc/examples/python/route_guide](https://github.com/grpc/grpc/tree/master/examples/python/route_guide). To download the example, clone the `grpc` repository by running the following command:
 
 ```
-$ git clone https://github.com/grpc/grpc-common.git
+$ git clone https://github.com/grpc/grpc.git
 ```
 
-Then change your current directory to `grpc-common/python/route_guide`:
+Then change your current directory to `examples/python/route_guide`:
 
 ```
-$ cd grpc-common/python/route_guide
+$ cd examples/python/route_guide
 ```
 
 You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Python quick start guide](/docs/installation/python.html).
 
 ## Defining the service
 
-Your first step (as you'll know from the [Overview](/docs/index.html)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`grpc-common/protos/route_guide.proto`](https://github.com/grpc/grpc-common/blob/master/protos/route_guide.proto).
+Your first step (as you'll know from the [Overview](/docs/index.html)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/master/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -132,7 +132,7 @@ Creating and running a `RouteGuide` server breaks down into two work items:
 - Implementing the servicer interface generated from our service definition with functions that perform the actual "work" of the service.
 - Running a gRPC server to listen for requests from clients and transmit responses.
 
-You can find the example `RouteGuide` server in [grpc-common/python/route_guide/route_guide_server.py](https://github.com/grpc/grpc-common/blob/master/python/route_guide/route_guide_server.py).
+You can find the example `RouteGuide` server in [examples/python/route_guide/route_guide_server.py](https://github.com/grpc/grpc/blob/master/examples/python/route_guide/route_guide_server.py).
 
 ### Implementing RouteGuide
 
@@ -239,7 +239,7 @@ Because `start()` does not block you may need to sleep-loop if there is nothing 
 <a name="client"></a>
 ## Creating the client
 
-You can see the complete example client code in [grpc-common/python/route_guide/route_guide_client.py](https://github.com/grpc/grpc-common/blob/master/python/route_guide/route_guide_client.py).
+You can see the complete example client code in [examples/python/route_guide/route_guide_client.py](https://github.com/grpc/grpc/blob/master/examples/python/route_guide/route_guide_client.py).
 
 ### Creating a stub
 

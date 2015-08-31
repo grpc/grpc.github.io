@@ -33,7 +33,7 @@ Build
 
 **Windows**
 
-- Clone the [grpc-common](https://github.com/grpc/grpc-common) repository.
+- Clone the [grpc](https://github.com/grpc/grpc) repository.
 
 - Open solution `Greeter.sln` with Visual Studio
 
@@ -41,7 +41,7 @@ Build
 
 **Linux (Mono)**
 
-- Clone the [grpc-common](https://github.com/grpc/grpc-common) repository.
+- Clone the [grpc](https://github.com/grpc/grpc) repository.
 
 - Install gRPC C Core using instructions in [homebrew-grpc](https://github.com/grpc/homebrew-grpc).
 
