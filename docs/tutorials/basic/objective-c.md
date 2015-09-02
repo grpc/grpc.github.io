@@ -28,14 +28,16 @@ gRPC and proto3 are specially suited for mobile clients: gRPC is implemented on 
 <a name="setup"></a>
 ## Example code and setup
 
-The example code for our tutorial is in [grpc/grpc-common/objective-c/route_guide](https://github.com/grpc/grpc-common/tree/master/objective-c/route_guide). To download the example, clone the `grpc-common` repository by running the following command:
+The example code for our tutorial is in [grpc/grpc/examples/objective-c/route_guide](https://github.com/grpc/grpc/tree/master/examples/objective-c/route_guide). To download the example, clone the `grpc` repository by running the following command:
+
 ```
-$ git clone https://github.com/grpc/grpc-common.git
+$ git clone https://github.com/grpc/grpc.git
 ```
 
-Then change your current directory to `grpc-common/objective-c/route_guide`:
+Then change your current directory to `examples/objective-c/route_guide`:
+
 ```
-$ cd grpc-common/objective-c/route_guide
+$ cd examples/objective-c/route_guide
 ```
 
 Our example is a simple route mapping application that lets clients get information about features on their route, create a summary of their route, and exchange route information such as traffic updates with the server and other clients.
@@ -71,7 +73,7 @@ The next sections guide you step-by-step through how this proto service is defin
 <a name="proto"></a>
 ## Defining the service
 
-First let's look at how the service we're using is defined. A gRPC *service* and its method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file for our example in [`grpc-common/protos/route_guide.proto`](https://github.com/grpc/grpc-common/blob/master/protos/route_guide.proto).
+First let's look at how the service we're using is defined. A gRPC *service* and its method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file for our example in [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/master/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -84,12 +86,14 @@ service RouteGuide {
 Then you define `rpc` methods inside your service definition, specifying their request and response types. Protocol buffers let you define four kinds of service method, all of which are used in the `RouteGuide` service:
 
 - A *simple RPC* where the client sends a request to the server and receives a response later, just like a normal remote procedure call.
+ 
 ```protobuf
    // Obtains the feature at a given position.
    rpc GetFeature(Point) returns (Feature) {}
 ```
 
 - A *response-streaming RPC* where the client sends a request to the server and gets back a stream of response messages. You specify a response-streaming method by placing the `stream` keyword before the *response* type.
+
 ```protobuf
   // Obtains the Features available within the given Rectangle.  Results are
   // streamed rather than returned at once (e.g. in a response message with a
@@ -99,6 +103,7 @@ Then you define `rpc` methods inside your service definition, specifying their r
 ```
 
 - A *request-streaming RPC* where the client sends a sequence of messages to the server. Once the client has finished writing the messages, it waits for the server to read them all and return its response. You specify a request-streaming method by placing the `stream` keyword before the *request* type.
+ 
 ```protobuf
   // Accepts a stream of Points on a route being traversed, returning a
   // RouteSummary when traversal is completed.
@@ -106,6 +111,7 @@ Then you define `rpc` methods inside your service definition, specifying their r
 ```
 
 - A *bidirectional streaming RPC* where both sides send a sequence of messages to the other. The two streams operate independently, so clients and servers can read and write in whatever order they like: for example, the server could wait to receive all the client messages before writing its responses, or it could alternately read a message then write a message, or some other combination of reads and writes. The order of messages in each stream is preserved. You specify this type of method by placing the `stream` keyword before both the request and the response.
+
 ```protobuf
   // Accepts a stream of RouteNotes sent while a route is being traversed,
   // while receiving other RouteNotes (e.g. from other users).
@@ -113,6 +119,7 @@ Then you define `rpc` methods inside your service definition, specifying their r
 ```
 
 Our .proto file also contains protocol buffer message type definitions for all the request and response types used in our service methods - for example, here's the `Point` message type:
+
 ```protobuf
 // Points are represented as latitude-longitude pairs in the E7 representation
 // (degrees multiplied by 10**7 and rounded to the nearest integer).
@@ -125,6 +132,7 @@ message Point {
 ```
 
 You can specify a prefix to be used for your generated classes by adding the `objc_class_prefix` option at the top of the file. For example:
+
 ```protobuf
 option objc_class_prefix = "RTG";
 ```
@@ -135,7 +143,7 @@ option objc_class_prefix = "RTG";
 
 Next we need to generate the gRPC client interfaces from our .proto service definition. We do this using the protocol buffer compiler (`protoc`) with a special gRPC Objective-C plugin.
 
-For simplicity, we've provided a [Podspec file](https://github.com/grpc/grpc-common/blob/master/objective-c/route_guide/RouteGuide.podspec) that runs `protoc` for you with the appropriate plugin, input, and output, and describes how to compile the generated files. You just need to run in this directory (`grpc-common/objective-c/route_guide`):
+For simplicity, we've provided a [Podspec file](https://github.com/grpc/grpc/blob/master/examples/objective-c/route_guide/RouteGuide.podspec) that runs `protoc` for you with the appropriate plugin, input, and output, and describes how to compile the generated files. You just need to run in this directory (`examples/objective-c/route_guide`):
 
 ```
 $ pod install
@@ -148,12 +156,14 @@ $ protoc -I ../../protos --objc_out=Pods/RouteGuide --objcgrpc_out=Pods/RouteGui
 ```
 
 Running this command generates the following files under `Pods/RouteGuide/`:
+
 - `RouteGuide.pbobjc.h`, the header which declares your generated message classes.
 - `RouteGuide.pbobjc.m`, which contains the implementation of your message classes.
 - `RouteGuide.pbrpc.h`, the header which declares your generated service classes.
 - `RouteGuide.pbrpc.m`, which contains the implementation of your service classes.
 
 These contain:
+
 - All the protocol buffer code to populate, serialize, and retrieve our request and response message types.
 - A class called `RTGRouteGuide` that lets clients call the methods defined in the `RouteGuide` service.
 
@@ -163,7 +173,7 @@ You can also use the provided Podspec file to generate client code from any othe
 <a name="client"></a>
 ## Creating the client
 
-In this section, we'll look at creating an Objective-C client for our `RouteGuide` service. You can see our complete example client code in [grpc-common/objective-c/route_guide/ViewControllers.m](https://github.com/grpc/grpc-common/blob/master/objective-c/route_guide/ViewControllers.m). (Note: In your apps, for maintainability and readability reasons, you shouldn't put all of your view controllers in a single file; it's done here only to simplify the learning process).
+In this section, we'll look at creating an Objective-C client for our `RouteGuide` service. You can see our complete example client code in [examples/objective-c/route_guide/ViewControllers.m](https://github.com/grpc/grpc/blob/master/examples/objective-c/route_guide/ViewControllers.m). (Note: In your apps, for maintainability and readability reasons, you shouldn't put all of your view controllers in a single file; it's done here only to simplify the learning process).
 
 ### Constructing a client object
 

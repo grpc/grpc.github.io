@@ -17,19 +17,19 @@ have cloned the [gRPC git repo](https://github.com/grpc/grpc).
 
 ### Get the source code
 
-The example code for our Hello World and our other examples live in the `grpc-common`
-GitHub repository. Clone this repository to your local machine by running the
+The example code for our Hello World and our other examples live in the `examples`
+directory. Clone this repository to your local machine by running the
 following command:
 
 
 ```sh
-$ git clone https://github.com/grpc/grpc-common.git
+$ git clone https://github.com/grpc/grpc.git
 ```
 
-Change your current directory to grpc-common/python/helloworld
+Change your current directory to examples/python/helloworld
 
 ```sh
-$ cd grpc-common/python/helloworld/
+$ cd examples/python/helloworld/
 ```
 
 ### Defining a service
@@ -45,7 +45,7 @@ types as protocol buffer message types. Both the client and the
 server use interface code generated from the service definition.
 
 Here's our example service definition, defined using protocol buffers IDL in
-[helloworld.proto](https://github.com/grpc/grpc-common/blob/master/python/helloworld/helloworld.proto). The `Greeting`
+[helloworld.proto](https://github.com/grpc/grpc/blob/master/examples/protos/helloworld.proto). The `Greeting`
 service has one method, `hello`, that lets the server receive a single
 `HelloRequest`
 message from the remote client containing the user's name, then send back
@@ -102,7 +102,7 @@ been generated for you (helloworld_pb2.py).
 
 ### The client
 
-Client-side code can be found in [greeter_client.py](https://github.com/grpc/grpc-common/blob/master/python/helloworld/greeter_client.py).
+Client-side code can be found in [greeter_client.py](https://github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_client.py).
 
 You can run the client using:
 
@@ -113,7 +113,7 @@ $ ./run_client.sh
 
 ### The server
 
-Server side code can be found in [greeter_server.py](https://github.com/grpc/grpc-common/blob/master/python/helloworld/greeter_server.py). 
+Server side code can be found in [greeter_server.py](https://github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_server.py). 
 
 You can run the server using:
 

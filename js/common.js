@@ -34,7 +34,6 @@ $.getScript("/js/jquery.collapsible.js", function(){
   $('.submenu').collapsible();
 });
 
-
 // TOC script
 // https://github.com/ghiculescu/jekyll-table-of-contents
 (function($){

@@ -28,13 +28,13 @@ With gRPC we can define our service once in a .proto file and implement clients 
 
 ## Example code and setup
 
-The example code for our tutorial is in [grpc/grpc-common/csharp/route_guide](https://github.com/grpc/grpc-common/tree/master/csharp/route_guide). To download the example, clone the `grpc-common` repository by running the following command:
+The example code for our tutorial is in [grpc/grpc/examples/csharp/route_guide](https://github.com/grpc/grpc/tree/master/examples/csharp/route_guide). To download the example, clone the `grpc` repository by running the following command:
 ```shell
-$ git clone https://github.com/google/grpc-common.git
+$ git clone https://github.com/grpc/grpc.git
 ```
 
-All the files for this tutorial are in the directory  `grpc-common/csharp/route_guide`.
-Open the solution `grpc-common/csharp/route_guide/RouteGuide.sln` from Visual Studio (or Monodevelop on Linux).
+All the files for this tutorial are in the directory  `examples/csharp/route_guide`.
+Open the solution `examples/csharp/route_guide/RouteGuide.sln` from Visual Studio (or Monodevelop on Linux).
 
 On Windows, you should not need to do anything besides opening the solution. All the needed dependencies will be restored
 for you automatically by the `Grpc` NuGet package upon building the solution.
@@ -44,7 +44,7 @@ able to generate the server and client interface code and run the examples. Foll
 
 ## Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/index.html)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers] (https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`grpc-common/csharp/route_guide/RouteGuide/protos/route_guide.proto`](https://github.com/grpc/grpc-common/blob/master/sharp/route_guide/RouteGuide/protos/route_guide.proto).
+Our first step (as you'll know from the [Overview](/docs/index.html)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers] (https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`examples/csharp/route_guide/RouteGuide/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/master/examples/csharp/route_guide/RouteGuide/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -108,6 +108,7 @@ message Point {
 Next we need to generate the gRPC client and server interfaces from our .proto service definition. We do this using the protocol buffer compiler `protoc` with a special gRPC C# plugin.
 
 If you want to run this yourself, make sure you've installed protoc and gRPC C# plugin. The instructions vary based on your OS:
+
 - For Windows, the `Grpc.Tools` NuGet package contains the binaries you will need to generate the code.
 - For Linux, make sure you've [installed gRPC C Core using Linuxbrew](https://github.com/grpc/grpc/tree/master/src/csharp#usage-linux-mono)
 - For MacOS, make sure you've [installed gRPC C Core using Homebrew](https://github.com/grpc/grpc/tree/master/src/csharp#usage-macos-mono)
@@ -145,7 +146,7 @@ There are two parts to making our `RouteGuide` service do its job:
 - Implementing the service interface generated from our service definition: doing the actual "work" of our service.
 - Running a gRPC server to listen for requests from clients and return the service responses.
 
-You can find our example `RouteGuide` server in [grpc-common/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs](https://github.com/grpc/grpc-common/blob/master/csharp/route_guide/RouteGuideServer/RouteGuideServerImpl.cs). Let's take a closer look at how it works.
+You can find our example `RouteGuide` server in [examples/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs](https://github.com/grpc/grpc/blob/master/examples/csharp/route_guide/RouteGuideServer/RouteGuideServerImpl.cs). Let's take a closer look at how it works.
 
 ### Implementing RouteGuide
 
@@ -306,7 +307,7 @@ As you can see, we build and start our server using `Grpc.Core.Server` class. To
 <a name="client"></a>
 ## Creating the client
 
-In this section, we'll look at creating a C# client for our `RouteGuide` service. You can see our complete example client code in [grpc-common/csharp/route_guide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc-common/blob/master/csharp/route_guide/RouteGuideClient/Program.cs).
+In this section, we'll look at creating a C# client for our `RouteGuide` service. You can see our complete example client code in [examples/csharp/route_guide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc/blob/master/examples/csharp/route_guide/RouteGuideClient/Program.cs).
 
 ### Creating a stub
 
@@ -410,7 +411,7 @@ Finally, let's look at our bidirectional streaming RPC `RouteChat`. In this case
 
 Build client and server:
 
-- Open the solution `grpc-common/csharp/route_guide/RouteGuide.sln` from Visual Studio (or Monodevelop on Linux) and select **Build**.
+- Open the solution `examples/csharp/route_guide/RouteGuide.sln` from Visual Studio (or Monodevelop on Linux) and select **Build**.
 
 - Run the server, which will listen on port 50052:
 

@@ -35,14 +35,14 @@ $ go get -a github.com/golang/protobuf/protoc-gen-go
 - Get the example.
 
 ```sh
-$ go get -u github.com/grpc/grpc-common/go/greeter_client
-$ go get -u github.com/grpc/grpc-common/go/greeter_server
+$ go get -u github.com/grpc/grpc-go/examples/helloworld/greeter_client
+$ go get -u github.com/grpc/grpc-go/examples/helloworld/greeter_server
 ```
 
 Try it!
 -------
 
-For this sample, we've already generated the server and client stubs from [helloworld.proto](https://github.com/grpc/grpc-common/blob/master/protos/helloworld.proto). 
+For this sample, we've already generated the server and client stubs from [helloworld.proto](https://github.com/grpc/grpc-go/blob/master/examples/helloworld/proto/helloworld.proto). 
 
 - Run the server
 ```sh
@@ -60,7 +60,7 @@ OPTIONAL - Rebuilding the generated code
 You must have protoc and the Go protoc plugin installed to do this:
 
 ```sh
-$ # from the grpc-common/go dir; invoke protoc
-$ protoc -I ../protos ../protos/helloworld.proto --go_out=plugins=grpc:helloworld
+$ # from the examples/helloworld dir; invoke protoc
+$ protoc -I ../proto ../proto/helloworld.proto --go_out=plugins=grpc:helloworld
 ```
 
