@@ -168,17 +168,22 @@ th {
     }
 }
 
+h4.arrow-d, h4.arrow-r {
+    cursor: pointer;
+
+    &::before{
+        font-family: monospace;
+        font-weight: bold;
+    }
+}
+
 // Expandy nav items
 h4.arrow-r::before {
     content: "+ ";
-    font-family: monospace;
-    font-weight: bold;
 }
 
 h4.arrow-d::before {
     content: "- ";
-    font-family: monospace;
-    font-weight: bold;
 }
 
 // Landing page
