@@ -170,11 +170,15 @@ th {
 
 // Expandy nav items
 h4.arrow-r::before {
-    content: "▸ "
+    content: "+ ";
+    font-family: monospace;
+    font-weight: bold;
 }
 
 h4.arrow-d::before {
-    content: "▾ "
+    content: "- ";
+    font-family: monospace;
+    font-weight: bold;
 }
 
 // Landing page
@@ -191,6 +195,19 @@ h4.arrow-d::before {
 // Docs layout specific
 .docs-side-nav {
     margin-top: 40px;
+
+    ul{
+        list-style-type: none;
+        padding-left: 22px;
+    }
+}
+
+#toc {
+    border-left: 5px solid @secondBrandColor;
+    ul {
+        list-style-type: none;
+        padding-left: 22px;
+    }
 }
 
 // FAQ page
