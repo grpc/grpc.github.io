@@ -1,3 +1,5 @@
+@import url("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css");
+
 // Colors
 @mainBrandColor: #2DA6B0;
 @secondBrandColor: #197E8B;
@@ -42,6 +44,15 @@ h1, h2, h3, h4, h5, h6 {
 
 p, li {line-height: 22px;}
 
+p.note {
+    background-color: @thirdBrandColor;
+    padding: 9.5px;
+}
+
+p.note code {
+   background-color: @thirdBrandColor !important;
+}
+
 code {
     color: @codeColor;
     background-color: @inverseBrandColor;
@@ -54,6 +65,31 @@ pre, pre.prettyprint {
     border: none !important;
     font-size: 14px !important;
     padding: 9.5px !important;
+}
+
+//tabs
+.ui-widget-content {
+  font-size:14px !important;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+  color: @textColor !important;
+}
+
+.ui-widget-content a {
+  color: @mainBrandColor !important;
+}
+
+.ui-widget-content a:hover, a:focus {
+  color: @linkHoverColor !important;
+}
+
+// Tables are table-y
+table, th, td {
+   border: 1px solid lighten(@textColor, 20%);
+   padding: 6px
+}
+
+th {
+  background-color: @thirdBrandColor;
 }
 
 // Fix Bootstrap mobile menu colors on inverse navbar.
@@ -129,6 +165,15 @@ pre, pre.prettyprint {
     .logo {
         width: 60px;
     }
+}
+
+// Expandy nav items
+h4.arrow-r::before {
+    content: "▸ "
+}
+
+h4.arrow-d::before {
+    content: "▾ "
 }
 
 // Landing page
