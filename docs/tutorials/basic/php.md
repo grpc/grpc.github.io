@@ -28,7 +28,7 @@ With gRPC you can define your service once in a .proto file and implement client
 <a name="setup"></a>
 ## Example code and setup
 
-The example code for our tutorial is in [grpc/grpc/examples/php/route_guide](https://github.com/grpc/grpc/tree/master/examples/php/route_guide). To download the example, clone the `grpc` repository by running the following command:
+The example code for our tutorial is in [grpc/grpc/examples/php/route_guide](https://github.com/grpc/grpc/tree/{{ site.data.config.branch }}/examples/php/route_guide). To download the example, clone the `grpc` repository by running the following command:
 
 ```
 $ git clone https://github.com/grpc/grpc.git
@@ -69,7 +69,7 @@ The next sections guide you step-by-step through how this proto service is defin
 <a name="proto"></a>
 ## Defining the service
 
-First let's look at how the service we're using is defined. A gRPC *service* and its method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file for our example in [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/master/examples/protos/route_guide.proto).
+First let's look at how the service we're using is defined. A gRPC *service* and its method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file for our example in [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{ site.data.config.branch }}/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -166,7 +166,7 @@ The file contains:
 <a name="client"></a>
 ## Creating the client
 
-In this section, we'll look at creating a PHP client for our `RouteGuide` service. You can see our complete example client code in [examples/php/route_guide/route_guide_client.php](https://github.com/grpc/grpc/blob/master/examples/php/route_guide/route_guide_client.php).
+In this section, we'll look at creating a PHP client for our `RouteGuide` service. You can see our complete example client code in [examples/php/route_guide/route_guide_client.php](https://github.com/grpc/grpc/blob/{{ site.data.config.branch }}/examples/php/route_guide/route_guide_client.php).
 
 ### Constructing a client object
 
