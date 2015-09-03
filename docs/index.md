@@ -1164,4 +1164,6 @@ $ ./run_greeter_client.sh
 
 - Find out how to install gRPC and get started in each language's [quick start](#quickstart).
 - Follow the tutorial(s) for your favorite language(s).
-- [gRPC Authentication Support](https://github.com/grpc/grpc/blob/master/doc/grpc-auth-support.md) introduces authentication support in gRPC with supported mechanisms and examples.
+- Discover more about [gRPC concepts](/docs/guides/concepts.html), including RPC life-cycle, synchronous and asynchronous calls, deadlines, and more.
+- Read a detailed description of the [gRPC over HTTP2 protocol](/docs/guides/wire.html).
+- [gRPC Authentication Support](/docs/guides/auth.html) introduces authentication support in gRPC with supported mechanisms and examples.
