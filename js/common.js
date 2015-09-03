@@ -28,6 +28,12 @@ $('pre').addClass("prettyprint");
 $.getScript("https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js", function(){
 });
 
+// Collapsible navbar menu, using https://github.com/jordnkr/collapsible
+$.getScript("/js/jquery.collapsible.js", function(){
+  highlightActive();
+  $('.submenu').collapsible();
+});
+
 // TOC script
 // https://github.com/ghiculescu/jekyll-table-of-contents
 (function($){

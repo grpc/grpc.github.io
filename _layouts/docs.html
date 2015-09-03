@@ -5,16 +5,19 @@ bodyclass: docs
 
 <div class="row">
   <div class="col-sm-3">
-    <ul class="list-unstyled docs-side-nav">
-      <li><h4>Guides</h4></li>
+    <ul class="list-unstyled docs-side-nav" id="navbar">
+      <li class="submenu"><h4 class="arrow-r">Guides</h4>
+      <ul style="display:none;">
       <li><a href="/docs/">Overview</a></li>
       <li><a href="/docs/guides/concepts.html">gRPC concepts</a></li>
       <li><a href="/docs/guides/auth.html">Authentication</a></li>
       <li><a class="disabled" href="/docs/guides/tuning.html">Tuning RPC behaviour</a></li>
-      <li><a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md">Wire format</a></li>
+      <li><a href="/docs/guides/wire.html">Wire format</a></li>
       <li><a class="disabled" href="/docs/guides/error.html">Error handling and debugging</a></li>
-      <li><a class="disabled" href="/docs/guides/contributing.html">Contribution guidelines</a></li>
-      <li><h4>Quick Start</h4></li>
+      <li><a href="/contribute/">Contribution guidelines</a></li>
+      </ul></li>
+      <li class="submenu"><h4 class="arrow-r">Quick Start</h4><ul style="display:none;">
+      <!--<li><a href="/docs/bylanguage.html">Documentation by language</a></li>-->
       <li><a href="/docs/installation/c.html">C++</a></li>
       <li><a href="/docs/installation/java.html">Java</a></li>
       <li><a href="/docs/installation/python.html">Python</a></li>
@@ -24,7 +27,8 @@ bodyclass: docs
       <li><a href="/docs/installation/csharp.html">C#</a></li>
       <li><a href="/docs/installation/objective-c.html">Objective-C</a></li>
       <li><a href="/docs/installation/php.html">PHP</a></li>
-      <li><h4>Tutorials</h4></li>
+      </ul></li>
+      <li class="submenu"><h4 class="arrow-r">Tutorials</h4><ul style="display:none;">
       <li><a href="/docs/tutorials/basic/c.html">gRPC Basics: C++</a></li>
       <li><a href="/docs/tutorials/basic/java.html">gRPC Basics: Java</a></li>
       <li><a href="/docs/tutorials/basic/python.html">gRPC Basics: Python</a></li>
@@ -34,30 +38,47 @@ bodyclass: docs
       <li><a href="/docs/tutorials/basic/csharp.html">gRPC Basics: C#</a></li>
       <li><a href="/docs/tutorials/basic/objective-c.html">gRPC Basics: Objective-C</a>
       <li><a href="/docs/tutorials/basic/php.html">gRPC Basics: PHP</a>
-      <li><h4>Related Guides</h4></li>
-      <li><a href="https://developers.google.com/protocol-buffers/docs/proto3">Protocol Buffers</a></li>
-      <!--<li><h4>Reference</h4></li>
-      <li><h5>C++ Reference</h5></li>
-      <li><a href="/docs/reference/c/client.html">Client Developer Guide</a></li>
+      </ul></li>
+      <li class="submenu"><h4 class="arrow-r">Reference</h4><ul style="display:none;">
+      <li><h5>C++ Reference</h5><ul>
+      <li><a href="http://www.grpc.io/grpc/cpp/index.html">C++ API</a></li></ul>
+      <!--<li><a href="/docs/reference/c/client.html">Client Developer Guide</a></li>
       <li><a href="/docs/reference/c/server.html">Server Developer Guide</a></li>
       <li><h5>Java Reference</h5></li>
+      <li><a href="">Java API</a></li>
       <li><a href="/docs/reference/java/client.html">Client Developer Guide</a></li>
-      <li><a href="/docs/reference/java/server.html">Server Developer Guide</a></li>
-      <li><h5>Python Reference</h5></li>
-      <li><a href="/docs/reference/python/client.html">Client Developer Guide</a></li>
+      <li><a href="/docs/reference/java/server.html">Server Developer Guide</a></li>-->
+      <li><h5>Python Reference</h5><ul>
+      <li><a href="http://www.grpc.io/grpc/python/">Python API</a></li></ul>
+      <!--<li><a href="/docs/reference/python/client.html">Client Developer Guide</a></li>
       <li><a href="/docs/reference/python/server.html">Server Developer Guide</a></li>
       <li><h5>Go Reference</h5></li>
+      <li><a href="">Go API</a></li>
       <li><a href="/docs/reference/go/client.html">Client Developer Guide</a></li>
       <li><a href="/docs/reference/go/server.html">Server Developer Guide</a></li>
       <li><h5>Ruby Reference</h5></li>
+      <li><a href="">Ruby API</a></li>
       <li><a href="/docs/reference/ruby/client.html">Client Developer Guide</a></li>
       <li><a href="/docs/reference/ruby/server.html">Server Developer Guide</a></li>
-      <li><h5>JavaNano Reference</h5></li>
-      <li><a href="/docs/reference/javanano/client.html">Client Developer Guide</a></li>
-      <li><a href="/docs/reference/javanano/server.html">Server Developer Guide</a></li>
       <li><h5>Node.js Reference</h5></li>
+      <li><a href="">Node.js API</a></li>
       <li><a href="/docs/reference/nodejs/client.html">Client Developer Guide</a></li>
-      <li><a href="/docs/reference/nodejs/server.html">Server Developer Guide</a></li>-->
+      <li><a href="/docs/reference/nodejs/server.html">Server Developer Guide</a></li>
+      <li><h5>C# Reference</h5></li>
+      <li><a href="">C# API</a></li>
+      <li><a href="/docs/reference/nodejs/client.html">Client Developer Guide</a></li>
+      <li><a href="/docs/reference/nodejs/server.html">Server Developer Guide</a></li>
+      <li><h5>Objective-C Reference</h5></li>
+      <li><a href="">Objective-C API</a></li>
+      <li><a href="/docs/reference/nodejs/client.html">Client Developer Guide</a></li>
+      <li><h5>PHP Reference</h5></li>
+      <li><a href="">PHP API</a></li>
+      <li><a href="/docs/reference/nodejs/client.html">Client Developer Guide</a></li>-->
+      <li><h5>Other Reference</h5><ul>
+      <li><a href="http://www.grpc.io/grpc/core/">gRPC Core</a></ul></li>
+      </ul></li>
+      <li class="submenu"><h4 class="arrow-r">Related Guides</h4><ul style="display:none;">
+      <li><a href="https://developers.google.com/protocol-buffers/docs/proto3">Protocol Buffers</a></ul></li>
     </ul>
   </div>
   <div class="col-sm-9">

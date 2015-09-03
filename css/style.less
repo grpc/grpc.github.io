@@ -82,6 +82,17 @@ pre, pre.prettyprint {
   color: @linkHoverColor !important;
 }
 
+
+// Tables are table-y
+table, th, td {
+   border: 1px solid lighten(@textColor, 20%);
+   padding: 6px
+}
+
+th {
+  background-color: @thirdBrandColor;
+}
+
 // Fix Bootstrap mobile menu colors on inverse navbar.
 .navbar-toggle .icon-bar {
   background-color: @inverseBrandColor;
@@ -157,6 +168,24 @@ pre, pre.prettyprint {
     }
 }
 
+h4.arrow-d, h4.arrow-r {
+    cursor: pointer;
+
+    &::before{
+        font-family: monospace;
+        font-weight: bold;
+    }
+}
+
+// Expandy nav items
+h4.arrow-r::before {
+    content: "+ ";
+}
+
+h4.arrow-d::before {
+    content: "- ";
+}
+
 // Landing page
 .landing-context {
     .lang-list {
@@ -171,6 +200,19 @@ pre, pre.prettyprint {
 // Docs layout specific
 .docs-side-nav {
     margin-top: 40px;
+
+    ul{
+        list-style-type: none;
+        padding-left: 22px;
+    }
+}
+
+#toc {
+    border-left: 5px solid @secondBrandColor;
+    ul {
+        list-style-type: none;
+        padding-left: 22px;
+    }
 }
 
 // FAQ page
