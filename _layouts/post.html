@@ -7,7 +7,7 @@ bodyclass: post
 
 <div class="page-title-bar">
   <div class="container">
-    <a href="/blog/"><p class="lead">Blog/</p></a>
+    <a href="/posts/"><p class="lead">Posts/</p></a>
   </div>
 </div>
 
@@ -19,8 +19,18 @@ bodyclass: post
         <div class="postdate">
           Posted on {{ page.date | date: "%A, %B %d %Y" }}.
         </div>
-        {{ content }}
+        <div class="content">
+          {{ content }}
+        </div>
+
+        {% if page.attribution %}
+        <div class="content-attribution">
+           {{ page.attribution }}
+        </div>
+        {% endif %}
       </article>
     </div>
   </div>
 </div>
+
+<div class="page-spacer"></div>
