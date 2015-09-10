@@ -574,9 +574,9 @@ message, as specified in our interface definition.</li>
 <p><a href="https://github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_server.py">greeter_server.py</a> implements our <code>Greeter</code> service's required behaviour.
 
 <p>As you can see, the class <code>Greeter</code> implements the interface
-<code>helloworld_pb2.EarlyAdopterGreeterServicer</code> that we <a href="#generating">generated</a> from our proto
+<code>helloworld_pb2.BetaGreeterServicer</code> that we <a href="#generating">generated</a> from our proto
 service definition by implementing the method <code>SayHello</code>:</p>
-<pre>class Greeter(helloworld_pb2.EarlyAdopterGreeterServicer):
+<pre>class Greeter(helloworld_pb2.BetaGreeterServicer):
 
   def SayHello(self, request, context):
     return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
@@ -715,9 +715,9 @@ also provides this for our C++ example.</p>
   </div>
   <div id="python_server">
 <p><a href="https://github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_server.py">greeter_server.py</a>
-also provides this for our C++ example.</p>
-<pre>  server = helloworld_pb2.early_adopter_create_Greeter_server(
-      Greeter(), 50051, None, None)
+also provides this for our Python example.</p>
+<pre>  server = helloworld_pb2.beta_create_Greeter_server(Greeter())
+  server.add_insecure_port('[::]:50051')
   server.start()
   try:
     while True:
@@ -857,12 +857,12 @@ class GreeterClient {
 
   </div>
   <div id="python_connect">
-<pre>with helloworld_pb2.early_adopter_create_Greeter_stub('localhost', 50051) as stub:
+<p>The generated Python code has a helper function that creates a stub given a channel.
+<pre>channel = implementations.insecure_channel('localhost', 50051)
+stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 ...
 </pre>
-<p>The generated code has a helper function <code>helloworld_pb2.early_adopter_create_Greeter_stub()</code> that creates our channel and stub for us.
-
-</div>
+  </div>
   <div id="go_connect">
 <pre>const (
 	address     = "localhost:50051"
