@@ -42,7 +42,7 @@ $ go get -u github.com/grpc/grpc-go/examples/helloworld/greeter_server
 Try it!
 -------
 
-For this sample, we've already generated the server and client stubs from [helloworld.proto](https://github.com/grpc/grpc-go/blob/master/examples/helloworld/proto/helloworld.proto). 
+For this sample, we've already generated the server and client stubs from [helloworld.proto](https://github.com/grpc/grpc-go/blob/master/examples/helloworld/helloworld/helloworld.proto). 
 
 - Run the server
 ```sh
