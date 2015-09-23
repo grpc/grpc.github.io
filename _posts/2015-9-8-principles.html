@@ -3,7 +3,7 @@ layout: post
 title: gRPC Motivation and Design Principles.
 published: true
 permalink: posts/principles
-attribution: Originally created by Louis Ryan with help from others at Google in Feb 2015.
+attribution: Originally written by Louis Ryan with help from others at Google.
 ---
 
 <h2>Motivation</h2>
@@ -28,6 +28,8 @@ attribution: Originally created by Louis Ryan with help from others at Google in
 <p><strong>Payload Agnostic</strong> - Different services need to use different message types and encodings such as protocol buffers, JSON, XML, and Thrift; the protocol and implementations must allow for this. Similarly the need for payload compression varies by use-case and payload type: the protocol should allow for pluggable compression mechanisms.</p>
 
 <p><strong>Streaming</strong> - Storage systems rely on streaming and flow-control to express large data-sets. Other services, like voice-to-text or stock-tickers, rely on streaming to represent temporally related message sequences.</p>
+
+<p><strong>Blocking &amp; Non-Blocking</strong> - Support both asynchronous and synchronous processing of the sequence of messages exchanged by a client and server. This is critical for scaling and handling streams on certain platforms.</p>
 
 <p><strong>Cancellation &amp; Timeout</strong> - Operations can be expensive and long-lived - cancellation allows servers to reclaim resources when clients are well-behaved. When a causal-chain of work is tracked, cancellation can cascade. A client may indicate a timeout for a call, which allows services to tune their behavior to the needs of the client.</p>
 
