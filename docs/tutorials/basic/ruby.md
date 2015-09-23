@@ -200,10 +200,10 @@ Once we've implemented all our methods, we also need to start up a gRPC server s
 
 ```ruby
   s = GRPC::RpcServer.new
-  s.add_http2_port(port)
+  s.add_http2_port(port, :this_port_is_insecure)
   logger.info("... running insecurely on #{port}")
   s.handle(ServerImpl.new(feature_db))
-  s.run
+  s.run_till_terminated
 ```
 As you can see, we build and start our server using a `GRPC::RpcServer`. To do this, we:
 
@@ -300,4 +300,3 @@ Run the client (in a different terminal):
 $ # from examples/ruby
 $ bundle exec route_guide/route_guide_client.rb ../node/route_guide/route_guide_db.json &
 ```
-
