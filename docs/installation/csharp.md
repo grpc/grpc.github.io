@@ -9,7 +9,7 @@ title: C# Quick Start
 
 This document shows you how to install and build a C# implementation of the example used in the [Overview](/docs/index.shtml). For this sample, we've already generated the server and client stubs from `helloworld.proto`. Example projects depend on NuGet packages `Grpc` and `Google.ProtocolBuffers` which have been already added to the project for you.
 
-You can see full installation instructions and notes for the current version of gRPC C# in the C# [README](https://github.com/grpc/grpc/tree/master/src/csharp).
+You can see full installation instructions and notes for the current version of gRPC C# in the C# [README](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/src/csharp).
 
 Prerequisites
 -------------
@@ -46,7 +46,7 @@ Build
 - Install gRPC C Core using instructions in [homebrew-grpc](https://github.com/grpc/homebrew-grpc).
 
 - gRPC C# depends on the native shared library `libgrpc_csharp_ext.so`. To make it visible
-  to Mono runtime, follow instructions in [Using gRPC C# on Linux](https://github.com/grpc/grpc/tree/master/src/csharp#usage-linux-mono)
+  to Mono runtime, follow instructions in [Using gRPC C# on Linux](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/src/csharp#usage-linux-mono)
 
 - Open solution `Greeter.sln` in MonoDevelop (you need to manually restore dependencies by using `mono nuget.exe restore` if you don't have NuGet add-in)
 
@@ -54,7 +54,7 @@ Build
 
 **MacOS (Mono)**
 
-- See [Using gRPC C# on MacOS](https://github.com/grpc/grpc/tree/master/src/csharp#usage-macos-mono) for more info
+- See [Using gRPC C# on MacOS](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/src/csharp#usage-macos-mono) for more info
   on MacOS support.
 
 Try it!

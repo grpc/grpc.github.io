@@ -29,7 +29,7 @@ To get up and running with gRPC straight away, see the quick start for your chos
 * [PHP](/docs/installation/php.html)
 
 You can find out about the gRPC source code repositories in
-[grpc](https://github.com/grpc/grpc). Most of our example code (plus more draft documentation) lives in the [examples](https://github.com/grpc/grpc/tree/master/examples) directory.
+[grpc](https://github.com/grpc/grpc). Most of our example code (plus more draft documentation) lives in the [examples](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples) directory.
 
 <!--=========================================================================-->
 ## What is gRPC?
@@ -447,7 +447,7 @@ Running the appropriate command for your OS regenerates the following files in t
 
   </div>
 <div id="objective-c_generate">
-For simplicity, we've provided a [Podspec file](https://github.com/grpc/grpc/blob/master/examples/objective-c/helloworld/HelloWorld.podspec) that runs protoc for you with the appropriate plugin, input, and output, and describes how to compile the generated files. You just need to run in `examples/objective-c/route_guide`:
+For simplicity, we've provided a [Podspec file](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/objective-c/helloworld/HelloWorld.podspec) that runs protoc for you with the appropriate plugin, input, and output, and describes how to compile the generated files. You just need to run in `examples/objective-c/route_guide`:
 
 ```
 $ pod install
@@ -534,7 +534,7 @@ message, as specified in our interface definition.</li>
 </ol>
   </div>
   <div id="cpp_service">
-<p><a href="https://github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_server.cc">greeter_server.cc</a>
+<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_server.cc">greeter_server.cc</a>
 implements our <code>Greeter</code> service's required behaviour.</p>
 
 <p>As you can see, the class <code>GreeterServiceImpl</code> implements the interface
@@ -571,7 +571,7 @@ message, as specified in our interface definition.</li>
 </ol>
   </div>
   <div id="python_service">
-<p><a href="https://github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_server.py">greeter_server.py</a> implements our <code>Greeter</code> service's required behaviour.
+<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_server.py">greeter_server.py</a> implements our <code>Greeter</code> service's required behaviour.
 
 <p>As you can see, the class <code>Greeter</code> implements the interface
 <code>helloworld_pb2.EarlyAdopterGreeterServicer</code> that we <a href="#generating">generated</a> from our proto
@@ -609,7 +609,7 @@ message, as specified in our interface definition.</li>
 
   </div>
   <div id="ruby_service">
-<p><a href="https://github.com/grpc/grpc/blob/master/examples/ruby/greeter_server.rb">greeter&lowbar;server.rb</a> implements our <code>Greeter</code> service's required behaviour.
+<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/ruby/greeter_server.rb">greeter&lowbar;server.rb</a> implements our <code>Greeter</code> service's required behaviour.
 <p>Our server has a <code>GreeterServer</code> class, which implements the <code>GreeterServer</code> interface that we <a href="#generating">generated</a> from our proto
 service definition by implementing the method <code>SayHello</code>:</p>
 <pre>class GreeterServer < Helloworld::Greeter::Service
@@ -623,7 +623,7 @@ message, as specified in our interface definition, then return.</p>
 
   </div>
   <div id="node_service">
-<p><a href="https://github.com/grpc/grpc/blob/master/examples/node/greeter_server.js">greeter&lowbar;server.js</a> implements our <code>Greeter</code> service's required behaviour.
+<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/node/greeter_server.js">greeter&lowbar;server.js</a> implements our <code>Greeter</code> service's required behaviour.
 <p>Our server implements the <code>Greeter</code>service from our
 service definition by implementing the method <code>SayHello</code>:</p>
 <pre>
@@ -635,7 +635,7 @@ function sayHello(call, callback) {
 
   </div>
   <div id="csharp_service">
-<p><a href="https://github.com/grpc/grpc/blob/master/examples/csharp/GreeterServer/Program.cs">GreeterServer/Program.cs</a> implements our <code>Greeter</code> service's required behaviour.
+<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/GreeterServer/Program.cs">GreeterServer/Program.cs</a> implements our <code>Greeter</code> service's required behaviour.
 <p>Our server has a <code>GreeterImpl</code> class, which implements the <code>IGreeter</code> interface that we <a href="#generating">generated</a> from our proto
 service definition by implementing the method <code>SayHello</code>:</p>
 <pre>
@@ -697,7 +697,7 @@ provides this for our Java example.</p>
 
   </div>
   <div id="cpp_server">
-<p><a href="https://github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_server.cc">greeter_server.cc</a>
+<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_server.cc">greeter_server.cc</a>
 also provides this for our C++ example.</p>
 <pre>void RunServer() {
   std::string server_address("0.0.0.0:50051");
@@ -714,7 +714,7 @@ also provides this for our C++ example.</p>
 </pre>
   </div>
   <div id="python_server">
-<p><a href="https://github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_server.py">greeter_server.py</a>
+<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_server.py">greeter_server.py</a>
 also provides this for our C++ example.</p>
 <pre>  server = helloworld_pb2.early_adopter_create_Greeter_server(
       Greeter(), 50051, None, None)
@@ -747,7 +747,7 @@ func main() {
 
   </div>
   <div id="ruby_server">
-<p><a href="https://github.com/grpc/grpc/blob/master/examples/ruby/greeter_server.rb">greeter&lowbar;server.rb</a> also provides this for our Ruby example.
+<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/ruby/greeter_server.rb">greeter&lowbar;server.rb</a> also provides this for our Ruby example.
 <pre>
 def main
   s = GRPC::RpcServer.new
@@ -759,7 +759,7 @@ end
 
   </div>
   <div id="node_server">
-<p><a href="https://github.com/grpc/grpc/blob/master/examples/node/greeter_server.js">greeter&lowbar;server.js</a> also provides this for our Node.js example.
+<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/node/greeter_server.js">greeter&lowbar;server.js</a> also provides this for our Node.js example.
 <pre>
 function main() {
   var server = new Server({
@@ -774,7 +774,7 @@ function main() {
 
   </div>
   <div id="csharp_server">
-<p><a href="https://github.com/grpc/grpc/blob/master/examples/csharp/GreeterServer/Program.cs">GreeterServer/Program.cs</a> also provides this for our C# example.
+<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/GreeterServer/Program.cs">GreeterServer/Program.cs</a> also provides this for our C# example.
 <pre>Server server = new Server();
 server.AddServiceDefinition(Greeter.BindService(new GreeterImpl()));
 int port = server.AddListeningPort("localhost", 50051);
@@ -965,13 +965,13 @@ Now we can contact the service and obtain a greeting:
     }
   }</pre>
 
-<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_client.cc">greeter_client.cc</a>.</p>
+<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_client.cc">greeter_client.cc</a>.</p>
   </div>
   <div id="python_call">
 <pre>response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'), _TIMEOUT_SECONDS)
 print "Greeter client received: " + response.message
 </pre>
-<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_client.py">greeter_client.py</a>.</p>
+<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_client.py">greeter_client.py</a>.</p>
 
 </div>
   <div id="go_call">
@@ -988,20 +988,20 @@ log.Printf("Greeting: %s", r.Message)</pre>
   message = stub.say&lowbar;hello(Helloworld::HelloRequest.new(name: user)).message
   p "Greeting: #{message}"
 </pre>
-<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/master/examples/ruby/greeter_client.rb">greeter_client.rb</a>.</p>
+<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/ruby/greeter_client.rb">greeter_client.rb</a>.</p>
 
   </div>
   <div id="node_call">
 <pre>  client.sayHello({name: user}, function(err, response) {
     console.log('Greeting:', response.message);
   });</pre>
-<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/master/examples/node/greeter_client.js">greeter_client.js</a>.</p>
+<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/node/greeter_client.js">greeter_client.js</a>.</p>
 
   </div>
   <div id="csharp_call">
 <pre>var reply = client.SayHello(new HelloRequest.Builder { Name = user }.Build());
 Console.WriteLine("Greeting: " + reply.Message);</pre>
-<p>You can see the complete example code in <a href="https://github.com/grpc/grpc/blob/master/examples/csharp/GreeterClient/Program.cs">GreeterClient/Program.cs</a>.</p>
+<p>You can see the complete example code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/GreeterClient/Program.cs">GreeterClient/Program.cs</a>.</p>
 
   </div>
   <div id="objective-c_call">
@@ -1010,7 +1010,7 @@ Console.WriteLine("Greeting: " + reply.Message);</pre>
     [client sayHelloWithRequest:request handler:^(HLWHelloReply *response, NSError *error) {
       NSLog(@"%@", response.message);
     }];</pre>
-<p>You can see the complete example code in <a href="https://github.com/grpc/grpc/tree/master/examples/objective-c/helloworld">examples/objective-c/helloworld</a>.</p>
+<p>You can see the complete example code in <a href="https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/objective-c/helloworld">examples/objective-c/helloworld</a>.</p>
 
   </div>
   <div id="php_call">
@@ -1019,7 +1019,7 @@ Console.WriteLine("Greeting: " + reply.Message);</pre>
   list($reply, $status) = $client->SayHello($request)->wait();
   $message = $reply->getMessage();</pre>
 
-<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/master/examples/php/greeter_client.php">greeter_client.php</a>.</p>
+<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/php/greeter_client.php">greeter_client.php</a>.</p>
 
   </div>
 </div>

@@ -34,7 +34,7 @@ $ gem install bundler # if you don't already have bundler available
 $ bundle install
 ```
 
-You can find more detailed installation instructions in the [grpc repo](https://github.com/grpc/grpc/tree/master/src/ruby).
+You can find more detailed installation instructions in the [grpc repo](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/src/ruby).
 
 Try it!
 -------
@@ -60,5 +60,5 @@ Tutorial
 
 You can find a more detailed tutorial in [gRPC Basics: Ruby](/docs/tutorials/basic/ruby.html)
 
-[helloworld.proto]:https://github.com/grpc/grpc/blob/master/examples/protos/helloworld.proto
+[helloworld.proto]:https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/protos/helloworld.proto
 [RVM]:https://www.rvm.io/
