@@ -28,6 +28,10 @@ RPCs being made at a client. Additional support for acquiring Access Tokens whil
 accessing Google APIs through gRPC is provided for certain auth flows, demonstrated
 through code examples below.
 
+*WARNING*: Oauth2 support is only to connect to Google services. Sending a
+Google issued Oauth2 token to a non-Google service could result in this token
+being stolen and used to impersonate the client to Google services.
+
 ## API
 
 To reduce complexity and minimize API clutter, gRPC works with a unified concept of
@@ -117,8 +121,8 @@ stub = Helloworld::Greeter::Stub.new('localhost:50051', creds: creds)
 ###SSL/TLS for server authentication and encryption (C#)
 
 ```csharp
-// Base case - No encryption
-var channel = new Channel("localhost:50051");
+// Base case - No encryption/authentication
+var channel = new Channel("localhost:50051", Credentials.Insecure);
 var client = new Greeter.GreeterClient(channel);
 ...
 
@@ -170,25 +174,27 @@ var scope = 'https://www.googleapis.com/auth/grpc-testing';
 ###Authenticating with Google (C#)
 
 ```csharp
-// Base case - No encryption/authorization
-var channel = new Channel("localhost:50051");
+// Base case - No encryption/authentication
+var channel = new Channel("localhost:50051", Credentials.Insecure);
 var client = new Greeter.GreeterClient(channel);
 ...
 
 // Authenticating with Google
 using Grpc.Auth;  // from Grpc.Auth NuGet package
 ...
-var credentials = new SslCredentials(File.ReadAllText("ca.pem"));  // Load a CA file
-var channel = new Channel("localhost:50051", credentials);
+var sslCredentials = new SslCredentials();  // Loads publicly trusted roots.
+var channel = new Channel("greeter.googleapis.com", sslCredentials);
 
 string scope = "https://www.googleapis.com/auth/grpc-testing";
-var authorization = GoogleCredential.GetApplicationDefault();
-if (authorization.IsCreateScopedRequired)
+var googleCredential = await GoogleCredential.GetApplicationDefaultAsync();
+if (googleCredential.IsCreateScopedRequired)
 {
-    authorization = credential.CreateScoped(new[] { scope });
+    googleCredential = googleCredential.CreateScoped(new[] { scope });
 }
-var client = new Greeter.GreeterClient(channel,
-        new StubConfiguration(OAuth2InterceptorFactory.Create(credential)));
+
+var client = new Greeter.GreeterClient(channel);
+// Auth headers will be added to each call made by this client
+client.HeaderInterceptor = AuthInterceptors.FromCredential(googleCredential);
 ```
 
 ###Authenticating with Google (PHP)
