@@ -233,19 +233,19 @@ This time we get a `call` implementing `Duplex` that can be used to read *and* w
 
 Once we've implemented all our methods, we also need to start up a gRPC server so that clients can actually use our service. The following snippet shows how we do this for our `RouteGuide` service:
 
-```
+```js
 function getServer() {
-  return new Server({
-    'examples.RouteGuide' : {
-      getFeature: getFeature,
-      listFeatures: listFeatures,
-      recordRoute: recordRoute,
-      routeChat: routeChat
-    }
+  var server = new grpc.Server();
+  server.addProtoService(routeguide.RouteGuide.service, {
+    getFeature: getFeature,
+    listFeatures: listFeatures,
+    recordRoute: recordRoute,
+    routeChat: routeChat
   });
+  return server;
 }
 var routeServer = getServer();
-routeServer.bind('0.0.0.0:50051');
+routeServer.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
 routeServer.listen();
 ```
 
