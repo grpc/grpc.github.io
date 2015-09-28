@@ -28,8 +28,8 @@ RPCs being made at a client. Additional support for acquiring Access Tokens whil
 accessing Google APIs through gRPC is provided for certain auth flows, demonstrated
 through code examples below.
 
-*WARNING*: Oauth2 support is only to connect to Google services. Sending a
-Google issued Oauth2 token to a non-Google service could result in this token
+*WARNING*: OAuth2 shall only be used to connect to Google services. Sending a
+Google issued OAuth2 token to a non-Google service could result in this token
 being stolen and used to impersonate the client to Google services.
 
 ## API

@@ -14,7 +14,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the C# gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/index.html) and are familiar with [protocol buffers] (https://developers.google.com/protocol-buffers/docs/overview). Note that the example in this tutorial uses the proto3 version of the protocol buffers language, which is currently in alpha release: you can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and see the [release notes](https://github.com/google/protobuf/releases) for the new version in the protocol buffers Github repository.
+It assumes that you have read the [Overview](/docs/index.html) and are familiar with [protocol buffers] (https://developers.google.com/protocol-buffers/docs/overview). Note that the example in this tutorial uses the proto3 version of the protocol buffers language, which is currently in alpha release: you can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and [C# generated code reference](https://developers.google.com/protocol-buffers/docs/reference/csharp-generated). For information about the new version in the protocol buffers Github repository, see the [release notes](https://github.com/google/protobuf/releases). 
 
 This isn't a comprehensive guide to using gRPC in C#: more reference documentation is coming soon.
 
@@ -108,15 +108,15 @@ message Point {
 
 Next we need to generate the gRPC client and server interfaces from our .proto service definition. We do this using the protocol buffer compiler `protoc` with a special gRPC C# plugin.
 
-If you want to run this yourself, make sure you've installed protoc and gRPC C# plugin. The instructions vary based on your OS:
+If you want to run this yourself, make sure you've installed protoc and the gRPC C# plugin. The instructions vary based on your OS:
 
 - For Windows, the `Grpc.Tools` and `Google.Protobuf` NuGet packages contain the binaries you will need to generate the code.
-- For Linux or OS X, make sure you've followed the [How to use instructions](https://github.com/grpc/grpc/tree/master/src/csharp#how-to-use)[installed gRPC C Core using Linuxbrew](https://github.com/grpc/grpc/tree/master/src/csharp#usage-linux-mono)
+- For Linux or OS X, make sure you've followed the [How to use instructions](https://github.com/grpc/grpc/tree/master/src/csharp#how-to-use).
 
 Once that's done, you can generate the C# code:
 
 - To generate the code on Windows, we use `protoc.exe` from the `Google.Protobuf` NuGet package and `grpc_csharp_plugin.exe` from the `Grpc.Tools` NuGet package (both under the `tools` directory).
-Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this tutorial it has been already done for you. Following command should be run from the `examples/csharp/route_guide` directory: 
+Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this tutorial it has already been done for you. Following command should be run from the `examples/csharp/route_guide` directory: 
 
   ```
   > packages\Google.Protobuf.3.0.0-alpha4\tools\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.7.0\tools\grpc_csharp_plugin.exe ../../protos/route_guide.proto
@@ -281,8 +281,8 @@ As you can see, we build and start our server using `Grpc.Core.Server` class. To
 
 1. Create an instance of `Grpc.Core.Server`.
 2. Create an instance of our service implementation class `RouteGuideImpl`.
-3. Register our service implementation by adding its service definition to `Services` collection (We obtain the service definition from the generated `RouteGuide.BindService` method).
-4. Specify the address and port we want to use to listen for client requests. This is done by adding `ServerPort` to `Ports` collection.
+3. Register our service implementation by adding its service definition to the `Services` collection (We obtain the service definition from the generated `RouteGuide.BindService` method).
+4. Specify the address and port we want to use to listen for client requests. This is done by adding `ServerPort` to the `Ports` collection.
 5. Call `Start` on the server instance to start an RPC server for our service.
 
 <a name="client"></a>
