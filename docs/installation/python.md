@@ -9,7 +9,7 @@ title: Python Quick Start
 
 ### Install gRPC
 Make sure you have built gRPC Python from source on your system. Follow the instructions here:
-[https://github.com/grpc/grpc/blob/master/src/python/README.md](https://github.com/grpc/grpc/blob/master/src/python/README.md).
+[https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/src/python/README.md](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/src/python/README.md).
 
 This gives you a python virtual environment with installed gRPC Python
 in `GRPC_ROOT/python2.7_virtual_environment`. GRPC_ROOT is the path to which you
@@ -45,7 +45,7 @@ types as protocol buffer message types. Both the client and the
 server use interface code generated from the service definition.
 
 Here's our example service definition, defined using protocol buffers IDL in
-[helloworld.proto](https://github.com/grpc/grpc/blob/master/examples/protos/helloworld.proto). The `Greeting`
+[helloworld.proto](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/protos/helloworld.proto). The `Greeting`
 service has one method, `hello`, that lets the server receive a single
 `HelloRequest`
 message from the remote client containing the user's name, then send back
@@ -102,7 +102,7 @@ been generated for you (helloworld_pb2.py).
 
 ### The client
 
-Client-side code can be found in [greeter_client.py](https://github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_client.py).
+Client-side code can be found in [greeter_client.py](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_client.py).
 
 You can run the client using:
 
@@ -113,7 +113,7 @@ $ ./run_client.sh
 
 ### The server
 
-Server side code can be found in [greeter_server.py](https://github.com/grpc/grpc/blob/master/examples/python/helloworld/greeter_server.py). 
+Server side code can be found in [greeter_server.py](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_server.py). 
 
 You can run the server using:
 

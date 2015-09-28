@@ -13,7 +13,7 @@ To run this example you should have [Cocoapods](https://cocoapods.org/#install) 
 
 ## Hello Objective-C gRPC!
 
-Here's how to build and run the Objective-C implementation of the [Hello World](https://github.com/grpc/grpc/blob/master/examples/protos/helloworld.proto) example used in the [Overview](/docs/index.html).
+Here's how to build and run the Objective-C implementation of the [Hello World](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/protos/helloworld.proto) example used in the [Overview](/docs/index.html).
 
 The example code for this and our other examples lives in the `examples`
 directory. Clone this repository to your local machine by running the

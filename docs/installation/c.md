@@ -9,11 +9,11 @@ title: C++ Quick Start
 ## Installation
 
 To install gRPC on your system, follow the instructions here:
-[https://github.com/grpc/grpc/blob/master/INSTALL](https://github.com/grpc/grpc/blob/master/INSTALL).
+[https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL).
 
 ## Hello C++ gRPC!
 
-Here's how to build and run the C++ implementation of the [Hello World](https://github.com/grpc/grpc/blob/master/examples/protos/helloworld.proto) example used in the [Overview](/docs/index.shtml).
+Here's how to build and run the C++ implementation of the [Hello World](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/protos/helloworld.proto) example used in the [Overview](/docs/index.shtml).
 
 The example code for this and our other examples lives in the `examples`
 directory. Clone this repository to your local machine by running the
@@ -47,9 +47,9 @@ $ protoc -I ../../protos/ --cpp_out=. ../../protos/helloworld.proto
 
 ### Client and server implementations
 
-The client implementation is at [greeter_client.cc](https://github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_client.cc).
+The client implementation is at [greeter_client.cc](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_client.cc).
 
-The server implementation is at [greeter_server.cc](https://github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_server.cc).
+The server implementation is at [greeter_server.cc](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_server.cc).
 
 ### Try it!
 Build client and server:

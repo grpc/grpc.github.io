@@ -57,7 +57,7 @@ Try it!
 Note
 ----
 
-The <a href="https://github.com/grpc/grpc/tree/master/examples/node">examples/node</a> directory has its own copy of `helloworld.proto` because it currently depends on
+The <a href="https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/node">examples/node</a> directory has its own copy of `helloworld.proto` because it currently depends on
 some Protocol Buffer 2.0 syntax that is deprecated in Protocol Buffer 3.0.
 
 Tutorial

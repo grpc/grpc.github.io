@@ -27,7 +27,7 @@ With gRPC we can define our service once in a .proto file and implement clients 
 
 ## Example code and setup
 
-The example code for our tutorial is in [grpc/grpc/examples/cpp/route_guide](https://github.com/grpc/grpc/tree/master/examples/cpp/route_guide). To download the example, clone the `grpc` repository by running the following command:
+The example code for our tutorial is in [grpc/grpc/examples/cpp/route_guide](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/cpp/route_guide). To download the example, clone the `grpc` repository by running the following command:
 ```
 $ git clone https://github.com/grpc/grpc.git
 ```
@@ -42,7 +42,7 @@ You also should have the relevant tools installed to generate the server and cli
 
 ## Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/index.html)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers] (https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/master/examples/protos/route_guide.proto).
+Our first step (as you'll know from the [Overview](/docs/index.html)) is to define the gRPC *service* and the method *request* and *response* types using [protocol buffers] (https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file in [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -105,7 +105,7 @@ message Point {
 
 Next we need to generate the gRPC client and server interfaces from our .proto service definition. We do this using the protocol buffer compiler `protoc` with a special gRPC C++ plugin.
 
-For simplicity, we've provided a [makefile](https://github.com/grpc/grpc/blob/master/examples/cpp/route_guide/Makefile) that runs `protoc` for you with the appropriate plugin, input, and output (if you want to run this yourself, make sure you've installed protoc and followed the gRPC code [installation instructions](https://github.com/grpc/grpc/blob/master/INSTALL) first):
+For simplicity, we've provided a [makefile](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/route_guide/Makefile) that runs `protoc` for you with the appropriate plugin, input, and output (if you want to run this yourself, make sure you've installed protoc and followed the gRPC code [installation instructions](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL) first):
 
 ```
 $ make route_guide.grpc.pb.cc route_guide.pb.cc
@@ -140,7 +140,7 @@ There are two parts to making our `RouteGuide` service do its job:
 - Implementing the service interface generated from our service definition: doing the actual "work" of our service.
 - Running a gRPC server to listen for requests from clients and return the service responses.
 
-You can find our example `RouteGuide` server in [examples/cpp/route_guide/route_guide_server.cc](https://github.com/grpc/grpc/blob/master/examples/cpp/route_guide/route_guide_server.cc). Let's take a closer look at how it works.
+You can find our example `RouteGuide` server in [examples/cpp/route_guide/route_guide_server.cc](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/route_guide/route_guide_server.cc). Let's take a closer look at how it works.
 
 ### Implementing RouteGuide
 
@@ -250,7 +250,7 @@ As you can see, we build and start our server using a `ServerBuilder`. To do thi
 <a name="client"></a>
 ## Creating the client
 
-In this section, we'll look at creating a C++ client for our `RouteGuide` service. You can see our complete example client code in [examples/cpp/route_guide/route_guide_client.cc](https://github.com/grpc/grpc/blob/master/examples/cpp/route_guide/route_guide_client.cc).
+In this section, we'll look at creating a C++ client for our `RouteGuide` service. You can see our complete example client code in [examples/cpp/route_guide/route_guide_client.cc](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/route_guide/route_guide_client.cc).
 
 ### Creating a stub
 
