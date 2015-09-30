@@ -423,22 +423,22 @@ var hello_proto = grpc.load(PROTO_PATH).helloworld;
   </div>
   <div id="csharp_generate">
 
-- To generate the code on Windows, we use `protoc.exe` and `grpc_csharp_plugin.exe` binaries that are shipped with the `Grpc.Tools` NuGet package under the `tools` directory.
-Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this example it has been already done for you. The following command should be run from the `csharp/route_guide` directory:
+- To generate the code on Windows, we use `protoc.exe` from the `Google.Protobuf` NuGet package and `grpc_csharp_plugin.exe` from the `Grpc.Tools` NuGet package (both under the `tools` directory).
+Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this tutorial it has been already done for you. The following command should be run from the `examples/csharp/helloworld` directory: 
 
-```
-> packages\Grpc.Tools.0.5.0\tools\protoc -I Greeter/protos --csharp_out=Greeter --grpc_out=Greeter --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.5.0\tools\grpc_csharp_plugin.exe Greeter/protos/helloworld.proto
-```
+  ```
+  > packages\Google.Protobuf.3.0.0-alpha4\tools\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.7.0\tools\grpc_csharp_plugin.exe ../../protos/helloworld.proto
+  ```
 
-- On Linux/MacOS, we rely on `protoc` and `grpc_csharp_plugin` being installed by Linuxbrew/Homebrew. Run this command from the route_guide directory:
+- On Linux or OS X, we rely on `protoc` and `grpc_csharp_plugin` being installed by Linuxbrew/Homebrew. Run this command from the route_guide directory:
 
-```
-$ protoc -I Greeter/protos --csharp_out=Greeter --grpc_out=Greeter --plugin=protoc-gen-grpc=`which grpc_csharp_plugin` Greeter/protos/helloworld.proto
-```
+  ```
+  $ protoc -I../../protos --csharp_out Greeter --grpc_out Greeter --plugin=`which grpc_csharp_plugin` ../../protos/helloworld.proto
+  ```
 
 Running the appropriate command for your OS regenerates the following files in the Greeter directory:
 
-- `Greeter/Helloworld.cs` defines a namespace `helloworld`
+- `Greeter/Helloworld.cs` defines a namespace `Helloworld`
   - This contains all the protocol buffer code to populate, serialize, and retrieve our request and response message types
 - `Greeter/HelloworldGrpc.cs`, provides stub and service classes, including:
    - an interface `Greeter.IGreeter` to inherit from when defining RouteGuide service implementations
@@ -635,14 +635,16 @@ function sayHello(call, callback) {
 
   </div>
   <div id="csharp_service">
-<p><a href="https://github.com/grpc/grpc/blob/master/examples/csharp/GreeterServer/Program.cs">GreeterServer/Program.cs</a> implements our <code>Greeter</code> service's required behaviour.
+<p><a href="https://github.com/grpc/grpc/blob/master/examples/csharp/helloworld/GreeterServer/Program.cs">GreeterServer/Program.cs</a> implements our <code>Greeter</code> service's required behaviour.
 <p>Our server has a <code>GreeterImpl</code> class, which implements the <code>IGreeter</code> interface that we <a href="#generating">generated</a> from our proto
 service definition by implementing the method <code>SayHello</code>:</p>
 <pre>
-public Task<HelloReply> SayHello(ServerCallContext context, HelloRequest request)
+class GreeterImpl : Greeter.IGreeter
 {
-    var reply = new HelloReply.Builder { Message = "Hello " + request.Name }.Build();
-    return Task.FromResult(reply);
+    public Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
+    {
+        return Task.FromResult(new HelloReply { Message = "Hello " + request.Name });
+    }
 }
 </pre>
 
@@ -774,10 +776,12 @@ function main() {
 
   </div>
   <div id="csharp_server">
-<p><a href="https://github.com/grpc/grpc/blob/master/examples/csharp/GreeterServer/Program.cs">GreeterServer/Program.cs</a> also provides this for our C# example.
-<pre>Server server = new Server();
-server.AddServiceDefinition(Greeter.BindService(new GreeterImpl()));
-int port = server.AddListeningPort("localhost", 50051);
+<p><a href="https://github.com/grpc/grpc/blob/master/examples/csharp/helloworld/GreeterServer/Program.cs">GreeterServer/Program.cs</a> also provides this for our C# example.
+<pre>Server server = new Server
+{
+    Services = { Greeter.BindService(new GreeterImpl()) },
+    Ports = { new ServerPort("localhost", 50051, ServerCredentials.Insecure) }
+};
 server.Start();
 </pre>
   </div>
@@ -893,11 +897,10 @@ func main() {
 
   </div>
   <div id="csharp_connect">
-<pre>using (Channel channel = new Channel("127.0.0.1:50051"))
-{
-    var client = Greeter.NewStub(channel);
-    ...
-}</pre>
+<pre>Channel channel = new Channel("127.0.0.1:50051", Credentials.Insecure);
+var client = Greeter.NewClient(channel);
+...
+</pre>
   </div>
   <div id="objective-c_connect">
 
@@ -999,9 +1002,9 @@ log.Printf("Greeting: %s", r.Message)</pre>
 
   </div>
   <div id="csharp_call">
-<pre>var reply = client.SayHello(new HelloRequest.Builder { Name = user }.Build());
+<pre>var reply = client.SayHello(new HelloRequest { Name = user });
 Console.WriteLine("Greeting: " + reply.Message);</pre>
-<p>You can see the complete example code in <a href="https://github.com/grpc/grpc/blob/master/examples/csharp/GreeterClient/Program.cs">GreeterClient/Program.cs</a>.</p>
+<p>You can see the complete example code in <a href="https://github.com/grpc/grpc/blob/master/examples/csharp/helloworld/GreeterClient/Program.cs">GreeterClient/Program.cs</a>.</p>
 
   </div>
   <div id="objective-c_call">
