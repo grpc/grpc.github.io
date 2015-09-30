@@ -119,16 +119,15 @@ a special gRPC Java plugin. You need to use the
 [proto3](https://github.com/google/protobuf/releases) compiler (which supports
 both proto2 and proto3 syntax) in order to generate gRPC services.
 
-The example's build system is part of Java gRPC's build, so is a bit complex.
-For simplicity we strongly recommend ignoring code generation for the example
-and referring to the <a
+The build system for this example is also part of Java gRPC itself's build —
+for simplicity we recommend using our pre-generated code for the example. You
+can refer to the <a
 href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for
-how to use it in your build.
+how to generate code from your own .proto files.
 
 <p>Pre-generated code for the examples is available in <a
 href="https://github.com/grpc/grpc-java/tree/master/examples/src/generated/main">src/generated/main</a>.
-These would be automatically built for you as part of the normal build process
-when following the README:
+The following classes are generated from our service definition:
 
 - `Feature.java`, `Point.java`, `Rectangle.java`, and others which contain
   all the protocol buffer code to populate, serialize, and retrieve our request

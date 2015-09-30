@@ -71,7 +71,7 @@ While protocol buffers have been available for open source users for some
 time, our examples use a new flavor of protocol buffers called proto3,
 which has a slightly simplified syntax, some useful new features, and supports
 lots more languages. This is currently available as an beta release in
-Java and C++, while an alpha release for JavaNano (Android Java), Python, and
+Java and C++, with an alpha release for JavaNano (Android Java), Python, and
 Ruby from [the protocol buffers Github
 repo](https://github.com/google/protobuf/releases), as well as a Go language
 generator from [the golang/protobuf Github repo](https://github.com/golang/protobuf), with more languages in development. You can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3), and see
@@ -324,14 +324,16 @@ onto the next one where we examine the generated code.)
     <li><a href="#php_generate">PHP</a></li>
   </ul>
   <div id="java_generate">
-<p>The example's build system is part of Java gRPC's build, so is a bit complex.
-For simplicity we strongly recommend ignoring code generation for the example
-and referring to the <a
+<p>The build system for this example is also part of Java gRPC itself's build —
+for simplicity we recommend using our pre-generated code for the example. You
+can refer to the <a
 href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for
-how to use it in your build.
+how to generate code from your own .proto files.
 
 <p>Pre-generated code for the examples is available in <a
-href="https://github.com/grpc/grpc-java/tree/master/examples/src/generated/main">src/generated/main</a>:
+href="https://github.com/grpc/grpc-java/tree/master/examples/src/generated/main">src/generated/main</a>.
+The following classes contain all the generated code we need to create our
+example:
 
 <ul><li><code>HelloRequest.java</code>, <code>HelloResponse.java</code>, and
   others which have all the protocol buffer code to populate, serialize, and
