@@ -113,25 +113,31 @@ message Point {
 
 ## Generating client and server code
 
-Next we need to generate the gRPC client and server interfaces from our .proto service definition. We do this using the protocol buffer compiler `protoc` with a special gRPC Java plugin. You need to use the [proto3](https://github.com/google/protobuf/releases) compiler in order to generate gRPC services
+Next we need to generate the gRPC client and server interfaces from our .proto
+service definition. We do this using the protocol buffer compiler `protoc` with
+a special gRPC Java plugin. You need to use the
+[proto3](https://github.com/google/protobuf/releases) compiler (which supports
+both proto2 and proto3 syntax) in order to generate gRPC services.
 
-For simplicity, we've provided a [Gradle build file](https://github.com/grpc/grpc-java/blob/master/examples/build.gradle) that runs `protoc` for you with the appropriate plugin, input, and output (if you want to run this yourself, make sure you've installed protoc and followed the gRPC code [installation instructions](https://github.com/grpc/grpc-java) first):
+The build system for this example is also part of Java gRPC itself's build —
+for simplicity we recommend using our pre-generated code for the example. You
+can refer to the <a
+href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for
+how to generate code from your own .proto files.
 
-```
-../gradlew build
-```
+<p>Pre-generated code for the examples is available in <a
+href="https://github.com/grpc/grpc-java/tree/master/examples/src/generated/main">src/generated/main</a>.
+The following classes are generated from our service definition:
 
-which actually runs:
-
-```
-protoc -I examples/src/main/proto -I examples/build/extracted-protos/main --java_out=examples/build/generated-sources/main --java_plugin_out=examples/build/generated-sources/main --plugin=protoc-gen-java_plugin=compiler/build/binaries/java_pluginExecutable/java_plugin examples/src/main/proto/route_guide.proto
-```
-
-Running this command generates the following files:
-- `RouteGuideOuterClass.java`, which contains all the protocol buffer code to populate, serialize, and retrieve our request and response message types
+- `Feature.java`, `Point.java`, `Rectangle.java`, and others which contain
+  all the protocol buffer code to populate, serialize, and retrieve our request
+  and response message types.
 - `RouteGuideGrpc.java` which contains (along with some other useful code):
-   - an interface for `RouteGuide` servers to implement, `RouteGuideGrpc.Service`, with all the methods defined in the `RouteGuide` service.
-   - *stub* classes that clients can use to talk to a `RouteGuide` server. These also implement the `RouteGuide` interface.
+  - an interface for `RouteGuide` servers to implement,
+    `RouteGuideGrpc.RouteGuide`, with all the methods defined in the `RouteGuide`
+    service.
+  - *stub* classes that clients can use to talk to a `RouteGuide` server.
+    The async stub also implements the `RouteGuide` interface.
 
 
 <a name="server"></a>
@@ -140,6 +146,7 @@ Running this command generates the following files:
 First let's look at how we create a `RouteGuide` server. If you're only interested in creating gRPC clients, you can skip this section and go straight to [Creating the client](#client) (though you might find it interesting anyway!).
 
 There are two parts to making our `RouteGuide` service do its job:
+
 - Implementing the service interface generated from our service definition: doing the actual "work" of our service.
 - Running a gRPC server to listen for requests from clients and return the service responses.
 
@@ -160,7 +167,7 @@ private static class RouteGuideService implements RouteGuideGrpc.RouteGuide {
 ```java
     @Override
     public void getFeature(Point request, StreamObserver<Feature> responseObserver) {
-      responseObserver.onValue(checkFeature(request));
+      responseObserver.onNext(checkFeature(request));
       responseObserver.onCompleted();
     }
 
@@ -180,13 +187,14 @@ private static class RouteGuideService implements RouteGuideGrpc.RouteGuide {
 ```
 
 `getFeature()` takes two parameters:
+
 - `Point`: the request
 - `StreamObserver<Feature>`: a response observer, which is a special interface for the server to call with its response.
 
 To return our response to the client and complete the call:
 
 1. We construct and populate a `Feature` response object to return to the client, as specified in our service definition. In this example, we do this in a separate private `checkFeature()` method.
-2. We use the response observer's `onValue()` method to return the `Feature`.
+2. We use the response observer's `onNext()` method to return the `Feature`.
 3. We use the response observer's `onCompleted()` method to specify that we've finished dealing with the RPC.
 
 #### Server-side streaming RPC
@@ -212,7 +220,7 @@ private final Collection<Feature> features;
         int lat = feature.getLocation().getLatitude();
         int lon = feature.getLocation().getLongitude();
         if (lon >= left && lon <= right && lat >= bottom && lat <= top) {
-          responseObserver.onValue(feature);
+          responseObserver.onNext(feature);
         }
       }
       responseObserver.onCompleted();
@@ -221,7 +229,7 @@ private final Collection<Feature> features;
 
 Like the simple RPC, this method gets a request object (the `Rectangle` in which our client wants to find `Feature`s) and a `StreamObserver` response observer.
 
-This time, we get as many `Feature` objects as we need to return to the client (in this case, we select them from the service's feature collection based on whether they're inside our request `Rectangle`), and write them each in turn to the response observer using its `onValue()` method. Finally, as in our simple RPC, we use the response observer's `onCompleted()` method to tell gRPC that we've finished writing responses.
+This time, we get as many `Feature` objects as we need to return to the client (in this case, we select them from the service's feature collection based on whether they're inside our request `Rectangle`), and write them each in turn to the response observer using its `onNext()` method. Finally, as in our simple RPC, we use the response observer's `onCompleted()` method to tell gRPC that we've finished writing responses.
 
 #### Client-side streaming RPC
 Now let's look at something a little more complicated: the client-side streaming method `RecordRoute`, where we get a stream of `Point`s from the client and return a single `RouteSummary` with information about their trip.
@@ -237,7 +245,7 @@ Now let's look at something a little more complicated: the client-side streaming
         long startTime = System.nanoTime();
 
         @Override
-        public void onValue(Point point) {
+        public void onNext(Point point) {
           pointCount++;
           if (RouteGuideUtil.exists(checkFeature(point))) {
             featureCount++;
@@ -258,7 +266,7 @@ Now let's look at something a little more complicated: the client-side streaming
         @Override
         public void onCompleted() {
           long seconds = NANOSECONDS.toSeconds(System.nanoTime() - startTime);
-          responseObserver.onValue(RouteSummary.newBuilder().setPointCount(pointCount)
+          responseObserver.onNext(RouteSummary.newBuilder().setPointCount(pointCount)
               .setFeatureCount(featureCount).setDistance(distance)
               .setElapsedTime((int) seconds).build());
           responseObserver.onCompleted();
@@ -271,8 +279,8 @@ As you can see, like the previous method types our method gets a `StreamObserver
 
 In the method body we instantiate an anonymous `StreamObserver` to return, in which we:
 
-- Override the `onValue()` method to get features and other information each time the client writes a `Point` to the message stream.
-- Override the `onCompleted()` method (called when the *client* has finished writing messages) to populate and build our `RouteSummary`. We then call our method's own response observer's `onValue()` with our `RouteSummary`, and then call its `onCompleted()` method to finish the call from the server side.
+- Override the `onNext()` method to get features and other information each time the client writes a `Point` to the message stream.
+- Override the `onCompleted()` method (called when the *client* has finished writing messages) to populate and build our `RouteSummary`. We then call our method's own response observer's `onNext()` with our `RouteSummary`, and then call its `onCompleted()` method to finish the call from the server side.
 
 #### Bidirectional streaming RPC
 Finally, let's look at our bidirectional streaming RPC `RouteChat()`.
@@ -282,12 +290,12 @@ Finally, let's look at our bidirectional streaming RPC `RouteChat()`.
     public StreamObserver<RouteNote> routeChat(final StreamObserver<RouteNote> responseObserver) {
       return new StreamObserver<RouteNote>() {
         @Override
-        public void onValue(RouteNote note) {
+        public void onNext(RouteNote note) {
           List<RouteNote> notes = getOrCreateNotes(note.getLocation());
 
           // Respond with all previous notes at this location.
           for (RouteNote prevNote : notes.toArray(new RouteNote[0])) {
-            responseObserver.onValue(prevNote);
+            responseObserver.onNext(prevNote);
           }
 
           // Now add the new note to the list
@@ -399,7 +407,7 @@ Now for something a little more complicated: the client-side streaming method `R
     final SettableFuture<Void> finishFuture = SettableFuture.create();
     StreamObserver<RouteSummary> responseObserver = new StreamObserver<RouteSummary>() {
       @Override
-      public void onValue(RouteSummary summary) {
+      public void onNext(RouteSummary summary) {
         info("Finished trip with {0} points. Passed {1} features. "
             + "Travelled {2} meters. It took {3} seconds.", summary.getPointCount(),
             summary.getFeatureCount(), summary.getDistance(), summary.getElapsedTime());
@@ -426,7 +434,7 @@ Now for something a little more complicated: the client-side streaming method `R
         Point point = features.get(index).getLocation();
         info("Visiting point {0}, {1}", RouteGuideUtil.getLatitude(point),
             RouteGuideUtil.getLongitude(point));
-        requestObserver.onValue(point);
+        requestObserver.onNext(point);
         // Sleep for a bit before sending the next one.
         Thread.sleep(rand.nextInt(1000) + 500);
         if (finishFuture.isDone()) {
@@ -448,7 +456,7 @@ Now for something a little more complicated: the client-side streaming method `R
 
 As you can see, to call this method we need to create a `StreamObserver`, which implements a special interface for the server to call with its `RouteSummary` response. In our `StreamObserver` we:
 
-- Override the `onValue()` method to print out the returned information when the server writes a `RouteSummary` to the message stream.
+- Override the `onNext()` method to print out the returned information when the server writes a `RouteSummary` to the message stream.
 - Override the `onCompleted()` method (called when the *server* has completed the call on its side) to set a `SettableFuture` that we can check to see if the server has finished writing.
 
 We then pass the `StreamObserver` to the asynchronous stub's `recordRoute()` method and get back our own `StreamObserver` request observer to write our `Point`s to send to the server.  Once we've finished writing points, we use the request observer's `onCompleted()` method to tell gRPC that we've finished writing on the client side. Once we're done, we check our `SettableFuture` to check that the server has completed on its side.
@@ -464,7 +472,7 @@ Finally, let's look at our bidirectional streaming RPC `RouteChat()`.
     StreamObserver<RouteNote> requestObserver =
         asyncStub.routeChat(new StreamObserver<RouteNote>() {
           @Override
-          public void onValue(RouteNote note) {
+          public void onNext(RouteNote note) {
             info("Got message \"{0}\" at {1}, {2}", note.getMessage(), note.getLocation()
                 .getLatitude(), note.getLocation().getLongitude());
           }
@@ -488,7 +496,7 @@ Finally, let's look at our bidirectional streaming RPC `RouteChat()`.
       for (RouteNote request : requests) {
         info("Sending message \"{0}\" at {1}, {2}", request.getMessage(), request.getLocation()
             .getLatitude(), request.getLocation().getLongitude());
-        requestObserver.onValue(request);
+        requestObserver.onNext(request);
       }
       requestObserver.onCompleted();
 
