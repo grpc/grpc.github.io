@@ -17,19 +17,19 @@ Hello World example. You'll find more tutorials and reference docs in this site 
 ## Quick start
 To get up and running with gRPC straight away, see the quick start for your chosen language, which provides links to installation instructions, quick instructions for building the example used in this guide, and more:
 
-* [C++](/docs/installation/c.html)
-* [Java](/docs/installation/java.html)
-* [Go](/docs/installation/go.html)
-* [Python](/docs/installation/python.html)
-* [Ruby](/docs/installation/ruby.html)
-* [Node.js](/docs/installation/node.html)
-* [Android Java](https://github.com/grpc/grpc-java/tree/master/examples/android) (draft)
-* [C#](/docs/installation/csharp.html)
-* [Objective-C](/docs/installation/objective-c.html)
-* [PHP](/docs/installation/php.html)
+* [C++](https://github.com/grpc/grpc/tree/master/examples/cpp)
+* [Java](https://github.com/grpc/grpc-java/tree/master/examples)
+* [Go](https://github.com/grpc/grpc-go/tree/master/examples)
+* [Python](https://github.com/grpc/grpc/tree/master/examples/python/helloworld)
+* [Ruby](https://github.com/grpc/grpc/tree/master/examples/ruby)
+* [Node.js](https://github.com/grpc/grpc/tree/master/examples/node)
+* [Android Java](https://github.com/grpc/grpc-java/tree/master/examples/android)
+* [C#](https://github.com/grpc/grpc/tree/master/examples/csharp/helloworld)
+* [Objective-C](https://github.com/grpc/grpc/tree/master/examples/objective-c/helloworld)
+* [PHP](https://github.com/grpc/grpc/tree/master/examples/php)
 
 You can find out about the gRPC source code repositories in
-[grpc](https://github.com/grpc/grpc). Most of our example code (plus more draft documentation) lives in the [examples](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples) directory.
+[grpc](https://github.com/grpc/grpc). Most of our example code lives in the [examples](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples) directory.
 
 <!--=========================================================================-->
 ## What is gRPC?
@@ -70,8 +70,9 @@ documentation](https://developers.google.com/protocol-buffers/docs/overview).
 While protocol buffers have been available for open source users for some
 time, our examples use a new flavor of protocol buffers called proto3,
 which has a slightly simplified syntax, some useful new features, and supports
-lots more languages. This is currently available as an alpha release in
-Java, C++, Java_nano (Android Java), Python, and Ruby from [the protocol buffers Github
+lots more languages. This is currently available as an beta release in
+Java and C++, with an alpha release for JavaNano (Android Java), Python, and
+Ruby from [the protocol buffers Github
 repo](https://github.com/google/protobuf/releases), as well as a Go language
 generator from [the golang/protobuf Github repo](https://github.com/golang/protobuf), with more languages in development. You can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3), and see
 the major differences from the current default version in the [release notes](https://github.com/google/protobuf/releases). More proto3 documentation is coming soon.
@@ -123,7 +124,7 @@ the code to hack on
 
 #### Install gRPC
 
-To build and install gRPC plugins and related tools, see the [Quickstart](#quickstart) for your chosen language(s).
+To build and install gRPC plugins and related tools, see the [Quickstart](#quickstart) for your chosen language(s). Java gRPC does not require any installation other than the JDK.
 
 #### Get the source code
 
@@ -323,36 +324,37 @@ onto the next one where we examine the generated code.)
     <li><a href="#php_generate">PHP</a></li>
   </ul>
   <div id="java_generate">
-<p>For simplicity, we've provided a <a href="https://github.com/grpc/grpc-java/blob/master/examples/build.gradle">Gradle build file</a> with our Java examples that runs <code>protoc</code> for you with the appropriate plugin, input, and output:
+<p>The build system for this example is also part of Java gRPC itself's build —
+for simplicity we recommend using our pre-generated code for the example. You
+can refer to the <a
+href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for
+how to generate code from your own .proto files.
 
-<pre>
-../gradlew build
-</pre>
+<p>Pre-generated code for the examples is available in <a
+href="https://github.com/grpc/grpc-java/tree/master/examples/src/generated/main">src/generated/main</a>.
+The following classes contain all the generated code we need to create our
+example:
 
-<p>This generates the following classes from our .proto, which contain all the generated code
-we need to create our example:
-
-<ul><li><code>Helloworld.java</code>, which
-has all the protocol buffer code to populate, serialize, and retrieve our
-<code>HelloRequest</code> and <code>HelloReply</code> message types
+<ul><li><code>HelloRequest.java</code>, <code>HelloResponse.java</code>, and
+  others which have all the protocol buffer code to populate, serialize, and
+  retrieve our <code>HelloRequest</code> and <code>HelloReply</code> message types
 <li><code>GreeterGrpc.java</code>, which contains (along with some other useful code):
     <ul><li>an interface for <code>Greeter</code> servers to implement
 
     <pre>
-  public static interface Greeter {
-      public void sayHello(io.grpc.examples.Helloworld.HelloRequest request,
-          io.grpc.stub.StreamObserver<io.grpc.examples.Helloworld.HelloReply> responseObserver);
-  }
+public static interface Greeter {
+    public void sayHello(Helloworld.HelloRequest request,
+        StreamObserver&lt;Helloworld.HelloReply> responseObserver);
+}
     </pre>
 
-    <li> _stub_ classes that clients can use to talk to a <code>Greeter</code> server. As you can see, they also implement the <code>Greeter</code> interface.
+    <li> <em>stub</em> classes that clients can use to talk to a <code>Greeter</code> server. As you can see, the async stub also implements the <code>Greeter</code> interface.
 
   <pre>
-  public static class GreeterStub extends
-      io.grpc.stub.AbstractStub<GreeterStub, GreeterServiceDescriptor>
-      implements Greeter {
-   ...
-  }
+public static class GreeterStub extends AbstractStub&lt;GreeterStub>
+    implements Greeter {
+  ...
+}
   </pre>
 </ul>
 </ul>
@@ -423,22 +425,22 @@ var hello_proto = grpc.load(PROTO_PATH).helloworld;
   </div>
   <div id="csharp_generate">
 
-- To generate the code on Windows, we use `protoc.exe` and `grpc_csharp_plugin.exe` binaries that are shipped with the `Grpc.Tools` NuGet package under the `tools` directory.
-Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this example it has been already done for you. The following command should be run from the `csharp/route_guide` directory:
+- To generate the code on Windows, we use `protoc.exe` from the `Google.Protobuf` NuGet package and `grpc_csharp_plugin.exe` from the `Grpc.Tools` NuGet package (both under the `tools` directory).
+Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this tutorial it has been already done for you. The following command should be run from the `examples/csharp/helloworld` directory: 
 
-```
-> packages\Grpc.Tools.0.5.0\tools\protoc -I Greeter/protos --csharp_out=Greeter --grpc_out=Greeter --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.5.0\tools\grpc_csharp_plugin.exe Greeter/protos/helloworld.proto
-```
+  ```
+  > packages\Google.Protobuf.3.0.0-alpha4\tools\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.7.0\tools\grpc_csharp_plugin.exe ../../protos/helloworld.proto
+  ```
 
-- On Linux/MacOS, we rely on `protoc` and `grpc_csharp_plugin` being installed by Linuxbrew/Homebrew. Run this command from the route_guide directory:
+- On Linux or OS X, we rely on `protoc` and `grpc_csharp_plugin` being installed by Linuxbrew/Homebrew. Run this command from the route_guide directory:
 
-```
-$ protoc -I Greeter/protos --csharp_out=Greeter --grpc_out=Greeter --plugin=protoc-gen-grpc=`which grpc_csharp_plugin` Greeter/protos/helloworld.proto
-```
+  ```
+  $ protoc -I../../protos --csharp_out Greeter --grpc_out Greeter --plugin=`which grpc_csharp_plugin` ../../protos/helloworld.proto
+  ```
 
 Running the appropriate command for your OS regenerates the following files in the Greeter directory:
 
-- `Greeter/Helloworld.cs` defines a namespace `helloworld`
+- `Greeter/Helloworld.cs` defines a namespace `Helloworld`
   - This contains all the protocol buffer code to populate, serialize, and retrieve our request and response message types
 - `Greeter/HelloworldGrpc.cs`, provides stub and service classes, including:
    - an interface `Greeter.IGreeter` to inherit from when defining RouteGuide service implementations
@@ -508,12 +510,12 @@ actually implements our <code>Greeter</code> service's required behaviour.</p>
 <code>GreeterGrpc.Greeter</code> that we <a href="#generating">generated</a> from our proto
 <a href="https://github.com/grpc/grpc-java/tree/master/examples/src/main/proto">IDL</a> by implementing the method <code>sayHello</code>:</p>
 <pre>
-  @Override
-  public void sayHello(HelloRequest req, StreamObserver&lt;HelloReply&gt; responseObserver) {
-    HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + req.getName()).build();
-    responseObserver.onValue(reply);
-    responseObserver.onCompleted();
-  }
+@Override
+public void sayHello(HelloRequest req, StreamObserver&lt;HelloReply&gt; responseObserver) {
+  HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + req.getName()).build();
+  responseObserver.onNext(reply);
+  responseObserver.onCompleted();
+}
 </pre>
 <ul>
 <li><code>sayHello</code> takes two parameters:
@@ -574,9 +576,9 @@ message, as specified in our interface definition.</li>
 <p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_server.py">greeter_server.py</a> implements our <code>Greeter</code> service's required behaviour.
 
 <p>As you can see, the class <code>Greeter</code> implements the interface
-<code>helloworld_pb2.EarlyAdopterGreeterServicer</code> that we <a href="#generating">generated</a> from our proto
+<code>helloworld_pb2.BetaGreeterServicer</code> that we <a href="#generating">generated</a> from our proto
 service definition by implementing the method <code>SayHello</code>:</p>
-<pre>class Greeter(helloworld_pb2.EarlyAdopterGreeterServicer):
+<pre>class Greeter(helloworld_pb2.BetaGreeterServicer):
 
   def SayHello(self, request, context):
     return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
@@ -635,14 +637,16 @@ function sayHello(call, callback) {
 
   </div>
   <div id="csharp_service">
-<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/GreeterServer/Program.cs">GreeterServer/Program.cs</a> implements our <code>Greeter</code> service's required behaviour.
+<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/helloworld/GreeterServer/Program.cs">GreeterServer/Program.cs</a> implements our <code>Greeter</code> service's required behaviour.
 <p>Our server has a <code>GreeterImpl</code> class, which implements the <code>IGreeter</code> interface that we <a href="#generating">generated</a> from our proto
 service definition by implementing the method <code>SayHello</code>:</p>
 <pre>
-public Task<HelloReply> SayHello(ServerCallContext context, HelloRequest request)
+class GreeterImpl : Greeter.IGreeter
 {
-    var reply = new HelloReply.Builder { Message = "Hello " + request.Name }.Build();
-    return Task.FromResult(reply);
+    public Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
+    {
+        return Task.FromResult(new HelloReply { Message = "Hello " + request.Name });
+    }
 }
 </pre>
 
@@ -675,25 +679,26 @@ implementation available from the network.
   <div id="java_server">
 <p><a href="https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java">HelloWorldServer.java</a>
 provides this for our Java example.</p>
-<pre>  /* The port on which the server should run */
-  private int port = 50051;
-  private ServerImpl server;
+<pre>/* The port on which the server should run */
+private int port = 50051;
+private Server server;
 
-  private void start() throws Exception {
-    server = NettyServerBuilder.forPort(port)
-        .addService(GreeterGrpc.bindService(new GreeterImpl()))
-        .build().start();
-    logger.info("Server started, listening on " + port);
-    Runtime.getRuntime().addShutdownHook(new Thread() {
-      @Override
-      public void run() {
-        // Use stderr here since the logger may has been reset by its JVM shutdown hook.
-        System.err.println("*** shutting down gRPC server since JVM is shutting down");
-        HelloWorldServer.this.stop();
-        System.err.println("*** server shut down");
-      }
-    });
-  }</pre>
+private void start() throws Exception {
+  server = ServerBuilder.forPort(port)
+      .addService(GreeterGrpc.bindService(new GreeterImpl()))
+      .build()
+      .start();
+  logger.info("Server started, listening on " + port);
+  Runtime.getRuntime().addShutdownHook(new Thread() {
+    @Override
+    public void run() {
+      // Use stderr here since the logger may has been reset by its JVM shutdown hook.
+      System.err.println("*** shutting down gRPC server since JVM is shutting down");
+      HelloWorldServer.this.stop();
+      System.err.println("*** server shut down");
+    }
+  });
+}</pre>
 
   </div>
   <div id="cpp_server">
@@ -715,9 +720,9 @@ also provides this for our C++ example.</p>
   </div>
   <div id="python_server">
 <p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_server.py">greeter_server.py</a>
-also provides this for our C++ example.</p>
-<pre>  server = helloworld_pb2.early_adopter_create_Greeter_server(
-      Greeter(), 50051, None, None)
+also provides this for our Python example.</p>
+<pre>  server = helloworld_pb2.beta_create_Greeter_server(Greeter())
+  server.add_insecure_port('[::]:50051')
   server.start()
   try:
     while True:
@@ -774,10 +779,12 @@ function main() {
 
   </div>
   <div id="csharp_server">
-<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/GreeterServer/Program.cs">GreeterServer/Program.cs</a> also provides this for our C# example.
-<pre>Server server = new Server();
-server.AddServiceDefinition(Greeter.BindService(new GreeterImpl()));
-int port = server.AddListeningPort("localhost", 50051);
+<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/helloworld/GreeterServer/Program.cs">GreeterServer/Program.cs</a> also provides this for our C# example.
+<pre>Server server = new Server
+{
+    Services = { Greeter.BindService(new GreeterImpl()) },
+    Ports = { new ServerPort("localhost", 50051, ServerCredentials.Insecure) }
+};
 server.Start();
 </pre>
   </div>
@@ -820,15 +827,15 @@ want to connect to. Then we use the channel to construct the stub instance.
   </ul>
   <div id="java_connect">
 <pre>
-  private final ChannelImpl channel;
-  private final GreeterGrpc.GreeterBlockingStub blockingStub;
+private final ManagedChannel channel;
+private final GreeterGrpc.GreeterBlockingStub blockingStub;
 
-  public HelloWorldClient(String host, int port) {
-    channel =
-        NettyChannelBuilder.forAddress(host, port).negotiationType(NegotiationType.PLAINTEXT)
-            .build();
-    blockingStub = GreeterGrpc.newBlockingStub(channel);
-  }
+public HelloWorldClient(String host, int port) {
+  channel = ManagedChannelBuilder.forAddress(host, port)
+      .usePlaintext(true)
+      .build();
+  blockingStub = GreeterGrpc.newBlockingStub(channel);
+}
 </pre>
 
 <p>In this case, we create a blocking stub. This means that the RPC call waits
@@ -857,12 +864,12 @@ class GreeterClient {
 
   </div>
   <div id="python_connect">
-<pre>with helloworld_pb2.early_adopter_create_Greeter_stub('localhost', 50051) as stub:
+<p>The generated Python code has a helper function that creates a stub given a channel.
+<pre>channel = implementations.insecure_channel('localhost', 50051)
+stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 ...
 </pre>
-<p>The generated code has a helper function <code>helloworld_pb2.early_adopter_create_Greeter_stub()</code> that creates our channel and stub for us.
-
-</div>
+  </div>
   <div id="go_connect">
 <pre>const (
 	address     = "localhost:50051"
@@ -893,11 +900,10 @@ func main() {
 
   </div>
   <div id="csharp_connect">
-<pre>using (Channel channel = new Channel("127.0.0.1:50051"))
-{
-    var client = Greeter.NewStub(channel);
-    ...
-}</pre>
+<pre>Channel channel = new Channel("127.0.0.1:50051", Credentials.Insecure);
+var client = Greeter.NewClient(channel);
+...
+</pre>
   </div>
   <div id="objective-c_connect">
 
@@ -944,8 +950,8 @@ Now we can contact the service and obtain a greeting:
   </ul>
   <div id="java_call">
 <pre>
-    HelloRequest req = HelloRequest.newBuilder().setName(name).build();
-    HelloReply reply = blockingStub.sayHello(req);
+HelloRequest req = HelloRequest.newBuilder().setName(name).build();
+HelloReply reply = blockingStub.sayHello(req);
 </pre>
 
 <p>You can see the complete client code in
@@ -999,9 +1005,9 @@ log.Printf("Greeting: %s", r.Message)</pre>
 
   </div>
   <div id="csharp_call">
-<pre>var reply = client.SayHello(new HelloRequest.Builder { Name = user }.Build());
+<pre>var reply = client.SayHello(new HelloRequest { Name = user });
 Console.WriteLine("Greeting: " + reply.Message);</pre>
-<p>You can see the complete example code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/GreeterClient/Program.cs">GreeterClient/Program.cs</a>.</p>
+<p>You can see the complete example code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/helloworld/GreeterClient/Program.cs">GreeterClient/Program.cs</a>.</p>
 
   </div>
   <div id="objective-c_call">
@@ -1045,10 +1051,16 @@ First run the server:
     <li><a href="#csharp_runserver">C#</a></li>
   </ul>
   <div id="java_runserver">
-<p>Our <a href="https://github.com/grpc/grpc-java/blob/master/examples/build.gradle">Gradle build file</a> simplifies building and running the examples. You can build and run the server from the <code>grpc-java</code> root folder with:
+<p>You can build and run the server from the <code>examples</code> folder. First
+build the client and server.
 
 <pre>
-$ ./gradlew :grpc-examples:helloWorldServer
+$ ../gradlew -PskipCodegen=true installDist
+</pre>
+
+Then run the server, which will listen on port 50051:
+<pre>
+$ ./build/install/grpc-examples/bin/hello-world-server
 </pre>
 
   </div>
@@ -1104,10 +1116,16 @@ Once the server is running, in another terminal window run the client and confir
     <li><a href="#php_runclient">PHP</a></li>
   </ul>
   <div id="java_runclient">
-<p>You can build and run the client from the <code>grpc-java</code> root folder with:
+<p>You can build and run the client from the <code>examples</code> folder. If
+you haven't already built the client, build it using:
 
 <pre>
-$  ./gradlew :grpc-examples:helloWorldClient
+$ ../gradlew -PskipCodegen=true installDist
+</pre>
+
+Then run the client:
+<pre>
+$ ./build/install/grpc-examples/bin/hello-world-client
 </pre>
   </div>
   <div id="cpp_runclient">
