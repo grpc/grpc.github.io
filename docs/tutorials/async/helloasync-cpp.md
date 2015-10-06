@@ -4,7 +4,7 @@ title: Asynchronous Basics - C++
 ---
 <h1 class="page-header">Asynchronous Basics: C++</h1>
 
-This tutorial shows you how to write a simple server and client in C++ using gRPC's asynchronous/non-blocking APIs. It assumes you are already familiar with writing simple synchronous gRPC code, as described in [gRPC Basics: C++](/docs/tutorials/basic/c.html). The example used in this tutorial follows on from the basic [Greeter example](https://github.com/grpc/grpc/tree/master/examples/cpp/helloworld) we used in the [overview](/docs/index.html). You'll find it along with installation instructions in [grpc/examples/cpp/helloworld](https://github.com/grpc/grpc/tree/master/examples/cpp/helloworld).
+This tutorial shows you how to write a simple server and client in C++ using gRPC's asynchronous/non-blocking APIs. It assumes you are already familiar with writing simple synchronous gRPC code, as described in [gRPC Basics: C++](/docs/tutorials/basic/c.html). The example used in this tutorial follows on from the basic [Greeter example](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld) we used in the [overview](/docs/index.html). You'll find it along with installation instructions in [grpc/examples/cpp/helloworld](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld).
 
 <div id="toc"></div>
 
@@ -20,7 +20,7 @@ is as follows:
 
 ## Async client
 
-To use an asynchronous client to call a remote method, you first create a channel and stub, just as you do in a [synchronous client](https://github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_client.cc). Once you have your stub, you do the following to make an asynchronous call:
+To use an asynchronous client to call a remote method, you first create a channel and stub, just as you do in a [synchronous client](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_client.cc). Once you have your stub, you do the following to make an asynchronous call:
 
 - Initiate the RPC and create a handle for it. Bind the RPC to a
   `CompletionQueue`.
@@ -50,7 +50,7 @@ To use an asynchronous client to call a remote method, you first create a channe
     }
     ```
 
-You can see the complete client example in [greeter&#95;async&#95;client.cc](https://github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_async_client.cc).
+You can see the complete client example in [greeter&#95;async&#95;client.cc](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_async_client.cc).
 
 ## Async server
 
@@ -173,7 +173,7 @@ main loop in `HandleRpcs` to query the queue:
   }
 ```
 
-You can see our complete server example in [greeter&#95;async&#95;server.cc](https://github.com/grpc/grpc/blob/master/examples/cpp/helloworld/greeter_async_server.cc).
+You can see our complete server example in [greeter&#95;async&#95;server.cc](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_async_server.cc).
 
 
 

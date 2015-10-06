@@ -17,16 +17,16 @@ Hello World example. You'll find more tutorials and reference docs in this site 
 ## Quick start
 To get up and running with gRPC straight away, see the quick start for your chosen language, which provides links to installation instructions, quick instructions for building the example used in this guide, and more:
 
-* [C++](https://github.com/grpc/grpc/tree/master/examples/cpp)
+* [C++](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/cpp)
 * [Java](https://github.com/grpc/grpc-java/tree/master/examples)
 * [Go](https://github.com/grpc/grpc-go/tree/master/examples)
-* [Python](https://github.com/grpc/grpc/tree/master/examples/python/helloworld)
-* [Ruby](https://github.com/grpc/grpc/tree/master/examples/ruby)
-* [Node.js](https://github.com/grpc/grpc/tree/master/examples/node)
+* [Python](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld)
+* [Ruby](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/ruby)
+* [Node.js](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/node)
 * [Android Java](https://github.com/grpc/grpc-java/tree/master/examples/android)
-* [C#](https://github.com/grpc/grpc/tree/master/examples/csharp/helloworld)
-* [Objective-C](https://github.com/grpc/grpc/tree/master/examples/objective-c/helloworld)
-* [PHP](https://github.com/grpc/grpc/tree/master/examples/php)
+* [C#](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/csharp/helloworld)
+* [Objective-C](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/objective-c/helloworld)
+* [PHP](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/php)
 
 You can find out about the gRPC source code repositories in
 [grpc](https://github.com/grpc/grpc). Most of our example code lives in the [examples](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples) directory.
