@@ -116,12 +116,11 @@ Note that as we've already provided a version of the generated code in the examp
 
 - classes for the messages defined in route_guide.proto
 - abstract classes for the service defined in route_guide.proto
-   - `EarlyAdopterRouteGuideServicer`, which defines the interface for implementations of the RouteGuide service
-   - `EarlyAdopterRouteGuideServer`, which may be started and stopped
-   - `EarlyAdopterRouteGuideStub`, which can be used by clients to invoke RouteGuide RPCs
+   - `BetaRouteGuideServicer`, which defines the interface for implementations of the RouteGuide service
+   - `BetaRouteGuideStub`, which can be used by clients to invoke RouteGuide RPCs
 - functions for application use
-   - `early_adopter_create_RouteGuide_server`, which creates a gRPC server given an `EarlyAdopterRouteGuideServicer` object
-   - `early_adopter_create_RouteGuide_stub`, which can be used by clients to create a stub object
+   - `beta_create_RouteGuide_server`, which creates a gRPC server given an `BetaRouteGuideServicer` object
+   - `beta_create_RouteGuide_stub`, which can be used by clients to create a stub object
 
 <a name="server"></a>
 ## Creating the server
@@ -136,11 +135,11 @@ You can find the example `RouteGuide` server in [examples/python/route_guide/rou
 
 ### Implementing RouteGuide
 
-`route_guide_server.py` has a `RouteGuideServicer` class that implements the generated interface `route_guide_pb2.EarlyAdopterRouteGuideServicer`:
+`route_guide_server.py` has a `RouteGuideServicer` class that implements the generated interface `route_guide_pb2.BetaRouteGuideServicer`:
 
 ```python
 # RouteGuideServicer provides an implementation of the methods of the RouteGuide service.
-class RouteGuideServicer(route_guide_pb2.EarlyAdopterRouteGuideServicer):
+class RouteGuideServicer(route_guide_pb2.BetaRouteGuideServicer):
 ```
 
 `RouteGuideServicer` implements all the `RouteGuide` service methods.
@@ -158,7 +157,7 @@ Let's look at the simplest type first, `GetFeature`, which just gets a `Point` f
       return feature
 ```
 
-The method is passed a `route_guide_pb2.Point` request for the RPC, and an `RpcContext` object that provides RPC-specific information such as timeout limits. It returns a `route_guide_pb2.Feature` response.
+The method is passed a `route_guide_pb2.Point` request for the RPC, and a `ServicerContext` object that provides RPC-specific information such as timeout limits. It returns a `route_guide_pb2.Feature` response.
 
 #### Response-streaming RPC
 
@@ -229,8 +228,8 @@ Once you have implemented all the `RouteGuide` methods, the next step is to star
 
 ```python
 def serve():
-  server = route_guide_pb2.early_adopter_create_RouteGuide_server(
-      RouteGuideServicer(), 50051, None, None)
+  server = route_guide_pb2.beta_create_RouteGuide_server(RouteGuideServicer())
+  server.add_insecure_port('[::]:50051')
   server.start()
 ```
 
@@ -245,17 +244,14 @@ You can see the complete example client code in [examples/python/route_guide/rou
 
 To call service methods, we first need to create a *stub*.
 
-We use the `early_adopter_create_RouteGuide_stub` function of the `route_guide_pb2` module, generated from our .proto.
+We use the `beta_create_RouteGuide_stub` function of the `route_guide_pb2` module, generated from our .proto.
 
 ```python
-stub = RouteGuide::Stub.new('localhost', 50051)
+channel = implementations.insecure_channel('localhost', 50051)
+stub = beta_create_RouteGuide_stub(channel)
 ```
 
-The returned object implements all the methods defined by the `EarlyAdopterRouteGuideStub` interface, and is also a [context manager](https://docs.python.org/2/library/stdtypes.html#typecontextmanager). All RPCs invoked on the stub must be invoked within the stub's context, so it is common for stubs to be created and used with a [with statement](https://docs.python.org/2/reference/compound_stmts.html#the-with-statement):
-
-```python
-with route_guide_pb2.early_adopter_create_RouteGuide_stub('localhost', 50051) as stub:
-```
+The returned object implements all the methods defined by the `BetaRouteGuideStub` interface.
 
 ### Calling service methods
 
@@ -272,7 +268,7 @@ feature = stub.GetFeature(point, timeout_in_seconds)
 An asynchronous call to `GetFeature` is similar, but like calling a local method asynchronously in a thread pool:
 
 ```python
-feature_future = stub.GetFeature.async(point, timeout_in_seconds)
+feature_future = stub.GetFeature.future(point, timeout_in_seconds)
 feature = feature_future.result()
 ```
 
@@ -293,7 +289,7 @@ route_summary = stub.RecordRoute(point_sequence, timeout_in_seconds)
 ```
 
 ```python
-route_summary_future = stub.RecordRoute.async(point_sequence, timeout_in_seconds)
+route_summary_future = stub.RecordRoute.future(point_sequence, timeout_in_seconds)
 route_summary = route_summary_future.result()
 ```
 

@@ -173,7 +173,7 @@ In this section, we'll look at creating a PHP client for our `RouteGuide` servic
 To call service methods, we first need to create a client object, an instance of the generated `RouteGuideClient` class. The constructor of the class expects the server address and port we want to connect to:
 
 ```php
-$client = new examples\RouteGuideClient(new Grpc\BaseStub('localhost:50051', []));
+$client = new examples\RouteGuideClient('localhost:50051', []);
 ```
 
 ### Calling service methods
@@ -226,20 +226,19 @@ Now let's look at our streaming methods. Here's where we call the server-side st
 
 The `$call->responses()` method call returns an iterator. When the server sends a response, a `$feature` object will be returned in the `foreach` loop, until the server indiciates that there will be no more responses to be sent.
 
-The client-side streaming method `RecordRoute` is similar, except there we pass the method an iterator and get back a `examples\RouteSummary`.
+The client-side streaming method `RecordRoute` is similar, except that we call `$call->write($point)` for each point we want to write from the client side and get back a `examples\RouteSummary`.
 
 ```php
-  $points_iter = function($db) {
-    for ($i = 0; $i < $num_points; $i++) {
-      $point = new examples\Point();
-      $point->setLatitude($lat);
-      $point->setLongitude($long);
-      yield $point;
-    }
-  };
-  // $points_iter is an iterator simulating client streaming
-  list($route_summary, $status) =
-    $client->RecordRoute($points_iter($db))->wait();
+  $call = $client->RecordRoute();
+
+  for ($i = 0; $i < $num_points; $i++) {
+    $point = new examples\Point();
+    $point->setLatitude($lat);
+    $point->setLongitude($long);
+    $call->write($point);
+  }
+
+  list($route_summary, $status) = $call->wait();
 ```
 
 Finally, let's look at our bidirectional streaming RPC `routeChat()`. In this case, we just pass a context to the method and get back a `BidiStreamingCall` stream object, which we can use to both write and read messages.

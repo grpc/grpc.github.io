@@ -28,13 +28,13 @@ With gRPC we can define our service once in a .proto file and implement clients 
 
 The example code for our tutorial is in [grpc/grpc/examples/node/route_guide](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/node/route_guide). To download the example, clone the `grpc` repository by running the following command:
 
-```
+```sh
 $ git clone https://github.com/grpc/grpc.git
 ```
 
 Then change your current directory to `examples/node/route_guide`:
 
-```
+```sh
 $ cd examples/node/route_guide
 ```
 
@@ -108,7 +108,7 @@ The Node.js library dynamically generates service descriptors and client stub de
 
 To load a `.proto` file, simply `require` the gRPC library, then use its `load()` method:
 
-```
+```js
 var grpc = require('grpc');
 var protoDescriptor = grpc.load(__dirname + '/route_guide.proto');
 // The protoDescriptor object has the full package hierarchy
@@ -132,14 +132,14 @@ You can find our example `RouteGuide` server in [examples/node/route_guide/route
 
 As you can see, our server has a `Server` constructor generated from the `RouteGuide.service` descriptor object
 
-```
+```js
 var Server = grpc.buildServer([examples.RouteGuide.service]);
 ```
 In this case we're implementing the *asynchronous* version of `RouteGuide`, which provides our default gRPC server behaviour.
 
 The functions in `route_guide_server.js` implement all our service methods. Let's look at the simplest type first, `getFeature`, which just gets a `Point` from the client and returns the corresponding feature information from its database in a `Feature`.
 
-```
+```js
 function checkFeature(point) {
   var feature;
   // Check if there is already a feature object for the given point
@@ -166,7 +166,7 @@ The method is passed a call object for the RPC, which has the `Point` parameter 
 
 Now let's look at something a bit more complicated - a streaming RPC. `listFeatures` is a server-side streaming RPC, so we need to send back multiple `Feature`s to our client.
 
-```
+```js
 function listFeatures(call) {
   var lo = call.request.lo;
   var hi = call.request.hi;
@@ -194,7 +194,7 @@ As you can see, instead of getting the call object and callback in our method pa
 
 If you look at the client-side streaming method `RecordRoute` you'll see it's quite similar to the unary call, except this time the `call` parameter implements the `Reader` interface. The `call`'s `'data'` event fires every time there is new data, and the `'end'` event fires when all data has been read. Like the unary case, we respond by calling the callback
 
-```
+```js
 call.on('data', function(point) {
   // Process user data
 });
@@ -205,7 +205,7 @@ call.on('end', function() {
 
 Finally, let's look at our bidirectional streaming RPC `RouteChat()`.
 
-```
+```js
 function routeChat(call) {
   call.on('data', function(note) {
     var key = pointKey(note.location);
@@ -233,19 +233,19 @@ This time we get a `call` implementing `Duplex` that can be used to read *and* w
 
 Once we've implemented all our methods, we also need to start up a gRPC server so that clients can actually use our service. The following snippet shows how we do this for our `RouteGuide` service:
 
-```
+```js
 function getServer() {
-  return new Server({
-    'examples.RouteGuide' : {
-      getFeature: getFeature,
-      listFeatures: listFeatures,
-      recordRoute: recordRoute,
-      routeChat: routeChat
-    }
+  var server = new grpc.Server();
+  server.addProtoService(routeguide.RouteGuide.service, {
+    getFeature: getFeature,
+    listFeatures: listFeatures,
+    recordRoute: recordRoute,
+    routeChat: routeChat
   });
+  return server;
 }
 var routeServer = getServer();
-routeServer.bind('0.0.0.0:50051');
+routeServer.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
 routeServer.listen();
 ```
 
@@ -266,8 +266,8 @@ In this section, we'll look at creating a Node.js client for our `RouteGuide` se
 
 To call service methods, we first need to create a *stub*. To do this, we just need to call the RouteGuide stub constructor, specifying the server address and port.
 
-```
-new example.RouteGuide('localhost:50051');
+```js
+new example.RouteGuide('localhost:50051', grpc.Credentials.createInsecure());
 ```
 
 ### Calling service methods
@@ -278,7 +278,7 @@ Now let's look at how we call our service methods. Note that all of these method
 
 Calling the simple RPC `GetFeature` is nearly as straightforward as calling a local asynchronous method.
 
-```
+```js
 var point = {latitude: 409146138, longitude: -746188906};
 stub.getFeature(point, function(err, feature) {
   if (err) {
@@ -291,7 +291,7 @@ stub.getFeature(point, function(err, feature) {
 
 As you can see, we create and populate a request object. Finally, we call the method on the stub, passing it the request and callback. If there is no error, then we can read the response information from the server from our response object.
 
-```
+```js
       console.log('Found feature called "' + feature.name + '" at ' +
           feature.location.latitude/COORD_FACTOR + ', ' +
           feature.location.longitude/COORD_FACTOR);
@@ -301,7 +301,7 @@ As you can see, we create and populate a request object. Finally, we call the me
 
 Now let's look at our streaming methods. If you've already read [Creating the server](#server) some of this may look very familiar - streaming RPCs are implemented in a similar way on both sides. Here's where we call the server-side streaming method `ListFeatures`, which returns a stream of geographical `Feature`s:
 
-```
+```js
 var call = client.listFeatures(rectangle);
   call.on('data', function(feature) {
       console.log('Found feature called "' + feature.name + '" at ' +
@@ -320,7 +320,7 @@ Instead of passing the method a request and callback, we pass it a request and g
 
 The client-side streaming method `RecordRoute` is similar, except there we pass the method a callback and get back a `Writable`.
 
-```
+```js
     var call = client.recordRoute(function(error, stats) {
       if (error) {
         callback(error);
@@ -356,7 +356,7 @@ Once we've finished writing our client's requests to the stream using `write()`,
 
 Finally, let's look at our bidirectional streaming RPC `routeChat()`. In this case, we just pass a context to the method and get back a `Duplex` stream object, which we can use to both write and read messages.
 
-```
+```js
 var call = client.routeChat();
 ```
 
@@ -366,16 +366,16 @@ The syntax for reading and writing here is exactly the same as for our client-st
 
 Build client and server:
 
-```
+```sh
 $ npm install
 ```
 Run the server, which will listen on port 50051:
 
-```
+```sh
 $ node ./route_guide_server.js
 ```
 Run the client (in a different terminal):
 
-```
+```sh
 $ node ./route_guide_client.js
 ```
