@@ -20,7 +20,7 @@ To get up and running with gRPC straight away, see the quick start for your chos
 * [C++](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/cpp)
 * [Java](https://github.com/grpc/grpc-java/tree/master/examples)
 * [Go](https://github.com/grpc/grpc-go/tree/master/examples)
-* [Python](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld)
+* [Python](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/python)
 * [Ruby](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/ruby)
 * [Node.js](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/node)
 * [Android Java](https://github.com/grpc/grpc-java/tree/master/examples/android)
