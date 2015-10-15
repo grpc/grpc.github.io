@@ -1,34 +1,39 @@
+---
+# Front matter comment to ensure Jekyll properly reads file.
+---
+
+
 @import url("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css");
 
 // Colors
-@mainBrandColor: #2DA6B0;
-@secondBrandColor: #197E8B;
-@thirdBrandColor: #E7F3F4;
-@inverseBrandColor: #FFFFFF;
+$mainBrandColor: #2DA6B0;
+$secondBrandColor: #197E8B;
+$thirdBrandColor: #E7F3F4;
+$inverseBrandColor: #FFFFFF;
 
-@linkColor: @mainBrandColor;
-@linkHoverColor: darken(@linkColor, 10%);
-@codeColor: darken(@linkColor, 20%);
-@codeBkColor: #ebfaf8;
-@wellColor: #F9F9F9;
-@textColor: #6F7E81;
-@headingsColor: rgb(21, 91, 103);
+$linkColor: $mainBrandColor;
+$linkHoverColor: darken($linkColor, 10%);
+$codeColor: darken($linkColor, 20%);
+$codeBkColor: #ebfaf8;
+$wellColor: #F9F9F9;
+$textColor: #6F7E81;
+$headingsColor: rgb(21, 91, 103);
 
 // Helper vars
-@vpad: 20px;
+$vpad: 20px;
 
 // Override Bootstrap defaults
 body {
-    color: @textColor;
+    color: $textColor;
     font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: @mainBrandColor;
+  color: $mainBrandColor;
 }
 a:hover,
 a:focus {
-  color: @linkHoverColor;
+  color: $linkHoverColor;
 }
 a.external:after {
     content: "▸"
@@ -39,28 +44,28 @@ a.disabled {
 
 
 h1, h2, h3, h4, h5, h6 {
-    color: @headingsColor;
+    color: $headingsColor;
 }
 
 p, li {line-height: 22px;}
 
 p.note {
-    background-color: @thirdBrandColor;
+    background-color: $thirdBrandColor;
     padding: 9.5px;
 }
 
 p.note code {
-   background-color: @thirdBrandColor !important;
+   background-color: $thirdBrandColor !important;
 }
 
 code {
-    color: @codeColor;
-    background-color: @inverseBrandColor;
+    color: $codeColor;
+    background-color: $inverseBrandColor;
     font-size: 14px;
 }
 
 pre, pre.prettyprint {
-    background-color: @codeBkColor;
+    background-color: $codeBkColor;
     color: #000000;
     border: none !important;
     font-size: 14px !important;
@@ -71,53 +76,53 @@ pre, pre.prettyprint {
 .ui-widget-content {
   font-size:14px !important;
   font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-  color: @textColor !important;
+  color: $textColor !important;
 }
 
 .ui-widget-content a {
-  color: @mainBrandColor !important;
+  color: $mainBrandColor !important;
 }
 
 .ui-widget-content a:hover, a:focus {
-  color: @linkHoverColor !important;
+  color: $linkHoverColor !important;
 }
 
 
 // Tables are table-y
 table, th, td {
-   border: 1px solid lighten(@textColor, 20%);
+   border: 1px solid lighten($textColor, 20%);
    padding: 6px
 }
 
 th {
-  background-color: @thirdBrandColor;
+  background-color: $thirdBrandColor;
 }
 
 // Fix Bootstrap mobile menu colors on inverse navbar.
 .navbar-toggle .icon-bar {
-  background-color: @inverseBrandColor;
+  background-color: $inverseBrandColor;
 }
 
 // Shared
 .vpad {
-    padding-top: @vpad;
+    padding-top: $vpad;
 }
 
 
 .inverse {
-    background-color: @mainBrandColor;
+    background-color: $mainBrandColor;
     color: white;
 
     &.inverse-light {
-        background-color: @thirdBrandColor;
+        background-color: $thirdBrandColor;
     }
 
     a {
-      color: @inverseBrandColor;
+      color: $inverseBrandColor;
     }
     a:hover,
     a:focus {
-      color: @linkHoverColor;
+      color: $linkHoverColor;
     }
 }
 
@@ -138,7 +143,7 @@ th {
 
 .hero-bar {
     text-align: center;
-    background-color: @thirdBrandColor;
+    background-color: $thirdBrandColor;
     padding-bottom: 10px;
     padding-top: 20px;
     margin-bottom: 20px;
@@ -146,12 +151,12 @@ th {
 }
 
 .page-title-bar{
-    background-color: @thirdBrandColor;
+    background-color: $thirdBrandColor;
     padding-top: 20px;
     padding-bottom: 30px;
 
     h1, h2, h3, h4, h5, h6 {
-        color: @mainBrandColor;
+        color: $mainBrandColor;
     }
 }
 
@@ -161,7 +166,7 @@ th {
 
 #common-nav{
     margin-bottom: 0px;
-    background-color: @secondBrandColor;
+    background-color: $secondBrandColor;
 
     .logo {
         width: 60px;
@@ -208,7 +213,7 @@ h4.arrow-d::before {
 }
 
 #toc {
-    border-left: 5px solid @secondBrandColor;
+    border-left: 5px solid $secondBrandColor;
     ul {
         list-style-type: none;
         padding-left: 22px;

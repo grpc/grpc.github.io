@@ -3,3 +3,6 @@ markdown:
 
 redcarpet:
   extensions: ["highlight", "with_toc_data", "tables"]
+
+sass:
+  style: compressed
