@@ -239,6 +239,10 @@ body.faq {
 body.postslist{
     .posts-side-nav {
         margin-top: 20px;
+
+        li {
+            margin-bottom: 10px;
+        }
     }
 
     article.post {
