@@ -10,6 +10,8 @@ $mainBrandColor: #2DA6B0;
 $secondBrandColor: #197E8B;
 $thirdBrandColor: #E7F3F4;
 $inverseBrandColor: #FFFFFF;
+// Use as an accent color in small quantities to balance out the main theme.
+$popBrandColor: hsl(3, 90%, 75%);
 
 $linkColor: $mainBrandColor;
 $linkHoverColor: darken($linkColor, 10%);
@@ -148,15 +150,21 @@ th {
     padding-top: 20px;
     margin-bottom: 20px;
     font-weight: bold;
+    border-top: 3px solid lighten($popBrandColor, 15%);
 }
 
 .page-title-bar{
     background-color: $thirdBrandColor;
+    border-top: 3px solid lighten($popBrandColor, 15%);
     padding-top: 20px;
     padding-bottom: 30px;
 
     h1, h2, h3, h4, h5, h6 {
         color: $mainBrandColor;
+    }
+
+    .fa {
+        color: $popBrandColor;
     }
 }
 
