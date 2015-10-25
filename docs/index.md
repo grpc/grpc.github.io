@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Documentation
+icon: <i class="fa fa-book"></i>
 ---
 
 <h1>Getting started</h1>
