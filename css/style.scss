@@ -21,6 +21,7 @@ $codeBkColor: #ebfaf8;
 $wellColor: #F9F9F9;
 $textColor: #6F7E81;
 $headingsColor: rgb(21, 91, 103);
+$footerColor: lighten($thirdBrandColor, 4%);
 
 // Helper vars
 $vpad: 20px;
@@ -191,6 +192,13 @@ h4.arrow-d, h4.arrow-r {
     }
 }
 
+.footer{
+    background-color: $footerColor;
+    box-shadow: 0px 500px 0px 500px $footerColor;
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
 // Expandy nav items
 h4.arrow-r::before {
     content: "+ ";
@@ -248,6 +256,10 @@ body.faq {
 body.postslist{
     .posts-side-nav {
         margin-top: 20px;
+
+        li {
+            margin-bottom: 10px;
+        }
     }
 
     article.post {
