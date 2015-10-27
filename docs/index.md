@@ -227,10 +227,12 @@ $ git clone https://github.com/grpc/grpc.git
 <p>Open <code>Greeter.sln</code> from Visual Studio (or Monodevelop on Linux). See the <a href="/docs/installation/csharp.html">C# Quickstart</a> for platform-specific setup.</p>
   </div>
 <div id="objective-c_source">
-<p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
+<p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following commands:</p>
 
 <pre>
 $ git clone https://github.com/grpc/grpc.git
+$ cd grpc
+$ git submodule update --init
 </pre>
 
 <p>Change your current directory to <code>examples/objective-c/helloworld</code>.</p>
@@ -908,14 +910,18 @@ var client = Greeter.NewClient(channel);
   </div>
   <div id="objective-c_connect">
 
-```
-#import <HelloWorld/Helloworld.pbrpc.h>
-
-static NSString * const kHostAddress = @"http://localhost:50051";
-HLWGreeter *client = [[HLWGreeter alloc] initWithHost:kHostAddress];
-```
-
 In Objective-C, we can do this in a single step using our generated `HLWGreeter` class's designated initializer, which expects a `NSString *` with the server address and port.
+
+<pre>
+#import <GRPCClient/GRPCCall+Tests.h>
+...
+static NSString * const kHostAddress = @"localhost:50051";
+...
+[GRPCCall useInsecureConnectionsForHost:kHostAddress];
+HLWGreeter *client = [[HLWGreeter alloc] initWithHost:kHostAddress];
+</pre>
+
+Notice the call to `useInsecureConnectionsForHost:`, which tells the gRPC library to use cleartext (instead of TLS-encrypted connections) when communicating with the given host:port pair. 
 
   </div>
   <div id="php_connect">
@@ -1012,11 +1018,12 @@ Console.WriteLine("Greeting: " + reply.Message);</pre>
 
   </div>
   <div id="objective-c_call">
-<pre>    HLWHelloRequest *request = [HLWHelloRequest message];
-    request.name = @"Objective-C";
-    [client sayHelloWithRequest:request handler:^(HLWHelloReply *response, NSError *error) {
-      NSLog(@"%@", response.message);
-    }];</pre>
+<pre>
+HLWHelloRequest *request = [HLWHelloRequest message];
+request.name = @"Objective-C";
+[client sayHelloWithRequest:request handler:^(HLWHelloReply *response, NSError *error) {
+  NSLog(@"%@", response.message);
+}];</pre>
 <p>You can see the complete example code in <a href="https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/objective-c/helloworld">examples/objective-c/helloworld</a>.</p>
 
   </div>
