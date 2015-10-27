@@ -97,7 +97,7 @@ _before_ starting the network request. First let's look at how to create the RPC
 Assume you have a proto service definition like this:
 
 ```protobuf
-option objc&#95;class&#95;prefix = "AUTH";
+option objc_class_prefix = "AUTH";
 
 service TestService {
   rpc UnaryCall(Request) returns (Response);
@@ -133,59 +133,58 @@ You can start the RPC represented by this object at any later time like this:
 <a name="request-metadata"></a>
 ## Setting request metadata: Auth header with an access token
 
-Now let's look at how to configure some settings on the RPC object. The `ProtoRPC` class has a `requestMetadata` property (inherited from `GRPCCall`) defined like this:
+Now let's look at how to configure some settings on the RPC object. The `ProtoRPC` class has a `requestHeaders`
+property (inherited from `GRPCCall`) defined like this:
 
 ```objective-c
-- (NSMutableDictionary *)requestMetadata; // nonatomic
-- (void)setRequestMetadata:(NSDictionary *)requestMetadata; // nonatomic, copy
+@property(atomic, readonly) id<GRPCRequestHeaders> requestHeaders
 ```
 
-Setting it to a dictionary of metadata keys and values means this metadata will be sent on the wire when the call
+You can think of the `GRPCRequestHeaders` protocol as equivalent to the `NSMutableDictionary` class. Setting
+elements of this dictionary of metadata keys and values means this metadata will be sent on the wire when the call
 is started. gRPC metadata are pieces of information about the call sent by the client to the server
 (and vice versa). They take the form of key-value pairs and are essentially opaque to gRPC itself.
-
-```objective-c
-call.requestMetadata = @{@"My-Header": @"Value for this header",
-                         @"Another-Header": @"Its value"};
-```
 
 For convenience, the property is initialized with an empty `NSMutableDictionary`, so that request
 metadata elements can be set like this:
 
 ```objective-c
-call.requestMetadata[@"My-Header"] = @"Value for this header";
+call.requestHeaders[@"My-Header"] = @"Value for this header";
+call.requestHeaders[@"Another-Header"] = @"Its value";
 ```
 
 A typical use of metadata is for authentication details, as in our example. If you have an access token, OAuth2 specifies it is to be sent in this format:
 
 ```objective-c
-call.requestMetadata[@"Authorization"] = [@"Bearer " stringByAppendingString:accessToken];
+call.requestHeaders[@"Authorization"] = [@"Bearer " stringByAppendingString:accessToken];
 ```
 
 <a name="response-metadata"></a>
 ## Getting response metadata: Auth challenge header
 
-The `ProtoRPC` class also inherits a `responseMetadata` property, analogous to the request metadata
-we just looked at but sent back by the server to the client. It's defined like this:
+The `ProtoRPC` class also inherits a pair of properties, `responseHeaders` and `responseTrailers`, analogous to the
+request metadata we just looked at but sent back by the server to the client. They are defined like this:
 
 ```objective-c
-@property(atomic, readonly) NSDictionary *responseMetadata;
+@property(atomic, readonly) NSDictionary *responseHeaders;
+@property(atomic, readonly) NSDictionary *responseTrailers;
 ```
 
-In OAuth2, if there's an authentication error the server will send back a challenge header. This is returned in the RPC's response metadata. To access this, as in our example's error-handling code, you write:
+In OAuth2, if there's an authentication error the server will send back a challenge header. This is returned in the RPC's response headers. To access this, as in our example's error-handling code, you write:
 
 ```objective-c
-call.responseMetadata[@"www-authenticate"]
+call.responseHeaders[@"www-authenticate"]
 ```
 
 Note that, as gRPC metadata elements are mapped to HTTP/2 headers (or trailers), the keys of the
 response metadata are always ASCII strings in lowercase.
 
 Many uses cases of response metadata involve getting more details about an RPC error. For convenience,
-when a `NSError` instance is passed to an RPC handler block, the response metadata dictionary can
+when a `NSError` instance is passed to an RPC handler block, the response headers and trailers dictionaries can
 also be accessed this way:
 
 ```objective-c
-error.userInfo[kGRPCStatusMetadataKey]
+error.userInfo[kGRPCHeadersKey] == call.responseHeaders
+error.userInfo[kGRPCTrailersKey] == call.responseTrailers
 ```
 
