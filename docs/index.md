@@ -115,7 +115,7 @@ to the [next step](#servicedef).
 
 #### Install Git
 
-You can download and install Git from http://git-scm.com/download. Once
+You can download and install Git from [http://git-scm.com/download](http://git-scm.com/download). Once
 installed you should have access to the git command line tool. The main
 commands that you will need to use are:
 
