@@ -23,10 +23,12 @@ and are familiar with OAuth2 concepts like _access token_.
 ## Example code and setup
 
 The example code for our tutorial is in [gprc/examples/objective-c/auth_sample](https://github.com/grpc/grpc/tree/master/examples/objective-c/auth_sample).
-To download the example, clone this repository by running the following command:
+To download the example, clone this repository by running the following commands:
 
 ```
 $ git clone https://github.com/grpc/grpc.git
+$ cd grpc
+$ git submodule update --init
 ```
 
 Then change your current directory to `examples/objective-c/auth_sample`:
