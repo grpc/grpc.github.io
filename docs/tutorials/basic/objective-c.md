@@ -173,25 +173,28 @@ You can also use the provided Podspec file to generate client code from any othe
 
 
 <a name="client"></a>
-## Creating the client
+## Creating the client application
 
 In this section, we'll look at creating an Objective-C client for our `RouteGuide` service. You can see our complete example client code in [examples/objective-c/route_guide/ViewControllers.m](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/objective-c/route_guide/ViewControllers.m). (Note: In your apps, for maintainability and readability reasons, you shouldn't put all of your view controllers in a single file; it's done here only to simplify the learning process).
 
-### Constructing a client object
+### Constructing a service object
 
-To call service methods, we first need to create a client object, an instance of the generated `RTGRouteGuide` class. The designated initializer of the class expects a `NSString *` with the server address and port we want to connect to:
+To call service methods, we first need to create a service object, an instance of the generated `RTGRouteGuide` class. The designated initializer of the class expects a `NSString *` with the server address and port we want to connect to:
 
 ```objective-c
+#import <GRPCClient/GRPCCall+Tests.h>
 #import <RouteGuide/RouteGuide.pbrpc.h>
 
-static NSString * const kHostAddress = @"http://localhost:50051";
+static NSString * const kHostAddress = @"localhost:50051";
 
 ...
 
-RTGRouteGuide *client = [[RTGRouteGuide alloc] initWithHost:kHostAddress];
+[GRPCCall useInsecureConnectionsForHost:kHostAddress];
+
+RTGRouteGuide *service = [[RTGRouteGuide alloc] initWithHost:kHostAddress];
 ```
 
-Notice that we've specified the HTTP scheme in the host address. This is because the server we will be using to test our client doesn't use [TLS](http://en.wikipedia.org/wiki/Transport_Layer_Security). This is fine because it will be running locally on our development machine. The most common case, though, is connecting with a gRPC server on the internet, running gRPC over TLS. For that case, the HTTPS scheme can be specified (or no scheme at all, as HTTPS is the default value). The default value of the port is that of the scheme selected: 443 for HTTPS and 80 for HTTP.
+Notice that before constructing our service object we've told the gRPC library to use insecure connections for that host:port pair. This is because the server we will be using to test our client doesn't use [TLS](http://en.wikipedia.org/wiki/Transport_Layer_Security). This is fine because it will be running locally on our development machine. The most common case, though, is connecting with a gRPC server on the internet, running gRPC over TLS. For that case, the `useInsecureConnectionsForHost:` call isn't needed, and the port defaults to 443 if absent.
 
 
 ### Calling service methods
@@ -200,14 +203,14 @@ Now let's look at how we call our service methods. As you will see, all these me
 
 #### Simple RPC
 
-Calling the simple RPC `GetFeature` is nearly as straightforward as calling any other asynchronous method on Cocoa.
+Calling the simple RPC `GetFeature` is as straightforward as calling any other asynchronous method on Cocoa.
 
 ```objective-c
 RTGPoint *point = [RTGPoint message];
 point.latitude = 40E7;
 point.longitude = -74E7;
 
-[client getFeatureWithRequest:point handler:^(RTGFeature *response, NSError *error) {
+[service getFeatureWithRequest:point handler:^(RTGFeature *response, NSError *error) {
   if (response) {
     // Successful response received
   } else {
@@ -216,7 +219,7 @@ point.longitude = -74E7;
 }];
 ```
 
-As you can see, we create and populate a request protocol buffer object (in our case `RTGPoint`). Then, we call the method on the client object, passing it the request, and a block to handle the response (or any RPC error). If the RPC finishes successfully, the handler block is called with a `nil` error argument, and we can read the response information from the server from the response argument. If, instead, some RPC error happens, the handler block is called with a `nil` response argument, and we can read the details of the problem from the error argument.
+As you can see, we create and populate a request protocol buffer object (in our case `RTGPoint`). Then, we call the method on the service object, passing it the request, and a block to handle the response (or any RPC error). If the RPC finishes successfully, the handler block is called with a `nil` error argument, and we can read the response information from the server from the response argument. If, instead, some RPC error happens, the handler block is called with a `nil` response argument, and we can read the details of the problem from the error argument.
 
 ```objective-c
 NSLog(@"Found feature called %@ at %@.", response.name, response.location);
@@ -224,10 +227,10 @@ NSLog(@"Found feature called %@ at %@.", response.name, response.location);
 
 #### Streaming RPCs
 
-Now let's look at our streaming methods. Here's where we call the response-streaming method `ListFeatures`, which results in our client receiving a stream of geographical `RTGFeature`s:
+Now let's look at our streaming methods. Here's where we call the response-streaming method `ListFeatures`, which results in our client app receiving a stream of geographical `RTGFeature`s:
 
 ```objective-c
-[client listFeaturesWithRequest:rectangle handler:^(BOOL done, RTGFeature *response, NSError *error) {
+[service listFeaturesWithRequest:rectangle handler:^(BOOL done, RTGFeature *response, NSError *error) {
   if (response) {
     // Element of the stream of responses received
   } else if (error) {
@@ -259,7 +262,7 @@ point.longitude = -74E7;
 
 GRXWriter *locationsWriter = [GRXWriter writerWithContainer:@[point1, point2]];
 
-[client recordRouteWithRequestsWriter:locationsWriter handler:^(RTGRouteSummary *response, NSError *error) {
+[service recordRouteWithRequestsWriter:locationsWriter handler:^(RTGRouteSummary *response, NSError *error) {
   if (response) {
     NSLog(@"Finished trip with %i points", response.pointCount);
     NSLog(@"Passed %i features", response.featureCount);
@@ -277,7 +280,7 @@ The `GRXWriter` protocol is generic enough to allow for asynchronous streams, st
 Finally, let's look at our bidirectional streaming RPC `RouteChat()`. The way to call a bidirectional streaming RPC is just a combination of how to call request-streaming RPCs and response-streaming RPCs.
 
 ```objective-c
-[client routeChatWithRequestsWriter:notesWriter handler:^(BOOL done, RTGRouteNote *note, NSError *error) {
+[service routeChatWithRequestsWriter:notesWriter handler:^(BOOL done, RTGRouteNote *note, NSError *error) {
   if (note) {
     NSLog(@"Got message %@ at %@", note.message, note.location);
   } else if (error) {
