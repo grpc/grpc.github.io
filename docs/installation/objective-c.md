@@ -17,11 +17,13 @@ Here's how to build and run the Objective-C implementation of the [Hello World](
 
 The example code for this and our other examples lives in the `examples`
 directory. Clone this repository to your local machine by running the
-following command:
+following commands:
 
 
 ````
 $ git clone https://github.com/grpc/grpc.git
+$ cd grpc
+$ git submodule update --init
 ```
 
 Change your current directory to `examples/objective-c/helloworld`
