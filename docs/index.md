@@ -468,7 +468,7 @@ You can then open the XCode workspace created by Cocoapods to see the generated 
 </div>
 
   <div id="php_generate">
-gRPC PHP uses the [protoc-gen-php](https://github.com/datto/protobuf-php) tool to generate code from .proto files. You can find out how to install this in the [PHP Quickstart](/docs/installation/php.html). To generate the code for our Greeter service, run:
+gRPC PHP uses the [protoc-gen-php](https://github.com/datto/protobuf-php) tool to generate code from .proto files. You can find out how to install this in the [PHP Quickstart](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/src/php). To generate the code for our Greeter service, run:
 
 ```
 protoc-gen-php -i . -o . ./helloworld.proto
