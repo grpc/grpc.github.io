@@ -438,7 +438,7 @@ Normally you would need to add the `Grpc.Tools` package to the solution yourself
 - On Linux or OS X, we rely on `protoc` and `grpc_csharp_plugin` being installed by Linuxbrew/Homebrew. Run this command from the route_guide directory:
 
   ```
-  $ protoc -I../../protos --csharp_out Greeter --grpc_out Greeter --plugin=`which grpc_csharp_plugin` ../../protos/helloworld.proto
+  $ protoc -I../../protos --csharp_out Greeter --grpc_out Greeter --plugin=protoc-gen-grpc=`which grpc_csharp_plugin` ../../protos/helloworld.proto
   ```
 
 Running the appropriate command for your OS regenerates the following files in the Greeter directory:
