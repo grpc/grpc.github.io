@@ -127,7 +127,7 @@ var client = new Greeter.GreeterClient(channel);
 ...
 
 // With server authentication SSL/TLS
-var channelCredentials = new SslCredentials(File.ReadAllText("roots.pem"));  // Load a CA file
+var channelCredentials = new SslCredentials(File.ReadAllText("roots.pem"));  // Load a custom roots file.
 var channel = new Channel("myservice.example.com", channelCredentials);
 var client = new Greeter.GreeterClient(channel);
 ```
