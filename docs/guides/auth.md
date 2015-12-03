@@ -180,7 +180,7 @@ var client = new Greeter.GreeterClient(channel);
 ...
 ```
 
-**Authenticating with Google (recommended approach using JWT access token)**
+**Authenticate using JWT access token (recommended approach)**
 ```csharp
 using Grpc.Auth;  // from Grpc.Auth NuGet package
 ...
@@ -192,7 +192,7 @@ var client = new Greeter.GreeterClient(channel);
 ...
 ```
 
-**Authenticating with Google (legacy approach using OAuth2)**
+**Authenticate using OAuth2 token (legacy approach)**
 ```csharp
 using Grpc.Auth;  // from Grpc.Auth NuGet package
 ...
@@ -207,7 +207,7 @@ var client = new Greeter.GreeterClient(channel);
 ...
 ```
 
-**Authenticating a single RPC call with Google**
+**Authenticate a single RPC call**
 ```csharp
 var channel = new Channel("greeter.googleapis.com", new SslCredentials());  // Use publicly trusted roots.
 var client = new Greeter.GreeterClient(channel);
