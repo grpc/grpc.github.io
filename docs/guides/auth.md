@@ -173,13 +173,15 @@ var scope = 'https://www.googleapis.com/auth/grpc-testing';
 
 ###Authenticating with Google (C#)
 
+**Base case - No encryption/authentication**
 ```csharp
-// Base case - No encryption/authentication
 var channel = new Channel("localhost:50051", ChannelCredentials.Insecure);
 var client = new Greeter.GreeterClient(channel);
 ...
+```
 
-// Authenticating with Google (recommended approach using JWT access token)
+**Authenticating with Google (recommended approach using JWT access token)**
+```csharp
 using Grpc.Auth;  // from Grpc.Auth NuGet package
 ...
 // Loads Google Application Default Credentials with publicly trusted roots.
@@ -188,8 +190,10 @@ var channelCredentials = await GoogleGrpcCredentials.GetApplicationDefaultAsync(
 var channel = new Channel("greeter.googleapis.com", channelCredentials);
 var client = new Greeter.GreeterClient(channel);
 ...
+```
 
-// Authenticating with Google (legacy approach using OAuth2)
+**Authenticating with Google (legacy approach using OAuth2)**
+```csharp
 using Grpc.Auth;  // from Grpc.Auth NuGet package
 ...
 string scope = "https://www.googleapis.com/auth/grpc-testing";
@@ -201,8 +205,10 @@ if (googleCredential.IsCreateScopedRequired)
 var channel = new Channel("greeter.googleapis.com", googleCredential.ToChannelCredentials());
 var client = new Greeter.GreeterClient(channel);
 ...
+```
 
-// Authenticating a single RPC call with Google
+**Authenticating a single RPC call with Google**
+```csharp
 var channel = new Channel("greeter.googleapis.com", new SslCredentials());  // Use publicly trusted roots.
 var client = new Greeter.GreeterClient(channel);
 ...
