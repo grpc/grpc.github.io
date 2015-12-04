@@ -297,8 +297,8 @@ To call service methods, we first need to create a *stub*.
 First, we need to create a gRPC client channel that will connect to gRPC server. Then, we use the `RouteGuide.NewClient` method of the `RouteGuide` class generated from our .proto.
 
 ```csharp
-Channel channel = new Channel("127.0.0.1:50052", Credentials.Insecure)
-var client = new RouteGuideClient(RouteGuide.NewClient(channel));
+Channel channel = new Channel("127.0.0.1:50052", ChannelCredentials.Insecure)
+var client = RouteGuide.NewClient(channel);
 
 // YOUR CODE GOES HERE
 

@@ -122,13 +122,13 @@ stub = Helloworld::Greeter::Stub.new('localhost:50051', creds: creds)
 
 ```csharp
 // Base case - No encryption/authentication
-var channel = new Channel("localhost:50051", Credentials.Insecure);
+var channel = new Channel("localhost:50051", ChannelCredentials.Insecure);
 var client = new Greeter.GreeterClient(channel);
 ...
 
 // With server authentication SSL/TLS
-var credentials = new SslCredentials(File.ReadAllText("ca.pem"));  // Load a CA file
-var channel = new Channel("localhost:50051", credentials);
+var channelCredentials = new SslCredentials(File.ReadAllText("roots.pem"));  // Load a custom roots file.
+var channel = new Channel("myservice.example.com", channelCredentials);
 var client = new Greeter.GreeterClient(channel);
 ```
 
@@ -173,28 +173,49 @@ var scope = 'https://www.googleapis.com/auth/grpc-testing';
 
 ###Authenticating with Google (C#)
 
+**Base case - No encryption/authentication**
 ```csharp
-// Base case - No encryption/authentication
-var channel = new Channel("localhost:50051", Credentials.Insecure);
+var channel = new Channel("localhost:50051", ChannelCredentials.Insecure);
 var client = new Greeter.GreeterClient(channel);
 ...
+```
 
-// Authenticating with Google
+**Authenticate using JWT access token (recommended approach)**
+```csharp
 using Grpc.Auth;  // from Grpc.Auth NuGet package
 ...
-var sslCredentials = new SslCredentials();  // Loads publicly trusted roots.
-var channel = new Channel("greeter.googleapis.com", sslCredentials);
+// Loads Google Application Default Credentials with publicly trusted roots.
+var channelCredentials = await GoogleGrpcCredentials.GetApplicationDefaultAsync();  
 
+var channel = new Channel("greeter.googleapis.com", channelCredentials);
+var client = new Greeter.GreeterClient(channel);
+...
+```
+
+**Authenticate using OAuth2 token (legacy approach)**
+```csharp
+using Grpc.Auth;  // from Grpc.Auth NuGet package
+...
 string scope = "https://www.googleapis.com/auth/grpc-testing";
 var googleCredential = await GoogleCredential.GetApplicationDefaultAsync();
 if (googleCredential.IsCreateScopedRequired)
 {
     googleCredential = googleCredential.CreateScoped(new[] { scope });
 }
-
+var channel = new Channel("greeter.googleapis.com", googleCredential.ToChannelCredentials());
 var client = new Greeter.GreeterClient(channel);
-// Auth headers will be added to each call made by this client
-client.HeaderInterceptor = AuthInterceptors.FromCredential(googleCredential);
+...
+```
+
+**Authenticate a single RPC call**
+```csharp
+var channel = new Channel("greeter.googleapis.com", new SslCredentials());  // Use publicly trusted roots.
+var client = new Greeter.GreeterClient(channel);
+...
+var googleCredential = await GoogleCredential.GetApplicationDefaultAsync();
+var result = client.SayHello(request, new CallOptions(credentials: googleCredential.ToCallCredentials()));
+...
+
 ```
 
 ###Authenticating with Google (PHP)
