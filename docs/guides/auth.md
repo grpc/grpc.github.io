@@ -173,14 +173,14 @@ var scope = 'https://www.googleapis.com/auth/grpc-testing';
 
 ###Authenticating with Google (C#)
 
-**Base case - No encryption/authentication**
+####Base case - No encryption/authentication
 ```csharp
 var channel = new Channel("localhost:50051", ChannelCredentials.Insecure);
 var client = new Greeter.GreeterClient(channel);
 ...
 ```
 
-**Authenticate using JWT access token (recommended approach)**
+####Authenticate using JWT access token (recommended approach)
 ```csharp
 using Grpc.Auth;  // from Grpc.Auth NuGet package
 ...
@@ -192,7 +192,7 @@ var client = new Greeter.GreeterClient(channel);
 ...
 ```
 
-**Authenticate using OAuth2 token (legacy approach)**
+####Authenticate using OAuth2 token (legacy approach)
 ```csharp
 using Grpc.Auth;  // from Grpc.Auth NuGet package
 ...
@@ -207,7 +207,7 @@ var client = new Greeter.GreeterClient(channel);
 ...
 ```
 
-**Authenticate a single RPC call**
+####Authenticate a single RPC call
 ```csharp
 var channel = new Channel("greeter.googleapis.com", new SslCredentials());  // Use publicly trusted roots.
 var client = new Greeter.GreeterClient(channel);
