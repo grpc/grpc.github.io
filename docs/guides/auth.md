@@ -152,22 +152,40 @@ stub = Helloworld::Greeter::Stub.new('localhost:50051',
 
 ###Authenticating with Google (Node.js)
 
+####Base case - No encryption/authentication
+
+```js
+var stub = new helloworld.Greeter('localhost:50051', grpc.credentials.createInsecure());
 ```
-// Base case - No encryption/authorization
-var stub = new helloworld.Greeter('localhost:50051');
-...
+
+####Authenticate using JWT access token (recommended approach)
+
+```js
 // Authenticating with Google
 var GoogleAuth = require('google-auth-library'); // from https://www.npmjs.com/package/google-auth-library
 ...
-var creds = grpc.Credentials.createSsl(load_certs); // load_certs typically loads a CA roots file
+var ssl_creds = grpc.credentials.createSsl(root_certs);
+(new GoogleAuth()).getApplicationDefault(function(err, auth) {
+  var call_creds = grpc.credentials.createFromGoogleCredential(auth);
+  var combined_creds = grpc.credentials.combineChannelCredentials(ssl_creds, call_creds);
+  var stub = new helloworld.Greeter('localhost:50051', combined_credentials);
+});
+```
+
+####Authenticate using Oauth2 token (legacy approach)
+
+```js
+var GoogleAuth = require('google-auth-library'); // from https://www.npmjs.com/package/google-auth-library
+...
+var ssl_creds = grpc.Credentials.createSsl(root_certs); // load_certs typically loads a CA roots file
 var scope = 'https://www.googleapis.com/auth/grpc-testing';
 (new GoogleAuth()).getApplicationDefault(function(err, auth) {
   if (auth.createScopeRequired()) {
     auth = auth.createScoped(scope);
   }
-  var stub = new helloworld.Greeter('localhost:50051',
-                                    {credentials: creds},
-                                    grpc.getGoogleAuthDelegate(auth));
+  var call_creds = grpc.credentials.createFromGoogleCredential(auth);
+  var combined_creds = grpc.credentials.combineChannelCredentials(ssl_creds, call_creds);
+  var stub = new helloworld.Greeter('localhost:50051', combined_credentials);
 });
 ```
 
@@ -185,7 +203,7 @@ var client = new Greeter.GreeterClient(channel);
 using Grpc.Auth;  // from Grpc.Auth NuGet package
 ...
 // Loads Google Application Default Credentials with publicly trusted roots.
-var channelCredentials = await GoogleGrpcCredentials.GetApplicationDefaultAsync();  
+var channelCredentials = await GoogleGrpcCredentials.GetApplicationDefaultAsync();
 
 var channel = new Channel("greeter.googleapis.com", channelCredentials);
 var client = new Greeter.GreeterClient(channel);
