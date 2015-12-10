@@ -38,17 +38,18 @@ Credentials objects.
 
 Credentials can be of two types:
 
-- Channel Credentials which are attached to a channel such as SSL credentials.
-- Call Credentials which are attached to a call (or `ClientContext` in C++).
+- *Channel Credentials*, which are attached to a `Channel` such as SSL credentials.
+- *Call Credentials*, which are attached to a call (or `ClientContext` in C++).
 
-Credentials can be composed using `CompositeChannelCredentials` which associates
-a `ChannelCredentials` and a `CallCredentials` in order to create a new
-`ChannelCredentials`. The result will, for each call on the channel, send the
-authentication data associated with the composed `CallCredentials`.
+Credentials can be composed using `CompositeChannelCredentials`. A
+`CompositeChannelCredentials` associates a `ChannelCredentials` and a
+`CallCredentials` to create a new `ChannelCredentials`. The result will, for
+each call on the channel, send the authentication data associated with the
+composed `CallCredentials`.
 
 For example, a `ChannelCredentials` could be created from an `SslCredentials`
-and an `AccessTokenCredentials`. The result, applied to a `Channel` would send
-the access token for each call on this channel.
+and an `AccessTokenCredentials`. The result when applied to a `Channel` would
+send the appropriate access token for each call on this channel.
 
 `CallCredentials` can also be composed using `CompositeCallCredentials`. The
 resulting `CallCredentials`, when applied to a `ClientContext`, will trigger the
