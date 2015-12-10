@@ -61,12 +61,11 @@ This is the simplest authentication scenario, where a client just wants to
 authenticate the server and encrypt all data.
 
 ```cpp
-SslCredentialsOptions ssl_opts;  // Options to override SSL params, empty by default
-// Create the credentials object by providing service account key in constructor
-auto channel_creds = CredentialsFactory::SslCredentials(ssl_opts);
-// Create a channel using the credentials created in the previous step
-auto channel = CreateChannel(server_name, creds);
-// Create a stub on the channel
+// Create a default SSL ChannelCredentials object.
+auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
+// Create a channel using the credentials created in the previous step.
+auto channel = grpc::CreateChannel(server_name, creds);
+// Create a stub on the channel.
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 // Make actual RPC calls on the stub.
 grpc::Status s = stub->sayHello(&context, *request, response);
@@ -83,9 +82,9 @@ gRPC applications can use a simple API to create a credential that works in
 various deployment scenarios.
 
 ```cpp
-auto creds = CredentialsFactory::GoogleDefaultCredentials();
+auto creds = grpc::GoogleDefaultCredentials();
 // Create a channel, stub and make RPC calls (same as in the previous example)
-auto channel = CreateChannel(server_name, creds);
+auto channel = grpc::CreateChannel(server_name, creds);
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 grpc::Status s = stub->sayHello(&context, *request, response);
 ```
@@ -122,20 +121,20 @@ class MyCustomAuthenticator : public grpc::MetadataCredentialsPlugin {
  public:
   MyCustomAuthenticator(const grpc::string& ticket) : ticket_(ticket) {}
 
-  Status GetMetadata(
+  grpc::Status GetMetadata(
       grpc::string_ref service_url, grpc::string_ref method_name,
-      const AuthContext& channel_auth_context,
+      const grpc::AuthContext& channel_auth_context,
       std::multimap<grpc::string, grpc::string>* metadata) override {
     metadata->insert(std::make_pair("x-custom-auth-ticket", ticket_));
-    return Status::OK;
+    return grpc::Status::OK;
   }
 
  private:
   grpc::string ticket_;
 };
 
-auto call_creds =
-    MetadataCredentialsFromPlugin(std::unique_ptr<MetadataCredentialsPlugin>(
+auto call_creds = grpc::MetadataCredentialsFromPlugin(
+    std::unique_ptr<grpc::MetadataCredentialsPlugin>(
         new MyCustomAuthenticator("super-secret-ticket")));
 ```
 
