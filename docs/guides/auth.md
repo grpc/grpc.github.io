@@ -177,20 +177,35 @@ var client = new Greeter.GreeterClient(channel);
 
 ###Authenticating with Google (Ruby)
 
-```ruby
-# Base case - No encryption/authorization
-stub = Helloworld::Greeter::Stub.new('localhost:50051')
-...
+####Base case - No encryption/authentication
 
-# Authenticating with Google
-require 'googleauth'  # from [googleauth](http://www.rubydoc.info/gems/googleauth/0.1.0)
+```ruby
+stub = Helloworld::Greeter::Stub.new('localhost:50051')
+```
+
+####Authenticate using JWT access token (recommended approach)
+
+```ruby
+require 'googleauth'  # from http://www.rubydoc.info/gems/googleauth/0.1.0
 ...
-creds = GRPC::Core::Credentials.new(load_certs)  # load_certs typically loads a CA roots file
+ssl_creds = GRPC::Core::ChannelCredentials.new(load_certs)  # load_certs typically loads a CA roots file
+authorization = Google::Auth.get_application_default()
+call_creds = GRPC::Core::CallCredentials.new(authorization.updater_proc)
+combined_creds = ssl_creds.compose(call_creds)
+stub = Helloworld::Greeter::Stub.new('localhost:50051', creds: combined_creds)
+```
+
+####Authenticate using Oauth2 token (legacy approach)
+
+```ruby
+require 'googleauth'  # from http://www.rubydoc.info/gems/googleauth/0.1.0
+...
+ssl_creds = GRPC::Core::ChannelCredentials.new(load_certs)  # load_certs typically loads a CA roots file
 scope = 'https://www.googleapis.com/auth/grpc-testing'
 authorization = Google::Auth.get_application_default(scope)
-stub = Helloworld::Greeter::Stub.new('localhost:50051',
-                                     creds: creds,
-                                     update_metadata: authorization.updater_proc)
+call_creds = GRPC::Core::CallCredentials.new(authorization.updater_proc)
+combined_creds = ssl_creds.compose(call_creds)
+stub = Helloworld::Greeter::Stub.new('localhost:50051', creds: combined_creds)
 ```
 
 ###Authenticating with Google (Node.js)
