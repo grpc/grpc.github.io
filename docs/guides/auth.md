@@ -22,38 +22,51 @@ authentication.
 
 ###OAuth 2.0
 
-gRPC provides a generic mechanism (described below) to attach metadata to requests
-and responses. This mechanism can be used to attach OAuth 2.0 Access Tokens to
-RPCs being made at a client. Additional support for acquiring Access Tokens while
+gRPC provides a generic mechanism (described below) to attach metadata based credentials
+to requests and responses. Additional support for acquiring Access Tokens while
 accessing Google APIs through gRPC is provided for certain auth flows, demonstrated
 through code examples below.
 
-*WARNING*: OAuth2 shall only be used to connect to Google services. Sending a
-Google issued OAuth2 token to a non-Google service could result in this token
+*WARNING*: Google OAuth2 credentials shall only be used to connect to Google services.
+Sending a Google issued OAuth2 token to a non-Google service could result in this token
 being stolen and used to impersonate the client to Google services.
 
 ## API
 
 To reduce complexity and minimize API clutter, gRPC works with a unified concept of
-a Credentials object. Users construct gRPC credentials using corresponding bootstrap
-credentials (e.g., SSL client certs or Service Account Keys), and use the
-credentials while creating a gRPC channel to any server. Depending on the type of
-credential supplied, the channel uses the credentials during the initial SSL/TLS
-handshake with the server, or uses  the credential to generate and attach Access
-Tokens to each request being made on the channel.
+Credentials objects.
+
+Credentials can be of two types:
+
+- *Channel Credentials*, which are attached to a `Channel` such as SSL credentials.
+- *Call Credentials*, which are attached to a call (or `ClientContext` in C++).
+
+Credentials can be composed using `CompositeChannelCredentials`. A
+`CompositeChannelCredentials` associates a `ChannelCredentials` and a
+`CallCredentials` to create a new `ChannelCredentials`. The result will, for
+each call on the channel, send the authentication data associated with the
+composed `CallCredentials`.
+
+For example, a `ChannelCredentials` could be created from an `SslCredentials`
+and an `AccessTokenCredentials`. The result when applied to a `Channel` would
+send the appropriate access token for each call on this channel.
+
+`CallCredentials` can also be composed using `CompositeCallCredentials`. The
+resulting `CallCredentials`, when applied to a `ClientContext`, will trigger the
+sending of the authentication data associated with the two `CallCredentials`.
+
 
 ###SSL/TLS for server authentication and encryption
 
 This is the simplest authentication scenario, where a client just wants to
 authenticate the server and encrypt all data.
 
-```
-SslCredentialsOptions ssl_opts;  // Options to override SSL params, empty by default
-// Create the credentials object by providing service account key in constructor
-std::unique_ptr<Credentials> creds = CredentialsFactory::SslCredentials(ssl_opts);
-// Create a channel using the credentials created in the previous step
-std::shared_ptr<ChannelInterface> channel = CreateChannel(server_name, creds, channel_args);
-// Create a stub on the channel
+```cpp
+// Create a default SSL ChannelCredentials object.
+auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
+// Create a channel using the credentials created in the previous step.
+auto channel = grpc::CreateChannel(server_name, creds);
+// Create a stub on the channel.
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 // Make actual RPC calls on the stub.
 grpc::Status s = stub->sayHello(&context, *request, response);
@@ -66,45 +79,75 @@ passed to the factory method.
 
 ###Authenticating with Google
 
-gRPC applications can use a simple API to create a credential that works in various deployment scenarios.
+gRPC applications can use a simple API to create a credential that works in
+various deployment scenarios.
 
-```
-std::unique_ptr<Credentials> creds = CredentialsFactory::GoogleDefaultCredentials();
+```cpp
+auto creds = grpc::GoogleDefaultCredentials();
 // Create a channel, stub and make RPC calls (same as in the previous example)
-std::shared_ptr<ChannelInterface> channel = CreateChannel(server_name, creds, channel_args);
+auto channel = grpc::CreateChannel(server_name, creds);
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 grpc::Status s = stub->sayHello(&context, *request, response);
 ```
 
-This credential works for applications using Service Accounts as well as for
-applications running in [Google Compute Engine (GCE)](https://cloud.google.com/compute/). In the former case, the
-service account’s private keys are loaded from the file named in the environment
-variable `GOOGLE_APPLICATION_CREDENTIALS`. The
-keys are used to generate bearer tokens that are attached to each outgoing RPC
-on the corresponding channel.
+This channel credentials object works for applications using Service Accounts as
+well as for applications running in [Google Compute Engine
+(GCE)](https://cloud.google.com/compute/).  In the former case, the service
+account’s private keys are loaded from the file named in the environment
+variable `GOOGLE_APPLICATION_CREDENTIALS`. The keys are used to generate bearer
+tokens that are attached to each outgoing RPC on the corresponding channel.
 
 For applications running in GCE, a default service account and corresponding
-OAuth scopes can be configured during VM setup. At run-time, this credential
+OAuth2 scopes can be configured during VM setup. At run-time, this credential
 handles communication with the authentication systems to obtain OAuth2 access
 tokens and attaches them to each outgoing RPC on the corresponding channel.
-Extending gRPC to support other authentication mechanisms
-The gRPC protocol is designed with a general mechanism for sending metadata
-associated with RPC. Clients can send metadata at the beginning of an RPC and
-servers can send back metadata at the beginning and end of the RPC. This
-provides a natural mechanism to support OAuth2 and other authentication
-mechanisms that need attach bearer tokens to individual request.
 
-In the simplest case, there is a single line of code required on the client
-to add a specific token as metadata to an RPC and a corresponding access on
-the server to retrieve this piece of metadata. The generation of the token
-on the client side and its verification at the server can be done separately.
 
-A deeper integration can be achieved by plugging in a gRPC credentials implementation for any custom authentication mechanism that needs to attach per-request tokens. gRPC internals also allow switching out SSL/TLS with other encryption mechanisms.
+### Extending gRPC to support other authentication mechanisms
+
+The Credentials plugin API allows developers to plug in their own type of
+credentials.
+
+- The `MetadataCredentialsPlugin` abstract class contains the pure virtual
+  `GetMetadata` method that needs to be implemented by a sub-class created by
+  the developer.
+- The `MetadataCredentialsFromPlugin` function which creates a `CallCredentials`
+  from the `MetadataCredentialsPlugin`.
+
+Here is example of a simple credentials plugin which sets an authentication
+ticket in a custom header.
+
+```cpp
+class MyCustomAuthenticator : public grpc::MetadataCredentialsPlugin {
+ public:
+  MyCustomAuthenticator(const grpc::string& ticket) : ticket_(ticket) {}
+
+  grpc::Status GetMetadata(
+      grpc::string_ref service_url, grpc::string_ref method_name,
+      const grpc::AuthContext& channel_auth_context,
+      std::multimap<grpc::string, grpc::string>* metadata) override {
+    metadata->insert(std::make_pair("x-custom-auth-ticket", ticket_));
+    return grpc::Status::OK;
+  }
+
+ private:
+  grpc::string ticket_;
+};
+
+auto call_creds = grpc::MetadataCredentialsFromPlugin(
+    std::unique_ptr<grpc::MetadataCredentialsPlugin>(
+        new MyCustomAuthenticator("super-secret-ticket")));
+```
+
+A deeper integration can be achieved by plugging in a gRPC credentials
+implementation at the core level. gRPC internals also allow switching out
+SSL/TLS with other encryption mechanisms.
 
 ## Examples
 
 These authentication mechanisms will be available in all gRPC's supported languages.
-The following sections demonstrate how authentication and authorization features described above appear in each language: more languages are coming soon.
+The following sections demonstrate how authentication and authorization features
+described above appear in each language: more languages are coming soon.
 
 ###SSL/TLS for server authentication and encryption (Ruby)
 
