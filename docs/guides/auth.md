@@ -302,7 +302,26 @@ $client = new helloworld\GreeterClient(
   new Grpc\BaseStub('localhost:50051', []));
 ...
 
-// Authenticating with Google
+// Authenticate using JWT access token (recommended approach)
+function updateAuthMetadataCallback($context)
+{
+    $authUri = $context->service_url;
+    $methodName = $context->method_name;
+    $auth_credentials = ApplicationDefaultCredentials::getCredentials();
+
+    return $auth_credentials->updateMetadata($metadata = [], $authUri);
+}
+$opts = [
+  'credentials' => Grpc\Credentials::createSsl(file_get_contents('ca.pem'));
+];
+
+$client = new helloworld\GreeterClient('localhost:50051', $opts);
+$request = new helloworld\HelloRequest();
+$call = $client->SayHello($request, $metadata=[], $options=[
+  'call_credentials_callback' => 'updateAuthMetadataCallback'
+]);
+
+// Authenticate using Oauth2 token (legacy approach)
 // the environment variable "GOOGLE_APPLICATION_CREDENTIALS" needs to be set
 $scope = "https://www.googleapis.com/auth/grpc-testing";
 $auth = Google\Auth\ApplicationDefaultCredentials::getCredentials($scope);
