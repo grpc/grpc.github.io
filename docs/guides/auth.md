@@ -307,12 +307,12 @@ function updateAuthMetadataCallback($context)
     $auth_credentials = ApplicationDefaultCredentials::getCredentials();
     return $auth_credentials->updateMetadata($metadata = [], $context->service_url);
 }
-$channelCredentials = Grpc\ChannelCredentials::createComposite(
+$channel_credentials = Grpc\ChannelCredentials::createComposite(
     Grpc\ChannelCredentials::createSsl(file_get_contents('roots.pem')),
     Grpc\CallCredentials::createFromPlugin('updateAuthMetadataCallback')
 );
 $opts = [
-  'credentials' => $channelCredentials
+  'credentials' => $channel_credentials
 ];
 $client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
 
