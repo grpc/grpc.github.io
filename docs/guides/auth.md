@@ -183,7 +183,7 @@ var client = new Greeter.GreeterClient(channel);
 stub = Helloworld::Greeter::Stub.new('localhost:50051')
 ```
 
-####Authenticate using JWT access token (recommended approach)
+####Authenticate using scopeless credentials (recommended approach)
 
 ```ruby
 require 'googleauth'  # from http://www.rubydoc.info/gems/googleauth/0.1.0
@@ -216,7 +216,7 @@ stub = Helloworld::Greeter::Stub.new('localhost:50051', creds: combined_creds)
 var stub = new helloworld.Greeter('localhost:50051', grpc.credentials.createInsecure());
 ```
 
-####Authenticate using JWT access token (recommended approach)
+####Authenticate using scopeless credentials (recommended approach)
 
 ```js
 // Authenticating with Google
@@ -256,7 +256,7 @@ var client = new Greeter.GreeterClient(channel);
 ...
 ```
 
-####Authenticate using JWT access token (recommended approach)
+####Authenticate using scopeless credentials (recommended approach)
 ```csharp
 using Grpc.Auth;  // from Grpc.Auth NuGet package
 ...
