@@ -226,7 +226,7 @@ var ssl_creds = grpc.credentials.createSsl(root_certs);
 (new GoogleAuth()).getApplicationDefault(function(err, auth) {
   var call_creds = grpc.credentials.createFromGoogleCredential(auth);
   var combined_creds = grpc.credentials.combineChannelCredentials(ssl_creds, call_creds);
-  var stub = new helloworld.Greeter('localhost:50051', combined_credentials);
+  var stub = new helloworld.Greeter('greeter.googleapis.com', combined_credentials);
 });
 ```
 
@@ -243,7 +243,7 @@ var scope = 'https://www.googleapis.com/auth/grpc-testing';
   }
   var call_creds = grpc.credentials.createFromGoogleCredential(auth);
   var combined_creds = grpc.credentials.combineChannelCredentials(ssl_creds, call_creds);
-  var stub = new helloworld.Greeter('localhost:50051', combined_credentials);
+  var stub = new helloworld.Greeter('greeter.googleapis.com', combined_credentials);
 });
 ```
 
