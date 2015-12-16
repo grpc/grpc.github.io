@@ -298,20 +298,31 @@ var result = client.SayHello(request, new CallOptions(credentials: googleCredent
 
 ```php
 // Base case - No encryption/authorization
-$client = new helloworld\GreeterClient(
-  new Grpc\BaseStub('localhost:50051', []));
+$client = new helloworld\GreeterClient('localhost:50051', []);
 ...
 
-// Authenticating with Google
+// Authenticate using scopeless credentials (recommended approach)
+function updateAuthMetadataCallback($context)
+{
+    $auth_credentials = ApplicationDefaultCredentials::getCredentials();
+    return $auth_credentials->updateMetadata($metadata = [], $context->service_url);
+}
+$channel_credentials = Grpc\ChannelCredentials::createComposite(
+    Grpc\ChannelCredentials::createSsl(file_get_contents('roots.pem')),
+    Grpc\CallCredentials::createFromPlugin('updateAuthMetadataCallback')
+);
+$opts = [
+  'credentials' => $channel_credentials
+];
+$client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
+
+// Authenticate using Oauth2 token (legacy approach)
 // the environment variable "GOOGLE_APPLICATION_CREDENTIALS" needs to be set
 $scope = "https://www.googleapis.com/auth/grpc-testing";
 $auth = Google\Auth\ApplicationDefaultCredentials::getCredentials($scope);
 $opts = [
-  'credentials' => Grpc\Credentials::createSsl(file_get_contents('ca.pem'));
+  'credentials' => Grpc\Credentials::createSsl(file_get_contents('roots.pem'));
   'update_metadata' => $auth->getUpdateMetadataFunc(),
 ];
-
-$client = new helloworld\GreeterClient(
-  new Grpc\BaseStub('localhost:50051', $opts));
-
+$client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
 ```
