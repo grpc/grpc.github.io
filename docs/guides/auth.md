@@ -175,6 +175,23 @@ var channel = new Channel("myservice.example.com", channelCredentials);
 var client = new Greeter.GreeterClient(channel);
 ```
 
+###SSL/TLS for server authentication and encryption (Python)
+
+```python
+from grpc.beta import implementations
+import helloworld_pb2
+
+# Base case - No encryption
+channel = implementations.insecure_channel('localhost', 50051)
+stub = helloworld_pb2.beta_create_Greeter_stub(channel)
+...
+
+# With server authentication SSL/TLS
+creds = implementations.ssl_channel_credentials(open('roots.pem').read(), None, None)
+channel = implementations.secure_channel('localhost', 50051, creds)
+stub = helloworld_pb2.beta_create_Greeter_stub(channel)
+```
+
 ###Authenticating with Google (Ruby)
 
 ####Base case - No encryption/authentication
@@ -325,4 +342,32 @@ $opts = [
   'update_metadata' => $auth->getUpdateMetadataFunc(),
 ];
 $client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
+```
+
+###Authenticating with Google (Python)
+
+####Base case - No encryption/authentication
+```python
+channel = implementations.insecure_channel('localhost', 50051)
+stub = helloworld_pb2.beta_create_Greeter_stub(channel)
+...
+```
+
+###Authenticate using OAuth2 token (legacy approach)
+```python
+transport_creds = implementations.ssl_channel_credentials(open('roots.pem').read(), None, None)
+def oauth2token_credentials(context, callback):
+  try:
+    credentials = oauth2client.client.GoogleCredentials.get_application_default()
+    scoped_credentials = credentials.create_scoped([scope])
+  except Exception as error:
+    callback([], error)
+    return
+  callback([('authorization', 'Bearer %s' % scoped_credentials.get_access_token().access_token)], None)
+
+auth_creds = implementations.metadata_plugin_credentials(oauth2token_credentials)
+channel_creds = implementations.composite_channel_credentials(transport_creds, auth_creds)
+channel = implementations.secure_channel('localhost', 50051, channel_creds)
+
+stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 ```
