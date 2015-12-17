@@ -153,12 +153,12 @@ described above appear in each language: more languages are coming soon.
 
 ```ruby
 # Base case - No encryption
-stub = Helloworld::Greeter::Stub.new('localhost:50051')
+stub = Helloworld::Greeter::Stub.new('localhost:50051', :this_channel_is_insecure)
 ...
 
 # With server authentication SSL/TLS
 creds = GRPC::Core::Credentials.new(load_certs)  # load_certs typically loads a CA roots file
-stub = Helloworld::Greeter::Stub.new('localhost:50051', creds: creds)
+stub = Helloworld::Greeter::Stub.new('localhost:50051', creds)
 ```
 
 ###SSL/TLS for server authentication and encryption (C#)
@@ -180,7 +180,7 @@ var client = new Greeter.GreeterClient(channel);
 ####Base case - No encryption/authentication
 
 ```ruby
-stub = Helloworld::Greeter::Stub.new('localhost:50051')
+stub = Helloworld::Greeter::Stub.new('localhost:50051', :this_channel_is_insecure)
 ```
 
 ####Authenticate using scopeless credentials (recommended approach)
@@ -189,10 +189,10 @@ stub = Helloworld::Greeter::Stub.new('localhost:50051')
 require 'googleauth'  # from http://www.rubydoc.info/gems/googleauth/0.1.0
 ...
 ssl_creds = GRPC::Core::ChannelCredentials.new(load_certs)  # load_certs typically loads a CA roots file
-authorization = Google::Auth.get_application_default()
-call_creds = GRPC::Core::CallCredentials.new(authorization.updater_proc)
+authentication = Google::Auth.get_application_default()
+call_creds = GRPC::Core::CallCredentials.new(authentication.updater_proc)
 combined_creds = ssl_creds.compose(call_creds)
-stub = Helloworld::Greeter::Stub.new('localhost:50051', creds: combined_creds)
+stub = Helloworld::Greeter::Stub.new('greeter.googleapis.com', combined_creds)
 ```
 
 ####Authenticate using Oauth2 token (legacy approach)
@@ -202,10 +202,10 @@ require 'googleauth'  # from http://www.rubydoc.info/gems/googleauth/0.1.0
 ...
 ssl_creds = GRPC::Core::ChannelCredentials.new(load_certs)  # load_certs typically loads a CA roots file
 scope = 'https://www.googleapis.com/auth/grpc-testing'
-authorization = Google::Auth.get_application_default(scope)
-call_creds = GRPC::Core::CallCredentials.new(authorization.updater_proc)
+authentication = Google::Auth.get_application_default(scope)
+call_creds = GRPC::Core::CallCredentials.new(authentication.updater_proc)
 combined_creds = ssl_creds.compose(call_creds)
-stub = Helloworld::Greeter::Stub.new('localhost:50051', creds: combined_creds)
+stub = Helloworld::Greeter::Stub.new('greeter.googleapis.com', combined_creds)
 ```
 
 ###Authenticating with Google (Node.js)
@@ -226,7 +226,7 @@ var ssl_creds = grpc.credentials.createSsl(root_certs);
 (new GoogleAuth()).getApplicationDefault(function(err, auth) {
   var call_creds = grpc.credentials.createFromGoogleCredential(auth);
   var combined_creds = grpc.credentials.combineChannelCredentials(ssl_creds, call_creds);
-  var stub = new helloworld.Greeter('localhost:50051', combined_credentials);
+  var stub = new helloworld.Greeter('greeter.googleapis.com', combined_credentials);
 });
 ```
 
@@ -243,7 +243,7 @@ var scope = 'https://www.googleapis.com/auth/grpc-testing';
   }
   var call_creds = grpc.credentials.createFromGoogleCredential(auth);
   var combined_creds = grpc.credentials.combineChannelCredentials(ssl_creds, call_creds);
-  var stub = new helloworld.Greeter('localhost:50051', combined_credentials);
+  var stub = new helloworld.Greeter('greeter.googleapis.com', combined_credentials);
 });
 ```
 
