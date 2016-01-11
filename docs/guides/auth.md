@@ -296,12 +296,18 @@ var result = client.SayHello(request, new CallOptions(credentials: googleCredent
 
 ###Authenticating with Google (PHP)
 
-```php
-// Base case - No encryption/authorization
-$client = new helloworld\GreeterClient('localhost:50051', []);
-...
+####Base case - No encryption/authorization
 
-// Authenticate using scopeless credentials (recommended approach)
+```php
+$client = new helloworld\GreeterClient('localhost:50051', [
+    'credentials' => Grpc\ChannelCredentials::createInsecure(),
+]);
+...
+```
+
+####Authenticate using scopeless credentials (recommended approach)
+
+```php
 function updateAuthMetadataCallback($context)
 {
     $auth_credentials = ApplicationDefaultCredentials::getCredentials();
@@ -315,8 +321,11 @@ $opts = [
   'credentials' => $channel_credentials
 ];
 $client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
+````
 
-// Authenticate using Oauth2 token (legacy approach)
+####Authenticate using Oauth2 token (legacy approach)
+
+```php
 // the environment variable "GOOGLE_APPLICATION_CREDENTIALS" needs to be set
 $scope = "https://www.googleapis.com/auth/grpc-testing";
 $auth = Google\Auth\ApplicationDefaultCredentials::getCredentials($scope);
