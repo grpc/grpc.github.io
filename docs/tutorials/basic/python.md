@@ -104,7 +104,7 @@ message Point {
 
 ## Generating client and server code
 
-Next you need to generate the gRPC client and server interfaces from your .proto service definition. You do this using the protocol buffer compiler `protoc` with a special gRPC Python plugin. Make sure you've installed protoc and followed the gRPC Python plugin [installation instructions](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL) first):
+Next you need to generate the gRPC client and server interfaces from your .proto service definition. You do this using the protocol buffer compiler `protoc` with a special gRPC Python plugin. Make sure you've installed protoc and followed the gRPC Python plugin [installation instructions](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/src/python) first):
 
 With `protoc` and the gRPC Python plugin installed, use the following command to generate the Python code:
 
