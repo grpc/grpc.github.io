@@ -22,7 +22,7 @@ and are familiar with OAuth2 concepts like _access token_.
 <a name="setup"></a>
 ## Example code and setup
 
-The example code for our tutorial is in [gprc/examples/objective-c/auth_sample](https://github.com/grpc/grpc/tree/master/examples/objective-c/auth_sample).
+The example code for our tutorial is in [gprc/examples/objective-c/auth_sample](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/objective-c/auth_sample).
 To download the example, clone this repository by running the following commands:
 
 ```
@@ -87,7 +87,7 @@ scopes it gives access to. (The client application already knows those two value
 verify that everything went as expected).
 
 The next sections guide you step-by-step through how the gRPC call in `MakeRPCViewController` is
-performed. You can see the complete code in [MakeRPCViewController.m](https://github.com/grpc/grpc/blob/master/examples/objective-c/auth_sample/MakeRPCViewController.m).
+performed. You can see the complete code in [MakeRPCViewController.m](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/objective-c/auth_sample/MakeRPCViewController.m).
 
 <a name="rpc-object"></a>
 ## Create an RPC object
