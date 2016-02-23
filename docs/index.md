@@ -601,7 +601,7 @@ service definition by implementing the method <code>SayHello</code>:
 type server struct{}
 
 // SayHello implements helloworld.GreeterServer
-func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+func (s &#42;server) SayHello(ctx context.Context, in &#42;pb.HelloRequest) (&#42;pb.HelloReply, error) {
 	return &pb.HelloReply{Message: "Hello " + in.Name}, nil
 }
 </pre>
