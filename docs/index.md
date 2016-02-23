@@ -881,7 +881,7 @@ stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 
 func main() {
 	// Set up a connection to the server.
-	conn, err := grpc.Dial(address)
+	conn, err := grpc.Dial(address, grpc.WithInsecure())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
@@ -891,6 +891,8 @@ func main() {
 }</pre>
 
 <p>In gRPC Go you use a special <code>Dial()</code> function to create the channel.</p>
+<p>This example is not using any authentication, read this <a href="http://www.grpc.io/docs/guides/auth.html">document</a>
+for an explanation of the authentication features of gRPC.</p>
 
   </div>
   <div id="ruby_connect">
