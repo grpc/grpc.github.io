@@ -9,7 +9,7 @@ title: C++ Quick Start
 ## Installation
 
 To install gRPC on your system, follow the instructions here:
-[https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL).
+[https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL.md](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL.md).
 
 ## Hello C++ gRPC!
 
