@@ -106,7 +106,7 @@ message Point {
 
 Next we need to generate the gRPC client and server interfaces from our .proto service definition. We do this using the protocol buffer compiler `protoc` with a special gRPC Ruby plugin.
 
-If you want to run this yourself, make sure you've installed protoc and followed the gRPC Ruby plugin [installation instructions](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL) first):
+If you want to run this yourself, make sure you've installed protoc and followed the gRPC Ruby plugin [installation instructions](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL.md) first):
 
 Once that's done, the following command can be used to generate the ruby code.
 
