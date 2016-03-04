@@ -32,10 +32,10 @@ The example code for our tutorial is in [grpc/grpc/examples/node/route_guide](ht
 $ git clone https://github.com/grpc/grpc.git
 ```
 
-Then change your current directory to `examples/node/route_guide`:
+Then change your current directory to `examples/node`:
 
 ```sh
-$ cd examples/node/route_guide
+$ cd examples/node
 ```
 
 You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Node.js quick start guide](/docs/installation/node.html).
@@ -372,10 +372,10 @@ $ npm install
 Run the server, which will listen on port 50051:
 
 ```sh
-$ node ./route_guide_server.js
+$ node ./route_guide/route_guide_server.js --db_path=./route_guide/route_guide_db.json
 ```
 Run the client (in a different terminal):
 
 ```sh
-$ node ./route_guide_client.js
+$ node ./route_guide/route_guide_client.js --db_path=./route_guide/route_guide_db.json
 ```
