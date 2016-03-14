@@ -77,7 +77,7 @@ the corresponding options can be set in the SslCredentialsOptions parameter
 passed to the factory method.
 
 
-###Authenticating with Google
+### Authenticating with Google
 
 gRPC applications can use a simple API to create a credential that works in
 various deployment scenarios.
@@ -191,6 +191,43 @@ creds = implementations.ssl_channel_credentials(open('roots.pem').read(), None, 
 channel = implementations.secure_channel('localhost', 50051, creds)
 stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 ```
+
+###SSL/TLS for server authentication and encryption (Java)
+
+In Java we recommend that you use OpenSSL when using gRPC over TLS. You can find details about installing and using OpenSSL and other required libraries for both Android and non-Android Java in the gRPC Java [Security](https://github.com/grpc/grpc-java/blob/master/SECURITY.md#transport-security-tls) documentation.
+
+To enable TLS on a server, a certificate chain and private key need to be specified in PEM format. The standard TLS port is 443, but we use 8443 below to avoid needing extra permissions from the OS.
+
+```
+ServerImpl server = ServerBuilder.forPort(8443)
+    // Enable TLS
+    .useTransportSecurity(certChainFile, privateKeyFile)
+    .addService(TestServiceGrpc.bindService(serviceImplementation))
+    .build();
+server.start();
+```
+If the issuing certificate authority is not known to the client then a properly configured `SslContext` or `SSLSocketFactory` should be provided to the `NettyChannelBuilder` or `OkHttpChannelBuilder`, respectively.
+
+On the client side, server authentication with SSL/TLS looks like this:
+
+```
+// Base case - No encryption
+ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
+    .usePlaintext(true)
+    .build();
+GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
+
+// With server authentication SSL/TLS
+ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
+    .build();
+GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
+
+// With server authentication SSL/TLS; custom CA root certificates; not on Android
+ManagedChannel channel = NettyChannelBuilder.forAddress("localhost", 50051)
+    .sslContext(GrpcSslContexts.forClient().trustManager(new File("roots.pem")).build())
+    .build();
+GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
+``
 
 ###Authenticating with Google (Ruby)
 
@@ -362,7 +399,7 @@ stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 ...
 ```
 
-###Authenticate using OAuth2 token (legacy approach)
+####Authenticate using OAuth2 token (legacy approach)
 ```python
 transport_creds = implementations.ssl_channel_credentials(open('roots.pem').read(), None, None)
 def oauth2token_credentials(context, callback):
@@ -380,3 +417,28 @@ channel = implementations.secure_channel('localhost', 50051, channel_creds)
 
 stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 ```
+
+###Authenticating with Google (Java)
+
+####Authenticate using OAuth2 token
+
+The following code snippet shows how you can call the [Google Cloud PubSub API](https://cloud.google.com/pubsub/overview) using gRPC with a service account. The credentials are loaded from a key stored in a well-known location or by detecting that the application is running in an environment that can provide one automatically, e.g. Google Compute Engine. While this example is specific to Google and it's services, similar patterns can be followed for other service providers.
+
+```
+// Create a channel to the test service.
+ChannelImpl channelImpl = NettyChannelBuilder.forAddress("pubsub.googleapis.com")
+    .negotiationType(NegotiationType.TLS)
+    .build();
+// Get the default credentials from the environment
+GoogleCredentials creds = GoogleCredentials.getApplicationDefault();
+// Down-scope the credential to just the scopes required by the service
+creds = creds.createScoped(Arrays.asList("https://www.googleapis.com/auth/pubsub"));
+// Intercept the channel to bind the credential
+ClientAuthInterceptor interceptor = new ClientAuthInterceptor(creds, someExecutor);
+Channel channel = ClientInterceptors.intercept(channelImpl, interceptor);
+// Create a stub using the channel that has the bound credential
+PublisherGrpc.PublisherBlockingStub publisherStub = PublisherGrpc.newBlockingStub(channel);
+publisherStub.publish(someMessage);
+```
+
+
