@@ -198,8 +198,8 @@ In Java we recommend that you use OpenSSL when using gRPC over TLS. You can find
 
 To enable TLS on a server, a certificate chain and private key need to be specified in PEM format. The standard TLS port is 443, but we use 8443 below to avoid needing extra permissions from the OS.
 
-```
-ServerImpl server = ServerBuilder.forPort(8443)
+```java
+Server server = ServerBuilder.forPort(8443)
     // Enable TLS
     .useTransportSecurity(certChainFile, privateKeyFile)
     .addService(TestServiceGrpc.bindService(serviceImplementation))
@@ -210,7 +210,7 @@ If the issuing certificate authority is not known to the client then a properly 
 
 On the client side, server authentication with SSL/TLS looks like this:
 
-```
+```java
 // Base case - No encryption
 ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
     .usePlaintext(true)
@@ -227,7 +227,7 @@ ManagedChannel channel = NettyChannelBuilder.forAddress("localhost", 50051)
     .sslContext(GrpcSslContexts.forClient().trustManager(new File("roots.pem")).build())
     .build();
 GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
-``
+```
 
 ###Authenticating with Google (Ruby)
 
@@ -422,12 +422,11 @@ stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 
 ####Authenticate using OAuth2 token
 
-The following code snippet shows how you can call the [Google Cloud PubSub API](https://cloud.google.com/pubsub/overview) using gRPC with a service account. The credentials are loaded from a key stored in a well-known location or by detecting that the application is running in an environment that can provide one automatically, e.g. Google Compute Engine. While this example is specific to Google and it's services, similar patterns can be followed for other service providers.
+The following code snippet shows how you can call the [Google Cloud PubSub API](https://cloud.google.com/pubsub/overview) using gRPC with a service account. The credentials are loaded from a key stored in a well-known location or by detecting that the application is running in an environment that can provide one automatically, e.g. Google Compute Engine. While this example is specific to Google and its services, similar patterns can be followed for other service providers.
 
-```
+```java
 // Create a channel to the test service.
-ChannelImpl channelImpl = NettyChannelBuilder.forAddress("pubsub.googleapis.com")
-    .negotiationType(NegotiationType.TLS)
+ManagedChannel channel = ManagedChannelBuilder.forTarget("pubsub.googleapis.com")
     .build();
 // Get the default credentials from the environment
 GoogleCredentials creds = GoogleCredentials.getApplicationDefault();
