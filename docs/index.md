@@ -71,12 +71,12 @@ documentation](https://developers.google.com/protocol-buffers/docs/overview).
 While protocol buffers have been available for open source users for some
 time, our examples use a new flavor of protocol buffers called proto3,
 which has a slightly simplified syntax, some useful new features, and supports
-lots more languages. This is currently available as an beta release in
-Java and C++, with an alpha release for JavaNano (Android Java), Python, and
-Ruby from [the protocol buffers Github
+lots more languages. This is currently available as a beta release in
+Java, C++, Python, Objective-C, and C#, with an alpha release for JavaNano (Android Java),
+Ruby, and JavaScript from [the protocol buffers Github
 repo](https://github.com/google/protobuf/releases), as well as a Go language
-generator from [the golang/protobuf Github repo](https://github.com/golang/protobuf), with more languages in development. You can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3), and see
-the major differences from the current default version in the [release notes](https://github.com/google/protobuf/releases). More proto3 documentation is coming soon.
+generator from [the golang/protobuf Github repo](https://github.com/golang/protobuf), with more languages in development. You can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and the [reference documentation](https://developers.google.com/protocol-buffers/docs/reference/overview) for each language (where available), and see
+the major differences from the current default version in the [release notes](https://github.com/google/protobuf/releases). Even more proto3 documentation is coming soon.
 
 In general, while you *can* use proto2 (the current default protocol buffers version), we recommend that you use proto3 with gRPC as it lets you use the full range of gRPC-supported languages, as well as avoiding compatibility
 issues with proto2 clients talking to proto3 servers and vice versa.
@@ -119,13 +119,10 @@ You can download and install Git from [http://git-scm.com/download](http://git-s
 installed you should have access to the git command line tool. The main
 commands that you will need to use are:
 
-- git clone ... : clone a remote repository onto your local machine
-- git checkout ... : check out a particular branch or a tagged version of
+- `git clone ...` : clone a remote repository onto your local machine
+- `git checkout ...` : check out a particular branch or a tagged version of
 the code to hack on
 
-#### Install gRPC
-
-To build and install gRPC plugins and related tools, see the [Quickstart](#quickstart) for your chosen language(s). Java gRPC does not require any installation other than the JDK.
 
 #### Get the source code
 
@@ -251,6 +248,131 @@ $ git clone https://github.com/grpc/grpc.git
   </div>
 </div>
 
+#### Install gRPC
+
+To run the example (and our tutorial examples, and any gRPC projects you create yourself), you need to install the *gRPC runtime* for your chosen language. In addition, if you want to try generating gRPC code, depending on your chosen language you may need to install the protocol buffers compiler with the appropriate gRPC plugin. We intend to further simplify this process in future releases.
+
+To install the gRPC runtime for your chosen language:
+<div class="tabs">
+  <ul>
+    <li><a href="#java_install">Java</a></li>
+    <li><a href="#cpp_install">C++</a></li>
+    <li><a href="#python_install">Python</a></li>
+    <li><a href="#go_install">Go</a></li>
+    <li><a href="#ruby_install">Ruby</a></li>
+    <li><a href="#node_install">Node.js</a></li>
+    <li><a href="#csharp_install">C#</a></li>
+    <li><a href="#objective-c_install">Objective-C</a></li>
+    <li><a href="#php_install">PHP</a></li>
+  </ul>
+<div id="java_install">
+This example is also part of Java gRPC itself's build, so running it is a little different to creating and running a regular project. To install and build it follow the instructions in the [Quickstart](https://github.com/grpc/grpc-java/tree/master/examples).
+
+To install the runtime for your own projects, add the following to your build files:
+
+Gradle:
+<pre>compile 'io.grpc:grpc-all:0.13.1'</pre>
+
+Maven:
+<pre>
+&lt;dependency&gt;
+  &lt;groupId&gt;io.grpc&lt;/groupId&gt;
+  &lt;artifactId&gt;grpc-all&lt;/artifactId&gt;
+  &lt;version&gt;0.13.1&lt;/version&gt;
+&lt;/dependency&gt;
+</pre>
+</div>
+<div id="cpp_install">
+Currently you need to build the C++ runtime from source. You can find the instructions in the [gRPC Github repository](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL.md).
+</div>
+<div id="python_install">
+On Mac, Linux, and Windows, run:
+<pre>pip install grpcio</pre>
+</div>
+<div id="go_install">
+On Mac, Linux, and Windows, run:
+<pre>go get google.golang.org/grpc
+</pre>
+</div>
+<div id="ruby_install">
+On Mac, Linux, and Windows, run:
+<pre>gem install grpc
+</pre>
+</div>
+<div id="node_install">
+On Mac, Linux, and Windows, run:
+<pre>npm install grpc</pre>
+</div>
+<div id="csharp_install">
+On Mac, Linux, and Windows, install the [gRPC NuGet package](https://www.nuget.org/packages/Grpc/) from your IDE (Visual Studio, Monodevelop, Xamin Studio).
+</div>
+<div id="objective-c_install">
+If you're using Cocoapods on Mac, once you get the example source the runtime source code is fetched automatically from Github and integrated into your project.
+
+(It's also possible to install on Windows or Linux, but you need to download the source code and integrate it manually into your project.)
+</div>
+<div id="php_install">
+On Mac and Linux, run:
+<pre>pecl install grpc-beta</pre>
+</div>
+</div>
+
+For more detailed installation instructions - for instance, if you want to build gRPC from source - see the gRPC source repositories at [grpc](https://github.com/grpc/grpc) (instructions are in each language's subfolder), [grpc-java](https://github.com/grpc/grpc-java), and [grpc-go](https://github.com/grpc/grpc-go).
+
+To install protocol buffers support (the protocol buffer compiler and the protocol buffers runtime) with gRPC for your chosen language:
+
+<div class="tabs">
+  <ul>
+    <li><a href="#java_protoc">Java</a></li>
+    <li><a href="#cpp_protoc">C++</a></li>
+    <li><a href="#python_protoc">Python</a></li>
+    <li><a href="#go_protoc">Go</a></li>
+    <li><a href="#ruby_protoc">Ruby</a></li>
+    <li><a href="#node_protoc">Node.js</a></li>
+    <li><a href="#csharp_protoc">C#</a></li>
+    <li><a href="#objective-c_protoc">Objective-C</a></li>
+    <li><a href="#php_protoc">PHP</a></li>
+  </ul>
+<div id="java_protoc">
+<p>Again, the example is also part of Java gRPC itself's build, and includes pre-generated gRPC code - we recommend that you use this when working through this example.
+
+<p>See the <a href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for instructions on how to install the protocol buffer compiler for your own projects.
+</div>
+<div id="cpp_protoc">
+If you <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL.md">build and install gRPC from source</a>, the Makefile will automatically install <code>protoc</code> as well (if you don't already have it installed). Installing gRPC also gets you the gRPC C++ plugin for <code>protoc</code>.
+</div>
+<div id="python_protoc">
+First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository.
+
+<!--Where do they get the gRPC protoc plugin? Also what's the command to install the protobuf wheel, and do they need that too?-->
+</div>
+<div id="go_protoc">
+First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository. Then get the Go <code>protoc</code> plugin:
+
+<pre class="prettyprint">
+$ go get -a github.com/golang/protobuf/protoc-gen-go
+</pre>
+</div>
+<div id="ruby_protoc">
+First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository.
+
+<!--Where do they get the gRPC protoc plugin? Also what's the command to install the protobuf gem, and do they need that too?-->
+</div>
+<div id="node_protoc">
+The Node.js gRPC library currently dynamically generates the necessary gRPC code at runtime, so you don't need to install a protocol buffer compiler yourself.
+</div>
+<div id="csharp_protoc">
+On Mac, Linux, and Windows, install the <a href="https://www.nuget.org/packages/Google.Protobuf">Google.Protobuf</a> and <a href="https://www.nuget.org/packages/Grpc.Tools">gRPC.Tools</a> NuGet packages from your IDE (Visual Studio, Monodevelop, Xamin Studio).
+</div>
+<div id="objective-c_protoc">
+Follow the instructions in <a href="https://github.com/grpc/grpc/tree/master/src/objective-c">gRPC for Objective C</a> to install <code>protoc</code> and the appropriate plugin. Instructions are provided for installation with and without Homebrew.
+</div>
+<div id="php_protoc">
+First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository. Then install the third-party <code>protoc-gen-php</code> plugin.
+</div>
+</div>
+
+
 
 <!--=================================-->
 <a name="servicedef"></a>
@@ -327,7 +449,7 @@ onto the next one where we examine the generated code.)
     <li><a href="#php_generate">PHP</a></li>
   </ul>
   <div id="java_generate">
-<p>The build system for this example is also part of Java gRPC itself's build —
+<p>As we mentioned in our installation section, the build system for this example is also part of Java gRPC itself's build —
 for simplicity we recommend using our pre-generated code for the example. You
 can refer to the <a
 href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for
