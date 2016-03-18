@@ -618,9 +618,9 @@ message, as specified in our interface definition.</li>
 <p>Our server has a <code>GreeterServer</code> class, which implements the <code>GreeterServer</code> interface that we <a href="#generating">generated</a> from our proto
 service definition by implementing the method <code>SayHello</code>:</p>
 <pre>class GreeterServer < Helloworld::Greeter::Service
-  # say_hello implements the SayHello rpc method.
-  def say_hello(hello_req, _unused_call)
-    Helloworld::HelloReply.new(message: "Hello #{hello_req.name}")
+  # say&#95;hello implements the SayHello rpc method.
+  def say&#95;hello(hello&#95;req, &#95;unused_call)
+    Helloworld::HelloReply.new(message: "Hello #{hello&#95;req.name}")
   end
 </pre>
 <p>To return our response to the client and complete the call, we construct and populate a <code>HelloReply</code> response object with our exciting
