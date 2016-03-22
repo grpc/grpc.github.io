@@ -298,6 +298,7 @@ message HelloReply {
 }
 
 ```
+As you can see, a gRPC method can accept only a single protocol buffer message type as its request (in this case, the `HelloRequest` message type defined in our `.proto`), and return only a single protocol buffer type as its response - this is the case for all gRPC methods. However, this doesn't limit you in what kind of data you can pass between gRPC clients and servers in the same RPC - to add more arguments, or values to return, you just add more fields to the appropriate protocol buffer request or response type.
 
 <!--=================================-->
 <a name="generating"></a>
