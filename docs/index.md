@@ -304,7 +304,7 @@ On Mac, Linux, and Windows, run:
 <pre>npm install grpc</pre>
 </div>
 <div id="csharp_install">
-On Mac, Linux, and Windows, install the [gRPC NuGet package](https://www.nuget.org/packages/Grpc/) from your IDE (Visual Studio, Monodevelop, Xamin Studio).
+On Mac, Linux, and Windows, install the [gRPC NuGet package](https://www.nuget.org/packages/Grpc/) from your IDE (Visual Studio, Monodevelop, Xamarin Studio).
 </div>
 <div id="objective-c_install">
 If you're using Cocoapods on Mac, once you get the example source the runtime source code is fetched automatically from Github and integrated into your project.
@@ -362,7 +362,7 @@ First <a href="https://github.com/google/protobuf/blob/master/README.md">install
 The Node.js gRPC library currently dynamically generates the necessary gRPC code at runtime, so you don't need to install a protocol buffer compiler yourself.
 </div>
 <div id="csharp_protoc">
-On Mac, Linux, and Windows, install the <a href="https://www.nuget.org/packages/Google.Protobuf">Google.Protobuf</a> and <a href="https://www.nuget.org/packages/Grpc.Tools">gRPC.Tools</a> NuGet packages from your IDE (Visual Studio, Monodevelop, Xamin Studio).
+On Mac, Linux, and Windows, install the <a href="https://www.nuget.org/packages/Google.Protobuf">Google.Protobuf</a> and <a href="https://www.nuget.org/packages/Grpc.Tools">gRPC.Tools</a> NuGet packages from your IDE (Visual Studio, Monodevelop, Xamarin Studio).
 </div>
 <div id="objective-c_protoc">
 Follow the instructions in <a href="https://github.com/grpc/grpc/tree/master/src/objective-c">gRPC for Objective C</a> to install <code>protoc</code> and the appropriate plugin. Instructions are provided for installation with and without Homebrew.
