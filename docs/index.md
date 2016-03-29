@@ -342,9 +342,14 @@ To install protocol buffers support (the protocol buffer compiler and the protoc
 If you <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL.md">build and install gRPC from source</a>, the Makefile will automatically install <code>protoc</code> as well (if you don't already have it installed). Installing gRPC also gets you the gRPC C++ plugin for <code>protoc</code>.
 </div>
 <div id="python_protoc">
-First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository.
+First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository. Then build and install the gRPC plugin:
 
-<!--Where do they get the gRPC protoc plugin? Also what's the command to install the protobuf wheel, and do they need that too?-->
+<pre>
+git clone https://github.com/grpc/grpc.git $REPO
+cd $REPO
+make grpc_python_plugin
+cp bins/opt/grpc_python_plugin $SOMEWHERE_ON_PATH
+</pre>
 </div>
 <div id="go_protoc">
 First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository. Then get the Go <code>protoc</code> plugin:
