@@ -359,9 +359,14 @@ $ go get -a github.com/golang/protobuf/protoc-gen-go
 </pre>
 </div>
 <div id="ruby_protoc">
-First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository.
+First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository. Then build and install the gRPC plugin:
 
-<!--Where do they get the gRPC protoc plugin? Also what's the command to install the protobuf gem, and do they need that too?-->
+<pre>
+git clone https://github.com/grpc/grpc.git $REPO
+cd $REPO
+make grpc_ruby_plugin
+cp bins/opt/grpc_ruby_plugin $SOMEWHERE_ON_PATH
+</pre>
 </div>
 <div id="node_protoc">
 The Node.js gRPC library currently dynamically generates the necessary gRPC code at runtime, so you don't need to install a protocol buffer compiler yourself.
