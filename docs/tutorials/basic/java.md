@@ -39,7 +39,7 @@ Then change your current directory to `grpc-java/examples`:
 $ cd grpc-java/examples
 ```
 
-You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Java quick start guide](/docs/installation/java.html).
+You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Java README](https://github.com/grpc/grpc-java/blob/master/README.md).
 
 
 ## Defining the service
