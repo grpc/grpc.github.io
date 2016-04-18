@@ -221,7 +221,7 @@ $ npm install
 $ git clone https://github.com/grpc/grpc.git
 </pre>
 
-<p>Open <code>Greeter.sln</code> from Visual Studio (or Monodevelop on Linux). See the <a href="/docs/installation/csharp.html">C# Quickstart</a> for platform-specific setup.</p>
+<p>Open <code>Greeter.sln</code> from Visual Studio (or Monodevelop on Linux).</p>
   </div>
 <div id="objective-c_source">
 <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following commands:</p>
