@@ -561,17 +561,21 @@ var hello_proto = grpc.load(PROTO_PATH).helloworld;
   </div>
   <div id="csharp_generate">
 
-- To generate the code on Windows, we use `protoc.exe` from the `Google.Protobuf` NuGet package and `grpc_csharp_plugin.exe` from the `Grpc.Tools` NuGet package (both under the `tools` directory).
-Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this tutorial it has been already done for you. The following command should be run from the `examples/csharp/helloworld` directory: 
+Ready-to-use precompiled versions of `protoc` and `grpc_csharp_plugin` binaries for Windows, Linux and Mac OS X are available in the `Grpc.Tools` NuGet package (there are platform-specific subdirectories both under the `tools` directory).
+Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this tutorial it has been already done for you.
+
+The generate the code, the following command should be run from the `examples/csharp/helloworld` directory:
+
+- Windows
 
   ```
-  > packages\Google.Protobuf.3.0.0-alpha4\tools\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.7.0\tools\grpc_csharp_plugin.exe ../../protos/helloworld.proto
+  > packages\Grpc.Tools.0.13.1\tools\windows_x86\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.13.1\tools\windows_x86\grpc_csharp_plugin.exe 
   ```
 
-- On Linux or OS X, we rely on `protoc` and `grpc_csharp_plugin` being installed by Linuxbrew/Homebrew. Run this command from the route_guide directory:
+- Linux (or Mac OS X by using `macosx_x64` directory).
 
   ```
-  $ protoc -I../../protos --csharp_out Greeter --grpc_out Greeter --plugin=protoc-gen-grpc=`which grpc_csharp_plugin` ../../protos/helloworld.proto
+  $ packages/Grpc.Tools.0.13.1/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.0.13.1/tools/linux_x64/grpc_csharp_plugin
   ```
 
 Running the appropriate command for your OS regenerates the following files in the Greeter directory:
