@@ -372,7 +372,7 @@ cp bins/opt/grpc_ruby_plugin $SOMEWHERE_ON_PATH
 The Node.js gRPC library currently dynamically generates the necessary gRPC code at runtime, so you don't need to install a protocol buffer compiler yourself.
 </div>
 <div id="csharp_protoc">
-On Windows, install the <a href="https://www.nuget.org/packages/Google.Protobuf">Google.Protobuf</a> and <a href="https://www.nuget.org/packages/Grpc.Tools">gRPC.Tools</a> NuGet packages from your IDE. On Linux and Mac, you need to install <code>protoc</code> and <code>grpc_csharp_plugin</code> using Homebrew.
+Install the <a href="https://www.nuget.org/packages/Google.Protobuf">Google.Protobuf</a> and <a href="https://www.nuget.org/packages/Grpc.Tools">Grpc.Tools</a> NuGet packages from your IDE (Visual Studio, Xamarin Studio or Monodevelop).
 </div>
 <div id="objective-c_protoc">
 Follow the instructions in <a href="https://github.com/grpc/grpc/tree/master/src/objective-c">gRPC for Objective C</a> to install <code>protoc</code> and the appropriate plugin. Instructions are provided for installation with and without Homebrew.
