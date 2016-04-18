@@ -35,13 +35,8 @@ $ git clone https://github.com/grpc/grpc.git
 ```
 
 All the files for this tutorial are in the directory  `examples/csharp/route_guide`.
-Open the solution `examples/csharp/route_guide/RouteGuide.sln` from Visual Studio (or Monodevelop on Linux).
-
-On Windows, you should not need to do anything besides opening the solution. All the needed dependencies will be restored
-for you automatically by the `Grpc` NuGet package upon building the solution.
-
-On Linux or Mac OS X, you will first need to install protobuf and gRPC C# native dependencies in order to be
-able to generate the server and client interface code and run the examples. Please follow the [How to use instructions](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/src/csharp#how-to-use).
+Open the solution `examples/csharp/route_guide/RouteGuide.sln` from Visual Studio, Monodevelop or Xamarin Studio.
+For additional details, inspect the [How to use instructions](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/src/csharp#how-to-use).
 
 ## Defining the service
 
@@ -108,24 +103,22 @@ message Point {
 
 Next we need to generate the gRPC client and server interfaces from our .proto service definition. We do this using the protocol buffer compiler `protoc` with a special gRPC C# plugin.
 
-If you want to run this yourself, make sure you've installed protoc and the gRPC C# plugin. The instructions vary based on your OS:
-
-- For Windows, the `Grpc.Tools` and `Google.Protobuf` NuGet packages contain the binaries you will need to generate the code.
-- For Linux or OS X, make sure you've followed the [How to use instructions](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/src/csharp#how-to-use).
+If you want to run this yourself, the `Grpc.Tools` NuGet package contains the binaries you will need to generate the code.
 
 Once that's done, you can generate the C# code:
 
-- To generate the code on Windows, we use `protoc.exe` from the `Google.Protobuf` NuGet package and `grpc_csharp_plugin.exe` from the `Grpc.Tools` NuGet package (both under the `tools` directory).
-Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this tutorial it has already been done for you. Following command should be run from the `examples/csharp/route_guide` directory: 
+The generate the code, the following command should be run from the `examples/csharp/route_guide` directory:
+
+- Windows
 
   ```
-  > packages\Google.Protobuf.3.0.0-alpha4\tools\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.7.0\tools\grpc_csharp_plugin.exe ../../protos/route_guide.proto
+  > packages\Grpc.Tools.0.13.1\tools\windows_x86\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.13.1\tools\windows_x86\grpc_csharp_plugin.exe 
   ```
 
-- On Linux or OS X, we rely on `protoc` and `grpc_csharp_plugin` being installed by Linuxbrew/Homebrew. Run this command from the route_guide directory:
+- Linux (or Mac OS X by using `macosx_x64` directory).
 
   ```
-  $ protoc -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide --plugin=protoc-gen-grpc=`which grpc_csharp_plugin` ../../protos/route_guide.proto
+  $ packages/Grpc.Tools.0.13.1/tools/linux_x64/protoc -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.0.13.1/tools/linux_x64/grpc_csharp_plugin
   ```
 
 Running the appropriate command for your OS regenerates the following files in the RouteGuide directory:
