@@ -564,7 +564,7 @@ var hello_proto = grpc.load(PROTO_PATH).helloworld;
 Ready-to-use precompiled versions of `protoc` and `grpc_csharp_plugin` binaries for Windows, Linux and Mac OS X are available in the `Grpc.Tools` NuGet package (there are platform-specific subdirectories under the `tools` directory).
 Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this tutorial it has been already done for you.
 
-The generate the code, run following command from the `examples/csharp/helloworld` directory:
+The generate the code, run the following command from the `examples/csharp/helloworld` directory:
 
 - Windows
 
