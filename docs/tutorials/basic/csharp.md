@@ -36,7 +36,7 @@ $ git clone https://github.com/grpc/grpc.git
 
 All the files for this tutorial are in the directory  `examples/csharp/route_guide`.
 Open the solution `examples/csharp/route_guide/RouteGuide.sln` from Visual Studio, Monodevelop or Xamarin Studio.
-For additional details, inspect the [How to use instructions](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/src/csharp#how-to-use).
+For additional installation details, see the [How to use instructions](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/src/csharp#how-to-use).
 
 ## Defining the service
 
