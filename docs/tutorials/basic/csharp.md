@@ -107,7 +107,7 @@ If you want to run this yourself, the `Grpc.Tools` NuGet package contains the bi
 
 Once that's done, you can generate the C# code:
 
-The generate the code, the following command should be run from the `examples/csharp/route_guide` directory:
+To generate the code, the following command should be run from the `examples/csharp/route_guide` directory:
 
 - Windows
 
