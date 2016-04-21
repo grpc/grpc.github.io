@@ -221,7 +221,7 @@ $ npm install
 $ git clone https://github.com/grpc/grpc.git
 </pre>
 
-<p>Open <code>Greeter.sln</code> from Visual Studio (or Monodevelop on Linux). See the <a href="/docs/installation/csharp.html">C# Quickstart</a> for platform-specific setup.</p>
+<p>Open <code>Greeter.sln</code> from Visual Studio (or Monodevelop on Linux).</p>
   </div>
 <div id="objective-c_source">
 <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following commands:</p>
@@ -372,7 +372,7 @@ cp bins/opt/grpc_ruby_plugin $SOMEWHERE_ON_PATH
 The Node.js gRPC library currently dynamically generates the necessary gRPC code at runtime, so you don't need to install a protocol buffer compiler yourself.
 </div>
 <div id="csharp_protoc">
-On Windows, install the <a href="https://www.nuget.org/packages/Google.Protobuf">Google.Protobuf</a> and <a href="https://www.nuget.org/packages/Grpc.Tools">gRPC.Tools</a> NuGet packages from your IDE. On Linux and Mac, you need to install <code>protoc</code> and <code>grpc_csharp_plugin</code> using Homebrew.
+Install the <a href="https://www.nuget.org/packages/Google.Protobuf">Google.Protobuf</a> and <a href="https://www.nuget.org/packages/Grpc.Tools">Grpc.Tools</a> NuGet packages from your IDE (Visual Studio, Xamarin Studio or Monodevelop).
 </div>
 <div id="objective-c_protoc">
 Follow the instructions in <a href="https://github.com/grpc/grpc/tree/master/src/objective-c">gRPC for Objective C</a> to install <code>protoc</code> and the appropriate plugin. Instructions are provided for installation with and without Homebrew.
@@ -561,17 +561,21 @@ var hello_proto = grpc.load(PROTO_PATH).helloworld;
   </div>
   <div id="csharp_generate">
 
-- To generate the code on Windows, we use `protoc.exe` from the `Google.Protobuf` NuGet package and `grpc_csharp_plugin.exe` from the `Grpc.Tools` NuGet package (both under the `tools` directory).
-Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this tutorial it has been already done for you. The following command should be run from the `examples/csharp/helloworld` directory: 
+Ready-to-use precompiled versions of `protoc` and `grpc_csharp_plugin` binaries for Windows, Linux and Mac OS X are available in the `Grpc.Tools` NuGet package (there are platform-specific subdirectories under the `tools` directory).
+Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this tutorial it has been already done for you.
+
+To generate the code, run the following command from the `examples/csharp/helloworld` directory:
+
+- Windows
 
   ```
-  > packages\Google.Protobuf.3.0.0-alpha4\tools\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.7.0\tools\grpc_csharp_plugin.exe ../../protos/helloworld.proto
+  > packages\Grpc.Tools.0.13.1\tools\windows_x86\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.13.1\tools\windows_x86\grpc_csharp_plugin.exe 
   ```
 
-- On Linux or OS X, we rely on `protoc` and `grpc_csharp_plugin` being installed by Linuxbrew/Homebrew. Run this command from the route_guide directory:
+- Linux (or Mac OS X by using `macosx_x64` directory).
 
   ```
-  $ protoc -I../../protos --csharp_out Greeter --grpc_out Greeter --plugin=protoc-gen-grpc=`which grpc_csharp_plugin` ../../protos/helloworld.proto
+  $ packages/Grpc.Tools.0.13.1/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.0.13.1/tools/linux_x64/grpc_csharp_plugin
   ```
 
 Running the appropriate command for your OS regenerates the following files in the Greeter directory:
