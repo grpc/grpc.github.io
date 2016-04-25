@@ -27,9 +27,10 @@ The following authentication mechanisms are built-in to gRPC:
    * **Token-based authentication with Google**: gRPC provides a generic mechanism (described below) to attach metadata based credentials
      to requests and responses. Additional support for acquiring access tokens (typically OAuth2 tokens) while
      accessing Google APIs through gRPC is provided for certain auth flows: you can see how this works
-     in our code examples below.
+     in our code examples below. In general this mechanism must be used *as well as* SSL/TLS on the channel - Google will not allow connections without SSL/TLS,
+     and most gRPC language implementations will not let you send credentials on an unencrypted channel.
 
-<p class="note">
+     <p class="note">
      <strong>WARNING</strong>: Google credentials should only be used to connect to Google services.
      Sending a Google issued OAuth2 token to a non-Google service could result in this token
      being stolen and used to impersonate the client to Google services.</p>
@@ -165,7 +166,7 @@ stub = Helloworld::Greeter::Stub.new('localhost:50051', :this_channel_is_insecur
 
 ```ruby
 creds = GRPC::Core::Credentials.new(load_certs)  # load_certs typically loads a CA roots file
-stub = Helloworld::Greeter::Stub.new('localhost:50051', creds)
+stub = Helloworld::Greeter::Stub.new('myservice.example.com', creds)
 ```
 
 #### Authenticate with Google using scopeless credentials (recommended approach)
@@ -268,7 +269,7 @@ from grpc.beta import implementations
 import helloworld_pb2
 
 creds = implementations.ssl_channel_credentials(open('roots.pem').read(), None, None)
-channel = implementations.secure_channel('localhost', 50051, creds)
+channel = implementations.secure_channel('myservice.example.com', 443, creds)
 stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 ```
 
@@ -286,7 +287,7 @@ def oauth2token_credentials(context, callback):
 
 auth_creds = implementations.metadata_plugin_credentials(oauth2token_credentials)
 channel_creds = implementations.composite_channel_credentials(transport_creds, auth_creds)
-channel = implementations.secure_channel('localhost', 50051, channel_creds)
+channel = implementations.secure_channel('greeter.googleapis.com', 443, channel_creds)
 
 stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 ```
@@ -324,12 +325,12 @@ On the client side, server authentication with SSL/TLS looks like this:
 
 ```java
 // With server authentication SSL/TLS
-ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
+ManagedChannel channel = ManagedChannelBuilder.forAddress("myservice.example.com", 443)
     .build();
 GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
 
 // With server authentication SSL/TLS; custom CA root certificates; not on Android
-ManagedChannel channel = NettyChannelBuilder.forAddress("localhost", 50051)
+ManagedChannel channel = NettyChannelBuilder.forAddress("myservice.example.com", 443)
     .sslContext(GrpcSslContexts.forClient().trustManager(new File("roots.pem")).build())
     .build();
 GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
@@ -367,7 +368,7 @@ var stub = new helloworld.Greeter('localhost:50051', grpc.credentials.createInse
 
 ```js
 var ssl_creds = grpc.credentials.createSsl(root_certs);
-var stub = new helloworld.Greeter('localhost:50051', ssl_creds);
+var stub = new helloworld.Greeter('myservice.example.com', ssl_creds);
 ```
 
 ####Authenticate with Google using scopeless credentials (recommended approach)
