@@ -230,16 +230,14 @@ NSLog(@"Found feature called %@ at %@.", response.name, response.location);
 Now let's look at our streaming methods. Here's where we call the response-streaming method `ListFeatures`, which results in our client app receiving a stream of geographical `RTGFeature`s:
 
 ```objective-c
-[service listFeaturesWithRequest:rectangle handler:^(BOOL done, RTGFeature *response, NSError *error) {
-  if (response) {
-    // Element of the stream of responses received
-  } else if (error) {
-    // RPC error; the stream is over.
-  }
-  if (done) {
-    // The stream is over (all the responses were received, or an error occured). Do any cleanup.
-  }
-}];
+  [service listFeaturesWithRequest:rectangle
+                      eventHandler:^(BOOL done, RTGFeature *response, NSError *error) {
+    if (response) {
+      NSLog(@"Found feature at %@ called %@.", response.location, response.name);
+    } else if (error) {
+      NSLog(@"RPC error: %@", error);
+    }
+  }];
 ```
 
 Notice how the signature of the handler block now includes a `BOOL done` parameter. The handler block can be called any number of times; only on the last call is the `done` argument value set to `YES`. If an error occurs, the RPC finishes and the handler is called with the arguments `(YES, nil, error)`.
