@@ -13,7 +13,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the Java gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/index.html) and are familiar with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the example in this tutorial uses the [proto3](https://github.com/google/protobuf/releases) version of the protocol buffers language, which is currently in alpha release: you can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and see the [release notes](https://github.com/google/protobuf/releases) for the new version in the protocol buffers Github repository.
+It assumes that you have read the [Overview](/docs/index.html) and are familiar with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the example in this tutorial uses the [proto3](https://github.com/google/protobuf/releases) version of the protocol buffers language, which is currently in beta release: you can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and [Java generated code guide](https://developers.google.com/protocol-buffers/docs/reference/java-generated), and see the [release notes](https://github.com/google/protobuf/releases) for the new version in the protocol buffers Github repository.
 
 This isn't a comprehensive guide to using gRPC in Java: more reference documentation is coming soon.
 
@@ -39,7 +39,7 @@ Then change your current directory to `grpc-java/examples`:
 $ cd grpc-java/examples
 ```
 
-You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Java quick start guide](/docs/installation/java.html).
+You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Java README](https://github.com/grpc/grpc-java/blob/master/README.md).
 
 
 ## Defining the service
@@ -322,21 +322,29 @@ As with our client-side streaming example, we both get and return a `StreamObser
 Once we've implemented all our methods, we also need to start up a gRPC server so that clients can actually use our service. The following snippet shows how we do this for our `RouteGuide` service:
 
 ```java
-  public void start() {
-    gRpcServer = NettyServerBuilder.forPort(port)
-        .addService(RouteGuideGrpc.bindService(new RouteGuideService(features)))
-        .build().start();
+  public RouteGuideServer(int port, URL featureFile) throws IOException {
+    this(ServerBuilder.forPort(port), port, RouteGuideUtil.parseFeatures(featureFile));
+  }
+
+  /** Create a RouteGuide server using serverBuilder as a base and features as data. */
+  public RouteGuideServer(ServerBuilder<?> serverBuilder, int port, Collection<Feature> features) {
+    this.port = port;
+    server = serverBuilder.addService(new RouteGuideService(features))
+        .build();
+  }
+  ...
+  public void start() throws IOException {
+    server.start();
     logger.info("Server started, listening on " + port);
-    ...
+   ...
   }
 ```
-As you can see, we build and start our server using a `NettyServerBuilder`. This is a builder for servers based on the [Netty](http://netty.io/) transport framework. 
+As you can see, we build and start our server using a `ServerBuilder`.
 
 To do this, we:
 
-1. Create an instance of our service implementation class `RouteGuideService` and pass it to the generated `RouteGuideGrpc` class's static `bindService()` method to get a service definition.
 3. Specify the address and port we want to use to listen for client requests using the builder's `forPort()` method.
-4. Register our service implementation with the builder by passing the service definition returned from `bindService()` to the builder's `addService()` method.
+4. Create an instance of our service implementation class `RouteGuideService` and pass it to the builder's `addService()` method.
 5. Call `build()` and `start()` on the builder to create and start an RPC server for our service.
 
 <a name="client"></a>
@@ -354,12 +362,18 @@ To call service methods, we first need to create a *stub*, or rather, two stubs:
 First we need to create a gRPC *channel* for our stub, specifying the server address and port we want to connect to:
 
 ```java
- channel = NettyChannelBuilder.forAddress(host, port)
-        .negotiationType(NegotiationType.PLAINTEXT)
-        .build();
-```
+  public RouteGuideClient(String host, int port) {
+    this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(true));
+  }
 
-As with our server, we're using the [Netty](http://netty.io/) transport framework, so we use a `NettyChannelBuilder`.
+  /** Construct client for accessing RouteGuide server using the existing channel. */
+  public RouteGuideClient(ManagedChannelBuilder<?> channelBuilder) {
+    channel = channelBuilder.build();
+    blockingStub = RouteGuideGrpc.newBlockingStub(channel);
+    asyncStub = RouteGuideGrpc.newStub(channel);
+  }
+```
+We use a `ManagedChannelBuilder` to create the channel.
 
 Now we can use the channel to create our stubs using the `newStub` and `newBlockingStub` methods provided in the `RouteGuideGrpc` class we generated from our .proto.
 
