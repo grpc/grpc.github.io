@@ -21,11 +21,11 @@ service HelloService {
 }
 
 message HelloRequest {
-  required string greeting = 1;
+  string greeting = 1;
 }
 
 message HelloResponse {
-  required string reply = 1;
+  string reply = 1;
 }
 ```
 
