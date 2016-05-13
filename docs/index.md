@@ -778,12 +778,12 @@ function sayHello(call, callback) {
   </div>
   <div id="csharp_service">
 <p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/helloworld/GreeterServer/Program.cs">GreeterServer/Program.cs</a> implements our <code>Greeter</code> service's required behaviour.
-<p>Our server has a <code>GreeterImpl</code> class, which implements the <code>IGreeter</code> interface that we <a href="#generating">generated</a> from our proto
+<p>Our server has a <code>GreeterImpl</code> class, which extends the <code>GreeterBase</code> abstract class that we <a href="#generating">generated</a> from our proto
 service definition by implementing the method <code>SayHello</code>:</p>
 <pre>
-class GreeterImpl : Greeter.IGreeter
+class GreeterImpl : Greeter.GreeterBase
 {
-    public Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
+    public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
     {
         return Task.FromResult(new HelloReply { Message = "Hello " + request.Name });
     }
