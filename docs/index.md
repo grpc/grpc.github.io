@@ -569,13 +569,13 @@ To generate the code, run the following command from the `examples/csharp/hellow
 - Windows
 
   ```
-  > packages\Grpc.Tools.0.13.1\tools\windows_x86\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.13.1\tools\windows_x86\grpc_csharp_plugin.exe 
+  > packages\Grpc.Tools.0.14.0\tools\windows_x86\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.14.0\tools\windows_x86\grpc_csharp_plugin.exe 
   ```
 
 - Linux (or Mac OS X by using `macosx_x64` directory).
 
   ```
-  $ packages/Grpc.Tools.0.13.1/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.0.13.1/tools/linux_x64/grpc_csharp_plugin
+  $ packages/Grpc.Tools.0.14.0/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.0.14.0/tools/linux_x64/grpc_csharp_plugin
   ```
 
 Running the appropriate command for your OS regenerates the following files in the Greeter directory:
@@ -583,7 +583,7 @@ Running the appropriate command for your OS regenerates the following files in t
 - `Greeter/Helloworld.cs` defines a namespace `Helloworld`
   - This contains all the protocol buffer code to populate, serialize, and retrieve our request and response message types
 - `Greeter/HelloworldGrpc.cs`, provides stub and service classes, including:
-   - an interface `Greeter.IGreeter` to inherit from when defining RouteGuide service implementations
+   - an abstract base class `Greeter.GreeterBase` to inherit from when defining RouteGuide service implementations
    - a class `Greeter.GreeterClient` that can be used to access remote RouteGuide instances
 
 
