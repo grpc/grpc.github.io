@@ -39,7 +39,7 @@ Then change your current directory to `examples/python/route_guide`:
 $ cd examples/python/route_guide
 ```
 
-You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Python quick start guide](/docs/installation/python.html).
+You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Python quick start guide](https://github.com/grpc/grpc/tree/master/examples/python).
 
 ## Defining the service
 
