@@ -112,13 +112,13 @@ To generate the code, the following command should be run from the `examples/csh
 - Windows
 
   ```
-  > packages\Grpc.Tools.0.13.1\tools\windows_x86\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.13.1\tools\windows_x86\grpc_csharp_plugin.exe 
+  > packages\Grpc.Tools.0.14.0\tools\windows_x86\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.14.0\tools\windows_x86\grpc_csharp_plugin.exe 
   ```
 
 - Linux (or Mac OS X by using `macosx_x64` directory).
 
   ```
-  $ packages/Grpc.Tools.0.13.1/tools/linux_x64/protoc -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.0.13.1/tools/linux_x64/grpc_csharp_plugin
+  $ packages/Grpc.Tools.0.14.0/tools/linux_x64/protoc -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.0.14.0/tools/linux_x64/grpc_csharp_plugin
   ```
 
 Running the appropriate command for your OS regenerates the following files in the RouteGuide directory:
@@ -126,7 +126,7 @@ Running the appropriate command for your OS regenerates the following files in t
 - `RouteGuide/RouteGuide.cs` defines a namespace `Routeguide`
   - This contains all the protocol buffer code to populate, serialize, and retrieve our request and response message types
 - `RouteGuide/RouteGuideGrpc.cs`, provides stub and service classes
-   - an interface `RouteGuide.IRouteGuide` to inherit from when defining RouteGuide service implementations
+   - an abstract class `RouteGuide.RouteGuideBase` to inherit from when defining RouteGuide service implementations
    - a class `RouteGuide.RouteGuideClient` that can be used to access remote RouteGuide instances
 
 
@@ -136,18 +136,19 @@ Running the appropriate command for your OS regenerates the following files in t
 First let's look at how we create a `RouteGuide` server. If you're only interested in creating gRPC clients, you can skip this section and go straight to [Creating the client](#client) (though you might find it interesting anyway!).
 
 There are two parts to making our `RouteGuide` service do its job:
-- Implementing the service interface generated from our service definition: doing the actual "work" of our service.
+
+- Implementing the service functionality by inheriting from the base class generated from our service definition: doing the actual "work" of our service.
 - Running a gRPC server to listen for requests from clients and return the service responses.
 
 You can find our example `RouteGuide` server in [examples/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs). Let's take a closer look at how it works.
 
 ### Implementing RouteGuide
 
-As you can see, our server has a `RouteGuideImpl` class that implements the generated `RouteGuide.IRouteGuide`:
+As you can see, our server has a `RouteGuideImpl` class that inherits from the generated `RouteGuide.RouteGuideBase`:
 
 ```csharp
 // RouteGuideImpl provides an implementation of the RouteGuide service.
-public class RouteGuideImpl : RouteGuide.IRouteGuide
+public class RouteGuideImpl : RouteGuide.RouteGuideBase
 ```
 
 #### Simple RPC
@@ -155,7 +156,7 @@ public class RouteGuideImpl : RouteGuide.IRouteGuide
 `RouteGuideImpl` implements all our service methods. Let's look at the simplest type first, `GetFeature`, which just gets a `Point` from the client and returns the corresponding feature information from its database in a `Feature`.
 
 ```csharp
-public Task<Feature> GetFeature(Point request, Grpc.Core.ServerCallContext context)
+public override Task<Feature> GetFeature(Point request, Grpc.Core.ServerCallContext context)
 {
     return Task.FromResult(CheckFeature(request));
 }
@@ -171,7 +172,7 @@ Now let's look at something a bit more complicated - a streaming RPC. `ListFeatu
 
 ```csharp
 // in RouteGuideImpl
-public async Task ListFeatures(Rectangle request,
+public override async Task ListFeatures(Rectangle request,
     Grpc.Core.IServerStreamWriter<Feature> responseStream,
     Grpc.Core.ServerCallContext context)
 {
@@ -190,7 +191,7 @@ As you can see, here the request object is a `Rectangle` in which our client wan
 Similarly, the client-side streaming method `RecordRoute` uses an [IAsyncEnumerator](https://github.com/Reactive-Extensions/Rx.NET/blob/master/Ix.NET/Source/System.Interactive.Async/IAsyncEnumerator.cs), to read the stream of requests using the async method `MoveNext` and the `Current` property.
 
 ```csharp
-public async Task<RouteSummary> RecordRoute(Grpc.Core.IAsyncStreamReader<Point> requestStream,
+public override async Task<RouteSummary> RecordRoute(Grpc.Core.IAsyncStreamReader<Point> requestStream,
     Grpc.Core.ServerCallContext context)
 {
     int pointCount = 0;
@@ -232,7 +233,7 @@ public async Task<RouteSummary> RecordRoute(Grpc.Core.IAsyncStreamReader<Point> 
 Finally, let's look at our bidirectional streaming RPC `RouteChat`.
 
 ```csharp
-public async Task RouteChat(Grpc.Core.IAsyncStreamReader<RouteNote> requestStream,
+public override async Task RouteChat(Grpc.Core.IAsyncStreamReader<RouteNote> requestStream,
     Grpc.Core.IServerStreamWriter<RouteNote> responseStream,
     Grpc.Core.ServerCallContext context)
 {
