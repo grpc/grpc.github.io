@@ -329,7 +329,7 @@ Once we've implemented all our methods, we also need to start up a gRPC server s
   /** Create a RouteGuide server using serverBuilder as a base and features as data. */
   public RouteGuideServer(ServerBuilder<?> serverBuilder, int port, Collection<Feature> features) {
     this.port = port;
-    server = serverBuilder.addService(new RouteGuideService(features))
+    server = serverBuilder.addService(RouteGuideGrpc.bindService(new RouteGuideService(features)))
         .build();
   }
   ...
