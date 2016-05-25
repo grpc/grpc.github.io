@@ -13,7 +13,7 @@ This page describes how gRPC deals with errors, including gRPC's built-in error 
 
 As you'll have seen in our concepts document and examples, when a gRPC call completes successfully the server returns an `OK` status to the client (depending on the language the `OK` status may or may not be directly used in your code). But what happens if the call isn't successful?
 
-If an error occurs, gRPC returns one of its error status codes instead, with an optional string error message that provides further details about what happened. Error information is available to gRPC clients in all supported languages. gRPC errors are also returned on the server side if a problem occurs during a call.
+If an error occurs, gRPC returns one of its error status codes instead, with an optional string error message that provides further details about what happened. Error information is available to gRPC clients in all supported languages.
 
 ## Error status codes
 
