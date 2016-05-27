@@ -1033,11 +1033,11 @@ for an explanation of the authentication features of gRPC.</p>
 
   </div>
   <div id="ruby_connect">
-<pre>stub = Helloworld::Greeter::Stub.new('localhost:50051')</pre>
+<pre>stub = Helloworld::Greeter::Stub.new('localhost:50051', :this_channel_is_insecure)</pre>
 <p>In Ruby, we can do this in a single method call using the <code>Stub</code> class generated from our .proto.</p>
   </div>
   <div id="node_connect">
-<pre>var client = new hello_proto.Greeter('localhost:50051');</pre>
+<pre>var client = new hello_proto.Greeter('localhost:50051', grpc.credentials.createInsecure());</pre>
 <p>In Node.js, we can do this in a single step by calling the <code>Greeter</code> stub constructor.</p>
 
   </div>
