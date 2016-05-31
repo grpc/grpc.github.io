@@ -364,6 +364,7 @@ First <a href="https://github.com/google/protobuf/blob/master/README.md">install
 <pre>
 git clone https://github.com/grpc/grpc.git $REPO
 cd $REPO
+git submodule update --init
 make grpc_ruby_plugin
 cp bins/opt/grpc_ruby_plugin $SOMEWHERE_ON_PATH
 </pre>
