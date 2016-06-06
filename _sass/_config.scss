@@ -1,0 +1,20 @@
+// Colors
+$mainBrandColor: #2DA6B0;
+$secondBrandColor: #197E8B;
+$thirdBrandColor: #E7F3F4;
+$inverseBrandColor: #FFFFFF;
+// Use as an accent color in small quantities to balance out the main theme.
+$popBrandColor: hsl(3, 90%, 75%);
+$lightPopBrandColor: lighten($popBrandColor, 15%);
+
+$linkColor: $mainBrandColor;
+$linkHoverColor: darken($linkColor, 10%);
+$codeColor: darken($linkColor, 20%);
+$codeBkColor: #ebfaf8;
+$wellColor: #F9F9F9;
+$textColor: #6F7E81;
+$headingsColor: rgb(21, 91, 103);
+$footerColor: lighten($thirdBrandColor, 4%);
+
+// Helper vars
+$vpad: 20px;
