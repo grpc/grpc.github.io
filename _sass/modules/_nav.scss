@@ -1,0 +1,25 @@
+#common-nav{
+    margin-bottom: 0px;
+    background-color: $secondBrandColor;
+
+    .logo {
+        width: 60px;
+    }
+}
+
+h4.arrow-d, h4.arrow-r {
+    cursor: pointer;
+    &::before{
+        font-family: monospace;
+        font-weight: bold;
+    }
+}
+
+// Expandy nav items
+h4.arrow-r::before {
+    content: "+ ";
+}
+
+h4.arrow-d::before {
+    content: "- ";
+}
