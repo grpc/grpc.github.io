@@ -1,9 +1,12 @@
 #common-nav{
     margin-bottom: 0px;
     background-color: $secondBrandColor;
-
+    color: $white;
     .logo {
         width: 60px;
+    }
+    .current {
+        border-bottom: 3px solid white;
     }
 }
 
