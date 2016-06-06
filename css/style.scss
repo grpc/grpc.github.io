@@ -6,7 +6,9 @@
 @import url("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css");
 
 @import "base/_config";
+@import "base/_reset";
 @import "base/_common";
+@import "base/_text";
 @import "base/_override";
 
 @import "modules/_footer";

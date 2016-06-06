@@ -1,6 +1,155 @@
-.footer{
+footer{
     background-color: $footerColor;
     box-shadow: 0px 500px 0px 500px $footerColor;
-    padding-top: 50px;
-    padding-bottom: 100px;
+    padding: 35px 0 70px 0;
+    color: #ffffff;
+    position: relative;
+
+    a {
+        color: #ffffff;
+    }
+
+    .footer-logo {
+        width: 75px;
+        margin-left: -8px;
+        padding: 0 0 20px 0;
+        
+        @media (max-width: 768px) {
+          padding: 0 0 10px 0;
+        }
+    }
+
+    .right-links,
+    .left-links {
+        display: inline-block;
+        width: 48%;
+        vertical-align: top;
+    }
+
+    .left-links {
+        color: $footerText;
+        font-weight: 300;
+
+        p {
+          font-size: .8em;
+        }
+        @media (max-width: 1025px) {
+            width: 39%;
+        }
+
+        @media (max-width: 768px) {
+            width: 300px;
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: 30px auto;
+            text-align: center;
+        }
+    }
+
+    .right-links {
+      padding: 0 0 0 35px;
+
+      p {
+        font-weight: 200;
+        font-size: .8em;
+        padding: 14px 0;
+        letter-spacing: .5px;
+      }
+
+      .right-link-headers  {
+          font-weight: 400;
+          font-size: 1em;
+          letter-spacing: .5px;
+          padding: 0 0 10px;
+      }
+
+      @media (max-width: 1025px) {
+          width: 58%;
+      }
+
+      @media (max-width: 768px) {
+          width: 100%;
+          display: table;
+          margin: 0 0 60px 0;
+          padding: 0;
+          p,
+          .community p,
+          .right-link-headers {
+              padding: 0;
+          }
+      }
+    }
+
+    .resources {
+      @media(max-width: 768px) {
+        display: none;
+      }
+    }
+
+    .community p {
+        padding: 7px 0;
+    }
+
+    .community-links {
+        display: inline-block;
+    }
+
+    .github {
+        @media(min-width: 990px) {
+            &::before {
+              content: '';
+              display: inline-block;
+              background: url('../img/github.png') no-repeat center/cover; 
+              width: 35px;
+              height: 35px;
+              vertical-align: middle;
+              margin: 0 15px 0 0;
+            }
+        }
+    }
+
+    .google {
+        @media(min-width: 990px) {
+            &::before {
+              content: '';
+              display: inline-block;
+              background: url('../img/google+.png') no-repeat center/cover; 
+              width: 35px;
+              height: 35px;
+              vertical-align: middle;
+              margin: 0 15px 0 0;
+            }
+        }
+    }
+
+    .twitter {
+        @media(min-width: 990px) {
+            &::before {
+              content: '';
+              display: inline-block;
+              background: url('../img/twitter.png') no-repeat center/cover; 
+              width: 35px;
+              height: 35px;
+              vertical-align: middle;
+              margin: 0 15px 0 0;
+            }
+        }
+    }
+
+    .stack-overflow {
+        @media(min-width: 990px) {
+            &::before {
+              content: '';
+              display: inline-block;
+              background: url('../img/stack-overflow.png') no-repeat center/cover; 
+              width: 35px;
+              height: 35px;
+              vertical-align: middle;
+              margin: 0 15px 0 0;
+            }
+        }
+    }
 }
