@@ -1,0 +1,28 @@
+.hero {
+    position: relative;
+    padding-top: 80px;
+    padding-bottom: 80px;
+    text-align: center;
+    h1 {
+        font-size: 21px;
+    }
+
+    .logo {
+        width: 270px;
+        padding-bottom: 20px;
+    }
+    .lead {
+        color: $white;
+        display: block;
+    }
+}
+
+.hero-bar {
+    text-align: center;
+    background-color: $thirdBrandColor;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border-top: 3px solid $lightPopBrandColor;
+}

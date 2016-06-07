@@ -1,0 +1,36 @@
+.btn {
+  &:focus {
+    outline:0 !important;
+  }
+}
+
+.btn.btn-grpc {
+  font-weight: 400;
+  letter-spacing: 1px;
+  padding: 6px 16px;
+  font-size: 12px;
+  background-color: $secondBrandColor;
+  color: $white;
+  transition: 0.3s;
+  &:active {transform: scale(0.98);}
+  &.inverse{
+    background-color: $white;
+    color: $secondBrandColor;
+    border: 2px solid $secondBrandColor;
+  }
+}
+
+.btn.btn-floating {
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $white;
+  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);
+  &.down-caret {
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

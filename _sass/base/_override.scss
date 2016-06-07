@@ -75,23 +75,6 @@ pre, pre.prettyprint {
   background-color: $inverseBrandColor;
 }
 
-.btn.btn-grpc {
-  font-weight: 400;
-  letter-spacing: 1px;
-  padding: 6px 20px;
-  font-size: 12px;
-  background-color: $secondBrandColor;
-  color: $white;
-  transition: 0.3s;
-  &:active {transform: scale(0.98);}
-  &:focus {outline:0;}
-  &.inverse{
-    background-color: $white;
-    color: $secondBrandColor;
-    border: 2px solid $secondBrandColor;
-  }
-}
-
 
 
 
