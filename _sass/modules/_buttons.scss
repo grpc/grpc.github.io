@@ -42,3 +42,11 @@
     }
   }
 }
+
+.btn-link {
+  text-transform: uppercase;
+  display: inline-block;
+  &::hover {
+    cursor: pointer;
+  }
+}
