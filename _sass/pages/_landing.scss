@@ -17,6 +17,7 @@
     }
     .lead {
         color: $white;
+        display: block;
     }
 }
 
@@ -31,12 +32,14 @@
 }
 
 .landing-container {
-    .content-row {
+    .landing-row {
         height: 250px;
+        padding: 30px 0;
     }
     .landing-image {
         height: 100%;
         object-fit: contain;
+        object-position: top;
     }
     .landing-blurb {
         height: 100%;
