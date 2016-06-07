@@ -1,8 +1,9 @@
 // Landing page
 .landing-container {
     position: relative;
+    padding-top: 100px;
     .landing-row {
-        padding: 30px 0;
+        padding-top: 40px;
         @media (max-width: 768px) {
             display: flex;
             flex-direction: column;
@@ -17,18 +18,24 @@
         object-position: top;
     }
     .landing-blurb {
+        p {
+            padding-top: 10px;
+        }
         height: 250px;
         @media (max-width: 768px) {
             height: initial;
         }
     }
-    .btn {
+    .btn-read-more {
         margin: 20px 0;
     }
 }
 .doc-call {
     background-color: lighten($thirdBrandColor, 4%);
     padding: 80px 0;
+    .doc-call-text {
+        padding-top: 10px;
+    }
     .btn-doc-call {
         margin: 15px 0 35px;
     }
