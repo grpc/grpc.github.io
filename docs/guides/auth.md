@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Authentication
+headline: Authentication
 ---
 
 <h1 class="page-header">Authentication</h1>

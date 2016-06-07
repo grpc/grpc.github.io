@@ -1,9 +1,13 @@
 #common-nav{
+    padding-top: 10px;
     margin-bottom: 0px;
-    background-color: $secondBrandColor;
-
+    background-color: transparent;
+    color: $white;
     .logo {
         width: 60px;
+    }
+    .current {
+        border-bottom: 3px solid white;
     }
 }
 

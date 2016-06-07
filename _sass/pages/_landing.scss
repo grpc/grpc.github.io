@@ -1,35 +1,43 @@
 // Landing page
-.landing-context {
-    .lang-list {
-        font-size: 18px;
+.landing-container {
+    position: relative;
+    .landing-row {
+        padding: 30px 0;
+        @media (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+            &.reverse {
+                flex-direction: column-reverse;
+            }
+        }
     }
-
-    pre {
-        font-size: 12px;
+    .landing-image {
+        height: 250px;
+        object-fit: contain;
+        object-position: top;
     }
-}
-
-.hero {
-    padding-top: 80px;
-    padding-bottom: 40px;
-    text-align: center;
-
-    h1 {
-        font-size: 21px;
-    }
-
-    .logo {
-        width: 270px;
-        padding-bottom: 20px;
+    .landing-blurb {
+        height: 250px;
     }
 }
-
-.hero-bar {
-    text-align: center;
-    background-color: $thirdBrandColor;
-    padding-bottom: 10px;
-    padding-top: 20px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    border-top: 3px solid $lightPopBrandColor;
+.doc-call {
+    background-color: $footerColor;
+    padding: 80px 0;
+    .btn-doc-call {
+        margin: 15px 0 35px;
+    }
+    .lang-select-row {
+        display: flex;
+        justify-content: center;
+    }
+    .lang-select {
+        margin: 10px;
+        text-align: center;
+        width: 33%;
+        max-width: 140px;
+        @media (max-width: 768px) {
+            margin: 5px;
+            padding: 6px 10px;
+        }
+    }
 }
