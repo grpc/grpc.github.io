@@ -1,13 +1,16 @@
 ---
 layout: base
 ---
+<div class="nav-hero-container">
+	{% include nav.html %}
+	{% include hero.html %}
+</div>
 
-{% include nav.html %}
-{% include hero.html %}
-{% include hero-bar.html %}
-
-<div class="container vpad">
+<div class="landing-container container vpad nofloat">
   {{ content }}
+</div>
+<div class="doc-call col-sm-12 container vpad nofloat">
+  {% include doc-call.html %}
 </div>
 
 {% include footer.html %}

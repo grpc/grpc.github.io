@@ -1,35 +1,56 @@
 // Landing page
-.landing-context {
-    .lang-list {
-        font-size: 18px;
+.landing-container {
+    position: relative;
+    padding: 70px 0;
+    .landing-row {
+        padding-top: 40px;
+        @media (max-width: 768px) {
+            display: flex;
+            flex-direction: column;
+            &.reverse {
+                flex-direction: column-reverse;
+            }
+        }
     }
-
-    pre {
-        font-size: 12px;
+    .landing-image {
+        height: 250px;
+        object-fit: contain;
+        object-position: top;
+    }
+    .landing-blurb {
+        p {
+            padding-top: 10px;
+        }
+        height: 250px;
+        @media (max-width: 768px) {
+            height: initial;
+        }
+    }
+    .btn-read-more {
+        margin: 20px 0;
     }
 }
-
-.hero {
-    padding-top: 80px;
-    padding-bottom: 40px;
-    text-align: center;
-
-    h1 {
-        font-size: 21px;
+.doc-call {
+    background-color: lighten($thirdBrandColor, 4%);
+    padding: 80px 0;
+    .doc-call-text {
+        padding-top: 10px;
     }
-
-    .logo {
-        width: 270px;
-        padding-bottom: 20px;
+    .btn-doc-call {
+        margin: 15px 0 35px;
     }
-}
-
-.hero-bar {
-    text-align: center;
-    background-color: $thirdBrandColor;
-    padding-bottom: 10px;
-    padding-top: 20px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    border-top: 3px solid $lightPopBrandColor;
+    .lang-select-row {
+        display: flex;
+        justify-content: center;
+    }
+    .lang-select {
+        margin: 10px;
+        text-align: center;
+        width: 33%;
+        max-width: 140px;
+        @media (max-width: 768px) {
+            margin: 5px;
+            padding: 6px 10px;
+        }
+    }
 }
