@@ -1,15 +1,22 @@
+.nav-hero-container {
+    background: url('../img/hero-bg.png') no-repeat center/cover ; 
+}
 .hero {
     position: relative;
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 0;
+    padding-bottom: 55px;
     text-align: center;
     h1 {
         font-size: 21px;
     }
 
     .logo {
-        width: 270px;
-        padding-bottom: 20px;
+        width: 160px;
+        padding: 13px 20px;
+        border: 2px solid white;
+        border-radius: 1px;
+        box-shadow: 1px 2px 4px 0 rgba(0,0,0,0.4);
+        margin: 30px 0 20px;
     }
     .lead {
         color: $white;
