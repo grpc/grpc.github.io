@@ -21,7 +21,7 @@
     }
 }
 .doc-call {
-    background-color: $footerColor;
+    background-color: lighten($thirdBrandColor, 4%);
     padding: 80px 0;
     .btn-doc-call {
         margin: 15px 0 35px;
