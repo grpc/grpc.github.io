@@ -1,0 +1,50 @@
+.about {
+    .about-sections {
+        padding: 50px 0;
+
+        &::after {
+            content: '';
+            position: absolute;
+            width: 100%; 
+            left: 0;
+            border-bottom: 2px solid #e3e3e3;
+            margin: 50px 0;
+        }
+    }
+
+    .about-dividers {
+        position: absolute;
+        width: 100%; 
+        left: 0;
+        border-bottom: 2px solid #e3e3e3;
+    }
+
+    .about-max {
+        max-width: 70%; 
+    }
+
+    .about-lists {
+        list-style: disc inside; 
+    }
+
+    .core-features-title {
+        margin: 20px 0 0 0;
+    }
+
+    .case-studies-title {
+        margin: 15px 0 20px 0;
+    }
+
+    .more-btn {
+      float: right;
+    }
+
+    .more-btn-text::after {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        background: url('../img/more-arrow.png') no-repeat center/cover;
+        width: 25px;
+        height: 25px;
+      }
+}
