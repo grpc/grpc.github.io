@@ -1,0 +1,134 @@
+.about {
+    .about-sections {
+        padding: 50px 0;
+        position: relative;
+    }
+
+    .section-dividers {
+        position: absolute;
+        width: 100%; 
+        left: 0;
+        border-bottom: 2px solid #e3e3e3;
+        margin: 0;
+    }
+
+    .about-max {
+        max-width: 70%; 
+
+        @media(max-width: 768px) {
+            max-width: 100%;
+        }
+    }
+
+    .about-lists {
+        list-style: disc inside; 
+    }
+
+    .intro {
+        margin-bottom: 20px;
+    }
+
+    .main-usage-title {
+        padding: 10px 0 0 0;
+    }
+
+    .core-features-title {
+        margin: 30px 0 0 0;
+    }
+
+    .case-studies-title {
+        margin: 20px 0;
+    }
+
+    .more-btn {
+        position: absolute;
+        right: 0;
+        
+        @media(max-width: 990px) {
+            bottom: 25px;
+        }
+    }
+
+    .more-btn-text {
+        font-size: .85em;
+        &::after {
+            content: '';
+            display: inline-block;
+            vertical-align: bottom;
+            background: url('../img/more-arrow.png') no-repeat center/cover;
+            width: 25px;
+            height: 25px;
+            margin: 0 0 0 10px;
+        }
+    }
+
+    .case-studies-container {
+        margin-top: 35px;
+        margin-bottom: 35px;
+        max-width: 85%;
+
+        &::after {
+          content: '';
+          display: table;
+          width: 100%;
+        }
+
+        @media(max-width: 768px) {
+            max-width: 100%;
+        }
+    }
+
+    .case-studies-link {
+        text-align: center;
+    }
+
+    .case-studies-img {
+        height: 65px;
+    }
+
+    .external-link-icon {
+        width: 15px;
+    }
+
+    .case-studies-img,
+    .external-link-icon {
+        display: block;
+        margin: 15px auto;
+    }
+
+    .pt-container {
+        margin-top: 65px;
+        margin-bottom: 40px;
+
+        &::after {
+          content: '';
+          display: table;
+          width: 100%;
+        }
+    }
+
+    .pt-video {
+        height: 175px;
+        background: url('../img/pt-video-placeholder.png') no-repeat center/cover;
+    }
+    
+    .pt-desc {
+        font-size: .85em;
+        font-weight: 300;
+    }
+
+    .story {
+        padding: 50px 0 100px;
+    }
+
+    .more-story {
+        font-weight: 500;
+        margin: 20px 0 0;
+
+        .underline {
+            text-decoration: underline;
+        }
+
+    }
+
+}
