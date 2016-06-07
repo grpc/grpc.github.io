@@ -3,51 +3,35 @@ layout: landing
 title: grpc.io
 ---
 
-
-<div class="row landing-context">
-  <div class="col-sm-4">
-    <h3>Powerful IDL</h3>
-    <p>
-      Define your service using Protocol Buffers, a powerful binary serialization toolset and language.
-<pre>
-message HelloRequest {
-  string greeting = 1;
-}
-
-message HelloResponse {
-  string reply = 1;
-}
-
-service HelloService {
-  rpc SayHello(HelloRequest) returns
-  (HelloResponse);
-}
-</pre>
-    </p>
+  <div class="col-md-9 row nofloat center-block">
+    <div class="col-sm-7 landing-blurb">
+      <h3>Microservices</h3>
+      <p>A sentence or two will be provided to describe this use case. A sentence or two will be provided to describe this use case.</p>
+    </div>
+    <img class="col-sm-4 col-sm-offset-1 landing-image" src="{{ site.baseurl }}/img/microservices.png" alt="Microservices">
   </div>
-  <div class="col-sm-4">
-    <h3>Libraries in ten languages</h3>
-    <p>Automatically generate idiomatic client and server stubs for your service in a variety of languages.</p>
-    <p>
-      gRPC has libraries in: <br><span class="lang-list">{% include lang-list.html %}</span>
-    </p>
-    <h3>Get started</h3>
-    <p>
-      <a href="{{ site.baseurl }}/docs/">Overview Guide</a><br>
-      <a href="{{ site.baseurl }}/docs/reference/">API Reference Docs</a>
-    </p>
+
+  <div class="col-md-9 row nofloat center-block">
+      <img class="col-sm-4 landing-image" src="{{ site.baseurl }}/img/mobile.png" alt="Mobile">
+      <div class="col-sm-7 col-sm-offset-1 landing-blurb">
+      <h3>Mobile</h3>
+      <p>A sentence or two will be provided to describe this use case. A sentence or two will be provided to describe this use case.</p>
+    </div>
   </div>
-  <div class="col-sm-4">
-    <h3>HTTP/2</h3>
-    <p>
-      Building on the <a href="https://http2.github.io/">HTTP/2 standard</a> brings many capabilities such as bidirectional streaming, flow control, header compression, multiplexing requests over a single TCP connection and more.
-    </p>
-    <p>
-      These features save battery life and data usage on mobile devices while speeding up services and web applications running in the cloud.
-    </p>
-    <h3>Why gRPC?</h3>
-    <p>
-      Read the <a href="{{ site.baseurl }}/posts/principles">Design Motivations &amp; Principles</a> behind gRPC.
-    </p>
+
+  <div class="col-md-9 row nofloat center-block">
+    <div class="col-sm-7 landing-blurb">
+      <h3>Web</h3>
+      <p>A sentence or two will be provided to describe this use case. A sentence or two will be provided to describe this use case.</p>
+    </div>
+    <img class="col-sm-4 col-sm-offset-1 landing-image" src="{{ site.baseurl }}/img/web.png" alt="Web">
   </div>
-</div>
+
+  <div class="col-md-9 row nofloat center-block">
+      <img class="col-sm-4 landing-image" src="{{ site.baseurl }}/img/efficient-apis.png" alt="Efficient Apis">
+      <div class="col-sm-7 col-sm-offset-1 landing-blurb">
+      <h3>Efficient APIs</h3>
+      <p>A sentence or two will be provided to describe this use case. A sentence or two will be provided to describe this use case.</p>
+    </div>
+  </div>
+

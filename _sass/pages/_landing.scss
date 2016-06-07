@@ -1,19 +1,12 @@
 // Landing page
-.landing-context {
-    .lang-list {
-        font-size: 18px;
-    }
-
-    pre {
-        font-size: 12px;
-    }
+.nav-hero-container {
 }
 
 .hero {
-    padding-top: 80px;
+    margin-top: -80px;
+    padding-top: 160px;
     padding-bottom: 40px;
     text-align: center;
-
     h1 {
         font-size: 21px;
     }
@@ -21,6 +14,9 @@
     .logo {
         width: 270px;
         padding-bottom: 20px;
+    }
+    .lead {
+        color: $white;
     }
 }
 
@@ -32,4 +28,17 @@
     margin-bottom: 20px;
     font-weight: bold;
     border-top: 3px solid $lightPopBrandColor;
+}
+
+.landing-container {
+    .content-row {
+        height: 250px;
+    }
+    .landing-image {
+        height: 100%;
+        object-fit: contain;
+    }
+    .landing-blurb {
+        height: 100%;
+    }
 }

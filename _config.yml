@@ -8,3 +8,5 @@ redcarpet:
 
 sass:
   style: compressed
+  
+url: /grpc.github.io 
