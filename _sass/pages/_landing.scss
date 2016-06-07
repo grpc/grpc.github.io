@@ -18,6 +18,12 @@
     }
     .landing-blurb {
         height: 250px;
+        @media (max-width: 768px) {
+            height: initial;
+        }
+    }
+    .btn {
+        margin: 20px 0;
     }
 }
 .doc-call {
