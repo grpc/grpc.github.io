@@ -7,3 +7,56 @@
         padding-left: 22px;
     }
 }
+
+.doc-header {
+	padding-bottom: 30px;
+}
+
+.doc-description {
+	color: $dark-gray;
+	margin: 40px 0;
+	display: block;
+	p { 
+		font-size: 18px;
+		font-weight: 400;
+	}
+}
+
+.use-description {
+	color: $gray;
+	margin: 20px 0;
+	display: block;
+	p { 
+		font-size: 15px;
+		font-weight: 300;
+	}
+}
+
+.lang-card-selector {
+	width: 100%;
+    padding: 0 0 30px;
+}
+.lang-card {
+	display: inline-block;
+	.lang-card-title {
+		background: $light-gray;
+		color: $dark-gray;
+		padding: 8px;
+		text-align: left;
+		margin-bottom: 4px;
+	}
+	.lang-card-link {
+		font-size: 14px;
+		display: block;
+		text-align: left;
+		padding: 8px;
+	}
+    margin: 1%;
+    text-align: center;
+    width: 30%;
+    @media (max-width: 768px) {
+        margin: 0 1%;
+        padding: 6px 10px;
+        width: 47%;
+    }
+}
