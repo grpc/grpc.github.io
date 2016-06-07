@@ -3,6 +3,11 @@
     margin-bottom: 0px;
     background-color: transparent;
     color: $white;
+    .page-headline {
+        color: $white;
+        font-weight: 300;
+        padding: 20px 0;
+    }
     .logo {
         width: 60px;
     }
