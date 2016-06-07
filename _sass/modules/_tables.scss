@@ -1,0 +1,9 @@
+// Tables are table-y
+table, th, td {
+   border: 1px solid lighten($textColor, 20%);
+   padding: 6px
+}
+
+th {
+  background-color: $thirdBrandColor;
+}

@@ -1,0 +1,35 @@
+// Landing page
+.landing-context {
+    .lang-list {
+        font-size: 18px;
+    }
+
+    pre {
+        font-size: 12px;
+    }
+}
+
+.hero {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    text-align: center;
+
+    h1 {
+        font-size: 21px;
+    }
+
+    .logo {
+        width: 270px;
+        padding-bottom: 20px;
+    }
+}
+
+.hero-bar {
+    text-align: center;
+    background-color: $thirdBrandColor;
+    padding-bottom: 10px;
+    padding-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border-top: 3px solid $lightPopBrandColor;
+}

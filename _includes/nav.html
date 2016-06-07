@@ -12,16 +12,21 @@
         <img class="logo" src="{{ site.baseurl }}/img/grpc_inverse.svg" alt="GRPC">
       </a>
     </div>
+  <div class="collapse navbar-collapse" id="navbar-collapse-1">
+  <ul class="nav navbar-nav navbar-right">
+    {% assign pages_list = site.pages %}
+    {% assign group = 'navigation' %}
+    {% include pages_list.html %}
+  </ul>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
+<!--       <ul class="nav navbar-nav navbar-right">
         <li><a href="https://github.com/grpc">github.com/grpc</a></li>
         <li><a href="{{ site.baseurl }}/docs/">Documentation</a></li>
         <li><a href="{{ site.baseurl }}/posts/" title="">Blog</a></li>
         <li><a href="{{ site.baseurl }}/contribute/">Contribute</a></li>
         <li><a href="{{ site.baseurl }}/faq/">FAQ</a></li>
-      </ul>
+      </ul> -->
+
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

@@ -1,0 +1,33 @@
+// Shared
+.vpad {
+    padding-top: $vpad;
+}
+
+.page-title-bar{
+    background-color: $thirdBrandColor;
+    border-top: 3px solid $lightPopBrandColor;
+    padding-top: 20px;
+    padding-bottom: 30px;
+
+    h1, h2, h3, h4, h5, h6 {
+        color: $mainBrandColor;
+    }
+
+    .fa {
+        color: $popBrandColor;
+    }
+}
+
+.page-spacer {
+    height: 100px;
+}
+
+
+
+#toc {
+    border-left: 5px solid $secondBrandColor;
+    ul {
+        list-style-type: none;
+        padding-left: 22px;
+    }
+}
