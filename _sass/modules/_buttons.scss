@@ -32,5 +32,12 @@
     bottom: -20px;
     left: 50%;
     transform: translateX(-50%);
+    padding: 0;
+    .icon {
+      height: 10px;
+      width: 10px;
+      background: url('../img/down-arrow.svg') no-repeat center/cover; 
+      margin: 0 auto;
+    }
   }
 }
