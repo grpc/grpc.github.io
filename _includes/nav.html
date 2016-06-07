@@ -1,4 +1,4 @@
-<nav id="common-nav" class="navbar navbar-static-top inverse">
+<nav id="common-nav" class="navbar navbar-static-top inverse col-sm-11 nofloat center-block">
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -13,20 +13,15 @@
       </a>
     </div>
   <div class="collapse navbar-collapse" id="navbar-collapse-1">
-  <ul class="nav navbar-nav navbar-right">
-    {% assign pages_list = site.pages %}
-    {% assign group = 'navigation' %}
-    {% include pages_list.html %}
-  </ul>
-
-<!--       <ul class="nav navbar-nav navbar-right">
-        <li><a href="https://github.com/grpc">github.com/grpc</a></li>
-        <li><a href="{{ site.baseurl }}/docs/">Documentation</a></li>
-        <li><a href="{{ site.baseurl }}/posts/" title="">Blog</a></li>
-        <li><a href="{{ site.baseurl }}/contribute/">Contribute</a></li>
-        <li><a href="{{ site.baseurl }}/faq/">FAQ</a></li>
-      </ul> -->
-
+    <ul class="nav navbar-nav navbar-right">
+      {% assign current = page.url | downcase | split: '/' %}
+      <li><a href="{{ site.baseurl }}/about/" {% if current[1] == 'about' %}class='current'{% endif %}>About</a></li>
+      <li><a href="{{ site.baseurl }}/docs/" {% if current[1] == 'docs' %}class='current'{% endif %}>Docs</a></li>
+      <li><a href="{{ site.baseurl }}/blog/" {% if current[1] == 'blog' %}class='current'{% endif %}>Blog</a></li>
+      <li><a href="{{ site.baseurl }}/community/" {% if current[1] == 'community' %}class='current'{% endif %}>Community</a></li>
+      <li><a href="{{ site.baseurl }}/faq/" {% if current[1] == 'faq' %}class='current'{% endif %}>FAQ</a></li>
+    </ul>
     </div><!-- /.navbar-collapse -->
+    <h1 class="page-headline">{{page.headline}}</h1> 
   </div><!-- /.container-fluid -->
 </nav>
