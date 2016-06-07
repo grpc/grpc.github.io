@@ -1,22 +1,15 @@
 .about {
     .about-sections {
         padding: 50px 0;
-
-        &::after {
-            content: '';
-            position: absolute;
-            width: 100%; 
-            left: 0;
-            border-bottom: 2px solid #e3e3e3;
-            margin: 50px 0;
-        }
+        position: relative;
     }
 
-    .about-dividers {
+    .section-dividers {
         position: absolute;
         width: 100%; 
         left: 0;
         border-bottom: 2px solid #e3e3e3;
+        margin: 0;
     }
 
     .about-max {
@@ -36,7 +29,8 @@
     }
 
     .more-btn {
-      float: right;
+        position: absolute;
+        right: 0;
     }
 
     .more-btn-text::after {
@@ -46,5 +40,65 @@
         background: url('../img/more-arrow.png') no-repeat center/cover;
         width: 25px;
         height: 25px;
-      }
+    }
+
+    .case-studies-container {
+        margin: 35px 0;
+        max-width: 85%;
+
+        &::after {
+          content: '';
+          display: table;
+          width: 100%;
+        }
+    }
+
+    .case-studies-link {
+        text-align: center;
+    }
+
+    .case-studies-img {
+        height: 65px;
+    }
+
+    .external-link-icon {
+        width: 15px;
+    }
+
+    .case-studies-img,
+    .external-link-icon {
+        display: block;
+        margin: 15px auto;
+    }
+
+    .pt-container {
+        width: 100%;
+        margin-top: 40px;
+        margin-bottom: 40px;
+
+        &::after {
+          content: '';
+          display: table;
+          width: 100%;
+        }
+    }
+
+    .pt-video {
+        height: 175px;
+        background: url('../img/pt-video-placeholder.png') no-repeat center/cover;
+    }
+    
+    .pt-desc {
+        font-size: .85em;
+        font-weight: 300;
+    }
+
+    .more-story {
+        font-weight: 500;
+        margin: 20px 0 0;
+
+        a {
+            text-decoration: underline;
+        }
+    }
 }
