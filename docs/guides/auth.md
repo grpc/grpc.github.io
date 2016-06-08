@@ -194,6 +194,33 @@ combined_creds = ssl_creds.compose(call_creds)
 stub = Helloworld::Greeter::Stub.new('greeter.googleapis.com', combined_creds)
 ```
 
+### C++
+
+#### Base case - no encryption or authentication
+```cpp
+auto channel = grpc::CreateChannel("localhost:50051", InsecureChannelCredentials());
+std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
+...
+```
+
+#### With server authentication SSL/TLS
+
+```cpp
+auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
+auto channel = grpc::CreateChannel("myservice.example.com", creds);
+std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
+...
+```
+
+#### Authenticate with Google using scopeless credentials
+
+```cpp
+auto creds = grpc::GoogleDefaultCredentials();
+auto channel = grpc::CreateChannel("greeter.googleapis.com", creds);
+std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
+...
+```
+
 ### C&#35;
 
 #### Base case - no encryption or authentication
