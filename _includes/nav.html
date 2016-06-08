@@ -1,5 +1,5 @@
 <nav id="common-nav" class="navbar navbar-static-top inverse col-sm-11 nofloat center-block">
-  <div class="container">
+  <div>
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
@@ -22,6 +22,8 @@
       <li><a href="{{ site.baseurl }}/faq/" {% if current[1] == 'faq' %}class='current'{% endif %}>FAQ</a></li>
     </ul>
     </div><!-- /.navbar-collapse -->
-    <h1 class="page-headline">{{page.headline}}</h1> 
+    <div class="container">
+      <h3 class="page-headline">{{page.headline}}</h3> 
+    </div>
   </div><!-- /.container-fluid -->
 </nav>

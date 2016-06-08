@@ -2,64 +2,8 @@
 title: docs
 layout: default
 bodyclass: docs
-icon: <i class="fa fa-book"></i>
 ---
+{% include doc-nav.html %}
 
-<div class="row">
-  <div class="col-sm-3">
-    <ul class="list-unstyled docs-side-nav" id="navbar">
-      <li class="submenu"><h4 class="arrow-r">Guides</h4>
-      <ul style="display:none;">
-      <li><a href="{{ site.baseurl }}/docs/">Overview</a></li>
-      <li><a href="{{ site.baseurl }}/docs/guides/concepts.html">gRPC concepts</a></li>
-      <li><a href="{{ site.baseurl }}/docs/guides/auth.html">Authentication</a></li>
-      <li><a class="disabled" href="{{ site.baseurl }}/docs/guides/tuning.html">Tuning RPC behaviour</a></li>
-      <li><a href="{{ site.baseurl }}/docs/guides/wire.html">Wire format</a></li>
-      <li><a href="{{ site.baseurl }}/docs/guides/error.html">Error handling and debugging</a></li>
-      <li><a href="{{ site.baseurl }}/contribute/">Contribution guidelines</a></li>
-      </ul></li>
-      <li class="submenu"><h4 class="arrow-r">Tutorials</h4><ul style="display:none;">
-          <li><h5>C++ Tutorials</h5><ul>
-      <li><a href="{{ site.baseurl }}/docs/tutorials/basic/c.html">gRPC Basics: C++</a></li>
-      <li><a href="{{ site.baseurl }}/docs/tutorials/async/helloasync-cpp.html">Asynchronous Basics: C++</a></li>
-      </ul>
-      <li><h5>Java Tutorials</h5><ul>
-      <li><a href="{{ site.baseurl }}/docs/tutorials/basic/java.html">gRPC Basics: Java</a></li></ul>
-      <li><h5>Python Tutorials</h5><ul>
-      <li><a href="{{ site.baseurl }}/docs/tutorials/basic/python.html">gRPC Basics: Python</a></li></ul>
-      <li><h5>Go Tutorials</h5><ul>
-      <li><a href="{{ site.baseurl }}/docs/tutorials/basic/go.html">gRPC Basics: Go</a></li></ul>
-      <li><h5>Ruby Tutorials</h5><ul>
-      <li><a href="{{ site.baseurl }}/docs/tutorials/basic/ruby.html">gRPC Basics: Ruby</a></li></ul>
-      <li><h5>Node.js Tutorials</h5><ul>
-      <li><a href="{{ site.baseurl }}/docs/tutorials/basic/node.html">gRPC Basics: Node.js</a></li></ul>
-      <li><h5>C# Tutorials</h5><ul>
-      <li><a href="{{ site.baseurl }}/docs/tutorials/basic/csharp.html">gRPC Basics: C#</a></li></ul>
-      <li><h5>Objective-C Tutorials</h5><ul>
-      <li><a href="{{ site.baseurl }}/docs/tutorials/basic/objective-c.html">gRPC Basics: Objective-C</a>
-      <li><a href="{{ site.baseurl }}/docs/tutorials/auth/oauth2-objective-c.html">OAuth2 on gRPC: Objective-C</a></ul>
-      <li><h5>PHP Tutorials</h5><ul>
-      <li><a href="{{ site.baseurl }}/docs/tutorials/basic/php.html">gRPC Basics: PHP</a></ul>
-      </ul></li>
-      <li class="submenu"><h4 class="arrow-r">Reference</h4><ul style="display:none;">
-      <li><a target="_blank" href="http://www.grpc.io/grpc/cpp/index.html">C++ API</a></li>
-      <li><a target="_blank" href="http://www.grpc.io/grpc-java/javadoc/index.html">Java API</a></li>
-      <li><a target="_blank" href="http://www.grpc.io/grpc/python/">Python API</a></li>
-      <li><a target="_blank" href="http://www.rubydoc.info/github/grpc/grpc/7131c62/index">Ruby API</a></li>
-      <li><a target="_blank" href="http://www.grpc.io/grpc/node/">Node.js API</a></li>
-      <li><a target="_blank" href="http://www.grpc.io/grpc/csharp/">C# API</a></li>
-      <li><a target="_blank" href="http://www.grpc.io/grpc/php/namespaces/Grpc.html">PHP API</a></li>
-      <li><a target="_blank" href="https://godoc.org/google.golang.org/grpc">Go API</a></li>
-      <li><a target="_blank" href="http://cocoadocs.org/docsets/gRPC/">Objective C API</a></li>
-      <li><h5>Other Reference</h5><ul>
-      <li><a target="_blank" href="http://www.grpc.io/grpc/core/">gRPC Core</a></ul></li>
-      </ul></li>
-      <li class="submenu"><h4 class="arrow-r">Related Guides</h4><ul style="display:none;">
-      <li><a href="https://developers.google.com/protocol-buffers/docs/proto3">Protocol Buffers</a></ul></li>
-    </ul>
-  </div>
-  <div class="col-sm-9">
-      {{ content }}
-  </div>
-</div>
+{{ content }}
 
