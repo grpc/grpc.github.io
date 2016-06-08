@@ -3,7 +3,24 @@ title: docs
 layout: default
 bodyclass: docs
 ---
+
 {% include doc-nav.html %}
 
-{{ content }}
+{% assign current = page.url | downcase | split: '/' %}
+
+{% if current[1] == 'docs' and current[2] != 'index.html' and current[2] != 'overview' %}
+    <div class="col-md-3">
+        {% if current[2] == 'guides' %}
+            {% include doc-side-guides-nav.html %}
+        {% endif %}
+    </div>
+
+    <div class="col-md-9">
+        {{ content }}
+    </div>
+{% else %}
+    <div class="col-md-12">
+        {{ content }}
+    </div>
+{% endif %}
 
