@@ -18,6 +18,19 @@
     height: 100px;
 }
 
+.section {
+    padding: 50px 0;
+    position: relative;
+}
+
+.section-divider {
+    position: absolute;
+    width: 100%; 
+    left: 0;
+    border-bottom: 2px solid #e3e3e3;
+    margin: 0;
+}
+
 
 
 #toc {
