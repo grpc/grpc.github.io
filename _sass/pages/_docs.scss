@@ -1,16 +1,8 @@
 // Docs layout specific
-.docs-side-nav {
-    margin-top: 40px;
-
-    ul{
-        list-style-type: none;
-        padding-left: 22px;
-    }
-}
-
-.doc-header {
-	padding-bottom: 30px;
-}
+.docs {
+	.doc-header {
+		padding-bottom: 30px;
+	}
 
 .doc-description {
 	color: $dark-gray;
@@ -36,8 +28,12 @@
 	width: 100%;
     padding: 0 0 30px;
 }
+
 .lang-card {
 	display: inline-block;
+	margin: 30px 1%;
+    text-align: center;
+    width: 30%;
 	.lang-card-title {
 		background: $light-gray;
 		color: $dark-gray;
@@ -51,12 +47,12 @@
 		text-align: left;
 		padding: 8px;
 	}
-    margin: 30px 1%;
-    text-align: center;
-    width: 30%;
     @media (max-width: 768px) {
         margin: 20px 1%;
         padding: 6px 10px;
         width: 47%;
     }
+}
+
+
 }
