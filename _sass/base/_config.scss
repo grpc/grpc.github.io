@@ -4,8 +4,8 @@ $secondBrandColor: #197E8B;
 $thirdBrandColor: #E7F3F4;
 $inverseBrandColor: #FFFFFF;
 $white: #FFFFFF;
-$light-gray: #F0F0F0;
 $gray: #737373;
+$light-gray: lighten($gray, 50%);
 $dark-gray: darken($gray, 20%);
 $black: #2E2E2E;
 // Use as an accent color in small quantities to balance out the main theme.

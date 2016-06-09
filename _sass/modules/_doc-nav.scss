@@ -14,3 +14,16 @@
 		color: $secondBrandColor;
 	}
 }
+
+.doc-side-nav {
+	background-color: $light-gray;
+	li {
+		a {
+			color: $gray;
+			padding: 5px;
+			font-weight: 400;
+		}
+		display: inline-block;
+		padding: 10px;
+	}
+}
