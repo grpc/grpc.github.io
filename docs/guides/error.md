@@ -1,11 +1,10 @@
 ---
 layout: docs
 title: Error Handling
+type: markdown
 ---
 
 <h2 class="page-header">Error Handling</h2>
-
-<div id="toc"></div>
 
 This page describes how gRPC deals with errors, including gRPC's built-in error codes.
 

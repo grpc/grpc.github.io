@@ -1,0 +1,13 @@
+<ul class="doc-side-nav">
+	{% assign current = page.url | downcase | split: '/' %}
+	<h5>Guides</h5>
+	<li><a href="{{ site.baseurl }}/docs/guides/overview.html" {% if current[3] == 'overview.html' %}class='current'{% endif %}>Developer Guide Overview</a></li>
+	<li><a href="{{ site.baseurl }}/docs/guides/quick-start.html" {% if current[3] == 'quick-start.html' %}class='current'{% endif %}>Quick Start Guides</a></li>
+	<li><a href="{{ site.baseurl }}/docs/guides/hello-world.html" {% if current[3] == 'hello-world.html' %}class='current'{% endif %}>Hello World example</a></li>
+	<li><a href="{{ site.baseurl }}/docs/guides/concepts.html" {% if current[3] == 'concepts.html' %}class='current'{% endif %}>gRPC Concepts</a></li>
+	<li><a href="{{ site.baseurl }}/docs/guides/auth.html" {% if current[3] == 'auth.html' %}class='current'{% endif %}>Authentication</a></li>
+	<li><a href="{{ site.baseurl }}/docs/guides/wire.html" {% if current[3] == 'wire.html' %}class='current'{% endif %}>Wire format</a></li>
+	<li><a href="{{ site.baseurl }}/docs/guides/error.html" {% if current[3] == 'error.html' %}class='current'{% endif %}>Error handling and debugging</a></li>
+ 	<li><a href="{{ site.baseurl }}/docs/guides/contributing.html" {% if current[3] == 'contributing.html' %}class='current'{% endif %}>Contriution guidelines</a></li>
+    <li><a href="{{ site.baseurl }}/docs/guides">Related Guide: Protocol Buffers</a></li>
+ </ul>

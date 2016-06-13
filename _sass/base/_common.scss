@@ -34,9 +34,18 @@
 
 
 #toc {
-    border-left: 5px solid $secondBrandColor;
+    border-left: 2px solid $light-gray;
     ul {
         list-style-type: none;
-        padding-left: 22px;
+        padding-left: 10px;
+        font-size: 14px;
+        font-weight: 500;
+        ul {
+            font-weight: 400;
+            font-size: 12px;
+        }
+        a {
+            color: $dark-gray;
+        }
     }
 }

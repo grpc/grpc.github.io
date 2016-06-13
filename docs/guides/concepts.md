@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: gRPC Concepts
+type: markdown
 ---
 
 <h2 class="page-header">gRPC Concepts</h2>
