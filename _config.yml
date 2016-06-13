@@ -3,9 +3,6 @@ markdown:
 
 baseurl: /grpc.github.io
 
-# redcarpet:
-#   extensions: ["highlight", "with_toc_data", "tables"]
-
 kramdown:
    input: GFM
 

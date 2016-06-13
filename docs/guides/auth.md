@@ -4,8 +4,6 @@ title: Authentication
 headline: Authentication
 ---
 
-<h1 class="page-header">Authentication</h1>
-
 <p class="lead">This document provides an overview of gRPC authentication, including our built-in supported auth mechanisms, how to plug in your own authentication systems, and examples of how to use gRPC auth in our supported languages.</p>
 
 <div id="toc"></div>
