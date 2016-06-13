@@ -1,0 +1,93 @@
+.community {
+  width: 70%;
+  margin: 0 0 300px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin: 0;
+  }
+
+  @media (max-width: 990px) {
+    width: 90%;
+  }
+  
+  a > span {
+    text-decoration: underline;
+    font-weight: 500;
+  }
+
+  .external-link-icon {
+    width: 15px;
+  }
+
+  .lead {
+    margin: 20px 0 40px 0;
+  }
+
+  .community-section {
+    margin: 45px 0;
+  }
+
+  .community-title {
+    font-size: 1.1em;
+    font-weight: 500;
+    letter-spacing: .5px;
+    margin: 0 0 15px 0;
+    color: $titleColor;
+  }
+
+  .contribute-wrapper {
+    margin: 15px 0 0;
+    display: table;
+    width: 77%;
+    text-align: left;
+
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+
+    .contribute-item {
+      margin: 0 0 20px;
+      padding: 0;
+    }
+
+    .external-link-icon {
+      margin: 10px 0 0;
+    }
+
+    .item-content {
+      width: 83%;
+      margin: 0 auto;
+    }
+
+    .item-desc {
+      font-size: .8em;
+      font-weight: 300;
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .item-link {
+      display: block;
+      font-weight: 400;
+      text-decoration: none;
+    }
+
+    .item-box {
+      display: block;
+      text-align: center;
+      border-radius: 2px;
+      padding: 25px 0 20px;
+      margin: 10px auto;
+      background: $footerText;
+      width: 95%;
+    }
+  }
+
+  .mailto {
+    font-weight: 500;
+    letter-spacing: .5px;
+    text-decoration: underline;
+    color: $titleColor;
+  }
+}
