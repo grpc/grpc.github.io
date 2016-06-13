@@ -1,6 +1,7 @@
 .doc-nav{
 	display: block;
-	li {
+	margin: 0 10px 25px;
+	.tab {
 		a {
 			color: $gray;
 			padding: 5px;
@@ -8,22 +9,37 @@
 		}
 		display: inline-block;
 		padding: 10px;
+
 	}
 	.current {
 		border-bottom: 3px solid $secondBrandColor;
 		color: $secondBrandColor;
+		@media (max-width: 768px) {
+			display: inline-block;
+		}
 	}
 }
 
 .doc-side-nav {
 	background-color: $light-gray;
-	li {
-		a {
-			color: $gray;
-			padding: 5px;
-			font-weight: 400;
+	padding: 10px 0 30px;
+	.current {
+		&:before{
+			content: '>';
 		}
-		display: inline-block;
-		padding: 10px;
+	}
+		h5 {
+			padding: 5px 15px 10px;
+		}
+		li {
+			display: inline-block;
+			padding: 2px 15px;
+			width: 100%;
+			a {
+				font-size: 13px;
+				color: $dark-gray;
+				font-weight: 400;
+			}
+
 	}
 }

@@ -16,9 +16,18 @@ h3 {
 }
 
 h5 {
-	font-weight: 600;
-	color: $black
+	font-size: 18px;
+	font-weight: 500;
+	color: $black;
+	letter-spacing: 1px;
 }
+
+h6 {
+	font-size: 16px;
+	font-weight: 300;
+	color: $dark-gray;
+}
+
 p {
   font-weight: 200;
 }

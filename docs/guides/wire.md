@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Wire Protocol
+type: markdown
 ---
 
 <h1 class="page-header">gRPC over HTTP2 protocol</h1>

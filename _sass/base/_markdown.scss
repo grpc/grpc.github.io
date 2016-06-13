@@ -1,0 +1,58 @@
+.markdown {
+	padding-bottom: 60px;
+	// Text Blocks
+	p {
+		margin: 20px 0;
+		@media (max-width: 768px) {
+			margin: 10px 0;
+		}
+	}
+	// List Items
+	li {
+		line-height: 24px;
+	}
+	ol, ul {
+		list-style: initial;
+		list-style-position: inside;
+		color: $black;
+		font-size: 15px;
+		margin: 0 20px;
+		@media (max-width: 768px) {
+			margin: 0;
+		}
+	}
+	// Lead Text Block
+	.lead {
+		color: $dark-gray;
+		font-size: 18px;
+
+	}
+	// Section Headlines 
+	h5 {
+		margin-top: 30px;
+		margin-bottom: 20px;
+		
+	}
+	// Section Subheadlines
+	h6 {
+		margin: 20px 25px;
+		@media (max-width: 768px) {
+			margin: 20px 0;
+		}	
+		// Text immediately following h6 should have same level of indention	
+		+ p {
+			margin: 5px 25px;
+			@media (max-width: 768px) {
+				margin: 5px 0;
+			}
+		}
+	}
+
+	pre {
+		margin: 5px 25px;
+		@media (max-width: 768px) {
+			margin: 5px 0;
+		}
+	}
+
+}

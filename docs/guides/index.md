@@ -2,16 +2,27 @@
 layout: docs
 title: Guides
 headline: '[Guides Page Headline]'
+type: markdown
 ---
 
+<p class="lead">
+[Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
+</p>
+<p class="lead">
+Cu his alii debitis, dolore aliquid splendide et ius, id atqui mandamus forensibus duo.
+In ius assum aeterno contentiones, ad doming delenit vis, has oratio oportere ei. Cu ius nonumy facilisi intellegat. No aeterno mediocrem reprimique cum, ei mel mucius aperiri veritus. Ut tollit labore senserit sit. In mundi propriae vix.
+</p>
 
-{:id: .cls1 .cls2}
+##### [Section 1 Subheadline]
 [Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
 
- * -  Something
- * -  Something
+ -  Internal site text link
+ -  External link
 
-```javascript
+##### [Section 2 Subheadline]
+[Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
+
+```ruby
 // Create a default SSL ChannelCredentials object.
 auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions()); 
 // Create a channel using the credentials created in the previous step.
@@ -22,16 +33,15 @@ std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 grpc::Status s = stub->sayHello(&context, *request, response);
 ```
 
+###### [Section 2.1 Subheadline]
+[Body Copy]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
 
-## [Section 2 Subheadline]
+###### [Section 2.2 Subheadline]
+[Body Copy]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
+
+
+##### [Section 3 Subheadline]
 [Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
 
-#### [Section 2.1 Subheadline]
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
-
-#### [Section 2.2 Subheadline]
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
-
-
-## [Section 3 Subheadline]
-[Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
+###### [Section 3.1 Subheadline]
+[Body Copy]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.

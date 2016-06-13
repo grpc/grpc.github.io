@@ -1,6 +1,7 @@
 ---
 layout: docs
 title: Error Handling
+type: markdown
 ---
 
 <h2 class="page-header">Error Handling</h2>
