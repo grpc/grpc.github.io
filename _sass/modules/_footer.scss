@@ -76,20 +76,20 @@ footer{
           margin: 0 0 60px 0;
           padding: 0;
           p,
-          .community p,
+          .footer-community p,
           .right-link-headers {
               padding: 0;
           }
       }
     }
 
-    .resources {
+    .footer-resources {
       @media(max-width: 768px) {
         display: none;
       }
     }
 
-    .community p {
+    .footer-community p {
         padding: 7px 0;
     }
 
