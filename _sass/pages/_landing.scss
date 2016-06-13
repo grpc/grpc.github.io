@@ -32,6 +32,12 @@
         height: 250px;
         object-fit: contain;
         object-position: top;
+        @media (max-width: 769px) {
+            width: 80%;
+            max-width: 300px;
+            height: auto;
+            margin: 0 auto;
+        }
     }
     .landing-blurb {
         height: 250px;
