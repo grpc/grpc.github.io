@@ -1,16 +1,10 @@
 .community {
-  width: 70%;
   margin: 0 0 300px;
 
   @media (max-width: 768px) {
-    width: 100%;
     margin: 0;
   }
 
-  @media (max-width: 990px) {
-    width: 90%;
-  }
-  
   a > span {
     text-decoration: underline;
     font-weight: 500;
@@ -39,11 +33,11 @@
   .contribute-wrapper {
     margin: 15px 0 0;
     display: table;
-    width: 77%;
     text-align: left;
+    padding: 0;
 
     @media (max-width: 768px) {
-      width: 100%;
+      margin: 15px auto 0;
     }
 
     .contribute-item {
