@@ -15,9 +15,11 @@ bodyclass: docs
         {% endif %}
     </div>
 
-    <div class="col-md-9 {{ page.type }}">
+    <div class="col-md-7 {{ page.type }}">
         {{ content }}
     </div>
+    <div id="toc" class="col-md-2"></div>
+
 {% else %}
     <div class="col-md-12 {{ page.type }}">
         {{ content }}
