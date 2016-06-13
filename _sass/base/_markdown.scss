@@ -25,17 +25,31 @@
 	.lead {
 		color: $dark-gray;
 		font-size: 18px;
-
 	}
+
 	// Section Headlines 
-	h5 {
+	h2 {
+		margin-top: 30px;
+		margin-bottom: 20px;
+		
+	}
+
+	// Section Headlines 
+	h3 {
+		font-size: 18px;
+		font-weight: 500;
+		color: $black;
+		letter-spacing: 1px;
 		margin-top: 30px;
 		margin-bottom: 20px;
 		
 	}
 	// Section Subheadlines
-	h6 {
+	h4 {
 		margin: 20px 25px;
+		font-size: 16px;
+		font-weight: 300;
+		color: $dark-gray;
 		@media (max-width: 768px) {
 			margin: 20px 0;
 		}	
