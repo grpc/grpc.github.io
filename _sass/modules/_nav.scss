@@ -19,6 +19,7 @@
 h4.arrow-d, h4.arrow-r {
     cursor: pointer;
     &::before{
+        font-size: 1.25em;
         font-family: monospace;
         font-weight: bold;
     }
@@ -26,9 +27,16 @@ h4.arrow-d, h4.arrow-r {
 
 // Expandy nav items
 h4.arrow-r::before {
-    content: "+ ";
+    content: "+";
+    margin-right: 8px;
 }
 
 h4.arrow-d::before {
-    content: "- ";
+    content: "-";
+    margin-right: 8px;
+}
+
+.submenu-content {
+    display: none;
+    margin-left: 30px;
 }
