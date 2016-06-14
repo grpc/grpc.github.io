@@ -4,13 +4,24 @@ title: Asynchronous Basics - C++
 ---
 <h1 class="page-header">Asynchronous Basics: C++</h1>
 
-This tutorial shows you how to write a simple server and client in C++ using gRPC's asynchronous/non-blocking APIs. It assumes you are already familiar with writing simple synchronous gRPC code, as described in [gRPC Basics: C++](/docs/tutorials/basic/c.html). The example used in this tutorial follows on from the basic [Greeter example](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld) we used in the [overview](/docs/index.html). You'll find it along with installation instructions in [grpc/examples/cpp/helloworld](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld).
+This tutorial shows you how to write a simple server and client in C++ using
+gRPC's asynchronous/non-blocking APIs. It assumes you are already familiar with
+writing simple synchronous gRPC code, as described in [gRPC Basics:
+C++](/docs/tutorials/basic/c.html). The example used in this tutorial follows on
+from the basic [Greeter example](https://github.com/grpc/grpc/tree/{{
+site.data.config.grpc_release_branch }}/examples/cpp/helloworld) we used in the
+[overview](/docs/index.html). You'll find it along with installation
+instructions in
+[grpc/examples/cpp/helloworld](https://github.com/grpc/grpc/tree/{{
+site.data.config.grpc_release_branch }}/examples/cpp/helloworld).
 
 <div id="toc"></div>
 
 ## Overview
 
-gRPC uses the [`CompletionQueue`](http://www.grpc.io/grpc/cpp/classgrpc_1_1_completion_queue.html) API for asynchronous operations. The basic work flow
+gRPC uses the
+[`CompletionQueue`](http://www.grpc.io/grpc/cpp/classgrpc_1_1_completion_queue.html)
+API for asynchronous operations. The basic work flow
 is as follows:
 
 - bind a `CompletionQueue` to an RPC call
@@ -20,7 +31,12 @@ is as follows:
 
 ## Async client
 
-To use an asynchronous client to call a remote method, you first create a channel and stub, just as you do in a [synchronous client](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_client.cc). Once you have your stub, you do the following to make an asynchronous call:
+To use an asynchronous client to call a remote method, you first create a
+channel and stub, just as you do in a [synchronous
+client](https://github.com/grpc/grpc/blob/{{
+site.data.config.grpc_release_branch
+}}/examples/cpp/helloworld/greeter_client.cc). Once you have your stub, you do
+the following to make an asynchronous call:
 
 - Initiate the RPC and create a handle for it. Bind the RPC to a
   `CompletionQueue`.
@@ -50,12 +66,16 @@ To use an asynchronous client to call a remote method, you first create a channe
     }
     ```
 
-You can see the complete client example in [greeter&#95;async&#95;client.cc](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_async_client.cc).
+You can see the complete client example in
+[greeter&#95;async&#95;client.cc](https://github.com/grpc/grpc/blob/{{
+site.data.config.grpc_release_branch
+}}/examples/cpp/helloworld/greeter_async_client.cc).
 
 ## Async server
 
 The server implementation requests an RPC call with a tag and then waits for the
-completion queue to return the tag. The basic flow for handling an RPC asynchronously is:
+completion queue to return the tag. The basic flow for handling an RPC
+asynchronously is:
 
 - Build a server exporting the async service
 
@@ -104,8 +124,10 @@ completion queue to return the tag. The basic flow for handling an RPC asynchron
     }
     ```
 
-This basic flow, however, doesn't take into account the server handling multiple requests concurrently. To deal with this, our complete async server example uses a `CallData` object to
-maintain the state of each RPC, and uses the address of this object as the unique tag for the call.
+This basic flow, however, doesn't take into account the server handling multiple
+requests concurrently. To deal with this, our complete async server example uses
+a `CallData` object to maintain the state of each RPC, and uses the address of
+this object as the unique tag for the call.
 
 ```
   class CallData {
@@ -153,8 +175,8 @@ maintain the state of each RPC, and uses the address of this object as the uniqu
     }
 ```
 
-For simplicity the server only uses one completion queue for all events, and runs a
-main loop in `HandleRpcs` to query the queue:
+For simplicity the server only uses one completion queue for all events, and
+runs a main loop in `HandleRpcs` to query the queue:
 
 ```
   void HandleRpcs() {
@@ -173,7 +195,7 @@ main loop in `HandleRpcs` to query the queue:
   }
 ```
 
-You can see our complete server example in [greeter&#95;async&#95;server.cc](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_async_server.cc).
-
-
-
+You can see our complete server example in
+[greeter&#95;async&#95;server.cc](https://github.com/grpc/grpc/blob/{{
+site.data.config.grpc_release_branch
+}}/examples/cpp/helloworld/greeter_async_server.cc).
