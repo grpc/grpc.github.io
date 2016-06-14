@@ -1,6 +1,38 @@
 // FAQ page
 body.faq {
-    h4 {
-        margin-top: 30px;
+
+    .row {
+        margin-bottom: 150px;
+
+        @media(max-width: 768px) {
+            margin-bottom: 50px;
+        }
+    }
+
+    .lead {
+        font-size: 1em;
+    }
+
+    .lead,
+    .faq-title {
+        color: $titleColor;
+    }
+
+    .lead {
+        margin: 20px 0 0 0;
+    }
+
+    .faq-title {
+        margin: 40px 0 0 0;
+    }
+
+    h4.arrow-d,
+    h4.arrow-r {
+        margin: 30px 0 5px 0;
+        color: $linkColor;
+    }
+
+    h4.arrow-d {
+        color: $titleColor;
     }
 }
