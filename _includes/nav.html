@@ -13,7 +13,7 @@
       </a>
     </div>
 
-  <div class="top-nav right">
+  <div class="top-nav">
     {% assign current = page.url | downcase | split: '/' %}
     <li class="nav-item"><a href="{{ site.baseurl }}/">Home</a> <div id="nav-toggle" class="icon"></div></li>
     <hr>
@@ -38,7 +38,6 @@
     <li class="nav-item"><a href="{{ site.baseurl }}/faq/" {% if current[1] == 'faq' %}class='current'{% endif %}>FAQ</a></li>
   </div>
 
-  <div class="navbar-collapse" id="navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
       {% assign current = page.url | downcase | split: '/' %}
       <li><a href="{{ site.baseurl }}/about/" {% if current[1] == 'about' %}class='current'{% endif %}>About</a></li>
@@ -47,7 +46,6 @@
       <li><a href="{{ site.baseurl }}/community/" {% if current[1] == 'community' %}class='current'{% endif %}>Community</a></li>
       <li><a href="{{ site.baseurl }}/faq/" {% if current[1] == 'faq' %}class='current'{% endif %}>FAQ</a></li>
     </ul>
-    </div><!-- /.navbar-collapse -->
     <div class="container">
       <h3 class="page-headline">{{page.headline}}</h3> 
     </div>

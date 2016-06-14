@@ -3,6 +3,11 @@
     margin-bottom: 0px;
     background-color: transparent;
     color: $white;
+    .nav {
+        @media (max-width: 769px) {
+            display: none;
+        }
+    }
     .page-headline {
         color: $white;
         font-weight: 300;
@@ -35,6 +40,9 @@ h4.arrow-d::before {
 
 .top-nav {
     transition: all 1s ease-in;
+    border-width: 5px 0 5px 5px;
+    border-style: solid;
+    border-image: linear-gradient(to right, $black, rgba(0, 0, 0, 0)) 1 100%; 
     &.right {
         right: -300px;
     }
