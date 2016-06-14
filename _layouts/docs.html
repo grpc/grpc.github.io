@@ -9,16 +9,16 @@ bodyclass: docs
 {% assign current = page.url | downcase | split: '/' %}
 
 {% if current[1] == 'docs' and current[2] != 'index.html' and current[2] != 'overview' %}
-    <div class="col-md-3">
+    <div class="col-sm-3">
         {% if current[2] == 'guides' %}
             {% include doc-side-guides-nav.html %}
         {% endif %}
     </div>
 
-    <div class="col-md-7 {{ page.type }}">
+    <div class="col-sm-7 {{ page.type }}">
         {{ content }}
     </div>
-    <div id="toc" class="col-md-2"></div>
+    <div id="toc" class="toc col-sm-2"></div>
 
 {% else %}
     <div class="col-md-12 {{ page.type }}">

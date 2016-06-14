@@ -13,6 +13,9 @@ Cu his alii debitis, dolore aliquid splendide et ius, id atqui mandamus forensib
 In ius assum aeterno contentiones, ad doming delenit vis, has oratio oportere ei. Cu ius nonumy facilisi intellegat. No aeterno mediocrem reprimique cum, ei mel mucius aperiri veritus. Ut tollit labore senserit sit. In mundi propriae vix.
 </p>
 
+<div id="toc" class="toc mobile-toc"></div>
+
+
 ## Something Here
 
 ### [Section 1]

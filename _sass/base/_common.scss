@@ -33,11 +33,15 @@
 
 
 
-#toc {
+.toc {
     padding: 0;
     border-left: 2px solid $light-gray;
+    display: block !important;
+    @media (max-width: 768px) {
+        display: none !important;
+    }
     ul {
-        list-style-type: none;
+        list-style-type: none !important;
         padding-left: 10px;
         font-size: 14px;
         font-weight: 500;
@@ -48,5 +52,14 @@
         a {
             color: $dark-gray;
         }
+    }
+}
+
+.toc.mobile-toc{
+    display: none !important;
+    @media (max-width: 768px) {
+        margin-top: 30px;
+        display: block !important;
+        border-left: 4px solid $light-gray;
     }
 }
