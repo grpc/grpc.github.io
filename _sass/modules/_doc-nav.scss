@@ -4,15 +4,18 @@
 	.tab.docs-tab  {
 		a {	
 			font-weight: 300;
-			display: none;
+			display: inline-block;
 			border-bottom: 1px solid $gray;
-			@media (max-width: 768px) {
-				display: inline-block !important;
+			@media (min-width: 768px) {
+				display: none;
 			}
 		}
-		@media (max-width: 768px) {
+		&:after {
+			content: ' > ';
+		}
+		@media (min-width: 768px) {
 			&:after {
-				content: ' > ';
+				content: none;
 			}
 		}
 	}
@@ -21,20 +24,21 @@
 			margin: 0 10px;
 			color: $gray;
 			font-weight: 400;
-			@media (max-width: 768px) {
-				display: none;
+			display: none;
+			@media (min-width: 768px) {
+				display: inline-block;
 			}
 		}
 		display: inline-block;
 	}
 	.tab .current {
-		border-bottom: 3px solid $secondBrandColor;
-		color: $secondBrandColor;
-		@media (max-width: 768px) {
-			margin: 0;
-			display: inline-block !important;
-			border-bottom: 1px solid $gray;
-			color: $gray;
+		margin: 0;
+		display: inline-block !important;
+		border-bottom: 1px solid $gray;
+		color: $gray;
+		@media (min-width: 768px) {
+			border-bottom: 3px solid $secondBrandColor;
+			color: $secondBrandColor;
 		}
 	}
 }
@@ -42,8 +46,9 @@
 .doc-side-nav {
 	background-color: $light-gray;
 	padding: 10px 0 30px;
-	@media (max-width: 768px) {
-		display: none;
+	display: none;
+	@media (min-width: 768px) {
+		display: initial;
 	}
 	.current {
 		&:before{

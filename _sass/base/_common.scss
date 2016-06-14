@@ -36,9 +36,9 @@
 .toc {
     padding: 0;
     border-left: 2px solid $light-gray;
-    display: block !important;
-    @media (max-width: 768px) {
-        display: none !important;
+    display: none !important;
+    @media (min-width: 768px) {
+        display: block !important;
     }
     ul {
         list-style-type: none !important;

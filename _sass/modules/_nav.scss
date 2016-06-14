@@ -4,14 +4,18 @@
     background-color: transparent;
     color: $white;
     .nav {
-        @media (max-width: 769px) {
-            display: none;
+        display: none;
+        @media (min-width: 768px) {
+            display: initial;
         }
     }
     .page-headline {
         color: $white;
         font-weight: 300;
-        padding: 20px 0;
+        padding: 20px 0; 
+        @media (min-width: 768px) {
+            padding: 70px 0 20px;
+        }
     }
     .logo {
         width: 60px;
@@ -47,9 +51,9 @@ h4.arrow-d::before {
 }
 
 .top-nav {
-    display: none;
-    @media (max-width: 769px) {
-            display: initial;
+    display: initial;
+    @media (min-width: 768px) {
+        display: none;
     }
     transition: all 1s ease-in;
     border-width: 5px 0 5px 5px;
