@@ -195,6 +195,28 @@ runs a main loop in `HandleRpcs` to query the queue:
   }
 ```
 
+### Shutting Down the Server
+We've been using a completion queue to get the async notifications. Care must be
+taken to shut it down *after* the server has also been shut down.
+
+Remember we got our completion queue instance `cq_` in `ServerImpl::Run()` by
+running `cq_ = builder.AddCompletionQueue()`. Looking at
+`ServerBuilder::AddCompletionQueue`'s documentation we see that
+
+> ... Caller is required to shutdown the server prior to shutting down the
+> returned completion queue.
+
+Refer to `ServerBuilder::AddCompletionQueue`'s full docstring for more details.
+What this means in our example is that `ServerImpl's` destructor looks like:
+
+```
+  ~ServerImpl() {
+    server_->Shutdown();
+    // Always shutdown the completion queue after the server.
+    cq_->Shutdown();
+  }
+```
+
 You can see our complete server example in
 [greeter&#95;async&#95;server.cc](https://github.com/grpc/grpc/blob/{{
 site.data.config.grpc_release_branch
