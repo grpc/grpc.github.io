@@ -32,3 +32,47 @@ h4.arrow-r::before {
 h4.arrow-d::before {
     content: "- ";
 }
+
+.top-nav {
+    transition: all 1s ease-in;
+    &.right {
+        right: -300px;
+    }
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 300px;
+    background-color: #4f4f4f;
+    padding: 20px 0;
+    z-index: 10000;
+    .nav-item {
+        position: relative;
+        padding: 0 20px;
+        list-style: none;
+    }
+    hr {
+        margin: 15px 0;
+        border-top: 1px solid $gray;
+    }
+    .doc-list {
+        li {
+            color: $white;
+            font-weight: 300;
+            padding: 8px 20px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            &::before {
+                content: '+ '
+            }
+        }
+    }
+    .icon {
+        right: 20px;
+        top: 0;
+        position: absolute;
+        height: 15px;
+        width: 25px;
+        background: url('../img/down-arrow.svg') no-repeat center/cover; 
+    }
+}
