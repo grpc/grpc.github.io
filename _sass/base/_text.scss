@@ -1,26 +1,43 @@
 h1 {
-	font-size: 50px;
+	// ~ 50px
+	font-size: $font-size--xxl;
 	color: white;
+	margin: $spacing--xl 0;
 }
 
 h2 {
-	font-size: 30px;
+	font-size: $font-size--xl;
 	font-weight: 300;
 	color: $black;
+	margin: $spacing--m 0;
 }
 
 h3 {
-	font-size: 30px;
+	font-size: $font-size--l;
 	font-weight: 200;
 	color: $black;
+	margin: $spacing--m 0;
+}
+
+h4 {
+	font-size: $font-size--l;
+	margin: $spacing--m 0;
 }
 
 h5 {
+	font-size: $font-size--m;
+	margin: $spacing--m 0;
 }
 
 h6 {
+	font-size: $font-size--m;
+	margin: $spacing--m 0;
 }
 
 p {
-  font-weight: 200;
+	font-size: $font-size--xs;
+	margin: $spacing--m 0;
+  	font-weight: 200;
+  	line-height: 1.75rem;
+    padding: $spacing--xs 0;
 }
