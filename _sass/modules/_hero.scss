@@ -4,23 +4,25 @@
 .hero {
     position: relative;
     padding-top: 0;
-    padding-bottom: 55px;
+    padding-bottom: 75px;
     text-align: center;
     h1 {
         font-size: 21px;
     }
 
     .logo {
-        width: 160px;
+        width: 195px;
         padding: 13px 20px;
         border: 2px solid white;
         border-radius: 1px;
         box-shadow: 1px 2px 4px 0 rgba(0,0,0,0.4);
-        margin: 30px 0 20px;
+        margin: 0 0 25px;
     }
     .lead {
         color: $white;
         display: block;
+        font-size: 18px;
+        margin-bottom: 27px;
     }
 }
 

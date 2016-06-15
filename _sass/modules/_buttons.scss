@@ -14,7 +14,8 @@
     transition: 0.3s;
 
     @media (min-width: $tablet) {
-      padding: $spacing--xs $spacing--m;
+      padding: $spacing--xxs 18px;
+      font-size: 0.9rem;
     }
 
     &:active {transform: scale(0.98);}
@@ -23,7 +24,7 @@
       background-color: $white;
       border: 2px solid $mainBrandColor;
       color: $mainBrandColor;
-      font-weight: 600;
+      font-weight: 500;
     }
   }
 
@@ -31,12 +32,12 @@
     background-color: $white;
     border-radius: 50%;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     z-index: $z-above-top;
     
     &.down-caret {
-      bottom: -20px;
+      bottom: -25px;
       left: 50%;
       padding: 0;
       position: absolute;
@@ -48,14 +49,12 @@
 .btn-link {
   display: inline-block;
   text-transform: uppercase;
-  &::hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 }
 
 .icon-caret {
   background: url('../img/caret.svg') no-repeat center/cover; 
-  height: 15px;
-  margin: 5px auto 0;
-  width: 25px;
+  height: 45px;
+  margin: 3px auto 0;
+  width: 45px;
 }
