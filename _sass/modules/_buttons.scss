@@ -8,14 +8,13 @@
     background-color: $mainBrandColor;
     color: $white;
     font-size: $font-size--xxs;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: 1px;
     padding: $spacing--xs $spacing--xl;
     transition: 0.3s;
 
     @media (min-width: $tablet) {
-      padding: $spacing--xxs 18px;
-      font-size: 0.9rem;
+      padding: $spacing--xxs $spacing--m;
     }
 
     &:active {transform: scale(0.98);}

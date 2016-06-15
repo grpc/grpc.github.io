@@ -1,11 +1,16 @@
 // Landing page
 .landing-container {
     position: relative;
-    padding: 70px 0;
+    padding: 90px 0;
     .landing-row {
         padding-top: 40px;
         h3 {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 0.9rem;
+            font-weight: 300;
+            line-height: 1rem;
         }
         @media (max-width: 769px) {
             display: flex;
@@ -22,6 +27,7 @@
             }
             p {
                 order: 3;
+
             }
             div {
                 order: 4;
