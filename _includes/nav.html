@@ -15,12 +15,12 @@
 
   <div class="top-nav right">
     {% assign current = page.url | downcase | split: '/' %}
-    <li class="nav-item"><a href="{{ site.baseurl }}/">Home</a><div id="nav-toggle" class="icon"></div></li>
+    <li class="nav-item"><a href="{{ site.baseurl }}/">Home</a><div id="nav-toggle" class="icon-close"></div></li>
     <hr>
     <li class="nav-item"><a href="{{ site.baseurl }}/about/" {% if current[1] == 'about' %}class='current'{% endif %}>About</a></li>
     <hr>
     <li class="nav-item"><a href="{{ site.baseurl }}/docs/" {% if current[1] == 'docs' %}class='current'{% endif %}>Docs</a>
-      <div id="nav-doc-toggle" class="icon"></div>
+      <div id="nav-doc-toggle" class="icon-caret"></div>
       <ul class="doc-list">
         <li class="nav-doc-tab"><a href="{{ site.baseurl }}/docs/overview" {% if current[2] == 'overview' %}class='current'{% endif %}>Overview</a></li>
         <li class="nav-doc-tab"><a href="{{ site.baseurl }}/docs/quickstart" {% if current[2] == 'quickstart' %}class='current'{% endif %}>Quick Start</a></li>

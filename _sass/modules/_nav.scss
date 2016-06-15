@@ -51,6 +51,15 @@ h4.arrow-d::before {
 }
 
 .top-nav {
+    .icon-caret {
+        position: absolute;
+        top: 0;
+        right: 15px;
+        height: 20px;
+        width: 45px;
+        cursor: pointer;
+        background: url('../img/caret.svg') no-repeat center/cover;  
+    }
     a:hover {
         color: $white;
     }
@@ -94,14 +103,13 @@ h4.arrow-d::before {
             }
         }
     }
-    .icon {
-        float: right;
-        padding: 9px 10px;
-        margin-top: 8px;
-        margin-right: 15px;
-        margin-bottom: 8px;
-        height: 15px;
-        width: 25px;
-        background: url('../img/down-arrow.svg') no-repeat center/cover; 
+    .icon-close {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 15px;
+        height: 20px;
+        width: 45px;
+        background: url('../img/x.svg') no-repeat center/cover;  
     }
 }
