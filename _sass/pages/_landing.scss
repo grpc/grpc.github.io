@@ -59,10 +59,10 @@
     background-color: lighten($thirdBrandColor, 4%);
     padding: 70px 0;
     .doc-call-text {
-        padding-top: 20px;
+        padding-top: 5px;
     }
     .btn-doc-call {
-        margin: 15px 0 35px;
+        margin: 25px 0 45px;
     }
     .lang-select-row {
         display: flex;
@@ -80,7 +80,7 @@
         max-width: 140px;   
         @media (max-width: 769px) {
             margin: 5px;
-            padding: 6px 10px;
+
         }
     }
 }
