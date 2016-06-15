@@ -42,7 +42,7 @@
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);
     height: 30px;
     width: 30px;
-    z-index: $z-above-top;
+    z-index: $z-top;
     @media (min-width: $tablet) {
       height: 50px;
       width: 50px;
