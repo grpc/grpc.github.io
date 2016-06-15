@@ -5,7 +5,7 @@
   }
 
   &.btn-grpc {
-    background-color: $mainBrandColor;
+    background-color: $secondBrandColor;
     color: $white;
     font-size: $font-size--xxs;
     font-weight: 300;
@@ -19,10 +19,18 @@
 
     &:active {transform: scale(0.98);}
 
-    &.inverse{
+    &.inverse {
       background-color: $white;
       border: 2px solid $mainBrandColor;
       color: $mainBrandColor;
+    }
+    &.lang-select {
+      font-weight: 500;
+    }
+    &.hero {
+      background-color: $white;
+      border: 2px solid $secondBrandColor;
+      color: $secondBrandColor;
       font-weight: 500;
     }
   }
