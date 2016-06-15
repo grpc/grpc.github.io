@@ -5,7 +5,7 @@
 		a {	
 			font-weight: 300;
 			display: inline-block;
-			border-bottom: 1px solid $gray;
+			border-bottom: 2px solid $gray;
 			@media (min-width: 768px) {
 				display: none;
 			}
@@ -32,9 +32,9 @@
 		display: inline-block;
 	}
 	.tab .current {
-		margin: 0;
+		margin: 0 10px;
 		display: inline-block !important;
-		border-bottom: 1px solid $gray;
+		border-bottom: 2px solid $gray;
 		color: $gray;
 		@media (min-width: 768px) {
 			border-bottom: 3px solid $secondBrandColor;

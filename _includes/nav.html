@@ -15,7 +15,7 @@
 
   <div class="top-nav right">
     {% assign current = page.url | downcase | split: '/' %}
-    <li class="nav-item"><a href="{{ site.baseurl }}/">Home</a> <div id="nav-toggle" class="icon"></div></li>
+    <li class="nav-item"><a href="{{ site.baseurl }}/">Home</a><div id="nav-toggle" class="icon"></div></li>
     <hr>
     <li class="nav-item"><a href="{{ site.baseurl }}/about/" {% if current[1] == 'about' %}class='current'{% endif %}>About</a></li>
     <hr>
