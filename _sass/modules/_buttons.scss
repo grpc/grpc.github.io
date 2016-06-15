@@ -10,7 +10,7 @@
     font-size: $font-size--xxs;
     font-weight: 300;
     letter-spacing: 1px;
-    padding: $spacing--xs $spacing--xl;
+    padding: 11px $spacing--xl 9px;
     transition: 0.3s;
 
     @media (min-width: $tablet) {
@@ -40,16 +40,23 @@
     background-color: $white;
     border-radius: 50%;
     box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);
-    height: 50px;
-    width: 50px;
+    height: 30px;
+    width: 30px;
     z-index: $z-above-top;
+    @media (min-width: $tablet) {
+      height: 50px;
+      width: 50px;
+    }
     
     &.down-caret {
-      bottom: -25px;
+      bottom: -15px;
       left: 50%;
       padding: 0;
       position: absolute;
       transform: translateX(-50%);
+      @media (min-width: $tablet) {
+        bottom: -25px;
+      }
     }
   }
 }
@@ -62,7 +69,11 @@
 
 .icon-caret {
   background: url('../img/caret.svg') no-repeat center/cover; 
-  height: 45px;
+  height: 20px;
   margin: 3px auto 0;
-  width: 45px;
+  width: 24px;
+    @media (min-width: $tablet) {
+      height: 45px;
+      width: 45px;
+    }
 }

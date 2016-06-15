@@ -4,7 +4,10 @@
 .hero {
     position: relative;
     padding-top: 0;
-    padding-bottom: 75px;
+    padding-bottom: 60px;
+    @media (min-width: $tablet) {
+        padding-bottom:75px;
+    }
     text-align: center;
     h1 {
         font-size: 21px;
