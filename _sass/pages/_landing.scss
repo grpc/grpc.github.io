@@ -38,20 +38,20 @@
         }
     }
     .landing-image {
-        height: 250px;
+        width: 80%;
+        max-width: 300px;
+        height: auto;
+        margin: 0 auto;
         object-fit: contain;
         object-position: top;
-        @media (max-width: 769px) {
-            width: 80%;
-            max-width: 300px;
-            height: auto;
-            margin: 0 auto;
+        @media (min-width: $tablet) {
+            height: 250px;
         }
     }
     .landing-blurb {
-        height: 250px;
-        @media (max-width: 769px) {
-            height: initial;
+        height: initial;
+        @media (min-width: $tablet) {
+            height: 250px;
         }
     }
     .btn-read-more {
@@ -77,13 +77,12 @@
         margin: 0 auto;
     }
     .lang-select {
-        margin: 10px;
+        margin: 5px;
         text-align: center;
         width: 33%;
         max-width: 140px;   
-        @media (max-width: 769px) {
-            margin: 5px;
-
+        @media (min-width: $tablet) {
+            margin: 10px;
         }
     }
 }
