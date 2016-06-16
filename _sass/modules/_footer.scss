@@ -1,9 +1,10 @@
 footer{
     background-color: $footerColor;
     box-shadow: 0px 500px 0px 500px $footerColor;
-    padding: 35px 0 70px 0;
+    padding: 35px 0 120px;
     color: #ffffff;
     position: relative;
+    overflow: hidden;
 
     a {
         color: #ffffff;
@@ -12,85 +13,122 @@ footer{
     .footer-logo {
         width: 75px;
         margin-left: -8px;
-        padding: 0 0 20px 0;
+        padding: 0 0 10px 0;
         
-        @media (max-width: 768px) {
-          padding: 0 0 10px 0;
+        @media (min-width: 768px) {
+            padding: 0 0 20px 0;
         }
-    }
-
-    .right-links,
-    .left-links {
-        display: inline-block;
-        width: 48%;
-        vertical-align: top;
     }
 
     .left-links {
         color: $footerText;
         font-weight: 300;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        margin: 60px 15px;
+        text-align: left;
+        width: 100%;
 
         p {
-          font-size: .8em;
+            font-size: .8em;
         }
-        @media (max-width: 1025px) {
+
+        @media (min-width: 768px) {
+            position: relative;
+            margin: 0 auto;
+            text-align: left;
+            display: inline-block;
             width: 39%;
         }
 
-        @media (max-width: 768px) {
-            width: 300px;
-            display: block;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: 30px auto;
-            text-align: center;
+        @media (min-width: 1025px) {
+            width: 45%;
+            margin-left: 5%;
         }
+
     }
 
     .right-links {
-      padding: 0 0 0 35px;
+            width: 100%;
+            display: table;
+            margin: 0 0 60px 0;
 
-      p {
-        font-weight: 200;
-        font-size: .8em;
-        padding: 14px 0;
-        letter-spacing: .5px;
-      }
+        & > div {
+            padding-bottom: 10px;
+        }
 
-      .right-link-headers  {
-          font-weight: 400;
-          font-size: 1em;
-          letter-spacing: .5px;
-          padding: 0 0 10px;
-      }
+        @media (min-width: 768px) {
+            padding: 0 0 0 35px;
+        }
 
-      @media (max-width: 1025px) {
-          width: 58%;
-      }
+        p {
+            font-weight: 200;
+            font-size: .8em;
+            padding: 14px 0;
+            letter-spacing: .5px;
+        }
 
-      @media (max-width: 768px) {
-          width: 100%;
-          display: table;
-          margin: 0 0 60px 0;
-          padding: 0;
-          p,
-          .footer-community p,
-          .right-link-headers {
-              padding: 0;
-          }
-      }
+        .right-link-headers  {
+            font-weight: 400;
+            font-size: 1em;
+            letter-spacing: .5px;
+                padding: 15px 0;
+                position: relative;
+
+                &:after {
+                    content: '';
+                    background: url('../img/caret.svg') no-repeat center/cover;
+                    background-size: contain;
+                    height: 45px;
+                    width: 35px;
+                    position: absolute;
+                    right: 0;
+                    top: 5px;
+                }
+        }
+
+        @media (min-width: 768px) {
+            padding: 0;
+            display: inline-block;
+            width: 58%;
+            vertical-align: top;
+
+            .right-link-headers {
+                padding: 0 0 10px;
+              
+                &:after {
+                    content: none;
+                }
+            }
+        }
+
+        @media (min-width: 1025px) {
+            width: 49.5%;
+        }
+
     }
 
-    .footer-resources {
-      @media(max-width: 768px) {
-        display: none;
-      }
+    .footer-sections {
+        display: block;
+        width: 120%;
+        margin: 10px -15px;
+        background-color: rgba(234,234,234,0.1);
+        color: rgba(234,234,234,0.1);
+        border: none;
+        height: 1px;
+
+        @media(min-width: 768px) {
+            display: none;
+        }
     }
 
     .footer-community p {
         padding: 7px 0;
+
+        @media(min-width: 990px) {
+            padding: 14px 0;
+        }
     }
 
     .community-links {
@@ -98,58 +136,50 @@ footer{
     }
 
     .github {
-        @media(min-width: 990px) {
-            &::before {
-              content: '';
-              display: inline-block;
-              background: url('../img/github.png') no-repeat center/cover; 
-              width: 35px;
-              height: 35px;
-              vertical-align: middle;
-              margin: 0 15px 0 0;
-            }
+        &::before {
+          content: '';
+          display: inline-block;
+          background: url('../img/github.png') no-repeat center/cover; 
+          width: 35px;
+          height: 35px;
+          vertical-align: middle;
+          margin: 0 15px 0 0;
         }
     }
 
     .google {
-        @media(min-width: 990px) {
-            &::before {
-              content: '';
-              display: inline-block;
-              background: url('../img/google+.png') no-repeat center/cover; 
-              width: 35px;
-              height: 35px;
-              vertical-align: middle;
-              margin: 0 15px 0 0;
-            }
+        &::before {
+          content: '';
+          display: inline-block;
+          background: url('../img/google+.png') no-repeat center/cover; 
+          width: 35px;
+          height: 35px;
+          vertical-align: middle;
+          margin: 0 15px 0 0;
         }
     }
 
     .twitter {
-        @media(min-width: 990px) {
-            &::before {
-              content: '';
-              display: inline-block;
-              background: url('../img/twitter.png') no-repeat center/cover; 
-              width: 35px;
-              height: 35px;
-              vertical-align: middle;
-              margin: 0 15px 0 0;
-            }
+        &::before {
+          content: '';
+          display: inline-block;
+          background: url('../img/twitter.png') no-repeat center/cover; 
+          width: 35px;
+          height: 35px;
+          vertical-align: middle;
+          margin: 0 15px 0 0;
         }
     }
 
     .stack-overflow {
-        @media(min-width: 990px) {
-            &::before {
-              content: '';
-              display: inline-block;
-              background: url('../img/stack-overflow.png') no-repeat center/cover; 
-              width: 35px;
-              height: 35px;
-              vertical-align: middle;
-              margin: 0 15px 0 0;
-            }
+        &::before {
+          content: '';
+          display: inline-block;
+          background: url('../img/stack-overflow.png') no-repeat center/cover; 
+          width: 35px;
+          height: 35px;
+          vertical-align: middle;
+          margin: 0 15px 0 0;
         }
     }
 }

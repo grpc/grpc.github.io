@@ -1,35 +1,28 @@
 .nav-hero-container {
     background: url('../img/hero-bg.png') no-repeat center/cover ; 
 }
+
 .hero {
+    padding-bottom: 60px;
     position: relative;
-    padding-top: 0;
-    padding-bottom: 55px;
     text-align: center;
-    h1 {
-        font-size: 21px;
+
+    @media (min-width: $tablet) {
+        padding-bottom: 75px;
     }
 
     .logo {
-        width: 160px;
-        padding: 13px 20px;
-        border: 2px solid white;
         border-radius: 1px;
+        border: 2px solid $white;
         box-shadow: 1px 2px 4px 0 rgba(0,0,0,0.4);
-        margin: 30px 0 20px;
+        margin-bottom: $spacing--l;
+        padding: $spacing--s $spacing--m;
+        width: 195px;
     }
     .lead {
         color: $white;
         display: block;
+        font-size: 18px;
+        margin-bottom: $spacing--l;
     }
-}
-
-.hero-bar {
-    text-align: center;
-    background-color: $thirdBrandColor;
-    padding-bottom: 10px;
-    padding-top: 20px;
-    margin-bottom: 20px;
-    font-weight: bold;
-    border-top: 3px solid $lightPopBrandColor;
 }

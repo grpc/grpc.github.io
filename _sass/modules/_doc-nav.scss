@@ -1,72 +1,74 @@
-.doc-nav{
+.doc-nav {
 	display: block;
-	margin: 0 10px 25px;
-	.tab.docs-tab  {
-		a {	
-			font-weight: 300;
-			display: inline-block;
-			border-bottom: 2px solid $gray;
-			@media (min-width: 768px) {
-				display: none;
-			}
-		}
-		&:after {
-			content: ' > ';
-		}
-		@media (min-width: 768px) {
-			&:after {
-				content: none;
-			}
-		}
-	}
+	margin: 0 $spacing--xs $spacing--l;
+
 	.tab {
+		display: inline-block;
+
+		&.docs-tab  {
+			a {	
+				font-weight: 300;
+				display: inline-block;
+				border-bottom: 2px solid $gray;
+				@media (min-width: $tablet) {
+					display: none;
+				}
+			}
+			&:after {
+				content: ' > ';
+				@media (min-width: $tablet) {
+					content: none;
+				}
+			}
+		}
+
 		a {
-			margin: 0 10px;
+			margin: 0 $spacing--xs;
 			color: $gray;
 			font-weight: 400;
 			display: none;
-			@media (min-width: 768px) {
+			@media (min-width: $tablet) {
 				display: inline-block;
 			}
 		}
-		display: inline-block;
-	}
-	.tab .current {
-		margin: 0 10px;
-		display: inline-block !important;
-		border-bottom: 2px solid $gray;
-		color: $gray;
-		@media (min-width: 768px) {
-			border-bottom: 3px solid $secondBrandColor;
-			color: $secondBrandColor;
+		.current {
+			margin: 0 $spacing--xs;
+			display: inline-block;
+			border-bottom: 2px solid $gray;
+			color: $gray;
+			@media (min-width: $tablet) {
+				border-bottom: 2px solid $secondBrandColor;
+				color: $secondBrandColor;
+			}
 		}
 	}
 }
 
 .doc-side-nav {
 	background-color: $light-gray;
-	padding: 10px 0 30px;
+	padding: $spacing--xs 0 $spacing--xl;
 	display: none;
-	@media (min-width: 768px) {
+
+	@media (min-width: $tablet) {
 		display: initial;
 	}
+
 	.current {
 		&:before{
 			content: '>';
 		}
 	}
-		h5 {
-			padding: 5px 15px 10px;
+	.doc-side-nav-title {
+		padding: 5px $spacing--s $spacing--xs;
+	}
+	.doc-side-nav-list-item {
+		display: inline-block;
+		padding: 2px $spacing--s;
+		width: 100%;
+		a {
+			font-size: 13px;
+			color: $dark-gray;
+			font-weight: 400;
 		}
-		li {
-			display: inline-block;
-			padding: 2px 15px;
-			width: 100%;
-			a {
-				font-size: 13px;
-				color: $dark-gray;
-				font-weight: 400;
-			}
-
 	}
 }

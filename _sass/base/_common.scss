@@ -27,6 +27,7 @@
     position: absolute;
     width: 100%; 
     left: 0;
+    bottom: 0;
     border-bottom: 2px solid #e3e3e3;
     margin: 0;
 }
@@ -43,11 +44,11 @@
     ul {
         list-style-type: none !important;
         padding-left: 10px;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 500;
         ul {
             font-weight: 400;
-            font-size: 12px;
+            font-size: 11px;
         }
         a {
             color: $dark-gray;
