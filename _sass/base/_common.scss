@@ -27,26 +27,40 @@
     position: absolute;
     width: 100%; 
     left: 0;
+    bottom: 0;
     border-bottom: 2px solid #e3e3e3;
     margin: 0;
 }
 
 
 
-#toc {
+.toc {
     padding: 0;
     border-left: 2px solid $light-gray;
+    display: none !important;
+    @media (min-width: 768px) {
+        display: block !important;
+    }
     ul {
-        list-style-type: none;
+        list-style-type: none !important;
         padding-left: 10px;
-        font-size: 14px;
+        font-size: 12px;
         font-weight: 500;
         ul {
             font-weight: 400;
-            font-size: 12px;
+            font-size: 11px;
         }
         a {
             color: $dark-gray;
         }
+    }
+}
+
+.toc.mobile-toc{
+    display: none !important;
+    @media (max-width: 768px) {
+        margin-top: 30px;
+        display: block !important;
+        border-left: 4px solid $light-gray;
     }
 }

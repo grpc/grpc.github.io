@@ -1,52 +1,79 @@
 .btn {
+
   &:focus {
-    outline:0 !important;
+    outline: 0 !important;
   }
-}
 
-.btn.btn-grpc {
-  font-weight: 400;
-  letter-spacing: 1px;
-  padding: 7px 20px;
-  font-size: 12px;
-  background-color: $secondBrandColor;
-  color: $white;
-  transition: 0.3s;
-  &:active {transform: scale(0.98);}
-  &.inverse{
-    font-weight: 600;
+  &.btn-grpc {
+    background-color: $secondBrandColor;
+    color: $white;
+    font-size: $font-size--xxs;
+    font-weight: 300;
+    letter-spacing: 1px;
+    padding: 11px $spacing--xl 9px;
+    transition: $transition--tertiary;
+
+    @media (min-width: $tablet) {
+      padding: $spacing--xxs $spacing--m;
+    }
+
+    &:active {transform: scale(0.98);}
+
+    &.inverse {
+      background-color: $white;
+      border: 2px solid $mainBrandColor;
+      color: $mainBrandColor;
+    }
+    &.lang-select {
+      font-weight: 500;
+      padding: 6px 10px;
+    }
+    &.hero {
+      background-color: $white;
+      border: 2px solid $secondBrandColor;
+      color: $secondBrandColor;
+      font-weight: 500;
+    }
+  }
+
+  &.btn-floating {
     background-color: $white;
-    color: $secondBrandColor;
-    border: 2px solid $secondBrandColor;
-  }
-}
-
-.btn.btn-floating {
-  z-index: 1000;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: $white;
-  box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);
-  &.down-caret {
-    position: absolute;
-    bottom: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0;
-    .icon {
-      height: 15px;
-      width: 25px;
-      background: url('../img/down-arrow.svg') no-repeat center/cover; 
-      margin: 5px auto 0;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);
+    height: 30px;
+    width: 30px;
+    z-index: $z-top;
+    @media (min-width: $tablet) {
+      height: 50px;
+      width: 50px;
+    }
+    
+    &.down-caret {
+      bottom: -15px;
+      left: 50%;
+      padding: 0;
+      position: absolute;
+      transform: translateX(-50%);
+      @media (min-width: $tablet) {
+        bottom: -25px;
+      }
     }
   }
 }
 
 .btn-link {
-  text-transform: uppercase;
   display: inline-block;
-  &::hover {
-    cursor: pointer;
-  }
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.icon-caret {
+  background: url('../img/caret.svg') no-repeat center/cover; 
+  height: 20px;
+  margin: 3px auto 0;
+  width: 24px;
+    @media (min-width: $tablet) {
+      height: 45px;
+      width: 45px;
+    }
 }

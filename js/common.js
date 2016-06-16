@@ -20,7 +20,16 @@ function setupTabs(rootElement) {
 
 // Make the table of contents
 $(document).ready(function() {
-    $('#toc').toc({ listType: 'ul' });
+    $('.toc').toc({ listType: 'ul' });
+
+    $('#nav-toggle, #hamburger').on('click', function(){
+      $('.top-nav').toggleClass('right');
+    })
+    $('#nav-doc-toggle').on('click', function(){
+      $('.nav-doc-tab').toggle();
+    })
+
+
 });
 
 // Prettyprint

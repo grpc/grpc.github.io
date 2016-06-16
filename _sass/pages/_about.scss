@@ -1,27 +1,30 @@
 .about {
     .about-sections {
-        padding: 50px 0;
+        padding: 25px 0;
         position: relative;
-    }
+        @media(min-width: $tablet) {
+        }
 
-    .section-dividers {
-        position: absolute;
-        width: 100%; 
-        left: 0;
-        border-bottom: 2px solid #e3e3e3;
-        margin: 0;
     }
 
     .about-max {
-        max-width: 70%; 
-
-        @media(max-width: 768px) {
-            max-width: 100%;
+        margin-bottom: 15px;
+        @media(min-width: $tablet) {
+            max-width: 70%; 
         }
+    }
+    p {
+        font-size: 0.9rem;
+    }
+    p.lead {
+        font-size: 17px;
+        margin-bottom: 30px;
     }
 
     .about-lists {
         list-style: disc inside; 
+        padding-left: 1em;
+        text-indent: -1em;
     }
 
     .intro {
@@ -29,11 +32,11 @@
     }
 
     .main-usage-title {
-        padding: 10px 0 0 0;
+        margin: 10px 0;
     }
 
     .core-features-title {
-        margin: 30px 0 0 0;
+        margin: 15px 0 10px 0;
     }
 
     .case-studies-title {
@@ -43,9 +46,9 @@
     .more-btn {
         position: absolute;
         right: 0;
-        
-        @media(max-width: 990px) {
-            bottom: 25px;
+        bottom: 25px;
+        @media(min-width: 990px) {
+            bottom: initial
         }
     }
 
@@ -73,8 +76,8 @@
           width: 100%;
         }
 
-        @media(max-width: 768px) {
-            max-width: 100%;
+        @media(min-width: $tablet) {
+            max-width: 85%;
         }
     }
 
@@ -118,7 +121,7 @@
     }
 
     .story {
-        padding: 50px 0 100px;
+        padding: 25px 0 100px;
     }
 
     .more-story {
