@@ -104,6 +104,12 @@
     }
 
     .doc-list {
+        li {
+        display: none;
+        }
+        &.active li {
+            display: block;
+        }
         .nav-doc-tab {
             color: $white;
             font-size: 12px;
