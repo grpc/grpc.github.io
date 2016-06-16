@@ -16,6 +16,9 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     padding: 0;
     vertical-align: baseline;
 }
+
+html, body { overflow-x: hidden; }
+
 :focus {
     outline: 0;
 }
