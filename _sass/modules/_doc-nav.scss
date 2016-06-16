@@ -40,7 +40,6 @@
 				border-bottom: 2px solid $secondBrandColor;
 				color: $secondBrandColor;
 			}
-		
 		}
 	}
 }
@@ -49,26 +48,27 @@
 	background-color: $light-gray;
 	padding: $spacing--xs 0 $spacing--xl;
 	display: none;
+
 	@media (min-width: $tablet) {
 		display: initial;
 	}
+
 	.current {
 		&:before{
 			content: '>';
 		}
 	}
-		h5 {
-			padding: 5px $spacing--s $spacing--xs;
+	.doc-side-nav-title {
+		padding: 5px $spacing--s $spacing--xs;
+	}
+	.doc-side-nav-list-item {
+		display: inline-block;
+		padding: 2px $spacing--s;
+		width: 100%;
+		a {
+			font-size: 13px;
+			color: $dark-gray;
+			font-weight: 400;
 		}
-		li {
-			display: inline-block;
-			padding: 2px $spacing--s;
-			width: 100%;
-			a {
-				font-size: 13px;
-				color: $dark-gray;
-				font-weight: 400;
-			}
-
 	}
 }

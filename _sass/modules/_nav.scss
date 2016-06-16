@@ -1,14 +1,14 @@
 #common-nav{
-    padding-top: 10px;
-    margin-bottom: 0px;
     background-color: transparent;
     color: $white;
+    margin-bottom: 0px;
+    padding-top: $spacing--xs;
     .nav {
+        font-size: 13px;
+        letter-spacing: 1px;
         display: none;
-        @media (min-width: 768px) {
+        @media (min-width: $tablet) {
             display: initial;
-            font-size: 13px;
-            letter-spacing: 1px;
         }
 
     }
@@ -17,64 +17,64 @@
         border-bottom: 0;
         color: $white;
         &:after{
-            content:"";
-            position:absolute;
-            left: 10px;
-            bottom:0;
-            right: 10px;
-            margin:auto;
             background: $white;
+            bottom: 0;
+            content: "";
             height: 2px;
+            left: $spacing--xs;
+            margin: auto;
+            position: absolute;
+            right: $spacing--xs;
         }
     }
     .page-headline {
         color: $white;
         font-weight: 300;
-        padding: 20px 0; 
-        @media (min-width: 768px) {
-            padding: 50px 0 0;
+        padding: $spacing--m 0; 
+        @media (min-width: $tablet) {
+            padding: $spacing--xxxl 0 0;
         }
     }
     .logo {
         width: 60px;
     }
-    .current {
+    .navbar-nav .current {
         &:after{
-            content:"";
-            position:absolute;
-            left: 10px;
-            bottom:0;
-            right: 10px;
-            margin:auto;
             background: $white;
+            bottom: 0;
+            content: "";
             height: 2px;
+            left: $spacing--xs;
+            margin: auto;
+            position: absolute;
+            right: $spacing--xs;
         }
     }
 }
 
-h6.arrow-d, h6.arrow-r {
+.arrow-d, .arrow-r {
     cursor: pointer;
     &::before{
-        font-size: 1.25em;
         font-family: monospace;
+        font-size: 1.25em;
         font-weight: bold;
     }
 }
 
 // Expandy nav items
-h6.arrow-r::before {
+.arrow-r::before {
     content: "+";
     margin-right: 8px;
 }
 
-h6.arrow-d::before {
+.arrow-d::before {
     content: "-";
     margin-right: 8px;
 }
 
 .submenu-content {
     display: none;
-    margin-left: 30px;
+    margin-left: $spacing--xl;
 }
 
 .top-nav {
@@ -86,7 +86,7 @@ h6.arrow-d::before {
     .icon-caret {
         position: absolute;
         top: 0;
-        right: 15px;
+        right: $spacing--s;
         height: 20px;
         width: 45px;
         cursor: pointer;
@@ -95,34 +95,38 @@ h6.arrow-d::before {
 
     .nav-item {
         position: relative;
-        padding: 0 20px;
+        padding: 0 $spacing--m;
         list-style: none;
     }
 
+    .current {
+        text-decoration: underline;
+    }
+
     .doc-list {
-        li {
+        .nav-doc-tab {
             color: $white;
-            font-weight: 300;
-            padding: 15px 20px 5px;
             font-size: 12px;
+            font-weight: 300;
             letter-spacing: 1px;
+            padding: $spacing--s $spacing--m 5px;
             &::before {
                 content: '+ '
             }
         }
     }
     .icon-close {
-        cursor: pointer;
-        position: absolute;
-        top: 0;
-        right: 15px;
-        height: 20px;
-        width: 45px;
         background: url('../img/x.svg') no-repeat center/cover;  
+        cursor: pointer;
+        height: 20px;
+        position: absolute;
+        right: $spacing--s;
+        top: 0;
+        width: 45px;
     }
 
     hr {
-        margin: 15px 0;
+        margin: $spacing--s 0;
         border-top: 1px solid $gray;
     }
 
@@ -130,7 +134,7 @@ h6.arrow-d::before {
         color: $white;
     }
 
-    @media (min-width: 768px) {
+    @media (min-width: $tablet) {
         display: none;
     }
 
@@ -141,7 +145,7 @@ h6.arrow-d::before {
     display: initial;
     height: 100vh;
     overflow: scroll;
-    padding: 20px 0;
+    padding: $spacing--m 0;
     position: fixed;
     right: 0;
     top: 0;
