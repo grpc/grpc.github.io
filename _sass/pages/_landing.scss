@@ -38,12 +38,14 @@
         }
     }
     .landing-image {
+        margin: 0 auto;
         max-width: 300px;
         height: auto;
         object-fit: contain;
         object-position: top;
         @media (min-width: $tablet) {
             height: 250px;
+            margin-left: 8.333%;
         }
     }
     .landing-blurb {
