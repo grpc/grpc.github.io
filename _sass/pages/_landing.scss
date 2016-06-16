@@ -7,7 +7,7 @@
     }
     .landing-row {
         padding-top: 40px;
-        h3 {
+        .landing-row-title {
             margin-bottom: 15px;
         }
         p {
@@ -20,11 +20,11 @@
             flex-direction: column;
             text-align: center;
             margin: 0 auto;
-            h3{
+            .landing-row-title {
                 order: 1;
                 margin-bottom: 30px;
             }
-            img {
+            .landing-image {
                 order: 2;
                 margin-bottom: 30px;
             }
@@ -48,16 +48,13 @@
             margin-left: 8.333%;
         }
     }
-    .landing-blurb {
-        height: initial;
-        @media (min-width: $tablet) {
-            height: 250px;
-        }
-    }
     .btn-read-more {
         margin: 30px 0 40px;
     }
 }
+
+
+//Documentation call to action
 .doc-call {
     background-color: lighten($thirdBrandColor, 4%);
     padding: 70px 0;
