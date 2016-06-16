@@ -78,14 +78,13 @@ footer{
 
                 &:after {
                     content: '';
-                    background: url('../img/down-arrow.svg') no-repeat center/cover;
+                    background: url('../img/caret.svg') no-repeat center/cover;
                     background-size: contain;
-                    display: inline-block;
-                    vertical-align: middle;
-                    height: 24px;
-                    width: 24px;
+                    height: 45px;
+                    width: 35px;
                     position: absolute;
                     right: 0;
+                    top: 5px;
                 }
         }
 
