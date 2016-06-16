@@ -1,9 +1,10 @@
 footer{
     background-color: $footerColor;
     box-shadow: 0px 500px 0px 500px $footerColor;
-    padding: 35px 0 70px 0;
+    padding: 35px 0 120px;
     color: #ffffff;
     position: relative;
+    overflow: hidden;
 
     a {
         color: #ffffff;
@@ -22,14 +23,11 @@ footer{
     .left-links {
         color: $footerText;
         font-weight: 300;
-        width: 300px;
         display: block;
         position: absolute;
         bottom: 0;
-        left: 0;
-        right: 0;
-        margin: 30px auto;
-        text-align: center;
+        margin: 60px 15px;
+        text-align: left;
         width: 100%;
 
         p {
@@ -139,50 +137,50 @@ footer{
     }
 
     .github {
-            &::before {
-              content: '';
-              display: inline-block;
-              background: url('../img/github.png') no-repeat center/cover; 
-              width: 35px;
-              height: 35px;
-              vertical-align: middle;
-              margin: 0 15px 0 0;
-            }
+        &::before {
+          content: '';
+          display: inline-block;
+          background: url('../img/github.png') no-repeat center/cover; 
+          width: 35px;
+          height: 35px;
+          vertical-align: middle;
+          margin: 0 15px 0 0;
+        }
     }
 
     .google {
-            &::before {
-              content: '';
-              display: inline-block;
-              background: url('../img/google+.png') no-repeat center/cover; 
-              width: 35px;
-              height: 35px;
-              vertical-align: middle;
-              margin: 0 15px 0 0;
-            }
+        &::before {
+          content: '';
+          display: inline-block;
+          background: url('../img/google+.png') no-repeat center/cover; 
+          width: 35px;
+          height: 35px;
+          vertical-align: middle;
+          margin: 0 15px 0 0;
+        }
     }
 
     .twitter {
-            &::before {
-              content: '';
-              display: inline-block;
-              background: url('../img/twitter.png') no-repeat center/cover; 
-              width: 35px;
-              height: 35px;
-              vertical-align: middle;
-              margin: 0 15px 0 0;
-            }
+        &::before {
+          content: '';
+          display: inline-block;
+          background: url('../img/twitter.png') no-repeat center/cover; 
+          width: 35px;
+          height: 35px;
+          vertical-align: middle;
+          margin: 0 15px 0 0;
+        }
     }
 
     .stack-overflow {
-            &::before {
-              content: '';
-              display: inline-block;
-              background: url('../img/stack-overflow.png') no-repeat center/cover; 
-              width: 35px;
-              height: 35px;
-              vertical-align: middle;
-              margin: 0 15px 0 0;
-            }
+        &::before {
+          content: '';
+          display: inline-block;
+          background: url('../img/stack-overflow.png') no-repeat center/cover; 
+          width: 35px;
+          height: 35px;
+          vertical-align: middle;
+          margin: 0 15px 0 0;
+        }
     }
 }
