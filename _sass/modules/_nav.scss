@@ -85,7 +85,7 @@
 
     .icon-caret {
         position: absolute;
-        top: 0;
+        top: 15px;
         right: $spacing--s;
         height: 20px;
         width: 45px;
@@ -95,17 +95,16 @@
 
     .nav-item {
         position: relative;
-        padding: 0 $spacing--m;
+        padding-left: $spacing--s;
         list-style: none;
-    }
-
-    .current {
-        text-decoration: underline;
+        p {
+            line-height: 50px;
+        }
     }
 
     .doc-list {
         li {
-        display: none;
+            display: none;
         }
         &.active li {
             display: block;
@@ -115,7 +114,8 @@
             font-size: 12px;
             font-weight: 300;
             letter-spacing: 1px;
-            padding: $spacing--s $spacing--m 5px;
+            line-height: 50px;
+            padding-left: $spacing--s;
             &::before {
                 content: '+ '
             }
@@ -127,12 +127,12 @@
         height: 20px;
         position: absolute;
         right: $spacing--s;
-        top: 0;
+        top: 15px;
         width: 45px;
     }
 
     hr {
-        margin: $spacing--s 0;
+        margin: 0;
         border-top: 1px solid $gray;
     }
 
@@ -151,7 +151,6 @@
     display: initial;
     height: 100vh;
     overflow: scroll;
-    padding: $spacing--m 0;
     position: fixed;
     right: 0;
     top: 0;
