@@ -12,85 +12,126 @@ footer{
     .footer-logo {
         width: 75px;
         margin-left: -8px;
-        padding: 0 0 20px 0;
+        padding: 0 0 10px 0;
         
-        @media (max-width: 768px) {
-          padding: 0 0 10px 0;
+        @media (min-width: 768px) {
+            padding: 0 0 20px 0;
         }
-    }
-
-    .right-links,
-    .left-links {
-        display: inline-block;
-        width: 48%;
-        vertical-align: top;
     }
 
     .left-links {
         color: $footerText;
         font-weight: 300;
+        width: 300px;
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: 30px auto;
+        text-align: center;
+        width: 100%;
 
         p {
-          font-size: .8em;
+            font-size: .8em;
         }
-        @media (max-width: 1025px) {
+
+        @media (min-width: 768px) {
+            position: relative;
+            margin: 0 auto;
+            text-align: left;
+            display: inline-block;
             width: 39%;
         }
 
-        @media (max-width: 768px) {
-            width: 300px;
-            display: block;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            margin: 30px auto;
-            text-align: center;
+        @media (min-width: 1025px) {
+            width: 45%;
+            margin-left: 5%;
         }
+
     }
 
     .right-links {
-      padding: 0 0 0 35px;
+            width: 100%;
+            display: table;
+            margin: 0 0 60px 0;
 
-      p {
-        font-weight: 200;
-        font-size: .8em;
-        padding: 14px 0;
-        letter-spacing: .5px;
-      }
+        & > div {
+            padding-bottom: 10px;
+        }
 
-      .right-link-headers  {
-          font-weight: 400;
-          font-size: 1em;
-          letter-spacing: .5px;
-          padding: 0 0 10px;
-      }
+        @media (min-width: 768px) {
+            padding: 0 0 0 35px;
+        }
 
-      @media (max-width: 1025px) {
-          width: 58%;
-      }
+        p {
+            font-weight: 200;
+            font-size: .8em;
+            padding: 14px 0;
+            letter-spacing: .5px;
+        }
 
-      @media (max-width: 768px) {
-          width: 100%;
-          display: table;
-          margin: 0 0 60px 0;
-          padding: 0;
-          p,
-          .footer-community p,
-          .right-link-headers {
-              padding: 0;
-          }
-      }
+        .right-link-headers  {
+            font-weight: 400;
+            font-size: 1em;
+            letter-spacing: .5px;
+                padding: 15px 0;
+                position: relative;
+
+                &:after {
+                    content: '';
+                    background: url('../img/down-arrow.svg') no-repeat center/cover;
+                    background-size: contain;
+                    display: inline-block;
+                    vertical-align: middle;
+                    height: 24px;
+                    width: 24px;
+                    position: absolute;
+                    right: 0;
+                }
+        }
+
+        @media (min-width: 768px) {
+            padding: 0;
+            display: inline-block;
+            width: 58%;
+            vertical-align: top;
+
+            .right-link-headers {
+                padding: 0 0 10px;
+              
+                &:after {
+                    content: none;
+                }
+            }
+        }
+
+        @media (min-width: 1025px) {
+            width: 49.5%;
+        }
+
     }
 
-    .footer-resources {
-      @media(max-width: 768px) {
-        display: none;
-      }
+    .footer-sections {
+        display: block;
+        width: 120%;
+        margin: 10px -15px;
+        background-color: rgba(234,234,234,0.1);
+        color: rgba(234,234,234,0.1);
+        border: none;
+        height: 1px;
+
+        @media(min-width: 768px) {
+            display: none;
+        }
     }
 
     .footer-community p {
         padding: 7px 0;
+
+        @media(min-width: 990px) {
+            padding: 14px 0;
+        }
     }
 
     .community-links {
@@ -98,7 +139,6 @@ footer{
     }
 
     .github {
-        @media(min-width: 990px) {
             &::before {
               content: '';
               display: inline-block;
@@ -108,11 +148,9 @@ footer{
               vertical-align: middle;
               margin: 0 15px 0 0;
             }
-        }
     }
 
     .google {
-        @media(min-width: 990px) {
             &::before {
               content: '';
               display: inline-block;
@@ -122,11 +160,9 @@ footer{
               vertical-align: middle;
               margin: 0 15px 0 0;
             }
-        }
     }
 
     .twitter {
-        @media(min-width: 990px) {
             &::before {
               content: '';
               display: inline-block;
@@ -136,11 +172,9 @@ footer{
               vertical-align: middle;
               margin: 0 15px 0 0;
             }
-        }
     }
 
     .stack-overflow {
-        @media(min-width: 990px) {
             &::before {
               content: '';
               display: inline-block;
@@ -150,6 +184,5 @@ footer{
               vertical-align: middle;
               margin: 0 15px 0 0;
             }
-        }
     }
 }
