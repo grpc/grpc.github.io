@@ -20,7 +20,21 @@ function setupTabs(rootElement) {
 
 // Make the table of contents
 $(document).ready(function() {
-    $('#toc').toc({ listType: 'ul' });
+    $('.toc').toc({ listType: 'ul' });
+
+    $('#nav-toggle, #hamburger').on('click', function(){
+      $('.top-nav').toggleClass('right');
+    });
+    $('#nav-doc-toggle').on('click', function(){
+      $('.nav-doc-tab').toggle();
+    });
+    $(window).on('resize',function(){
+      if ($(window).width() > 768 && !($('.top-nav').hasClass('right'))) {
+        $('.top-nav').addClass('right');
+      }
+    });
+
+
 });
 
 // Prettyprint

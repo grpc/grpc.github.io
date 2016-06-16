@@ -9,20 +9,24 @@
   letter-spacing: 1px;
   padding: 7px 20px;
   font-size: 12px;
-  background-color: $secondBrandColor;
+  background-color: $mainBrandColor;
   color: $white;
   transition: 0.3s;
+  @media (max-width: 769px) {
+    padding: 12px 30px;
+    font-size: 14px;
+  }
   &:active {transform: scale(0.98);}
   &.inverse{
     font-weight: 600;
     background-color: $white;
-    color: $secondBrandColor;
-    border: 2px solid $secondBrandColor;
+    color: $mainBrandColor;
+    border: 2px solid $mainBrandColor;
   }
 }
 
 .btn.btn-floating {
-  z-index: 1000;
+  z-index: 999;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -34,12 +38,6 @@
     left: 50%;
     transform: translateX(-50%);
     padding: 0;
-    .icon {
-      height: 15px;
-      width: 25px;
-      background: url('../img/down-arrow.svg') no-repeat center/cover; 
-      margin: 5px auto 0;
-    }
   }
 }
 
@@ -49,4 +47,11 @@
   &::hover {
     cursor: pointer;
   }
+}
+
+.icon-caret {
+  height: 15px;
+  width: 25px;
+  background: url('../img/caret.svg') no-repeat center/cover; 
+  margin: 5px auto 0;
 }

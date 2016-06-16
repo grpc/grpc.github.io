@@ -1,21 +1,44 @@
 .doc-nav{
 	display: block;
 	margin: 0 10px 25px;
+	.tab.docs-tab  {
+		a {	
+			font-weight: 300;
+			display: inline-block;
+			border-bottom: 2px solid $gray;
+			@media (min-width: 768px) {
+				display: none;
+			}
+		}
+		&:after {
+			content: ' > ';
+		}
+		@media (min-width: 768px) {
+			&:after {
+				content: none;
+			}
+		}
+	}
 	.tab {
 		a {
+			margin: 0 10px;
 			color: $gray;
-			padding: 5px;
 			font-weight: 400;
+			display: none;
+			@media (min-width: 768px) {
+				display: inline-block;
+			}
 		}
 		display: inline-block;
-		padding: 10px;
-
 	}
-	.current {
-		border-bottom: 3px solid $secondBrandColor;
-		color: $secondBrandColor;
-		@media (max-width: 768px) {
-			display: inline-block;
+	.tab .current {
+		margin: 0 10px;
+		display: inline-block !important;
+		border-bottom: 2px solid $gray;
+		color: $gray;
+		@media (min-width: 768px) {
+			border-bottom: 3px solid $secondBrandColor;
+			color: $secondBrandColor;
 		}
 	}
 }
@@ -23,6 +46,10 @@
 .doc-side-nav {
 	background-color: $light-gray;
 	padding: 10px 0 30px;
+	display: none;
+	@media (min-width: 768px) {
+		display: initial;
+	}
 	.current {
 		&:before{
 			content: '>';

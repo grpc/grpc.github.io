@@ -3,10 +3,19 @@
     margin-bottom: 0px;
     background-color: transparent;
     color: $white;
+    .nav {
+        display: none;
+        @media (min-width: 768px) {
+            display: initial;
+        }
+    }
     .page-headline {
         color: $white;
         font-weight: 300;
-        padding: 20px 0;
+        padding: 20px 0; 
+        @media (min-width: 768px) {
+            padding: 70px 0 20px;
+        }
     }
     .logo {
         width: 60px;
@@ -39,4 +48,68 @@ h4.arrow-d::before {
 .submenu-content {
     display: none;
     margin-left: 30px;
+}
+
+.top-nav {
+    .icon-caret {
+        position: absolute;
+        top: 0;
+        right: 15px;
+        height: 20px;
+        width: 45px;
+        cursor: pointer;
+        background: url('../img/caret.svg') no-repeat center/cover;  
+    }
+    a:hover {
+        color: $white;
+    }
+    display: initial;
+    @media (min-width: 768px) {
+        display: none;
+    }
+    transition: all 0.6s ease-in;
+    border-width: 5px 0 5px 5px;
+    border-style: solid;
+    border-image: linear-gradient(to right, $black, rgba(0, 0, 0, 0)) 1 100%; 
+    &.right {
+        right: -300px;
+    }
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 300px;
+    background-color: #4f4f4f;
+    padding: 20px 0;
+    z-index: 1000;
+    .nav-item {
+        position: relative;
+        padding: 0 20px;
+        list-style: none;
+    }
+    hr {
+        margin: 15px 0;
+        border-top: 1px solid $gray;
+    }
+    .doc-list {
+        li {
+            color: $white;
+            font-weight: 300;
+            padding: 15px 20px 5px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            &::before {
+                content: '+ '
+            }
+        }
+    }
+    .icon-close {
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 15px;
+        height: 20px;
+        width: 45px;
+        background: url('../img/x.svg') no-repeat center/cover;  
+    }
 }
