@@ -8,6 +8,9 @@ body.faq {
             margin-bottom: 50px;
         }
     }
+    .submenu-content p,li,ul{
+        font-size: 12px;
+    }
 
     .lead {
         font-size: 1em;
@@ -25,14 +28,18 @@ body.faq {
     .faq-title {
         margin: 40px 0 0 0;
     }
+    h6 {
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+    }
 
-    h4.arrow-d,
-    h4.arrow-r {
+    h6.arrow-d,
+    h6.arrow-r {
         margin: 30px 0 5px 0;
         color: $linkColor;
     }
 
-    h4.arrow-d {
+    h6.arrow-d {
         color: $titleColor;
     }
 }

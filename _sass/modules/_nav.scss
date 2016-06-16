@@ -10,6 +10,22 @@
             font-size: 13px;
             letter-spacing: 1px;
         }
+
+    }
+    .nav li a:active, .nav li a:focus, .nav li a:hover {
+        background: initial;
+        border-bottom: 0;
+        color: $white;
+        &:after{
+            content:"";
+            position:absolute;
+            left: 10px;
+            bottom:0;
+            right: 10px;
+            margin:auto;
+            background: $white;
+            height: 2px;
+        }
     }
     .page-headline {
         color: $white;
@@ -23,11 +39,20 @@
         width: 60px;
     }
     .current {
-        border-bottom: 3px solid white;
+        &:after{
+            content:"";
+            position:absolute;
+            left: 10px;
+            bottom:0;
+            right: 10px;
+            margin:auto;
+            background: $white;
+            height: 2px;
+        }
     }
 }
 
-h4.arrow-d, h4.arrow-r {
+h6.arrow-d, h6.arrow-r {
     cursor: pointer;
     &::before{
         font-size: 1.25em;
@@ -37,12 +62,12 @@ h4.arrow-d, h4.arrow-r {
 }
 
 // Expandy nav items
-h4.arrow-r::before {
+h6.arrow-r::before {
     content: "+";
     margin-right: 8px;
 }
 
-h4.arrow-d::before {
+h6.arrow-d::before {
     content: "-";
     margin-right: 8px;
 }
