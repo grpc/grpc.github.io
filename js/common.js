@@ -20,6 +20,24 @@ function setupTabs(rootElement) {
 
 // Make the table of contents
 $(document).ready(function() {
+    var $window = $(window);
+
+    // Invoke slick JS carousel 
+    $('.pt-container').slick({
+      dots: true,
+      arrows: false,
+      autoplay: false,
+      mobileFirst: true, 
+      centerMode: true,
+      centerPadding: ',
+      responsive: [
+        {
+          breakpoint: 767,
+          settings: "unslick"
+        }
+      ]
+    });                
+
     $('.toc').toc({ listType: 'ul' });
 
     $('#nav-toggle, #hamburger').on('click', function(){
@@ -28,13 +46,15 @@ $(document).ready(function() {
     $('#nav-doc-toggle').on('click', function(){
       $('.nav-doc-tab').toggle();
     });
-    $(window).on('resize',function(){
-      if ($(window).width() > 768 && !($('.top-nav').hasClass('right'))) {
+
+    $window.on('resize',function(){
+      // send resize event to slick after it's been destroyed
+      $('.pt-container').slick('resize');
+      
+      if ($window.width() > 768 && !($('.top-nav').hasClass('right'))) {
         $('.top-nav').addClass('right');
       }
     });
-
-
 });
 
 // Prettyprint

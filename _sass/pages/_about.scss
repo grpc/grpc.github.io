@@ -2,9 +2,6 @@
     .about-sections {
         padding: 25px 0;
         position: relative;
-        @media(min-width: $tablet) {
-        }
-
     }
 
     .about-max {
@@ -46,9 +43,14 @@
     .more-btn {
         position: absolute;
         right: 0;
-        bottom: 25px;
+        left: 0;
+        bottom: 10px;
+        margin: 0 auto;
+        text-align: center;
+
         @media(min-width: 990px) {
-            bottom: initial
+            bottom: initial;
+            text-align: right;
         }
     }
 
@@ -118,6 +120,13 @@
     .pt-desc {
         font-size: .85em;
         font-weight: 300;
+        text-align: center;
+        margin-top: 40px;
+        
+        @media (min-width: 768px) {
+            text-align: left;
+            margin: 0;
+        }
     }
 
     .story {
@@ -132,6 +141,23 @@
             text-decoration: underline;
         }
 
+    }
+    
+    // Slick overrides
+    .slick-dots {
+        bottom: 30px; 
+        & li.slick-active button:before {
+            color: $mainBrandColor; 
+            opacity: 1;
+        }
+
+        & li button:before {
+            font-size: 12px; 
+        }
+
+        & li {
+            margin: 0;
+        }
     }
 
 }
