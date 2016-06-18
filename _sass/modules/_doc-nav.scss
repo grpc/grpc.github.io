@@ -1,6 +1,7 @@
 .doc-nav {
 	display: block;
-	margin: 0 $spacing--xs $spacing--l;
+	margin-top: $spacing--l;
+	margin-bottom: $spacing--l;
 
 	.tab {
 		display: inline-block;
@@ -23,7 +24,7 @@
 		}
 
 		a {
-			margin: 0 $spacing--xs;
+			margin-right: $spacing--m;
 			color: $gray;
 			font-weight: 400;
 			display: none;
@@ -32,7 +33,6 @@
 			}
 		}
 		.current {
-			margin: 0 $spacing--xs;
 			display: inline-block;
 			border-bottom: 2px solid $gray;
 			color: $gray;
@@ -48,9 +48,8 @@
 	background-color: $light-gray;
 	padding: $spacing--xs 0 $spacing--xl;
 	display: none;
-
 	@media (min-width: $tablet) {
-		display: initial;
+		display: block;
 	}
 
 	.current {
@@ -59,7 +58,7 @@
 		}
 	}
 	.doc-side-nav-title {
-		padding: 5px $spacing--s $spacing--xs;
+		padding: $spacing--s;
 	}
 	.doc-side-nav-list-item {
 		display: inline-block;
