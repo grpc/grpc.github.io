@@ -14,6 +14,10 @@ bodyclass: docs
                 <div class="col-sm-3">
                     {% if current[2] == 'guides' %}
                         {% include doc-side-guides-nav.html %}
+                    {% elsif current[2] == 'quickstart' %}
+                        {% include doc-side-quickstart-nav.html %}
+                    {% elsif current[2] == 'samples' %}
+                        {% include doc-side-samples-nav.html %}
                     {% endif %}
                 </div>
                 <div class="col-sm-7 {{ page.type }}">
