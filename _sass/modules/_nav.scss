@@ -35,10 +35,8 @@
     }
     .page-headline {
         color: $white;
-        font-weight: 300;
-        padding: $spacing--m 0; 
+        font-weight: 300; 
         @media (min-width: $tablet) {
-            padding: $spacing--xxxl 0 0;
         }
     }
     .nav-logo {
