@@ -19,10 +19,11 @@
         padding: $spacing--s $spacing--m;
         width: 195px;
     }
-    .lead {
+    .hero-lead {
         color: $white;
         display: block;
         font-size: 18px;
         margin-bottom: $spacing--l;
+        font-weight: 200;
     }
 }
