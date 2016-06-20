@@ -5,12 +5,14 @@ layout: docs
 title: Documentation
 type: markdown
 ---
+
 <p class="lead">Welcome to the developer documentation for gRPC, a language-neutral, platform-neutral, open source, remote procedure call (RPC) system initially developed at Google.</p>
 
 This document introduces you to gRPC with a quick overview and a simple
 Hello World example. You'll find more tutorials and <a href="{{ site.baseurl }}/docs/reference/">reference docs</a> in this site - more documentation is coming soon!
 
-<div id="toc"></div>
+<div id="toc" class="toc mobile-toc"></div>
+
 
 <!--=========================================================================-->
 <a name="quickstart"></a>
