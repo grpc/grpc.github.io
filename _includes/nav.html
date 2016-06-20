@@ -1,4 +1,4 @@
-<nav id="common-nav" class="navbar navbar-static-top inverse col-sm-11 nofloat center-block">
+<nav id="common-nav" class="navbar navbar-static-top inverse nofloat">
   <div>
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -47,7 +47,13 @@
       <li><a href="{{ site.baseurl }}/faq/" {% if current[1] == 'faq' %}class='current'{% endif %}>FAQ</a></li>
     </ul>
     <div class="container">
-      <h1 class="page-headline">{{page.headline}}</h3> 
+      <div class="row">
+        <div class="col-md-11 nofloat center-block">
+          <div class="col-sm-12">
+            <h1 class="page-headline">{{page.headline}}</h1> 
+          </div>
+        </div>
+      </div>
     </div>
   </div><!-- /.container-fluid -->
 </nav>

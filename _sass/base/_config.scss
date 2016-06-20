@@ -40,6 +40,12 @@ $desktop-medium             : 1280px;
 $desktop-large              : 1440px;
 $mobile                     : $desktop-small;
 
+@media(min-width: $desktop-large){
+	.container {
+		width: 1410px;
+	}
+}
+
 // Z-index
 $z-below-bottom             : -1;
 $z-bottom                   : 0;
