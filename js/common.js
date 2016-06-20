@@ -29,7 +29,7 @@ $(document).ready(function() {
       $('.doc-list').toggleClass('active');
     });
     $(window).on('resize',function(){
-      if ($(window).width() > 768 && !($('.top-nav').hasClass('right'))) {
+      if ($(window).width() >= 768 && !($('.top-nav').hasClass('right'))) {
         $('.top-nav').addClass('right');
       }
     });

@@ -16,7 +16,8 @@
 				}
 			}
 			&:after {
-				content: ' > ';
+				content: '>';
+				margin-right: 10px;
 				@media (min-width: $tablet) {
 					content: none;
 				}
