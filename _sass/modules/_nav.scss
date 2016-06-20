@@ -1,12 +1,18 @@
 #common-nav{
     background-color: transparent;
-    color: $white;
-    margin-bottom: 0px;
     padding-top: $spacing--xs;
+
     .nav {
         font-size: 13px;
         letter-spacing: 1px;
+        text-align: right;
         display: none;
+        li {
+            display: inline-block;
+        }
+        a {
+            color: $white;
+        }
         @media (min-width: $tablet) {
             display: initial;
         }
@@ -35,10 +41,18 @@
             padding: $spacing--xxxl 0 0;
         }
     }
-    .logo {
+    .nav-logo {
+        padding-top: 15px;
+        padding-bottom: 15px;
         width: 60px;
     }
-    .navbar-nav .current {
+
+
+    .navbar-toggle {
+        margin-right: 0;
+    }
+
+    .nav .current {
         &:after{
             background: $white;
             bottom: 0;
@@ -82,7 +96,6 @@
     &.right {
         right: -300px;
     }
-
     .icon-caret {
         position: absolute;
         top: 15px;
@@ -136,7 +149,7 @@
         border-top: 1px solid $gray;
     }
 
-    a:hover {
+    a, a:hover {
         color: $white;
     }
 
