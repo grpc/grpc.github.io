@@ -7,29 +7,37 @@ bodyclass: docs
 {% include doc-nav.html %}
 
 {% assign current = page.url | downcase | split: '/' %}
-<div class="container">
-    <div class="row">
         {% if current[1] == 'docs' and current[2] != 'index.html' and current[2] != 'overview' %}
-            <div class="col-md-11 nofloat center-block ">
-                <div class="col-sm-3">
-                    {% if current[2] == 'guides' %}
-                        {% include doc-side-guides-nav.html %}
-                    {% elsif current[2] == 'quickstart' %}
-                        {% include doc-side-quickstart-nav.html %}
-                    {% elsif current[2] == 'samples' %}
-                        {% include doc-side-samples-nav.html %}
-                    {% endif %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-11 nofloat center-block ">
+                    <div class="col-sm-3">
+                        {% if current[2] == 'guides' %}
+                            {% include doc-side-guides-nav.html %}
+                        {% elsif current[2] == 'quickstart' %}
+                            {% include doc-side-quickstart-nav.html %}
+                        {% elsif current[2] == 'samples' %}
+                            {% include doc-side-samples-nav.html %}
+                        {% endif %}
+                    </div>
+                    <div class="col-sm-7 {{ page.type }}">
+                        {{ content }}
+                    </div>
+                    <div id="toc" class="toc col-sm-2"></div>
                 </div>
-                <div class="col-sm-7 {{ page.type }}">
-                    {{ content }}
-                </div>
-                <div id="toc" class="toc col-sm-2"></div>
             </div>
+        </div>
         {% else %}
-            <div class="col-md-11 nofloat center-block {{ page.type }}">
-                {{ content }}   
-            </div>  
+            {% if page.type == 'markdown' %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-11 nofloat center-block ">
+                    {{ content }}  
+                </div>
+            </div>
+            {% else %}
+                {{ content }}
+            {% endif %}
         {% endif %}
-    </div>
-</div>
+
 
