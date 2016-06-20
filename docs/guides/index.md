@@ -4,7 +4,6 @@ title: Guides
 headline: '[Guides Page Headline]'
 type: markdown
 ---
-
 <p class="lead">
 [Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
 </p>
