@@ -1,8 +1,8 @@
 ---
 layout: default
 title: Contribute
-type: markdown
 headline: 'Contribution Guidelines'
+bodyclass: contribute
 ---
 <script language="JavaScript">
 var forwarding=window.location.hash.replace("#","");
@@ -20,10 +20,11 @@ $( document ).ready(function() {
 });
 </script>
 
-<div class="container">
+<div class="container markdown">
     <div class="row">
         <div class="col-md-11 nofloat center-block">
             <div class="col-sm-12">
+                <p class="lead">To contribute to gRPC documentation, please fork the GitHub gRPC repository and start submiting pull requests.</p>
                 <div id="continueEdit">
                     <h2>Continue your edit</h2>
 
@@ -31,14 +32,15 @@ $( document ).ready(function() {
 
                     <button class="btn inverse"><a id="continueEditButton"></a></button>
 
-                    </div>
-                    <div id="generalInstructions">
+                </div>
+                <div id="generalInstructions">
 
-                    <h2>Edit our site in the cloud</h2>
+                    <h2>Edit our site on github</h2>
 
                     <p>Click the below button to visit the repo for our site. You can then click the "Fork" button in the upper-right area of the screen to create a copy of our site on your GitHub account called a "fork." Make any changes you want in your fork, and when you are ready to send those changes to us, go to the index page for your fork and click "New Pull Request" to let us know about it.</p>
 
-                    <p><a class="button" href="https://github.com/wildebeestdev/grpc.github.io/">Browse this site's source code</a></p>
+                    <button class="btn inverse"><a href="https://github.com/wildebeestdev/grpc.github.io/">Browse this site's source code</a></button>
+
                 </div>
             </div>
         </div>
