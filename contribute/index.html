@@ -4,22 +4,6 @@ title: Contribute
 headline: 'Contribution Guidelines'
 bodyclass: contribute
 ---
-<script>
-var forwarding=window.location.hash.replace("#","");
-$( document ).ready(function() {
-    if(forwarding) {
-        console.log(forwarding)
-        $("#generalInstructions").hide();
-        $("#continueEdit").show();
-        $("#continueEditButton").text("Edit " + forwarding);
-        $("#continueEditButton").attr("href", "https://github.com/wildebeestdev/grpc.github.io/edit/gh-pages/" + forwarding)
-    } else {
-        $("#generalInstructions").show();
-        $("#continueEdit").hide();
-    }
-});
-</script>
-
 <div class="container markdown">
     <div class="row">
         <div class="col-md-11 nofloat center-block">

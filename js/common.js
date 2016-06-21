@@ -58,7 +58,16 @@ $(document).ready(function() {
       $(this).toggleClass('active');
     });
 
-
+    var forwarding = window.location.hash.replace("#","");
+    if (forwarding) {
+        $("#generalInstructions").hide();
+        $("#continueEdit").show();
+        $("#continueEditButton").text("Edit " + forwarding);
+        $("#continueEditButton").attr("href", "https://github.com/wildebeestdev/grpc.github.io/edit/gh-pages/" + forwarding)
+    } else {
+        $("#generalInstructions").show();
+        $("#continueEdit").hide();
+    }
 });
 
 // Prettyprint
