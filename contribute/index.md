@@ -29,24 +29,18 @@ $( document ).ready(function() {
             </div>
             <div class="col-sm-12">
                 <div id="continueEdit">
-<div markdown="1">
+                    <h2>Continue your edit</h2>
 
-## Continue your edit
+                    <p>Click the below link to edit the page you were just on. When you are done, press "Commit Changes" at the bottom of the screen. This will create a copy of our site on your GitHub account called a "fork." You can make other changes in your fork after it is created, if you want. When you are ready to send us all your changes, go to the index page for your fork and click "New Pull Request" to let us know about it.</p>
 
-Click the below link to edit the page you were just on. When you are done, press "Commit Changes" at the bottom of the screen. This will create a copy of our site on your GitHub account called a "fork." You can make other changes in your fork after it is created, if you want. When you are ready to send us all your changes, go to the index page for your fork and click "New Pull Request" to let us know about it.
-
-</div>
                     <button class="btn inverse"><a id="continueEditButton"></a></button>
 
                 </div>
                 <div id="generalInstructions">
-<div markdown="1">
+                    <h2>Edit our site on github</h2>
 
-## Edit our site on github
+                    <p>Click the below button to visit the repo for our site. You can then click the "Fork" button in the upper-right area of the screen to create a copy of our site on your GitHub account called a "fork." Make any changes you want in your fork, and when you are ready to send those changes to us, go to the index page for your fork and click "New Pull Request" to let us know about it.</p>
 
-Click the below button to visit the repo for our site. You can then click the "Fork" button in the upper-right area of the screen to create a copy of our site on your GitHub account called a "fork." Make any changes you want in your fork, and when you are ready to send those changes to us, go to the index page for your fork and click "New Pull Request" to let us know about it.
-
-</div>
                     <button class="btn inverse"><a href="https://github.com/wildebeestdev/grpc.github.io/">Browse this site's source code</a></button>
 
                 </div>
