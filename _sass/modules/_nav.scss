@@ -114,18 +114,22 @@
     }
 
     .doc-list {
+        
         li {
             display: none;
         }
-        &.active li {
-            display: block;
+        &.active {
+            padding-bottom: 15px;
+            li {
+                display: block;
+            }
         }
         .nav-doc-tab {
             color: $white;
             font-size: 13px;
             font-weight: 300;
             letter-spacing: 1px;
-            line-height: 50px;
+            line-height: 35px;
             padding-left: $spacing--s;
             &::before {
                 content: '+ '
@@ -144,7 +148,7 @@
 
     hr {
         margin: 0;
-        border-top: 1px solid $gray;
+        border-top: 2px solid #565454;
     }
 
     a, a:hover {
