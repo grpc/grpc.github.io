@@ -1,7 +1,15 @@
+.docs .contribute-links {
+	top: 20px;
+}
+
+.contribute .contribute-links {
+	top: 0;
+}
+
 .contribute-links {
 	position: absolute;
-	right: 0px;
-	top: 20px;
+	right: 0;
+	top: 0;
 	display: none;
 	@media (min-width: $tablet) {
         display: initial;

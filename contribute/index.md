@@ -23,8 +23,11 @@ $( document ).ready(function() {
 <div class="container markdown">
     <div class="row">
         <div class="col-md-11 nofloat center-block">
-            <div class="col-sm-12" >
+            {% include contribute-links.html %}
+            <div class="col-sm-8" >
                 <p class="lead">To contribute to gRPC documentation, please fork the GitHub gRPC repository and start submiting pull requests.</p>
+            </div>
+            <div class="col-sm-12">
                 <div id="continueEdit">
 <div markdown="1">
 
