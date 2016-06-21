@@ -1,7 +1,6 @@
 // FAQ page
 .faq-container {
     padding-bottom: 150px;
-    
     .submenu-content p,li,ul{
         font-size: 12px;
         font-weight: 400;
@@ -13,11 +12,7 @@
     }
 
     .lead {
-        font-size: 1.1rem;
-        margin: 20px 0 0 0;
-        @media (min-width: $tablet) {
-            margin: 50px 0 0 0;
-        }
+        margin: 20px 0 40px 0;
     }
 
     .faq-title {
