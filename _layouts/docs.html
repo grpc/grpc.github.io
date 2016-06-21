@@ -5,6 +5,8 @@ bodyclass: docs
 ---
 
 {% include doc-nav.html %}
+{% include contribute-links.html %}
+
 
 {% assign current = page.url | downcase | split: '/' %}
         {% if current[1] == 'docs' and current[2] != 'index.html' and current[2] != 'overview' %}
@@ -23,7 +25,9 @@ bodyclass: docs
                     <div class="col-sm-7 {{ page.type }}">
                         {{ content }}
                     </div>
-                    <div id="toc" class="toc col-sm-2"></div>
+
+                    <div id="toc" class="toc col-sm-2">
+                    </div>
                 </div>
             </div>
         </div>

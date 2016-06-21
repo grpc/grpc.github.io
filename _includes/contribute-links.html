@@ -1,0 +1,5 @@
+{% assign file_name = page.path | downcase | split: '/' | last %}
+
+
+<a href="{{ site.baseurl }}/contribute#{{ page.path }}">Contribution Guidelines</a>
+<a href="{{ site.githuburl }}/{{page.path}}">Edit {{file_name}}</a>

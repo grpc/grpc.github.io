@@ -3,6 +3,8 @@ markdown:
 
 baseurl: /grpc.github.io
 
+githuburl: https://github.com/wildebeestdev/grpc.github.io/edit/gh-pages
+
 kramdown:
    input: GFM
 
