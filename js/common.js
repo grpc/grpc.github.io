@@ -44,17 +44,23 @@ $(document).ready(function() {
       $('.top-nav').toggleClass('right');
     });
     $('#nav-doc-toggle').on('click', function(){
-      $('.nav-doc-tab').toggle();
+      $('.doc-list').toggleClass('active');
     });
 
-    $window.on('resize',function(){
+    $(window).on('resize',function(){
       // send resize event to slick after it's been destroyed
       $('.pt-container').slick('resize');
-      
-      if ($window.width() > 768 && !($('.top-nav').hasClass('right'))) {
+
+      if ($(window).width() >= 768 && !($('.top-nav').hasClass('right'))) {
         $('.top-nav').addClass('right');
       }
     });
+
+    $('.toggle').on('click',function(){
+      $(this).toggleClass('active');
+    });
+
+
 });
 
 // Prettyprint

@@ -1,4 +1,15 @@
 footer{
+    @media (max-width: 767px) {
+        ul {
+            li {
+                display: none;
+            }
+                
+            &.active li {
+                display: initial;
+            }
+        }
+    }
     background-color: $footerColor;
     box-shadow: 0px 500px 0px 500px $footerColor;
     padding: 35px 0 120px;
@@ -9,7 +20,9 @@ footer{
     a {
         color: #ffffff;
     }
-
+    .active {
+        display: initial;
+    }
     .footer-logo {
         width: 75px;
         margin-left: -8px;
@@ -129,10 +142,6 @@ footer{
         @media(min-width: 990px) {
             padding: 14px 0;
         }
-    }
-
-    .community-links {
-        display: inline-block;
     }
 
     .github {

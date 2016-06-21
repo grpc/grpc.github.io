@@ -1,12 +1,18 @@
 #common-nav{
     background-color: transparent;
-    color: $white;
-    margin-bottom: 0px;
     padding-top: $spacing--xs;
+
     .nav {
         font-size: 13px;
         letter-spacing: 1px;
+        text-align: right;
         display: none;
+        li {
+            display: inline-block;
+        }
+        a {
+            color: $white;
+        }
         @media (min-width: $tablet) {
             display: initial;
         }
@@ -18,7 +24,7 @@
         color: $white;
         &:after{
             background: $white;
-            bottom: 0;
+            bottom: 8px;
             content: "";
             height: 2px;
             left: $spacing--xs;
@@ -29,19 +35,25 @@
     }
     .page-headline {
         color: $white;
-        font-weight: 300;
-        padding: $spacing--m 0; 
+        font-weight: 300; 
         @media (min-width: $tablet) {
-            padding: $spacing--xxxl 0 0;
         }
     }
-    .logo {
+    .nav-logo {
+        padding-top: 15px;
+        padding-bottom: 15px;
         width: 60px;
     }
-    .navbar-nav .current {
+
+
+    .navbar-toggle {
+        margin-right: -6px;
+    }
+
+    .nav .current {
         &:after{
             background: $white;
-            bottom: 0;
+            bottom: 8px;
             content: "";
             height: 2px;
             left: $spacing--xs;
@@ -82,10 +94,9 @@
     &.right {
         right: -300px;
     }
-
     .icon-caret {
         position: absolute;
-        top: 0;
+        top: 15px;
         right: $spacing--s;
         height: 20px;
         width: 45px;
@@ -95,21 +106,27 @@
 
     .nav-item {
         position: relative;
-        padding: 0 $spacing--m;
+        padding-left: $spacing--s;
         list-style: none;
-    }
-
-    .current {
-        text-decoration: underline;
+        p {
+            line-height: 50px;
+        }
     }
 
     .doc-list {
+        li {
+            display: none;
+        }
+        &.active li {
+            display: block;
+        }
         .nav-doc-tab {
             color: $white;
-            font-size: 12px;
+            font-size: 13px;
             font-weight: 300;
             letter-spacing: 1px;
-            padding: $spacing--s $spacing--m 5px;
+            line-height: 50px;
+            padding-left: $spacing--s;
             &::before {
                 content: '+ '
             }
@@ -121,16 +138,16 @@
         height: 20px;
         position: absolute;
         right: $spacing--s;
-        top: 0;
+        top: 15px;
         width: 45px;
     }
 
     hr {
-        margin: $spacing--s 0;
+        margin: 0;
         border-top: 1px solid $gray;
     }
 
-    a:hover {
+    a, a:hover {
         color: $white;
     }
 
@@ -145,7 +162,6 @@
     display: initial;
     height: 100vh;
     overflow: scroll;
-    padding: $spacing--m 0;
     position: fixed;
     right: 0;
     top: 0;

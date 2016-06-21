@@ -1,21 +1,24 @@
 ---
+bodyclass: docs
+headline: '[Guides Page Headline]'
 layout: docs
 title: Documentation
-icon: <i class="fa fa-book"></i>
+type: markdown
 ---
-
-<h1>Getting started</h1>
 
 <p class="lead">Welcome to the developer documentation for gRPC, a language-neutral, platform-neutral, open source, remote procedure call (RPC) system initially developed at Google.</p>
 
 This document introduces you to gRPC with a quick overview and a simple
 Hello World example. You'll find more tutorials and <a href="{{ site.baseurl }}/docs/reference/">reference docs</a> in this site - more documentation is coming soon!
 
-<div id="toc"></div>
+<div id="toc" class="toc mobile-toc"></div>
+
 
 <!--=========================================================================-->
 <a name="quickstart"></a>
+
 ## Quick start
+
 To get up and running with gRPC straight away, see the quick start for your chosen language, which provides links to installation instructions, quick instructions for building the example used in this guide, and more:
 
 * [C++](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/cpp)
@@ -33,6 +36,7 @@ You can find out about the gRPC source code repositories in
 [grpc](https://github.com/grpc/grpc). Most of our example code lives in the [examples](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples) directory.
 
 <!--=========================================================================-->
+
 ## What is gRPC?
 
 In gRPC a *client* application can directly call
@@ -55,6 +59,7 @@ of their interfaces, letting you easily build Google functionality into
 your applications.
 
 <a name="protocolbuffers"></a>
+
 ### Working with protocol buffers
 
 By default gRPC uses *protocol buffers*, Google’s
@@ -83,6 +88,7 @@ issues with proto2 clients talking to proto3 servers and vice versa.
 
 <!--=========================================================================-->
 <a name="hello"></a>
+
 ## Hello gRPC!
 
 Now that you know a bit more about gRPC, the easiest way to see how it
@@ -107,6 +113,7 @@ reference documentation for all gRPC languages is coming soon.
 
 <!--=================================-->
 <a name="setup"></a>
+
 ### Setup
 
 This section explains how to set up your local machine to work with
@@ -386,6 +393,7 @@ First <a href="https://github.com/google/protobuf/blob/master/README.md">install
 
 <!--=================================-->
 <a name="servicedef"></a>
+
 ### Defining a service
 
 The first step in creating our example is to define a *service*: an RPC
@@ -434,6 +442,7 @@ As you can see, a gRPC method can accept only a single protocol buffer message t
 
 <!--=================================-->
 <a name="generating"></a>
+
 ### Generating gRPC code
 
 Once we've defined our service, we use the protocol buffer compiler
@@ -623,6 +632,7 @@ This generates `helloworld.php`, which contains:
 
 <!--=================================-->
 <a name="server"></a>
+
 ### Writing a server
 
 Now let's write some code! First we'll create a server application to implement
@@ -937,6 +947,7 @@ how all this works in a bit more detail in our language-specific documentation.
 
 <!--=================================-->
 <a name="client"></a>
+
 ### Writing a client
 
 Client-side gRPC is pretty simple. In this step, we'll use the generated code
@@ -1179,6 +1190,7 @@ request.name = @"Objective-C";
 
 <!--=================================-->
 <a name="run"></a>
+
 ### Try it out!
 
 You can try building and running our example using the same language on both the client and server side. Or you can try out one of gRPC's most useful features - interoperability
@@ -1325,6 +1337,7 @@ $ ./run_greeter_client.sh
 </div>
 
 <!--=========================================================================-->
+
 ## Read more!
 
 - Find out how to install gRPC and get started in each language's [quick start](#quickstart).

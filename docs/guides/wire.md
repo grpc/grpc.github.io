@@ -2,13 +2,11 @@
 layout: docs
 title: Wire Protocol
 type: markdown
+headline: 'gRPC over HTTP2 protocol'
 ---
+<p class="lead">This document serves as a detailed description for an implementation of gRPC carried over HTTP2 draft 17 framing. It assumes familiarity with the HTTP2 specification. Production rules use <a href="http://tools.ietf.org/html/rfc5234">ABNF syntax</a>.</p>
 
-<h1 class="page-header">gRPC over HTTP2 protocol</h1>
-
-<div id="toc"></div>
-
-This document serves as a detailed description for an implementation of gRPC carried over HTTP2 draft 17 framing. It assumes familiarity with the HTTP2 specification. Production rules use <a href="http://tools.ietf.org/html/rfc5234">ABNF syntax</a>.
+<div id="toc" class="toc mobile-toc"></div>
 
 ## Outline
 
@@ -70,6 +68,7 @@ A **Compressed-Flag** value of 1 indicates that the binary octet sequence of **M
 
 For requests, **EOS** (end-of-stream) is indicated by the presence of the END_STREAM flag on the last received DATA frame. In scenarios where the **Request** stream needs to be closed but no data remains to be sent implementations MUST send an empty DATA frame with this flag set.
 
+
 ##Responses
 
 * **Response** → (Response-Headers *Delimited-Message Trailers) / Trailers-Only
@@ -85,6 +84,7 @@ For requests, **EOS** (end-of-stream) is indicated by the presence of the END_ST
 For responses end-of-stream is indicated by the presence of the END_STREAM flag on the last received HEADERS frame that carries **Trailers**.
 
 Implementations should expect broken deployments to send non-200 HTTP status codes in responses as well as a variety of non-GRPC content-types and to omit **Status** & **Status-Message**. Implementations must synthesize a **Status** & **Status-Message** to propagate to the application layer when this occurs.
+
 
 ## Example
 
@@ -120,6 +120,8 @@ HEADERS (flags = END_STREAM, END_HEADERS)
 grpc-status = 0 # OK
 trace-proto-bin = jher831yy13JHy3hc
 ```
+
+
 ## User Agents
 
 While the protocol does not require a user-agent to function it is recommended that clients provide a structured user-agent string that provides a basic description of the calling library, version & platform to facilitate issue diagnosis in heterogeneous environments. The following structure is recommended to library developers:
@@ -135,13 +137,17 @@ grpc-ruby/1.2.3
 grpc-ruby-jruby/1.3.4
 grpc-java-android/0.9.1 (gingerbread/1.2.4; nexus5; tmobile)
 ```
+
+
 ## HTTP2 Transport Mapping
 
 ### Stream Identification
 All GRPC calls need to specify an internal ID. We will use HTTP2 stream-ids as call identifiers in this scheme. NOTE: These id’s are contextual to an open HTTP2 session and will not be unique within a given process that is handling more than one HTTP2 session nor can they be used as GUIDs.
 
+
 ### Data Frames
 DATA frame boundaries have no relation to **Delimited-Message** boundaries and implementations should make no assumptions about their alignment.
+
 
 ### Errors
 
@@ -172,16 +178,22 @@ INADEQUATE&#95;SECURITY| PERMISSION&#95;DENIED … with additional detail indica
 
 The HTTP2 specification mandates the use of TLS 1.2 or higher when TLS is used with HTTP2. It also places some additional constraints on the allowed ciphers in deployments to avoid known-problems as well as requiring SNI support. It is also expected that HTTP2 will be used in conjunction with proprietary transport security mechanisms about which the specification can make no meaningful recommendations.
 
-###Connection Management
+
+### Connection Management
+
+
 #### GOAWAY Frame
+
 Sent by servers to clients to indicate that they will no longer accept any new streams on the associated connections. This frame includes the id of the last successfully accepted stream by the server. Clients should consider any stream initiated after the last successfully accepted stream as UNAVAILABLE and retry the call elsewhere. Clients are free to continue working with the already accepted streams until they complete or the connection is terminated.
 
 Servers should send GOAWAY before terminating a connection to reliably inform clients which work has been accepted by the server and is being executed.
 
-####PING Frame
+
+#### PING Frame
 Both clients and servers can send a PING frame that the peer must respond to by precisely echoing what they received. This is used to assert that the connection is still live as well as providing a means to estimate end-to-end latency. If a server initiated PING does not receive a response within the deadline expected by the runtime all outstanding calls on the server will be closed with a CANCELLED status. An expired client initiated PING will cause all calls to be closed with an UNAVAILABLE status. Note that the frequency of PINGs is highly dependent on the network environment, implementations are free to adjust PING frequency based on network and application requirements.
 
-####Connection failure
+
+#### Connection failure
 If a detectable connection failure occurs on the client all calls will be closed with an UNAVAILABLE status. For servers open calls will be closed with a CANCELLED status.
 
 

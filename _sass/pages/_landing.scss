@@ -1,9 +1,11 @@
 // Landing page
-.landing-container {
+.landing-content-container {
     position: relative;
-    padding: 30px 0 60px;
+    padding-top: 30px;
+    padding-bottom: 60px;
     @media (min-width: 767px) {
-      padding: 90px 0;
+      padding-top: 90px;
+      padding-bottom: 90px;
     }
 
     .landing-row {
@@ -12,7 +14,7 @@
             margin-bottom: 15px;
         }
         p {
-            font-size: 0.95rem;
+            font-size: .95rem;
             font-weight: 300;
             line-height: 1.2rem;
         }
@@ -20,7 +22,6 @@
             display: flex;
             flex-direction: column;
             text-align: center;
-            margin: 0 auto;
             .landing-row-title {
                 order: 1;
                 margin: 0 auto 30px;
@@ -56,14 +57,19 @@
 
 
 //Documentation call to action
-.doc-call {
+.doc-call-container {
     background-color: lighten($thirdBrandColor, 4%);
-    padding: 70px 0;
+    padding-top: 70px;
+    padding-bottom: 70px;
+    .doc-call-title {
+        margin: 0 auto;
+    }
     .doc-call-text {
+        margin: 0 auto;
         padding-top: 5px;
     }
     .btn-doc-call {
-        margin: 25px 0 45px;
+        margin: 25px auto 45px;
     }
     .lang-select-row {
         display: flex;
@@ -75,10 +81,10 @@
         margin: 0 auto;
     }
     .lang-select {
-        margin: 5px;
+        margin: 3px;
         text-align: center;
         width: 33%;
-        max-width: 140px;   
+        max-width: 140px; 
         @media (min-width: $tablet) {
             margin: 10px;
         }

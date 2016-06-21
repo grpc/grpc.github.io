@@ -6,11 +6,8 @@ layout: base
 	{% include hero.html %}
 </div>
 
-<div class="landing-container container vpad nofloat">
-  {{ content }}
-</div>
-<div class="doc-call col-sm-12 container vpad nofloat">
-  {% include doc-call.html %}
-</div>
+{{ content }}
+
+{% include doc-call.html %}
 
 {% include footer.html %}

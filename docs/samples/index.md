@@ -1,7 +1,8 @@
 ---
 layout: docs
-title: Guides
-headline: '[Guides Page Headline]'
+title: Samples
+headline: '[Samples Page Headline]'
+bodyclass: docs
 type: markdown
 ---
 <p class="lead">

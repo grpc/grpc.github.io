@@ -1,7 +1,7 @@
 .doc-nav {
 	display: block;
-	margin: 0 $spacing--xs $spacing--l;
-
+	margin-top: $spacing--m;
+	margin-bottom: $spacing--m;
 	.tab {
 		display: inline-block;
 
@@ -15,7 +15,8 @@
 				}
 			}
 			&:after {
-				content: ' > ';
+				content: '>';
+				margin-right: 10px;
 				@media (min-width: $tablet) {
 					content: none;
 				}
@@ -23,16 +24,18 @@
 		}
 
 		a {
-			margin: 0 $spacing--xs;
+			margin-right: 16px;
 			color: $gray;
+			letter-spacing: 0.5px;
 			font-weight: 400;
 			display: none;
+			font-size: .85rem;
 			@media (min-width: $tablet) {
+				font-weight: 300;
 				display: inline-block;
 			}
 		}
 		.current {
-			margin: 0 $spacing--xs;
 			display: inline-block;
 			border-bottom: 2px solid $gray;
 			color: $gray;
@@ -48,9 +51,8 @@
 	background-color: $light-gray;
 	padding: $spacing--xs 0 $spacing--xl;
 	display: none;
-
 	@media (min-width: $tablet) {
-		display: initial;
+		display: block;
 	}
 
 	.current {
@@ -59,7 +61,7 @@
 		}
 	}
 	.doc-side-nav-title {
-		padding: 5px $spacing--s $spacing--xs;
+		padding: $spacing--s;
 	}
 	.doc-side-nav-list-item {
 		display: inline-block;

@@ -17,7 +17,7 @@
       padding: $spacing--xxs $spacing--m;
     }
 
-    &:active {transform: scale(0.98);}
+    &:active {transform: scale(.98);}
 
     &.inverse {
       background-color: $white;
@@ -26,7 +26,12 @@
     }
     &.lang-select {
       font-weight: 500;
-      padding: 6px 10px;
+      padding: 6px 0;
+      font-size: 12px;
+        @media (min-width: $tablet) {
+          padding: 6px 10px;
+          font-size: .8rem;
+      }
     }
     &.hero {
       background-color: $white;

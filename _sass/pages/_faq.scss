@@ -1,19 +1,9 @@
 // FAQ page
-body.faq {
-
-    .row {
-        margin-bottom: 150px;
-
-        @media(max-width: 768px) {
-            margin-bottom: 50px;
-        }
-    }
+.faq-container {
+    padding-bottom: 150px;
     .submenu-content p,li,ul{
         font-size: 12px;
-    }
-
-    .lead {
-        font-size: 1em;
+        font-weight: 400;
     }
 
     .lead,
@@ -22,14 +12,14 @@ body.faq {
     }
 
     .lead {
-        margin: 20px 0 0 0;
+        margin: 20px 0 40px 0;
     }
 
     .faq-title {
         margin: 40px 0 0 0;
     }
     h6 {
-        font-size: 0.95rem;
+        font-size: .95rem;
         letter-spacing: 1px;
     }
 

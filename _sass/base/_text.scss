@@ -2,10 +2,7 @@ h1 {
 	// ~ 50px
 	font-size: $font-size--xxl;
 	color: white;
-	margin: $spacing--xs 0;
-	@media (min-width: $tablet) {
-		margin: $spacing--xl 0;
-	}
+	margin: $spacing--xl 0;
 }
 
 h2 {
@@ -33,7 +30,7 @@ h5 {
 }
 
 h6 {
-	font-size: 0.9rem;
+	font-size: .9rem;
 	font-weight: 500;
 	color: $black;
 }
