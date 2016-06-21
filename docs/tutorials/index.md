@@ -1,7 +1,8 @@
 ---
-layout: docs
-title: Guides
+bodyclass: docs
 headline: '[Guides Page Headline]'
+layout: docs
+title: Documentation
 type: markdown
 ---
 <p class="lead">

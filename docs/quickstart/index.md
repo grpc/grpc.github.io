@@ -1,7 +1,8 @@
 ---
+bodyclass: docs
+headline: '[Quick Start Page Headline]'
 layout: docs
-title: Guides
-headline: '[Guides Page Headline]'
+title: Quick Start
 type: markdown
 ---
 <p class="lead">

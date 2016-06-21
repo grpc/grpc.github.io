@@ -2,13 +2,11 @@
 layout: docs
 title: gRPC Concepts
 type: markdown
+headline: 'gRPC Concepts'
 ---
+<p class="lead">This document introduces some key gRPC concepts with an overview of gRPC's architecture and RPC life cycle. It assumes that you've read the [Overview](/docs/index.html). For language-specific details, see the Quick Start, tutorial, and reference documentation for your chosen language(s), where available (complete reference docs are coming soon).</p>
 
-<h2 class="page-header">gRPC Concepts</h2>
-
-<div id="toc"></div>
-
-This document introduces some key gRPC concepts with an overview of gRPC's architecture and RPC life cycle. It assumes that you've read the [Overview](/docs/index.html). For language-specific details, see the Quick Start, tutorial, and reference documentation for your chosen language(s), where available (complete reference docs are coming soon).
+<div id="toc" class="toc mobile-toc"></div>
 
 ## Overview
 
@@ -105,6 +103,7 @@ In a bidirectional streaming RPC, again the call is initiated by the client call
 What happens next depends on the application, as the client and server can read and write in any order - the streams operate completely independently. So, for example, the server could wait until it has received all the client's messages before writing its responses, or the server and client could "ping-pong": the server gets a request, then sends back a response, then the client sends another request based on the response, and so on.
 
 <a name="deadlines"></a>
+
 ### Deadlines
 
 gRPC allows clients to specify a deadline value when calling a remote method. This specifies how long the client wants to wait for a response from the server before the RPC finishes with the error `DEADLINE_EXCEEDED`. On the server side, the server can query the deadline to see if a particular method has timed out, or how much time is left to complete the method.
@@ -121,6 +120,7 @@ In gRPC, both the client and server make independent and local determinations of
 Either the client or the server can cancel an RPC at any time. A cancellation terminates the RPC immediately so that no further work is done. It is *not* an "undo": changes made before the cancellation will not be rolled back. Of course, RPCs invoked via a synchronous RPC method call cannot be cancelled because program control is not returned to the application until after the RPC has terminated.
 
 <a name="metadata"></a>
+
 ### Metadata
 
 Metadata is information about a particular RPC call (such as <a href="{{ site.baseurl }}/docs/guides/auth.html">authentication details</a>) in the form of a list of key-value pairs, where the keys are strings and the values are typically strings (but can be binary data). Metadata is opaque to gRPC itself - it lets the client provide information associated with the call to the server and vice versa.

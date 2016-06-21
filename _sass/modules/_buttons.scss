@@ -17,7 +17,7 @@
       padding: $spacing--xxs $spacing--m;
     }
 
-    &:active {transform: scale(0.98);}
+    &:active {transform: scale(.98);}
 
     &.inverse {
       background-color: $white;
@@ -30,7 +30,7 @@
       font-size: 12px;
         @media (min-width: $tablet) {
           padding: 6px 10px;
-          font-size: 0.8rem;
+          font-size: .8rem;
       }
     }
     &.hero {

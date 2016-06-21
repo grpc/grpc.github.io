@@ -1,8 +1,7 @@
 .doc-nav {
 	display: block;
-	margin-top: $spacing--l;
-	margin-bottom: $spacing--l;
-
+	margin-top: $spacing--m;
+	margin-bottom: $spacing--m;
 	.tab {
 		display: inline-block;
 
@@ -25,11 +24,14 @@
 		}
 
 		a {
-			margin-right: $spacing--m;
+			margin-right: 16px;
 			color: $gray;
+			letter-spacing: 0.5px;
 			font-weight: 400;
 			display: none;
+			font-size: .85rem;
 			@media (min-width: $tablet) {
+				font-weight: 300;
 				display: inline-block;
 			}
 		}
