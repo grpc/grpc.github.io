@@ -112,9 +112,22 @@
         }
     }
 
+    .pt-content {
+        text-align: center;
+
+        @media (min-width: 768px) {
+            margin: 5px 0 15px;
+        }
+    }
+
     .pt-video {
-        height: 175px;
+        height: auto;
+        width: auto;
         background: url('../img/pt-video-placeholder.png') no-repeat center/cover;
+
+        @media (min-width: 768px) {
+            width: 100%;
+        }
     }
     
     .pt-desc {

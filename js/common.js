@@ -1,3 +1,33 @@
+// Youtube Player API
+// create script tag and add to DOM
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// list of videoIds
+var playerInfoList = [
+    {id: 'player1', videoId: 'M7lc1UVf-VE'}, 
+    {id: 'player2', videoId: 'M7lc1UVf-VE'}, 
+    {id: 'player3', videoId: 'M7lc1UVf-VE'}, 
+    {id: 'player4', videoId: 'M7lc1UVf-VE'}
+];  
+
+// function called on youtube iframe api ready event
+function onYouTubeIframeAPIReady() {
+  for (var i=0; i < playerInfoList.length; i++) {
+    var newPlayer = createPlayer(playerInfoList[i]);
+  }
+
+  function createPlayer(playerInfo) {
+    return new YT.Player(playerInfo.id, {
+      height: '390',
+      width: '640',
+      videoId: playerInfo.videoId
+    });
+  }
+}
+
 // Jquery UI for tabbed panes
 $.getScript("https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js", function(){
   setupTabs();
