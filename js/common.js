@@ -28,8 +28,6 @@ $(document).ready(function() {
       arrows: false,
       autoplay: false,
       mobileFirst: true, 
-      centerMode: true,
-      centerPadding: ',
       responsive: [
         {
           breakpoint: 767,
