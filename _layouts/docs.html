@@ -18,6 +18,8 @@ bodyclass: docs
                             {% include doc-side-quickstart-nav.html %}
                         {% elsif current[2] == 'samples' %}
                             {% include doc-side-samples-nav.html %}
+                        {% elsif current[2] == 'tutorials' %}
+                            {% include doc-side-tutorial-nav.html %}
                         {% endif %}
                     </div>
                     <div class="col-sm-7 {{ page.type }}">
