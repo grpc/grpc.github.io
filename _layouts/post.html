@@ -3,35 +3,30 @@ layout: base
 bodyclass: post
 ---
 
-{% include nav.html %}
-
-<div class="page-title-bar">
-  <div class="container">
-    <a href="{{ site.baseurl }}/posts/"><p class="lead">Blog</p></a>
-  </div>
+<div class="nav-hero-container">
+  {% include nav.html %}
 </div>
 
-<div class="container vpad">
+<div class="container markdown">
   <div class="row">
-    <div class="col-md-3">
-      <!-- empty ok for improved readability on left screen edge -->
-    </div>
-    <div class="col-md-7">
-      <article class="post">
-        <h1>{{ page.title }}</h1>
-        <div class="postdate">
-          Posted on {{ page.date | date: "%A, %B %d %Y" }}.
-        </div>
-        <div class="content">
-          {{ content }}
-        </div>
+    <div class="col-md-11 nofloat center-block">
+      <div class="col-sm-12">
+        <article class="post">
+          <h1>{{ page.title }}</h1>
+          <div class="postdate">
+            Posted on {{ page.date | date: "%A, %B %d %Y" }}.
+          </div>
+          <div class="content">
+            {{ content }}
+          </div>
 
-        {% if page.attribution %}
-        <div class="content-attribution">
-           {{ page.attribution }}
-        </div>
-        {% endif %}
-      </article>
+          {% if page.attribution %}
+          <div class="content-attribution">
+             {{ page.attribution }}
+          </div>
+          {% endif %}
+        </article>
+      </div>
     </div>
   </div>
 </div>

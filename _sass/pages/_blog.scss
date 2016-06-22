@@ -1,3 +1,107 @@
+body.blog {
+    hr {
+        margin-bottom: 0;
+    }
+    hr:last-of-type {
+        display: none;
+    }
+    .post-thumbnail {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+    .post-title {
+        color: $black;
+        font-size: 17px;
+        letter-spacing: 1px;
+        font-weight: 500;
+        margin: 50px 0 8px;
+    }
+    .post-date {
+        font-size: 11px;
+        color: $black;
+    }
+    .post-thumbnail {
+        margin: 15px 10px 0 0;
+        display: inline-block;
+        vertical-align: top;
+    }
+    .post-author {
+        margin-top: 30px;
+        font-size: 13px;
+        display: inline-block;
+        color: $gray;
+    }
+    .post-excerpt {
+        h2 {
+            font-size: 15px;
+            margin-top: 20px;
+        }
+        p {
+        font-size: 14px;
+        margin-top: 20px;
+        }
+    }
+
+    .read-more {
+        line-height: 24px;
+        font-size: 10px;
+        margin: 30px 0;
+        letter-spacing: 0.5px;
+        .read-more-text {
+            &::after {
+                content: '';
+                display: inline-block;
+                vertical-align: bottom;
+                background: url('../img/more-arrow.png') no-repeat center/contain;
+                width: 24px;
+                height: 24px;
+                margin: 0 0 0 10px;
+            }
+        }
+    }
+    .pagination {
+        width: 100%;
+    }
+
+    .caret-left {
+        content: '';
+        display: inline-block;
+        vertical-align: bottom;
+        background: url('../img/caret.svg') no-repeat center/contain;
+        transform: rotate(90deg);
+        width: 24px;
+        height: 24px;
+        margin: 0;
+    }
+
+    .next, .previous {
+        padding: 0;
+        display: inline-block;
+        line-height: 22px;
+    }
+
+    .caret-right {
+        content: '';
+        display: inline-block;
+        vertical-align: bottom;
+        background: url('../img/caret.svg') no-repeat center/contain;
+        transform: rotate(-90deg);
+        width: 24px;
+        height: 24px;
+        margin: 0;
+    }
+
+    .toc {
+        margin-top: 50px;
+    }
+}
+
+
+
+
 // Blog posts list page (all posts)
 .postdate {
     margin-bottom: 20px;
@@ -7,34 +111,14 @@
     top:-5px;
 }
 
-body.postslist{
-    .posts-side-nav {
-        margin-top: 20px;
-
-        li {
-            margin-bottom: 10px;
-        }
-    }
-
-    article.post {
-        margin-bottom: 40px;
-    }
-}
-
-// Blog post layout (single post)
 body.post {
-    article.post {
-        margin-top: 40px;
-        font-size: 120%;
+    .post {
+        padding-top: 50px;
     }
-
-    .page-title-bar {
-        padding-bottom: 0;
-    }
-
     .content-attribution {
-        font-size: 13px;
+        margin: 50px 0 30px;
+        color: $dark-gray;
+        font-size: 15px;
         font-style: italic;
-        padding-top: 20px;
     }
 }
