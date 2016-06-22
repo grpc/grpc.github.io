@@ -40,6 +40,22 @@
         margin: 20px 0;
     }
 
+    .case-studies-quote {
+        .apos {
+            font-weight: 300;
+            margin-right: 3px;
+            display:inline-block;
+            transform: scale(4,4);
+            color: $gray;
+            height: 10px;
+        }
+        font-style: italic;
+        font-size: 14px;
+        color: #727272;
+        font-weight: 200;
+        letter-spacing: .5px;
+    }
+
     .more-btn {
         position: absolute;
         right: 0;
@@ -70,17 +86,12 @@
     .case-studies-container {
         margin-top: 35px;
         margin-bottom: 35px;
-        max-width: 85%;
-
         &::after {
           content: '';
           display: table;
           width: 100%;
         }
 
-        @media(min-width: $tablet) {
-            max-width: 85%;
-        }
     }
 
     .case-studies-link {
