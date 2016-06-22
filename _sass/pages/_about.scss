@@ -123,6 +123,7 @@
     .pt-video {
         height: auto;
         width: auto;
+        max-width: 100%;
         background: url('../img/pt-video-placeholder.png') no-repeat center/cover;
 
         @media (min-width: 768px) {
@@ -154,6 +155,21 @@
             text-decoration: underline;
         }
 
+    }
+    
+    .videoWrapper {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        padding-top: 25px;
+        height: 0;
+    }
+
+    .videoWrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
     }
     
     // Slick overrides
