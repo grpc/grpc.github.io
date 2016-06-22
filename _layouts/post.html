@@ -1,22 +1,14 @@
 ---
 layout: base
-bodyclass: post
 ---
-
-{% include nav.html %}
-
-<div class="page-title-bar">
-  <div class="container">
-    <a href="{{ site.baseurl }}/posts/"><p class="lead">Blog</p></a>
-  </div>
+<div class="nav-hero-container">
+  {% include nav.html %}
 </div>
 
-<div class="container vpad">
+<div class="container markdown">
   <div class="row">
-    <div class="col-md-3">
-      <!-- empty ok for improved readability on left screen edge -->
-    </div>
-    <div class="col-md-7">
+  <div class="col-md-11 nofloat center-block"
+    <div class="col-sm-12">
       <article class="post">
         <h1>{{ page.title }}</h1>
         <div class="postdate">

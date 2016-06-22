@@ -10,8 +10,8 @@ headline:  '[Blog Headline]'
 		<div class="col-md-11 nofloat center-block">
 			<div class="col-sm-10">
 				{% for post in site.posts %}
-
-						<a href="{{ post.url }}"><h4  id="{{post.title}}" class="post-title">{{ post.title }}</h4></a>
+				
+						<a href="{{ site.baseurl }}{{ post.url }}"><h4  id="{{post.title}}" class="post-title">{{ post.title }}</h4></a>
 						
 						<div class="post-date">
 							{{ post.date | date: '%B %d, %Y' }}
@@ -32,12 +32,12 @@ headline:  '[Blog Headline]'
 							{{ post.excerpt }}
 						</div>
 						<div class="read-more">
-							<a href="{{ post.url }}">READ MORE</a>
+							<a href="{{ site.baseurl }}{{ post.url }}">READ MORE</a>
 						</div>
 						<hr>
 				{% endfor %}
 			</div>
-							
+
 			<div id="toc" class="toc col-sm-2">
 			</div>
 		</div>

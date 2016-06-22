@@ -73,35 +73,3 @@ body.blog {
     position: relative;
     top:-5px;
 }
-
-body.postslist{
-    .posts-side-nav {
-        margin-top: 20px;
-
-        li {
-            margin-bottom: 10px;
-        }
-    }
-
-    article.post {
-        margin-bottom: 40px;
-    }
-}
-
-// Blog post layout (single post)
-body.post {
-    article.post {
-        margin-top: 40px;
-        font-size: 120%;
-    }
-
-    .page-title-bar {
-        padding-bottom: 0;
-    }
-
-    .content-attribution {
-        font-size: 13px;
-        font-style: italic;
-        padding-top: 20px;
-    }
-}
