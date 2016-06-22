@@ -42,9 +42,11 @@
 
     .case-studies-quote {
         .apos {
+            font-weight: 300;
+            margin-right: 3px;
             display:inline-block;
             transform: scale(4,4);
-            color: $dark-gray;
+            color: $gray;
             height: 10px;
         }
         font-style: italic;
@@ -84,17 +86,12 @@
     .case-studies-container {
         margin-top: 35px;
         margin-bottom: 35px;
-        max-width: 85%;
-
         &::after {
           content: '';
           display: table;
           width: 100%;
         }
 
-        @media(min-width: $tablet) {
-            max-width: 100%;
-        }
     }
 
     .case-studies-link {
