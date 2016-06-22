@@ -30,6 +30,10 @@
 			font-weight: 400;
 			display: none;
 			font-size: .85rem;
+			border-bottom: 2px solid transparent;
+			&:hover {
+				border-bottom: 2px solid $gray;
+			}
 			@media (min-width: $tablet) {
 				font-weight: 300;
 				display: inline-block;
@@ -49,10 +53,10 @@
 
 .doc-side-nav {
 	background-color: $light-gray;
-	padding: $spacing--xs 0 $spacing--xl;
-	display: none;
+	margin-bottom: 20px;
 	@media (min-width: $tablet) {
-		display: block;
+		padding: $spacing--xs 0 $spacing--xl;
+		margin-bottom: 0;
 	}
 
 	.current {

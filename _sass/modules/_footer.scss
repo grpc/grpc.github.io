@@ -13,12 +13,16 @@ footer{
     background-color: $footerColor;
     box-shadow: 0px 500px 0px 500px $footerColor;
     padding: 35px 0 120px;
-    color: #ffffff;
+    color: $white;
     position: relative;
     overflow: hidden;
 
     a {
-        color: #ffffff;
+        color: $white;
+        &:hover {
+            text-decoration: underline;
+            color: $white;
+        }
     }
     .active {
         display: initial;
