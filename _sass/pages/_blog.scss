@@ -43,18 +43,20 @@ body.blog {
     }
 
     .read-more {
-        line-height: 21px;
+        line-height: 23px;
         font-size: 10px;
         margin: 30px 0;
         letter-spacing: 0.5px;
-        &::after {
-            content: '';
-            display: inline-block;
-            vertical-align: bottom;
-            background: url('../img/more-arrow.png') no-repeat center/contain;
-            width: 23px;
-            height: 23px;
-            margin: 0 0 0 10px;
+        .read-more-text {
+            &::after {
+                content: '';
+                display: inline-block;
+                vertical-align: bottom;
+                background: url('../img/more-arrow.png') no-repeat center/contain;
+                width: 23px;
+                height: 23px;
+                margin: 0 0 0 10px;
+            }
         }
     }
     .toc {
