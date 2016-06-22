@@ -131,11 +131,8 @@
             letter-spacing: 1px;
             line-height: 35px;
             padding-left: $spacing--s;
-            &::before {
-                content: '+ ';
-            }
             &:hover {
-                color: $light-gray;
+                text-decoration: underline;
             }
         }
     }
@@ -156,6 +153,9 @@
 
     a {
         color: $white;
+    }
+    a.current {
+        text-decoration: underline;
     }
 
     @media (min-width: $tablet) {

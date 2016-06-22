@@ -53,10 +53,10 @@
 
 .doc-side-nav {
 	background-color: $light-gray;
-	padding: $spacing--xs 0 $spacing--xl;
-	display: none;
+	margin-bottom: 20px;
 	@media (min-width: $tablet) {
-		display: block;
+		padding: $spacing--xs 0 $spacing--xl;
+		margin-bottom: 0;
 	}
 
 	.current {
