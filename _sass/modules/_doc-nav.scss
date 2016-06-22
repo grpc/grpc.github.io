@@ -30,6 +30,10 @@
 			font-weight: 400;
 			display: none;
 			font-size: .85rem;
+			border-bottom: 2px solid transparent;
+			&:hover {
+				border-bottom: 2px solid $gray;
+			}
 			@media (min-width: $tablet) {
 				font-weight: 300;
 				display: inline-block;

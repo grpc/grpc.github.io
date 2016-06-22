@@ -132,7 +132,10 @@
             line-height: 35px;
             padding-left: $spacing--s;
             &::before {
-                content: '+ '
+                content: '+ ';
+            }
+            &:hover {
+                color: $light-gray;
             }
         }
     }
@@ -151,7 +154,7 @@
         border-top: 2px solid #565454;
     }
 
-    a, a:hover {
+    a {
         color: $white;
     }
 
