@@ -74,3 +74,28 @@
 		}
 	}
 }
+
+.doc-side-nav-tutorial {
+
+  h6 {
+    color: $dark-gray;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 22px;
+  }
+  .submenu {
+    padding: 2px 15px;
+  }
+
+  .submenu-link {
+    display: block;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 22px;
+    color: $gray;
+
+    &.active:before {
+      content: '>';
+    }
+  }
+}
