@@ -1,4 +1,5 @@
 ---
+bodyclass: docs
 layout: docs
 title: Guides
 headline: '[Guides Page Headline]'
