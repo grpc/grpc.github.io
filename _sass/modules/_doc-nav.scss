@@ -44,7 +44,7 @@
 			border-bottom: 2px solid $gray;
 			color: $gray;
 			@media (min-width: $tablet) {
-				border-bottom: 2px solid $secondBrandColor;
+				border-bottom: 2px solid $secondBrandColor !important;
 				color: $secondBrandColor;
 			}
 		}
