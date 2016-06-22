@@ -7,20 +7,12 @@ bodyclass: docs
 {% include doc-nav.html %}
 
 {% assign current = page.url | downcase | split: '/' %}
-        {% if current[1] == 'docs' and current[2] != 'index.html' and current[2] != 'overview' %}
+        {% if current[1] == 'docs' and page.sidenav != null %}
         <div class="container">
             <div class="row">
                 <div class="col-md-11 nofloat center-block ">
                     <div class="col-sm-3">
-                        {% if current[2] == 'guides' %}
-                            {% include doc-side-guides-nav.html %}
-                        {% elsif current[2] == 'quickstart' %}
-                            {% include doc-side-quickstart-nav.html %}
-                        {% elsif current[2] == 'samples' %}
-                            {% include doc-side-samples-nav.html %}
-                        {% elsif current[2] == 'tutorials' %}
-                            {% include doc-side-tutorial-nav.html %}
-                        {% endif %}
+                        {% include {{page.sidenav}} %}
                     </div>
                     <div class="col-sm-7 {{ page.type }}">
                         {{ content }}
