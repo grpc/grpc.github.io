@@ -9,7 +9,7 @@ headline:  '[Blog Headline]'
 	<div class="row">
 		<div class="col-md-11 nofloat center-block">
 			<div class="col-sm-10">
-				{% for post in site.posts %}
+				{% for post in paginator.posts %}
 				
 						<a href="{{ site.baseurl }}{{ post.url }}"><h4  id="{{post.title}}" class="post-title">{{ post.title }}</h4></a>
 						
@@ -36,6 +36,22 @@ headline:  '[Blog Headline]'
 						</div>
 						<hr>
 				{% endfor %}
+				<div class="pagination">
+				  {% if paginator.previous_page %}
+				  	<div class="previous col-xs-6">
+				    	<a href="{{ site.baseurl }}{{ paginator.previous_page_path }}"><span class="caret-left"></span>Newer</a>
+				   	</div>
+				  {% else %}
+				    <span class="col-xs-6"></span>
+				  {% endif %}
+				  {% if paginator.next_page %}
+				    <div class="next col-xs-6 text-right">
+				    	<a href="{{ site.baseurl }}{{ paginator.next_page_path }}" >Older<span class="caret-right"></span></a>
+				    </div>
+				  {% else %}
+				    <span class="col-xs-6"></span>
+				  {% endif %}
+				</div>
 			</div>
 
 			<div id="toc" class="toc col-sm-2">

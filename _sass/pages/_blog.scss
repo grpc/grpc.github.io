@@ -2,6 +2,9 @@ body.blog {
     hr {
         margin-bottom: 0;
     }
+    hr:last-of-type {
+        display: none;
+    }
     .post-thumbnail {
         width: 60px;
         height: 60px;
@@ -59,6 +62,38 @@ body.blog {
             }
         }
     }
+    .pagination {
+        width: 100%;
+    }
+
+    .caret-left {
+        content: '';
+        display: inline-block;
+        vertical-align: bottom;
+        background: url('../img/caret.svg') no-repeat center/contain;
+        transform: rotate(90deg);
+        width: 24px;
+        height: 24px;
+        margin: 0;
+    }
+
+    .next, .previous {
+        padding: 0;
+        display: inline-block;
+        line-height: 22px;
+    }
+
+    .caret-right {
+        content: '';
+        display: inline-block;
+        vertical-align: bottom;
+        background: url('../img/caret.svg') no-repeat center/contain;
+        transform: rotate(-90deg);
+        width: 24px;
+        height: 24px;
+        margin: 0;
+    }
+
     .toc {
         margin-top: 50px;
     }

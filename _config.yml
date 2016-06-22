@@ -11,4 +11,8 @@ kramdown:
 sass:
   style: compressed
   
+paginate: 2
+
+paginate_path: "/blog/page:num/"
+
 excerpt_separator: <!--more-->   
