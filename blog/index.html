@@ -4,5 +4,42 @@ group: 'navigation'
 title: Blog
 bodyclass: blog
 headline:  '[Blog Headline]'
-icon: <i class="fa fa-question-circle"></i>
 ---
+<div class="container">
+	<div class="row">
+		<div class="col-md-11 nofloat center-block">
+			<div class="col-sm-10">
+				{% for post in site.posts %}
+
+						<a href="{{ post.url }}"><h4  id="{{post.title}}" class="post-title">{{ post.title }}</h4></a>
+						
+						<div class="post-date">
+							{{ post.date | date: '%B %d, %Y' }}
+						</div>
+
+						{% if post.thumbnail %}
+						<div class="post-thumbnail" style="background-image: url({{post.thumbnail}})">
+						</div>
+						{% endif %}
+
+						{% if post.author %}
+						<div class="post-author">
+							{{ post.author}}
+						</div>
+						{% endif %}
+
+						<div class="post-excerpt">
+							{{ post.excerpt }}
+						</div>
+						<div class="read-more">
+							<a href="{{ post.url }}">READ MORE</a>
+						</div>
+						<hr>
+				{% endfor %}
+			</div>
+							
+			<div id="toc" class="toc col-sm-2">
+			</div>
+		</div>
+	</div>
+</div>

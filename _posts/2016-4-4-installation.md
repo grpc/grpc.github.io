@@ -14,6 +14,8 @@ Today we are happy to provide an update that significantly simplifies the gettin
 
    * You can also use our Dockerfiles to use these updated packages - deploying microservices built on gRPC should now be a very simple experience. 
 
+<!--more-->
+
 The installation story is not yet complete: we are now focused on improving your development experience by packaging our protocol buffer plugins in the same way as the gRPC runtime. This will simplify code generation and setting up your development environment.
 
 ### Want to try it?
