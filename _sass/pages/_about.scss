@@ -40,6 +40,20 @@
         margin: 20px 0;
     }
 
+    .case-studies-quote {
+        .apos {
+            display:inline-block;
+            transform: scale(4,4);
+            color: $dark-gray;
+            height: 10px;
+        }
+        font-style: italic;
+        font-size: 14px;
+        color: #727272;
+        font-weight: 200;
+        letter-spacing: .5px;
+    }
+
     .more-btn {
         position: absolute;
         right: 0;
@@ -79,7 +93,7 @@
         }
 
         @media(min-width: $tablet) {
-            max-width: 85%;
+            max-width: 100%;
         }
     }
 
