@@ -1040,7 +1040,7 @@ for an explanation of the authentication features of gRPC.</p>
   </div>
   <div id="csharp_connect">
 <pre>Channel channel = new Channel("127.0.0.1:50051", Credentials.Insecure);
-var client = Greeter.NewClient(channel);
+var client = new Greeter.GreeterClient(channel);
 ...
 </pre>
   </div>
