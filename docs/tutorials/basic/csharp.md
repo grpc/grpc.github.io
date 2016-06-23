@@ -288,11 +288,11 @@ In this section, we'll look at creating a C# client for our `RouteGuide` service
 
 To call service methods, we first need to create a *stub*.
 
-First, we need to create a gRPC client channel that will connect to gRPC server. Then, we use the `RouteGuide.NewClient` method of the `RouteGuide` class generated from our .proto.
+First, we need to create a gRPC client channel that will connect to gRPC server. Then, we create an instance of the `RouteGuite.RouteGuideClient` class generated from our .proto, passing the channel as an argument.
 
 ```csharp
 Channel channel = new Channel("127.0.0.1:50052", ChannelCredentials.Insecure)
-var client = RouteGuide.NewClient(channel);
+var client = new RouteGuide.RouteGuideClient(channel);
 
 // YOUR CODE GOES HERE
 
