@@ -3,7 +3,7 @@
 	margin-top: $spacing--m;
 	margin-bottom: $spacing--m;
 	.doc-caret {
-		margin-right: 10px
+		margin-right: 10px;
 		@media (min-width: $tablet) {
 			display: none;
 		}
