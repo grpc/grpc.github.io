@@ -5,7 +5,8 @@
 				{% assign current = page.url | downcase | split: '/' %}
 				<li class="tab docs-tab"><a href="{{ site.baseurl }}/docs/">Docs</a></li>
 				{{ current }}
-				{% if current[2] != 'index.html' %}
+				{{ page.url }}
+				{% if current[1] != 'index.html' or current != 'docs'  %}
 				<span class="doc-caret">></span>
 				{% endif %}
 				<li class="tab"><a href="{{ site.baseurl }}/docs/overview" {% if current[2] == 'overview' %}class='current'{% endif %}>Overview</a></li>
