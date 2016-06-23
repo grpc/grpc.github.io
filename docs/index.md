@@ -42,7 +42,8 @@ services. As in many RPC systems, gRPC is based around the idea of defining
 a *service*, specifying the methods that can be called remotely with their
 parameters and return types. On the server side, the server implements this
 interface and runs a gRPC server to handle client calls. On the client side,
-the client has a *stub* that provides exactly the same methods as the server.
+the client has a *stub* (referred to as just *client* in some languages)
+that provides the same methods as the server.
 
 <img src="../img/grpc_concept_diagram_00.png" class="img-responsive" alt="gRPC diagram">
 
@@ -436,8 +437,8 @@ As you can see, a gRPC method can accept only a single protocol buffer message t
 Once we've defined our service, we use the protocol buffer compiler
 `protoc` to generate the special client and server code we need to create
 our application - you
-can generate gRPC code in any gRPC-supported language, although PHP and Objective-C only support creating clients. The generated code contains both stub code for clients to
-use and an abstract interface for servers to implement, both with the method
+can generate gRPC code in any gRPC-supported language, although PHP and Objective-C only support creating clients. The generated code contains both client-side code for clients to
+call into and an abstract interface for servers to implement, both with the method
 defined in our `Greeter` service.
 
 (If you didn't install the gRPC plugins and protoc on your system and are just reading along with
@@ -577,9 +578,8 @@ To generate the code, run the following command from the `examples/csharp/hellow
 
 Running the appropriate command for your OS regenerates the following files in the Greeter directory:
 
-- `Greeter/Helloworld.cs` defines a namespace `Helloworld`
-  - This contains all the protocol buffer code to populate, serialize, and retrieve our request and response message types
-- `Greeter/HelloworldGrpc.cs`, provides stub and service classes, including:
+- `Greeter/Helloworld.cs` contains all the protocol buffer code to populate, serialize, and retrieve our request and response message types
+- `Greeter/HelloworldGrpc.cs` provides generated client and server classes, including:
    - an abstract base class `Greeter.GreeterBase` to inherit from when defining RouteGuide service implementations
    - a class `Greeter.GreeterClient` that can be used to access remote RouteGuide instances
 
@@ -947,7 +947,7 @@ we'll leave that for the tutorial.
 
 First let's look at how we connect to the `Greeter` server. First we need
 to create a gRPC channel, specifying the hostname and port of the server we
-want to connect to. Then we use the channel to construct the stub instance.
+want to connect to. Then we use the channel to construct the client stub instance.
 
 
 <div class="tabs">
@@ -1077,7 +1077,7 @@ In PHP, we can do this in a single step using the `GreeterClient` class's constr
 Now we can contact the service and obtain a greeting:
 
 1. We construct and fill in a `HelloRequest` to send to the service.
-2. We call the stub's `SayHello()` RPC with our request and get a populated `HelloReply` if the RPC is successful, from which we can get our greeting.
+2. We call the client stub's `SayHello()` RPC with our request and get a populated `HelloReply` if the RPC is successful, from which we can get our greeting.
 
 <div class="tabs">
   <ul>

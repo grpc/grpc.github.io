@@ -66,9 +66,8 @@ We'll look at the different types of RPC in more detail in the RPC life cycle se
 
 Starting from a service definition in a .proto file, gRPC provides protocol buffer compiler plugins that generate client- and server-side code. gRPC users typically call these APIs on the client side and implement the corresponding API on the server side.
 
-- On the server side, the server implements the service interface and runs a gRPC server to handle client calls. The gRPC infrastructure decodes incoming requests, executes service methods, and encodes service responses.
-- On the client side, the client has a *stub* that implements exactly the same methods as the server. The client can then just call those methods on the local stub, wrapping the parameters in the appropriate protocol buffer message type — gRPC looks after sending the request(s) to the server and returning the server's protocol buffer response(s).
-
+- On the server side, the server implements the methods declared by the service and runs a gRPC server to handle client calls. The gRPC infrastructure decodes incoming requests, executes service methods, and encodes service responses.
+- On the client side, the client has a local object known as *stub* (for some languages, the preferred term is *client*) that implements the same methods as the service. The client can then just call those methods on the local object, wrapping the parameters for the call in the appropriate protocol buffer message type - gRPC looks after sending the request(s) to the server and returning the server's protocol buffer response(s).
 
 ### Synchronous vs. asynchronous
 
@@ -84,7 +83,7 @@ Now let's take a closer look at what happens when a gRPC client calls a gRPC ser
 
 First let's look at the simplest type of RPC, where the client sends a single request and gets back a single response.
 
-- Once the client calls the method on the stub, the server is notified that the RPC has been invoked with the client's [metadata](#metadata) for this call, the method name, and the specified [deadline](#deadlines) if applicable.
+- Once the client calls the method on the stub/client object, the server is notified that the RPC has been invoked with the client's [metadata](#metadata) for this call, the method name, and the specified [deadline](#deadlines) if applicable.
 - The server can then either send back its own initial metadata (which must be sent before any response) straight away, or wait for the client's request message - which happens first is application-specific.
 - Once the server has the client's request message, it does whatever work is necessary to create and populate its response. The response is then returned (if successful) to the client together with status details (status code and optional status message) and optional trailing metadata.
 - If the status is OK, the client then gets the response, which completes the call on the client side.
@@ -136,7 +135,7 @@ TBD
 
 ### Channels
 
-A gRPC channel provides a connection to a gRPC server on a specified host and port and is used when creating a client stub. Clients can specify channel arguments to modify gRPC's default behaviour, such as switching on and off message compression. A channel has state, including <code>connected</code> and <code>idle</code>.
+A gRPC channel provides a connection to a gRPC server on a specified host and port and is used when creating a client stub (or just "client" in some languages). Clients can specify channel arguments to modify gRPC's default behaviour, such as switching on and off message compression. A channel has state, including <code>connected</code> and <code>idle</code>.
 
 How gRPC deals with closing down channels is language-dependent. Some languages also permit querying channel state.
 

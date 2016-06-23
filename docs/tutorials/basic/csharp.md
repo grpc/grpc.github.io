@@ -52,7 +52,7 @@ service RouteGuide {
 
 Then you define `rpc` methods inside your service definition, specifying their request and response types. gRPC lets you define four kinds of service method, all of which are used in the `RouteGuide` service:
 
-- A *simple RPC* where the client sends a request to the server using the stub and waits for a response to come back, just like a normal function call.
+- A *simple RPC* where the client sends a request to the server using the client object and waits for a response to come back, just like a normal function call.
 
 ```protobuf
    // Obtains the feature at a given position.
@@ -123,9 +123,8 @@ To generate the code, the following command should be run from the `examples/csh
 
 Running the appropriate command for your OS regenerates the following files in the RouteGuide directory:
 
-- `RouteGuide/RouteGuide.cs` defines a namespace `Routeguide`
-  - This contains all the protocol buffer code to populate, serialize, and retrieve our request and response message types
-- `RouteGuide/RouteGuideGrpc.cs`, provides stub and service classes
+- `RouteGuide/RouteGuide.cs` contains all the protocol buffer code to populate, serialize, and retrieve our request and response message types
+- `RouteGuide/RouteGuideGrpc.cs` provides generated client and server classes, including:
    - an abstract class `RouteGuide.RouteGuideBase` to inherit from when defining RouteGuide service implementations
    - a class `RouteGuide.RouteGuideClient` that can be used to access remote RouteGuide instances
 
@@ -284,9 +283,9 @@ As you can see, we build and start our server using `Grpc.Core.Server` class. To
 
 In this section, we'll look at creating a C# client for our `RouteGuide` service. You can see our complete example client code in [examples/csharp/route_guide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/route_guide/RouteGuideClient/Program.cs).
 
-### Creating a stub
+### Creating a client object
 
-To call service methods, we first need to create a *stub*.
+To call service methods, we first need to create a client object (also referred to as *stub* for other gRPC languages).
 
 First, we need to create a gRPC client channel that will connect to gRPC server. Then, we create an instance of the `RouteGuite.RouteGuideClient` class generated from our .proto, passing the channel as an argument.
 
