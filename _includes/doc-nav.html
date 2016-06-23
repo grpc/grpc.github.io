@@ -4,6 +4,9 @@
 			<ul class="col-sm-10 doc-nav">
 				{% assign current = page.url | downcase | split: '/' %}
 				<li class="tab docs-tab"><a href="{{ site.baseurl }}/docs/">Docs</a></li>
+				{% if page.url != 'index.html' %}
+				<span class="doc-caret">></span>
+				{% endif %}
 				<li class="tab"><a href="{{ site.baseurl }}/docs/overview" {% if current[2] == 'overview' %}class='current'{% endif %}>Overview</a></li>
 				<li class="tab"><a href="{{ site.baseurl }}/docs/quickstart" {% if current[2] == 'quickstart' %}class='current'{% endif %}>Quick Start</a></li>
 				<li class="tab"><a href="{{ site.baseurl }}/docs/guides" {% if current[2] == 'guides' %}class='current'{% endif %}>Guides</a></li>
