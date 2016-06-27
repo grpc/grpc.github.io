@@ -23,6 +23,9 @@ footer{
             text-decoration: underline;
             color: $white;
         }
+        &::after {
+            display: none;
+        }
     }
     .active {
         display: initial;
