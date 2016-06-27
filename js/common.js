@@ -52,6 +52,15 @@ function setupTabs(rootElement) {
 $(document).ready(function() {
     var $window = $(window);
 
+
+    // Scroll to sections
+    $('.btn-floating').on('click', function(){
+      console.log(('#' +($(this).data("target"))));
+      $('html, body').scrollTo(('#' +($(this).data("target"))), 350);
+    })
+
+
+
     // Invoke slick JS carousel 
     $('.pt-container').slick({
       dots: true,

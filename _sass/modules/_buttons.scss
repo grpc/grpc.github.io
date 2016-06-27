@@ -10,14 +10,13 @@
     font-size: $font-size--xxs;
     font-weight: 300;
     letter-spacing: 1px;
-    padding: 11px $spacing--xl 9px;
-    transition: $transition--tertiary;
+    border-radius: 2px;
 
     @media (min-width: $tablet) {
-      padding: $spacing--xxs $spacing--m;
+      //padding: $spacing--xxs $spacing--m;
     }
 
-    &:active {transform: scale(.98);}
+    //&:active {transform: scale(.98);}
 
     &.inverse {
       background-color: transparent;
@@ -26,10 +25,8 @@
     }
     &.lang-select {
       font-weight: 500;
-      padding: 6px 0;
       font-size: 12px;
         @media (min-width: $tablet) {
-          padding: 6px 10px;
           font-size: .8rem;
       }
     }
@@ -38,16 +35,20 @@
       border: 2px solid $secondBrandColor;
       color: $secondBrandColor;
       font-weight: 500;
+      padding-left: 22px;
+      padding-right: 22px;
     }
   }
 
   &.btn-floating {
     background-color: $white;
-    border-radius: 50%;
-    box-shadow: 0.5px 1px 3px 0px rgba(0,0,0,0.3);
+
     height: 30px;
     width: 30px;
     z-index: $z-top;
+    &:hover, &:focus {
+      background-color: $white;
+    }
     @media (min-width: $tablet) {
       height: 50px;
       width: 50px;
