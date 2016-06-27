@@ -69,6 +69,7 @@
         padding-top: 5px;
     }
     .btn-doc-call {
+        font-size: 14px;
         margin: 25px auto 45px;
     }
     .lang-select-row {
@@ -84,8 +85,10 @@
         margin: 3px;
         text-align: center;
         width: 33%;
-        max-width: 140px; 
+        padding-left: 6px;
+        padding-right: 6px;
         @media (min-width: $tablet) {
+            max-width: 160px;
             margin: 10px;
         }
     }
