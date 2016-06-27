@@ -1,9 +1,11 @@
 // shared styles
 .btn,
 .btn-flat {
+  box-sizing: content-box;
   border: $button-border;
   border-radius: $button-radius;
   display: inline-block;
+  font-size: $button-font-size;
   height: $button-height;
   line-height: $button-height;
   outline: 0;
