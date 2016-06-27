@@ -2,7 +2,7 @@
 layout: post
 title: gRPC - now with easy installation.
 published: true
-permalink: posts/installation
+permalink: blog/installation
 attribution: Originally written by Lisa Carey with help from others at Google.
 ---
 
