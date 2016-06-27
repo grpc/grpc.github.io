@@ -39,7 +39,6 @@ footer{
 
     .left-links {
         color: $footerText;
-        font-weight: 300;
         display: block;
         position: absolute;
         bottom: 0;
@@ -48,6 +47,7 @@ footer{
         width: 100%;
 
         p {
+            font-weight: 200;
             font-size: .8em;
         }
 
@@ -82,9 +82,11 @@ footer{
         p {
             font-weight: 200;
             font-size: .8em;
-            padding: 14px 0;
+            padding: 6px 0;
             letter-spacing: .5px;
+            line-height: 36px;
         }
+
 
         .right-link-headers  {
             font-weight: 400;
@@ -144,7 +146,7 @@ footer{
         padding: 7px 0;
 
         @media(min-width: 990px) {
-            padding: 14px 0;
+            padding: 6px 0;
         }
     }
 

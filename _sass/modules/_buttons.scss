@@ -20,7 +20,7 @@
     &:active {transform: scale(.98);}
 
     &.inverse {
-      background-color: $white;
+      background-color: transparent;
       border: 2px solid $mainBrandColor;
       color: $mainBrandColor;
     }
@@ -44,7 +44,7 @@
   &.btn-floating {
     background-color: $white;
     border-radius: 50%;
-    box-shadow: 0 3px 6px 0 rgba(0,0,0,0.4);
+    box-shadow: 0.5px 1px 3px 0px rgba(0,0,0,0.3);
     height: 30px;
     width: 30px;
     z-index: $z-top;
