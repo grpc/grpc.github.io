@@ -87,6 +87,8 @@
         width: 33%;
         padding-left: 6px;
         padding-right: 6px;
+        text-transform: none;
+        font-size: 14px;
         @media (min-width: $tablet) {
             max-width: 160px;
             margin: 10px;

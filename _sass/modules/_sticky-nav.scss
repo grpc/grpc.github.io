@@ -1,0 +1,69 @@
+#sticky-nav{
+    background: url('../img/hero-bg.png') no-repeat center/cover;
+    padding-top: $spacing--xs;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    display:none;
+    .nav {
+        font-size: 13px;
+        letter-spacing: 1px;
+        text-align: right;
+        display: none;
+        li {
+            display: inline-block;
+        }
+        a {
+            color: $white;
+        }
+        @media (min-width: $tablet) {
+            display: initial;
+        }
+
+    }
+    .nav li a:active, .nav li a:focus, .nav li a:hover {
+        background: initial;
+        border-bottom: 0;
+        color: $white;
+        &:after{
+            background: $white;
+            bottom: 8px;
+            content: "";
+            height: 2px;
+            left: $spacing--xs;
+            margin: auto;
+            position: absolute;
+            right: $spacing--xs;
+        }
+    }
+    .page-headline {
+        color: $white;
+        font-weight: 300; 
+        @media (min-width: $tablet) {
+        }
+    }
+    .nav-logo {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        width: 60px;
+    }
+
+
+    .navbar-toggle {
+        margin-right: -6px;
+    }
+
+    .nav .current {
+        &:after{
+            background: $white;
+            bottom: 8px;
+            content: "";
+            height: 2px;
+            left: $spacing--xs;
+            margin: auto;
+            position: absolute;
+            right: $spacing--xs;
+        }
+    }
+}
+

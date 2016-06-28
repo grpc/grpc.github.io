@@ -52,6 +52,33 @@ function setupTabs(rootElement) {
 $(document).ready(function() {
     var $window = $(window);
 
+    // Sticky Nav on Scroll Up
+    var iScrollPos = 0;
+
+    $(window).scroll(function () {
+      var iCurScrollPos = $(this).scrollTop();
+      // if ($('.nav-hero-container').visible(true) && $('#sticky-nav').visible()) {
+      //   $('#sticky-nav').fadeOut(500);
+      // } else {
+        if (iCurScrollPos > iScrollPos) {
+          //Scrolling Down
+          if ($('#sticky-nav').visible()){
+            $('#sticky-nav').fadeOut(500);
+          }
+        } else {
+          //Scrolling Up
+          if ($('.nav-hero-container').visible(true) && $('#sticky-nav').visible()){
+            $('#sticky-nav').fadeOut(500);
+          } else if (!$('.nav-hero-container').visible(true)) {
+            $('#sticky-nav').fadeIn(500);
+          }
+        }
+        iScrollPos = iCurScrollPos;
+      // }
+    });
+
+
+
 
     // Scroll to sections
     $('.btn-floating').on('click', function(){
@@ -77,10 +104,10 @@ $(document).ready(function() {
 
     $('.toc').toc({ listType: 'ul' });
 
-    $('#nav-toggle, #hamburger').on('click', function(){
+    $('.nav-toggle, .hamburger').on('click', function(){
       $('.top-nav').toggleClass('right');
     });
-    $('#nav-doc-toggle').on('click', function(){
+    $('.nav-doc-toggle').on('click', function(){
       $('.doc-list').toggleClass('active');
     });
 

@@ -7,25 +7,18 @@ type: markdown
 sidenav: doc-side-quickstart-nav.html
 ---
 <p class="lead">
-[Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
-</p>
-<p class="lead">
-Cu his alii debitis, dolore aliquid splendide et ius, id atqui mandamus forensibus duo.
-In ius assum aeterno contentiones, ad doming delenit vis, has oratio oportere ei. Cu ius nonumy facilisi intellegat. No aeterno mediocrem reprimique cum, ei mel mucius aperiri veritus. Ut tollit labore senserit sit. In mundi propriae vix.
+All you need to get started with gRPC
 </p>
 
 <div id="toc" class="toc mobile-toc"></div>
 
+These pages show you how to get up and running as quickly as possible in gRPC, including installing all the tools you’ll need and completing some basic tasks to run and modify a simple Hello World application. There’s a Quick Start for each gRPC supported language with accompanying sample code for you to explore and update. For a more detailed look at the same application and how it all works, see [Hello gRPC!] in our Guides section. For more tutorials and examples, see our [Tutorials]. You can read more about gRPC in general in [What is gRPC?]. 
 
-## Something Here
+ - C++
+ - Java
+ - Python
 
-### [Section 1]
-[Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
-
- -  Internal site text link
- -  External link
-
-### [Section 2]
+### Quick Starts by Language
 [Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
 
 ```ruby

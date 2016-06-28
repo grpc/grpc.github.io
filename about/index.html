@@ -11,22 +11,21 @@ icon: <i class="fa fa-question-circle"></i>
 <div class="col-md-11 nofloat center-block">
 <div class="col-sm-12">
     <section class="about-sections intro">
-        <p class="about-max lead">[Lorem ipsum] gRPC is a modern, open source remote procedure call (RPC) framework that can run anywhere. It enables client and server applications to communicate transparently, and makes it easier to build connected systems.</p>
+        <p class="about-max lead">gRPC is a modern open source high performance RPC framework that can run in any environment. It can efficiently connect services in and across data centers with pluggable support for load balancing, tracing, health checking and authentication. It is applicable within data centers as well as in last mile of distributed computing to connect devices, mobile applications and browsers to backend services.</p>
 
         <h6 class="main-usage-title">The main usage scenarios:</h6>
         <ul class="about-lists">
-            <li><p>Low latency, highly scalable, distributed systems.</p></li>
-            <li><p>Developing mobile clients which are communcating to a cloud server.</p></li>
-            <li><p>Designing a new protocol that needs to be accurate, efficient and language independent.</p></li>
-            <li><p>Layered design to enable extension eg. authentication, load balancing, logging and monitoring etc.</p></li>
+            <li><p>Efficiently connecting polyglot services in microservices style architecture</p></li>
+            <li><p>Connecting mobile devices, browser clients to backend services</p></li>
+            <li><p>Generating efficient client libraries</p></li>
         </ul>
 
         <h6 class="core-features-title">Core Features that make it awesome:</h6>
         <ul class="about-lists">
-            <li><p>Low latency, highly scalable, distributed systems.</p></li>
-            <li><p>Developing mobile clients which are communcating to a cloud server.</p></li>
-            <li><p>Designing a new protocol that needs to be accurate, efficient and language independent.</p></li>
-            <li><p>Layered design to enable extension eg. authentication, load balancing, logging and monitoring etc.</p></li>
+            <li><p>Idiomatic client libraries in 10 languages</p></li>
+            <li><p>Highly efficient on wire and with a simple service definition framework</p></li>
+            <li><p>Bi-directional streaming with http/2 based transport</p></li>
+            <li><p>Pluggable auth, tracing, load balancing and health checking</p></li>
         </ul>
     </section>
 </div>
@@ -41,8 +40,8 @@ icon: <i class="fa fa-question-circle"></i>
 <div class="col-md-11 nofloat center-block">
 <div class="col-sm-12">
     <section class="about-sections case-studies">
-        <h5 class="about-max">Testimonials: What People are Saying</h5>
-        <p class="about-max">[Lorem ipsum] Google has been using a lot of the underlying technologies and concepts in gRPC for a long time. The current implementation is being used in several of Google’s cloud products and Google externally facing APIs. It is also being used by many other organizations and individuals.</p>
+        <h5 class="about-max">Cases: Who’s using them and why? </h5>
+        <p class="about-max">Many companies are already using gRPC for connecting multiple services in their environments. The use case varies from connecting a handful of services to hundreds of services across various languages in on-prem or cloud environments. Below are details and quotes from some of our early adopters.</p>
         <h6 class="case-studies-title">Check out what people are saying below:</h6>
 
         <div class="more-btn">
@@ -51,11 +50,11 @@ icon: <i class="fa fa-question-circle"></i>
 
         <div class="case-studies-container row">
             <div class="col-md-3 col-sm-6 col-xs-6 case-studies-link">
-                <a href="#">
+                <a href="https://www.youtube.com/watch?v=-2sWDr3Z0Wo">
                     <img class="case-studies-img" src="../img/square-icon.png" />
                     <div class="case-studies-quote">
                         <div class="apos">“ </div>
-                        [Lorem Ipsum] Google has been using a lot of the underlying technologies and concepts in gRPC for a long time. The current implmentation.
+                        We decided to move to this framework for its open support of multiple platforms, the demonstrated performance of the protocol, and the ability to customize and adapt it to our network.
                     </div>
                     <!-- <img class="external-link-icon" src="../img/external-link-icon.png" /> -->
                 </a>
@@ -105,8 +104,8 @@ icon: <i class="fa fa-question-circle"></i>
 <div class="col-md-11 nofloat center-block">
 <div class="col-sm-12">
     <section class="about-sections pt">
-        <h5 class="about-max">[Lorem ipsum] Presentations &amp; Talks</h5>
-        <p class="about-max">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <h5 class="about-max">Presentations &amp; Talks</h5>
+        <p class="about-max">gRPC has been talked about in many conferences and sessions. Here are a few interesting ones:</p>
 
         <div class="more-btn">
             <p class="more-btn-text btn-link">more</p>
@@ -159,9 +158,8 @@ icon: <i class="fa fa-question-circle"></i>
 <div class="col-md-11 nofloat center-block">
 <div class="col-sm-12">
 <section class="about-sections story">
-    <h5 class="about-max ">[Lorem ipsum] The story behind gRPC</h5>
-    <p class="about-max">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-    et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <h5 class="about-max ">The story behind gRPC</h5>
+    <p class="about-max">Google has been using a single general-purpose RPC infrastructure called Stubby to connect the large number of microservices running within and across our data centers for over a decade. Our internal systems have long embraced the microservice architecture gaining popularity today. Stubby has powered all of Google’s microservices interconnect for over a decade and is the RPC backbone behind every Google service that you use today. In March 2015, we decided to build the next version of Stubby in the open so we can share our learnings with the industry and collaborate with them to build the next version of Stubby both for microservices inside and outside Google but also for last mile of computing (mobile, web and IOT).</p>
     <p class="more-story">For more background n why we created gRPC, read the <a href="#"><span class="underline">gRPC Motivation & Design Principles blog</span> ></a></p> 
 </section>
 </div>
