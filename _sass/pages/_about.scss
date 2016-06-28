@@ -86,6 +86,8 @@
     .case-studies-container {
         margin-top: 35px;
         margin-bottom: 35px;
+        display: flex;
+        flex-wrap: wrap;
         a::after {
           content: '';
           display: table;
