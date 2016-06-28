@@ -1,11 +1,11 @@
 .about {
     .about-sections {
-        padding: 50px 0;
+        padding: $spacing--xxxl 0;
         position: relative;
     }
 
     .about-max {
-        margin-bottom: 15px;
+        margin-bottom: $spacing--s;
         @media(min-width: $tablet) {
             max-width: 70%; 
         }
@@ -15,7 +15,7 @@
     }
     p.lead {
         font-size: 17px;
-        margin-bottom: 40px;
+        margin-bottom: $spacing--xxl;
     }
 
     .about-lists {
@@ -25,19 +25,19 @@
     }
 
     .intro {
-        margin-bottom: 20px;
+        margin-bottom: $spacing--m;
     }
 
     .main-usage-title {
-        margin: 10px 0;
+        margin: $spacing--xs 0;
     }
 
     .core-features-title {
-        margin: 15px 0 10px 0;
+        margin: $spacing--s 0 $spacing--xs;
     }
 
     .case-studies-title {
-        margin: 20px 0;
+        margin: $spacing--m 0;
     }
 
     .case-studies-quote {
@@ -114,12 +114,12 @@
     .case-studies-img,
     .external-link-icon {
         display: block;
-        margin: 15px auto;
+        margin: $spacing--s auto;
     }
 
     .pt-container {
         margin-top: 65px;
-        margin-bottom: 40px;
+        margin-bottom: $spacing--xxl;
 
         &::after {
           content: '';
@@ -132,7 +132,7 @@
         text-align: center;
 
         @media (min-width: 768px) {
-            margin: 5px 0 15px;
+            margin: 5px 0 $spacing--s;
         }
     }
 
@@ -151,7 +151,7 @@
         font-size: .85em;
         font-weight: 300;
         text-align: center;
-        margin-top: 40px;
+        margin-top: $spacing--xxl;
         
         @media (min-width: 768px) {
             text-align: left;
@@ -160,12 +160,12 @@
     }
 
     .story {
-        padding: 50px 0 100px;
+        padding: $spacing--xxxl 0 100px;
     }
 
     .more-story {
         font-weight: 500;
-        margin: 20px 0 0;
+        margin: $spacing--m 0 0;
 
         .underline {
             text-decoration: underline;
@@ -176,7 +176,7 @@
     .videoWrapper {
         position: relative;
         padding-bottom: 56.25%; /* 16:9 */
-        padding-top: 25px;
+        padding-top: $spacing--l;
         height: 0;
     }
 
