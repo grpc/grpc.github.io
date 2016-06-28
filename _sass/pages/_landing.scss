@@ -81,17 +81,4 @@
         width: 75%;
         margin: 0 auto;
     }
-    .lang-select {
-        margin: 3px;
-        text-align: center;
-        width: 33%;
-        padding-left: 6px;
-        padding-right: 6px;
-        text-transform: none;
-        font-size: 14px;
-        @media (min-width: $tablet) {
-            max-width: 160px;
-            margin: 10px;
-        }
-    }
 }

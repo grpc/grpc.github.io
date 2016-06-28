@@ -1,20 +1,22 @@
 .btn {
-
   &:focus {
     outline: 0 !important;
   }
 
+  // Floating Action Button
   &.btn-floating {
     background-color: $white;
     height: 30px;
     width: 30px;
     z-index: $z-top;
-    &:hover, &:focus {
-      background-color: $white;
-    }
+
     @media (min-width: $tablet) {
       height: 50px;
       width: 50px;
+    }
+    
+    &:hover, &:focus {
+      background-color: $white;
     }
     
     &.down-caret {
@@ -23,6 +25,7 @@
       padding: 0;
       position: absolute;
       transform: translateX(-50%);
+
       @media (min-width: $tablet) {
         bottom: -25px;
       }
@@ -31,26 +34,37 @@
 }
 
 .btn-flat {
+  // GRPC Specific Buttons
   &.btn-grpc {
     background-color: $secondBrandColor;
     color: $white;
     font-weight: 300;
     letter-spacing: 1px;
 
-    @media (min-width: $tablet) {
-      //padding: $spacing--xxs $spacing--m;
-    }
-
-    //&:active {transform: scale(.98);}
-
+    // Inverse Colored Button
     &.inverse {
       background-color: transparent;
       border: 2px solid $mainBrandColor;
       color: $mainBrandColor;
     }
+
+    // Landing Page Language Select Button
     &.lang-select {
+      font-size: 14px;
       font-weight: 500;
+      margin: 3px;
+      padding-left: 6px;
+      padding-right: 6px;
+      text-align: center;
+      text-transform: none;
+      width: 33%;
+      @media (min-width: $tablet) {
+          max-width: 160px;
+          margin: 10px;
+      }
     }
+
+    // Hero Button
     &.hero {
       background-color: $white;
       border: 2px solid $secondBrandColor;
@@ -61,6 +75,7 @@
   }
 }
 
+// Link Button
 .btn-link {
   display: inline-block;
   text-transform: uppercase;

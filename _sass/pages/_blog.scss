@@ -17,19 +17,19 @@ body.blog {
         font-size: 17px;
         letter-spacing: 1px;
         font-weight: 500;
-        margin: 50px 0 8px;
+        margin: $spacing--xxxl 0 8px;
     }
     .post-date {
         font-size: 11px;
         color: $black;
     }
     .post-thumbnail {
-        margin: 15px 10px 0 0;
+        margin: $spacing--s $spacing--xs 0 0;
         display: inline-block;
         vertical-align: top;
     }
     .post-author {
-        margin-top: 30px;
+        margin-top: $spacing--xl;
         font-size: 13px;
         display: inline-block;
         color: $gray;
@@ -37,18 +37,18 @@ body.blog {
     .post-excerpt {
         h2 {
             font-size: 15px;
-            margin-top: 20px;
+            margin-top: $spacing--m;
         }
         p {
         font-size: 14px;
-        margin-top: 20px;
+        margin-top: $spacing--m;
         }
     }
 
     .read-more {
         line-height: 24px;
         font-size: 10px;
-        margin: 30px 0;
+        margin: $spacing--xl 0;
         letter-spacing: 0.5px;
         .read-more-text {
             &::after {
@@ -64,7 +64,7 @@ body.blog {
     }
     .pagination {
         width: 100%;
-        padding-bottom: 40px;
+        padding-bottom: $spacing--xxl;
     }
 
     .caret-left {
@@ -96,7 +96,7 @@ body.blog {
     }
 
     .toc {
-        margin-top: 50px;
+        margin-top: $spacing--xxxl;
     }
 }
 
@@ -105,7 +105,7 @@ body.blog {
 
 // Blog posts list page (all posts)
 .postdate {
-    margin-bottom: 20px;
+    margin-bottom: $spacing--m;
     font-size: 12px;
     // Tuck in the date field closer to headline.
     position: relative;
@@ -114,10 +114,10 @@ body.blog {
 
 body.post {
     .post {
-        padding-top: 50px;
+        padding-top: $spacing--xxxl;
     }
     .content-attribution {
-        margin: 50px 0 30px;
+        margin: $spacing--xxxl 0 $spacing--xl;
         color: $dark-gray;
         font-size: 15px;
         font-style: italic;

@@ -19,6 +19,8 @@ $dark-gray: darken($gray, 20%);
 
 $linkColor: $mainBrandColor;
 $linkHoverColor: darken($linkColor, 10%);
+$linkColorSecondary: $white;
+$linkColorTertiary: $gray;
 $codeColor: darken($linkColor, 20%);
 $codeBkColor: #ebfaf8;
 $wellColor: #F9F9F9;

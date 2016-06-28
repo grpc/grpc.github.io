@@ -1,3 +1,4 @@
+// Documentation Navigation Bar
 .doc-nav {
 	display: block;
 	margin-top: $spacing--m;
@@ -8,6 +9,7 @@
 			display: none;
 		}
 	}
+
 	.tab {
 		display: inline-block;
 
@@ -37,6 +39,7 @@
 				display: inline-block;
 			}
 		}
+
 		.current {
 			display: inline-block;
 			border-bottom: 2px solid $gray;
@@ -49,6 +52,7 @@
 	}
 }
 
+// Documentation Side Navigation
 .doc-side-nav {
 	background-color: $light-gray;
 	margin-bottom: 20px;
@@ -56,7 +60,7 @@
 		padding: $spacing--xs 0 $spacing--xl;
 		margin-bottom: 0;
 	}
-
+	// Add caret to current page
 	.current {
 		&:before{
 			content: '>';
@@ -77,6 +81,7 @@
 	}
 }
 
+// Different styling for doc side nav for tutorial page with nested items
 .doc-side-nav-tutorial {
 
   h6 {
