@@ -2,52 +2,28 @@
 bodyclass: docs
 layout: docs
 title: Guides
-headline: '[Guides Page Headline]'
+headline: 'What is gRPC?'
 type: markdown
 sidenav: doc-side-guides-nav.html
 ---
 <p class="lead">
-[Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
-</p>
-<p class="lead">
-Cu his alii debitis, dolore aliquid splendide et ius, id atqui mandamus forensibus duo.
-In ius assum aeterno contentiones, ad doming delenit vis, has oratio oportere ei. Cu ius nonumy facilisi intellegat. No aeterno mediocrem reprimique cum, ei mel mucius aperiri veritus. Ut tollit labore senserit sit. In mundi propriae vix.
+This document introduces you to gRPC (and its friend, protocol buffers).  If you’re new to gRPC and/or protocol buffers, read this! If you just want to dive in and see gRPC in action first, see our [Quick Starts].
 </p>
 
 <div id="toc" class="toc mobile-toc"></div>
 
+### Overview
+In gRPC a client application can directly call methods on a server application on a different machine as if it was a local object, making it easier for you to create distributed applications and services. As in many RPC systems, gRPC is based around the idea of defining a service, specifying the methods that can be called remotely with their parameters and return types. On the server side, the server implements this interface and runs a gRPC server to handle client calls. On the client side, the client has a stub (referred to as just a client in some languages) that provides the same methods as the server.
 
-## Something Here
+![Concept Diagram]({{site.baseurl}}/img/grpc_concept_diagram_00.png)
 
-### [Section 1]
-[Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
+gRPC clients and servers can run and talk to each other in a variety of environments - from servers inside Google to your own desktop - and can be written in any of gRPC's supported languages. So, for example, you can easily create a gRPC server in Java with clients in Go, Python, or Ruby. In addition, the latest Google APIs will have gRPC versions of their interfaces, letting you easily build Google functionality into your applications.
 
- -  Internal site text link
- -  External link
-
-### [Section 2]
-[Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
-
-```ruby
-// Create a default SSL ChannelCredentials object.
-auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions()); 
-// Create a channel using the credentials created in the previous step.
-auto channel = grpc::CreateChannel(server_name, creds);
-// Create a stub on the channel.
-std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
-// Make actual RPC calls on the stub.
-grpc::Status s = stub->sayHello(&context, *request, response);
-```
-
-#### [Section 2.1]
-[Body Copy]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
-
-#### [Section 2.2]
-[Body Copy]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
+### Working with Protocol Buffers
+By default gRPC uses protocol buffers, Google’s mature open source mechanism for serializing structured data (although it can be used with other data formats such as JSON). As you'll see in our examples, you define gRPC services using proto files, with method parameters and return types specified as protocol buffer message types. You can find out lots more about protocol buffers in the Protocol Buffers documentation.
 
 
-### [Section 3]
-[Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
+### Protocol buffer versions
+While protocol buffers have been available for open source users for some time, our examples use a new flavor of protocol buffers called proto3, which has a slightly simplified syntax, some useful new features, and supports lots more languages. This is currently available as a beta release in Java, C++, Python, Objective-C, and C#, with an alpha release for JavaNano (Android Java), Ruby, and JavaScript fromthe protocol buffers Github repo, as well as a Go language generator from the golang/protobuf Github repo, with more languages in development. You can find out more in the proto3 language guide and the reference documentation for each language (where available), and see the major differences from the current default version in the release notes. Even more proto3 documentation is coming soon.
 
-#### [Section 3.1]
-[Body Copy]Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.
+In general, while you can use proto2 (the current default protocol buffers version), we recommend that you use proto3 with gRPC as it lets you use the full range of gRPC-supported languages, as well as avoiding compatibility issues with proto2 clients talking to proto3 servers and vice versa.
