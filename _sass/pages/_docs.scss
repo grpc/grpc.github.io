@@ -1,6 +1,7 @@
 // Docs layout specific
 .docs {
 	.doc-header {
+		padding-top: 30px;
 		padding-bottom: 30px;
 	}
 	
@@ -35,6 +36,7 @@
 		margin: 0 1% 30px;
 	    text-align: center;
 	    width: 30%;
+	    vertical-align: top;
 		.lang-card-title {
 			background: $light-gray;
 			color: $dark-gray;

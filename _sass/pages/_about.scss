@@ -86,7 +86,7 @@
     .case-studies-container {
         margin-top: 35px;
         margin-bottom: 35px;
-        &::after {
+        a::after {
           content: '';
           display: table;
           width: 100%;
@@ -96,6 +96,9 @@
 
     .case-studies-link {
         text-align: center;
+        &::after {
+            display: none;
+        }
     }
 
     .case-studies-img {

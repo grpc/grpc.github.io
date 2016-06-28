@@ -20,6 +20,11 @@
 
   .community-section {
     margin: 45px 0;
+    a {
+      &::after {
+        display: none;
+      }
+    }
   }
 
   .community-title {
