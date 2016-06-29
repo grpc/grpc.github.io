@@ -1,11 +1,12 @@
 ---
 layout: docs
-title: gRPC Basics - Objective-C
+headline: gRPC Basics - Objective-C
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
+<p class="lead">This tutorial provides a basic Objective-C programmer's introduction to working with gRPC.</p>
 
-<h1 class="page-header">gRPC Basics: Objective-C</h1>
-
-This tutorial provides a basic Objective-C programmer's introduction to working with gRPC. By walking through this example you'll learn how to:
+By walking through this example you'll learn how to:
 
 - Define a service in a .proto file.
 - Generate client code using the protocol buffer compiler.
@@ -18,6 +19,7 @@ This isn't a comprehensive guide to using gRPC in Objective-C: more reference do
 <div id="toc"></div>
 
 <a name="why-grpc"></a>
+
 ## Why use gRPC?
 
 With gRPC you can define your service once in a .proto file and implement clients and servers in any of gRPC's supported languages, which in turn can be run in environments ranging from servers inside Google to your own tablet - all the complexity of communication between different languages and environments is handled for you by gRPC. You also get all the advantages of working with protocol buffers, including efficient serialization, a simple IDL, and easy interface updating.
@@ -26,6 +28,7 @@ gRPC and proto3 are specially suited for mobile clients: gRPC is implemented on 
 
 
 <a name="setup"></a>
+
 ## Example code and setup
 
 The example code for our tutorial is in [grpc/grpc/examples/objective-c/route_guide](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/objective-c/route_guide). To download the example, clone the `grpc` repository by running the following commands:
@@ -48,6 +51,7 @@ You also should have [Cocoapods](https://cocoapods.org/#install) installed, as w
 
 
 <a name="try"></a>
+
 ## Try it out!
 
 To try the sample app, we need a gRPC server running locally. Let's compile and run, for example, the C++ server in this repository:
@@ -73,6 +77,7 @@ The next sections guide you step-by-step through how this proto service is defin
 
 
 <a name="proto"></a>
+
 ## Defining the service
 
 First let's look at how the service we're using is defined. A gRPC *service* and its method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file for our example in [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/protos/route_guide.proto).
@@ -141,6 +146,7 @@ option objc_class_prefix = "RTG";
 
 
 <a name="protoc"></a>
+
 ## Generating client code
 
 Next we need to generate the gRPC client interfaces from our .proto service definition. We do this using the protocol buffer compiler (`protoc`) with a special gRPC Objective-C plugin.
@@ -173,6 +179,7 @@ You can also use the provided Podspec file to generate client code from any othe
 
 
 <a name="client"></a>
+
 ## Creating the client application
 
 In this section, we'll look at creating an Objective-C client for our `RouteGuide` service. You can see our complete example client code in [examples/objective-c/route_guide/ViewControllers.m](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/objective-c/route_guide/ViewControllers.m). (Note: In your apps, for maintainability and readability reasons, you shouldn't put all of your view controllers in a single file; it's done here only to simplify the learning process).

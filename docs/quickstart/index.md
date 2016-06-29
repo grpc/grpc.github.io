@@ -1,6 +1,5 @@
 ---
-bodyclass: docs
-headline: '[Quick Start Page Headline]'
+headline: Quick Start
 layout: docs
 title: Quick Start
 type: markdown

@@ -51,6 +51,10 @@
       color: $mainBrandColor;
     }
 
+    &.btn-doc-call, &.btn-hero {
+      padding: 0 27px;
+    }
+
     // Landing Page Language Select Button
     &.lang-select {
       font-size: 14px;
@@ -69,7 +73,7 @@
     }
 
     // Hero Button
-    &.hero {
+    &.btn-hero {
       background-color: $white;
       border: 2px solid $secondBrandColor;
       color: $secondBrandColor;

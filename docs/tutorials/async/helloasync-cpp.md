@@ -1,9 +1,9 @@
 ---
 layout: docs
-title: Asynchronous Basics - C++
+headline: Asynchronous Basics - C++
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
-<h1 class="page-header">Asynchronous Basics: C++</h1>
-
 This tutorial shows you how to write a simple server and client in C++ using gRPC's asynchronous/non-blocking APIs. It assumes you are already familiar with writing simple synchronous gRPC code, as described in [gRPC Basics: C++](/docs/tutorials/basic/c.html). The example used in this tutorial follows on from the basic [Greeter example](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld) we used in the [overview](/docs/index.html). You'll find it along with installation instructions in [grpc/examples/cpp/helloworld](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld).
 
 <div id="toc"></div>

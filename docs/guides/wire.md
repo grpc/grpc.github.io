@@ -1,8 +1,9 @@
 ---
+headline: gRPC over HTTP2 protocol
 layout: docs
+sidenav: doc-side-guides-nav.html
 title: Wire Protocol
 type: markdown
-headline: 'gRPC over HTTP2 protocol'
 ---
 <p class="lead">This document serves as a detailed description for an implementation of gRPC carried over HTTP2 draft 17 framing. It assumes familiarity with the HTTP2 specification. Production rules use <a href="http://tools.ietf.org/html/rfc5234">ABNF syntax</a>.</p>
 
