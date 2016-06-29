@@ -1,10 +1,9 @@
 ---
-bodyclass: docs
+headline: What is gRPC?
 layout: docs
-title: Guides
-headline: 'What is gRPC?'
-type: markdown
 sidenav: doc-side-guides-nav.html
+title: Guides
+type: markdown
 ---
 <p class="lead">
 This document introduces you to gRPC (and its friend, protocol buffers).  If you’re new to gRPC and/or protocol buffers, read this! If you just want to dive in and see gRPC in action first, see our [Quick Starts].

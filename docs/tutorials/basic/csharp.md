@@ -1,10 +1,9 @@
 ---
 layout: docs
-title: gRPC Basics - C#
+headline: gRPC Basics - C#
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
-
-<h1 class="page-header">gRPC Basics: C#</h1>
-
 <p class="lead">This tutorial provides a basic C# programmer's introduction to working with gRPC.</p>
 
 
@@ -131,6 +130,7 @@ Running the appropriate command for your OS regenerates the following files in t
 
 
 <a name="server"></a>
+
 ## Creating the server
 
 First let's look at how we create a `RouteGuide` server. If you're only interested in creating gRPC clients, you can skip this section and go straight to [Creating the client](#client) (though you might find it interesting anyway!).
@@ -280,6 +280,7 @@ As you can see, we build and start our server using `Grpc.Core.Server` class. To
 5. Call `Start` on the server instance to start an RPC server for our service.
 
 <a name="client"></a>
+
 ## Creating the client
 
 In this section, we'll look at creating a C# client for our `RouteGuide` service. You can see our complete example client code in [examples/csharp/route_guide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/route_guide/RouteGuideClient/Program.cs).

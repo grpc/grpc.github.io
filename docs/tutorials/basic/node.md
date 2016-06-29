@@ -1,10 +1,9 @@
 ---
 layout: docs
-title: gRPC Basics - Node.js
+headline: gRPC Basics - Node.js
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
-
-<h1 class="page-header">gRPC Basics: Node.js</h1>
-
 <p class="lead">This tutorial provides a basic Node.js programmer's introduction to working with gRPC.</p>
 
 By walking through this example you'll learn how to:
@@ -120,6 +119,7 @@ var example = protoDescriptor.examples;
 Once you've done this, the stub constructor is in the `examples` namespace (`protoDescriptor.examples.RouteGuide`) and the service descriptor (which is used to create a server) is a property of the stub (`protoDescriptor.examples.RouteGuide.service`);
 
 <a name="server"></a>
+
 ## Creating the server
 
 First let's look at how we create a `RouteGuide` server. If you're only interested in creating gRPC clients, you can skip this section and go straight to [Creating the client](#client) (though you might find it interesting anyway!).
@@ -260,6 +260,7 @@ As you can see, we build and start our server with the following steps:
  5. Call `listen()` on the instance to start the RPC server.
 
 <a name="client"></a>
+
 ## Creating the client
 
 In this section, we'll look at creating a Node.js client for our `RouteGuide` service. You can see our complete example client code in [examples/node/dynamic&#95;codegen/route&#95;guide/route&#95;guide&#95;client.js](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/node/dynamic_codegen/route_guide/route_guide_client.js).
