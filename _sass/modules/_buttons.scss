@@ -48,11 +48,12 @@
     &.inverse {
       background-color: transparent;
       border: 2px solid $mainBrandColor;
+      border-radius: 4px;
       color: $mainBrandColor;
     }
 
     &.btn-doc-call, &.btn-hero {
-      padding: 0 27px;
+      padding: 4px 27px;
     }
 
     // Landing Page Language Select Button
@@ -76,6 +77,7 @@
     &.btn-hero {
       background-color: $white;
       border: 2px solid $secondBrandColor;
+      border-radius: 4px;
       color: $secondBrandColor;
       font-weight: 500;
       font-size: 14px;
