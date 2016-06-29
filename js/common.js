@@ -80,7 +80,7 @@ $(document).ready(function() {
     });
 
     setTimeout(function(){
-      if (document.URL.indexOf("#") != -1) {
+      if (document.URL.indexOf("#") != -1 && document.URL.indexOf("contribute") == -1 ) {
         $('#sticky-nav').addClass("on-page");
       }
     }, 1000);
