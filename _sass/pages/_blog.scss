@@ -1,125 +1,121 @@
-body.blog {
-    hr {
-        margin-bottom: 0;
-    }
-    hr:last-of-type {
-        display: none;
-    }
-    .post-thumbnail {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
-    .post-title {
-        color: $black;
-        font-size: 17px;
-        letter-spacing: 1px;
-        font-weight: 500;
-        margin: $spacing--xxxl 0 8px;
-    }
-    .post-date {
-        font-size: 11px;
-        color: $black;
-    }
-    .post-thumbnail {
-        margin: $spacing--s $spacing--xs 0 0;
-        display: inline-block;
-        vertical-align: top;
-    }
-    .post-author {
-        margin-top: $spacing--xl;
-        font-size: 13px;
-        display: inline-block;
-        color: $gray;
-    }
-    .post-excerpt {
-        h2 {
-            font-size: 15px;
-            margin-top: $spacing--m;
-        }
-        p {
-        font-size: 14px;
-        margin-top: $spacing--m;
-        }
+.blog {
+
+  hr {
+    margin-bottom: 0;
+  }
+
+  hr:last-of-type {
+    display: none;
+  }
+
+  .post-thumbnail {
+    background-repeat: no-repeat;
+    background-size: contain;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+  }
+
+  .post-title {
+    color: $black;
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: $spacing--xxxl 0 8px;
+  }
+
+  .post-date {
+    color: $black;
+    font-size: 11px;
+  }
+
+  .post-thumbnail {
+    display: inline-block;
+    margin: $spacing--s $spacing--xs 0 0;
+    vertical-align: top;
+  }
+  
+  .post-author {
+    color: $gray;
+    display: inline-block;
+    font-size: 13px;
+    margin-top: $spacing--xl;
+  }
+  .post-excerpt {
+
+    h2 {
+      font-size: 15px;
+      margin-top: $spacing--m;
     }
 
-    .read-more {
-        line-height: 24px;
-        font-size: 10px;
-        margin: $spacing--xl 0;
-        letter-spacing: 0.5px;
-        .read-more-text {
-            &::after {
-                content: '';
-                display: inline-block;
-                vertical-align: bottom;
-                background: url('../img/more-arrow.png') no-repeat center/contain;
-                width: 24px;
-                height: 24px;
-                margin: 0 0 0 10px;
-            }
-        }
+    p {
+      font-size: 14px;
+      margin-top: $spacing--m;
     }
-    .pagination {
-        width: 100%;
-        padding-bottom: $spacing--xxl;
-    }
+  }
 
-    .caret-left {
-        content: '';
-        display: inline-block;
-        vertical-align: bottom;
-        background: url('../img/caret.svg') no-repeat center/contain;
-        transform: rotate(90deg);
-        width: 24px;
-        height: 24px;
-        margin: 0;
-    }
+  .read-more {
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+    margin: $spacing--xl 0;
 
-    .next, .previous {
-        padding: 0;
-        display: inline-block;
-        line-height: 22px;
+    .read-more-text::after {
+      background: url('../img/more-arrow.png') no-repeat center/contain;
+      content: '';
+      display: inline-block;
+      height: 24px;
+      margin: 0 0 0 10px;
+      vertical-align: bottom;
+      width: 24px;
     }
+  }
+  .pagination {
+    padding-bottom: $spacing--xxl;
+    width: 100%;
+  }
 
-    .caret-right {
-        content: '';
-        display: inline-block;
-        vertical-align: bottom;
-        background: url('../img/caret.svg') no-repeat center/contain;
-        transform: rotate(-90deg);
-        width: 24px;
-        height: 24px;
-        margin: 0;
-    }
+  @mixin caret($deg) {
+    background: url('../img/caret.svg') no-repeat center/contain;
+    content: '';
+    display: inline-block;
+    height: 24px;
+    margin: 0;
+    transform: rotate($deg);
+    vertical-align: bottom;
+    width: 24px;
+  }
 
-    .toc {
-        margin-top: $spacing--xxxl;
-    }
+  .caret-left {
+    @include caret('90deg');
+  }
+
+  .caret-right {
+    @include caret('-90deg');
+  }
+
+  .next,
+  .previous {
+    display: inline-block;
+    line-height: 22px;
+    padding: 0;
+  }
+
+  .toc {
+    margin-top: $spacing--xxxl;
+  }
 }
 
+.post {
 
+  .post-wrapper {
+    padding-top: $spacing--xxxl;
+  }
 
-
-// Blog posts list page (all posts)
-.postdate {
-    margin-bottom: $spacing--m;
-    font-size: 12px;
-    // Tuck in the date field closer to headline.
-    position: relative;
-    top:-5px;
-}
-
-body.post {
-    .post {
-        padding-top: $spacing--xxxl;
-    }
-    .content-attribution {
-        margin: $spacing--xxxl 0 $spacing--xl;
-        color: $dark-gray;
-        font-size: 15px;
-        font-style: italic;
-    }
+  .content-attribution {
+    color: $dark-gray;
+    font-size: 15px;
+    font-style: italic;
+    margin: $spacing--xxxl 0 $spacing--xl;
+  }
 }

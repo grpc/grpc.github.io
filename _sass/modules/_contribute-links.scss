@@ -1,42 +1,47 @@
 // Contribute links for Docs page
 .docs .contribute-links {
-	top: 20px;
+  top: 20px;
 }
 
 // Contribute links for other pages
 .contribute .contribute-links {
-	top: 0;
+  top: 0;
 }
 
 // Contribute links
 .contribute-links {
-	position: absolute;
-	right: 0;
-	top: 0;
-	display: none;
-	@media (min-width: $tablet) {
-        display: initial;
-    }
-	a {
-		font-size: .85rem;
-		display: inline-block;
-		&::after {
-        	content: none;
-        	display: none;
-        }
-	}
-	p {
-		font-size: .85rem;
-	}
-	.github {
-		&:before {
-			content: '';
-			display: inline-block;
-			background: url('../img/github.svg') no-repeat center/cover; 
-			width: 22px;
-			height: 22px;
-			vertical-align: middle;
-        }
-	}
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
 
+  @media (min-width: $tablet) {
+    display: initial;
+  }
+
+  a {
+    font-size: .85rem;
+    display: inline-block;
+
+    &::after {
+      content: none;
+      display: none;
+    }
+  }
+
+  p {
+    font-size: .85rem;
+  }
+
+  .github {
+
+    &:before {
+      content: '';
+      display: inline-block;
+      background: url('../img/github.svg') no-repeat center/cover; 
+      width: 22px;
+      height: 22px;
+      vertical-align: middle;
+    }
+  }
 }

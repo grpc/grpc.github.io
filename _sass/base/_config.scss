@@ -1,6 +1,6 @@
 // Font
 $font-size--primary         : 16px;
-$font-size--xxs				: 0.8rem;
+$font-size--xxs             : .8rem;
 $font-size--xs              : 1rem;
 $font-size--s               : 1.15rem;
 $font-size--m               : 1.65rem;
@@ -25,7 +25,7 @@ $nav-menu-height            : 90px;
 // Transitions
 $transition--primary        : all .3s ease;
 $transition--secondary      : all .6s cubic-bezier(0.3, 0.9, 0.2, 1);
-$transition--tertiary   	: all .3s cubic-bezier(0.93,0.7,0.4,0.57);
+$transition--tertiary       : all .3s cubic-bezier(0.93,0.7,0.4,0.57);
 $transition-fast            : all .2s ease;
 $transition-slow            : all 1s ease;
 
@@ -41,9 +41,9 @@ $desktop-large              : 1440px;
 $mobile                     : $desktop-small;
 
 @media(min-width: $desktop-large){
-	.container {
-		width: 1410px;
-	}
+  .container {
+    width: 1410px;
+  }
 }
 
 // Z-index
