@@ -1,4 +1,5 @@
 ---
+bodyclass: docs
 layout: docs
 headline: OAuth2 on gRPC - Objective-C
 sidenav: doc-side-tutorial-nav.html

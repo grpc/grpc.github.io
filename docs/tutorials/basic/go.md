@@ -1,4 +1,5 @@
 ---
+bodyclass: docs
 layout: docs
 headline: gRPC Basics - Go
 sidenav: doc-side-tutorial-nav.html

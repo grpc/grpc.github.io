@@ -1,4 +1,5 @@
 ---
+bodyclass: docs
 headline: Error Handling
 layout: docs
 sidenav: doc-side-guides-nav.html

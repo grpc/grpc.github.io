@@ -1,4 +1,5 @@
 ---
+bodyclass: docs
 headline: gRPC over HTTP2 protocol
 layout: docs
 sidenav: doc-side-guides-nav.html

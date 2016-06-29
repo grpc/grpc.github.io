@@ -1,4 +1,5 @@
 ---
+bodyclass: docs
 headline: What is gRPC?
 layout: docs
 sidenav: doc-side-guides-nav.html

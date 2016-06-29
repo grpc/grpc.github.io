@@ -1,5 +1,6 @@
 // Docs layout specific
 .docs {
+  
   *[id]:before { 
     display: block; 
     content: " "; 
@@ -7,6 +8,7 @@
     height: 61px; 
     visibility: hidden; 
   }
+
   .doc-header {
     padding-bottom: 30px;
     padding-top: 30px;

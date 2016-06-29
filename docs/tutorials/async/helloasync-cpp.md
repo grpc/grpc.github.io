@@ -1,4 +1,5 @@
 ---
+bodyclass: docs
 layout: docs
 headline: Asynchronous Basics - C++
 sidenav: doc-side-tutorial-nav.html
