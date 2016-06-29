@@ -1,4 +1,5 @@
 ---
+bodyclass: docs
 headline: C++ Quick Start
 layout: docs
 sidenav: doc-side-quickstart-nav.html

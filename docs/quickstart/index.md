@@ -1,4 +1,5 @@
 ---
+bodyclass: docs
 headline: Quick Start
 layout: docs
 title: Quick Start

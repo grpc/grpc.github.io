@@ -1,10 +1,10 @@
 ---
-layout: docs
-title: Samples
-headline: '[Samples Page Headline]'
 bodyclass: docs
-type: markdown
+headline: '[Samples Page Headline]'
+layout: docs
 sidenav: doc-side-samples-nav.html
+title: Samples
+type: markdown
 ---
 <p class="lead">
 [Body Copy] Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit consequat finibus. Nullam ullamcorper ex sit amet laoreet mollis. Morbi quis porttitor sapein. Mauris malesuada libero a egestas iaculis.

@@ -1,4 +1,5 @@
 ---
+bodyclass: docs
 layout: docs
 headline: gRPC Basics - Ruby
 sidenav: doc-side-tutorial-nav.html

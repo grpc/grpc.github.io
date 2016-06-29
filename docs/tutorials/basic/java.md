@@ -1,4 +1,5 @@
 ---
+bodyclass: docs
 layout: docs
 title: gRPC Basics - Java
 sidenav: doc-side-tutorial-nav.html

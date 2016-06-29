@@ -1,4 +1,5 @@
 ---
+bodyclass: docs
 headline: Authentication
 layout: docs
 sidenav: doc-side-guides-nav.html
