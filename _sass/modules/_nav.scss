@@ -195,9 +195,13 @@
 #sticky-nav{
     @extend #common-nav;
     background: url('../img/hero-bg.png') no-repeat center/cover;
-    display:none;
     position: fixed;    
     width: 100%;
     z-index: 9999;
+    top: -61px;
+    transition: $transition--secondary;
+    &.on-page {
+      top: 0;
+    }
 }
 

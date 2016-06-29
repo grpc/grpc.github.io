@@ -55,30 +55,35 @@ $(document).ready(function() {
     // Sticky Nav on Scroll Up
     var iScrollPos = 0;
 
-    $(window).scroll(function () {
+    $window.scroll(function () {
       var iCurScrollPos = $(this).scrollTop();
-      // if ($('.nav-hero-container').visible(true) && $('#sticky-nav').visible()) {
-      //   $('#sticky-nav').fadeOut(500);
-      // } else {
         if (iCurScrollPos > iScrollPos) {
           //Scrolling Down
           if ($('#sticky-nav').visible()){
-            $('#sticky-nav').fadeOut(500);
+            $('#sticky-nav').removeClass("on-page");
           }
         } else {
           //Scrolling Up
           if ($('.nav-hero-container').visible(true) && $('#sticky-nav').visible()){
-            $('#sticky-nav').fadeOut(500);
+            $('#sticky-nav').removeClass("on-page");
           } else if (!$('.nav-hero-container').visible(true)) {
-            $('#sticky-nav').fadeIn(500);
+            $('#sticky-nav').addClass("on-page");
           }
         }
         iScrollPos = iCurScrollPos;
-      // }
+    });
+    
+    $('.toc').click(function(){
+      setTimeout(function(){
+        $('#sticky-nav').addClass("on-page");
+      }, 1000)
     });
 
-
-
+    setTimeout(function(){
+      if (document.URL.indexOf("#") != -1) {
+        $('#sticky-nav').addClass("on-page");
+      }
+    }, 1000);
 
     // Scroll to sections
     $('.btn-floating').on('click', function(){
