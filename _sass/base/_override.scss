@@ -1,20 +1,23 @@
 
 // Override Bootstrap defaults
 body {
-    color: $textColor;
-    font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: $textColor;
+  font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: $mainBrandColor;
 }
+
 a:hover,
 a:focus {
   color: $linkHoverColor;
 }
+
 a.external:after {
     content: "▸"
 }
+
 a.disabled {
     color: #CCCCCC;
 }
@@ -23,47 +26,48 @@ p,
 li {line-height: 22px;}
 
 p.note {
-    background-color: $thirdBrandColor;
-    padding: 9.5px;
+  background-color: $thirdBrandColor;
+  padding: 9.5px;
 }
 
 p.note code {
-   background-color: $thirdBrandColor !important;
+  background-color: $thirdBrandColor !important;
 }
 
 code {
-    color: $codeColor;
-    background-color: $inverseBrandColor;
-    font-size: 14px;
+  color: $codeColor;
+  background-color: $inverseBrandColor;
+  font-size: 14px;
 }
 
 pre, pre.prettyprint {
-    background-color: $codeBkColor;
-    color: #000000;
-    border: none !important;
-    font-size: 14px !important;
-    padding: 9.5px !important;
+  background-color: $codeBkColor;
+  color: #000000;
+  border: none !important;
+  font-size: 14px !important;
+  padding: 9.5px !important;
 }
 
 .inverse {
-    background-color: $mainBrandColor;
-    color: white;
+  background-color: $mainBrandColor;
+  color: white;
 
-    &.inverse-light {
-        background-color: $thirdBrandColor;
-    }
+  &.inverse-light {
+      background-color: $thirdBrandColor;
+  }
 
-    a {
-      color: $inverseBrandColor;
-    }
-    a:hover,
-    a:focus {
-      color: $linkHoverColor;
-    }
+  a {
+    color: $inverseBrandColor;
+  }
+
+  a:hover,
+  a:focus {
+    color: $linkHoverColor;
+  }
 }
 
 .nofloat {
-    float: none;
+  float: none;
 }
 
 .lead {

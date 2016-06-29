@@ -1,8 +1,8 @@
 // Documentation Navigation Bar
 .doc-nav {
-	display: block;
-	margin-top: $spacing--m;
-	margin-bottom: $spacing--m;
+  display: block;
+  margin-bottom: $spacing--m;
+  margin-top: $spacing--m;
 	.doc-caret {
 		margin-right: 10px;
 		@media (min-width: $tablet) {
@@ -13,37 +13,40 @@
 	.tab {
 		display: inline-block;
 
-		&.docs-tab  {
-			a {	
-				font-weight: 300;
-				display: inline-block;
-				border-bottom: 2px solid $gray;
-				@media (min-width: $tablet) {
-					display: none;
-				}
+		&.docs-tab a {
+      border-bottom: 2px solid $gray;
+      display: inline-block;
+      font-weight: 300;
+
+			@media (min-width: $tablet) {
+				display: none;
 			}
 		}
+
 		a {
-			margin-right: 16px;
-			color: $gray;
-			letter-spacing: 0.5px;
-			font-weight: 400;
-			display: none;
-			font-size: .85rem;
-			border-bottom: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      color: $gray;
+      display: none;
+      font-size: .85rem;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+      margin-right: 16px;
+
 			&:hover {
 				border-bottom: 2px solid $gray;
 			}
+
 			@media (min-width: $tablet) {
-				font-weight: 300;
-				display: inline-block;
+        display: inline-block;
+        font-weight: 300;
 			}
 		}
 
 		.current {
-			display: inline-block;
-			border-bottom: 2px solid $gray;
-			color: $gray;
+      border-bottom: 2px solid $gray;
+      color: $gray;
+      display: inline-block;
+
 			@media (min-width: $tablet) {
 				border-bottom: 2px solid $secondBrandColor !important;
 				color: $secondBrandColor;
@@ -57,22 +60,24 @@
 	background-color: $light-gray;
 	margin-bottom: 20px;
 	@media (min-width: $tablet) {
-		padding: $spacing--xs 0 $spacing--xl;
-		margin-bottom: 0;
+    margin-bottom: 0;
+    padding: $spacing--xs 0 $spacing--xl;
 	}
+
 	// Add caret to current page
-	.current {
-		&:before{
-			content: '>';
-		}
+	.current:before{
+		content: '>';
 	}
+
 	.doc-side-nav-title {
 		padding: $spacing--s;
 	}
+
 	.doc-side-nav-list-item {
 		display: inline-block;
 		padding: 2px $spacing--s;
 		width: 100%;
+
 		a {
 			font-size: 13px;
 			color: $dark-gray;
@@ -90,6 +95,7 @@
     font-weight: 400;
     line-height: 22px;
   }
+  
   .submenu {
     padding: 2px 15px;
   }

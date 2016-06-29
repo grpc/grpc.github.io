@@ -1,13 +1,13 @@
 .community {
   margin: 0 0 300px;
 
-  @media (max-width: 768px) {
+  @media (max-width: $tablet) {
     margin: 0;
   }
 
   a > span {
-    text-decoration: underline;
     font-weight: 500;
+    text-decoration: underline;
   }
 
   .external-link-icon {
@@ -20,28 +20,27 @@
 
   .community-section {
     margin: 45px 0;
-    a {
-      &::after {
-        display: none;
-      }
+
+    a::after {
+      display: none;
     }
   }
 
   .community-title {
-    font-size: 1.1em;
+    color: $titleColor;
+    font-size: 1.1rem;
     font-weight: 500;
     letter-spacing: .5px;
     margin: 0 0 15px 0;
-    color: $titleColor;
   }
 
   .contribute-wrapper {
-    margin: 15px 0 0;
     display: table;
-    text-align: left;
+    margin: 15px 0 0;
     padding: 0;
+    text-align: left;
 
-    @media (max-width: 768px) {
+    @media (max-width: $tablet) {
       margin: 15px auto 0;
     }
 
@@ -60,10 +59,10 @@
     }
 
     .item-desc {
-      font-size: .8em;
+      font-size: .8rem;
       font-weight: 300;
-      text-align: center;
       line-height: 1.25;
+      text-align: center;
     }
 
     .item-link {
@@ -73,20 +72,20 @@
     }
 
     .item-box {
-      display: block;
-      text-align: center;
-      border-radius: 2px;
-      padding: 25px 0 20px;
-      margin: 10px auto;
       background: $footerText;
+      border-radius: 2px;
+      display: block;
+      margin: 10px auto;
+      padding: 25px 0 20px;
+      text-align: center;
       width: 95%;
     }
   }
 
   .mailto {
+    color: $titleColor;
     font-weight: 500;
     letter-spacing: .5px;
     text-decoration: underline;
-    color: $titleColor;
   }
 }
