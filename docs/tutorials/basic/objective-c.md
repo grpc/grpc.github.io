@@ -31,7 +31,7 @@ gRPC and proto3 are specially suited for mobile clients: gRPC is implemented on 
 The example code for our tutorial is in [grpc/grpc/examples/objective-c/route_guide](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/objective-c/route_guide). To download the example, clone the `grpc` repository by running the following commands:
 
 ```
-$ git clone https://github.com/grpc/grpc.git
+$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
 $ cd grpc
 $ git submodule update --init
 ```

@@ -31,7 +31,7 @@ The example code for our tutorial is in [grpc/grpc/examples/node/dynamic&#95;cod
 To download the example, clone the `grpc` repository by running the following command:
 
 ```sh
-$ git clone https://github.com/grpc/grpc.git
+$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
 ```
 
 Then change your current directory to `examples/node`:
