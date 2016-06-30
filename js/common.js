@@ -91,8 +91,6 @@ $(document).ready(function() {
       $('html, body').scrollTo(('#' +($(this).data("target"))), 350);
     })
 
-
-
     // Invoke slick JS carousel 
     $('.pt-container').slick({
       dots: true,
