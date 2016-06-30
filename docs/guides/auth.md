@@ -296,7 +296,6 @@ stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 #### Base case - no encryption or authentication
 
 ```java
-// Base case - No encryption
 ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50051)
     .usePlaintext(true)
     .build();
@@ -337,22 +336,12 @@ GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
 
 ####Authenticate with Google
 
-The following code snippet shows how you can call the [Google Cloud PubSub API](https://cloud.google.com/pubsub/overview) using gRPC with a service account. The credentials are loaded from a key stored in a well-known location or by detecting that the application is running in an environment that can provide one automatically, e.g. Google Compute Engine. While this example is specific to Google and its services, similar patterns can be followed for other service providers.
-
 ```java
-// Create a channel to the test service.
-ManagedChannel channel = ManagedChannelBuilder.forTarget("pubsub.googleapis.com")
-    .build();
-// Get the default credentials from the environment
 GoogleCredentials creds = GoogleCredentials.getApplicationDefault();
-// Down-scope the credential to just the scopes required by the service
-creds = creds.createScoped(Arrays.asList("https://www.googleapis.com/auth/pubsub"));
-// Intercept the channel to bind the credential
-ClientAuthInterceptor interceptor = new ClientAuthInterceptor(creds, someExecutor);
-Channel channel = ClientInterceptors.intercept(channelImpl, interceptor);
-// Create a stub using the channel that has the bound credential
-PublisherGrpc.PublisherBlockingStub publisherStub = PublisherGrpc.newBlockingStub(channel);
-publisherStub.publish(someMessage);
+ManagedChannel channel = ManagedChannelBuilder.forTarget("greeter.googleapis.com")
+    .build();
+GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel)
+    .withCallCredentials(MoreCallCredentials.from(creds));
 ```
 
 ### Node.js
