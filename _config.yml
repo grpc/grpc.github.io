@@ -1,8 +1,5 @@
 markdown:
-  redcarpet
-
-redcarpet:
-  extensions: ["highlight", "with_toc_data", "tables"]
+  kramdown
 
 sass:
   style: compressed

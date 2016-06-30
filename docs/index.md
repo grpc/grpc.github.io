@@ -13,9 +13,9 @@ Hello World example. You'll find more tutorials and <a href="/docs/reference/">r
 
 <div id="toc"></div>
 
-<!--=========================================================================-->
-<a name="quickstart"></a>
 ## Quick start
+
+<a name="quickstart"></a>
 To get up and running with gRPC straight away, see the quick start for your chosen language, which provides links to installation instructions, quick instructions for building the example used in this guide, and more:
 
 * [C++](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/cpp)
@@ -32,7 +32,7 @@ To get up and running with gRPC straight away, see the quick start for your chos
 You can find out about the gRPC source code repositories in
 [grpc](https://github.com/grpc/grpc). Most of our example code lives in the [examples](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples) directory.
 
-<!--=========================================================================-->
+
 ## What is gRPC?
 
 In gRPC a *client* application can directly call
@@ -55,9 +55,10 @@ Python, or Ruby. In addition, the latest Google APIs will have gRPC versions
 of their interfaces, letting you easily build Google functionality into
 your applications.
 
-<a name="protocolbuffers"></a>
+
 ### Working with protocol buffers
 
+<a name="protocolbuffers"></a>
 By default gRPC uses *protocol buffers*, Google’s
 mature open source mechanism for serializing structured data (although it
 can be used with other data formats such as JSON). As you'll
@@ -66,6 +67,7 @@ with method parameters and return types specified as protocol buffer message
 types. You
 can find out lots more about protocol buffers in the [Protocol Buffers
 documentation](https://developers.google.com/protocol-buffers/docs/overview).
+
 
 #### Protocol buffer versions
 
@@ -82,10 +84,10 @@ the major differences from the current default version in the [release notes](ht
 In general, while you *can* use proto2 (the current default protocol buffers version), we recommend that you use proto3 with gRPC as it lets you use the full range of gRPC-supported languages, as well as avoiding compatibility
 issues with proto2 clients talking to proto3 servers and vice versa.
 
-<!--=========================================================================-->
-<a name="hello"></a>
+
 ## Hello gRPC!
 
+<a name="hello"></a>
 Now that you know a bit more about gRPC, the easiest way to see how it
 works is to look at a simple example. Our Hello World walks you through the
 construction of a simple gRPC client-server application, showing you how to:
@@ -106,10 +108,10 @@ Note that server code for our example isn't available in all gRPC languages, as 
 This is an introductory example rather than a comprehensive tutorial for any particular language. You can find more in-depth tutorials in this site, and
 reference documentation for all gRPC languages is coming soon.
 
-<!--=================================-->
-<a name="setup"></a>
+
 ### Setup
 
+<a name="setup"></a>
 This section explains how to set up your local machine to work with
 the example code. If you just want to read the examples, you can go straight
 to the [next step](#servicedef).
@@ -140,114 +142,101 @@ the code to hack on
     <li><a href="#php_source">PHP</a></li>
   </ul>
   <div id="java_source">
-The example code for our Java example lives in the <code>grpc-java</code>
-GitHub repository. Clone this repository to your local machine by running the
-following command:
-<pre>
-git clone https://github.com/grpc/grpc-java.git
-</pre>
-
-Change your current directory to <code>grpc-java/examples</code>.
-<pre>
-cd grpc-java/examples
-</pre>
+  The example code for our Java example lives in the <code>grpc-java</code>
+  GitHub repository. Clone this repository to your local machine by running the
+  following command:
+  <pre>
+  git clone https://github.com/grpc/grpc-java.git
+  </pre>
+  Change your current directory to <code>grpc-java/examples</code>.
+  <pre>
+  cd grpc-java/examples
+  </pre>
   </div>
+
   <div id="cpp_source">
-<p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:
-
-<pre>
-$ git clone https://github.com/grpc/grpc.git
-</pre>
-
-<p>Change your current directory to <code>examples/cpp/helloworld</code>
-
-<pre>
-$ cd examples/cpp/helloworld/
-</pre>
+  The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:
+  <pre>
+  $ git clone https://github.com/grpc/grpc.git
+  </pre>
+  Change your current directory to <code>examples/cpp/helloworld</code>
+  <pre>
+  $ cd examples/cpp/helloworld/
+  </pre>
   </div>
+
   <div id="python_source">
-<p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:
+  The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:
+  <pre>
+  $ git clone https://github.com/grpc/grpc.git
+  </pre>
+  Change your current directory to <code>examples/python/helloworld</code>
+  <pre>
+  $ cd examples/python/helloworld/
+  </pre>
+  </div>
 
-<pre>
-$ git clone https://github.com/grpc/grpc.git
-</pre>
-
-<p>Change your current directory to <code>examples/python/helloworld</code>
-
-<pre>
-$ cd examples/python/helloworld/
-</pre>
-</div>
   <div id="go_source">
-<p>Get the example:
-<pre>
-$ go get -u github.com/grpc/grpc-go/examples/helloworld/greeter&lowbar;client
-$ go get -u github.com/grpc/grpc-go/examples/helloworld/greeter&lowbar;server
-</pre>
-<p>Change your current directory to <code>examples/helloworld</code>
+  Get the example:
+  <pre>
+  $ go get -u github.com/grpc/grpc-go/examples/helloworld/greeter&lowbar;client
+  $ go get -u github.com/grpc/grpc-go/examples/helloworld/greeter&lowbar;server
+  </pre>
+  Change your current directory to <code>examples/helloworld</code>
   </div>
+
   <div id="ruby_source">
-<p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
-
-<pre>
-$ git clone https://github.com/grpc/grpc.git
-</pre>
-
-<p>Change your current directory to <code>examples/ruby</code>. Then use bundler to install the example package's dependencies:</p>
-
-<pre>
-$ gem install bundler # if you don't already have bundler available
-$ bundle install
-</pre>
-
+  The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
+  <pre>
+  $ git clone https://github.com/grpc/grpc.git
+  </pre>
+  Change your current directory to <code>examples/ruby</code>. Then use bundler to install the example package's dependencies:</p>
+  <pre>
+  $ gem install bundler # if you don't already have bundler available
+  $ bundle install
+  </pre>
   </div>
+
   <div id="node_source">
-<p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
-
-<pre>
-$ git clone https://github.com/grpc/grpc.git
-</pre>
-
-<p>Change your current directory to <code>examples/node</code>, then install this package's dependencies:</p>
-<pre>
-$ cd examples/node
-$ npm install
-</pre>
-
+  The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
+  <pre>
+  $ git clone https://github.com/grpc/grpc.git
+  </pre>
+  Change your current directory to <code>examples/node</code>, then install this package's dependencies:</p>
+  <pre>
+  $ cd examples/node
+  $ npm install
+  </pre>
   </div>
+
   <div id="csharp_source">
-<p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
-
-<pre>
-$ git clone https://github.com/grpc/grpc.git
-</pre>
-
-<p>Open <code>Greeter.sln</code> from Visual Studio (or Monodevelop on Linux).</p>
+  The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
+  <pre>
+  $ git clone https://github.com/grpc/grpc.git
+  </pre>
+  Open <code>Greeter.sln</code> from Visual Studio (or Monodevelop on Linux).</p>
   </div>
-<div id="objective-c_source">
-<p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following commands:</p>
 
-<pre>
-$ git clone https://github.com/grpc/grpc.git
-$ cd grpc
-$ git submodule update --init
-</pre>
+  <div id="objective-c_source">
+  The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following commands:</p>
+  <pre>
+  $ git clone https://github.com/grpc/grpc.git
+  $ cd grpc
+  $ git submodule update --init
+  </pre>
+  Change your current directory to <code>examples/objective-c/helloworld</code>.</p>
+  </div>
 
-<p>Change your current directory to <code>examples/objective-c/helloworld</code>.</p>
-
-</div>
   <div id="php_source">
-<p>The example code for this lives in the <code>examples</code> in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
-
-<pre>
-$ git clone https://github.com/grpc/grpc.git
-</pre>
-
-<p>Change your current directory to <code>examples/php</code>.</p>
-
-<p class="note">While most of our Hello World examples use the same .proto file, the PHP example has its own copy of <code>helloworld.proto</code> because it currently depends on some proto2 syntax. There is no proto3 support for PHP yet.</p>
+  The example code for this lives in the <code>examples</code> in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
+  <pre>
+  $ git clone https://github.com/grpc/grpc.git
+  </pre>
+  Change your current directory to <code>examples/php</code>.</p>
+  <p class="note">While most of our Hello World examples use the same .proto file, the PHP example has its own copy of <code>helloworld.proto</code> because it currently depends on some proto2 syntax. There is no proto3 support for PHP yet.</p>
   </div>
 </div>
+
 
 #### Install gRPC
 
@@ -266,6 +255,7 @@ To install the gRPC runtime for your chosen language:
     <li><a href="#objective-c_install">Objective-C</a></li>
     <li><a href="#php_install">PHP</a></li>
   </ul>
+
 <div id="java_install">
 This example is also part of Java gRPC itself's build, so running it is a little different to creating and running a regular project. To install and build it follow the instructions in the [Quickstart](https://github.com/grpc/grpc-java/tree/master/examples).
 
@@ -334,58 +324,60 @@ To install protocol buffers support (the protocol buffer compiler and the protoc
     <li><a href="#objective-c_protoc">Objective-C</a></li>
     <li><a href="#php_protoc">PHP</a></li>
   </ul>
-<div id="java_protoc">
-<p>Again, the example is also part of Java gRPC itself's build, and includes pre-generated gRPC code - we recommend that you use this when working through this example.
+  <div id="java_protoc">
+  Again, the example is also part of Java gRPC itself's build, and includes pre-generated gRPC code - we recommend that you use this when working through this example.
+  See the <a href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for instructions on how to install the protocol buffer compiler for your own projects.
+  </div>
 
-<p>See the <a href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for instructions on how to install the protocol buffer compiler for your own projects.
-</div>
-<div id="cpp_protoc">
-If you <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL.md">build and install gRPC from source</a>, the Makefile will automatically install <code>protoc</code> as well (if you don't already have it installed). Installing gRPC also gets you the gRPC C++ plugin for <code>protoc</code>.
-</div>
-<div id="python_protoc">
-On Mac, Linux, and Windows, run:
+  <div id="cpp_protoc">
+  If you <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL.md">build and install gRPC from source</a>, the Makefile will automatically install <code>protoc</code> as well (if you don't already have it installed). Installing gRPC also gets you the gRPC C++ plugin for <code>protoc</code>.
+  </div>
 
-<pre>
-pip install grpcio-tools
-</pre>
-</div>
-<div id="go_protoc">
-First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository. Then get the Go <code>protoc</code> plugin:
+  <div id="python_protoc">
+  On Mac, Linux, and Windows, run:
+  <pre>
+  pip install grpcio-tools
+  </pre>
+  </div>
 
-<pre class="prettyprint">
-$ go get -a github.com/golang/protobuf/protoc-gen-go
-</pre>
-</div>
-<div id="ruby_protoc">
-On Mac, Linux, and Windows, run:
+  <div id="go_protoc">
+  First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository. Then get the Go <code>protoc</code> plugin:
+  <pre class="prettyprint">
+  $ go get -a github.com/golang/protobuf/protoc-gen-go
+  </pre>
+  </div>
 
-<pre>
-gem install grpc-tools
-</pre>
-</div>
-<div id="node_protoc">
-The Node.js gRPC library can either dynamically generate the necessary gRPC code at runtime or you can use the protocol buffer code generated by <code>protoc</code>. In our example we're going to use dynamic code generation, so if you want to follow along you don't need to have the protocol buffer compiler installed. If you do want to use statically generated code, you can install the compiler by running:
-<pre>
-npm install grpc-tools
-</pre>
-</div>
-<div id="csharp_protoc">
-Install the <a href="https://www.nuget.org/packages/Google.Protobuf">Google.Protobuf</a> and <a href="https://www.nuget.org/packages/Grpc.Tools">Grpc.Tools</a> NuGet packages from your IDE (Visual Studio, Xamarin Studio or Monodevelop).
-</div>
-<div id="objective-c_protoc">
-Follow the instructions in <a href="https://github.com/grpc/grpc/tree/master/src/objective-c">gRPC for Objective C</a> to install <code>protoc</code> and the appropriate plugin. Instructions are provided for installation with and without Homebrew.
-</div>
-<div id="php_protoc">
-First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository. Then install the <a href="https://github.com/stanley-cheung/protobuf-php">third-party <code>protoc-gen-php</code> plugin</a>.
-</div>
+  <div id="ruby_protoc">
+  On Mac, Linux, and Windows, run:
+  <pre>
+  gem install grpc-tools
+  </pre>
+  </div>
+
+  <div id="node_protoc">
+  The Node.js gRPC library can either dynamically generate the necessary gRPC code at runtime or you can use the protocol buffer code generated by <code>protoc</code>. In our example we're going to use dynamic code generation, so if you want to follow along you don't need to have the protocol buffer compiler installed. If you do want to use statically generated code, you can install the compiler by running:
+  <pre>
+  npm install grpc-tools
+  </pre>
+  </div>
+
+  <div id="csharp_protoc">
+  Install the <a href="https://www.nuget.org/packages/Google.Protobuf">Google.Protobuf</a> and <a href="https://www.nuget.org/packages/Grpc.Tools">Grpc.Tools</a> NuGet packages from your IDE (Visual Studio, Xamarin Studio or Monodevelop).
+  </div>
+
+  <div id="objective-c_protoc">
+  Follow the instructions in <a href="https://github.com/grpc/grpc/tree/master/src/objective-c">gRPC for Objective C</a> to install <code>protoc</code> and the appropriate plugin. Instructions are provided for installation with and without Homebrew.
+  </div>
+
+  <div id="php_protoc">
+  First <a href="https://github.com/google/protobuf/blob/master/README.md">install <code>protoc</code></a> from its Github repository. Then install the <a href="https://github.com/stanley-cheung/protobuf-php">third-party <code>protoc-gen-php</code> plugin</a>.
+  </div>
 </div>
 
 
-
-<!--=================================-->
-<a name="servicedef"></a>
 ### Defining a service
 
+<a name="servicedef"></a>
 The first step in creating our example is to define a *service*: an RPC
 service specifies the methods that can be called remotely with their parameters
 and return types. As you saw in the
@@ -430,10 +422,10 @@ message HelloReply {
 ```
 As you can see, a gRPC method can accept only a single protocol buffer message type as its request (in this case, the `HelloRequest` message type defined in our `.proto`), and return only a single protocol buffer type as its response - this is the case for all gRPC methods. However, this doesn't limit you in what kind of data you can pass between gRPC clients and servers in the same RPC - to add more arguments, or values to return, you just add more fields to the appropriate protocol buffer request or response type.
 
-<!--=================================-->
-<a name="generating"></a>
+
 ### Generating gRPC code
 
+<a name="generating"></a>
 Once we've defined our service, we use the protocol buffer compiler
 `protoc` to generate the special client and server code we need to create
 our application - you
@@ -458,107 +450,100 @@ onto the next one where we examine the generated code.)
     <li><a href="#php_generate">PHP</a></li>
   </ul>
   <div id="java_generate">
-<p>As we mentioned in our installation section, the build system for this example is also part of Java gRPC itself's build —
-for simplicity we recommend using our pre-generated code for the example. You
-can refer to the <a
-href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for
-how to generate code from your own .proto files.
+  As we mentioned in our installation section, the build system for this example is also part of Java gRPC itself's build —
+  for simplicity we recommend using our pre-generated code for the example. You
+  can refer to the <a
+  href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for
+  how to generate code from your own .proto files.
 
-<p>Pre-generated code for the examples is available in <a
-href="https://github.com/grpc/grpc-java/tree/master/examples/src/generated/main">src/generated/main</a>.
-The following classes contain all the generated code we need to create our
-example:
+  Pre-generated code for the examples is available in <a
+  href="https://github.com/grpc/grpc-java/tree/master/examples/src/generated/main">src/generated/main</a>.
+  The following classes contain all the generated code we need to create our
+  example:
 
-<ul><li><code>HelloRequest.java</code>, <code>HelloResponse.java</code>, and
-  others which have all the protocol buffer code to populate, serialize, and
-  retrieve our <code>HelloRequest</code> and <code>HelloReply</code> message types
-<li><code>GreeterGrpc.java</code>, which contains (along with some other useful code):
-    <ul><li>an interface for <code>Greeter</code> servers to implement
+  <ul><li><code>HelloRequest.java</code>, <code>HelloResponse.java</code>, and
+    others which have all the protocol buffer code to populate, serialize, and
+    retrieve our <code>HelloRequest</code> and <code>HelloReply</code> message types</li>
+  <li><code>GreeterGrpc.java</code>, which contains (along with some other useful code):
+      <ul><li>an interface for <code>Greeter</code> servers to implement
 
-    <pre>
-public static interface Greeter {
-    public void sayHello(Helloworld.HelloRequest request,
-        StreamObserver&lt;Helloworld.HelloReply> responseObserver);
-}
-    </pre>
+      <pre>
+      public static interface Greeter {
+          public void sayHello(Helloworld.HelloRequest request,
+              StreamObserver&lt;Helloworld.HelloReply> responseObserver);
+      }
+      </pre></li>
 
-    <li> <em>stub</em> classes that clients can use to talk to a <code>Greeter</code> server. As you can see, the async stub also implements the <code>Greeter</code> interface.
-
-  <pre>
-public static class GreeterStub extends AbstractStub&lt;GreeterStub>
-    implements Greeter {
-  ...
-}
-  </pre>
-</ul>
-</ul>
+      <li> <em>stub</em> classes that clients can use to talk to a <code>Greeter</code> server. As you can see, the async stub also implements the <code>Greeter</code> interface.</li>
+      <pre>
+      public static class GreeterStub extends AbstractStub&lt;GreeterStub>
+          implements Greeter {
+        ...
+      }
+      </pre></li>
+  </ul>
+  </ul>
   </div>
+
   <div id="cpp_generate">
-<p>To generate the client and server side interfaces, run:
-
-<pre>
-$ make helloworld.grpc.pb.cc helloworld.pb.cc
-</pre>
-
-<p>Which internally invokes the protocol buffer compiler as:
-
-<pre>
-$ protoc -I ../../protos/ --grpc_out=. --plugin=protoc-gen-grpc=grpc_cpp_plugin ../../protos/helloworld.proto
-$ protoc -I ../../protos/ --cpp_out=. ../../protos/helloworld.proto
-</pre>
-
-<p>This generates:
-<ul><li><code>helloworld.pb.h</code>, which declares classes for populating, serializing, and retrieving our <code>HelloRequest</code> and <code>HelloResponse</code> message types, and its implementation <code>helloworld.pb.cc</code>.
-<li><code>helloworld.grpc.pb.h</code>, which declares our generated service classes, and its implementation <code>helloworld.grpc.pb.cc</code>.
-</ul>
+  To generate the client and server side interfaces, run:
+  <pre>
+  $ make helloworld.grpc.pb.cc helloworld.pb.cc
+  </pre>
+  Which internally invokes the protocol buffer compiler as:
+  <pre>
+  $ protoc -I ../../protos/ --grpc_out=. --plugin=protoc-gen-grpc=grpc_cpp_plugin ../../protos/helloworld.proto
+  $ protoc -I ../../protos/ --cpp_out=. ../../protos/helloworld.proto
+  </pre>
+  This generates:
+  <ul><li><code>helloworld.pb.h</code>, which declares classes for populating, serializing, and retrieving our <code>HelloRequest</code> and <code>HelloResponse</code> message types, and its implementation <code>helloworld.pb.cc</code>.
+  <li><code>helloworld.grpc.pb.h</code>, which declares our generated service classes, and its implementation <code>helloworld.grpc.pb.cc</code>.
+  </ul>
   </div>
+
   <div id="python_generate">
-<p>To generate the client and server side interfaces:
+  To generate the client and server side interfaces:
+  <pre>
+  $ ./run_codegen.sh
+  </pre>
+  Which internally invokes the protocol buffer compiler as:
+  <pre>$ protoc -I ../../protos --python_out=. --grpc_out=. --plugin=protoc-gen-grpc=&#96;which grpc&lowbar;python&lowbar;plugin&#96; ../../protos/helloworld.proto</pre>
+  This generates <code>helloworld_pb2.py</code>, which contains our generated client and server classes, as well as classes for populating, serializing, and retrieving our <code>HelloRequest</code> and <code>HelloResponse</code> message types.
+  </div>
 
-<pre>
-$ ./run_codegen.sh
-</pre>
-
-<p>Which internally invokes the protocol buffer compiler as:
-
-<pre>$ protoc -I ../../protos --python_out=. --grpc_out=. --plugin=protoc-gen-grpc=&#96;which grpc&lowbar;python&lowbar;plugin&#96; ../../protos/helloworld.proto</pre>
-
-<p>This generates <code>helloworld_pb2.py</code>, which contains our generated client and server classes, as well as classes for populating, serializing, and retrieving our <code>HelloRequest</code> and <code>HelloResponse</code> message types.
-
-</div>
   <div id="go_generate">
-To generate the client and server side interfaces, run the protocol buffer compiler:
+  To generate the client and server side interfaces, run the protocol buffer compiler:
 
-```
-protoc -I ../protos ../protos/helloworld.proto --go_out=plugins=grpc:helloworld
-```
+  ```
+  protoc -I ../protos ../protos/helloworld.proto --go_out=plugins=grpc:helloworld
+  ```
 
-This generates `helloworld.pb.go`, which contains our generated client and server code, as well as code for populating, serializing, and retrieving our `HelloRequest` and `HelloResponse` message types.
-
+  This generates `helloworld.pb.go`, which contains our generated client and server code, as well as code for populating, serializing, and retrieving our `HelloRequest` and `HelloResponse` message types.
   </div>
+
   <div id="ruby_generate">
-To generate the client and server side interfaces, run the protocol buffer compiler:</p>
+  To generate the client and server side interfaces, run the protocol buffer compiler:
 
-```
-protoc -I ../protos --ruby_out=lib --grpc_out=lib --plugin=protoc-gen-grpc=`which grpc_ruby_plugin` ../protos/helloworld.proto
-```
+  ```
+  protoc -I ../protos --ruby_out=lib --grpc_out=lib --plugin=protoc-gen-grpc=`which grpc_ruby_plugin` ../protos/helloworld.proto
+  ```
 
-This generates the following files in the <code>lib</code> directory:
+  This generates the following files in the <code>lib</code> directory:
 
-- `lib/helloworld.rb` defines a module `Helloworld`, which provides all the protocol buffer code to populate, serialize, and retrieve our request and response message types.
-- `lib/helloworld_services.rb` extends the `Helloworld` module with our generated client and server classes.
-
+  - `lib/helloworld.rb` defines a module `Helloworld`, which provides all the protocol buffer code to populate, serialize, and retrieve our request and response message types.
+  - `lib/helloworld_services.rb` extends the `Helloworld` module with our generated client and server classes.
   </div>
+
   <div id="node_generate">
-The Node.js library dynamically generates service descriptors and client stub definitions from .proto files loaded at runtime, so there's no need to generate any special code when using this language. Instead, in our example server and client we `require` the gRPC library, then use its `load()` method:
+  The Node.js library dynamically generates service descriptors and client stub definitions from .proto files loaded at runtime, so there's no need to generate any special code when using this language. Instead, in our example server and client we `require` the gRPC library, then use its `load()` method:
 
-```
-var grpc = require('grpc');
-var hello_proto = grpc.load(PROTO_PATH).helloworld;
-```
+  ```
+  var grpc = require('grpc');
+  var hello_proto = grpc.load(PROTO_PATH).helloworld;
+  ```
   </div>
-  <div id="csharp_generate">
 
+  <div id="csharp_generate">
 Ready-to-use precompiled versions of `protoc` and `grpc_csharp_plugin` binaries for Windows, Linux and Mac OS X are available in the `Grpc.Tools` NuGet package (there are platform-specific subdirectories under the `tools` directory).
 Normally you would need to add the `Grpc.Tools` package to the solution yourself, but in this tutorial it has been already done for you.
 
@@ -582,50 +567,46 @@ Running the appropriate command for your OS regenerates the following files in t
 - `Greeter/HelloworldGrpc.cs` provides generated client and server classes, including:
    - an abstract base class `Greeter.GreeterBase` to inherit from when defining RouteGuide service implementations
    - a class `Greeter.GreeterClient` that can be used to access remote RouteGuide instances
-
-
   </div>
-<div id="objective-c_generate">
-For simplicity, we've provided a [Podspec file](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/objective-c/helloworld/HelloWorld.podspec) that runs protoc for you with the appropriate plugin, input, and output, and describes how to compile the generated files. You just need to run in `examples/objective-c/route_guide`:
 
-```
-$ pod install
-```
+  <div id="objective-c_generate">
+    For simplicity, we've provided a [Podspec file](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/objective-c/helloworld/HelloWorld.podspec) that runs protoc for you with the appropriate plugin, input, and output, and describes how to compile the generated files. You just need to run in `examples/objective-c/route_guide`:
 
-You can then open the XCode workspace created by Cocoapods to see the generated code. Running the command generates:
+    ```
+    $ pod install
+    ```
 
-- `Helloworld.pbobjc.h`, the header which declares your generated message classes.
-- `Helloworld.pbobjc.m`, which contains the implementation of your message classes.
-- `Helloworld.pbrpc.h`, the header which declares your generated service classes.
-- `Helloworld.pbrpc.m`, which contains the implementation of your service classes.
+    You can then open the XCode workspace created by Cocoapods to see the generated code. Running the command generates:
 
-</div>
+    - `Helloworld.pbobjc.h`, the header which declares your generated message classes.
+    - `Helloworld.pbobjc.m`, which contains the implementation of your message classes.
+    - `Helloworld.pbrpc.h`, the header which declares your generated service classes.
+    - `Helloworld.pbrpc.m`, which contains the implementation of your service classes.
+  </div>
 
   <div id="php_generate">
-gRPC PHP uses the [protoc-gen-php](https://github.com/datto/protobuf-php) tool to generate code from .proto files. You can find out how to install this in the [PHP Quickstart](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/src/php). To generate the code for our Greeter service, run:
+  gRPC PHP uses the [protoc-gen-php](https://github.com/datto/protobuf-php) tool to generate code from .proto files. You can find out how to install this in the [PHP Quickstart](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/src/php). To generate the code for our Greeter service, run:
 
-```
-protoc-gen-php -i . -o . ./helloworld.proto
-```
+  ```
+  protoc-gen-php -i . -o . ./helloworld.proto
+  ```
 
-This generates `helloworld.php`, which contains:
+  This generates `helloworld.php`, which contains:
 
-- All the protocol buffer code to populate, serialize, and retrieve our request and response message types.
-- A class called `GreeterClient` that lets clients call the methods defined in the `Greeter` service.
-
-
+  - All the protocol buffer code to populate, serialize, and retrieve our request and response message types.
+  - A class called `GreeterClient` that lets clients call the methods defined in the `Greeter` service.
   </div>
 </div>
 
 
-<!--=================================-->
-<a name="server"></a>
 ### Writing a server
 
+<a name="server"></a>
 Now let's write some code! First we'll create a server application to implement
 our service (which, you'll remember, we can do in all gRPC languages except Objective-C and PHP). We're not going to go into a lot of detail about how
 to create a server in this section - more detailed information will be in the
 tutorial for your chosen language.
+
 
 #### Service implementation
 
@@ -640,10 +621,10 @@ tutorial for your chosen language.
     <li><a href="#csharp_service">C#</a></li>
   </ul>
   <div id="java_service">
-<p><a href="https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java#L51">GreeterImpl.java</a>
+<a href="https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java#L51">GreeterImpl.java</a>
 actually implements our <code>Greeter</code> service's required behaviour.</p>
 
-<p>As you can see, the class <code>GreeterImpl</code> implements the interface
+As you can see, the class <code>GreeterImpl</code> implements the interface
 <code>GreeterGrpc.Greeter</code> that we <a href="#generating">generated</a> from our proto
 <a href="https://github.com/grpc/grpc-java/tree/master/examples/src/main/proto">IDL</a> by implementing the method <code>sayHello</code>:</p>
 <pre>
@@ -664,7 +645,7 @@ a special interface for the server to call with its response</li>
 </ul></li>
 </ul>
 
-<p>To return our response to the client and complete the call:</p>
+To return our response to the client and complete the call:
 
 <ol>
 <li>We construct and populate a <code>HelloReply</code> response object with our exciting
@@ -673,12 +654,12 @@ message, as specified in our interface definition.</li>
 </ol>
   </div>
   <div id="cpp_service">
-<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_server.cc">greeter_server.cc</a>
-implements our <code>Greeter</code> service's required behaviour.</p>
+<a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_server.cc">greeter_server.cc</a>
+implements our <code>Greeter</code> service's required behaviour.
 
-<p>As you can see, the class <code>GreeterServiceImpl</code> implements the interface
+As you can see, the class <code>GreeterServiceImpl</code> implements the interface
 <code>Greeter::Service</code> that we <a href="#generating">generated</a> from our proto
-service definition by implementing the method <code>sayHello</code>:</p>
+service definition by implementing the method <code>sayHello</code>:
 <pre>
 class GreeterServiceImpl final : public Greeter::Service {
   Status SayHello(ServerContext* context, const HelloRequest* request,
@@ -690,7 +671,7 @@ class GreeterServiceImpl final : public Greeter::Service {
 };
 </pre>
 
-<p>In this case we're implementing the synchronous version of <code>Greeter</code>, which provides our default gRPC server behaviour (there's also an asynchronous interface, <code>Greeter::AsyncService</code>).
+In this case we're implementing the synchronous version of <code>Greeter</code>, which provides our default gRPC server behaviour (there's also an asynchronous interface, <code>Greeter::AsyncService</code>).
 <ul>
 <li><code>sayHello</code> takes three parameters:
 
@@ -701,7 +682,7 @@ class GreeterServiceImpl final : public Greeter::Service {
 </ul></li>
 </ul>
 
-<p>To return our response to the client and complete the call:</p>
+To return our response to the client and complete the call:
 
 <ol>
 <li>We populate the provided <code>HelloReply</code> response object with our exciting
@@ -710,17 +691,17 @@ message, as specified in our interface definition.</li>
 </ol>
   </div>
   <div id="python_service">
-<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_server.py">greeter_server.py</a> implements our <code>Greeter</code> service's required behaviour.
+<a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_server.py">greeter_server.py</a> implements our <code>Greeter</code> service's required behaviour.
 
-<p>As you can see, the class <code>Greeter</code> implements the interface
+As you can see, the class <code>Greeter</code> implements the interface
 <code>helloworld_pb2.BetaGreeterServicer</code> that we <a href="#generating">generated</a> from our proto
-service definition by implementing the method <code>SayHello</code>:</p>
+service definition by implementing the method <code>SayHello</code>:
 <pre>class Greeter(helloworld_pb2.BetaGreeterServicer):
 
   def SayHello(self, request, context):
     return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
 </pre>
-<p>To return our response to the client and complete the call:
+To return our response to the client and complete the call:
 <ul>
 <li>We construct and populate a <code>HelloReply</code> response object with our exciting
 message, as specified in our interface definition.</li>
@@ -728,8 +709,8 @@ message, as specified in our interface definition.</li>
 </ul>
 </div>
   <div id="go_service">
-<p><a href="https://github.com/grpc/grpc-go/blob/master/examples/helloworld/greeter_server/main.go">greeter_server/main.go</a> implements our <code>Greeter</code> service's required behaviour.
-<p>As you can see, our server has a <code>server</code> struct type. This implements the <code>GreeterServer</code> interface that we <a href="#generating">generated</a> from our proto
+<a href="https://github.com/grpc/grpc-go/blob/master/examples/helloworld/greeter_server/main.go">greeter_server/main.go</a> implements our <code>Greeter</code> service's required behaviour.
+As you can see, our server has a <code>server</code> struct type. This implements the <code>GreeterServer</code> interface that we <a href="#generating">generated</a> from our proto
 service definition by implementing the method <code>SayHello</code>:
 <pre>// server is used to implement helloworld.GreeterServer.
 type server struct{}
@@ -739,7 +720,7 @@ func (s &#42;server) SayHello(ctx context.Context, in &#42;pb.HelloRequest) (&#4
 	return &pb.HelloReply{Message: "Hello " + in.Name}, nil
 }
 </pre>
-<p>To return our response to the client and complete the call:
+To return our response to the client and complete the call:
 <ul>
 <li>We construct and populate a <code>HelloReply</code> response object with our exciting
 message, as specified in our interface definition.</li>
@@ -748,35 +729,35 @@ message, as specified in our interface definition.</li>
 
   </div>
   <div id="ruby_service">
-<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/ruby/greeter_server.rb">greeter&lowbar;server.rb</a> implements our <code>Greeter</code> service's required behaviour.
-<p>Our server has a <code>GreeterServer</code> class, which implements the <code>GreeterServer</code> interface that we <a href="#generating">generated</a> from our proto
-service definition by implementing the method <code>SayHello</code>:</p>
+<a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/ruby/greeter_server.rb">greeter&lowbar;server.rb</a> implements our <code>Greeter</code> service's required behaviour.
+Our server has a <code>GreeterServer</code> class, which implements the <code>GreeterServer</code> interface that we <a href="#generating">generated</a> from our proto
+service definition by implementing the method <code>SayHello</code>:
 <pre>class GreeterServer < Helloworld::Greeter::Service
   # say&#95;hello implements the SayHello rpc method.
   def say&#95;hello(hello&#95;req, &#95;unused_call)
     Helloworld::HelloReply.new(message: "Hello #{hello&#95;req.name}")
   end
 </pre>
-<p>To return our response to the client and complete the call, we construct and populate a <code>HelloReply</code> response object with our exciting
-message, as specified in our interface definition, then return.</p>
+To return our response to the client and complete the call, we construct and populate a <code>HelloReply</code> response object with our exciting
+message, as specified in our interface definition, then return.
 
   </div>
   <div id="node_service">
-<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/node/dynamic_codegen/greeter_server.js">greeter&lowbar;server.js</a> implements our <code>Greeter</code> service's required behaviour.
-<p>Our server implements the <code>Greeter</code>service from our
-service definition by implementing the method <code>SayHello</code>:</p>
+<a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/node/dynamic_codegen/greeter_server.js">greeter&lowbar;server.js</a> implements our <code>Greeter</code> service's required behaviour.
+Our server implements the <code>Greeter</code>service from our
+service definition by implementing the method <code>SayHello</code>:
 <pre>
 function sayHello(call, callback) {
   callback(null, {message: 'Hello ' + call.request.name});
 }
 </pre>
-<p>To return our response to the client and complete the call, we populate our response and pass it to the provided callback, with a null first parameter to indicate that there is no error.</p>
+To return our response to the client and complete the call, we populate our response and pass it to the provided callback, with a null first parameter to indicate that there is no error.
 
   </div>
   <div id="csharp_service">
-<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/helloworld/GreeterServer/Program.cs">GreeterServer/Program.cs</a> implements our <code>Greeter</code> service's required behaviour.
-<p>Our server has a <code>GreeterImpl</code> class, which extends the <code>GreeterBase</code> abstract class that we <a href="#generating">generated</a> from our proto
-service definition by implementing the method <code>SayHello</code>:</p>
+<a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/helloworld/GreeterServer/Program.cs">GreeterServer/Program.cs</a> implements our <code>Greeter</code> service's required behaviour.
+Our server has a <code>GreeterImpl</code> class, which extends the <code>GreeterBase</code> abstract class that we <a href="#generating">generated</a> from our proto
+service definition by implementing the method <code>SayHello</code>:
 <pre>
 class GreeterImpl : Greeter.GreeterBase
 {
@@ -787,7 +768,7 @@ class GreeterImpl : Greeter.GreeterBase
 }
 </pre>
 
-<p>To return our response to the client and complete the call:</p>
+To return our response to the client and complete the call:
 <ul>
 <li>We construct and populate a <code>HelloReply</code> response object with our exciting
 message, as specified in our interface definition.</li>
@@ -814,8 +795,8 @@ implementation available from the network.
     <li><a href="#csharp_server">C#</a></li>
   </ul>
   <div id="java_server">
-<p><a href="https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java">HelloWorldServer.java</a>
-provides this for our Java example.</p>
+<a href="https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java">HelloWorldServer.java</a>
+provides this for our Java example.
 <pre>/* The port on which the server should run */
 private int port = 50051;
 private Server server;
@@ -839,8 +820,8 @@ private void start() throws Exception {
 
   </div>
   <div id="cpp_server">
-<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_server.cc">greeter_server.cc</a>
-also provides this for our C++ example.</p>
+<a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_server.cc">greeter_server.cc</a>
+also provides this for our C++ example.
 <pre>void RunServer() {
   std::string server_address("0.0.0.0:50051");
   GreeterServiceImpl service;
@@ -856,8 +837,8 @@ also provides this for our C++ example.</p>
 </pre>
   </div>
   <div id="python_server">
-<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_server.py">greeter_server.py</a>
-also provides this for our Python example.</p>
+<a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_server.py">greeter_server.py</a>
+also provides this for our Python example.
 <pre>  server = helloworld_pb2.beta_create_Greeter_server(Greeter())
   server.add_insecure_port('[::]:50051')
   server.start()
@@ -869,7 +850,7 @@ also provides this for our Python example.</p>
 </pre>
 </div>
   <div id="go_server">
-<p><a href="https://github.com/grpc/grpc-go/blob/master/examples/helloworld/greeter_server/main.go">greeter_server/main.go</a> also provides this for our Go example.
+<a href="https://github.com/grpc/grpc-go/blob/master/examples/helloworld/greeter_server/main.go">greeter_server/main.go</a> also provides this for our Go example.
 <pre>
 const (
 	port = ":50051"
@@ -889,7 +870,7 @@ func main() {
 
   </div>
   <div id="ruby_server">
-<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/ruby/greeter_server.rb">greeter&lowbar;server.rb</a> also provides this for our Ruby example.
+<a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/ruby/greeter_server.rb">greeter&lowbar;server.rb</a> also provides this for our Ruby example.
 <pre>
 def main
   s = GRPC::RpcServer.new
@@ -901,7 +882,7 @@ end
 
   </div>
   <div id="node_server">
-<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/node/dynamic_codegen/greeter_server.js">greeter&lowbar;server.js</a> also provides this for our Node.js example.
+<a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/node/dynamic_codegen/greeter_server.js">greeter&lowbar;server.js</a> also provides this for our Node.js example.
 <pre>
 function main() {
   var server = new Server({
@@ -916,7 +897,7 @@ function main() {
 
   </div>
   <div id="csharp_server">
-<p><a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/helloworld/GreeterServer/Program.cs">GreeterServer/Program.cs</a> also provides this for our C# example.
+<a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/helloworld/GreeterServer/Program.cs">GreeterServer/Program.cs</a> also provides this for our C# example.
 <pre>Server server = new Server
 {
     Services = { Greeter.BindService(new GreeterImpl()) },
@@ -932,16 +913,17 @@ implementation that we created to a port. Then we start the server running: the 
 requests from `Greeter` service clients on our specified port. We'll cover
 how all this works in a bit more detail in our language-specific documentation.
 
-<!--=================================-->
-<a name="client"></a>
+
 ### Writing a client
 
+<a name="client"></a>
 Client-side gRPC is pretty simple. In this step, we'll use the generated code
 to write a simple client that can access the `Greeter` server we created
 in the [previous section](#server).
 
 Again, we're not going to go into much detail about how to implement a client;
 we'll leave that for the tutorial.
+
 
 #### Connecting to the service
 
@@ -975,7 +957,7 @@ public HelloWorldClient(String host, int port) {
 }
 </pre>
 
-<p>In this case, we create a blocking stub. This means that the RPC call waits
+In this case, we create a blocking stub. This means that the RPC call waits
 for the server to respond, and will either return a response or raise an
 exception. gRPC Java has other kinds of stubs that make non-blocking calls
 to the server, where the response is returned asynchronously.
@@ -1001,7 +983,7 @@ class GreeterClient {
 
   </div>
   <div id="python_connect">
-<p>The generated Python code has a helper function that creates a stub given a channel.
+The generated Python code has a helper function that creates a stub given a channel.
 <pre>channel = implementations.insecure_channel('localhost', 50051)
 stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 ...
@@ -1024,18 +1006,18 @@ func main() {
 ...
 }</pre>
 
-<p>In gRPC Go you use a special <code>Dial()</code> function to create the channel.</p>
-<p>This example is not using any authentication, read this <a href="http://www.grpc.io/docs/guides/auth.html">document</a>
-for an explanation of the authentication features of gRPC.</p>
+In gRPC Go you use a special <code>Dial()</code> function to create the channel.
+This example is not using any authentication, read this <a href="http://www.grpc.io/docs/guides/auth.html">document</a>
+for an explanation of the authentication features of gRPC.
 
   </div>
   <div id="ruby_connect">
 <pre>stub = Helloworld::Greeter::Stub.new('localhost:50051', :this_channel_is_insecure)</pre>
-<p>In Ruby, we can do this in a single method call using the <code>Stub</code> class generated from our .proto.</p>
+In Ruby, we can do this in a single method call using the <code>Stub</code> class generated from our .proto.
   </div>
   <div id="node_connect">
 <pre>var client = new hello_proto.Greeter('localhost:50051', grpc.credentials.createInsecure());</pre>
-<p>In Node.js, we can do this in a single step by calling the <code>Greeter</code> stub constructor.</p>
+In Node.js, we can do this in a single step by calling the <code>Greeter</code> stub constructor.
 
   </div>
   <div id="csharp_connect">
@@ -1097,7 +1079,7 @@ HelloRequest req = HelloRequest.newBuilder().setName(name).build();
 HelloReply reply = blockingStub.sayHello(req);
 </pre>
 
-<p>You can see the complete client code in
+You can see the complete client code in
 <a href="https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/helloworld/HelloWorldClient.java">HelloWorldClient.java</a>.
 </div>
   <div id="cpp_call">
@@ -1114,13 +1096,13 @@ HelloReply reply = blockingStub.sayHello(req);
     }
   }</pre>
 
-<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_client.cc">greeter_client.cc</a>.</p>
+You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_client.cc">greeter_client.cc</a>.</p>
   </div>
   <div id="python_call">
 <pre>response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'), _TIMEOUT_SECONDS)
 print "Greeter client received: " + response.message
 </pre>
-<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_client.py">greeter_client.py</a>.</p>
+You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/helloworld/greeter_client.py">greeter_client.py</a>.</p>
 
 </div>
   <div id="go_call">
@@ -1129,7 +1111,7 @@ if err != nil {
 		log.Fatalf("could not greet: %v", err)
 }
 log.Printf("Greeting: %s", r.Message)</pre>
-<p>You can see the complete client code in <a href="https://github.com/grpc/grpc-go/blob/master/examples/helloworld/greeter_client/main.go">greeter_client/main.go</a>.</p>
+You can see the complete client code in <a href="https://github.com/grpc/grpc-go/blob/master/examples/helloworld/greeter_client/main.go">greeter_client/main.go</a>.</p>
 
   </div>
   <div id="ruby_call">
@@ -1137,20 +1119,20 @@ log.Printf("Greeting: %s", r.Message)</pre>
   message = stub.say&lowbar;hello(Helloworld::HelloRequest.new(name: user)).message
   p "Greeting: #{message}"
 </pre>
-<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/ruby/greeter_client.rb">greeter_client.rb</a>.</p>
+You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/ruby/greeter_client.rb">greeter_client.rb</a>.</p>
 
   </div>
   <div id="node_call">
 <pre>  client.sayHello({name: user}, function(err, response) {
     console.log('Greeting:', response.message);
   });</pre>
-<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/node/dynamic_codegen/greeter_client.js">greeter_client.js</a>.</p>
+You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/node/dynamic_codegen/greeter_client.js">greeter_client.js</a>.</p>
 
   </div>
   <div id="csharp_call">
 <pre>var reply = client.SayHello(new HelloRequest { Name = user });
 Console.WriteLine("Greeting: " + reply.Message);</pre>
-<p>You can see the complete example code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/helloworld/GreeterClient/Program.cs">GreeterClient/Program.cs</a>.</p>
+You can see the complete example code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/csharp/helloworld/GreeterClient/Program.cs">GreeterClient/Program.cs</a>.</p>
 
   </div>
   <div id="objective-c_call">
@@ -1160,7 +1142,7 @@ request.name = @"Objective-C";
 [client sayHelloWithRequest:request handler:^(HLWHelloReply *response, NSError *error) {
   NSLog(@"%@", response.message);
 }];</pre>
-<p>You can see the complete example code in <a href="https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/objective-c/helloworld">examples/objective-c/helloworld</a>.</p>
+You can see the complete example code in <a href="https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/objective-c/helloworld">examples/objective-c/helloworld</a>.</p>
 
   </div>
   <div id="php_call">
@@ -1169,15 +1151,15 @@ request.name = @"Objective-C";
   list($reply, $status) = $client->SayHello($request)->wait();
   $message = $reply->getMessage();</pre>
 
-<p>You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/php/greeter_client.php">greeter_client.php</a>.</p>
+You can see the complete client code in <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/php/greeter_client.php">greeter_client.php</a>.</p>
 
   </div>
 </div>
 
-<!--=================================-->
-<a name="run"></a>
+
 ### Try it out!
 
+<a name="run"></a>
 You can try building and running our example using the same language on both the client and server side. Or you can try out one of gRPC's most useful features - interoperability
 between code in different languages - and run a server and client in different languages. Each service
 and client uses interface code generated from the same proto, which means that any `Greeter` client can talk to any `Greeter` server.
@@ -1195,7 +1177,7 @@ First run the server:
     <li><a href="#csharp_runserver">C#</a></li>
   </ul>
   <div id="java_runserver">
-<p>You can build and run the server from the <code>examples</code> folder. First
+You can build and run the server from the <code>examples</code> folder. First
 build the client and server.
 
 <pre>
@@ -1209,33 +1191,33 @@ $ ./build/install/grpc-examples/bin/hello-world-server
 
   </div>
   <div id="cpp_runserver">
-<p>You can build and run the server from the <code>examples/cpp/helloworld</code> folder. First build the client and server.
+You can build and run the server from the <code>examples/cpp/helloworld</code> folder. First build the client and server.
 <pre>$ make</pre>
 Then run the server, which will listen on port 50051:
 <pre>$ ./greeter_server</pre>
   </div>
   <div id="python_runserver">
-<p>You can run the server from <code>examples/python/helloworld</code> using:
+You can run the server from <code>examples/python/helloworld</code> using:
 <pre>$ ./run_server.sh</pre>
 
 </div>
   <div id="go_runserver">
-<p>You can run the server from <code>examples/helloworld</code> using:
+You can run the server from <code>examples/helloworld</code> using:
 <pre>$ greeter_server &</pre>
 
   </div>
   <div id="ruby_runserver">
-<p>You can run the server from <code>examples/ruby</code> using:
+You can run the server from <code>examples/ruby</code> using:
 <pre>$ bundle exec ./greeter_server.rb &</pre>
 
   </div>
   <div id="node_runserver">
-<p>You can run the server from <code>examples/node/dynamic&#95;codegen</code> using:
+You can run the server from <code>examples/node/dynamic&#95;codegen</code> using:
 <pre>$ node ./greeter_server.js &</pre>
 
   </div>
   <div id="csharp_runserver">
-<p>Build the solution. Then from <code>examples/csharp</code>:
+Build the solution. Then from <code>examples/csharp</code>:
 
 ```
 > cd GreeterServer/bin/Debug
@@ -1260,7 +1242,7 @@ Once the server is running, in another terminal window run the client and confir
     <li><a href="#php_runclient">PHP</a></li>
   </ul>
   <div id="java_runclient">
-<p>You can build and run the client from the <code>examples</code> folder. If
+You can build and run the client from the <code>examples</code> folder. If
 you haven't already built the client, build it using:
 
 <pre>
@@ -1273,33 +1255,33 @@ $ ./build/install/grpc-examples/bin/hello-world-client
 </pre>
   </div>
   <div id="cpp_runclient">
-<p>You can build and run the client from the <code>examples/cpp/helloworld</code> folder. If you haven't already built the client, build it using:
+You can build and run the client from the <code>examples/cpp/helloworld</code> folder. If you haven't already built the client, build it using:
 <pre>$ make</pre>
 Then run the client:
 <pre>$ ./greeter_client</pre>
   </div>
   <div id="python_runclient">
-<p>You can run the client from <code>examples/python/helloworld</code> using:
+You can run the client from <code>examples/python/helloworld</code> using:
 <pre>$ ./run_client.sh</pre>
 
 </div>
   <div id="go_runclient">
-<p>You can run the client from <code>examples/helloworld</code> using:
+You can run the client from <code>examples/helloworld</code> using:
 <pre>$ greeter_client</pre>
 
   </div>
   <div id="ruby_runclient">
-<p>You can run the client from <code>examples/ruby</code> using:
+You can run the client from <code>examples/ruby</code> using:
 <pre>$ bundle exec ./greeter_client.rb</pre>
 
   </div>
   <div id="node_runclient">
-<p>You can run the client from <code>examples/node/dynamic&#95;codegen</code> using:
+You can run the client from <code>examples/node/dynamic&#95;codegen</code> using:
 <pre>$ node ./greeter_client.js</pre>
 
 </div>
   <div id="csharp_runclient">
-<p>Build the solution. Then from <code>examples/csharp</code>:
+Build the solution. Then from <code>examples/csharp</code>:
 
 ```
 > cd GreeterClient/bin/Debug
@@ -1308,11 +1290,11 @@ Then run the client:
 
 </div>
   <div id="objective-c_runclient">
-<p>Open the XCode workspace created by Cocoapods, and run the app. You can see the results in XCode's log console.</p>
+Open the XCode workspace created by Cocoapods, and run the app. You can see the results in XCode's log console.</p>
 
 </div>
   <div id="php_runclient">
-<p>You can run the client from <code>examples/php</code> using:
+You can run the client from <code>examples/php</code> using:
 
 ```
 $ ./run_greeter_client.sh
@@ -1321,7 +1303,7 @@ $ ./run_greeter_client.sh
 </div>
 </div>
 
-<!--=========================================================================-->
+
 ## Read more!
 
 - Find out how to install gRPC and get started in each language's [quick start](#quickstart).
