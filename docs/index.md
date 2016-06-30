@@ -156,7 +156,7 @@ cd grpc-java/examples
 <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:
 
 <pre>
-$ git clone https://github.com/grpc/grpc.git
+$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
 </pre>
 
 <p>Change your current directory to <code>examples/cpp/helloworld</code>
@@ -169,7 +169,7 @@ $ cd examples/cpp/helloworld/
 <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:
 
 <pre>
-$ git clone https://github.com/grpc/grpc.git
+$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
 </pre>
 
 <p>Change your current directory to <code>examples/python/helloworld</code>
@@ -190,7 +190,7 @@ $ go get -u github.com/grpc/grpc-go/examples/helloworld/greeter&lowbar;server
 <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
 
 <pre>
-$ git clone https://github.com/grpc/grpc.git
+$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
 </pre>
 
 <p>Change your current directory to <code>examples/ruby</code>. Then use bundler to install the example package's dependencies:</p>
@@ -205,7 +205,7 @@ $ bundle install
 <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
 
 <pre>
-$ git clone https://github.com/grpc/grpc.git
+$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
 </pre>
 
 <p>Change your current directory to <code>examples/node</code>, then install this package's dependencies:</p>
@@ -219,7 +219,7 @@ $ npm install
 <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
 
 <pre>
-$ git clone https://github.com/grpc/grpc.git
+$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
 </pre>
 
 <p>Open <code>Greeter.sln</code> from Visual Studio (or Monodevelop on Linux).</p>
@@ -228,7 +228,7 @@ $ git clone https://github.com/grpc/grpc.git
 <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following commands:</p>
 
 <pre>
-$ git clone https://github.com/grpc/grpc.git
+$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
 $ cd grpc
 $ git submodule update --init
 </pre>
@@ -240,7 +240,7 @@ $ git submodule update --init
 <p>The example code for this lives in the <code>examples</code> in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
 
 <pre>
-$ git clone https://github.com/grpc/grpc.git
+$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
 </pre>
 
 <p>Change your current directory to <code>examples/php</code>.</p>
