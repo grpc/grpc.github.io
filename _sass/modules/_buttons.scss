@@ -44,6 +44,10 @@
     font-weight: 300;
     letter-spacing: 1px;
 
+    a {
+      color: $white;
+    }
+
     // Inverse Colored Button
     &.inverse {
       background-color: transparent;
