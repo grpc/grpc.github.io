@@ -269,7 +269,7 @@ In this section, we'll look at creating a Node.js client for our `RouteGuide` se
 To call service methods, we first need to create a *stub*. To do this, we just need to call the RouteGuide stub constructor, specifying the server address and port.
 
 ```js
-new example.RouteGuide('localhost:50051', grpc.Credentials.createInsecure());
+new example.RouteGuide('localhost:50051', grpc.credentials.createInsecure());
 ```
 
 ### Calling service methods
