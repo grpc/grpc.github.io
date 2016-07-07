@@ -226,7 +226,8 @@ var channel = new Channel("myservice.example.com", channelCredentials);
 var client = new Greeter.GreeterClient(channel);
 ```
 
-####Authenticate with Google
+#### Authenticate with Google
+
 ```csharp
 using Grpc.Auth;  // from Grpc.Auth NuGet package
 ...
@@ -238,7 +239,8 @@ var client = new Greeter.GreeterClient(channel);
 ...
 ```
 
-####Authenticate a single RPC call
+#### Authenticate a single RPC call
+
 ```csharp
 var channel = new Channel("greeter.googleapis.com", new SslCredentials());  // Use publicly trusted roots.
 var client = new Greeter.GreeterClient(channel);
@@ -272,7 +274,9 @@ channel = implementations.secure_channel('myservice.example.com', 443, creds)
 stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 ```
 
-####Authenticate with Google
+
+#### Authenticate with Google
+
 ```python
 transport_creds = implementations.ssl_channel_credentials(open('roots.pem').read(), None, None)
 def oauth2token_credentials(context, callback):
@@ -335,7 +339,8 @@ ManagedChannel channel = NettyChannelBuilder.forAddress("myservice.example.com",
 GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
 ```
 
-####Authenticate with Google
+#### Authenticate with Google
+
 
 The following code snippet shows how you can call the [Google Cloud PubSub API](https://cloud.google.com/pubsub/overview) using gRPC with a service account. The credentials are loaded from a key stored in a well-known location or by detecting that the application is running in an environment that can provide one automatically, e.g. Google Compute Engine. While this example is specific to Google and its services, similar patterns can be followed for other service providers.
 
@@ -357,7 +362,7 @@ publisherStub.publish(someMessage);
 
 ### Node.js
 
-####Base case - No encryption/authentication
+#### Base case - No encryption/authentication
 
 ```js
 var stub = new helloworld.Greeter('localhost:50051', grpc.credentials.createInsecure());
@@ -370,7 +375,7 @@ var ssl_creds = grpc.credentials.createSsl(root_certs);
 var stub = new helloworld.Greeter('myservice.example.com', ssl_creds);
 ```
 
-####Authenticate with Google
+#### Authenticate with Google
 
 ```js
 // Authenticating with Google
@@ -386,7 +391,7 @@ var ssl_creds = grpc.credentials.createSsl(root_certs);
 
 ### PHP
 
-####Base case - No encryption/authorization
+#### Base case - No encryption/authorization
 
 ```php
 $client = new helloworld\GreeterClient('localhost:50051', [
@@ -395,7 +400,7 @@ $client = new helloworld\GreeterClient('localhost:50051', [
 ...
 ```
 
-####Authenticate with Google
+#### Authenticate with Google
 
 ```php
 function updateAuthMetadataCallback($context)

@@ -18,6 +18,7 @@ This isn't a comprehensive guide to using gRPC in Objective-C: more reference do
 <div id="toc"></div>
 
 <a name="why-grpc"></a>
+
 ## Why use gRPC?
 
 With gRPC you can define your service once in a .proto file and implement clients and servers in any of gRPC's supported languages, which in turn can be run in environments ranging from servers inside Google to your own tablet - all the complexity of communication between different languages and environments is handled for you by gRPC. You also get all the advantages of working with protocol buffers, including efficient serialization, a simple IDL, and easy interface updating.
@@ -26,6 +27,7 @@ gRPC and proto3 are specially suited for mobile clients: gRPC is implemented on 
 
 
 <a name="setup"></a>
+
 ## Example code and setup
 
 The example code for our tutorial is in [grpc/grpc/examples/objective-c/route_guide](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/objective-c/route_guide). To download the example, clone the `grpc` repository by running the following commands:
@@ -48,6 +50,7 @@ You also should have [Cocoapods](https://cocoapods.org/#install) installed, as w
 
 
 <a name="try"></a>
+
 ## Try it out!
 
 To try the sample app, we need a gRPC server running locally. Let's compile and run, for example, the C++ server in this repository:
@@ -73,6 +76,7 @@ The next sections guide you step-by-step through how this proto service is defin
 
 
 <a name="proto"></a>
+
 ## Defining the service
 
 First let's look at how the service we're using is defined. A gRPC *service* and its method *request* and *response* types using [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the complete .proto file for our example in [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/protos/route_guide.proto).
@@ -141,6 +145,7 @@ option objc_class_prefix = "RTG";
 
 
 <a name="protoc"></a>
+
 ## Generating client code
 
 Next we need to generate the gRPC client interfaces from our .proto service definition. We do this using the protocol buffer compiler (`protoc`) with a special gRPC Objective-C plugin.
@@ -173,6 +178,7 @@ You can also use the provided Podspec file to generate client code from any othe
 
 
 <a name="client"></a>
+
 ## Creating the client application
 
 In this section, we'll look at creating an Objective-C client for our `RouteGuide` service. You can see our complete example client code in [examples/objective-c/route_guide/ViewControllers.m](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/objective-c/route_guide/ViewControllers.m). (Note: In your apps, for maintainability and readability reasons, you shouldn't put all of your view controllers in a single file; it's done here only to simplify the learning process).
@@ -181,7 +187,7 @@ In this section, we'll look at creating an Objective-C client for our `RouteGuid
 
 To call service methods, we first need to create a service object, an instance of the generated `RTGRouteGuide` class. The designated initializer of the class expects a `NSString *` with the server address and port we want to connect to:
 
-```objective-c
+```
 #import <GRPCClient/GRPCCall+Tests.h>
 #import <RouteGuide/RouteGuide.pbrpc.h>
 
@@ -205,7 +211,7 @@ Now let's look at how we call our service methods. As you will see, all these me
 
 Calling the simple RPC `GetFeature` is as straightforward as calling any other asynchronous method on Cocoa.
 
-```objective-c
+```
 RTGPoint *point = [RTGPoint message];
 point.latitude = 40E7;
 point.longitude = -74E7;
@@ -221,7 +227,7 @@ point.longitude = -74E7;
 
 As you can see, we create and populate a request protocol buffer object (in our case `RTGPoint`). Then, we call the method on the service object, passing it the request, and a block to handle the response (or any RPC error). If the RPC finishes successfully, the handler block is called with a `nil` error argument, and we can read the response information from the server from the response argument. If, instead, some RPC error happens, the handler block is called with a `nil` response argument, and we can read the details of the problem from the error argument.
 
-```objective-c
+```
 NSLog(@"Found feature called %@ at %@.", response.name, response.location);
 ```
 
@@ -229,7 +235,7 @@ NSLog(@"Found feature called %@ at %@.", response.name, response.location);
 
 Now let's look at our streaming methods. Here's where we call the response-streaming method `ListFeatures`, which results in our client app receiving a stream of geographical `RTGFeature`s:
 
-```objective-c
+```
   [service listFeaturesWithRequest:rectangle
                       eventHandler:^(BOOL done, RTGFeature *response, NSError *error) {
     if (response) {
@@ -245,7 +251,7 @@ Notice how the signature of the handler block now includes a `BOOL done` paramet
 The request-streaming method `RecordRoute` expects a stream of `RTGPoint`s from the cient. This stream is passed to the method as an object that conforms to the `GRXWriter` protocol. The simplest way to create one is to initialize one from a `NSArray` object:
 
 
-```objective-c
+```
 #import <gRPC/GRXWriter+Immediate.h>
 
 ...
@@ -277,7 +283,7 @@ The `GRXWriter` protocol is generic enough to allow for asynchronous streams, st
 
 Finally, let's look at our bidirectional streaming RPC `RouteChat()`. The way to call a bidirectional streaming RPC is just a combination of how to call request-streaming RPCs and response-streaming RPCs.
 
-```objective-c
+```
 [service routeChatWithRequestsWriter:notesWriter handler:^(BOOL done, RTGRouteNote *note, NSError *error) {
   if (note) {
     NSLog(@"Got message %@ at %@", note.message, note.location);

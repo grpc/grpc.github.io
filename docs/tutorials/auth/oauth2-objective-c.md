@@ -20,6 +20,7 @@ and are familiar with OAuth2 concepts like _access token_.
 <div id="toc"></div>
 
 <a name="setup"></a>
+
 ## Example code and setup
 
 The example code for our tutorial is in [gprc/examples/objective-c/auth_sample](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/objective-c/auth_sample).
@@ -90,6 +91,7 @@ The next sections guide you step-by-step through how the gRPC call in `MakeRPCVi
 performed. You can see the complete code in [MakeRPCViewController.m](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/objective-c/auth_sample/MakeRPCViewController.m).
 
 <a name="rpc-object"></a>
+
 ## Create an RPC object
 
 The other basic tutorials show how to invoke an RPC by calling an asynchronous method in a generated
@@ -133,6 +135,7 @@ You can start the RPC represented by this object at any later time like this:
 [call start];
 ```
 <a name="request-metadata"></a>
+
 ## Setting request metadata: Auth header with an access token
 
 Now let's look at how to configure some settings on the RPC object. The `ProtoRPC` class has a `requestHeaders`
@@ -162,6 +165,7 @@ call.requestHeaders[@"Authorization"] = [@"Bearer " stringByAppendingString:acce
 ```
 
 <a name="response-metadata"></a>
+
 ## Getting response metadata: Auth challenge header
 
 The `ProtoRPC` class also inherits a pair of properties, `responseHeaders` and `responseTrailers`, analogous to the

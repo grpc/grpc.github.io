@@ -125,13 +125,13 @@ can refer to the <a
 href="https://github.com/grpc/grpc-java/blob/master/README.md">README</a> for
 how to generate code from your own .proto files.
 
-<p>Pre-generated code for the examples is available in <a
+Pre-generated code for the examples is available in <a
 href="https://github.com/grpc/grpc-java/tree/master/examples/src/generated/main">src/generated/main</a>.
 The following classes are generated from our service definition:
 
 - `Feature.java`, `Point.java`, `Rectangle.java`, and others which contain
-  all the protocol buffer code to populate, serialize, and retrieve our request
-  and response message types.
+   all the protocol buffer code to populate, serialize, and retrieve our request
+   and response message types.
 - `RouteGuideGrpc.java` which contains (along with some other useful code):
   - an interface for `RouteGuide` servers to implement,
     `RouteGuideGrpc.RouteGuide`, with all the methods defined in the `RouteGuide`
@@ -141,6 +141,7 @@ The following classes are generated from our service definition:
 
 
 <a name="server"></a>
+
 ## Creating the server
 
 First let's look at how we create a `RouteGuide` server. If you're only interested in creating gRPC clients, you can skip this section and go straight to [Creating the client](#client) (though you might find it interesting anyway!).
@@ -161,6 +162,7 @@ private static class RouteGuideService implements RouteGuideGrpc.RouteGuide {
 ...
 }
 ```
+
 #### Simple RPC
 `RouteGuideService` implements all our service methods. Let's look at the simplest type first, `GetFeature`, which just gets a `Point` from the client and returns the corresponding feature information from its database in a `Feature`.
 
