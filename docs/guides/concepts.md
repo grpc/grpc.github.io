@@ -118,7 +118,6 @@ In gRPC, both the client and server make independent and local determinations of
 
 Either the client or the server can cancel an RPC at any time. A cancellation terminates the RPC immediately so that no further work is done. It is *not* an "undo": changes made before the cancellation will not be rolled back. Of course, RPCs invoked via a synchronous RPC method call cannot be cancelled because program control is not returned to the application until after the RPC has terminated.
 
-<a name="metadata"></a>
 ### Metadata
 
 Metadata is information about a particular RPC call (such as <a href="/docs/guides/auth.html">authentication details</a>) in the form of a list of key-value pairs, where the keys are strings and the values are typically strings (but can be binary data). Metadata is opaque to gRPC itself - it lets the client provide information associated with the call to the server and vice versa.

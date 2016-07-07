@@ -124,6 +124,7 @@ Running this command regenerates the following files in the lib directory:
 
 
 <a name="server"></a>
+
 ## Creating the server
 
 First let's look at how we create a `RouteGuide` server. If you're only interested in creating gRPC clients, you can skip this section and go straight to [Creating the client](#client) (though you might find it interesting anyway!).
@@ -213,6 +214,7 @@ As you can see, we build and start our server using a `GRPC::RpcServer`. To do t
 4. Call `run` on the`GRPC::RpcServer` to create and start an RPC server for our service.
 
 <a name="client"></a>
+
 ## Creating the client
 
 In this section, we'll look at creating a Ruby client for our `RouteGuide` service. You can see our complete example client code in [examples/ruby/route_guide/route_guide_client.rb](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/ruby/route_guide/route_guide_client.rb).
