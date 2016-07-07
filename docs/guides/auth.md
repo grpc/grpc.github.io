@@ -226,7 +226,6 @@ var channel = new Channel("myservice.example.com", channelCredentials);
 var client = new Greeter.GreeterClient(channel);
 ```
 
-
 #### Authenticate with Google
 
 ```csharp
@@ -276,7 +275,7 @@ stub = helloworld_pb2.beta_create_Greeter_stub(channel)
 ```
 
 
-####Authenticate with Google
+#### Authenticate with Google
 
 ```python
 transport_creds = implementations.ssl_channel_credentials(open('roots.pem').read(), None, None)
@@ -340,8 +339,8 @@ ManagedChannel channel = NettyChannelBuilder.forAddress("myservice.example.com",
 GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
 ```
 
-
 #### Authenticate with Google
+
 
 The following code snippet shows how you can call the [Google Cloud PubSub API](https://cloud.google.com/pubsub/overview) using gRPC with a service account. The credentials are loaded from a key stored in a well-known location or by detecting that the application is running in an environment that can provide one automatically, e.g. Google Compute Engine. While this example is specific to Google and its services, similar patterns can be followed for other service providers.
 
@@ -402,7 +401,6 @@ $client = new helloworld\GreeterClient('localhost:50051', [
 ```
 
 #### Authenticate with Google
-
 
 ```php
 function updateAuthMetadataCallback($context)

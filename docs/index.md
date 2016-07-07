@@ -195,6 +195,7 @@ the code to hack on
   $ bundle install
   </pre>
   </div>
+
   <div id="node_source">
 <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
 
@@ -466,7 +467,6 @@ onto the next one where we examine the generated code.)
   href="https://github.com/grpc/grpc-java/tree/master/examples/src/generated/main">src/generated/main</a>.
   The following classes contain all the generated code we need to create our
   example:</p>
-
   <ul>
   <li><code>HelloRequest.java</code>, <code>HelloResponse.java</code>, and
     others which have all the protocol buffer code to populate, serialize, and
@@ -572,7 +572,6 @@ Running the appropriate command for your OS regenerates the following files in t
    <li>a class <code>Greeter.GreeterClient</code> that can be used to access remote RouteGuide instances</li>
    </ul></li>
 </ul>
-
   </div>
 
   <div id="objective-c_generate">
