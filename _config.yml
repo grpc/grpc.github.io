@@ -1,8 +1,5 @@
-markdown:
-  redcarpet
-
-redcarpet:
-  extensions: ["highlight", "with_toc_data", "tables"]
-
+kramdown:
+  input: GFM
+  hard_wrap: false
 sass:
   style: compressed
