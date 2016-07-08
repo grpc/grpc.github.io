@@ -512,7 +512,7 @@ onto the next one where we examine the generated code.)
   $ ./run_codegen.sh
   </pre>
   Which internally invokes the protocol buffer compiler as:
-  <pre>$ protoc -I ../../protos --python_out=. --grpc_out=. --plugin=protoc-gen-grpc=&#96;which grpc&lowbar;python&lowbar;plugin&#96; ../../protos/helloworld.proto</pre>
+  <pre>$ python -m grpc.tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/helloworld.proto</pre>
   This generates <code>helloworld_pb2.py</code>, which contains our generated client and server classes, as well as classes for populating, serializing, and retrieving our <code>HelloRequest</code> and <code>HelloResponse</code> message types.
   </div>
 
