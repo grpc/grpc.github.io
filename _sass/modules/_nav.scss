@@ -197,7 +197,7 @@
     background: url('../img/hero-bg.png') no-repeat center/cover;
     position: fixed;    
     width: 100%;
-    z-index: 9999;
+    z-index: 9000;
     top: -61px;
     transition: $transition--secondary;
     &.on-page {

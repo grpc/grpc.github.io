@@ -1,6 +1,8 @@
 // Background for nav and hero
 .nav-hero-container {
   background: url('../img/hero-bg.png') no-repeat center/cover; 
+  z-index: 9010;
+  position: relative;
 }
 
 // Landing page hero
