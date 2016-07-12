@@ -7,6 +7,7 @@ body {
 
 a {
   color: $mainBrandColor;
+  font-weight: 400;
 }
 
 a:hover,
@@ -22,7 +23,7 @@ a.disabled {
     color: #CCCCCC;
 }
 
-p, 
+p,
 li {line-height: 22px;}
 
 p.note {

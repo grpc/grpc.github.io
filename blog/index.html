@@ -10,9 +10,9 @@ headline:  '[Blog Headline]'
 		<div class="col-md-11 nofloat center-block">
 			<div class="col-sm-10">
 				{% for post in paginator.posts %}
-				
+
 						<a href="{{ site.baseurl }}{{ post.url }}"><h4  id="{{post.id}}" class="post-title">{{ post.title }}</h4></a>
-						
+
 						<div class="post-date">
 							{{ post.date | date: '%B %d, %Y' }}
 						</div>
@@ -32,7 +32,7 @@ headline:  '[Blog Headline]'
 							{{ post.excerpt }}
 						</div>
 						<div class="read-more">
-							<a href="{{ site.baseurl }}{{ post.url }}"><span class="read-more-text">READ MORE</span></a>
+							<a href="{{ site.baseurl }}{{ post.url }}"><span class="read-more-text">Read More</span></a>
 						</div>
 						<hr>
 				{% endfor %}

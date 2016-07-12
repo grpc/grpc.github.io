@@ -9,7 +9,7 @@
     margin-bottom: $spacing--s;
 
     @media(min-width: $tablet) {
-      max-width: 70%; 
+      max-width: 70%;
     }
   }
 
@@ -23,7 +23,7 @@
   }
 
   .about-lists {
-    list-style: disc inside; 
+    list-style: disc inside;
     padding-left: 1em;
     text-indent: -1em;
   }
@@ -76,7 +76,7 @@
   }
 
   .more-btn-text {
-    font-size: .85rem;
+    font-size: .9rem;
 
     &::after {
       background: url('../img/more-arrow.png') no-repeat center/cover;
@@ -84,7 +84,7 @@
       display: inline-block;
       height: 25px;
       margin: 0 0 0 10px;
-      vertical-align: bottom;
+      vertical-align: middle;
       width: 25px;
     }
   }
@@ -153,13 +153,13 @@
       width: 100%;
     }
   }
-  
+
   .pt-desc {
     font-size: .85em;
     font-weight: 300;
     margin-top: $spacing--xxl;
     text-align: center;
-    
+
     @media (min-width: 768px) {
       margin: 0;
       text-align: left;
@@ -179,7 +179,7 @@
     }
 
   }
-  
+
   .videoWrapper {
     height: 0;
     padding-bottom: 56.25%; /* 16:9 */
@@ -194,22 +194,22 @@
     top: 0;
     width: 100%;
   }
-  
+
   // Slick overrides
   .slick-dots {
-    bottom: 50px; 
+    bottom: 50px;
 
     @media (min-width: 321px) {
       bottom: 30px;
     }
-    
+
     & li.slick-active button:before {
-      color: $mainBrandColor; 
+      color: $mainBrandColor;
       opacity: 1;
     }
 
     & li button:before {
-      font-size: 12px; 
+      font-size: 12px;
     }
 
     & li {

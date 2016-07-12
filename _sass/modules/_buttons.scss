@@ -15,12 +15,12 @@
       height: 50px;
       width: 50px;
     }
-    
+
     &:hover,
     &:focus {
       background-color: $white;
     }
-    
+
     &.down-caret {
       bottom: -15px;
       left: 50%;
@@ -92,18 +92,23 @@
 // Link Button
 .btn-link {
   display: inline-block;
-  text-transform: uppercase;
   cursor: pointer;
 }
 
 .icon-caret {
-  background: url('../img/caret.svg') no-repeat center/cover; 
+  background: url('../img/caret.svg') no-repeat center/cover;
   height: 20px;
   margin: 3px auto 0;
   width: 24px;
-  
+
   @media (min-width: $tablet) {
     height: 45px;
     width: 45px;
   }
+}
+
+.external-link-icon {
+  background: url('../img/external-link.svg') no-repeat center/cover;
+  width: 15px;
+  height: 15px;
 }
