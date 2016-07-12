@@ -14,6 +14,7 @@
   right: 0;
   top: 0;
   display: none;
+  font-weight: 300;
 
   @media (min-width: $tablet) {
     display: initial;
@@ -22,6 +23,7 @@
   a {
     font-size: .85rem;
     display: inline-block;
+    color: $gray;
 
     &::after {
       content: none;
@@ -33,14 +35,19 @@
     font-size: .85rem;
   }
 
+  .file-name {
+    font-weight: 500;
+  }
+
   .github {
+    margin-left: 20px;
 
     &:before {
       content: '';
       display: inline-block;
-      background: url('../img/github.svg') no-repeat center/cover; 
-      width: 22px;
-      height: 22px;
+      background: url('../img/github.svg') no-repeat center/cover;
+      width: 32px;
+      height: 32px;
       vertical-align: middle;
     }
   }
