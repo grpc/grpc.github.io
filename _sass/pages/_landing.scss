@@ -56,7 +56,7 @@
     object-position: top;
 
     @media (min-width: $tablet) {
-      max-width: 375px;
+      max-width: initial;
     }
   }
 
