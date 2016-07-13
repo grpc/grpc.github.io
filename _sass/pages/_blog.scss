@@ -35,12 +35,25 @@
     vertical-align: top;
   }
 
-  .post-author {
+  .post-author-company {
+    display: inline-block
+  }
+
+  .post-author, .post-company {
     color: $gray;
-    display: inline-block;
+    display: block;
     font-size: 13px;
+  }
+
+  .post-author {
     margin-top: $spacing--xl;
   }
+
+  .post-company {
+    margin-top: $spacing--xs;
+  }
+
+
   .post-excerpt {
 
     h2 {

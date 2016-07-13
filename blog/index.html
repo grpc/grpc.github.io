@@ -3,7 +3,7 @@ layout: default
 group: 'navigation'
 title: Blog
 bodyclass: blog
-headline:  '[Blog Headline]'
+headline:  'gRPC Blog'
 ---
 <div class="container">
 	<div class="row">
@@ -22,11 +22,21 @@ headline:  '[Blog Headline]'
 						</div>
 						{% endif %}
 
-						{% if post.author %}
-						<div class="post-author">
-							{{ post.author}}
+						<div class="post-author-company">
+							{% if post.author %}
+							<div class="post-author">
+								{{ post.author}}
+							</div>
+							{% endif %}
+
+							{% if post.company %}
+							<div class="post-company">
+								<a href={{post.company-link}} target="_blank">
+									{{ post.company}}
+								</a>
+							</div>
+							{% endif %}
 						</div>
-						{% endif %}
 
 						<div class="post-excerpt">
 							{{ post.excerpt }}
