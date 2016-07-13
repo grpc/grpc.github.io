@@ -20,6 +20,7 @@ a.external {
     @extend .external-link-icon;
     content: "";
     margin-left: 5px;
+    display: inline-block;
   }
 
   &:hover {
