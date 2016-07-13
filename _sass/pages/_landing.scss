@@ -10,7 +10,7 @@
   }
 
   .landing-row {
-    padding-top: 40px;
+    padding-top: 60px;
 
     .landing-row-title {
       margin-bottom: 15px;
@@ -55,7 +55,7 @@
     object-position: top;
 
     @media (min-width: $tablet) {
-      height: 250px;
+      max-width: initial;
     }
   }
 
