@@ -29,6 +29,10 @@
       content: none;
       display: none;
     }
+
+    &:hover {
+      color: $black;
+    }
   }
 
   p {
@@ -49,6 +53,12 @@
       width: 32px;
       height: 32px;
       vertical-align: middle;
+    }
+
+    &:hover {
+      &:before {
+         background: url('../img/github-dark.svg') no-repeat center/cover;
+      }
     }
   }
 }
