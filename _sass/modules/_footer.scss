@@ -34,6 +34,10 @@ footer {
     }
   }
 
+  a.external:after {
+    display: none;
+  }
+
   .active {
     display: initial;
   }
@@ -188,5 +192,9 @@ footer {
 
   .stack-overflow {
     @include social-icon('../img/icon_stack-overflow.svg');
+  }
+
+  .youtube {
+    @include social-icon('../img/icon_youtube.svg');
   }
 }

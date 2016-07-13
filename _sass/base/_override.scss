@@ -7,6 +7,7 @@ body {
 
 a {
   color: $mainBrandColor;
+  font-weight: 400;
 }
 
 a:hover,
@@ -14,15 +15,26 @@ a:focus {
   color: $linkHoverColor;
 }
 
-a.external:after {
-    content: "▸"
+a.external {
+  &:after {
+    @extend .external-link-icon;
+    content: "";
+    margin-left: 5px;
+    display: inline-block;
+  }
+
+  &:hover {
+    &:after {
+      background: url('../img/external-link-dark.svg') no-repeat center/cover;
+    }
+  }
 }
 
 a.disabled {
     color: #CCCCCC;
 }
 
-p, 
+p,
 li {line-height: 22px;}
 
 p.note {

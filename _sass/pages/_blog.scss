@@ -38,7 +38,7 @@
   .post-author-company {
     display: inline-block
   }
-  
+
   .post-author, .post-company {
     color: $gray;
     display: block;
@@ -51,6 +51,10 @@
 
   .post-company {
     margin-top: $spacing--xs;
+
+    a:after {
+      display: none;
+    }
   }
 
 
@@ -68,19 +72,25 @@
   }
 
   .read-more {
-    font-size: 10px;
-    letter-spacing: 0.5px;
-    line-height: 24px;
+    font-size: 14px;
     margin: $spacing--xl 0;
 
     .read-more-text::after {
-      background: url('../img/more-arrow.png') no-repeat center/contain;
+      background: url('../img/more-arrow.svg') no-repeat center/contain;
       content: '';
       display: inline-block;
       height: 24px;
       margin: 0 0 0 10px;
-      vertical-align: bottom;
+      vertical-align: middle;
       width: 24px;
+    }
+
+    .read-more-text {
+      &:hover {
+        &:after {
+          background: url('../img/more-arrow-dark.svg') no-repeat center/contain;
+        }
+      }
     }
   }
   .pagination {
@@ -100,11 +110,11 @@
   }
 
   .caret-left {
-    @include caret('90deg');
+    @include caret(90deg);
   }
 
   .caret-right {
-    @include caret('-90deg');
+    @include caret(-90deg);
   }
 
   .next,
@@ -112,6 +122,15 @@
     display: inline-block;
     line-height: 22px;
     padding: 0;
+  }
+
+  .next a,
+  .previous a {
+    &:hover {
+      span {
+        background: url("../img/caret-dark.svg") no-repeat center/contain;
+      }
+    }
   }
 
   .toc {
