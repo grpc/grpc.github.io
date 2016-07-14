@@ -1,6 +1,40 @@
-<div class="page-spacer"></div>
-<div class="footer">
+<footer>
     <div class="container">
-        <div style="text-align:right">{% include twitter-follow-btn.html %}</div>
+        <div class="left-links">
+            <img class="footer-logo" src="{{ site.baseurl }}/img/grpc-gray.svg" alt="GRPC">
+            <p class="description">&copy;2015 gRPC | a high performance, open-source universal RPC framework</p>
+        </div>
+        <div class="right-links">
+            <div class="col-md-4 col-sm-4 col-xs-12 footer-documentation">
+                <ul class="toggle">
+                    <p class="right-link-headers">Documentation</p>
+                    <li><a href="{{ site.baseurl }}/docs/overview"><p>Overview</p></a></li>
+                    <li><a href="{{ site.baseurl }}/docs/quickstart"><p>Quick Start</p></a></li>
+                    <li><a href="{{ site.baseurl }}/docs/guides"><p>Guides</p></a></li>
+                    <li><a href="{{ site.baseurl }}/docs/tutorials"><p>Tutorials</p></a></li>
+                    <li><a href="{{ site.baseurl }}/docs/reference"><p>Reference APIs</p></a></li>
+                </ul>
+            </div>
+            <hr class="footer-sections" />
+            <div class="col-md-3 col-sm-3 col-xs-12 footer-resources">
+                <ul class="toggle">
+                    <p class="right-link-headers">Resources</p>
+                    <li><a href="{{ site.baseurl }}/about"><p>About</p></a></li>
+                    <li><a href="{{ site.baseurl }}/blog"><p>Blog</p></a></li>
+                    <li><a href="{{ site.baseurl }}/faq"><p>FAQ</p></a></li>
+                </ul>
+            </div>
+            <hr class="footer-sections" />
+            <div class="col-md-5 col-sm-5 col-xs-12 footer-community">
+                <ul class="toggle">
+                    <p class="right-link-headers">Community</p>
+                    <li><a href="https://github.com/grpc/grpc.github.io" target="_blank"><p class="github community-links">Github</p></a></li>
+                    <li><a href="https://plus.google.com/explore/gRPC" target="_blank"><p class="google community-links">Google+</p></a></li>
+                    <li><a href="https://twitter.com/grpcio" target="_blank"><p class="twitter community-links">Twitter</p></a></li>
+                    <li><a href="http://stackoverflow.com/tags/grpc/" target="_blank"><p class="stack-overflow community-links">Stack Overflow</p></a></li>
+                    <li><a href="https://www.youtube.com/channel/UCrnk1HWelWnYtF78YZX80fg" target="_blank"><p class="youtube community-links">YouTube</p></a></li>
+                </ul>
+            </div>
+        </div>
     </div>
-</div>
+</footer>
