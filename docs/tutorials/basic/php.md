@@ -1,11 +1,13 @@
 ---
+bodyclass: docs
 layout: docs
-title: gRPC Basics - PHP
+headline: gRPC Basics - PHP
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
+<p class="lead">This tutorial provides a basic PHP programmer's introduction to working with gRPC.</p>
 
-<h1 class="page-header">gRPC Basics: PHP</h1>
-
-This tutorial provides a basic PHP programmer's introduction to working with gRPC. By walking through this example you'll learn how to:
+By walking through this example you'll learn how to:
 
 - Define a service in a .proto file.
 - Generate client code using the protocol buffer compiler.

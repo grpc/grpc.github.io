@@ -1,5 +1,19 @@
 kramdown:
   input: GFM
   hard_wrap: false
+
+markdown:
+  kramdown
+
+baseurl: /grpc.github.io
+
+githuburl: https://github.com/wildebeestdev/grpc.github.io/edit/gh-pages
+
 sass:
   style: compressed
+  
+paginate: 2
+
+paginate_path: "/blog/page:num/"
+
+excerpt_separator: <!--more-->   

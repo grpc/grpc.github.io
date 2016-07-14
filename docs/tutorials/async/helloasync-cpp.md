@@ -1,6 +1,9 @@
 ---
+bodyclass: docs
 layout: docs
-title: Asynchronous Basics - C++
+headline: Asynchronous Basics - C++
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
 <h1 class="page-header">Asynchronous Basics: C++</h1>
 
