@@ -79,6 +79,12 @@ footer {
       margin-left: 5%;
     }
 
+    .description {
+      @media (min-width: 768px) {
+        padding-top: 9px;
+      }
+    }
+
   }
 
   .right-links {
@@ -131,7 +137,8 @@ footer {
       vertical-align: top;
 
       .right-link-headers {
-        padding: 0 0 10px;
+        padding: 13px 0 14px;
+        line-height: 1em;
 
         &:after {
           content: none;
