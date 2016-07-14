@@ -1,5 +1,5 @@
 .community {
-  margin: 0 0 300px;
+  margin: 0;
 
   @media (max-width: $tablet) {
     margin: 0;
@@ -93,5 +93,16 @@
     font-weight: 500;
     letter-spacing: .5px;
     text-decoration: underline;
+  }
+
+  .youtube-iframe {
+    margin: 20px 0;
+    width: 333px;
+    height: 200px;
+    max-width: 100%;
+    @media (min-width: $tablet) {
+      height: 300px;
+      width: 500px;
+    }
   }
 }
