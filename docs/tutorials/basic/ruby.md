@@ -1,10 +1,10 @@
 ---
+bodyclass: docs
 layout: docs
-title: gRPC Basics - Ruby
+headline: gRPC Basics - Ruby
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
-
-<h1 class="page-header">gRPC Basics: Ruby</h1>
-
 <p class="lead">This tutorial provides a basic Ruby programmer's introduction to working with gRPC.</p>
 
 By walking through this example you'll learn how to:

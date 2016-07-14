@@ -1,6 +1,9 @@
 ---
+bodyclass: docs
 layout: docs
 title: gRPC Basics - Java
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
 
 <h1 class="page-header">gRPC Basics: Java</h1>
@@ -127,6 +130,7 @@ how to generate code from your own .proto files.
 
 Pre-generated code for the examples is available in <a
 href="https://github.com/grpc/grpc-java/tree/master/examples/src/generated/main">src/generated/main</a>.
+
 The following classes are generated from our service definition:
 
 - `Feature.java`, `Point.java`, `Rectangle.java`, and others which contain
@@ -350,6 +354,7 @@ To do this, we:
 5. Call `build()` and `start()` on the builder to create and start an RPC server for our service.
 
 <a name="client"></a>
+
 ## Creating the client
 
 In this section, we'll look at creating a Java client for our `RouteGuide` service. You can see our complete example client code in [grpc-java/examples/src/main/java/io/grpc/examples/RouteGuideClient.java](https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/routeguide/RouteGuideClient.java).

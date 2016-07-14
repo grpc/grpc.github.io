@@ -2,7 +2,7 @@
 layout: post
 title: gRPC - now with easy installation.
 published: true
-permalink: posts/installation
+permalink: blog/installation
 attribution: Originally written by Lisa Carey with help from others at Google.
 ---
 
@@ -13,6 +13,8 @@ Today we are happy to provide an update that significantly simplifies the gettin
    * **For Java, we have simplified the steps needed to add gRPC support to your build tools** by providing plugins for Maven and Gradle. These let you easily depend on the core runtime to deploy or ship generated libraries into production environments.
 
    * You can also use our Dockerfiles to use these updated packages - deploying microservices built on gRPC should now be a very simple experience. 
+
+<!--more-->
 
 The installation story is not yet complete: we are now focused on improving your development experience by packaging our protocol buffer plugins in the same way as the gRPC runtime. This will simplify code generation and setting up your development environment.
 
