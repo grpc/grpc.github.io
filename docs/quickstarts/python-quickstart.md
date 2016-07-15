@@ -33,7 +33,7 @@ Or, to install it system wide:
 
 If you're on Windows, make sure you installed the `pip.exe` component when you
 installed Python. Invoke as above but with `pip.exe` instead of `pip` (you may
-also need to invoke from a `cmd.exe` ran as administrator):
+also need to invoke from a `cmd.exe` run as administrator):
 
 ```sh
   $ pip.exe install grpcio
@@ -41,7 +41,7 @@ also need to invoke from a `cmd.exe` ran as administrator):
 
 ### Install gRPC tools
 
-Python's gRPC tools include the protocol buffer compiler `protoc` and the special plugin for generating server and client code from `.proto` gRPC service definitions. For the first part of our quickstart example, we've already generated the server and client stubs from [helloworld.proto](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/protos/helloworld.proto), but you'll need the tools for the rest of our quickstart, as well as later tutorials and your own projects.
+Python's gRPC tools include the protocol buffer compiler `protoc` and the special plugin for generating server and client code from `.proto` service definitions. For the first part of our quickstart example, we've already generated the server and client stubs from [helloworld.proto](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/protos/helloworld.proto), but you'll need the tools for the rest of our quickstart, as well as later tutorials and your own projects.
 
 To install gRPC tools, run:
 
@@ -69,7 +69,7 @@ From the `examples/python/helloworld` directory:
 1. Run the server
 
    ```sh
-   $ python2.7 greeter_server.py &
+   $ python2.7 greeter_server.py
    ```
 
 2. In another terminal, run the client
@@ -82,7 +82,14 @@ Congratulations! You've just run a client-server application with gRPC.
 
 ## Update a gRPC service
 
-Now let's look at how to update the application with an extra method on the server for the client to call. Our gRPC service is defined using protocol buffers: you can find out lots more about how this works in [What is gRPC?]() and [gRPC Basics: Python][]. For now all you need to know is that both the server and the client "stub" have a `SayHello` RPC method that takes a `HelloRequest` parameter from the client and returns a `HelloResponse` from the server, and that this method is defined like this:
+Now let's look at how to update the application with an extra method on the
+server for the client to call. Our gRPC service is defined using protocol
+buffers; you can find out lots more about how to define a service in a `.proto`
+file in [What is gRPC?]() and [gRPC Basics: Python][]. For now all you need
+to know is that both the server and the client "stub" have a `SayHello` RPC
+method that takes a `HelloRequest` parameter from the client and returns a
+`HelloResponse` from the server, and that this method is defined like this:
+
 
 ```
 // The greeting service definition.
@@ -101,7 +108,7 @@ message HelloReply {
   string message = 1;
 }
 ```
-Let's update this so that the `Greeter` service has two methods. In your IDE or text editor [what should we recommend, Python people?], open `examples/proto/helloworld.proto` and update it with a new `SayHelloAgain` method, with the same request and response types:
+Let's update this so that the `Greeter` service has two methods. Edit `examples/proto/helloworld.proto` and update it with a new `SayHelloAgain` method, with the same request and response types:
 
 ```
 // The greeting service definition.
@@ -136,7 +143,7 @@ $ ./run_codegen.sh
 This script invokes the protocol buffer compiler as:
 
 ```
-$ protoc -I ../../protos --python_out=. --grpc_out=. --plugin=protoc-gen-grpc=&#96;which grpc&lowbar;python&lowbar;plugin&#96; ../../protos/helloworld.proto</pre>
+python -m grpc.tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/helloworld.proto
 ```
 
 This generates `helloworld_pb2.py`, which contains our generated client and server classes, as well as classes for populating, serializing, and retrieving our request and response types.
@@ -150,7 +157,7 @@ We now have new generated server and client code, but we still need to implement
 In the same directory, open `greeter_server.py`. Implement the new method like this:
 
 ```
-class Greeter(helloworld_pb2.BetaGreeterServicer):
+class Greeter(helloworld_pb2.GreeterServicer):
 
   def SayHello(self, request, context):
     return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
@@ -168,11 +175,11 @@ In the same directory, open `greeter_client.py`. Call the new method like this:
 
 ```
 def run():
-  channel = implementations.insecure_channel('localhost', 50051)
-  stub = helloworld_pb2.beta_create_Greeter_stub(channel)
-  response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'), _TIMEOUT_SECONDS)
+  channel = grpc.insecure_channel('localhost:50051')
+  stub = helloworld_pb2.create_Greeter_stub(channel)
+  response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'))
   print("Greeter client received: " + response.message)
-  response = stub.SayHelloAgain(helloworld_pb2.HelloRequest(name='you'), _TIMEOUT_SECONDS)
+  response = stub.SayHelloAgain(helloworld_pb2.HelloRequest(name='you'))
   print("Greeter client received: " + response.message)
 ```
 
@@ -183,7 +190,7 @@ Just like we did before, from the `examples/python/helloworld` directory:
 1. Run the server
 
    ```sh
-   $ python2.7 greeter_server.py &
+   $ python2.7 greeter_server.py
    ```
 
 2. In another terminal, run the client
