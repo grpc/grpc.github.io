@@ -61,18 +61,72 @@ your applications.
 <a name="protocolbuffers"></a>
 By default gRPC uses *protocol buffers*, Google’s
 mature open source mechanism for serializing structured data (although it
-can be used with other data formats such as JSON). As you'll
-see in our example below, you define gRPC services using *proto files*,
-with method parameters and return types specified as protocol buffer message
-types. You
-can find out lots more about protocol buffers in the [Protocol Buffers
-documentation](https://developers.google.com/protocol-buffers/docs/overview).
+can be used with other data formats such as JSON). Here's a quick intro to how
+it works. If you're already familiar with protocol buffers, feel free to skip
+ahead to the next section.
+
+The first step when working with protocol buffers is to define the structure
+forthe data you want to serialize in a *proto file*: this is an ordinary text
+file with a `.proto` extension. Protocol buffer data is structured as
+*messages*, where each message is a small logical record of information
+containing a series of name-value pairs called *fields*. Here's a simple
+example:
+
+```
+message Person {
+  string name = 1;
+  int32 id = 2;
+  bool has_ponycopter = 3;
+}
+```
+
+Then, once you've specified your data structures, you use the protocol buffer
+compiler `protoc` to generate data access classes in your preferred language(s)
+from your proto definition. These provide simple accessors for each field
+(like `name()` and `set_name()`) as well as methods to serialize/parse
+the whole structure to/from raw bytes – so, for instance, if your chosen
+language is C++, running the compiler on the above example will generate a
+class called `Person`. You can then use this class in your application to
+populate, serialize, and retrieve Person protocol buffer messages.
+
+As you'll see in more detail in our examples, you define gRPC services 
+in ordinary proto files, with RPC method parameters and return types specified as
+protocol buffer messages:
+
+```
+// The greeter service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+```
+
+With gRPC you also use `protoc` (this time with a special gRPC plugin) to
+generate code from your proto file. However, with the gRPC plugin, you get
+generated gRPC client and server code, as well as the regular protocol buffer
+code for populating, serializing, and retrieving your message types. We'll
+look at this example in more detail below.
+
+You can find out lots more about protocol buffers in the [Protocol Buffers
+documentation](https://developers.google.com/protocol-buffers/docs/overview),
+and find out how to get and install `protoc` with gRPC plugins in your chosen
+language's Quickstart.
 
 
 #### Protocol buffer versions
 
 While protocol buffers have been available for open source users for some
-time, our examples use a new flavor of protocol buffers called proto3,
+time, our examples use a newer flavor of protocol buffers called proto3,
 which has a slightly simplified syntax, some useful new features, and supports
 lots more languages. This is currently available as a beta release in
 Java, C++, Python, Objective-C, and C#, with an alpha release for JavaNano (Android Java),
