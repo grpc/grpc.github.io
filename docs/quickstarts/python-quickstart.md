@@ -41,13 +41,18 @@ also need to invoke from a `cmd.exe` run as administrator):
 
 ### Install gRPC tools
 
-Python's gRPC tools include the protocol buffer compiler `protoc` and the special plugin for generating server and client code from `.proto` service definitions. For the first part of our quickstart example, we've already generated the server and client stubs from [helloworld.proto](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/protos/helloworld.proto), but you'll need the tools for the rest of our quickstart, as well as later tutorials and your own projects.
+Python's gRPC tools include the protocol buffer compiler `protoc`
+and the special plugin for generating server and client code
+from `.proto` service definitions. For the first part of our
+quickstart example, we've already generated the server and client
+stubs from [helloworld.proto](https://github.com/grpc/grpc/tree/{{site.data.config.grpc_release_branch}}/examples/protos/helloworld.proto),
+but you'll need the tools for the rest of our quickstart, as well as later
+tutorials and your own projects.
 
 To install gRPC tools, run:
 
 ```sh
 pip install grpcio-tools
-
 ```
 
 ## Download the example
@@ -59,8 +64,7 @@ You'll need a local copy of the example code to work through this quickstart. Do
   $ git clone https://github.com/grpc/grpc
   $ # Navigate to the "hello, world" Python example:
   $ cd grpc/examples/python/helloworld
-  ```
-
+```
 
 ## Run a gRPC application
 
@@ -130,14 +134,14 @@ message HelloReply {
 }
 ```
 
-Don't forget to save the file!
+(Don't forget to save the file!)
 
 ## Generate gRPC code
 
 Next we need to update the gRPC code used by our application to use the new service definition. From the `examples/python/helloworld` directory:
 
 ```
-$ ./run_codegen.sh
+$ python2.7 run_codegen.py
 ```
 
 This script invokes the protocol buffer compiler as:
@@ -164,9 +168,7 @@ class Greeter(helloworld_pb2.GreeterServicer):
 
   def SayHelloAgain(self, request, context):
     return helloworld_pb2.HelloReply(message='Hello again, %s!' % request.name)
-
 ...
-
 ```
 
 ### Update the client
@@ -176,7 +178,7 @@ In the same directory, open `greeter_client.py`. Call the new method like this:
 ```
 def run():
   channel = grpc.insecure_channel('localhost:50051')
-  stub = helloworld_pb2.create_Greeter_stub(channel)
+  stub = helloworld_pb2.GreeterStub(channel)
   response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'))
   print("Greeter client received: " + response.message)
   response = stub.SayHelloAgain(helloworld_pb2.HelloRequest(name='you'))
