@@ -57,17 +57,14 @@
 
   // Section Subheadlines
   h4 {
-    margin: 20px 25px;
+    margin: 30px 0 20px;
     font-size: 16px;
     font-weight: 300;
     color: $dark-gray;
     
-    @media (max-width: 768px) {
-      margin: 20px 0;
-    } 
-    // Text immediately following h6 should have same level of indention  
+    // Text immediately following h4 should have same level of indention  
     + p {
-      margin: 5px 25px;
+      margin: 10px 0;
 
       @media (max-width: 768px) {
         margin: 5px 0;
