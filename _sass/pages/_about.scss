@@ -202,9 +202,11 @@
     display: none;
   }
 
-  .img-container:hover .after-overlay {
-    display: block;
-    background: rgba(0,0,0,.2);
+  .pt-content:hover {
+    .after-overlay {
+      display: block;
+      background: rgba(0,0,0,.2);
+    }
   }
 
   .pt-thumbnail {
