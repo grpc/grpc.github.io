@@ -139,7 +139,6 @@ $(document).ready(function() {
 
     // Scroll to sections
     $('.btn-floating').on('click', function(){
-      console.log(('#' +($(this).data("target"))));
       $('html, body').scrollTo(('#' +($(this).data("target"))), 350);
     })
 
