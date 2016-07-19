@@ -2,12 +2,16 @@
 layout: base
 ---
 
-{% include nav.html %}
-{% include hero.html %}
-{% include hero-bar.html %}
+{% include sticky-nav.html %}
 
-<div class="container vpad">
-  {{ content }}
+<div class="nav-hero-container">
+	{% include nav.html %}
+    {% include fork-btn.html %}
+	{% include hero.html %}
 </div>
+
+{{ content }}
+<hr class="section-divider" />
+{% include doc-call.html %}
 
 {% include footer.html %}

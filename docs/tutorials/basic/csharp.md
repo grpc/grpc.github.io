@@ -1,10 +1,10 @@
 ---
+bodyclass: docs
 layout: docs
-title: gRPC Basics - C#
+headline: gRPC Basics - C#
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
-
-<h1 class="page-header">gRPC Basics: C#</h1>
-
 <p class="lead">This tutorial provides a basic C# programmer's introduction to working with gRPC.</p>
 
 
