@@ -13,9 +13,8 @@ title: Python Quickstart
 
 ### Prerequisites
 
-[versions of pip, any other tools, etc. go here]
-
-If you haven't done so already, install the gRPC runtime and gRPC tools.
+* `pip`: version 8 or higher
+* If you haven't done so already, install the gRPC runtime and gRPC tools
 
 ### Install gRPC
 
