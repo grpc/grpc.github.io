@@ -8,7 +8,8 @@ tag.src = "https://www.youtube.com/iframe_api";
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-// list of videoIds
+// Array of videoIds
+// The key corresponds to the data attributes in about/index.html
 var playerInfoList = [
     {type: 'yt', key: 'M7lc1UVf-VE'}, 
     {type: 'yt', key: 'M7lc1UVf-VE'}, 
@@ -20,10 +21,7 @@ function createPlayer(key) {
   $('#player').append('<iframe id="ytplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/'+key+'" frameborder="0" allowfullscreen>');
 }
 
-//function createSlideShare(key) {
-  //$('#player').append('<iframe src="//www.slideshare.net/slideshow/embed_code/key/'+key+'" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe> <div style="margin-bottom:5px"> <strong> <a href="//www.slideshare.net/sujatatibre/g-rpc-talk-with-intel-3" title="Grpc talk with intel (3)" target="_blank">G rpc talk with intel (3)</a> </strong> from <strong><a href="//www.slideshare.net/sujatatibre" target="_blank">Intel</a></strong> </div>'); 
-//}
-
+// click event for presentations/talks in about 
 $('.pt').on('click', function() {
   var self = this,
       video = playerInfoList.filter(function(obj) {
@@ -34,7 +32,6 @@ $('.pt').on('click', function() {
   if (video.type == 'yt') {
     createPlayer(video.key);
   } else {
-    //createSlideShare(key);
     window.open(video.key);
   }
 
@@ -45,6 +42,7 @@ $('.pt').on('click', function() {
 });
 
 
+// Close lightbox when clicking anywhere on overlay
 $('.pt-lightbox').on('click', function() {
   if ($(this).hasClass('active')) {
     $(this).removeClass('active');
@@ -141,11 +139,11 @@ $(document).ready(function() {
 
     // Scroll to sections
     $('.btn-floating').on('click', function(){
-      console.log(('#' +($(this).data("target"))));
       $('html, body').scrollTo(('#' +($(this).data("target"))), 350);
     })
 
     // Invoke slick JS carousel 
+    // Detailed documentation: http://kenwheeler.github.io/slick/
     $('.pt-container').slick({
       arrows: true,
       dots: false,
@@ -198,6 +196,7 @@ $(document).ready(function() {
     $('.nav-toggle, .hamburger').on('click', function(){
       $('.top-nav').toggleClass('right');
     });
+
     $('.nav-doc-toggle').on('click', function(){
       $('.doc-list').toggleClass('active');
     });
