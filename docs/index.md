@@ -66,7 +66,7 @@ it works. If you're already familiar with protocol buffers, feel free to skip
 ahead to the next section.
 
 The first step when working with protocol buffers is to define the structure
-forthe data you want to serialize in a *proto file*: this is an ordinary text
+for the data you want to serialize in a *proto file*: this is an ordinary text
 file with a `.proto` extension. Protocol buffer data is structured as
 *messages*, where each message is a small logical record of information
 containing a series of name-value pairs called *fields*. Here's a simple
@@ -111,7 +111,7 @@ message HelloReply {
 }
 ```
 
-With gRPC you also use `protoc` (this time with a special gRPC plugin) to
+gRPC also uses `protoc` with a special gRPC plugin to
 generate code from your proto file. However, with the gRPC plugin, you get
 generated gRPC client and server code, as well as the regular protocol buffer
 code for populating, serializing, and retrieving your message types. We'll
@@ -126,7 +126,7 @@ language's Quickstart.
 #### Protocol buffer versions
 
 While protocol buffers have been available for open source users for some
-time, our examples use a newer flavor of protocol buffers called proto3,
+time, our examples use the latest flavor of protocol buffers called proto3,
 which has a slightly simplified syntax, some useful new features, and supports
 lots more languages. This is currently available as a beta release in
 Java, C++, Python, Objective-C, and C#, with an alpha release for JavaNano (Android Java),
