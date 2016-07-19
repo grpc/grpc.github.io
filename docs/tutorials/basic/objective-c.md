@@ -1,11 +1,13 @@
 ---
+bodyclass: docs
 layout: docs
-title: gRPC Basics - Objective-C
+headline: gRPC Basics - Objective-C
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
+<p class="lead">This tutorial provides a basic Objective-C programmer's introduction to working with gRPC.</p>
 
-<h1 class="page-header">gRPC Basics: Objective-C</h1>
-
-This tutorial provides a basic Objective-C programmer's introduction to working with gRPC. By walking through this example you'll learn how to:
+By walking through this example you'll learn how to:
 
 - Define a service in a .proto file.
 - Generate client code using the protocol buffer compiler.
