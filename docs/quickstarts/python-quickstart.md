@@ -55,7 +55,7 @@ pip install grpcio-tools
 
 ## Download the example
 
-You'll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository (the command clones the entire repo but you just need the examples for this quickstart and other tutorials):
+You'll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
 
 ```sh
   $ # Clone the repository to get the example code:
