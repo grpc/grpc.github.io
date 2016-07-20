@@ -14,7 +14,6 @@ title: Python Quickstart
 ### Prerequisites
 
 * `pip`: version 8 or higher
-* If you haven't done so already, install the gRPC runtime and gRPC tools
 
 ### Install gRPC
 
@@ -56,7 +55,7 @@ pip install grpcio-tools
 
 ## Download the example
 
-You'll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository:
+You'll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository (the command clones the entire repo but you just need the examples for this quickstart and other tutorials):
 
 ```sh
   $ # Clone the repository to get the example code:
@@ -72,13 +71,13 @@ From the `examples/python/helloworld` directory:
 1. Run the server
 
    ```sh
-   $ python2.7 greeter_server.py
+   $ python greeter_server.py
    ```
 
 2. In another terminal, run the client
 
    ```sh
-   $ python2.7 greeter_client.py
+   $ python greeter_client.py
    ```
 
 Congratulations! You've just run a client-server application with gRPC.
@@ -140,16 +139,10 @@ message HelloReply {
 Next we need to update the gRPC code used by our application to use the new service definition. From the `examples/python/helloworld` directory:
 
 ```
-$ python2.7 run_codegen.py
+$ python run_codegen.py
 ```
 
-This script invokes the protocol buffer compiler as:
-
-```
-python -m grpc.tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/helloworld.proto
-```
-
-This generates `helloworld_pb2.py`, which contains our generated client and server classes, as well as classes for populating, serializing, and retrieving our request and response types.
+This regenerates `helloworld_pb2.py`, which contains our generated client and server classes, as well as classes for populating, serializing, and retrieving our request and response types.
 
 ## Update and run the application
 
@@ -191,13 +184,13 @@ Just like we did before, from the `examples/python/helloworld` directory:
 1. Run the server
 
    ```sh
-   $ python2.7 greeter_server.py
+   $ python greeter_server.py
    ```
 
 2. In another terminal, run the client
 
    ```sh
-   $ python2.7 greeter_client.py
+   $ python greeter_client.py
 ```
 
 ## What's next
