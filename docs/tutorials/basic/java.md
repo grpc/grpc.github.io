@@ -133,11 +133,10 @@ The following classes are generated from our service definition:
    all the protocol buffer code to populate, serialize, and retrieve our request
    and response message types.
 - `RouteGuideGrpc.java` which contains (along with some other useful code):
-  - an interface for `RouteGuide` servers to implement,
-    `RouteGuideGrpc.RouteGuide`, with all the methods defined in the `RouteGuide`
+  - a base class for `RouteGuide` servers to implement,
+    `RouteGuideGrpc.RouteGuideImplBase`, with all the methods defined in the `RouteGuide`
     service.
   - *stub* classes that clients can use to talk to a `RouteGuide` server.
-    The async stub also implements the `RouteGuide` interface.
 
 
 <a name="server"></a>
@@ -148,17 +147,17 @@ First let's look at how we create a `RouteGuide` server. If you're only interest
 
 There are two parts to making our `RouteGuide` service do its job:
 
-- Implementing the service interface generated from our service definition: doing the actual "work" of our service.
+- Implementing the service base class generated from our service definition: doing the actual "work" of our service.
 - Running a gRPC server to listen for requests from clients and return the service responses.
 
 You can find our example `RouteGuide` server in [grpc-java/examples/src/main/java/io/grpc/examples/RouteGuideServer.java](https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/routeguide/RouteGuideServer.java). Let's take a closer look at how it works.
 
 ### Implementing RouteGuide
 
-As you can see, our server has a `RouteGuideService` class that implements the generated `RouteGuideGrpc.Service` interface:
+As you can see, our server has a `RouteGuideService` class that extends the generated `RouteGuideGrpc.RouteGuideImplBase` abstract class:
 
 ```java
-private static class RouteGuideService implements RouteGuideGrpc.RouteGuide {
+private static class RouteGuideService extends RouteGuideGrpc.RouteGuideImplBase {
 ...
 }
 ```
@@ -331,7 +330,7 @@ Once we've implemented all our methods, we also need to start up a gRPC server s
   /** Create a RouteGuide server using serverBuilder as a base and features as data. */
   public RouteGuideServer(ServerBuilder<?> serverBuilder, int port, Collection<Feature> features) {
     this.port = port;
-    server = serverBuilder.addService(RouteGuideGrpc.bindService(new RouteGuideService(features)))
+    server = serverBuilder.addService(new RouteGuideService(features))
         .build();
   }
   ...

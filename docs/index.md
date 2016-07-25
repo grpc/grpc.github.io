@@ -269,14 +269,14 @@ To install the gRPC runtime for your chosen language:
 <p>To install the runtime for your own projects, add the following to your build files:</p>
 
 <p>Gradle:</p>
-<pre>compile 'io.grpc:grpc-all:0.13.1'</pre>
+<pre>compile 'io.grpc:grpc-all:0.15.0'</pre>
 
 <p>Maven:</p>
 <pre>
 &lt;dependency&gt;
   &lt;groupId&gt;io.grpc&lt;/groupId&gt;
   &lt;artifactId&gt;grpc-all&lt;/artifactId&gt;
-  &lt;version&gt;0.13.1&lt;/version&gt;
+  &lt;version&gt;0.15.0&lt;/version&gt;
 &lt;/dependency&gt;
 </pre>
 </div>
@@ -472,19 +472,21 @@ onto the next one where we examine the generated code.)
     others which have all the protocol buffer code to populate, serialize, and
     retrieve our <code>HelloRequest</code> and <code>HelloReply</code> message types</li>
   <li><code>GreeterGrpc.java</code>, which contains (along with some other useful code):
-      <ul><li>an interface for <code>Greeter</code> servers to implement
+      <ul><li>an abstract base class for <code>Greeter</code> servers to implement
 
       <pre>
-      public static interface Greeter {
-          public void sayHello(Helloworld.HelloRequest request,
-              StreamObserver&lt;Helloworld.HelloReply> responseObserver);
+      public static abstract class GreeterImplBase {
+        ...
+        public void sayHello(Helloworld.HelloRequest request,
+            StreamObserver&lt;Helloworld.HelloReply> responseObserver) {
+          ...
+        }
       }
       </pre></li>
 
-      <li> <em>stub</em> classes that clients can use to talk to a <code>Greeter</code> server. As you can see, the async stub also implements the <code>Greeter</code> interface.
+      <li> <em>stub</em> classes that clients can use to talk to a <code>Greeter</code> server.
       <pre>
-      public static class GreeterStub extends AbstractStub&lt;GreeterStub>
-          implements Greeter {
+      public static class GreeterStub extends AbstractStub&lt;GreeterStub> {
         ...
       }
       </pre></li>
@@ -629,8 +631,8 @@ tutorial for your chosen language.
 <a href="https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java#L51">GreeterImpl.java</a>
 actually implements our <code>Greeter</code> service's required behaviour.</p>
 
-As you can see, the class <code>GreeterImpl</code> implements the interface
-<code>GreeterGrpc.Greeter</code> that we <a href="#generating">generated</a> from our proto
+As you can see, the class <code>GreeterImpl</code> extends the abstract class
+<code>GreeterGrpc.GreeterImplBase</code> that we <a href="#generating">generated</a> from our proto
 <a href="https://github.com/grpc/grpc-java/tree/master/examples/src/main/proto">IDL</a> by implementing the method <code>sayHello</code>:</p>
 <pre>
 @Override
@@ -806,7 +808,7 @@ private Server server;
 
 private void start() throws Exception {
   server = ServerBuilder.forPort(port)
-      .addService(GreeterGrpc.bindService(new GreeterImpl()))
+      .addService(new GreeterImpl())
       .build()
       .start();
   logger.info("Server started, listening on " + port);
@@ -1186,7 +1188,7 @@ You can build and run the server from the <code>examples</code> folder. First
 build the client and server.
 
 <pre>
-$ ../gradlew -PskipCodegen=true installDist
+$ ./gradlew -PskipCodegen=true installDist
 </pre>
 
 Then run the server, which will listen on port 50051:
@@ -1251,7 +1253,7 @@ You can build and run the client from the <code>examples</code> folder. If
 you haven't already built the client, build it using:
 
 <pre>
-$ ../gradlew -PskipCodegen=true installDist
+$ ./gradlew -PskipCodegen=true installDist
 </pre>
 
 Then run the client:
