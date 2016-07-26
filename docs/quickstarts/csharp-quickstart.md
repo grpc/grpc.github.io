@@ -25,7 +25,7 @@ dependencies on Grpc, but this explains how to use Grpc in your projects.
 **Windows**
 
 - Open Visual Studio and start a new project/solution. 
-- Add NuGet package `Grpc` as a dependency (Project options -> Manage NuGet Packages).
+- Add NuGet package `Grpc` as a dependency (Project options -> Manage NuGet Packages). (Make sure to check the box to "Include prerelease" to get the pre-release version).
   That will also pull all the transitive dependencies (including the gRPC native library that
   gRPC C# is using internally).
   
@@ -33,7 +33,7 @@ dependencies on Grpc, but this explains how to use Grpc in your projects.
 
 - Open MonoDevelop and start a new project/solution.
 
-- Add NuGet package `Grpc` as a dependency (Project -> Add NuGet packages).
+- Add NuGet package `Grpc` as a dependency (Project -> Add NuGet packages). (Make sure to check the box to "Show pre-release packages" to ge the pre-release version).
   That will also pull all the transitive dependencies (including the gRPC native library that
   gRPC C# is using internally).
 
@@ -41,9 +41,8 @@ dependencies on Grpc, but this explains how to use Grpc in your projects.
 
 - Open Xamarin Studio and start a new project/solution.
 
-- Add NuGet package `Grpc` as a dependency (Project -> Add NuGet packages).
-  That will also pull all the transitive dependencies (including the gRPC native library that
-  gRPC C# is using internally).
+- Add NuGet package `Grpc` as a dependency (Project -> Add NuGet packages). (Make sure to check the box to "Show pre-release packages" to ge the pre-release version). 
+That will also pull all the transitive dependencies (including the gRPC native library thatgRPC C# is using internally).
   
 Example projects depend on the Grpc, Grpc.Tools and Google.Protobuf NuGet packages, which have been already added to the project for you.
 
