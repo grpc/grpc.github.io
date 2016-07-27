@@ -20,12 +20,10 @@ title: Java Quickstart
 You'll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
 
 ```sh
-  $ # Clone the repository to get the example code:
-  $ git clone https://github.com/grpc/grpc-java
-  $ # Navigate to the "hello, world" Python example:
-  $ cd grpc/examples/python/helloworld
-  $ # Check out the latest release:
-  $ git checkout v1.0.0
+  $ # Clone the repository at the latest release to get the example code:
+  $ git clone -b v1.0.0 https://github.com/grpc/grpc-java
+  $ # Navigate to the Java examples:
+  $ cd grpc/examples
 ```
 
 ## Run a gRPC application
