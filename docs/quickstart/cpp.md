@@ -31,6 +31,10 @@ $ cd grpc/third_party/protobuf
 $ sudo make install
 ```
 
+See [the official Protocol Buffers install
+guide](https://github.com/google/protobuf/blob/master/src/README.md) for
+details.
+
 Note that you also need `pkg-config` installed on your system. On Ubuntu/Debian
 systems, this can be done via `sudo apt-get install pkg-config`.
 
