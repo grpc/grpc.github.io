@@ -104,9 +104,9 @@ message HelloReply {
 
 ## Update and run the application
 
-Normal compilation regenerates `GreeterGrpc.java`, which contains our generated client and server classes. It also regenerates classes for populating, serializing, and retrieving our request and response types.
+When we recompile the example, normal compilation will regenerate `GreeterGrpc.java`, which contains our generated gRPC client and server classes. This also regenerates classes for populating, serializing, and retrieving our request and response types.
 
-There's no need to worry about generating new server and client code, but we still need to implement and call the new method in the human-written parts of our example application.
+However, we still need to implement and call the new method in the human-written parts of our example application.
 
 ### Update the server
 
