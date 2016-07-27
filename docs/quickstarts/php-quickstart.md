@@ -62,7 +62,7 @@ You'll need a local copy of the example code to work through this quickstart. Do
 
 ## Run a gRPC application
 
-From the `examples/node/static_codegen` directory:
+From the `examples/node/dynamic_codegen` directory:
 
 1. Run the server
 
@@ -70,9 +70,9 @@ From the `examples/node/static_codegen` directory:
    $ node greeter_server.js
    ```
 
-From the `examples/php` directory:
+In another terminal, from the `examples/php` directory:
 
-2. In another terminal, run the client
+1. Run the client
 
    ```sh
    $ ./run_greeter_client.sh
@@ -140,7 +140,7 @@ Next we need to update the gRPC code used by our application to use the new serv
 $ proto-gen-php -i . -o . helloworld.proto
 ```
 
-This regenerates `helloworld.php`, which contains our generated client and server classes, as well as classes for populating, serializing, and retrieving our request and response types.
+This regenerates `helloworld.php`, which contains our generated client classes, as well as classes for populating, serializing, and retrieving our request and response types.
 
 ## Update and run the application
 
@@ -176,7 +176,7 @@ In the same directory, open `greeter_client.php`. Call the new method like this:
 
 ### Run!
 
-Just like we did before, from the `examples/node/static_codegen` directory:
+Just like we did before, from the `examples/node/dynamic_codegen` directory:
 
 1. Run the server
 
@@ -184,9 +184,9 @@ Just like we did before, from the `examples/node/static_codegen` directory:
    $ node greeter_server.js
    ```
 
-From the `examples/php` directory:
+In another terminal, from the `examples/php` directory:
 
-2. In another terminal, run the client
+2. Run the client
 
    ```sh
    $ ./run_greeter_client.sh
