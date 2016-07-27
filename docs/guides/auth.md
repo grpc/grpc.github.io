@@ -259,42 +259,41 @@ var result = client.SayHello(request, new CallOptions(credentials: googleCredent
 #### Base case - No encryption or authentication
 
 ```python
-from grpc.beta import implementations
+import grpc
 import helloworld_pb2
 
-channel = implementations.insecure_channel('localhost', 50051)
-stub = helloworld_pb2.beta_create_Greeter_stub(channel)
+channel = grpc.insecure_channel('localhost:50051')
+stub = helloworld_pb2.GreeterStub(channel)
 ```
 
 #### With server authentication SSL/TLS
 
 ```python
-from grpc.beta import implementations
+import grpc
 import helloworld_pb2
 
-creds = implementations.ssl_channel_credentials(open('roots.pem').read(), None, None)
-channel = implementations.secure_channel('myservice.example.com', 443, creds)
-stub = helloworld_pb2.beta_create_Greeter_stub(channel)
+creds = grpc.ssl_channel_credentials(open('roots.pem').read())
+channel = grpc.secure_channel('myservice.example.com:443', creds)
+stub = helloworld_pb2.GreeterStub(channel)
 ```
 
 #### Authenticate with Google
 
 ```python
-transport_creds = implementations.ssl_channel_credentials(open('roots.pem').read(), None, None)
+import grpc
+import helloworld_pb2
+from oauth2client import client
+
+transport_creds = grpc.ssl_channel_credentials(open('roots.pem').read())
+credentials = client.GoogleCredentials.get_application_default()
+scoped_credentials = credentials.create_scoped([scope])
 def oauth2token_credentials(context, callback):
-  try:
-    credentials = oauth2client.client.GoogleCredentials.get_application_default()
-    scoped_credentials = credentials.create_scoped([scope])
-  except Exception as error:
-    callback([], error)
-    return
   callback([('authorization', 'Bearer %s' % scoped_credentials.get_access_token().access_token)], None)
 
-auth_creds = implementations.metadata_plugin_credentials(oauth2token_credentials)
-channel_creds = implementations.composite_channel_credentials(transport_creds, auth_creds)
-channel = implementations.secure_channel('greeter.googleapis.com', 443, channel_creds)
-
-stub = helloworld_pb2.beta_create_Greeter_stub(channel)
+auth_creds = grpc.metadata_call_credentials(oauth2token_credentials)
+channel_creds = grpc.composite_channel_credentials(transport_creds, auth_creds)
+channel = grpc.secure_channel('greeter.googleapis.com:443', channel_creds)
+stub = helloworld_pb2.GreeterStub(channel)
 ```
 
 ### Java
