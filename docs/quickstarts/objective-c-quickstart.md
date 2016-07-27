@@ -36,7 +36,7 @@ OS X El Capitan (version 10.11) or above is required to build and run this Quick
    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
    ```
 
-* `autoconf`, `libtool`, `pkg-config`
+* `autoconf`, `automake`, `libtool`, `pkg-config`
    * Install with Homebrew
    ```sh
    brew install autoconf libtool pkg-config
@@ -45,7 +45,7 @@ OS X El Capitan (version 10.11) or above is required to build and run this Quick
 ## Download the example
 
 You'll need a local copy of the sample app source code to work through this
-quickstart. Copy the source code from Github
+Quickstart. Copy the source code from Github
 [repository](https://github.com/grpc/grpc):
 
 ```sh
@@ -103,7 +103,7 @@ $ open HelloWorld.xcworkspace
 
 This will open the app project with Xcode. Run the app in an iOS simulator
 by pressing the Run button on the top left corner of Xcode window. You can check
-the calling code in `main.m` and see the resuls in Xcode's console.
+the calling code in `main.m` and see the results in Xcode's console.
 
 The code sends a `HLWHelloRequest` containing the string "Objective-C" to a
 local server. The server responds with a `HLWHelloResponse`, which contains a
@@ -250,3 +250,45 @@ $ open HelloWorld.xcworkspace
 ```
 and run the client app. Note the effect of the new service by looking at the console messages.
 You should see two RPC calls, one call on SayHello and another call on SayHelloAgain.
+
+## Troubleshooting
+
+**When installing CocoaPods, error prompt `activesupport requires Ruby version >= 2.2.2.`**
+
+Install an older version of `activesupport`, then install CocoaPods:
+```sh
+[sudo] gem install activesupport -v 4.2.6
+[sudo] gem install cocoapods
+```
+
+**Compiler error when compiling `objective_c_plugin.cc`**
+
+Removing `google-protobuf` package with Homebrew before building gRPC may solve
+this problem. We are working on a more elegant fix.
+
+**When building HellowWorld, error prompt `ld: unknown option: --no-as-needed`**
+
+This problem is due to linker `ld` in Apple LLVM not supporting --no-as-needed
+option. We are working on a fix right now and will merge the fix very soon.
+
+**When building grpc, error prompt `cannot find install-sh install.sh or shtool`**
+
+Remove the gRPC directory, clone a new one and try again. It is likely that some
+auto generated files are corrupt; remove and rebuild may solve the problem.
+
+**When building grpc, error prompt `Can't exec "aclocal"`**
+
+The package `automake` is missing. Install `automake` should solve this problem.
+
+**When building grpc, error prompt `possibly undefined macro: AC_PROG_LIBTOOL`**
+
+The package `libtool` is missing. Install `libtool` should solve this problem.
+
+**When building grpc, error prompt `cannot find install-sh, install.sh, or shtool`**
+
+Some of the auto generated files are corrupt. Remove the entire gRPC directory, 
+clone from Github, and build again.
+
+**Cannot find `protoc` when building HelloWorld**
+
+Run `brew install google-protobuf` to obtain `protoc` compiler.
