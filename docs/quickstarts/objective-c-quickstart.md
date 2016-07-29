@@ -5,7 +5,7 @@ title: Objective-C Quickstart
 
 <h1 class="page-header">Objective-C Quickstart</h1>
 
-<p class="lead">This guide gets you started with gRPC on iOS platform in Objective-C with a simple working example.</p>
+<p class="lead">This guide gets you started with gRPC on the iOS platform in Objective-C with a simple working example.</p>
 
 <div id="toc"></div>
 
@@ -19,7 +19,7 @@ OS X El Capitan (version 10.11) or above is required to build and run this Quick
 * `CocoaPods`: version 1.0 or higher
 
    * Check status and version of CocoaPods on your system with command `pod --version`.
-   * If CocoaPods is not installed, follow install instructions on CocoaPods [website](https://cocoapods.org).
+   * If CocoaPods is not installed, follow the install instructions on CocoaPods [website](https://cocoapods.org).
 
 * `Xcode`: version 7.2 or higher
 
@@ -69,8 +69,8 @@ $ brew install google-protobuf
 ## Run the server
 
 For this sample app, we need a gRPC server running on the local machine. gRPC
-Objective-C API supports gRPC client but not gRPC server. Therefore instead we
-build and run the C++ server in the same repository:
+Objective-C API supports creating gRPC clients but not gRPC servers. Therefore 
+instead we build and run the C++ server in the same repository:
 
 ```sh
 $ cd examples/cpp/helloworld
@@ -166,11 +166,11 @@ message HelloReply {
 
 ## Update the client and server
 
-We now have new gRPC service definition, but we still need to implement and call the new method in the human-written parts of our example application.
+We now have a new gRPC service definition, but we still need to implement and call the new method in the human-written parts of our example application.
 
 ### Update the server
 
-Recall that gRPC does not provide Objective-C version server API. We update the C++ sample server for our purpose. Open `examples/cpp/helloworld/greeter_server.cc`. Implement the new method like this:
+As you remember, gRPC doesn't provide a server API for Objective-C. Instead, we need to update the C++ sample server. Open `examples/cpp/helloworld/greeter_server.cc`. Implement the new method like this:
 
 ```
 class GreeterServiceImpl final : public Greeter::Service {
@@ -216,16 +216,14 @@ int main(int argc, char * argv[]) {
 }
 ```
 
-Note that we made the second RPC call with the new gRPC service SayHelloAgain defined above.
-
 ## Build and run
 
-We first terminate the server process already running in the background:
+First terminate the server process already running in the background:
 ```sh
 $ pkill greeter_server
 ```
 
-With current directory being `examples/cpp/helloworld`, build and run the server with the 
+Then in directory `examples/cpp/helloworld`, build and run the updated server with the 
 following commands:
 
 ```sh
@@ -233,7 +231,7 @@ $ make
 $ ./greeter_server &
 ```
 
-Change directory to `examples/objective-c/helloworld`, clean up and reinstall Pods for
+Change directory to `examples/objective-c/helloworld`, then clean up and reinstall Pods for
 the client app with the following commands:
 
 ```sh
@@ -248,8 +246,8 @@ Open the client Xcode project in Xcode:
 ```sh
 $ open HelloWorld.xcworkspace
 ```
-and run the client app. Note the effect of the new service by looking at the console messages.
-You should see two RPC calls, one call on SayHello and another call on SayHelloAgain.
+and run the client app. If you look at the console messages, you should see two RPC calls,
+one to SayHello and one to SayHelloAgain.
 
 ## Troubleshooting
 
@@ -268,7 +266,7 @@ this problem. We are working on a more elegant fix.
 
 **When building HellowWorld, error prompt `ld: unknown option: --no-as-needed`**
 
-This problem is due to linker `ld` in Apple LLVM not supporting --no-as-needed
+This problem is due to linker `ld` in Apple LLVM not supporting the --no-as-needed
 option. We are working on a fix right now and will merge the fix very soon.
 
 **When building grpc, error prompt `cannot find install-sh install.sh or shtool`**
@@ -291,4 +289,4 @@ clone from Github, and build again.
 
 **Cannot find `protoc` when building HelloWorld**
 
-Run `brew install google-protobuf` to obtain `protoc` compiler.
+Run `brew install google-protobuf` to get `protoc` compiler.
