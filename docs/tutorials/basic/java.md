@@ -139,8 +139,6 @@ The following classes are generated from our service definition:
   - *stub* classes that clients can use to talk to a `RouteGuide` server.
 
 
-<a name="server"></a>
-
 ## Creating the server
 
 First let's look at how we create a `RouteGuide` server. If you're only interested in creating gRPC clients, you can skip this section and go straight to [Creating the client](#client) (though you might find it interesting anyway!).
@@ -348,7 +346,6 @@ To do this, we:
 4. Create an instance of our service implementation class `RouteGuideService` and pass it to the builder's `addService()` method.
 5. Call `build()` and `start()` on the builder to create and start an RPC server for our service.
 
-<a name="client"></a>
 ## Creating the client
 
 In this section, we'll look at creating a Java client for our `RouteGuide` service. You can see our complete example client code in [grpc-java/examples/src/main/java/io/grpc/examples/RouteGuideClient.java](https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/routeguide/RouteGuideClient.java).
