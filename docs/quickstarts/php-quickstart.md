@@ -144,7 +144,7 @@ This regenerates `helloworld.php`, which contains our generated client classes, 
 
 ## Update and run the application
 
-We now have new generated server and client code, but we still need to implement and call the new method in the human-written parts of our example application.
+We now have new generated client code, but we still need to implement and call the new method in the human-written parts of our example application.
 
 ### Update the server
 
