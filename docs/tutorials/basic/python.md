@@ -128,7 +128,6 @@ Note that as we've already provided a version of the generated code in the examp
    - `beta_create_RouteGuide_server`, which creates a gRPC server given an `BetaRouteGuideServicer` object
    - `beta_create_RouteGuide_stub`, which can be used by clients to create a stub object
 
-<a name="server"></a>
 ## Creating the server
 
 First let's look at how you create a `RouteGuide` server. If you're only interested in creating gRPC clients, you can skip this section and go straight to [Creating the client](#client) (though you might find it interesting anyway!).
@@ -241,7 +240,6 @@ def serve():
 
 Because `start()` does not block you may need to sleep-loop if there is nothing else for your code to do while serving.
 
-<a name="client"></a>
 ## Creating the client
 
 You can see the complete example client code in [examples/python/route_guide/route_guide_client.py](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/route_guide/route_guide_client.py).
