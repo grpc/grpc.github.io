@@ -39,7 +39,7 @@ OS X El Capitan (version 10.11) or above is required to build and run this Quick
 * `autoconf`, `automake`, `libtool`, `pkg-config`
    * Install with Homebrew
    ```sh
-   brew install autoconf libtool pkg-config
+   brew install autoconf automake libtool pkg-config
    ```
 
 ## Download the example
