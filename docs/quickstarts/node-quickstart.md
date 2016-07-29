@@ -99,7 +99,7 @@ message HelloReply {
 
 (Don't forget to save the file!)
 
-## Update and run the appolication
+## Update and run the application
 
 We now have a new service definition, but we still need to implement and call the new method in the human-written parts of our example application.
 
