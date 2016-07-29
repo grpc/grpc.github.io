@@ -141,7 +141,7 @@ message HelloReply {
 ## Generate gRPC code
 
 Next we need to update the gRPC code used by our application to use the new service definition. 
-The Grpc.Tools NuGet package contains the protoc and protobuf C# plugin binaries you will need to generate the code. This example project already depends on the nuget package `Grpc.Tools.0.15.0`, so it should be included in the `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE. 
+The Grpc.Tools NuGet package contains the protoc and protobuf C# plugin binaries you will need to generate the code. This example project already depends on the nuget package `Grpc.Tools.1.0.0`, so it should be included in the `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE. 
 
 Note that you may have to change the `<platform>_<architecture>` directory names (e.g. windows_x86, linux_x64) in the commands below based on your environment.
 
@@ -152,13 +152,13 @@ From the `examples/csharp/helloworld` directory:
 **Windows**
 
 ```
-$ packages/Grpc.Tools.0.15.0/tools/windows_x86/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.0.15.0/tools/windows_x86/grpc_csharp_plugin
+$ packages/Grpc.Tools.1.0.0/tools/windows_x86/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.1.0.0/tools/windows_x86/grpc_csharp_plugin
 ```
 
 **Linux (or Mac OS X by using macosx_x64 directory).**
 
 ```
-$ packages/Grpc.Tools.0.15.0/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.0.15.0/tools/linux_x64/grpc_csharp_plugin
+$ packages/Grpc.Tools.1.0.0/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.1.0.0/tools/linux_x64/grpc_csharp_plugin
 ```
 
 Running the appropriate command for your OS regenerates the following files in the directory:
