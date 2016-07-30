@@ -1,13 +1,10 @@
 ---
 bodyclass: docs
 layout: docs
-title: gRPC Basics - Java
+headline: gRPC Basics - Java
 sidenav: doc-side-tutorial-nav.html
 type: markdown
 ---
-
-<h1 class="page-header">gRPC Basics: Java</h1>
-
 <p class="lead">This tutorial provides a basic Java programmer's introduction to working with gRPC.</p>
 
 By walking through this example you'll learn how to:
