@@ -1,6 +1,9 @@
 ---
+bodyclass: docs
 layout: docs
-title: Objective-C Quickstart
+headline: Objective-C Quickstart
+sidenav: doc-side-quickstart-nav.html
+type: markdown
 ---
 
 <h1 class="page-header">Objective-C Quickstart</h1>
