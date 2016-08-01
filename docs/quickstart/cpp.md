@@ -1,6 +1,9 @@
 ---
+bodyclass: docs
 layout: docs
-title: C++ Quickstart
+headline: C++ Quickstart
+sidenav: doc-side-quickstart-nav.html
+type: markdown
 ---
 
 <h1 class="page-header">C++ Quickstart</h1>
@@ -178,7 +181,7 @@ In the same directory, open `greeter_server.cc`. Implement the new method like
 this:
 
 
-```c++
+```
 class GreeterServiceImpl final : public Greeter::Service {
   Status SayHello(ServerContext* context, const HelloRequest* request,
                   HelloReply* reply) override {
@@ -201,7 +204,7 @@ A new `SayHelloAgain` method is now available in the stub. We'll follow the same
 pattern as for the already present `SayHello` and add a new `SayHelloAgain`
 method to `GreeterClient`:
 
-```c++
+```
 class GreeterClient {
  public:
   // ...
@@ -231,7 +234,7 @@ class GreeterClient {
 
 Finally, we exercise this new method in `main`:
 
-```c++
+```
 int main(int argc, char** argv) {
   // ...
   std::string reply = greeter.SayHello(user);
