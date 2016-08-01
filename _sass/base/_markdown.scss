@@ -26,8 +26,8 @@
   ul {
     list-style: initial;
     list-style-position: inside;
-    color: $dark-gray;
     font-size: 15px;
+    font-weight: 300;
     margin: 0 20px;
 
     @media (max-width: 768px) {
