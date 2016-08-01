@@ -60,6 +60,14 @@ pre, pre.prettyprint {
   padding: 9.5px !important;
 }
 
+pre code {
+  white-space: pre;
+
+  @media print {
+    white-space: pre-wrap;
+  }
+}
+
 .inverse {
   background-color: $mainBrandColor;
   color: white;
