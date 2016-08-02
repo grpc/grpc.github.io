@@ -1,10 +1,10 @@
 ---
+bodyclass: docs
 layout: docs
-title: gRPC Basics - Go
+headline: gRPC Basics - Go
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
-
-<h1 class="page-header">gRPC Basics: Go</h1>
-
 <p class="lead">This tutorial provides a basic Go programmer's introduction to working with gRPC.</p>
 
 By walking through this example you'll learn how to:
@@ -127,6 +127,7 @@ This contains:
 
 
 <a name="server"></a>
+
 ## Creating the server
 
 First let's look at how we create a `RouteGuide` server. If you're only interested in creating gRPC clients, you can skip this section and go straight to [Creating the client](#client) (though you might find it interesting anyway!).
@@ -295,6 +296,7 @@ To build and start a server, we:
 4. Call `Serve()` on the server with our port details to do a blocking wait until the process is killed or `Stop()` is called.
 
 <a name="client"></a>
+
 ## Creating the client
 
 In this section, we'll look at creating a Go client for our `RouteGuide` service. You can see our complete example client code in [grpc-go/examples/route_guide/client/client.go](https://github.com/grpc/grpc-go/tree/master/examples/route_guide/client/client.go).

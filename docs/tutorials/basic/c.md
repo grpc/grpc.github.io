@@ -1,10 +1,10 @@
 ---
+bodyclass: docs
 layout: docs
-title: gRPC Basics - C++
+headline: gRPC Basics - C++ 
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
-
-<h1 class="page-header">gRPC Basics: C++</h1>
-
 <p class="lead">This tutorial provides a basic C++ programmer's introduction to working with gRPC.</p>
 
 By walking through this example you'll learn how to:
@@ -132,6 +132,7 @@ These contain:
 
 
 <a name="server"></a>
+
 ## Creating the server
 
 First let's look at how we create a `RouteGuide` server. If you're only interested in creating gRPC clients, you can skip this section and go straight to [Creating the client](#client) (though you might find it interesting anyway!).
@@ -248,6 +249,7 @@ As you can see, we build and start our server using a `ServerBuilder`. To do thi
 5. Call `Wait()` on the server to do a blocking wait until process is killed or `Shutdown()` is called.
 
 <a name="client"></a>
+
 ## Creating the client
 
 In this section, we'll look at creating a C++ client for our `RouteGuide` service. You can see our complete example client code in [examples/cpp/route_guide/route_guide_client.cc](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/route_guide/route_guide_client.cc).

@@ -2,52 +2,50 @@
 layout: landing
 title: grpc.io
 ---
+<div id="landing-content" class="container landing-content-container">
+    <div class="row" >
+        <div class="col-md-11 nofloat center-block landing-row">
+            <h3 class="col-sm-7 landing-row-title">Simple service definition</h3>
+            <p class="col-sm-7">Define your service using Protocol Buffers, a powerful binary serialization toolset and language</p>
+            <div class="col-sm-7">
+                <a href="{{ site.baseurl }}/docs/guides/concepts.html#service-definition"><button class="btn btn-grpc waves-effect waves-light btn-read-more">READ MORE</button></a>
+            </div>
+            <img class="col-sm-5 nofloat landing-image" src="{{ site.baseurl }}/img/landing-1.svg" alt="Microservices">
+        </div>
+    </div>
 
+    <div class="row" >
+        <div class="col-md-11 nofloat center-block landing-row">
+            <img class="col-sm-5 landing-image" src="{{ site.baseurl }}/img/landing-2.svg" alt="Mobile">
+            <h3 class="col-sm-7 landing-row-title">Works across languages and platforms</h3>
+            <p class="col-sm-7">Automatically generate idiomatic client and server stubs for your service in a variety of languages and platforms</p>
+            <div class="col-sm-7">
+                <a href="{{ site.baseurl }}/about#osp"><button class="btn btn-grpc waves-effect waves-light btn-read-more">READ MORE</button></a>
+            </div>
+        </div>
+    </div>
 
-<div class="row landing-context">
-  <div class="col-sm-4">
-    <h3>Powerful IDL</h3>
-    <p>
-      Define your service using Protocol Buffers, a powerful binary serialization toolset and language.
-<pre>
-message HelloRequest {
-  string greeting = 1;
-}
+    <div class="row" >
+        <div class="col-md-11 nofloat center-block landing-row">
+            <h3 class="col-sm-7 landing-row-title">Start quickly and scale</h3>
+            <p class="col-sm-7">Install runtime and dev environments with a single line and also scale to millions of RPCs per second with the framework</p>
+            <div class="col-sm-7">
+                <a href="{{ site.baseurl }}/docs/quickstart"><button class="btn btn-grpc waves-effect waves-light btn-read-more">READ MORE</button></a>
+            </div>
+            <img class="col-sm-5 nofloat landing-image" src="{{ site.baseurl }}/img/landing-3.svg" alt="Web">
+        </div>
+    </div>
 
-message HelloResponse {
-  string reply = 1;
-}
+    <div class="row" >
+        <div class="col-md-11 nofloat center-block landing-row">
+            <img class="col-sm-5 landing-image" src="{{ site.baseurl }}/img/landing-4.svg" alt="Efficient Apis">
+            <h3 class="col-sm-7 landing-row-title">Bi-directional streaming and integrated auth</h3>
+            <p class="col-sm-7">Bi-directional streaming and fully integrated pluggable authentication with http/2 based transport</p>
+            <div class="col-sm-7 col-sm-offset-5 col-sm-offset-0">
+                <a href="{{ site.baseurl }}/docs/guides/auth.html"><button class="btn btn-grpc waves-effect waves-light btn-read-more">READ MORE</button></a>
+            </div>
+        </div>
+    </div>
 
-service HelloService {
-  rpc SayHello(HelloRequest) returns
-  (HelloResponse);
-}
-</pre>
-    </p>
-  </div>
-  <div class="col-sm-4">
-    <h3>Libraries in ten languages</h3>
-    <p>Automatically generate idiomatic client and server stubs for your service in a variety of languages.</p>
-    <p>
-      gRPC has libraries in: <br><span class="lang-list">{% include lang-list.html %}</span>
-    </p>
-    <h3>Get started</h3>
-    <p>
-      <a href="/docs/">Overview Guide</a><br>
-      <a href="/docs/reference/">API Reference Docs</a>
-    </p>
-  </div>
-  <div class="col-sm-4">
-    <h3>HTTP/2</h3>
-    <p>
-      Building on the <a href="https://http2.github.io/">HTTP/2 standard</a> brings many capabilities such as bidirectional streaming, flow control, header compression, multiplexing requests over a single TCP connection and more.
-    </p>
-    <p>
-      These features save battery life and data usage on mobile devices while speeding up services and web applications running in the cloud.
-    </p>
-    <h3>Why gRPC?</h3>
-    <p>
-      Read the <a href="/posts/principles">Design Motivations &amp; Principles</a> behind gRPC.
-    </p>
-  </div>
+    <button class="btn btn-floating waves-effect down-caret down-caret" data-target="doc-call"><div class="icon-caret"></div></button>
 </div>
