@@ -1,6 +1,9 @@
 ---
+bodyclass: docs
 layout: docs
-title: C# Quickstart
+headline: C# Quickstart
+sidenav: doc-side-quickstart-nav.html
+type: markdown
 ---
 
 <h1 class="page-header">C# Quickstart</h1>
@@ -17,36 +20,10 @@ title: C# Quickstart
 * Linux: Mono 4+, MonoDevelop 5.9+ (with NuGet add-in installed)
 * Mac OS X: Xamarin Studio 5.9+
 
-### How to use Grpc
+## Download the example
 
 The example solution in this walkthrough already adds the necessary
-dependencies on Grpc, but this explains how to use Grpc in your projects.
-
-**Windows**
-
-- Open Visual Studio and start a new project/solution. 
-- Add NuGet package `Grpc` as a dependency (Project options -> Manage NuGet Packages). (Make sure to check the box to "Include prerelease" to get the pre-release version).
-  That will also pull all the transitive dependencies (including the gRPC native library that
-  gRPC C# is using internally).
-  
-**Linux (Debian)**
-
-- Open MonoDevelop and start a new project/solution.
-
-- Add NuGet package `Grpc` as a dependency (Project -> Add NuGet packages). (Make sure to check the box to "Show pre-release packages" to ge the pre-release version).
-  That will also pull all the transitive dependencies (including the gRPC native library that
-  gRPC C# is using internally).
-
-**Mac OS X**
-
-- Open Xamarin Studio and start a new project/solution.
-
-- Add NuGet package `Grpc` as a dependency (Project -> Add NuGet packages). (Make sure to check the box to "Show pre-release packages" to ge the pre-release version). 
-That will also pull all the transitive dependencies (including the gRPC native library thatgRPC C# is using internally).
-  
-Example projects depend on the Grpc, Grpc.Tools and Google.Protobuf NuGet packages, which have been already added to the project for you.
-
-## Download the example
+dependencies for you (Grpc, Grpc.Tools and Google.Protobuf NuGet packages).
 
 You'll need a local copy of the example code to work through this quickstart. 
 Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
@@ -60,7 +37,7 @@ All of the files in this quickstart are in the directory `examples/csharp/hellow
 
 ## Build the example
 
-* Open solution `Greeter.sln` with Visual Studio, Monodevelop (on Linux) or Xamarin Studio (on Mac OS X)
+* Open the solution `Greeter.sln` with Visual Studio, Monodevelop (on Linux) or Xamarin Studio (on Mac OS X)
 * Build the solution (this will automatically download NuGet dependencies)
   
 ## Run a gRPC application
@@ -81,7 +58,7 @@ From the `examples/csharp/helloworld` directory:
 > GreeterClient.exe
 ```
 
-Note to run the above executables with "mono" if building on Xamarin Studio for Mac OS X.
+You'll need to run the above executables with "mono" if building on Xamarin Studio for Mac OS X.
 
 Congratulations! You've just run a client-server application with gRPC.
 
@@ -141,11 +118,11 @@ message HelloReply {
 ## Generate gRPC code
 
 Next we need to update the gRPC code used by our application to use the new service definition. 
-The Grpc.Tools NuGet package contains the protoc and protobuf C# plugin binaries you will need to generate the code. This example project already depends on the nuget package `Grpc.Tools.1.0.0`, so it should be included in the `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE. 
+The Grpc.Tools NuGet package contains the protoc and protobuf C# plugin binaries you will need to generate the code. This example project already depends on the NuGet package `Grpc.Tools.1.0.0`, so it should be included in the `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE. 
 
-Note that you may have to change the `<platform>_<architecture>` directory names (e.g. windows_x86, linux_x64) in the commands below based on your environment.
+Note that you may have to change the `platform_architecture` directory names (e.g. windows_x86, linux_x64) in the commands below based on your environment.
 
-Note that you may also have to change the permissions of the protoc and protobuf binaries in the `Grpc.Tools` package under `examples/csharp/helloworld/packages` to executable, in order to run the commands below.
+Note that you may also have to change the permissions of the protoc and protobuf binaries in the `Grpc.Tools` package under `examples/csharp/helloworld/packages` to executable in order to run the commands below.
 
 From the `examples/csharp/helloworld` directory:
 
