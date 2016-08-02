@@ -1,13 +1,14 @@
 ---
+bodyclass: docs
+headline: Error Handling
 layout: docs
+sidenav: doc-side-guides-nav.html
 title: Error Handling
+type: markdown
 ---
+<p class="lead"> This page describes how gRPC deals with errors, including gRPC's built-in error codes.</p>
 
-<h2 class="page-header">Error Handling</h2>
-
-<div id="toc"></div>
-
-This page describes how gRPC deals with errors, including gRPC's built-in error codes.
+<div id="toc" class="toc mobile-toc"></div>
 
 ## Error model
 

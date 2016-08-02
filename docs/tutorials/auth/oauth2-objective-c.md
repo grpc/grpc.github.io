@@ -1,12 +1,14 @@
 ---
+bodyclass: docs
 layout: docs
-title: OAuth2 on gRPC - Objective-C
+headline: OAuth2 on gRPC - Objective-C
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
+<p class="lead">This example demonstrates how to use OAuth2 on gRPC to make authenticated API calls on
+behalf of a user.</p>
 
-<h1 class="page-header">OAuth2 on gRPC: Objective-C</h1>
-
-This example demonstrates how to use OAuth2 on gRPC to make authenticated API calls on
-behalf of a user. By walking through it you'll also learn how to use the Objective-C gRPC API to:
+By walking through it you'll also learn how to use the Objective-C gRPC API to:
 
 - Initialize and configure a remote call object before the RPC is started.
 - Set request metadata elements on a call, which are semantically equivalent to HTTP request
@@ -57,6 +59,7 @@ latter by following [these setup instructions](https://github.com/grpc/homebrew-
 
 
 <a name="try"></a>
+
 ## Try it out!
 
 To try the sample app, first have Cocoapods generate and install the client library for our .proto
