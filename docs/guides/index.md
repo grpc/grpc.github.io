@@ -9,7 +9,7 @@ customjs: //survey.g.doubleclick.net/async_survey?site=dgxvheagfp4ai24o6y2ammm5f
 ---
 
 This document introduces you to gRPC and protocol buffers. gRPC can use
-protocol buffers as both it's IDL and as its underlying message 
+protocol buffers as both its IDL and as its underlying message
 interchange format. If you’re new to gRPC and/or protocol buffers, read this!
 If you just want to dive in and see gRPC in action first,
 see our [Quickstarts](../quickstart).
