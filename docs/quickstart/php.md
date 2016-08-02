@@ -1,7 +1,7 @@
 ---
 bodyclass: docs
-headline: PHP Quick Start
 layout: docs
+headline: PHP Quickstart
 sidenav: doc-side-quickstart-nav.html
 type: markdown
 ---
