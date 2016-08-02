@@ -5,9 +5,6 @@ headline: C++ Quickstart
 sidenav: doc-side-quickstart-nav.html
 type: markdown
 ---
-
-<h1 class="page-header">C++ Quickstart</h1>
-
 <p class="lead">This guide gets you started with gRPC in C++ with a simple
 working example.</p>
 

@@ -5,9 +5,6 @@ headline: Python Quickstart
 sidenav: doc-side-quickstart-nav.html
 type: markdown
 ---
-
-<h1 class="page-header">Python Quickstart</h1>
-
 <p class="lead">This guide gets you started with gRPC in Python with a simple working example.</p>
 
 <div id="toc"></div>
