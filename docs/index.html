@@ -76,49 +76,48 @@ bodyclass: docs
   <div class="row">
     <div class="col-md-11 nofloat center-block">
       <h2 class="col-sm-8 doc-header">gRPC by Use Cases</h2>
-      <h5 class="col-sm-8 ">gRPC for Last Mile of Computing</h5>
       <div class="col-sm-10 use-description">
-        <p>gRPC helps generate libraries for iOS and Android as well as offers a JS library for use in browsers.  We are eager to see how it plays in IOT environment as well :-)</p>
+        <p>gRPC is used in last mile of computing in mobile and web client since it can generare libraries for iOS and Android and uses standards based HTTP/2 as transport allowing it to easily traverse proxies and firewalls. There is also work underway to develop a JS library for use in browsers. Beyond that, it is ideal as a microservices interconnect, not just because the core protocol is very efficient but also because the framework has pluggable authentication, load balancing etc. Google itself is also transitioning to use it to connect microservices. </p>
       </div>
       <div class="lang-card-selector col-sm-10">
         <div class="lang-card">
-          <div class="lang-card-title">Mobile</div>
-          <a class="lang-card-link" href="#">Build RouteGuide Client on iOS</a>
-          <a class="lang-card-link" href="#">Build RouteGuide Client on Android</a>
-          <a class="lang-card-link" href="#">Gboard case study</a>
-          <a class="lang-card-link" href="#">Benchmarks on mobile</a>
+          <div class="lang-card-title">Last Mile of Computing</div>
+          <a class="lang-card-link" href="{{ site.baseurl }}/docs/tutorials/basic/objective-c.html">Mobile: Example RouteGuide Client on iOS</a>
+          <a class="lang-card-link" href="#">Mobile: Example RouteGuide Client on Android</a>
+          <a class="lang-card-link" href="https://docs.google.com/forms/u/0/d/15iRDHoP-VBenc4hWgKn7bk7IirJLgs0uh88nw1vi_Hc/edit">Web *(Coming soon) - Early Access Sign Up</a>
+          <a class="lang-card-link" href="{{site.baseurl}}/blog/mobile-benchmarks/">Benchmarks on mobile</a>
           
         </div>
         <div class="lang-card">
-          <div class="lang-card-title">Web* (Coming Soon)</div>
-          <a class="lang-card-link" href="https://docs.google.com/forms/u/0/d/15iRDHoP-VBenc4hWgKn7bk7IirJLgs0uh88nw1vi_Hc/edit">Sign up for Early Access of gRPC-web</a>
+          <div class="lang-card-title">APIs</div>
+          <a class="lang-card-link" href="https://github.com/GoogleCloudPlatform/cloud-bigtable-client">Google Cloud BigTable Client APIs</a>
+          <a class="lang-card-link" href="https://cloud.google.com/blog/big-data/2016/03/announcing-grpc-alpha-for-google-cloud-pubsub">Google Cloud PubSub APIs</a>
+          <a class="lang-card-link" href="https://cloud.google.com/speech/reference/rpc/">Google Cloud Speech APIs</a>
+          <a class="lang-card-link" href="{{site.baseurl}}/blog/vendasta/">Vendasta gRPC APIs</a>
+                
         </div>
         <div class="lang-card">
-          <div class="lang-card-title">Reverse Proxy</div>
+          <div class="lang-card-title">Microservices</div>
           <a class="lang-card-link" href="https://nghttp2.org/blog/2015/03/24/proxying-grpc-with-nghttpx/">How to use gRPC with nghttp2</a>
+          <a class="lang-card-link" href="https://github.com/openzipkin/brave/tree/master/brave-grpc">Tracing gRPC services using Zipkin in Java</a>
+          <a class="lang-card-link" href="https://github.com/dinowernli/java-grpc-prometheus">Monitoring gRPC services using Prometheus in Java </a>
+          <a class="lang-card-link" href="https://github.com/mwitkow/go-grpc-prometheus">Monitoring gRPC services using Prometheus in Go </a>
+          <a class="lang-card-link" href="https://github.com/grpc/grpc/blob/master/doc/load-balancing.md">Load Balancing in gRPC</a>
+
         </div>
       </div>
-      <h5 class="col-sm-8">gRPC for Microservices</h5>
+      <h5 class="col-sm-8">gRPC Ecosystem and Community Projects</h5>
       <div class="row col-sm-10 use-description">
-        <p>gRPC is ideal as a microservices interconnect, not just because the core protocol is very efficient but also because the framework is very pluggable and works with various other technologies seamlessly.</p>
+        <p>gRPC now has a vibrant community of companies, projects, developers who are extending and building around it. Here are some popular projects. </p>
       </div>
       <div class="lang-card-selector col-sm-10">
         <div class="lang-card">
-          <div class="lang-card-title">Analytics</div>
-          <a class="lang-card-link" href="#">Tracing using Zipkin</a>
+          <div class="lang-card-title">Popular Projects</div>
+          <a class="lang-card-link" href="https://github.com/grpc-ecosystem/grpc-gateway">gRPC Gateway: gRPC to JSON Proxy generator</a>
+          <a class="lang-card-link" href="https://github.com/grpc-ecosystem/polyglot">Polyglot: Universal gRPC command line client</a>
+          <a class="lang-card-link" href="https://github.com/google/flatbuffers/tree/master/grpc">FlatBuffer support for gRPC</a>
+           <a class="lang-card-link" href="https://github.com/go-kit/kit/tree/master/transport/grpc">Go Microservices kit with gRPC transport</a>  
         </div>
-        <div class="lang-card">
-          <div class="lang-card-title">Naming and Load Balancing</div>
-          <a class="lang-card-link" href="https://github.com/grpc/grpc/blob/master/doc/load-balancing.md">Load Balancing in gRPC</a>
-          <a class="lang-card-link" href="#">Recommended approach for client side load balancing with gRPC</a>
-        </div>
-        <div class="lang-card">
-          <div class="lang-card-title">Service Discovery and Testing</div>
-          <a class="lang-card-link" href="#">How to use with etcd and zookeeper</a>
-          <a class="lang-card-link" href="#">gRPC CLI</a>
-          <a class="lang-card-link" href="#">Reflection support in all languages</a>
-        </div>
-      </div>
     </div>
   </div>
 </div>
