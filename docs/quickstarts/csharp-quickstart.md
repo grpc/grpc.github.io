@@ -22,9 +22,6 @@ type: markdown
 
 ## Download the example
 
-The example solution in this walkthrough already adds the necessary
-dependencies for you (Grpc, Grpc.Tools and Google.Protobuf NuGet packages).
-
 You'll need a local copy of the example code to work through this quickstart. 
 Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
 
@@ -34,6 +31,9 @@ $ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
 ```
 
 All of the files in this quickstart are in the directory `examples/csharp/helloworld`.
+
+The example solution in this walkthrough already adds the necessary
+dependencies for you (Grpc, Grpc.Tools and Google.Protobuf NuGet packages).
 
 ## Build the example
 
