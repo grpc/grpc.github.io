@@ -1,13 +1,14 @@
 ---
+bodyclass: docs
+headline: gRPC over HTTP2 protocol
 layout: docs
+sidenav: doc-side-guides-nav.html
 title: Wire Protocol
+type: markdown
 ---
+<p class="lead">This document serves as a detailed description for an implementation of gRPC carried over HTTP2 draft 17 framing. It assumes familiarity with the HTTP2 specification. Production rules use <a href="http://tools.ietf.org/html/rfc5234">ABNF syntax</a>.</p>
 
-<h1 class="page-header">gRPC over HTTP2 protocol</h1>
-
-<div id="toc"></div>
-
-This document serves as a detailed description for an implementation of gRPC carried over HTTP2 draft 17 framing. It assumes familiarity with the HTTP2 specification. Production rules use <a href="http://tools.ietf.org/html/rfc5234">ABNF syntax</a>.
+<div id="toc" class="toc mobile-toc"></div>
 
 ## Outline
 
@@ -85,6 +86,7 @@ For responses end-of-stream is indicated by the presence of the END_STREAM flag 
 
 Implementations should expect broken deployments to send non-200 HTTP status codes in responses as well as a variety of non-GRPC content-types and to omit **Status** & **Status-Message**. Implementations must synthesize a **Status** & **Status-Message** to propagate to the application layer when this occurs.
 
+
 ## Example
 
 Sample unary-call showing HTTP2 framing sequence
@@ -141,8 +143,10 @@ grpc-java-android/0.9.1 (gingerbread/1.2.4; nexus5; tmobile)
 ### Stream Identification
 All GRPC calls need to specify an internal ID. We will use HTTP2 stream-ids as call identifiers in this scheme. NOTE: These id’s are contextual to an open HTTP2 session and will not be unique within a given process that is handling more than one HTTP2 session nor can they be used as GUIDs.
 
+
 ### Data Frames
 DATA frame boundaries have no relation to **Delimited-Message** boundaries and implementations should make no assumptions about their alignment.
+
 
 ### Errors
 
@@ -176,6 +180,7 @@ The HTTP2 specification mandates the use of TLS 1.2 or higher when TLS is used w
 ### Connection Management
 
 #### GOAWAY Frame
+
 Sent by servers to clients to indicate that they will no longer accept any new streams on the associated connections. This frame includes the id of the last successfully accepted stream by the server. Clients should consider any stream initiated after the last successfully accepted stream as UNAVAILABLE and retry the call elsewhere. Clients are free to continue working with the already accepted streams until they complete or the connection is terminated.
 
 Servers should send GOAWAY before terminating a connection to reliably inform clients which work has been accepted by the server and is being executed.
