@@ -20,10 +20,10 @@ type: markdown
 You'll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
 
 ```sh
-  $ # Clone the repository at the latest release to get the example code:
-  $ git clone -b v1.0.0 https://github.com/grpc/grpc-java
-  $ # Navigate to the Java examples:
-  $ cd grpc/examples
+$ # Clone the repository at the latest release to get the example code:
+$ git clone -b {{ site.data.config.grpc_java_release_tag }} https://github.com/grpc/grpc-java
+$ # Navigate to the Java examples:
+$ cd grpc/examples
 ```
 
 ## Run a gRPC application
@@ -113,22 +113,22 @@ However, we still need to implement and call the new method in the human-written
 In the same directory, open `src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java`. Implement the new method like this:
 
 ```
-  private class GreeterImpl extends GreeterGrpc.GreeterImplBase {
+private class GreeterImpl extends GreeterGrpc.GreeterImplBase {
 
-    @Override
-    public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
-      HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + req.getName()).build();
-      responseObserver.onNext(reply);
-      responseObserver.onCompleted();
-    }
-
-    @Override
-    public void sayHelloAgain(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
-      HelloReply reply = HelloReply.newBuilder().setMessage("Hello again " + req.getName()).build();
-      responseObserver.onNext(reply);
-      responseObserver.onCompleted();
-    }
+  @Override
+  public void sayHello(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
+    HelloReply reply = HelloReply.newBuilder().setMessage("Hello " + req.getName()).build();
+    responseObserver.onNext(reply);
+    responseObserver.onCompleted();
   }
+
+  @Override
+  public void sayHelloAgain(HelloRequest req, StreamObserver<HelloReply> responseObserver) {
+    HelloReply reply = HelloReply.newBuilder().setMessage("Hello again " + req.getName()).build();
+    responseObserver.onNext(reply);
+    responseObserver.onCompleted();
+  }
+}
 ...
 ```
 
@@ -137,25 +137,25 @@ In the same directory, open `src/main/java/io/grpc/examples/helloworld/HelloWorl
 In the same directory, open `src/main/java/io/grpc/examples/helloworld/HelloWorldClient.java`. Call the new method like this:
 
 ```
-  public void greet(String name) {
-    logger.info("Will try to greet " + name + " ...");
-    HelloRequest request = HelloRequest.newBuilder().setName(name).build();
-    HelloReply response;
-    try {
-      response = blockingStub.sayHello(request);
-    } catch (StatusRuntimeException e) {
-      logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-      return;
-    }
-    logger.info("Greeting: " + response.getMessage());
-    try {
-      response = blockingStub.sayHelloAgain(request);
-    } catch (StatusRuntimeException e) {
-      logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
-      return;
-    }
-    logger.info("Greeting: " + response.getMessage());
+public void greet(String name) {
+  logger.info("Will try to greet " + name + " ...");
+  HelloRequest request = HelloRequest.newBuilder().setName(name).build();
+  HelloReply response;
+  try {
+    response = blockingStub.sayHello(request);
+  } catch (StatusRuntimeException e) {
+    logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+    return;
   }
+  logger.info("Greeting: " + response.getMessage());
+  try {
+    response = blockingStub.sayHelloAgain(request);
+  } catch (StatusRuntimeException e) {
+    logger.log(Level.WARNING, "RPC failed: {0}", e.getStatus());
+    return;
+  }
+  logger.info("Greeting: " + response.getMessage());
+}
 ```
 
 ### Run!
