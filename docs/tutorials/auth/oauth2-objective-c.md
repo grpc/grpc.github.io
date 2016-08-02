@@ -27,7 +27,7 @@ The example code for our tutorial is in [gprc/examples/objective-c/auth_sample](
 To download the example, clone this repository by running the following commands:
 
 ```
-$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
+$ git clone -b {{ site.data.config.milestones_link }} https://github.com/grpc/grpc
 $ cd grpc
 $ git submodule update --init
 ```
