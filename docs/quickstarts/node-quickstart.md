@@ -1,9 +1,10 @@
 ---
+bodyclass: docs
+title: Node Quick Start
 layout: docs
-title: Node Quickstart
+sidenav: doc-side-quickstart-nav.html
+type: markdown
 ---
-
-<h1 class="page-header">Node Quickstart</h1>
 
 <p class="lead">This guide gets you started with gRPC in Node with a simple working example.</p>
 
