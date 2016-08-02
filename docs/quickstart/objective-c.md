@@ -5,9 +5,6 @@ headline: Objective-C Quickstart
 sidenav: doc-side-quickstart-nav.html
 type: markdown
 ---
-
-<h1 class="page-header">Objective-C Quickstart</h1>
-
 <p class="lead">This guide gets you started with gRPC on the iOS platform in Objective-C with a simple working example.</p>
 
 <div id="toc"></div>

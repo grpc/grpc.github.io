@@ -7,9 +7,13 @@ title: Guides
 type: markdown
 customjs: //survey.g.doubleclick.net/async_survey?site=dgxvheagfp4ai24o6y2ammm5fe
 ---
-<p class="lead">
-This document introduces you to gRPC (and its friend, protocol buffers).  If you’re new to gRPC and/or protocol buffers, read this! If you just want to dive in and see gRPC in action first, see our [Quick Starts].
-</p>
+
+This document introduces you to gRPC and protocol buffers. gRPC can use
+protocol buffers as both its IDL and as its underlying message
+interchange format. If you’re new to gRPC and/or protocol buffers, read this!
+If you just want to dive in and see gRPC in action first,
+see our [Quickstarts](../quickstart).
+
 
 <div id="toc" class="toc mobile-toc"></div>
 
@@ -25,6 +29,6 @@ By default gRPC uses protocol buffers, Google’s mature open source mechanism f
 
 
 ### Protocol buffer versions
-While protocol buffers have been available for open source users for some time, our examples use a new flavor of protocol buffers called proto3, which has a slightly simplified syntax, some useful new features, and supports lots more languages. This is currently available as a beta release in Java, C++, Python, Objective-C, and C#, with an alpha release for JavaNano (Android Java), Ruby, and JavaScript fromthe protocol buffers Github repo, as well as a Go language generator from the golang/protobuf Github repo, with more languages in development. You can find out more in the proto3 language guide and the reference documentation for each language (where available), and see the major differences from the current default version in the release notes. Even more proto3 documentation is coming soon.
+While protocol buffers have been available for open source users for some time, our examples use a new flavor of protocol buffers called proto3, which has a slightly simplified syntax, some useful new features, and supports lots more languages. This is currently available in Java, C++, Python, Objective-C, C#, a lite-runtime (Android Java), Ruby, and JavaScript from the protocol buffers Github repo, as well as a Go language generator from the golang/protobuf Github repo, with more languages in development. You can find out more in the proto3 language guide and the reference documentation for each language (where available), and see the major differences from the current default version in the release notes. Even more proto3 documentation is coming soon.
 
 In general, while you can use proto2 (the current default protocol buffers version), we recommend that you use proto3 with gRPC as it lets you use the full range of gRPC-supported languages, as well as avoiding compatibility issues with proto2 clients talking to proto3 servers and vice versa.

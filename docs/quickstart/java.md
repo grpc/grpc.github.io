@@ -5,9 +5,6 @@ headline: Java Quickstart
 sidenav: doc-side-quickstart-nav.html
 type: markdown
 ---
-
-<h1 class="page-header">Java Quickstart</h1>
-
 <p class="lead">This guide gets you started with gRPC in Java with a simple working example.</p>
 
 <div id="toc"></div>

@@ -130,14 +130,6 @@ Metadata is information about a particular RPC call (such as <a href="{{ site.ba
 
 Access to metadata is language-dependent.
 
-### Flow control
-
-TBD
-
-### Configuration
-
-TBD
-
 ### Channels
 
 A gRPC channel provides a connection to a gRPC server on a specified host and port and is used when creating a client stub (or just "client" in some languages). Clients can specify channel arguments to modify gRPC's default behaviour, such as switching on and off message compression. A channel has state, including <code>connected</code> and <code>idle</code>.
