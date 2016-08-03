@@ -27,7 +27,7 @@ Download the example code from our Github repository (the following command clon
 
 ```sh
 $ # Clone the repository to get the example code:
-$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc 
+$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc 
 ```
 
 All of the files in this quickstart are in the directory `examples/csharp/helloworld`.

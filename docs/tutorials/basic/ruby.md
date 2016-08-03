@@ -30,7 +30,7 @@ With gRPC we can define our service once in a .proto file and implement clients 
 The example code for our tutorial is in [grpc/grpc/examples/ruby/route_guide](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/ruby/route_guide). To download the example, clone the `grpc` repository by running the following command:
 
 ```
-$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
+$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
 ```
 
 Then change your current directory to `examples/ruby/route_guide`:
