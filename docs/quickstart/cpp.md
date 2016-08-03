@@ -26,7 +26,7 @@ definitions and data serialization. If you don't already have it installed on
 your system, you can install the version cloned alongside gRPC:
 
 ```sh
-$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
+$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
 $ cd grpc/third_party/protobuf
 $ sudo make install
 ```
@@ -48,7 +48,7 @@ repository, but you just need the examples for this quickstart and other
 tutorials):
 
 ```sh
-$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
+$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
 ```
 
 This will clone the repository inside a `grpc` directory on your current
