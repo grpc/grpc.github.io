@@ -60,34 +60,34 @@ Then you define `rpc` methods inside your service definition, specifying their r
 - A *simple RPC* where the client sends a request to the server using the stub and waits for a response to come back, just like a normal function call.
 
 ```protobuf
-   // Obtains the feature at a given position.
-   rpc GetFeature(Point) returns (Feature) {}
+// Obtains the feature at a given position.
+rpc GetFeature(Point) returns (Feature) {}
 ```
 
 - A *server-side streaming RPC* where the client sends a request to the server and gets a stream to read a sequence of messages back. The client reads from the returned stream until there are no more messages. As you can see in our example, you specify a server-side streaming method by placing the `stream` keyword before the *response* type.
 
 ```protobuf
-  // Obtains the Features available within the given Rectangle.  Results are
-  // streamed rather than returned at once (e.g. in a response message with a
-  // repeated field), as the rectangle may cover a large area and contain a
-  // huge number of features.
-  rpc ListFeatures(Rectangle) returns (stream Feature) {}
+// Obtains the Features available within the given Rectangle.  Results are
+// streamed rather than returned at once (e.g. in a response message with a
+// repeated field), as the rectangle may cover a large area and contain a
+// huge number of features.
+rpc ListFeatures(Rectangle) returns (stream Feature) {}
 ```
 
 - A *client-side streaming RPC* where the client writes a sequence of messages and sends them to the server, again using a provided stream. Once the client has finished writing the messages, it waits for the server to read them all and return its response. You specify a server-side streaming method by placing the `stream` keyword before the *request* type.
 
 ```protobuf
-  // Accepts a stream of Points on a route being traversed, returning a
-  // RouteSummary when traversal is completed.
-  rpc RecordRoute(stream Point) returns (RouteSummary) {}
+// Accepts a stream of Points on a route being traversed, returning a
+// RouteSummary when traversal is completed.
+rpc RecordRoute(stream Point) returns (RouteSummary) {}
 ```
 
 - A *bidirectional streaming RPC* where both sides send a sequence of messages using a read-write stream. The two streams operate independently, so clients and servers can read and write in whatever order they like: for example, the server could wait to receive all the client messages before writing its responses, or it could alternately read a message then write a message, or some other combination of reads and writes. The order of messages in each stream is preserved. You specify this type of method by placing the `stream` keyword before both the request and the response.
 
 ```protobuf
-  // Accepts a stream of RouteNotes sent while a route is being traversed,
-  // while receiving other RouteNotes (e.g. from other users).
-  rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+// Accepts a stream of RouteNotes sent while a route is being traversed,
+// while receiving other RouteNotes (e.g. from other users).
+rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
 ```
 
 Our .proto file also contains protocol buffer message type definitions for all the request and response types used in our service methods - for example, here's the `Point` message type:
@@ -296,9 +296,9 @@ stub.getFeature(point, function(err, feature) {
 As you can see, we create and populate a request object. Finally, we call the method on the stub, passing it the request and callback. If there is no error, then we can read the response information from the server from our response object.
 
 ```js
-      console.log('Found feature called "' + feature.name + '" at ' +
-          feature.location.latitude/COORD_FACTOR + ', ' +
-          feature.location.longitude/COORD_FACTOR);
+console.log('Found feature called "' + feature.name + '" at ' +
+    feature.location.latitude/COORD_FACTOR + ', ' +
+    feature.location.longitude/COORD_FACTOR);
 ```
 
 #### Streaming RPCs
@@ -325,35 +325,35 @@ Instead of passing the method a request and callback, we pass it a request and g
 The client-side streaming method `RecordRoute` is similar, except there we pass the method a callback and get back a `Writable`.
 
 ```js
-    var call = client.recordRoute(function(error, stats) {
-      if (error) {
-        callback(error);
-      }
-      console.log('Finished trip with', stats.point_count, 'points');
-      console.log('Passed', stats.feature_count, 'features');
-      console.log('Travelled', stats.distance, 'meters');
-      console.log('It took', stats.elapsed_time, 'seconds');
+var call = client.recordRoute(function(error, stats) {
+  if (error) {
+    callback(error);
+  }
+  console.log('Finished trip with', stats.point_count, 'points');
+  console.log('Passed', stats.feature_count, 'features');
+  console.log('Travelled', stats.distance, 'meters');
+  console.log('It took', stats.elapsed_time, 'seconds');
+});
+function pointSender(lat, lng) {
+  return function(callback) {
+    console.log('Visiting point ' + lat/COORD_FACTOR + ', ' +
+        lng/COORD_FACTOR);
+    call.write({
+      latitude: lat,
+      longitude: lng
     });
-    function pointSender(lat, lng) {
-      return function(callback) {
-        console.log('Visiting point ' + lat/COORD_FACTOR + ', ' +
-            lng/COORD_FACTOR);
-        call.write({
-          latitude: lat,
-          longitude: lng
-        });
-        _.delay(callback, _.random(500, 1500));
-      };
-    }
-    var point_senders = [];
-    for (var i = 0; i < num_points; i++) {
-      var rand_point = feature_list[_.random(0, feature_list.length - 1)];
-      point_senders[i] = pointSender(rand_point.location.latitude,
-                                     rand_point.location.longitude);
-    }
-    async.series(point_senders, function() {
-      call.end();
-    });
+    _.delay(callback, _.random(500, 1500));
+  };
+}
+var point_senders = [];
+for (var i = 0; i < num_points; i++) {
+  var rand_point = feature_list[_.random(0, feature_list.length - 1)];
+  point_senders[i] = pointSender(rand_point.location.latitude,
+                                 rand_point.location.longitude);
+}
+async.series(point_senders, function() {
+  call.end();
+});
 ```
 
 Once we've finished writing our client's requests to the stream using `write()`, we need to call `end()` on the stream to let gRPC know that we've finished writing. If the status is `OK`, the `stats` object will be populated with the server's response.

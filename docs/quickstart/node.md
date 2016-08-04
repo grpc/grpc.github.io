@@ -21,12 +21,12 @@ type: markdown
 You'll need a local copy of the example code to work through this quickstart. Download the example code from our GitHub repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
 
 ```sh
-  $ # Clone the repository to get the example code
-  $ git clone https://github.com/grpc/grpc
-  $ # Navigate to the dynamic codegen "hello, world" Node example:
-  $ cd examples/node/dynamic_codegen
-  $ # Install the example's dependencies
-  $ npm install
+$ # Clone the repository to get the example code
+$ git clone https://github.com/grpc/grpc
+$ # Navigate to the dynamic codegen "hello, world" Node example:
+$ cd examples/node/dynamic_codegen
+$ # Install the example's dependencies
+$ npm install
 ```
 
 ## Run a gRPC application

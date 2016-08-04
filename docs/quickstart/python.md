@@ -20,13 +20,13 @@ type: markdown
 Install gRPC:
 
 ```sh
-  $ pip install grpcio
+$ pip install grpcio
 ```
 
 Or, to install it system wide:
 
 ```sh
-  $ sudo pip install grpcio
+$ sudo pip install grpcio
 ```
 
 If you're on Windows, make sure you installed the `pip.exe` component when you
@@ -34,7 +34,7 @@ installed Python. Invoke as above but with `pip.exe` instead of `pip` (you may
 also need to invoke from a `cmd.exe` run as administrator):
 
 ```sh
-  $ pip.exe install grpcio
+$ pip.exe install grpcio
 ```
 
 ### Install gRPC tools
@@ -58,10 +58,10 @@ pip install grpcio-tools
 You'll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
 
 ```sh
-  $ # Clone the repository to get the example code:
-  $ git clone https://github.com/grpc/grpc
-  $ # Navigate to the "hello, world" Python example:
-  $ cd grpc/examples/python/helloworld
+$ # Clone the repository to get the example code:
+$ git clone https://github.com/grpc/grpc
+$ # Navigate to the "hello, world" Python example:
+$ cd grpc/examples/python/helloworld
 ```
 
 ## Run a gRPC application
@@ -191,7 +191,7 @@ Just like we did before, from the `examples/python/helloworld` directory:
 
    ```sh
    $ python greeter_client.py
-```
+   ```
 
 ## What's next
 

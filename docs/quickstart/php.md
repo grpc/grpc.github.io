@@ -26,7 +26,7 @@ e.g. [Node.js](node-quickstart.md).
 Install gRPC:
 
 ```sh
-  $ [sudo] pecl install grpc
+$ [sudo] pecl install grpc
 ```
 
 ### Install Protobuf-PHP
@@ -42,10 +42,10 @@ tutorials and your own projects.
 To install Protobuf-PHP, run:
 
 ```sh
-  $ git clone https://github.com/stanley-cheung/Protobuf-PHP
-  $ cd Protobuf-PHP
-  $ rake pear:package version=1.0
-  $ [sudo] pear install Protobuf-1.0.tgz
+$ git clone https://github.com/stanley-cheung/Protobuf-PHP
+$ cd Protobuf-PHP
+$ rake pear:package version=1.0
+$ [sudo] pear install Protobuf-1.0.tgz
 ```
 
 ## Download the example
@@ -53,11 +53,11 @@ To install Protobuf-PHP, run:
 You'll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
 
 ```sh
-  $ # Clone the repository to get the example code:
-  $ git clone https://github.com/grpc/grpc
-  $ # Navigate to the "hello, world" PHP example:
-  $ cd grpc/examples/php
-  $ composer install
+$ # Clone the repository to get the example code:
+$ git clone https://github.com/grpc/grpc
+$ # Navigate to the "hello, world" PHP example:
+$ cd grpc/examples/php
+$ composer install
 ```
 
 ## Run a gRPC application

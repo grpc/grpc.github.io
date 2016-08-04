@@ -90,34 +90,34 @@ Then you define `rpc` methods inside your service definition, specifying their r
 - A *simple RPC* where the client sends a request to the server and receives a response later, just like a normal remote procedure call.
 
 ```protobuf
-   // Obtains the feature at a given position.
-   rpc GetFeature(Point) returns (Feature) {}
+// Obtains the feature at a given position.
+rpc GetFeature(Point) returns (Feature) {}
 ```
 
 - A *response-streaming RPC* where the client sends a request to the server and gets back a stream of response messages. You specify a response-streaming method by placing the `stream` keyword before the *response* type.
 
 ```protobuf
-  // Obtains the Features available within the given Rectangle.  Results are
-  // streamed rather than returned at once (e.g. in a response message with a
-  // repeated field), as the rectangle may cover a large area and contain a
-  // huge number of features.
-  rpc ListFeatures(Rectangle) returns (stream Feature) {}
+// Obtains the Features available within the given Rectangle.  Results are
+// streamed rather than returned at once (e.g. in a response message with a
+// repeated field), as the rectangle may cover a large area and contain a
+// huge number of features.
+rpc ListFeatures(Rectangle) returns (stream Feature) {}
 ```
 
 - A *request-streaming RPC* where the client sends a sequence of messages to the server. Once the client has finished writing the messages, it waits for the server to read them all and return its response. You specify a request-streaming method by placing the `stream` keyword before the *request* type.
 
 ```protobuf
-  // Accepts a stream of Points on a route being traversed, returning a
-  // RouteSummary when traversal is completed.
-  rpc RecordRoute(stream Point) returns (RouteSummary) {}
+// Accepts a stream of Points on a route being traversed, returning a
+// RouteSummary when traversal is completed.
+rpc RecordRoute(stream Point) returns (RouteSummary) {}
 ```
 
 - A *bidirectional streaming RPC* where both sides send a sequence of messages to the other. The two streams operate independently, so clients and servers can read and write in whatever order they like: for example, the server could wait to receive all the client messages before writing its responses, or it could alternately read a message then write a message, or some other combination of reads and writes. The order of messages in each stream is preserved. You specify this type of method by placing the `stream` keyword before both the request and the response.
 
 ```protobuf
-  // Accepts a stream of RouteNotes sent while a route is being traversed,
-  // while receiving other RouteNotes (e.g. from other users).
-  rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+// Accepts a stream of RouteNotes sent while a route is being traversed,
+// while receiving other RouteNotes (e.g. from other users).
+rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
 ```
 
 Our .proto file also contains protocol buffer message type definitions for all the request and response types used in our service methods - for example, here's the `Point` message type:
@@ -193,18 +193,18 @@ Now let's look at how we call our service methods.
 Calling the simple RPC `GetFeature` is nearly as straightforward as calling a local asynchronous method.
 
 ```php
-  $point = new examples\Point();
-  $point->setLatitude(409146138);
-  $point->setLongitude(-746188906);
-  list($feature, $status) = $client->GetFeature($point)->wait();
+$point = new examples\Point();
+$point->setLatitude(409146138);
+$point->setLongitude(-746188906);
+list($feature, $status) = $client->GetFeature($point)->wait();
 ```
 
 As you can see, we create and populate a request object, i.e. an `examples\Point` object. Then, we call the method on the stub, passing it the request object. If there is no error, then we can read the response information from the server from our response object, i.e. an `examples\Feature` object.
 
 ```php
-  print sprintf("Found %s \n  at %f, %f\n", $feature->getName(),
-                $feature->getLocation()->getLatitude() / COORD_FACTOR,
-                $feature->getLocation()->getLongitude() / COORD_FACTOR);
+print sprintf("Found %s \n  at %f, %f\n", $feature->getName(),
+              $feature->getLocation()->getLatitude() / COORD_FACTOR,
+              $feature->getLocation()->getLongitude() / COORD_FACTOR);
 ```
 
 #### Streaming RPCs
@@ -212,24 +212,24 @@ As you can see, we create and populate a request object, i.e. an `examples\Point
 Now let's look at our streaming methods. Here's where we call the server-side streaming method `ListFeatures`, which returns a stream of geographical `Feature`s:
 
 ```php
-  $lo_point = new examples\Point();
-  $hi_point = new examples\Point();
+$lo_point = new examples\Point();
+$hi_point = new examples\Point();
 
-  $lo_point->setLatitude(400000000);
-  $lo_point->setLongitude(-750000000);
-  $hi_point->setLatitude(420000000);
-  $hi_point->setLongitude(-730000000);
+$lo_point->setLatitude(400000000);
+$lo_point->setLongitude(-750000000);
+$hi_point->setLatitude(420000000);
+$hi_point->setLongitude(-730000000);
 
-  $rectangle = new examples\Rectangle();
-  $rectangle->setLo($lo_point);
-  $rectangle->setHi($hi_point);
+$rectangle = new examples\Rectangle();
+$rectangle->setLo($lo_point);
+$rectangle->setHi($hi_point);
 
-  $call = $client->ListFeatures($rectangle);
-  // an iterator over the server streaming responses
-  $features = $call->responses();
-  foreach ($features as $feature) {
-    // process each feature
-  } // the loop will end when the server indicates there is no more responses to be sent.
+$call = $client->ListFeatures($rectangle);
+// an iterator over the server streaming responses
+$features = $call->responses();
+foreach ($features as $feature) {
+  // process each feature
+} // the loop will end when the server indicates there is no more responses to be sent.
 ```
 
 The `$call->responses()` method call returns an iterator. When the server sends a response, a `$feature` object will be returned in the `foreach` loop, until the server indiciates that there will be no more responses to be sent.
@@ -237,16 +237,16 @@ The `$call->responses()` method call returns an iterator. When the server sends 
 The client-side streaming method `RecordRoute` is similar, except that we call `$call->write($point)` for each point we want to write from the client side and get back a `examples\RouteSummary`.
 
 ```php
-  $call = $client->RecordRoute();
+$call = $client->RecordRoute();
 
-  for ($i = 0; $i < $num_points; $i++) {
-    $point = new examples\Point();
-    $point->setLatitude($lat);
-    $point->setLongitude($long);
-    $call->write($point);
-  }
+for ($i = 0; $i < $num_points; $i++) {
+  $point = new examples\Point();
+  $point->setLatitude($lat);
+  $point->setLongitude($long);
+  $call->write($point);
+}
 
-  list($route_summary, $status) = $call->wait();
+list($route_summary, $status) = $call->wait();
 ```
 
 Finally, let's look at our bidirectional streaming RPC `routeChat()`. In this case, we just pass a context to the method and get back a `BidiStreamingCall` stream object, which we can use to both write and read messages.
@@ -258,19 +258,19 @@ $call = $client->RouteChat();
 To write messages from the client:
 
 ```php
-  foreach ($notes as $n) {
-    $route_note = new examples\RouteNote();
-    $call->write($route_note);
-  }
-  $call->writesDone();
+foreach ($notes as $n) {
+  $route_note = new examples\RouteNote();
+  $call->write($route_note);
+}
+$call->writesDone();
 ```
 
 To read messages from the server:
 
 ```php
-  while ($route_note_reply = $call->read()) {
-    // process $route_note_reply
-  }
+while ($route_note_reply = $call->read()) {
+  // process $route_note_reply
+}
 ```
 
 Each side will always get the other's messages in the order they were written, both the client and server can read and write in any order — the streams operate completely independently.
