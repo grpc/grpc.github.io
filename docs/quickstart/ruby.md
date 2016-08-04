@@ -19,7 +19,7 @@ type: markdown
 ### Install gRPC
 
 ```
-  $ gem install grpc
+$ gem install grpc
 ```
 
 ### Install gRPC tools
@@ -43,10 +43,10 @@ gem install grpc-tools
 You'll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
 
 ```sh
-  $ # Clone the repository to get the example code:
-  $ git clone https://github.com/grpc/grpc
-  $ # Navigate to the "hello, world" Ruby example:
-  $ cd grpc/examples/ruby
+$ # Clone the repository to get the example code:
+$ git clone https://github.com/grpc/grpc
+$ # Navigate to the "hello, world" Ruby example:
+$ cd grpc/examples/ruby
 ```
 
 ## Run a gRPC application

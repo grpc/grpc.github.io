@@ -58,26 +58,26 @@ Then you define `rpc` methods inside your service definition, specifying their r
 - A *simple RPC* where the client sends a request to the server using the stub and waits for a response to come back, just like a normal function call.
 
 ```protobuf
-   // Obtains the feature at a given position.
-   rpc GetFeature(Point) returns (Feature) {}
+// Obtains the feature at a given position.
+rpc GetFeature(Point) returns (Feature) {}
 ```
 
 - A *response-streaming RPC* where the client sends a request to the server and gets a stream to read a sequence of messages back. The client reads from the returned stream until there are no more messages. As you can see in the example, you specify a response-streaming method by placing the `stream` keyword before the *response* type.
 
 ```protobuf
-  // Obtains the Features available within the given Rectangle.  Results are
-  // streamed rather than returned at once (e.g. in a response message with a
-  // repeated field), as the rectangle may cover a large area and contain a
-  // huge number of features.
-  rpc ListFeatures(Rectangle) returns (stream Feature) {}
+// Obtains the Features available within the given Rectangle.  Results are
+// streamed rather than returned at once (e.g. in a response message with a
+// repeated field), as the rectangle may cover a large area and contain a
+// huge number of features.
+rpc ListFeatures(Rectangle) returns (stream Feature) {}
 ```
 
 - A *request-streaming RPC* where the client writes a sequence of messages and sends them to the server, again using a provided stream. Once the client has finished writing the messages, it waits for the server to read them all and return its response. You specify a request-streaming method by placing the `stream` keyword before the *request* type.
 
 ```protobuf
-  // Accepts a stream of Points on a route being traversed, returning a
-  // RouteSummary when traversal is completed.
-  rpc RecordRoute(stream Point) returns (RouteSummary) {}
+// Accepts a stream of Points on a route being traversed, returning a
+// RouteSummary when traversal is completed.
+rpc RecordRoute(stream Point) returns (RouteSummary) {}
 ```
 
 - A *bidirectionally-streaming RPC* where both sides send a sequence of messages using a read-write stream. The two streams operate independently, so clients and servers can read and write in whatever order they like: for example, the server could wait to receive all the client messages before writing its responses, or it could alternately read a message then write a message, or some other combination of reads and writes. The order of messages in each stream is preserved. You specify this type of method by placing the `stream` keyword before both the request and the response.
@@ -156,12 +156,12 @@ class RouteGuideServicer(route_guide_pb2.BetaRouteGuideServicer):
 Let's look at the simplest type first, `GetFeature`, which just gets a `Point` from the client and returns the corresponding feature information from its database in a `Feature`.
 
 ```python
-  def GetFeature(self, request, context):
-    feature = get_feature(self.db, request)
-    if feature is None:
-      return route_guide_pb2.Feature(name="", location=request)
-    else:
-      return feature
+def GetFeature(self, request, context):
+  feature = get_feature(self.db, request)
+  if feature is None:
+    return route_guide_pb2.Feature(name="", location=request)
+  else:
+    return feature
 ```
 
 The method is passed a `route_guide_pb2.Point` request for the RPC, and a `ServicerContext` object that provides RPC-specific information such as timeout limits. It returns a `route_guide_pb2.Feature` response.
@@ -171,17 +171,17 @@ The method is passed a `route_guide_pb2.Point` request for the RPC, and a `Servi
 Now let's look at the next method. `ListFeatures` is a response-streaming RPC that sends multiple `Feature`s to the client.
 
 ```python
-  def ListFeatures(self, request, context):
-    left = min(request.lo.longitude, request.hi.longitude)
-    right = max(request.lo.longitude, request.hi.longitude)
-    top = max(request.lo.latitude, request.hi.latitude)
-    bottom = min(request.lo.latitude, request.hi.latitude)
-    for feature in self.db:
-      if (feature.location.longitude >= left and
-          feature.location.longitude <= right and
-          feature.location.latitude >= bottom and
-          feature.location.latitude <= top):
-        yield feature
+def ListFeatures(self, request, context):
+  left = min(request.lo.longitude, request.hi.longitude)
+  right = max(request.lo.longitude, request.hi.longitude)
+  top = max(request.lo.latitude, request.hi.latitude)
+  bottom = min(request.lo.latitude, request.hi.latitude)
+  for feature in self.db:
+    if (feature.location.longitude >= left and
+        feature.location.longitude <= right and
+        feature.location.latitude >= bottom and
+        feature.location.latitude <= top):
+      yield feature
 ```
 
 Here the request message is a `route_guide_pb2.Rectangle` within which the client wants to find `Feature`s. Instead of returning a single response the method yields zero or more responses.
@@ -191,26 +191,26 @@ Here the request message is a `route_guide_pb2.Rectangle` within which the clien
 The request-streaming method `RecordRoute` uses an [iterator](https://docs.python.org/2/library/stdtypes.html#iterator-types) of request values and returns a single response value.
 
 ```python
-  def RecordRoute(self, request_iterator, context):
-    point_count = 0
-    feature_count = 0
-    distance = 0.0
-    prev_point = None
+def RecordRoute(self, request_iterator, context):
+  point_count = 0
+  feature_count = 0
+  distance = 0.0
+  prev_point = None
 
-    start_time = time.time()
-    for point in request_iterator:
-      point_count += 1
-      if get_feature(self.db, point):
-        feature_count += 1
-      if prev_point:
-        distance += get_distance(prev_point, point)
-      prev_point = point
+  start_time = time.time()
+  for point in request_iterator:
+    point_count += 1
+    if get_feature(self.db, point):
+      feature_count += 1
+    if prev_point:
+      distance += get_distance(prev_point, point)
+    prev_point = point
 
-    elapsed_time = time.time() - start_time
-    return route_guide_pb2.RouteSummary(point_count=point_count,
-                                        feature_count=feature_count,
-                                        distance=int(distance),
-                                        elapsed_time=int(elapsed_time))
+  elapsed_time = time.time() - start_time
+  return route_guide_pb2.RouteSummary(point_count=point_count,
+                                      feature_count=feature_count,
+                                      distance=int(distance),
+                                      elapsed_time=int(elapsed_time))
 ```
 
 #### Bidirectional streaming RPC
@@ -218,13 +218,13 @@ The request-streaming method `RecordRoute` uses an [iterator](https://docs.pytho
 Lastly let's look at the bidirectionally-streaming method `RouteChat`.
 
 ```python
-  def RouteChat(self, request_iterator, context):
-    prev_notes = []
-    for new_note in request_iterator:
-      for prev_note in prev_notes:
-        if prev_note.location == new_note.location:
-          yield prev_note
-      prev_notes.append(new_note)
+def RouteChat(self, request_iterator, context):
+  prev_notes = []
+  for new_note in request_iterator:
+    for prev_note in prev_notes:
+      if prev_note.location == new_note.location:
+        yield prev_note
+    prev_notes.append(new_note)
 ```
 
 This method's semantics are a combination of those of the request-streaming method and the response-streaming method. It is passed an iterator of request values and is itself an iterator of response values.
