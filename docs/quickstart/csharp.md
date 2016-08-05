@@ -8,7 +8,8 @@ type: markdown
 
 <h1 class="page-header">C# Quickstart</h1>
 
-<p class="lead">This guide gets you started with gRPC in C# with a simple working example.</p>
+<p class="lead">This guide gets you started with gRPC in C# with a simple
+working example.</p>
 
 <div id="toc"></div>
 
@@ -16,28 +17,33 @@ type: markdown
 
 ### Prerequisites
 
-* Windows: .NET Framework 4.5+, Visual Studio 2013 or 2015. You may also need the Nuget executable 
+* Windows: .NET Framework 4.5+, Visual Studio 2013 or 2015. You may also need
+  the Nuget executable 
 * Linux: Mono 4+, MonoDevelop 5.9+ (with NuGet add-in installed)
 * Mac OS X: Xamarin Studio 5.9+
 
 ## Download the example
 
-You'll need a local copy of the example code to work through this quickstart. 
-Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
+You'll need a local copy of the example code to work through this quickstart.
+Download the example code from our Github repository (the following command
+clones the entire repository, but you just need the examples for this quickstart
+and other tutorials):
 
 ```sh
 $ # Clone the repository to get the example code:
 $ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc 
 ```
 
-All of the files in this quickstart are in the directory `examples/csharp/helloworld`.
+All of the files in this quickstart are in the directory
+`examples/csharp/helloworld`.
 
-The example solution in this walkthrough already adds the necessary
-dependencies for you (Grpc, Grpc.Tools and Google.Protobuf NuGet packages).
+The example solution in this walkthrough already adds the necessary dependencies
+for you (Grpc, Grpc.Tools and Google.Protobuf NuGet packages).
 
 ## Build the example
 
-* Open the solution `Greeter.sln` with Visual Studio, Monodevelop (on Linux) or Xamarin Studio (on Mac OS X)
+* Open the solution `Greeter.sln` with Visual Studio, Monodevelop (on Linux) or
+  Xamarin Studio (on Mac OS X)
 * Build the solution (this will automatically download NuGet dependencies)
   
 ## Run a gRPC application
@@ -58,7 +64,8 @@ From the `examples/csharp/helloworld` directory:
 > GreeterClient.exe
 ```
 
-You'll need to run the above executables with "mono" if building on Xamarin Studio for Mac OS X.
+You'll need to run the above executables with "mono" if building on Xamarin
+Studio for Mac OS X.
 
 Congratulations! You've just run a client-server application with gRPC.
 
@@ -67,10 +74,10 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [gRPC Basics: C#][]. For now all you need
-to know is that both the server and the client "stub" have a `SayHello` RPC
-method that takes a `HelloRequest` parameter from the client and returns a
-`HelloResponse` from the server, and that this method is defined like this:
+file in [gRPC Basics: C#][]. For now all you need to know is that both the
+server and the client "stub" have a `SayHello` RPC method that takes a
+`HelloRequest` parameter from the client and returns a `HelloResponse` from the
+server, and that this method is defined like this:
 
 
 ```
@@ -91,7 +98,9 @@ message HelloReply {
 }
 ```
 
-Let's update this so that the `Greeter` service has two methods. Edit `examples/proto/helloworld.proto` and update it with a new `SayHelloAgain` method, with the same request and response types:
+Let's update this so that the `Greeter` service has two methods. Edit
+`examples/proto/helloworld.proto` and update it with a new `SayHelloAgain`
+method, with the same request and response types:
 
 ```
 // The greeting service definition.
@@ -117,12 +126,19 @@ message HelloReply {
 
 ## Generate gRPC code
 
-Next we need to update the gRPC code used by our application to use the new service definition. 
-The Grpc.Tools NuGet package contains the protoc and protobuf C# plugin binaries you will need to generate the code. This example project already depends on the NuGet package `Grpc.Tools.1.0.0`, so it should be included in the `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE. 
+Next we need to update the gRPC code used by our application to use the new
+service definition. The Grpc.Tools NuGet package contains the protoc and
+protobuf C# plugin binaries you will need to generate the code. This example
+project already depends on the NuGet package `Grpc.Tools.1.0.0`, so it should be
+included in the `examples/csharp/helloworld/packages` when the `Greeter.sln`
+solution is built from your IDE. 
 
-Note that you may have to change the `platform_architecture` directory names (e.g. windows_x86, linux_x64) in the commands below based on your environment.
+Note that you may have to change the `platform_architecture` directory names
+(e.g. windows_x86, linux_x64) in the commands below based on your environment.
 
-Note that you may also have to change the permissions of the protoc and protobuf binaries in the `Grpc.Tools` package under `examples/csharp/helloworld/packages` to executable in order to run the commands below.
+Note that you may also have to change the permissions of the protoc and protobuf
+binaries in the `Grpc.Tools` package under `examples/csharp/helloworld/packages`
+to executable in order to run the commands below.
 
 From the `examples/csharp/helloworld` directory:
 
@@ -138,21 +154,28 @@ $ packages/Grpc.Tools.1.0.0/tools/windows_x86/protoc -I../../protos --csharp_out
 $ packages/Grpc.Tools.1.0.0/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.1.0.0/tools/linux_x64/grpc_csharp_plugin
 ```
 
-Running the appropriate command for your OS regenerates the following files in the directory:
- 
-* Greeter/Helloworld.cs contains all the protocol buffer code to populate, serialize, and retrieve our request and response message types
-* Greeter/HelloworldGrpc.cs provides generated client and server classes, including:
-    * an abstract class Greeter.GreeterBase to inherit from when defining Greeter service implementations
-    * a class Greeter.GreeterClient that can be used to access remote Greeter instances
+Running the appropriate command for your OS regenerates the following files in
+the directory:
+
+* Greeter/Helloworld.cs contains all the protocol buffer code to populate,
+  serialize, and retrieve our request and response message types
+* Greeter/HelloworldGrpc.cs provides generated client and server classes,
+  including:
+    * an abstract class Greeter.GreeterBase to inherit from when defining
+      Greeter service implementations
+    * a class Greeter.GreeterClient that can be used to access remote Greeter
+      instances
     
 ## Update and run the application
 
-We now have new generated server and client code, but we still need to implement and call the new method in the human-written parts of our example application.
+We now have new generated server and client code, but we still need to implement
+and call the new method in the human-written parts of our example application.
 
 ### Update the server
 
-With the `Greeter.sln` open in your IDE, open `GreeterServer/Program.cs`. Implement the new method by editing the GreeterImpl class like this:
- 
+With the `Greeter.sln` open in your IDE, open `GreeterServer/Program.cs`.
+Implement the new method by editing the GreeterImpl class like this:
+
 ```
 class GreeterImpl : Greeter.GreeterBase
 {
@@ -161,7 +184,7 @@ class GreeterImpl : Greeter.GreeterBase
     {
         return Task.FromResult(new HelloReply { Message = "Hello " + request.Name });
     }
-    
+
     // Server side handler for the SayHelloAgain RPC
     public override Task<HelloReply> SayHelloAgain(HelloRequest request, ServerCallContext context)
     {
@@ -172,7 +195,8 @@ class GreeterImpl : Greeter.GreeterBase
 
 ### Update the client
 
-With the same `Greeter.sln` open in your IDE, open `GreeterClient/Program.cs`. Call the new method like this:
+With the same `Greeter.sln` open in your IDE, open `GreeterClient/Program.cs`.
+Call the new method like this:
 
 ```
 public static void Main(string[] args)
@@ -196,10 +220,12 @@ public static void Main(string[] args)
 
 ### Rebuild the modified example
 
-Rebuild the newly modified example just like we first built the original example:
+Rebuild the newly modified example just like we first built the original
+example:
 
-* With solution Greeter.sln open from Visual Studio, Monodevelop (on Linux) or Xamarin Studio (on Mac OS X)
-* Build the solution 
+* With solution Greeter.sln open from Visual Studio, Monodevelop (on Linux) or
+  Xamarin Studio (on Mac OS X)
+* Build the solution.
 
 ### Run!
 
@@ -221,9 +247,11 @@ Just like we did before, from the `examples/csharp/helloworld` directory:
 
 ## What's next
 
-- Read a full explanation of this example and how gRPC works in our [Overview](http://www.grpc.io/docs/)
+- Read a full explanation of this example and how gRPC works in our
+  [Overview](http://www.grpc.io/docs/)
 - Work through a more detailed tutorial in [gRPC Basics: C#][]
-- Explore the gRPC C# core API in its [reference documentation](http://www.grpc.io/grpc/csharp/)
+- Explore the gRPC C# core API in its [reference
+  documentation](http://www.grpc.io/grpc/csharp/)
 
 [gRPC Linuxbrew instructions]:https://github.com/grpc/homebrew-grpc#quick-install-linux
 [gRPC Homebrew instructions]:https://github.com/grpc/homebrew-grpc#quick-install-linux

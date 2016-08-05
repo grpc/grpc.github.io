@@ -6,7 +6,8 @@ sidenav: doc-side-quickstart-nav.html
 type: markdown
 ---
 
-<p class="lead">This guide gets you started with gRPC in Ruby with a simple working example.</p>
+<p class="lead">This guide gets you started with gRPC in Ruby with a simple
+working example.</p>
 
 <div id="toc"></div>
 
@@ -24,11 +25,11 @@ $ gem install grpc
 
 ### Install gRPC tools
 
-Ruby's gRPC tools include the protocol buffer compiler `protoc`
-and the special plugin for generating server and client code
-from the `.proto` service definitions. For the first part of our
-quickstart example, we've already generated the server and client
-stubs from [helloworld.proto](https://github.com/grpc/grpc/tree/{{site.data.config.grpc_release_branch}}/examples/protos/helloworld.proto),
+Ruby's gRPC tools include the protocol buffer compiler `protoc` and the special
+plugin for generating server and client code from the `.proto` service
+definitions. For the first part of our quickstart example, we've already
+generated the server and client stubs from
+[helloworld.proto](https://github.com/grpc/grpc/tree/{{site.data.config.grpc_release_branch}}/examples/protos/helloworld.proto),
 but you'll need the tools for the rest of our quickstart, as well as later
 tutorials and your own projects.
 
@@ -40,7 +41,10 @@ gem install grpc-tools
 
 ## Download the example
 
-You'll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
+You'll need a local copy of the example code to work through this quickstart.
+Download the example code from our Github repository (the following command
+clones the entire repository, but you just need the examples for this quickstart
+and other tutorials):
 
 ```sh
 $ # Clone the repository to get the example code:
@@ -96,7 +100,9 @@ message HelloReply {
 }
 ```
 
-Let's update this so that the `Greeter` service has two methods. Edit `examples/proto/helloworld.proto` and update it with a new `SayHelloAgain` method, with the same request and response types:
+Let's update this so that the `Greeter` service has two methods. Edit
+`examples/proto/helloworld.proto` and update it with a new `SayHelloAgain`
+method, with the same request and response types:
 
 ```proto
 // The greeting service definition.
@@ -122,13 +128,15 @@ message HelloReply {
 
 ## Generate gRPC code
 
-Next we need to update the gRPC code used by our application to use the new service definition. From the `examples/ruby/` directory:
+Next we need to update the gRPC code used by our application to use the new
+service definition. From the `examples/ruby/` directory:
 
 ```sh
 $ grpc_tools_ruby_protoc -I ../protos --ruby_out=lib --grpc_out=lib ../protos/helloworld.proto
 ```
 
-This regenerates `lib/helloworld_services.rb`, which contains our generated client and server classes.
+This regenerates `lib/helloworld_services.rb`, which contains our generated
+client and server classes.
 
 ### Update the server
 
@@ -181,8 +189,10 @@ Just like we did before, from the `examples/ruby` directory:
 
 ## What's next
 
- - Read a full explanation of this example and how gRPC works in our [Overview](http://www.grpc.io/docs/)
+ - Read a full explanation of this example and how gRPC works in our
+   [Overview](http://www.grpc.io/docs/)
  - Work through a more detailed tutorial in [gRPC Basics: Ruby][]
- - Explore the gRPC Ruby core API in its [reference documentation](http://www.rubydoc.info/gems/grpc)
+ - Explore the gRPC Ruby core API in its [reference
+   documentation](http://www.rubydoc.info/gems/grpc)
 
 [gRPC Basics: Ruby]:http://www.grpc.io/docs/tutorials/basic/ruby.html

@@ -5,7 +5,8 @@ headline: PHP Quickstart
 sidenav: doc-side-quickstart-nav.html
 type: markdown
 ---
-<p class="lead">This guide gets you started with gRPC in PHP with a simple working example.</p>
+<p class="lead">This guide gets you started with gRPC in PHP with a simple
+working example.</p>
 
 <div id="toc"></div>
 
@@ -31,11 +32,11 @@ $ [sudo] pecl install grpc
 
 ### Install Protobuf-PHP
 
-You will need to install the protocol buffer compiler `protoc`
-and the special plugin for generating server and client code
-from `.proto` service definitions. For the first part of our
-quickstart example, we've already generated the server and client
-stubs from [helloworld.proto](https://github.com/grpc/grpc/tree/{{site.data.config.grpc_release_branch}}/examples/protos/helloworld.proto),
+You will need to install the protocol buffer compiler `protoc` and the special
+plugin for generating server and client code from `.proto` service definitions.
+For the first part of our quickstart example, we've already generated the server
+and client stubs from
+[helloworld.proto](https://github.com/grpc/grpc/tree/{{site.data.config.grpc_release_branch}}/examples/protos/helloworld.proto),
 but you'll need the tools for the rest of our quickstart, as well as later
 tutorials and your own projects.
 
@@ -50,7 +51,10 @@ $ [sudo] pear install Protobuf-1.0.tgz
 
 ## Download the example
 
-You'll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
+You'll need a local copy of the example code to work through this quickstart.
+Download the example code from our Github repository (the following command
+clones the entire repository, but you just need the examples for this quickstart
+and other tutorials):
 
 ```sh
 $ # Clone the repository to get the example code:
@@ -108,7 +112,10 @@ message HelloReply {
   string message = 1;
 }
 ```
-Let's update this so that the `Greeter` service has two methods. Edit `examples/proto/helloworld.proto` and update it with a new `SayHelloAgain` method, with the same request and response types:
+
+Let's update this so that the `Greeter` service has two methods. Edit
+`examples/proto/helloworld.proto` and update it with a new `SayHelloAgain`
+method, with the same request and response types:
 
 ```
 // The greeting service definition.
@@ -134,21 +141,26 @@ message HelloReply {
 
 ## Generate gRPC code
 
-Next we need to update the gRPC code used by our application to use the new service definition. From the `examples/php` directory:
+Next we need to update the gRPC code used by our application to use the new
+service definition. From the `examples/php` directory:
 
 ```
 $ proto-gen-php -i . -o . helloworld.proto
 ```
 
-This regenerates `helloworld.php`, which contains our generated client classes, as well as classes for populating, serializing, and retrieving our request and response types.
+This regenerates `helloworld.php`, which contains our generated client classes,
+as well as classes for populating, serializing, and retrieving our request and
+response types.
 
 ## Update and run the application
 
-We now have new generated client code, but we still need to implement and call the new method in the human-written parts of our example application.
+We now have new generated client code, but we still need to implement and call
+the new method in the human-written parts of our example application.
 
 ### Update the server
 
-In the same directory, open `greeter_server.js`. Implement the new method like this:
+In the same directory, open `greeter_server.js`. Implement the new method like
+this:
 
 ```js
 function sayHello(call, callback) {
@@ -194,9 +206,11 @@ In another terminal, from the `examples/php` directory:
 
 ## What's next
 
-- Read a full explanation of this example and how gRPC works in our [Overview](http://www.grpc.io/docs/)
+- Read a full explanation of this example and how gRPC works in our
+  [Overview](http://www.grpc.io/docs/)
 - Work through a more detailed tutorial in [gRPC Basics: PHP][]
-- Explore the gRPC PHP core API in its [reference documentation](http://www.grpc.io/grpc/php/namespaces/Grpc.html)
+- Explore the gRPC PHP core API in its [reference
+  documentation](http://www.grpc.io/grpc/php/namespaces/Grpc.html)
 
 [helloworld.proto]:../protos/helloworld.proto
 [gRPC Basics: PHP]:http://www.grpc.io/docs/tutorials/basic/php.html
