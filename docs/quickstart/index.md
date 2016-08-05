@@ -17,6 +17,7 @@ These pages show you how to get up and running as quickly as possible in gRPC, i
 
 There is a Quick Start for each gRPC supported language with accompanying sample code for a simple ```Hello World``` example for you to explore and update.
 
+For a more detailed look at the same application and how it all works, see [Hello gRPC!](/docs/guides/hello.html) in our Guides section.
 For an overview of some of the core concepts in gRPC, see [gRPC Concepts](../guides/concepts.html).
 For more tutorials and examples, see our [Tutorials](../tutorials). 
 You can read more about gRPC in general in [What is gRPC?](../guides). 
