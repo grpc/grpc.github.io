@@ -73,7 +73,7 @@ One possible workaround is as follows:
   
 ## Run a gRPC application
 
-### After building with Visual Studio, Xamarin Studio, or Monodevelop IDEs:
+### Using Visual Studio, Xamarin Studio, or Monodevelop IDEs
 From the `examples/csharp/helloworld` directory:
 
 1. Run the server
@@ -90,7 +90,7 @@ From the `examples/csharp/helloworld` directory:
 
 You'll need to run the above executables with "mono" if building on Xamarin Studio for OS X.
 
-###  After building with the .NET Core SDK:
+###  Using the .NET Core SDK
 
 1. Run the server
     ```
@@ -166,11 +166,14 @@ Next we need to update the gRPC code used by our application to use the new serv
 
 The Grpc.Tools NuGet package contains the protoc and protobuf C# plugin binaries you will need to generate the code. 
 
-#### If you're following the Visual Studio story or restored packages with NuGet from the command line:
+### Obtaining the Grpc.Tools NuGet package
 
-This example project already depends on the NuGet package `Grpc.Tools.1.0.0`, so it should be included in `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE. 
+#### Using Visual Studio, Xamarin Studio, or Monodevelop IDEs
 
-#### If you're following the .NET Core SDK story:
+This example project already depends on the NuGet package `Grpc.Tools.1.0.0`, so it should be included in `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE, 
+or when you restore packages via `/path/to/nuget restore` on the command line.
+
+#### Using the .NET Core SDK
 
 From the `examples/csharp/helloworld-from-cli` directory:
 
@@ -178,7 +181,7 @@ From the `examples/csharp/helloworld-from-cli` directory:
 * Note that you don't have to update your NuGet executable to the latest version
   in order to install the Grpc.Tools package.
 
-### Commands to generate the gRPC code:
+### Commands to generate the gRPC code
 Note that you may have to change the `platform_architecture` directory names (e.g. windows_x86, linux_x64) in the commands below based on your environment.
 
 Note that you may also have to change the permissions of the protoc and protobuf binaries in the `Grpc.Tools` package under `examples/csharp/helloworld/packages` to executable in order to run the commands below.
