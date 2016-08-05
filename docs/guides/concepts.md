@@ -8,7 +8,7 @@ type: markdown
 ---
 <p class="lead">This document introduces some key gRPC concepts with an overview of gRPC's architecture and RPC life cycle.</p> 
 
-It assumes that you've read the [Overview]({{site.baseurl}}/docs). For language-specific details, see the Quick Start, tutorial, and reference documentation for your chosen language(s), where available (complete reference docs are coming soon).
+It assumes that you've read [What is gRPC?]({{site.baseurl}}/docs/guides). For language-specific details, see the Quick Start, tutorial, and reference documentation for your chosen language(s), where available (complete reference docs are coming soon).
 
 <div id="toc" class="toc mobile-toc"></div>
 
