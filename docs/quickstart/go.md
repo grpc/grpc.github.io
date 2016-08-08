@@ -16,24 +16,21 @@ working example.</p>
 ### Prerequisites
 
 #### Go version
-Make sure that Go installed is version 1.5 or higher.
+gRPC works with Go 1.5 or higher.
 
 ```sh
 $ go version
 ```
 
-For installtion instruction follow this guide: [Getting Started - The Go Programming Language](https://golang.org/doc/install)
+For installation instructions, follow this guide: [Getting Started - The Go Programming Language](https://golang.org/doc/install)
 
 #### Install gRPC
-To install gRPC on your system use the following command:
+Use the following command to install gRPC.
 ```sh
 $ go get google.golang.org/grpc
 ```
 
 #### Install Protocol Buffers v3
-
-While not mandatory, gRPC usually leverages Protocol Buffers v3 for service
-definitions and data serialization.
 
 1. Install the protoc compiler that is used to generate gRPC service code. The simplest way to do this is to download pre-compiled binaries for your platform here: https://github.com/google/protobuf/releases
 
@@ -51,17 +48,20 @@ Change to the example directory
 
 ```$ cd $GOPATH/src/google.golang.org/grpc/examples/helloworld```
 
-For gRPC services to work we want to compile the proto file to generate a pb.go file that contains the generated code which is then used by the server and client apps. This file is already generated and shipped with the example code and can be found under the directory: `$GOPATH/src/google.golang.org/grpc/examples/helloworld/helloworld`
+gRPC services are defined in a proto file, which is used to generate a corresponding .pb.go. This file is already generated for the helloworld example code and can be found under this directory: `$GOPATH/src/google.golang.org/grpc/examples/helloworld/helloworld`
 
-This `helloworld.pb.go` file contains our generated client and server code, as well as code for populating, serializing, and retrieving our `HelloRequest` and `HelloResponse` message types.
+This `helloworld.pb.go` file contains:
+  * Generated client and server code.
+  * Code for populating, serializing, and retrieving our `HelloRequest` and `HelloResponse` message types.
 
 
 ## Try it!
-Now to compile and run the server and client apps use go run. Make sure you're still in the same examples directory.
+To compile and run the server and client code, the `go run` command can be used.
+In the examples directory:
 
 ```$ go run greeter_server/main.go```
 
-From a different terminal run the following:
+From a different terminal:
 
 ```$ go run greeter_client/main.go```
 
