@@ -5,32 +5,38 @@ headline: Objective-C Quickstart
 sidenav: doc-side-quickstart-nav.html
 type: markdown
 ---
-<p class="lead">This guide gets you started with gRPC on the iOS platform in Objective-C with a simple working example.</p>
+<p class="lead">This guide gets you started with gRPC on the iOS platform in
+Objective-C with a simple working example.</p>
 
 <div id="toc"></div>
 
 ## Before you begin
 
 ### System requirement
-OS X El Capitan (version 10.11) or above is required to build and run this Quickstart.
+OS X El Capitan (version 10.11) or above is required to build and run this
+Quickstart.
 
 ### Prerequisites
 
 * `CocoaPods`: version 1.0 or higher
 
-   * Check status and version of CocoaPods on your system with command `pod --version`.
-   * If CocoaPods is not installed, follow the install instructions on CocoaPods [website](https://cocoapods.org).
+   * Check status and version of CocoaPods on your system with command `pod
+     --version`.
+   * If CocoaPods is not installed, follow the install instructions on CocoaPods
+     [website](https://cocoapods.org).
 
 * `Xcode`: version 7.2 or higher
 
-   * Check your Xcode version by running Xcode from Lauchpad, then select "Xcode->About Xcode" in the menu.
+   * Check your Xcode version by running Xcode from Lauchpad, then select
+     "Xcode->About Xcode" in the menu.
    * Make sure the command line developer tools are installed:
    ```sh
    [sudo] xcode-select --install
    ```
 
 * `Homebrew`
-   * Check status and version of Homebrew on your system with command `brew --version`.
+   * Check status and version of Homebrew on your system with command `brew
+     --version`.
    * If Homebrew is not installed, install with:
    ```sh
    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -140,7 +146,9 @@ message HelloReply {
 }
 ```
 
-Let's update this so that the `Greeter` service has two methods. Edit `examples/proto/helloworld.proto` and update it with a new `SayHelloAgain` method, with the same request and response types:
+Let's update this so that the `Greeter` service has two methods. Edit
+`examples/proto/helloworld.proto` and update it with a new `SayHelloAgain`
+method, with the same request and response types:
 
 ```
 // The greeting service definition.
@@ -166,11 +174,14 @@ message HelloReply {
 
 ## Update the client and server
 
-We now have a new gRPC service definition, but we still need to implement and call the new method in the human-written parts of our example application.
+We now have a new gRPC service definition, but we still need to implement and
+call the new method in the human-written parts of our example application.
 
 ### Update the server
 
-As you remember, gRPC doesn't provide a server API for Objective-C. Instead, we need to update the C++ sample server. Open `examples/cpp/helloworld/greeter_server.cc`. Implement the new method like this:
+As you remember, gRPC doesn't provide a server API for Objective-C. Instead, we
+need to update the C++ sample server. Open
+`examples/cpp/helloworld/greeter_server.cc`. Implement the new method like this:
 
 ```
 class GreeterServiceImpl final : public Greeter::Service {
@@ -206,11 +217,11 @@ int main(int argc, char * argv[]) {
 
     [client sayHelloWithRequest:request handler:^(HLWHelloReply *response, NSError *error) {
       NSLog(@"%@", response.message);
-    }]; 
+    }];
     [client sayHelloAgainWithRequest:request handler:^(HLWHelloReply *response, NSError *error) {
       NSLog(@"%@", response.message);
-    }]; 
-    
+    }];
+
     return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
   }
 }
@@ -223,16 +234,16 @@ First terminate the server process already running in the background:
 $ pkill greeter_server
 ```
 
-Then in directory `examples/cpp/helloworld`, build and run the updated server with the 
-following commands:
+Then in directory `examples/cpp/helloworld`, build and run the updated server
+with the following commands:
 
 ```sh
 $ make
 $ ./greeter_server &
 ```
 
-Change directory to `examples/objective-c/helloworld`, then clean up and reinstall Pods for
-the client app with the following commands:
+Change directory to `examples/objective-c/helloworld`, then clean up and
+reinstall Pods for the client app with the following commands:
 
 ```sh
 $ rm -Rf Pods
@@ -241,8 +252,9 @@ $ rm -Rf HelloWorld.xcworkspace
 $ pod install
 ```
 
-This regenerates files in `Pods/HelloWorld` based on the new proto file we wrote above.
-Open the client Xcode project in Xcode:
+This regenerates files in `Pods/HelloWorld` based on the new proto file we wrote
+above. Open the client Xcode project in Xcode:
+
 ```sh
 $ open HelloWorld.xcworkspace
 ```
@@ -266,8 +278,9 @@ this problem. We are working on a more elegant fix.
 
 **When building HellowWorld, error prompt `ld: unknown option: --no-as-needed`**
 
-This problem is due to linker `ld` in Apple LLVM not supporting the --no-as-needed
-option. We are working on a fix right now and will merge the fix very soon.
+This problem is due to linker `ld` in Apple LLVM not supporting the
+--no-as-needed option. We are working on a fix right now and will merge the fix
+very soon.
 
 **When building grpc, error prompt `cannot find install-sh install.sh or shtool`**
 
