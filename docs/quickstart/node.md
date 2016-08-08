@@ -6,7 +6,8 @@ sidenav: doc-side-quickstart-nav.html
 type: markdown
 ---
 
-<p class="lead">This guide gets you started with gRPC in Node with a simple working example.</p>
+<p class="lead">This guide gets you started with gRPC in Node with a simple
+working example.</p>
 
 <div id="toc"></div>
 
@@ -18,15 +19,18 @@ type: markdown
 
 ## Download the example
 
-You'll need a local copy of the example code to work through this quickstart. Download the example code from our GitHub repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
+You'll need a local copy of the example code to work through this quickstart.
+Download the example code from our GitHub repository (the following command
+clones the entire repository, but you just need the examples for this quickstart
+and other tutorials):
 
 ```sh
-  $ # Clone the repository to get the example code
-  $ git clone https://github.com/grpc/grpc
-  $ # Navigate to the dynamic codegen "hello, world" Node example:
-  $ cd examples/node/dynamic_codegen
-  $ # Install the example's dependencies
-  $ npm install
+$ # Clone the repository to get the example code
+$ git clone https://github.com/grpc/grpc
+$ # Navigate to the dynamic codegen "hello, world" Node example:
+$ cd examples/node/dynamic_codegen
+$ # Install the example's dependencies
+$ npm install
 ```
 
 ## Run a gRPC application
@@ -76,7 +80,9 @@ message HelloReply {
 }
 ```
 
-Let's update this so that the `Greeter` service has two methods. Edit `examples/proto/helloworld.proto` and update it with a new `SayHelloAgain` method, with the same request and response types:
+Let's update this so that the `Greeter` service has two methods. Edit
+`examples/proto/helloworld.proto` and update it with a new `SayHelloAgain`
+method, with the same request and response types:
 
 ```proto
 // The greeting service definition.
@@ -102,11 +108,13 @@ message HelloReply {
 
 ## Update and run the application
 
-We now have a new service definition, but we still need to implement and call the new method in the human-written parts of our example application.
+We now have a new service definition, but we still need to implement and call
+the new method in the human-written parts of our example application.
 
 ### Update the server
 
-In the same directory, open `greeter_server.js`. Implement the new method like this:
+In the same directory, open `greeter_server.js`. Implement the new method like
+this:
 
 ```js
 function sayHello(call, callback) {
@@ -154,8 +162,10 @@ Just like we did before, from the `examples/node/dynamic_codegen` directory:
 
 ## What's next
 
- - Read a full explanation of this example and how gRPC works in our [Overview](http://www.grpc.io/docs/)
+ - Read a full explanation of this example and how gRPC works in our
+   [Overview](http://www.grpc.io/docs/)
  - Work through a more detailed tutorial in [gRPC Basics: Node][]
- - Explore the gRPC Python core API in its [reference documentation](http://www.grpc.io/grpc/node/)
+ - Explore the gRPC Python core API in its [reference
+   documentation](http://www.grpc.io/grpc/node/)
 
 [gRPC Basics: Node]:http://www.grpc.io/docs/tutorials/basic/node.html

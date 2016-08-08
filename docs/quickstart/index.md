@@ -13,9 +13,11 @@ Get started with gRPC
 
 <div id="toc" class="toc mobile-toc"></div>
 
-These pages show you how to get up and running as quickly as possible in gRPC, including installing all the tools you’ll need. 
+These pages show you how to get up and running as quickly as possible in gRPC,
+including installing all the tools you’ll need.
 
-There is a Quick Start for each gRPC supported language with accompanying sample code for a simple ```Hello World``` example for you to explore and update.
+There is a Quick Start for each gRPC supported language with accompanying sample
+code for a simple ```Hello World``` example for you to explore and update.
 
 For a more detailed look at the same application and how it all works, see [Hello gRPC!](/docs/guides/hello.html) in our Guides section.
 For an overview of some of the core concepts in gRPC, see [gRPC Concepts](../guides/concepts.html).

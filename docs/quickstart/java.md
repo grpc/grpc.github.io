@@ -5,7 +5,8 @@ headline: Java Quickstart
 sidenav: doc-side-quickstart-nav.html
 type: markdown
 ---
-<p class="lead">This guide gets you started with gRPC in Java with a simple working example.</p>
+<p class="lead">This guide gets you started with gRPC in Java with a simple
+working example.</p>
 
 <div id="toc"></div>
 
@@ -17,7 +18,10 @@ type: markdown
 
 ## Download the example
 
-You'll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):
+You'll need a local copy of the example code to work through this quickstart.
+Download the example code from our Github repository (the following command
+clones the entire repository, but you just need the examples for this quickstart
+and other tutorials):
 
 ```sh
 $ # Clone the repository at the latest release to get the example code:
@@ -78,7 +82,9 @@ message HelloReply {
   string message = 1;
 }
 ```
-Let's update this so that the `Greeter` service has two methods. Edit `examples/src/main/proto/helloworld.proto` and update it with a new `SayHelloAgain` method, with the same request and response types:
+Let's update this so that the `Greeter` service has two methods. Edit
+`examples/src/main/proto/helloworld.proto` and update it with a new
+`SayHelloAgain` method, with the same request and response types:
 
 ```
 // The greeting service definition.
@@ -104,13 +110,19 @@ message HelloReply {
 
 ## Update and run the application
 
-When we recompile the example, normal compilation will regenerate `GreeterGrpc.java`, which contains our generated gRPC client and server classes. This also regenerates classes for populating, serializing, and retrieving our request and response types.
+When we recompile the example, normal compilation will regenerate
+`GreeterGrpc.java`, which contains our generated gRPC client and server classes.
+This also regenerates classes for populating, serializing, and retrieving our
+request and response types.
 
-However, we still need to implement and call the new method in the human-written parts of our example application.
+However, we still need to implement and call the new method in the human-written
+parts of our example application.
 
 ### Update the server
 
-In the same directory, open `src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java`. Implement the new method like this:
+In the same directory, open
+`src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java`. Implement the
+new method like this:
 
 ```
 private class GreeterImpl extends GreeterGrpc.GreeterImplBase {
@@ -134,7 +146,9 @@ private class GreeterImpl extends GreeterGrpc.GreeterImplBase {
 
 ### Update the client
 
-In the same directory, open `src/main/java/io/grpc/examples/helloworld/HelloWorldClient.java`. Call the new method like this:
+In the same directory, open
+`src/main/java/io/grpc/examples/helloworld/HelloWorldClient.java`. Call the new
+method like this:
 
 ```
 public void greet(String name) {
@@ -182,9 +196,11 @@ Just like we did before, from the `examples` directory:
 
 ## What's next
 
-- Read a full explanation of this example and how gRPC works in our [Overview](http://www.grpc.io/docs/)
+- Read a full explanation of this example and how gRPC works in our
+  [Overview](http://www.grpc.io/docs/)
 - Work through a more detailed tutorial in [gRPC Basics: Java][]
-- Explore the gRPC Java core API in its [reference documentation](http://www.grpc.io/grpc-java/javadoc/)
+- Explore the gRPC Java core API in its [reference
+  documentation](http://www.grpc.io/grpc-java/javadoc/)
 
 [gRPC Basics: Java]:http://www.grpc.io/docs/tutorials/basic/java.html
 
