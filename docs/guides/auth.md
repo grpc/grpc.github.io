@@ -69,7 +69,7 @@ authenticate the server and encrypt all data. The example is in C++, but the API
 // Create a default SSL ChannelCredentials object.
 auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
 // Create a channel using the credentials created in the previous step.
-auto channel = grpc::CreateChannel(server_name, creds);
+auto channel = grpc::CreateChannel(server_name, channel_creds);
 // Create a stub on the channel.
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 // Make actual RPC calls on the stub.
@@ -87,9 +87,9 @@ gRPC applications can use a simple API to create a credential that works for aut
 various deployment scenarios. Again, our example is in C++ but you can find examples in other languages in our Examples section.
 
 ```cpp
-auto creds = grpc::GoogleDefaultCredentials();
+auto channel_creds = grpc::GoogleDefaultCredentials();
 // Create a channel, stub and make RPC calls (same as in the previous example)
-auto channel = grpc::CreateChannel(server_name, creds);
+auto channel = grpc::CreateChannel(server_name, channel_creds);
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 grpc::Status s = stub->sayHello(&context, *request, response);
 ```
@@ -194,7 +194,7 @@ std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 
 ```cpp
 auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
-auto channel = grpc::CreateChannel("myservice.example.com", creds);
+auto channel = grpc::CreateChannel("myservice.example.com", channel_creds);
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 ...
 ```
@@ -202,8 +202,8 @@ std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 #### Authenticate with Google
 
 ```cpp
-auto creds = grpc::GoogleDefaultCredentials();
-auto channel = grpc::CreateChannel("greeter.googleapis.com", creds);
+auto channel_creds = grpc::GoogleDefaultCredentials();
+auto channel = grpc::CreateChannel("greeter.googleapis.com", channel_creds);
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 ...
 ```
