@@ -29,8 +29,8 @@ token_.
 ## Example code and setup
 
 The example code for our tutorial is in
-[gprc/examples/objective-c/auth_sample](https://github.com/grpc/grpc/tree/{{
-site.data.config.grpc_release_branch }}/examples/objective-c/auth_sample). To
+[gprc/examples/objective-c/auth_sample](https://github.com/grpc/grpc/tree/
+{{ site.data.config.grpc_release_branch }}/examples/objective-c/auth_sample). To
 download the example, clone this repository by running the following commands:
 
 ```
@@ -103,9 +103,7 @@ everything went as expected).
 
 The next sections guide you step-by-step through how the gRPC call in
 `MakeRPCViewController` is performed. You can see the complete code in
-[MakeRPCViewController.m](https://github.com/grpc/grpc/blob/{{
-site.data.config.grpc_release_branch
-}}/examples/objective-c/auth_sample/MakeRPCViewController.m).
+[MakeRPCViewController.m](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/objective-c/auth_sample/MakeRPCViewController.m).
 
 <a name="rpc-object"></a>
 
