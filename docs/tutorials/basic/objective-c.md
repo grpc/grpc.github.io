@@ -56,9 +56,8 @@ strip unused code is limited by the dynamic nature of the language.
 ## Example code and setup
 
 The example code for our tutorial is in
-[grpc/grpc/examples/objective-c/route_guide](https://github.com/grpc/grpc/tree/{{
-site.data.config.grpc_release_branch }}/examples/objective-c/route_guide). To
-download the example, clone the `grpc` repository by running the following
+[grpc/grpc/examples/objective-c/route_guide](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/objective-c/route_guide).
+To download the example, clone the `grpc` repository by running the following
 commands:
 
 ```
@@ -124,8 +123,7 @@ First let's look at how the service we're using is defined. A gRPC *service* and
 its method *request* and *response* types using [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
 see the complete .proto file for our example in
-[`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{
-site.data.config.grpc_release_branch }}/examples/protos/route_guide.proto).
+[`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -217,11 +215,10 @@ definition. We do this using the protocol buffer compiler (`protoc`) with a
 special gRPC Objective-C plugin.
 
 For simplicity, we've provided a [Podspec
-file](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch
-}}/examples/objective-c/route_guide/RouteGuide.podspec) that runs `protoc` for
-you with the appropriate plugin, input, and output, and describes how to compile
-the generated files. You just need to run in this directory
-(`examples/objective-c/route_guide`):
+file](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/objective-c/route_guide/RouteGuide.podspec)
+that runs `protoc` for you with the appropriate plugin, input, and output, and
+describes how to compile the generated files. You just need to run in this
+directory (`examples/objective-c/route_guide`):
 
 ```
 $ pod install
@@ -262,12 +259,10 @@ version, and other metadata.
 
 In this section, we'll look at creating an Objective-C client for our
 `RouteGuide` service. You can see our complete example client code in
-[examples/objective-c/route_guide/ViewControllers.m](https://github.com/grpc/grpc/blob/{{
-site.data.config.grpc_release_branch
-}}/examples/objective-c/route_guide/ViewControllers.m). (Note: In your apps, for
-maintainability and readability reasons, you shouldn't put all of your view
-controllers in a single file; it's done here only to simplify the learning
-process).
+[examples/objective-c/route_guide/ViewControllers.m](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/objective-c/route_guide/ViewControllers.m).
+(Note: In your apps, for maintainability and readability reasons, you shouldn't
+put all of your view controllers in a single file; it's done here only to
+simplify the learning process).
 
 ### Constructing a service object
 

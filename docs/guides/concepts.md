@@ -208,9 +208,9 @@ terminated.
 
 ### Metadata
 
-Metadata is information about a particular RPC call (such as <a href="{{
-site.baseurl }}/docs/guides/auth.html">authentication details</a>) in the form
-of a list of key-value pairs, where the keys are strings and the values are
+Metadata is information about a particular RPC call (such as <a href="
+{{ site.baseurl }}/docs/guides/auth.html">authentication details</a>) in the
+form of a list of key-value pairs, where the keys are strings and the values are
 typically strings (but can be binary data). Metadata is opaque to gRPC itself -
 it lets the client provide information associated with the call to the server
 and vice versa.

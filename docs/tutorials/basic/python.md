@@ -49,9 +49,8 @@ interface updating.
 ## Example code and setup
 
 The example code for this tutorial is in
-[grpc/grpc/examples/python/route_guide](https://github.com/grpc/grpc/tree/{{
-site.data.config.grpc_release_branch }}/examples/python/route_guide). To
-download the example, clone the `grpc` repository by running the following
+[grpc/grpc/examples/python/route_guide](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/python/route_guide).
+To download the example, clone the `grpc` repository by running the following
 command:
 
 ```
@@ -76,8 +75,7 @@ define the gRPC *service* and the method *request* and *response* types using
 [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
 see the complete .proto file in
-[`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{
-site.data.config.grpc_release_branch }}/examples/protos/route_guide.proto).
+[`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -206,9 +204,7 @@ Creating and running a `RouteGuide` server breaks down into two work items:
   responses.
 
 You can find the example `RouteGuide` server in
-[examples/python/route_guide/route_guide_server.py](https://github.com/grpc/grpc/blob/{{
-site.data.config.grpc_release_branch
-}}/examples/python/route_guide/route_guide_server.py).
+[examples/python/route_guide/route_guide_server.py](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/route_guide/route_guide_server.py).
 
 ### Implementing RouteGuide
 
@@ -331,9 +327,7 @@ else for your code to do while serving.
 ## Creating the client
 
 You can see the complete example client code in
-[examples/python/route_guide/route_guide_client.py](https://github.com/grpc/grpc/blob/{{
-site.data.config.grpc_release_branch
-}}/examples/python/route_guide/route_guide_client.py).
+[examples/python/route_guide/route_guide_client.py](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/python/route_guide/route_guide_client.py).
 
 ### Creating a stub
 
