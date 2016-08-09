@@ -76,7 +76,7 @@ the code to hack on
   <div id="cpp_source">
   <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
   <pre>
-  $ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
+  $ git clone -b {{site.data.config.grpc_release_branch}} https://github.com/grpc/grpc
   </pre>
   <p>Change your current directory to <code>examples/cpp/helloworld</code></p>
   <pre>
@@ -86,7 +86,7 @@ the code to hack on
   <div id="python_source">
   <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
   <pre>
-  $ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
+  $ git clone -b {{site.data.config.grpc_release_branch}} https://github.com/grpc/grpc
   </pre>
   <p>Change your current directory to <code>examples/python/helloworld</code></p>
   <pre>
@@ -106,7 +106,7 @@ the code to hack on
   <div id="ruby_source">
   <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
   <pre>
-  $ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
+  $ git clone -b {{site.data.config.grpc_release_branch}} https://github.com/grpc/grpc
   </pre>
   <p>Change your current directory to <code>examples/ruby</code>. Then use bundler to install the example package's dependencies:</p>
   <pre>
@@ -119,7 +119,7 @@ the code to hack on
 <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
 
 <pre>
-$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
+$ git clone -b {{site.data.config.grpc_release_branch}} https://github.com/grpc/grpc
 </pre>
 
 <p>Change your current directory to <code>examples/node</code>, then install this package's dependencies:</p>
@@ -133,7 +133,7 @@ $ npm install
 <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
 
 <pre>
-$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
+$ git clone -b {{site.data.config.grpc_release_branch}} https://github.com/grpc/grpc
 </pre>
   <p>Open <code>Greeter.sln</code> from Visual Studio (or Monodevelop on Linux).</p>
   </div>
@@ -142,7 +142,7 @@ $ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
 <p>The example code for this lives in the <code>examples</code> directory in our GitHub repositories. Clone this repository to your local machine by running the following commands:</p>
 
 <pre>
-$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
+$ git clone -b {{site.data.config.grpc_release_branch}} https://github.com/grpc/grpc
 $ cd grpc
 $ git submodule update --init
 </pre>
@@ -153,7 +153,7 @@ $ git submodule update --init
 <p>The example code for this lives in the <code>examples</code> in our GitHub repositories. Clone this repository to your local machine by running the following command:</p>
 
 <pre>
-$ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
+$ git clone -b {{site.data.config.grpc_release_branch}} https://github.com/grpc/grpc
 </pre>
 
 <p>Change your current directory to <code>examples/php</code>.</p>
@@ -188,7 +188,7 @@ To install the gRPC runtime for your chosen language:
 <p>To install the runtime for your own projects, add the following to your build files:</p>
 
 <p>Gradle:</p>
-<pre>compile 'io.grpc:grpc-all:0.15.0'</pre>
+<pre>compile 'io.grpc:grpc-all:{{site.data.config.grpc_java_release_tag}}'</pre>
 
 <p>Maven:</p>
 <pre>
@@ -545,7 +545,7 @@ tutorial for your chosen language.
     <li><a href="#csharp_service">C#</a></li>
   </ul>
   <div id="java_service">
-<p><a href="https://github.com/grpc/grpc-java/blob/master/examples/src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java#L51">GreeterImpl.java</a>
+<p><a href="https://github.com/grpc/grpc-java/blob/{{site.data.config.grpc_release_branch}}/examples/src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java#L51">GreeterImpl.java</a>
 actually implements our <code>Greeter</code> service's required behaviour.</p>
 
 <p>As you can see, the class <code>GreeterImpl</code> extends the abstract class
