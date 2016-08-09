@@ -550,7 +550,7 @@ actually implements our <code>Greeter</code> service's required behaviour.</p>
 
 <p>As you can see, the class <code>GreeterImpl</code> extends the abstract class
 <code>GreeterGrpc.GreeterImplBase</code> that we <a href="#generating">generated</a> from our proto
-<a href="https://github.com/grpc/grpc-java/tree/master/examples/src/main/proto">IDL</a> by implementing the method <code>sayHello</code>:</p>
+<a href="https://github.com/grpc/grpc-java/tree/{{site.data.config.grpc_release_branch}}/examples/src/main/proto">IDL</a> by implementing the method <code>sayHello</code>:</p>
 <pre>
 @Override
 public void sayHello(HelloRequest req, StreamObserver&lt;HelloReply&gt; responseObserver) {
