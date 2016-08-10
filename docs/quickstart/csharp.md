@@ -20,11 +20,13 @@ working example.</p>
 Windows: 
 
 * .NET Framework 4.5+, Visual Studio 2013 or 2015.
+* Git (to download the sample code)
 
 For OS X and Linux, either: 
 
 * Mono 4+, MonoDevelop 5.9+, and a NuGet executable 
 * The .NET Core SDK, the .NET framework 4.5, and a NuGet executable
+* Git (to download the sample code)
 
 ## Download the example
 
@@ -198,7 +200,7 @@ From the `examples/csharp/helloworld` directory:
 **Windows**
 
 ```
-$ packages/Grpc.Tools.1.0.0/tools/windows_x86/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.1.0.0/tools/windows_x86/grpc_csharp_plugin
+> packages/Grpc.Tools.1.0.0/tools/windows_x86/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.1.0.0/tools/windows_x86/grpc_csharp_plugin.exe
 ```
 
 **Linux (or OS X by using macosx_x64 directory)**
@@ -262,8 +264,8 @@ public static void Main(string[] args)
     var reply = client.SayHello(new HelloRequest { Name = user });
     Console.WriteLine("Greeting: " + reply.Message);
     
-    var reply = client.SayHelloAgain(new HelloRequest { Name = user });
-    Console.WriteLine("Greeting: " + reply.Message);
+    var secondReply = client.SayHelloAgain(new HelloRequest { Name = user });
+    Console.WriteLine("Greeting: " + secondReply.Message);
 
     channel.ShutdownAsync().Wait();
     Console.WriteLine("Press any key to exit...");
