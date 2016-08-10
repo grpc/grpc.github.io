@@ -13,8 +13,6 @@ This tutorial provides a basic Objective-C programmer's introduction to working 
 
 It assumes a passing familiarity with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the example in this tutorial uses the proto3 version of the protocol buffers language, which is currently in beta release: you can find out more in the [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and the [Objective-C generated code guide](https://developers.google.com/protocol-buffers/docs/reference/objective-c-generated), and see the [release notes](https://github.com/google/protobuf/releases) for the new version in the protocol buffers Github repository.
 
-This isn't a comprehensive guide to using gRPC in Objective-C: more reference documentation is coming soon.
-
 <div id="toc"></div>
 
 <a name="why-grpc"></a>
