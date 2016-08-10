@@ -348,7 +348,7 @@ function getServer() {
 }
 var routeServer = getServer();
 routeServer.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
-routeServer.listen();
+routeServer.start();
 ```
 
 As you can see, we build and start our server with the following steps:
@@ -359,7 +359,7 @@ As you can see, we build and start our server with the following steps:
     the method implementations.
  1. Specify the address and port we want to use to listen for client requests
     using the instance's `bind()` method.
- 1. Call `listen()` on the instance to start the RPC server.
+ 1. Call `start()` on the instance to start the RPC server.
 
 <a name="client"></a>
 
