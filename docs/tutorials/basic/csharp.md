@@ -26,9 +26,6 @@ reference](https://developers.google.com/protocol-buffers/docs/reference/csharp-
 For information about the new version in the protocol buffers Github repository,
 see the [release notes](https://github.com/google/protobuf/releases). 
 
-This isn't a comprehensive guide to using gRPC in C#: more reference
-documentation is coming soon.
-
 <div id="toc"></div>
 
 ## Why use gRPC?
