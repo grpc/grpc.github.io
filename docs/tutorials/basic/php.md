@@ -15,8 +15,6 @@ It assumes a passing familiarity with [protocol buffers](https://developers.goog
 
 Also note that currently you can only create clients in PHP for gRPC services - you can find out how to create gRPC servers in our other tutorials, e.g. [Node.js](/docs/tutorials/basic/node.html).
 
-This isn't a comprehensive guide to using gRPC in PHP: more reference documentation is coming soon.
-
 <div id="toc"></div>
 
 <a name="why-grpc"></a>
