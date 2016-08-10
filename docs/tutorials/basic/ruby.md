@@ -23,9 +23,6 @@ guide](https://developers.google.com/protocol-buffers/docs/proto3) and see the
 [release notes](https://github.com/google/protobuf/releases) for the new version
 in the protocol buffers Github repository.
 
-This isn't a comprehensive guide to using gRPC in Ruby: more reference
-documentation is coming soon.
-
 <div id="toc"></div>
 
 ## Why use gRPC?
