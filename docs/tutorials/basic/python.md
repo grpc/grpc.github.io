@@ -54,10 +54,10 @@ command:
 $ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
 ```
 
-Then change your current directory to `examples/python/route_guide`:
+Then change your current directory to `examples/python/route_guide` in the repository:
 
 ```
-$ cd examples/python/route_guide
+$ cd grpc/examples/python/route_guide
 ```
 
 You also should have the relevant tools installed to generate the server and
@@ -129,10 +129,9 @@ rpc RecordRoute(stream Point) returns (RouteSummary) {}
   keyword before both the request and the response.
 
 ```protobuf
-
-  // Accepts a stream of RouteNotes sent while a route is being traversed,
-  // while receiving other RouteNotes (e.g. from other users).
-  rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
+// Accepts a stream of RouteNotes sent while a route is being traversed,
+// while receiving other RouteNotes (e.g. from other users).
+rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
 ```
 
 Your .proto file also contains protocol buffer message type definitions for all
@@ -168,21 +167,18 @@ $ python -m grpc.tools.protoc -I../../protos --python_out=. --grpc_python_out=. 
 ```
 
 Note that as we've already provided a version of the generated code in the
-example repository, running this command regenerates the appropriate file rather
+example directory, running this command regenerates the appropriate file rather
 than creates a new one. The generated code file is called `route_guide_pb2.py`
 and contains:
 
 - classes for the messages defined in route_guide.proto
-- abstract classes for the service defined in route_guide.proto
-   - `BetaRouteGuideServicer`, which defines the interface for implementations
+- classes for the service defined in route_guide.proto
+   - `RouteGuideStub`, which can be used by clients to invoke RouteGuide RPCs
+   - `RouteGuideServicer`, which defines the interface for implementations
      of the RouteGuide service
-   - `BetaRouteGuideStub`, which can be used by clients to invoke RouteGuide
-     RPCs
-- functions for application use
-   - `beta_create_RouteGuide_server`, which creates a gRPC server given an
-     `BetaRouteGuideServicer` object
-   - `beta_create_RouteGuide_stub`, which can be used by clients to create a
-     stub object
+- a function for the service defined in route_guide.proto
+   - `add_RouteGuideServicer_to_server`, which adds a RouteGuideServicer to
+     a `grpc.Server`
 
 <a name="server"></a>
 
@@ -204,12 +200,12 @@ You can find the example `RouteGuide` server in
 
 ### Implementing RouteGuide
 
-`route_guide_server.py` has a `RouteGuideServicer` class that implements the
-generated interface `route_guide_pb2.BetaRouteGuideServicer`:
+`route_guide_server.py` has a `RouteGuideServicer` class that subclasses the
+generated class `route_guide_pb2.RouteGuideServicer`:
 
 ```python
 # RouteGuideServicer provides an implementation of the methods of the RouteGuide service.
-class RouteGuideServicer(route_guide_pb2.BetaRouteGuideServicer):
+class RouteGuideServicer(route_guide_pb2.RouteGuideServicer):
 ```
 
 `RouteGuideServicer` implements all the `RouteGuide` service methods.
@@ -230,8 +226,8 @@ def GetFeature(self, request, context):
 ```
 
 The method is passed a `route_guide_pb2.Point` request for the RPC, and a
-`ServicerContext` object that provides RPC-specific information such as timeout
-limits. It returns a `route_guide_pb2.Feature` response.
+`grpc.ServicerContext` object that provides RPC-specific information such as
+timeout limits. It returns a `route_guide_pb2.Feature` response.
 
 #### Response-streaming RPC
 
@@ -310,7 +306,9 @@ start up a gRPC server so that clients can actually use your service:
 
 ```python
 def serve():
-  server = route_guide_pb2.beta_create_RouteGuide_server(RouteGuideServicer())
+  server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+  route_guide_pb2.add_RouteGuideServicer_to_server(
+      RouteGuideServicer(), server)
   server.add_insecure_port('[::]:50051')
   server.start()
 ```
@@ -329,16 +327,13 @@ You can see the complete example client code in
 
 To call service methods, we first need to create a *stub*.
 
-We use the `beta_create_RouteGuide_stub` function of the `route_guide_pb2`
+We instantiate the `RouteGuideStub` class of the `route_guide_pb2`
 module, generated from our .proto.
 
 ```python
-channel = implementations.insecure_channel('localhost', 50051)
-stub = beta_create_RouteGuide_stub(channel)
+channel = grpc.insecure_channel('localhost:50051')
+stub = route_guide_pb2.RouteGuideStub(channel)
 ```
-
-The returned object implements all the methods defined by the
-`BetaRouteGuideStub` interface.
 
 ### Calling service methods
 
@@ -355,14 +350,14 @@ as calling a local method. The RPC call waits for the server to respond, and
 will either return a response or raise an exception:
 
 ```python
-feature = stub.GetFeature(point, timeout_in_seconds)
+feature = stub.GetFeature(point)
 ```
 
 An asynchronous call to `GetFeature` is similar, but like calling a local method
 asynchronously in a thread pool:
 
 ```python
-feature_future = stub.GetFeature.future(point, timeout_in_seconds)
+feature_future = stub.GetFeature.future(point)
 feature = feature_future.result()
 ```
 
@@ -372,21 +367,21 @@ Calling the response-streaming `ListFeatures` is similar to working with
 sequence types:
 
 ```python
-for feature in stub.ListFeatures(rectangle, timeout_in_seconds):
+for feature in stub.ListFeatures(rectangle):
 ```
 
 #### Request-streaming RPC
 
-Calling the request-streaming `RecordRoute` is similar to passing a sequence to
-a local method. Like the simple RPC above that also returns a single response,
-it can be called synchronously or asynchronously:
+Calling the request-streaming `RecordRoute` is similar to passing an iterator
+to a local method. Like the simple RPC above that also returns a single
+response, it can be called synchronously or asynchronously:
 
 ```python
-route_summary = stub.RecordRoute(point_sequence, timeout_in_seconds)
+route_summary = stub.RecordRoute(point_iterator)
 ```
 
 ```python
-route_summary_future = stub.RecordRoute.future(point_sequence, timeout_in_seconds)
+route_summary_future = stub.RecordRoute.future(point_iterator)
 route_summary = route_summary_future.result()
 ```
 
@@ -397,7 +392,7 @@ service-side) a combination of the request-streaming and response-streaming
 semantics:
 
 ```python
-for received_route_note in stub.RouteChat(sent_routes, timeout_in_seconds):
+for received_route_note in stub.RouteChat(sent_route_note_iterator):
 ```
 
 ## Try it out!
