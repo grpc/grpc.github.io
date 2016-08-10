@@ -148,26 +148,16 @@ message Point {
 
 Next we need to generate the gRPC client and server interfaces from our .proto
 service definition. We do this using the protocol buffer compiler `protoc` with
-a special gRPC Go plugin.
+a special gRPC Go plugin. 
+This is similar to what we did in the [quickstart guide](https://github.com/grpc/grpc.github.io/blob/GA/docs/quickstart/go.md)
 
-For simplicity, we've provided a [bash
-script](https://github.com/grpc/grpc-go/blob/master/codegen.sh) that runs
-`protoc` for you with the appropriate plugin, input, and output (if you want to
-run this by yourself, make sure you've installed protoc and followed the gRPC-Go
-[installation
-instructions](https://github.com/grpc/grpc-go/blob/master/README.md) first):
+From the `route_guide` example directory run :
 
-```
-$ codegen.sh route_guide.proto
+```sh
+ protoc -I routeguide/ routeguide/route_guide.proto --go_out=plugins=grpc:routeguide
 ```
 
-which actually runs:
-
-```
-$ protoc --go_out=plugins=grpc:. route_guide.proto
-```
-
-Running this command generates the following file in your current directory:
+Running this command generates the following file in the `routeguide` directory under the `route_guide` example directory:
 - `route_guide.pb.go`
 
 This contains:
