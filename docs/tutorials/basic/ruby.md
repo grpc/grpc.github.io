@@ -49,6 +49,7 @@ command:
 
 ```
 $ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
+$ cd grpc
 ```
 
 Then change your current directory to `examples/ruby/route_guide`:
@@ -159,7 +160,7 @@ instructions](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release
 Once that's done, the following command can be used to generate the ruby code.
 
 ```
-$ protoc -I ../../protos --ruby_out=lib --grpc_out=lib --plugin=protoc-gen-grpc=`which grpc_ruby_plugin` ../../protos/route_guide.proto
+$ protoc -I ../../protos --ruby_out=../lib --grpc_out=../lib --plugin=protoc-gen-grpc=`which grpc_ruby_plugin` ../../protos/route_guide.proto
 ```
 
 Running this command regenerates the following files in the lib directory:

@@ -64,6 +64,7 @@ command:
 
 ```sh
 $ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
+$ cd grpc
 ```
 
 Then change your current directory to `examples/node`:
@@ -74,7 +75,7 @@ $ cd examples/node
 
 You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
-[the Node.js quick start guide](/docs/installation/node.html).
+[the Node.js quick start guide](../docs/installation/node.html).
 
 
 ## Defining the service
