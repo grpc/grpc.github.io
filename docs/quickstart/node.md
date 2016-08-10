@@ -26,9 +26,9 @@ and other tutorials):
 
 ```sh
 $ # Clone the repository to get the example code
-$ git clone https://github.com/grpc/grpc
+$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
 $ # Navigate to the dynamic codegen "hello, world" Node example:
-$ cd examples/node/dynamic_codegen
+$ cd grpc/examples/node/dynamic_codegen
 $ # Install the example's dependencies
 $ npm install
 ```
@@ -124,6 +124,14 @@ function sayHello(call, callback) {
 function sayHelloAgain(call, callback) {
   callback(null, {message: 'Hello again, ' + call.request.name});
 }
+
+function main() {
+  var server = new grpc.Server();
+  server.addProtoService(hello_proto.Greeter.service,
+                         {sayHello: sayHello, sayHelloAgain: sayHelloAgain});
+  server.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
+  server.start();
+}
 ...
 ```
 
@@ -165,7 +173,7 @@ Just like we did before, from the `examples/node/dynamic_codegen` directory:
  - Read a full explanation of this example and how gRPC works in our
    [Overview](http://www.grpc.io/docs/)
  - Work through a more detailed tutorial in [gRPC Basics: Node][]
- - Explore the gRPC Python core API in its [reference
+ - Explore the gRPC Node core API in its [reference
    documentation](http://www.grpc.io/grpc/node/)
 
 [gRPC Basics: Node]:http://www.grpc.io/docs/tutorials/basic/node.html

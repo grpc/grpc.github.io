@@ -55,7 +55,7 @@ $ cd grpc/examples/ruby
 
 ## Run a gRPC application
 
-From the `examples/python` directory:
+From the `examples/ruby` directory:
 
 1. Run the server
 
@@ -101,7 +101,7 @@ message HelloReply {
 ```
 
 Let's update this so that the `Greeter` service has two methods. Edit
-`examples/proto/helloworld.proto` and update it with a new `SayHelloAgain`
+`examples/protos/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
 ```proto

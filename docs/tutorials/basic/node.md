@@ -64,6 +64,7 @@ command:
 
 ```sh
 $ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
+$ cd grpc
 ```
 
 Then change your current directory to `examples/node`:
@@ -74,7 +75,7 @@ $ cd examples/node
 
 You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
-[the Node.js quick start guide](/docs/installation/node.html).
+[the Node.js quick start guide](../docs/installation/node.html).
 
 
 ## Defining the service
@@ -347,7 +348,7 @@ function getServer() {
 }
 var routeServer = getServer();
 routeServer.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
-routeServer.listen();
+routeServer.start();
 ```
 
 As you can see, we build and start our server with the following steps:
@@ -358,7 +359,7 @@ As you can see, we build and start our server with the following steps:
     the method implementations.
  1. Specify the address and port we want to use to listen for client requests
     using the instance's `bind()` method.
- 1. Call `listen()` on the instance to start the RPC server.
+ 1. Call `start()` on the instance to start the RPC server.
 
 <a name="client"></a>
 
