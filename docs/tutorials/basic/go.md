@@ -149,7 +149,7 @@ message Point {
 Next we need to generate the gRPC client and server interfaces from our .proto
 service definition. We do this using the protocol buffer compiler `protoc` with
 a special gRPC Go plugin. 
-This is similar to what we did in the [quickstart guide](https://github.com/grpc/grpc.github.io/blob/GA/docs/quickstart/go.md)
+This is similar to what we did in the [quickstart guide](../../quickstart/go.html)
 
 From the `route_guide` example directory run :
 
