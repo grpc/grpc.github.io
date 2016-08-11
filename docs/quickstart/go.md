@@ -16,6 +16,7 @@ working example.</p>
 ### Prerequisites
 
 #### Go version
+
 gRPC works with Go 1.5 or higher.
 
 ```sh
@@ -25,7 +26,9 @@ $ go version
 For installation instructions, follow this guide: [Getting Started - The Go Programming Language](https://golang.org/doc/install)
 
 #### Install gRPC
+
 Use the following command to install gRPC.
+
 ```sh
 $ go get google.golang.org/grpc
 ```
@@ -33,39 +36,53 @@ $ go get google.golang.org/grpc
 #### Install Protocol Buffers v3
 
 1. Install the protoc compiler that is used to generate gRPC service code. The simplest way to do this is to download pre-compiled binaries for your platform(`protoc-<version>-<platform>.zip`) from here: https://github.com/google/protobuf/releases
+
   * Unzip this file.
   * Update the environment variable `PATH` to include the path to the protoc binary file.
 
-2. Next, install the protoc plugin for Go by following the instructions here: https://github.com/golang/protobuf#installation	
-  *  ``` $ go get -u github.com/golang/protobuf/{proto,protoc-gen-go} ```
-  *  The compiler plugin, protoc-gen-go, will be installed in $GOBIN, defaulting to $GOPATH/bin. It must be in your $PATH for the protocol compiler, protoc, to find it.
-     
-    ``` $ export PATH=$PATH:$GOPATH/bin ```
+2. Next, install the protoc plugin for Go
+
+  * `$ go get -u github.com/golang/protobuf/{proto,protoc-gen-go}`
+  * The compiler plugin, protoc-gen-go, will be installed in $GOBIN, defaulting to $GOPATH/bin. It must be in your $PATH for the protocol compiler, protoc, to find it.  
+
+	```
+	$ export PATH=$PATH:$GOPATH/bin
+	```
 
 ## Download the example
-The grpc code that was fetched with ``` $ go get google.golang.org/grpc ``` also contains the examples. They can be found under the examples dir: `$GOPATH/src/google.golang.org/grpc/examples`.
+
+The grpc code that was fetched with `go get google.golang.org/grpc` also contains the examples. They can be found under the examples dir: `$GOPATH/src/google.golang.org/grpc/examples`.
 
 ## Build the example
+
 Change to the example directory
 
-```$ cd $GOPATH/src/google.golang.org/grpc/examples/helloworld```
+```
+$ cd $GOPATH/src/google.golang.org/grpc/examples/helloworld
+```
 
 gRPC services are defined in a proto file, which is used to generate a corresponding .pb.go. This file is already generated for the helloworld example code and can be found under this directory: `$GOPATH/src/google.golang.org/grpc/examples/helloworld/helloworld`
 
 This `helloworld.pb.go` file contains:
+
   * Generated client and server code.
   * Code for populating, serializing, and retrieving our `HelloRequest` and `HelloResponse` message types.
 
 
 ## Try it!
+
 To compile and run the server and client code, the `go run` command can be used.
 In the examples directory:
 
-```$ go run greeter_server/main.go```
+```
+$ go run greeter_server/main.go
+```
 
 From a different terminal:
 
-```$ go run greeter_client/main.go```
+```
+$ go run greeter_client/main.go
+```
 
 If things go smoothly, you will see the `Greeting: Hello world` in the client side output.
 
@@ -102,7 +119,7 @@ message HelloReply {
 }
 ```
 
-Let's update this so that the `Greeter` service has two methods. Make sure you are in the same examples dir as above (``` $GOPATH/src/google.golang.org/grpc/examples/helloworld```) 
+Let's update this so that the `Greeter` service has two methods. Make sure you are in the same examples dir as above (`$GOPATH/src/google.golang.org/grpc/examples/helloworld`) 
 
 Edit `helloworld/helloworld.proto` and update it with a new `SayHelloAgain` method, with the same request and response
 types:
@@ -130,11 +147,12 @@ message HelloReply {
 ## Generate gRPC code
 
 Next we need to update the gRPC code used by our application to use the new
-service definition. From the same examples dir as above (``` $GOPATH/src/google.golang.org/grpc/examples/helloworld```)
+service definition. From the same examples dir as above (`$GOPATH/src/google.golang.org/grpc/examples/helloworld`)
 
 ```sh
 $ protoc -I helloworld/ helloworld/helloworld.proto --go_out=plugins=grpc:helloworld
 ```
+
 This regenerates the helloworld.pb.go with our new changes.
 
 ## Update and run the application
@@ -167,17 +185,24 @@ log.Printf("Greeting: %s", r.Message)
 ### Run!
 
 1. Run the server 
-   ``` $ go run greeter_server/main.go ```
+
+	```
+	$ go run greeter_server/main.go
+	```
 
 2. On a different terminal, run the client 
-   ``` $ go run greeter_client/main.go ```
+
+	```
+	$ go run greeter_client/main.go
+	```
 
 You should see the updated output:
-   ```
-   $ go run greeter_client/main.go
-   Greeting: Hello world
-   Greeting: Hello again world
-   ```
+
+```
+$ go run greeter_client/main.go
+Greeting: Hello world
+Greeting: Hello again world
+```
 
 
 ## What's next
