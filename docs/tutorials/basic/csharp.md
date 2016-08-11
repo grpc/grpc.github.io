@@ -495,17 +495,23 @@ using (var call = client.RouteChat())
 
 Build client and server:
 
-- Open the solution `examples/csharp/route_guide/RouteGuide.sln` from Visual
-  Studio (or Monodevelop on Linux) and select **Build**.
+#### Using Visual Studio
 
-- Run the server, which will listen on port 50052:
+- Open the solution `examples/csharp/route_guide/RouteGuide.sln` and select **Build**.
+
+#### Using Xamarin Studio or Monodevelop on OS X or Linux
+
+- See the [quickstart](../../quickstart/csharp.md) for instructions on downloading gRPC 
+  nuget dependencies and building the solution with these IDEs.
+
+Run the server, which will listen on port 50052:
 
   ```
   > cd RouteGuideServer/bin/Debug
   > RouteGuideServer.exe
   ```
 
-- Run the client (in a different terminal):
+Run the client (in a different terminal):
 
   ```
   > cd RouteGuideClient/bin/Debug
