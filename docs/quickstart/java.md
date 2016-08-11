@@ -37,7 +37,7 @@ From the `examples` directory:
 1. Compile the client and server
 
    ```sh
-   $ ./gradle installDist
+   $ ./gradlew installDist
    ```
 
 2. Run the server
@@ -179,7 +179,7 @@ Just like we did before, from the `examples` directory:
 1. Compile the client and server
 
    ```sh
-   $ ./gradle installDist
+   $ ./gradlew installDist
    ```
 
 2. Run the server
