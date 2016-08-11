@@ -66,9 +66,9 @@ $ cd grpc-java/examples
 
 Our first step (as you'll know from the [Overview](/docs/index.html)) is to
 define the gRPC *service* and the method *request* and *response* types using
-[protocol buffers]
-(https://developers.google.com/protocol-buffers/docs/overview). You can see the
-complete .proto file in
+[protocol
+buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
+see the complete .proto file in
 [`grpc-java/examples/src/main/proto/route_guide.proto`](https://github.com/grpc/grpc-java/blob/master/examples/src/main/proto/route_guide.proto).
 
 As we're generating Java code in this example, we've specified a `java_package`
