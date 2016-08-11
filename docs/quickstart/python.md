@@ -38,6 +38,18 @@ also need to invoke from a `cmd.exe` run as administrator):
 $ pip.exe install grpcio
 ```
 
+On El Capitan OSX, you may get the following error:
+
+```sh
+$ OSError: [Errno 1] Operation not permitted: '/tmp/pip-qwTLbI-uninstall/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six-1.4.1-py2.7.egg-info'
+```
+
+You can work around this using:
+
+```sh
+$ pip install grpcio --ignore-installed
+```
+
 ### Install gRPC tools
 
 Python's gRPC tools include the protocol buffer compiler `protoc` and the
