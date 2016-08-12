@@ -35,19 +35,22 @@ $ go get google.golang.org/grpc
 
 #### Install Protocol Buffers v3
 
-1. Install the protoc compiler that is used to generate gRPC service code. The simplest way to do this is to download pre-compiled binaries for your platform(`protoc-<version>-<platform>.zip`) from here: https://github.com/google/protobuf/releases
+Install the protoc compiler that is used to generate gRPC service code. The simplest way to do this is to download pre-compiled binaries for your platform(`protoc-<version>-<platform>.zip`) from here: https://github.com/google/protobuf/releases
 
   * Unzip this file.
   * Update the environment variable `PATH` to include the path to the protoc binary file.
 
-2. Next, install the protoc plugin for Go
+Next, install the protoc plugin for Go
 
-  * `$ go get -u github.com/golang/protobuf/{proto,protoc-gen-go}`
-  * The compiler plugin, protoc-gen-go, will be installed in $GOBIN, defaulting to $GOPATH/bin. It must be in your $PATH for the protocol compiler, protoc, to find it.  
+```
+$ go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
+```
 
-	```
-	$ export PATH=$PATH:$GOPATH/bin
-	```
+The compiler plugin, protoc-gen-go, will be installed in $GOBIN, defaulting to $GOPATH/bin. It must be in your $PATH for the protocol compiler, protoc, to find it.  
+
+```
+$ export PATH=$PATH:$GOPATH/bin
+```
 
 ## Download the example
 
@@ -68,7 +71,6 @@ This `helloworld.pb.go` file contains:
   * Generated client and server code.
   * Code for populating, serializing, and retrieving our `HelloRequest` and `HelloResponse` message types.
 
-
 ## Try it!
 
 To compile and run the server and client code, the `go run` command can be used.
@@ -88,7 +90,6 @@ If things go smoothly, you will see the `Greeting: Hello world` in the client si
 
 Congratulations! You've just run a client-server application with gRPC.
 
-
 ## Update a gRPC service
 
 Now let's look at how to update the application with an extra method on the
@@ -99,7 +100,6 @@ Go][]. For now all you need to know is that both the server and the client
 "stub" have a `SayHello` RPC method that takes a `HelloRequest` parameter from
 the client and returns a `HelloResponse` from the server, and that this method
 is defined like this:
-
 
 ```protobuf
 // The greeting service definition.
@@ -184,17 +184,17 @@ log.Printf("Greeting: %s", r.Message)
 
 ### Run!
 
-1. Run the server 
+Run the server 
 
-	```
-	$ go run greeter_server/main.go
-	```
+```
+$ go run greeter_server/main.go
+```
 
-2. On a different terminal, run the client 
+On a different terminal, run the client 
 
-	```
-	$ go run greeter_client/main.go
-	```
+```
+$ go run greeter_client/main.go
+```
 
 You should see the updated output:
 
@@ -203,7 +203,6 @@ $ go run greeter_client/main.go
 Greeting: Hello world
 Greeting: Hello again world
 ```
-
 
 ## What's next
 
