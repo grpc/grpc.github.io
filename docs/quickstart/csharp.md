@@ -142,7 +142,7 @@ message HelloReply {
 ```
 
 Let's update this so that the `Greeter` service has two methods. Edit
-`examples/proto/helloworld.proto` and update it with a new `SayHelloAgain`
+`examples/protos/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
 ```

@@ -108,7 +108,7 @@ message HelloReply {
 ```
 
 Let's update this so that the `Greeter` service has two methods. Edit
-`examples/proto/helloworld.proto` (from the root of the cloned repository) and
+`examples/protos/helloworld.proto` (from the root of the cloned repository) and
 update it with a new `SayHelloAgain` method, with the same request and response
 types:
 
