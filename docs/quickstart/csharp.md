@@ -17,15 +17,30 @@ working example.</p>
 
 ### Prerequisites
 
-Windows: 
+Whether you're using Windows, OS X, or Linux, you can follow this
+example by using either an IDE and its build tools,
+or by using the the .NET Core SDK command line tools.
 
+Using the .NET Core SDK on Windows, OS X, or Linux, you'll need:
+* The .NET Core SDK command line tools. 
+* The .NET framework 4.5 (for OS X and Linux, the open source .NET Framework implementation, "Mono", at version 4+, is suitable) 
+* A NuGet executable (to download the Grpc.Tools package that contains protoc and protobuf binaries for code generation)
+* Git (to download the sample code)
+
+On Windows, using Visual Studio, you'll need: 
 * .NET Framework 4.5+, Visual Studio 2013 or 2015.
 * Git (to download the sample code)
 
-For OS X and Linux, either: 
+On OS X, using Xamarin Studio, you'll need:
+* Mono 4+
+* Xamarin Studio 5.9+
+* A NuGet executable (to download the Grpc.Tools package that contains protoc and protobuf binaries for code generation)
+* Git (to download the sample code)
 
-* Mono 4+, MonoDevelop 5.9+, and a NuGet executable 
-* The .NET Core SDK, the .NET framework 4.5, and a NuGet executable
+On Linux, using the Monodevelop IDE, you'll need:
+* Mono 4+
+* MonoDevelop 5.9+
+* A NuGet executable (to download the Grpc.Tools package that contains protoc and protobuf binaries for code generation)
 * Git (to download the sample code)
 
 ## Download the example
@@ -38,6 +53,7 @@ and other tutorials):
 ```sh
 $ # Clone the repository to get the example code:
 $ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc 
+$ cd grpc
 ```
 
 #### Visual Studio, Xamarin Studio, and Mondevelop IDEs
@@ -82,12 +98,14 @@ One possible workaround is as follows:
 From the `examples/csharp/helloworld` directory:
 
 1. Run the server
+
     ```
     > cd GreeterServer/bin/Debug
     > GreeterServer.exe
     ```
 
 2. In another terminal, run the client
+
     ```
     > cd GreeterClient/bin/Debug
     > GreeterClient.exe
@@ -98,6 +116,7 @@ You'll need to run the above executables with "mono" if building on Xamarin Stud
 ###  Using the .NET Core SDK
 
 1. Run the server
+
     ```
     > cd GreeterServer
     > dotnet run
@@ -105,6 +124,7 @@ You'll need to run the above executables with "mono" if building on Xamarin Stud
 
 
 2. In another terminal, run the client
+
     ```
     > cd GreeterClient
     > dotnet run
@@ -286,12 +306,14 @@ example:
 Just like we did before, from the `examples/csharp/helloworld` directory:
 
 1. Run the server
+
     ```
     > cd GreeterServer/bin/Debug
     > GreeterServer.exe
     ```
 
 2. In another terminal, run the client
+
     ```
     > cd GreeterClient/bin/Debug
     > GreeterClient.exe
@@ -300,12 +322,14 @@ Just like we did before, from the `examples/csharp/helloworld` directory:
 Or if using the .NET Core SDK, from the `examples/csharp/helloworld-from-cli` directory:
 
 1. Run the server
+
     ```
     > cd GreeterServer
     > dotnet run
     ```
 
 2. In another terminal, run the client
+
     ```
     > cd GreeterClient
     > dotnet run
