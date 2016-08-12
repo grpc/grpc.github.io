@@ -28,6 +28,7 @@ your system, you can install the version cloned alongside gRPC:
 ```sh
 $ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
 $ cd grpc/third_party/protobuf
+$ make
 $ sudo make install
 ```
 
@@ -38,26 +39,6 @@ details.
 Note that you also need `pkg-config` installed on your system. On Ubuntu/Debian
 systems, this can be done via `sudo apt-get install pkg-config`.
 
-
-## Download the example
-
-You'll need a local copy of the example code to work through this quickstart.
-You may already have this from the installation step. Otherwise, download the
-example code from our Github repository (the following command clones the entire
-repository, but you just need the examples for this quickstart and other
-tutorials):
-
-```sh
-$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
-```
-
-This will clone the repository inside a `grpc` directory on your current
-directory. The rest of the commands assume you are inside this newly created
-`grpc` directory.
-
-```sh
-$ cd grpc/
-```
 
 ## Build the example
 
