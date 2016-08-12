@@ -195,7 +195,7 @@ As you can see, it's very similar to the simple RPC we just looked at, except in
 
 #### Client-side streaming RPC
 
-Now for something a little more complicated: the client-side streaming method `RecordRoute`, where we send a stream of `Point`s to the server and get back a single `RouteSummary`. For this method we need to use the asynchronous stub. If you've already read [Creating the server](#server) some of this may look very familiar - asynchronous streaming RPCs are implemented in a similar way on both sides.
+Now for something a little more complicated: the client-side streaming method `RecordRoute`, where we send a stream of `Point`s to the server and get back a single `RouteSummary`. For this method we need to use the asynchronous stub. If you've already read [Creating the server](https://github.com/grpc/grpc.github.io/blob/master/docs/tutorials/basic/java.md#creating-the-server) some of this may look very familiar - asynchronous streaming RPCs are implemented in a similar way on both sides.
 
 ```java
     private String recordRoute(List<Point> points, int numPoints, RouteGuideStub asyncStub)
