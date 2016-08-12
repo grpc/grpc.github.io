@@ -49,11 +49,13 @@ The example code for our tutorial is in
 [grpc/grpc-go/examples/route_guide](https://github.com/grpc/grpc-go/tree/master/examples/route_guide).
 To download the example, clone the `grpc-go` repository by running the following
 command:
+
 ```
 $ go get google.golang.org/grpc
 ```
 
 Then change your current directory to `grpc-go/examples/route_guide`:
+
 ```
 $ cd $GOPATH/src/google.golang.org/grpc/examples/route_guide
 ```
@@ -377,6 +379,7 @@ pb.RegisterRouteGuideServer(grpcServer, &routeGuideServer{})
 ... // determine whether to use TLS
 grpcServer.Serve(lis)
 ```
+
 To build and start a server, we:
 
 1. Specify the port we want to use to listen for client requests using `lis, err
