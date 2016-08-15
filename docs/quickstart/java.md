@@ -27,7 +27,7 @@ and other tutorials):
 $ # Clone the repository at the latest release to get the example code:
 $ git clone -b {{ site.data.config.grpc_java_release_tag }} https://github.com/grpc/grpc-java
 $ # Navigate to the Java examples:
-$ cd grpc/examples
+$ cd grpc-java/examples
 ```
 
 ## Run a gRPC application
@@ -83,8 +83,8 @@ message HelloReply {
 }
 ```
 Let's update this so that the `Greeter` service has two methods. Edit
-`examples/src/main/proto/helloworld.proto` and update it with a new
-`SayHelloAgain` method, with the same request and response types:
+`src/main/proto/helloworld.proto` and update it with a new `SayHelloAgain`
+method, with the same request and response types:
 
 ```
 // The greeting service definition.
