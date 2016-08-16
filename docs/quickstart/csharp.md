@@ -204,7 +204,9 @@ or when you restore packages via `/path/to/nuget restore` on the command line.
 
 From the `examples/csharp/helloworld-from-cli` directory:
 
-* `/path/to/nuget install Grpc.Tools -PackagesDirectory ./packages`. 
+* mkdir packages
+* cd packages
+* `/path/to/nuget install Grpc.Tools`. 
 * Note that you don't have to update your NuGet executable to the latest version
   in order to install the Grpc.Tools package.
 
@@ -215,18 +217,19 @@ Note that you may also have to change the permissions of the protoc and protobuf
 binaries in the `Grpc.Tools` package under `examples/csharp/helloworld/packages`
 to executable in order to run the commands below.
 
-From the `examples/csharp/helloworld` directory:
+From the `examples/csharp/helloworld` directory, or the `examples/csharp/helloworld-from-cli` directory if using the .NET Core SDK:
 
 **Windows**
 
 ```
-> packages/Grpc.Tools.1.0.0/tools/windows_x86/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.1.0.0/tools/windows_x86/grpc_csharp_plugin.exe
+> ./generate_protos.bat
 ```
 
 **Linux (or OS X by using macosx_x64 directory)**
 
 ```
-$ packages/Grpc.Tools.1.0.0/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.1.0.0/tools/linux_x64/grpc_csharp_plugin
+$ GRPC_TOOLS_PACKAGE="Grpc.Tools.1.0.0"
+$ packages/$GRPC_TOOLS_PACKAGE/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/$GRPC_TOOLS_PACKAGE/tools/linux_x64/grpc_csharp_plugin
 ```
 
 Running the appropriate command for your OS regenerates the following files in
