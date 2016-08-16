@@ -14,28 +14,34 @@ working example.</p>
 
 ### Prerequisites
 
-* `pip`: version 8 or higher
+Ensure you have `pip` version 8 or higher:
+
+```sh
+$ python -m pip install --upgrade pip
+```
+
+If you cannot upgrade `pip` due to a system-owned installation, you can
+run the example in a virtualenv:
+
+```sh
+$ python -m pip install virtualenv
+$ virtualenv venv
+$ source venv/bin/activate
+$ python -m pip install --upgrade pip
+```
 
 ### Install gRPC
 
 Install gRPC:
 
 ```sh
-$ pip install grpcio
+$ python -m pip install grpcio
 ```
 
 Or, to install it system wide:
 
 ```sh
-$ sudo pip install grpcio
-```
-
-If you're on Windows, make sure you installed the `pip.exe` component when you
-installed Python. Invoke as above but with `pip.exe` instead of `pip` (you may
-also need to invoke from a `cmd.exe` run as administrator):
-
-```sh
-$ pip.exe install grpcio
+$ sudo python -m pip install grpcio
 ```
 
 On El Capitan OSX, you may get the following error:
@@ -47,7 +53,7 @@ $ OSError: [Errno 1] Operation not permitted: '/tmp/pip-qwTLbI-uninstall/System/
 You can work around this using:
 
 ```sh
-$ pip install grpcio --ignore-installed
+$ python -m pip install grpcio --ignore-installed
 ```
 
 ### Install gRPC tools
@@ -63,7 +69,7 @@ tutorials and your own projects.
 To install gRPC tools, run:
 
 ```sh
-pip install grpcio-tools
+$ python -m pip install grpcio-tools
 ```
 
 ## Download the example
