@@ -53,6 +53,7 @@ command:
 
 ```sh
 $ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
+$ cd grpc
 ```
 
 All the files for this tutorial are in the directory
@@ -166,13 +167,13 @@ To generate the code, the following command should be run from the
 - Windows
 
   ```
-  > packages\Grpc.Tools.0.14.0\tools\windows_x86\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.0.14.0\tools\windows_x86\grpc_csharp_plugin.exe
+  > packages\Grpc.Tools.1.0.0\tools\windows_x86\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.1.0.0\tools\windows_x86\grpc_csharp_plugin.exe
   ```
 
 - Linux (or Mac OS X by using `macosx_x64` directory).
 
   ```
-  $ packages/Grpc.Tools.0.14.0/tools/linux_x64/protoc -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.0.14.0/tools/linux_x64/grpc_csharp_plugin
+  $ packages/Grpc.Tools.1.0.0/tools/linux_x64/protoc -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.1.0.0/tools/linux_x64/grpc_csharp_plugin
   ```
 
 Running the appropriate command for your OS regenerates the following files in
