@@ -204,9 +204,12 @@ or when you restore packages via `/path/to/nuget restore` on the command line.
 
 From the `examples/csharp/helloworld-from-cli` directory:
 
-* mkdir packages
-* cd packages
-* `/path/to/nuget install Grpc.Tools`. 
+```
+> mkdir packages
+> cd packages
+> /path/to/nuget install Grpc.Tools
+```
+
 * Note that you don't have to update your NuGet executable to the latest version
   in order to install the Grpc.Tools package.
 
@@ -222,14 +225,13 @@ From the `examples/csharp/helloworld` directory, or the `examples/csharp/hellowo
 **Windows**
 
 ```
-> ./generate_protos.bat
+> packages/Grpc.Tools.1.0.0/tools/windows_x86/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.1.0.0/tools/windows_x86/grpc_csharp_plugin.exe
 ```
 
 **Linux (or OS X by using macosx_x64 directory)**
 
 ```
-$ GRPC_TOOLS_PACKAGE="Grpc.Tools.1.0.0"
-$ packages/$GRPC_TOOLS_PACKAGE/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/$GRPC_TOOLS_PACKAGE/tools/linux_x64/grpc_csharp_plugin
+$ packages/Grpc.Tools.1.0.0/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.1.0.0/tools/linux_x64/grpc_csharp_plugin
 ```
 
 Running the appropriate command for your OS regenerates the following files in
