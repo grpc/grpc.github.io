@@ -410,8 +410,10 @@ response) RPCs.
 Calling the simple RPC `GetFeature` in a synchronous way is nearly as
 straightforward as calling a local method.
 
-```csharp Point request = new Point { Latitude = 409146138, Longitude =
--746188906 }; Feature feature = client.GetFeature(request); ```
+```csharp 
+Point request = new Point { Latitude = 409146138, Longitude = -746188906 }; 
+Feature feature = client.GetFeature(request); 
+```
 
 As you can see, we create and populate a request protocol buffer object (in our
 case `Point`), and call the desired method on the client object, passing it the
@@ -422,8 +424,10 @@ thrown, indicating the status code of the problem.
 Alternatively, if you are in an async context, you can call an asynchronous
 version of the method and use the `await` keyword to await the result:
 
-```csharp Point request = new Point { Latitude = 409146138, Longitude =
--746188906 }; Feature feature = await client.GetFeatureAsync(request); ```
+```csharp 
+Point request = new Point { Latitude = 409146138, Longitude = -746188906 }; 
+Feature feature = await client.GetFeatureAsync(request); 
+```
 
 #### Streaming RPCs
 
@@ -494,7 +498,7 @@ using (var call = client.RouteChat())
 
 ## Try it out!
 
-Build client and server:
+### Build the client and server:
 
 #### Using Visual Studio
 
@@ -502,22 +506,22 @@ Build client and server:
 
 #### Using Xamarin Studio or Monodevelop on OS X or Linux
 
-- See the [quickstart](../../quickstart/csharp.md) for instructions on downloading gRPC 
+- See the [quickstart](../../quickstart/csharp.html) for instructions on downloading gRPC 
   nuget dependencies and building the solution with these IDEs.
 
 Run the server, which will listen on port 50052:
 
-  ```
-  > cd RouteGuideServer/bin/Debug
-  > RouteGuideServer.exe
-  ```
+```
+> cd RouteGuideServer/bin/Debug
+> RouteGuideServer.exe
+```
 
 Run the client (in a different terminal):
 
-  ```
-  > cd RouteGuideClient/bin/Debug
-  > RouteGuideClient.exe
-  ```
+```
+> cd RouteGuideClient/bin/Debug
+> RouteGuideClient.exe
+```
 
 You can also run the server and client directly from Visual Studio.
 

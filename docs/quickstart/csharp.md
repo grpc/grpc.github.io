@@ -22,22 +22,26 @@ example by using either an IDE and its build tools,
 or by using the the .NET Core SDK command line tools.
 
 Using the .NET Core SDK on Windows, OS X, or Linux, you'll need:
+
 * The .NET Core SDK command line tools. 
 * The .NET framework 4.5 (for OS X and Linux, the open source .NET Framework implementation, "Mono", at version 4+, is suitable) 
 * A NuGet executable (to download the Grpc.Tools package that contains protoc and protobuf binaries for code generation)
 * Git (to download the sample code)
 
 On Windows, using Visual Studio, you'll need: 
+
 * .NET Framework 4.5+, Visual Studio 2013 or 2015.
 * Git (to download the sample code)
 
 On OS X, using Xamarin Studio, you'll need:
+
 * Mono 4+
 * Xamarin Studio 5.9+
 * A NuGet executable (to download the Grpc.Tools package that contains protoc and protobuf binaries for code generation)
 * Git (to download the sample code)
 
 On Linux, using the Monodevelop IDE, you'll need:
+
 * Mono 4+
 * MonoDevelop 5.9+
 * A NuGet executable (to download the Grpc.Tools package that contains protoc and protobuf binaries for code generation)
@@ -56,11 +60,11 @@ $ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grp
 $ cd grpc
 ```
 
-#### Visual Studio, Xamarin Studio, and Mondevelop IDEs
+#### Using Visual Studio, Xamarin Studio, or Mondevelop IDEs
 
 * The examples are in the directory, `examples/csharp/helloworld`.
 
-#### .NET Core SDK
+#### Using the .NET Core SDK
 
 * A .NET Core SDK version of the hello world examples are in the directory, `examples/csharp/helloworld-from-cli`.
 
@@ -69,7 +73,7 @@ dependencies for you (Grpc, Grpc.Tools and Google.Protobuf NuGet packages).
 
 ## Build the example
 
-### Visual Studio
+### Using Visual Studio
 * Open the solution `Greeter.sln` with Visual Studio.
 * Build the solution (this will automatically download NuGet dependencies)
 
@@ -81,7 +85,7 @@ From the `examples/csharp/helloworld-from-cli` directory:
 > dotnet build **/project.json
 ```
 
-### Xamarin Studio and Monodevelop
+### Using Xamarin Studio or Monodevelop IDEs
 The C# gRPC package currently depends on System.Interactive.Async 3.0.0, which cannot be downloaded on older NuGet versions.
 NuGet is too old in Xamarin Studio on OS X and Monodevelop on Linux as well as via apt-get.
 
@@ -97,38 +101,38 @@ One possible workaround is as follows:
 ### Using Visual Studio, Xamarin Studio, or Monodevelop IDEs
 From the `examples/csharp/helloworld` directory:
 
-1. Run the server
+* Run the server
 
-    ```
-    > cd GreeterServer/bin/Debug
-    > GreeterServer.exe
-    ```
+```
+> cd GreeterServer/bin/Debug
+> GreeterServer.exe
+```
 
-2. In another terminal, run the client
+* In another terminal, run the client
 
-    ```
-    > cd GreeterClient/bin/Debug
-    > GreeterClient.exe
-    ```
+```
+> cd GreeterClient/bin/Debug
+> GreeterClient.exe
+```
 
 You'll need to run the above executables with "mono" if building on Xamarin Studio for OS X.
 
 ###  Using the .NET Core SDK
 
-1. Run the server
+* Run the server
 
-    ```
-    > cd GreeterServer
-    > dotnet run
-    ```
+```
+> cd GreeterServer
+> dotnet run
+```
 
 
-2. In another terminal, run the client
+* In another terminal, run the client
 
-    ```
-    > cd GreeterClient
-    > dotnet run
-    ```
+```
+> cd GreeterClient
+> dotnet run
+```
 
 Congratulations! You've just run a client-server application with gRPC.
 
@@ -197,7 +201,7 @@ The Grpc.Tools NuGet package contains the protoc and protobuf C# plugin binaries
 
 #### Using Visual Studio, Xamarin Studio, or Monodevelop IDEs
 
-This example project already depends on the NuGet package `Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}`, so it should be included in `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE, 
+This example project already depends on the `Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}` NuGet package, so it should be included in `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE, 
 or when you restore packages via `/path/to/nuget restore` on the command line.
 
 #### Using the .NET Core SDK
@@ -310,35 +314,35 @@ example:
 
 Just like we did before, from the `examples/csharp/helloworld` directory:
 
-1. Run the server
+* Run the server
 
-    ```
-    > cd GreeterServer/bin/Debug
-    > GreeterServer.exe
-    ```
+```
+> cd GreeterServer/bin/Debug
+> GreeterServer.exe
+```
 
-2. In another terminal, run the client
+* In another terminal, run the client
 
-    ```
-    > cd GreeterClient/bin/Debug
-    > GreeterClient.exe
-    ```
+```
+> cd GreeterClient/bin/Debug
+> GreeterClient.exe
+```
 
 Or if using the .NET Core SDK, from the `examples/csharp/helloworld-from-cli` directory:
 
-1. Run the server
+* Run the server
 
-    ```
-    > cd GreeterServer
-    > dotnet run
-    ```
+```
+> cd GreeterServer
+> dotnet run
+```
 
-2. In another terminal, run the client
+* In another terminal, run the client
 
-    ```
-    > cd GreeterClient
-    > dotnet run
-    ```
+```
+> cd GreeterClient
+> dotnet run
+```
 
 ## What's next
 
