@@ -19,6 +19,7 @@ first, see our [Quickstarts]({{site.baseurl}}/docs/quickstart).
  - [Ruby](basic/ruby.html)
  - [Node.js](basic/node.html)
  - [C#](basic/csharp.html)
+ - [Android Java](basic/android.html)
  - [Objective-C](basic/objective-c.html)
  - [PHP](basic/php.html)
 
