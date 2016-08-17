@@ -1,10 +1,10 @@
 ---
+bodyclass: docs
 layout: docs
-title: Performance Benchmarking
+headline: gRPC Performance Benchmarking
+sidenav: doc-side-tutorial-nav.html
+type: markdown
 ---
-
-<h1 class="page-header">Performance Benchmarking</h1>
-
 <p class="lead">gRPC is designed to support high-performance
 open-source RPCs in many languages. This document describes the
 performance benchmarking tools, the scenarios considered by the tests,
@@ -12,6 +12,7 @@ and the testing infrastructure.</p>
 
 <div id="toc"></div>
 
+<a name="Overview"></a>
 ## Overview
 
 gRPC is designed for both high-performance and high-productivity
@@ -24,6 +25,8 @@ are reported to a dashboard for visualization.
   * [C++ detailed performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5685265389584384)
 
 ## Performance testing design
+
+![gRPC performance testing worker diagram](testing_framework.png)
 
 Each language implements a performance testing worker that implements
 a gRPC
@@ -42,6 +45,7 @@ that takes as input a scenario description (in JSON format) and an
 environment variable specifying the host:port of each worker process.
 
 
+<a name="Languages under test"></a>
 ## Languages under test
 
 The following languages have continuous performance testing as both
@@ -68,6 +72,7 @@ server, and as servers against a C++ client. This test aims to provide
 the current upper bound of performance for a given language's client or
 server implementation without testing the other side.
 
+<a name="Scenarios under test"></a>
 ## Scenarios under test
 
 There are several important scenarios under test and displayed in the dashboards
@@ -82,5 +87,6 @@ protobufs. Some C++ tests additionally use insecure communication and
 the generic (non-protobuf) API to display peak performance. Additional
 scenarios may be added in the future.
 
+<a name="Testing infrastructure"></a>
 ## Testing infrastructure
 
