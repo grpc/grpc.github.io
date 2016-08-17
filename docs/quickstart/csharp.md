@@ -197,7 +197,7 @@ The Grpc.Tools NuGet package contains the protoc and protobuf C# plugin binaries
 
 #### Using Visual Studio, Xamarin Studio, or Monodevelop IDEs
 
-This example project already depends on the NuGet package `Grpc.Tools.1.0.0`, so it should be included in `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE, 
+This example project already depends on the NuGet package `Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}`, so it should be included in `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE, 
 or when you restore packages via `/path/to/nuget restore` on the command line.
 
 #### Using the .NET Core SDK
@@ -225,13 +225,13 @@ From the `examples/csharp/helloworld` directory, or the `examples/csharp/hellowo
 **Windows**
 
 ```
-> packages/Grpc.Tools.1.0.0/tools/windows_x86/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.1.0.0/tools/windows_x86/grpc_csharp_plugin.exe
+> packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tools/windows_x86/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tools/windows_x86/grpc_csharp_plugin.exe
 ```
 
 **Linux (or OS X by using macosx_x64 directory)**
 
 ```
-$ packages/Grpc.Tools.1.0.0/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.1.0.0/tools/linux_x64/grpc_csharp_plugin
+$ packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
 ```
 
 Running the appropriate command for your OS regenerates the following files in
