@@ -173,5 +173,5 @@ Just like we did before, from the `examples` directory:
 - Explore the gRPC Java core API in its [reference
   documentation](http://www.grpc.io/grpc-java/javadoc/)
 
-[gRPC Basics: Java]:http://www.grpc.io/docs/tutorials/basic/android.html
+[gRPC Basics: Android Java]:http://www.grpc.io/docs/tutorials/basic/android.html
 
