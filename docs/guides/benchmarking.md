@@ -26,8 +26,6 @@ are reported to a dashboard for visualization.
 
 ## Performance testing design
 
-![gRPC performance testing worker diagram](testing_framework.png)
-
 Each language implements a performance testing worker that implements
 a gRPC
 [WorkerService](https://github.com/grpc/grpc/blob/master/src/proto/grpc/testing/services.proto). This
@@ -38,6 +36,8 @@ service has two methods:
 
   * UnaryCall - a unary RPC of a simple request that specifies the number of bytes to return in the response
   * StreamingCall - a streaming RPC that allows repeated ping-pongs of request and response messages akin to the UnaryCall
+
+![gRPC performance testing worker diagram](testing_framework.png)
 
 These workers are controlled by a
 [driver](https://github.com/grpc/grpc/blob/master/test/cpp/qps/qps_json_driver.cc)
@@ -89,4 +89,18 @@ scenarios may be added in the future.
 
 <a name="Testing infrastructure"></a>
 ## Testing infrastructure
+
+All performance benchmarks are run as instances in GCE through our
+Jenkins testing infrastructure. In addition to the gRPC performance
+scenarios described above, we also run baseline [netperf
+TCP_RR](http://www.netperf.org) latency numbers in order to understand
+the underlying network characteristics. These numbers are present on
+our dashboard and sometimes vary depending on where our instances
+happen to be allocated within GCE.
+
+Most test instances are 8-core systems, and these are used for both
+latency and QPS measurement. For C++ and Java, we additionally support
+QPS testing on 32-core systems. All QPS tests use 2 identical client machines
+for each server, to make sure that QPS measurement is not client-limited.
+
 
