@@ -909,7 +909,7 @@ class GreeterClient {
   </div>
   <div id="python_connect">
 <p>The generated Python code has a helper function that creates a stub given a channel.</p>
-<pre>channel = grpc.insecure_channel('localhost', 50051)
+<pre>channel = grpc.insecure_channel('localhost:50051')
 stub = helloworld_pb2.GreeterStub(channel)
 ...
 </pre>
