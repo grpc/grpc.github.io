@@ -80,7 +80,7 @@ There are several important scenarios under test and displayed in the dashboards
 above, including the following:
 
    * Contentionless latency - the median and tail response latencies seen with only 1 client sending a single message at a time using StreamingCall
-   * QPS - the messages/second rate when there are 2 clients and a total of 100 channels, each of which has 100 outstanding messages at a time sent using StreamingCall
+   * QPS - the messages/second rate when there are 2 clients and a total of 64 channels, each of which has 100 outstanding messages at a time sent using StreamingCall
    * Scalability (for selected languages) - the number of messages/second per server core
 
 Most performance testing is using secure communication and
