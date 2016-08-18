@@ -18,8 +18,9 @@ and the testing infrastructure.</p>
 gRPC is designed for both high-performance and high-productivity
 design of distributed applications. Continuous performance
 benchmarking is a critical part of the gRPC development
-workflow. Multi-language performance tests run hourly, and these numbers
-are reported to a dashboard for visualization.
+workflow. Multi-language performance tests run hourly against
+the master branch, and these numbers are reported to a dashboard for
+visualization.
 
   * [Multi-language performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5760820306771968)
   * [C++ detailed performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5685265389584384)
