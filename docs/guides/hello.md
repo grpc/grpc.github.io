@@ -430,7 +430,7 @@ onto the next one where we examine the generated code.)
   <div id="python_generate">
   <p>To generate the client and server side interfaces:</p>
   <pre>
-  $ ./run_codegen.sh
+  $ python run_codegen.py
   </pre>
   <p>This invokes the protocol buffer compiler to generate <code>helloworld_pb2.py</code>, which contains our generated client and server classes, as well as classes for populating, serializing, and retrieving our <code>HelloRequest</code> and <code>HelloResponse</code> message types.</p>
   </div>
@@ -1187,7 +1187,7 @@ $ ./build/install/grpc-examples/bin/hello-world-client
   </div>
   <div id="python_runclient">
 <p>You can run the client from <code>examples/python/helloworld</code> using:</p>
-<pre>$ ./run_client.sh</pre>
+<pre>$ python greeter_client.py</pre>
 
 </div>
   <div id="go_runclient">
