@@ -2,7 +2,7 @@
 bodyclass: docs
 layout: docs
 headline: gRPC Performance Benchmarking
-sidenav: doc-side-tutorial-nav.html
+sidenav: doc-side-guides-nav.html
 type: markdown
 ---
 <p class="lead">gRPC is designed to support high-performance
@@ -13,6 +13,7 @@ and the testing infrastructure.</p>
 <div id="toc"></div>
 
 <a name="Overview"></a>
+
 ## Overview
 
 gRPC is designed for both high-performance and high-productivity
@@ -22,6 +23,7 @@ workflow. Multi-language performance tests run hourly against
 the master branch, and these numbers are reported to a dashboard for
 visualization.
 
+  * [Multi-language performance dashboard @v1.0.0](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5712453606309888)
   * [Multi-language performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5760820306771968)
   * [C++ detailed performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5685265389584384)
 
@@ -47,6 +49,7 @@ environment variable specifying the host:port of each worker process.
 
 
 <a name="Languages under test"></a>
+
 ## Languages under test
 
 The following languages have continuous performance testing as both
@@ -74,6 +77,7 @@ the current upper bound of performance for a given language's client or
 server implementation without testing the other side.
 
 <a name="Scenarios under test"></a>
+
 ## Scenarios under test
 
 There are several important scenarios under test and displayed in the dashboards
@@ -89,6 +93,7 @@ the generic (non-protobuf) API to display peak performance. Additional
 scenarios may be added in the future.
 
 <a name="Testing infrastructure"></a>
+
 ## Testing infrastructure
 
 All performance benchmarks are run as instances in GCE through our
