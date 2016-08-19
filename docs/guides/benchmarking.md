@@ -1,7 +1,7 @@
 ---
 bodyclass: docs
 layout: docs
-headline: gRPC Performance Benchmarking
+headline: Benchmarking
 sidenav: doc-side-guides-nav.html
 type: markdown
 ---
