@@ -1,4 +1,5 @@
 ---
+layout: docs
 bodyclass: docs
 headline: gRPC Basics - Android Java
 sidenav: doc-side-tutorial-nav.html
