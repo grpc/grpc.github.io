@@ -1123,7 +1123,7 @@ $ ./build/install/grpc-examples/bin/hello-world-server
   </div>
   <div id="python_runserver">
 <p>You can run the server from <code>examples/python/helloworld</code> using:</p>
-<pre>$ ./run_server.sh</pre>
+<pre>$ python greeter_server.py </pre>
 
 </div>
   <div id="go_runserver">
