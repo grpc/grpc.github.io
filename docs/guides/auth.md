@@ -1,75 +1,98 @@
 ---
+bodyclass: docs
+headline: Authentication
 layout: docs
+sidenav: doc-side-guides-nav.html
 title: Authentication
+type: markdown
 ---
+<p class="lead">This document provides an overview of gRPC authentication,
+including our built-in supported auth mechanisms, how to plug in your own
+authentication systems, and examples of how to use gRPC auth in our supported
+languages.</p>
 
-<h1 class="page-header">Authentication</h1>
-
-<p class="lead">This document provides an overview of gRPC authentication, including our built-in supported auth mechanisms, how to plug in your own authentication systems, and examples of how to use gRPC auth in our supported languages.</p>
-
-<div id="toc"></div>
+<div id="toc" class="toc mobile-toc"></div>
 
 ## Overview
 
-gRPC is designed to work with a variety of authentication mechanisms, making it easy to safely use gRPC to talk to other systems. You can use our supported mechanisms - SSL/TLS with or without Google token-based authentication - or you can plug in your own authentication system by extending our provided code.
+gRPC is designed to work with a variety of authentication mechanisms, making it
+easy to safely use gRPC to talk to other systems. You can use our supported
+mechanisms - SSL/TLS with or without Google token-based authentication - or you
+can plug in your own authentication system by extending our provided code.
 
-gRPC also provides a simple authentication API that lets you provide all the necessary authentication information as `Credentials` when creating a channel or making a call.
+gRPC also provides a simple authentication API that lets you provide all the
+necessary authentication information as `Credentials` when creating a channel or
+making a call.
 
 ## Supported auth mechanisms
 
 The following authentication mechanisms are built-in to gRPC:
 
-   * **SSL/TLS**: gRPC has SSL/TLS integration and promotes the use of SSL/TLS to authenticate the server,
-     and to encrypt all the data exchanged between the client and the server. Optional
-     mechanisms are available for clients to provide certificates for mutual
-     authentication.
+   * **SSL/TLS**: gRPC has SSL/TLS integration and promotes the use of SSL/TLS
+     to authenticate the server, and to encrypt all the data exchanged between
+     the client and the server. Optional mechanisms are available for clients to
+     provide certificates for mutual authentication.
 
-   * **Token-based authentication with Google**: gRPC provides a generic mechanism (described below) to attach metadata based credentials
-     to requests and responses. Additional support for acquiring access tokens (typically OAuth2 tokens) while
-     accessing Google APIs through gRPC is provided for certain auth flows: you can see how this works
-     in our code examples below. In general this mechanism must be used *as well as* SSL/TLS on the channel - Google will not allow connections without SSL/TLS,
-     and most gRPC language implementations will not let you send credentials on an unencrypted channel.
+   * **Token-based authentication with Google**: gRPC provides a generic
+     mechanism (described below) to attach metadata based credentials to
+     requests and responses. Additional support for acquiring access tokens
+     (typically OAuth2 tokens) while accessing Google APIs through gRPC is
+     provided for certain auth flows: you can see how this works in our code
+     examples below. In general this mechanism must be used *as well as* SSL/TLS
+     on the channel - Google will not allow connections without SSL/TLS, and
+     most gRPC language implementations will not let you send credentials on an
+     unencrypted channel.
 
-     <p class="note">
-     <strong>WARNING</strong>: Google credentials should only be used to connect to Google services.
-     Sending a Google issued OAuth2 token to a non-Google service could result in this token
-     being stolen and used to impersonate the client to Google services.</p>
+     <p class="note"> <strong>WARNING</strong>: Google credentials should only
+     be used to connect to Google services. Sending a Google issued OAuth2 token
+     to a non-Google service could result in this token being stolen and used to
+     impersonate the client to Google services.</p>
 
 ## Authentication API
 
-gRPC provides a simple authentication API based around the unified concept of Credentials objects, which can be used when creating an entire gRPC channel or an individual call.
+gRPC provides a simple authentication API based around the unified concept of
+Credentials objects, which can be used when creating an entire gRPC channel or
+an individual call.
 
 ### Credential types
 
 Credentials can be of two types:
 
-- **Channel credentials**, which are attached to a `Channel`, such as SSL credentials.
-- **Call credentials**, which are attached to a call (or `ClientContext` in C++).
+- **Channel credentials**, which are attached to a `Channel`, such as SSL
+  credentials.
+- **Call credentials**, which are attached to a call (or `ClientContext` in
+  C++).
 
-You can also combine these in a`CompositeChannelCredentials`, allowing you to specify, for example, SSL details for the channel along with call credentials for each call made on the channel. A
-`CompositeChannelCredentials` associates a `ChannelCredentials` and a
-`CallCredentials` to create a new `ChannelCredentials`. The result will send the authentication data associated with the
-composed `CallCredentials`with every call made on the channel.
+You can also combine these in a`CompositeChannelCredentials`, allowing you to
+specify, for example, SSL details for the channel along with call credentials
+for each call made on the channel. A `CompositeChannelCredentials` associates a
+`ChannelCredentials` and a `CallCredentials` to create a new
+`ChannelCredentials`. The result will send the authentication data associated
+with the composed `CallCredentials`with every call made on the channel.
 
 For example, you could create a `ChannelCredentials` from an `SslCredentials`
 and an `AccessTokenCredentials`. The result when applied to a `Channel` would
 send the appropriate access token for each call on this channel.
 
-Individual `CallCredentials` can also be composed using `CompositeCallCredentials`. The
-resulting `CallCredentials` when used in a call will trigger the
-sending of the authentication data associated with the two `CallCredentials`.
+Individual `CallCredentials` can also be composed using
+`CompositeCallCredentials`. The resulting `CallCredentials` when used in a call
+will trigger the sending of the authentication data associated with the two
+`CallCredentials`.
 
 
 ### Using client-side SSL/TLS
 
-Now let's look at how `Credentials` work with one of our supported auth mechanisms. This is the simplest authentication scenario, where a client just wants to
-authenticate the server and encrypt all data. The example is in C++, but the API is similar for all languages: you can see how to enable SSL/TLS in more languages in our Examples section below.
+Now let's look at how `Credentials` work with one of our supported auth
+mechanisms. This is the simplest authentication scenario, where a client just
+wants to authenticate the server and encrypt all data. The example is in C++,
+but the API is similar for all languages: you can see how to enable SSL/TLS in
+more languages in our Examples section below.
 
 ```cpp
 // Create a default SSL ChannelCredentials object.
 auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
 // Create a channel using the credentials created in the previous step.
-auto channel = grpc::CreateChannel(server_name, channel_creds);
+auto channel = grpc::CreateChannel(server_name, creds);
 // Create a stub on the channel.
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 // Make actual RPC calls on the stub.
@@ -83,13 +106,14 @@ passed to the factory method.
 
 ### Using Google token-based authentication
 
-gRPC applications can use a simple API to create a credential that works for authentication with Google in
-various deployment scenarios. Again, our example is in C++ but you can find examples in other languages in our Examples section.
+gRPC applications can use a simple API to create a credential that works for
+authentication with Google in various deployment scenarios. Again, our example
+is in C++ but you can find examples in other languages in our Examples section.
 
 ```cpp
-auto channel_creds = grpc::GoogleDefaultCredentials();
+auto creds = grpc::GoogleDefaultCredentials();
 // Create a channel, stub and make RPC calls (same as in the previous example)
-auto channel = grpc::CreateChannel(server_name, channel_creds);
+auto channel = grpc::CreateChannel(server_name, creds);
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 grpc::Status s = stub->sayHello(&context, *request, response);
 ```
@@ -149,13 +173,15 @@ SSL/TLS with other encryption mechanisms.
 
 ## Examples
 
-These authentication mechanisms will be available in all gRPC's supported languages.
-The following sections demonstrate how authentication and authorization features
-described above appear in each language: more languages are coming soon.
+These authentication mechanisms will be available in all gRPC's supported
+languages. The following sections demonstrate how authentication and
+authorization features described above appear in each language: more languages
+are coming soon.
 
 ### Ruby
 
 #### Base case - no encryption or authentication
+
 ```ruby
 
 stub = Helloworld::Greeter::Stub.new('localhost:50051', :this_channel_is_insecure)
@@ -194,7 +220,7 @@ std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 
 ```cpp
 auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
-auto channel = grpc::CreateChannel("myservice.example.com", channel_creds);
+auto channel = grpc::CreateChannel("myservice.example.com", creds);
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 ...
 ```
@@ -202,8 +228,8 @@ std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 #### Authenticate with Google
 
 ```cpp
-auto channel_creds = grpc::GoogleDefaultCredentials();
-auto channel = grpc::CreateChannel("greeter.googleapis.com", channel_creds);
+auto creds = grpc::GoogleDefaultCredentials();
+auto channel = grpc::CreateChannel("greeter.googleapis.com", creds);
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 ...
 ```
@@ -227,6 +253,7 @@ var client = new Greeter.GreeterClient(channel);
 ```
 
 #### Authenticate with Google
+
 
 ```csharp
 using Grpc.Auth;  // from Grpc.Auth NuGet package
@@ -256,43 +283,41 @@ var result = client.SayHello(request, new CallOptions(credentials: googleCredent
 #### Base case - No encryption or authentication
 
 ```python
-from grpc.beta import implementations
+import grpc
 import helloworld_pb2
 
-channel = implementations.insecure_channel('localhost', 50051)
-stub = helloworld_pb2.beta_create_Greeter_stub(channel)
+channel = grpc.insecure_channel('localhost:50051')
+stub = helloworld_pb2.GreeterStub(channel)
 ```
 
 #### With server authentication SSL/TLS
 
 ```python
-from grpc.beta import implementations
+import grpc
 import helloworld_pb2
 
-creds = implementations.ssl_channel_credentials(open('roots.pem').read(), None, None)
-channel = implementations.secure_channel('myservice.example.com', 443, creds)
-stub = helloworld_pb2.beta_create_Greeter_stub(channel)
+creds = grpc.ssl_channel_credentials(open('roots.pem').read())
+channel = grpc.secure_channel('myservice.example.com:443', creds)
+stub = helloworld_pb2.GreeterStub(channel)
 ```
-
 
 #### Authenticate with Google
 
 ```python
-transport_creds = implementations.ssl_channel_credentials(open('roots.pem').read(), None, None)
+import grpc
+import helloworld_pb2
+from oauth2client import client
+
+transport_creds = grpc.ssl_channel_credentials(open('roots.pem').read())
+credentials = client.GoogleCredentials.get_application_default()
+scoped_credentials = credentials.create_scoped([scope])
 def oauth2token_credentials(context, callback):
-  try:
-    credentials = oauth2client.client.GoogleCredentials.get_application_default()
-    scoped_credentials = credentials.create_scoped([scope])
-  except Exception as error:
-    callback([], error)
-    return
   callback([('authorization', 'Bearer %s' % scoped_credentials.get_access_token().access_token)], None)
 
-auth_creds = implementations.metadata_plugin_credentials(oauth2token_credentials)
-channel_creds = implementations.composite_channel_credentials(transport_creds, auth_creds)
-channel = implementations.secure_channel('greeter.googleapis.com', 443, channel_creds)
-
-stub = helloworld_pb2.beta_create_Greeter_stub(channel)
+auth_creds = grpc.metadata_call_credentials(oauth2token_credentials)
+channel_creds = grpc.composite_channel_credentials(transport_creds, auth_creds)
+channel = grpc.secure_channel('greeter.googleapis.com:443', channel_creds)
+stub = helloworld_pb2.GreeterStub(channel)
 ```
 
 ### Java
@@ -309,9 +334,15 @@ GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
 
 #### With server authentication SSL/TLS
 
-In Java we recommend that you use OpenSSL when using gRPC over TLS. You can find details about installing and using OpenSSL and other required libraries for both Android and non-Android Java in the gRPC Java [Security](https://github.com/grpc/grpc-java/blob/master/SECURITY.md#transport-security-tls) documentation.
+In Java we recommend that you use OpenSSL when using gRPC over TLS. You can find
+details about installing and using OpenSSL and other required libraries for both
+Android and non-Android Java in the gRPC Java
+[Security](https://github.com/grpc/grpc-java/blob/master/SECURITY.md#transport-security-tls)
+documentation.
 
-To enable TLS on a server, a certificate chain and private key need to be specified in PEM format. The standard TLS port is 443, but we use 8443 below to avoid needing extra permissions from the OS.
+To enable TLS on a server, a certificate chain and private key need to be
+specified in PEM format. The standard TLS port is 443, but we use 8443 below to
+avoid needing extra permissions from the OS.
 
 ```java
 Server server = ServerBuilder.forPort(8443)
@@ -321,7 +352,10 @@ Server server = ServerBuilder.forPort(8443)
     .build();
 server.start();
 ```
-If the issuing certificate authority is not known to the client then a properly configured `SslContext` or `SSLSocketFactory` should be provided to the `NettyChannelBuilder` or `OkHttpChannelBuilder`, respectively.
+
+If the issuing certificate authority is not known to the client then a properly
+configured `SslContext` or `SSLSocketFactory` should be provided to the
+`NettyChannelBuilder` or `OkHttpChannelBuilder`, respectively.
 
 On the client side, server authentication with SSL/TLS looks like this:
 
@@ -340,6 +374,13 @@ GreeterGrpc.GreeterStub stub = GreeterGrpc.newStub(channel);
 
 #### Authenticate with Google
 
+The following code snippet shows how you can call the [Google Cloud PubSub
+API](https://cloud.google.com/pubsub/overview) using gRPC with a service
+account. The credentials are loaded from a key stored in a well-known location
+or by detecting that the application is running in an environment that can
+provide one automatically, e.g. Google Compute Engine. While this example is
+specific to Google and its services, similar patterns can be followed for other
+service providers.
 
 ```java
 GoogleCredentials creds = GoogleCredentials.getApplicationDefault();
@@ -378,6 +419,23 @@ var ssl_creds = grpc.credentials.createSsl(root_certs);
 });
 ```
 
+#### Authenticate with Google using Oauth2 token (legacy approach)
+
+```js
+var GoogleAuth = require('google-auth-library'); // from https://www.npmjs.com/package/google-auth-library
+...
+var ssl_creds = grpc.Credentials.createSsl(root_certs); // load_certs typically loads a CA roots file
+var scope = 'https://www.googleapis.com/auth/grpc-testing';
+(new GoogleAuth()).getApplicationDefault(function(err, auth) {
+  if (auth.createScopeRequired()) {
+    auth = auth.createScoped(scope);
+  }
+  var call_creds = grpc.credentials.createFromGoogleCredential(auth);
+  var combined_creds = grpc.credentials.combineChannelCredentials(ssl_creds, call_creds);
+  var stub = new helloworld.Greeter('greeter.googleapis.com', combined_credentials);
+});
+```
+
 ### PHP
 
 #### Base case - No encryption/authorization
@@ -406,3 +464,16 @@ $opts = [
 ];
 $client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
 ````
+
+#### Authenticate with Google using Oauth2 token (legacy approach)
+
+```php
+// the environment variable "GOOGLE_APPLICATION_CREDENTIALS" needs to be set
+$scope = "https://www.googleapis.com/auth/grpc-testing";
+$auth = Google\Auth\ApplicationDefaultCredentials::getCredentials($scope);
+$opts = [
+  'credentials' => Grpc\Credentials::createSsl(file_get_contents('roots.pem'));
+  'update_metadata' => $auth->getUpdateMetadataFunc(),
+];
+$client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
+```
