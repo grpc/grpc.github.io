@@ -65,7 +65,7 @@ clients.
 You also should have the relevant tools installed to generate the client
 interface code (and a server in another language, for testing). You can obtain
 the latter by following [these setup
-instructions](https://github.com/grpc/homebrew-grpc).
+instructions](/docs/tutorials/basic/node.html).
 
 
 <a name="try"></a>

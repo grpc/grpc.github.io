@@ -18,6 +18,29 @@ working example.</p>
 * `pecl`: version 1.9 or higher
 * `composer`
 
+### Debian/Ubuntu
+```sh
+$ [sudo] apt-get install php5 php5-dev php-pear
+
+OR
+
+$ [sudo] apt-get install php7.0 php7.0-dev
+```
+
+### Mac OS
+```sh
+$ brew install autoconf
+
+$ curl -O http://pear.php.net/go-pear.phar
+$ [sudo] php -d detect_unicode=0 go-pear.phar
+```
+
+### Composer
+```sh
+$ curl -sS https://getcomposer.org/installer | php
+$ [sudo] mv composer.phar /usr/local/bin/composer
+```
+
 Note that currently you can only create clients in PHP for gRPC services -
 you can find out how to create gRPC servers in our other tutorials,
 e.g. [Node.js](node-quickstart.md).
