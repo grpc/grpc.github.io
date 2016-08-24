@@ -71,6 +71,10 @@ $ cd Protobuf-PHP
 $ rake pear:package version=1.0
 $ [sudo] pear install Protobuf-1.0.tgz
 ```
+> If you did not have 'rake' or 'ronn' installed, please install them using this command:
+> ```sh
+> $ gem install rake ronn
+> ```
 
 ## Download the example
 
@@ -189,13 +193,13 @@ this:
 function sayHello(call, callback) {
   callback(null, {message: 'Hello ' + call.request.name});
 }
-  
+
 function sayHelloAgain(call, callback) {
   callback(null, {message: 'Hello again, ' + call.request.name});
 }
 ...
 ```
-    
+
 ### Update the client
 
 In the same directory, open `greeter_client.php`. Call the new method like this:
