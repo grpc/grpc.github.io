@@ -15,8 +15,7 @@ By walking through this example you'll learn how to:
 - Use the Go gRPC API to write a simple client and server for your service.
 
 It assumes that you have read the [Overview](/docs/index.html) and are familiar
-with [protocol buffers]
-(https://developers.google.com/protocol-buffers/docs/overview). Note that the
+with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the
 example in this tutorial uses the proto3 version of the protocol buffers
 language, which is currently in beta release: you can find out more in the
 [proto3 language
