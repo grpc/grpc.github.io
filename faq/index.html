@@ -127,14 +127,6 @@ headline: 'Frequently Asked Questions'
                     </li>
 
                     <li class="submenu">
-                        <h6 class="arrow-r">Can I use it in the browser?</h6>
-                        <div class="submenu-content">
-                            <p>Not yet but we are working to make unary and server side streaming work with gRPC-web project. Please sign up for <a href="https://docs.google.com/a/google.com/forms/d/15iRDHoP-VBenc4hWgKn7bk7IirJLgs0uh88nw1vi_Hc/edit">early access </a> if you are interested.</p>
-                        </div>
-                    </li>
-
-
-                    <li class="submenu">
                         <h6 class="arrow-r">Why is gRPC better/worse than REST?</h6>
                         <div class="submenu-content">
                             <p>gRPC largely follows HTTP semantics over HTTP/2 but we explicitly allow for full-duplex streaming. We diverge from typical REST conventions as we use static paths for performance reasons during call dispatch as parsing call parameters from paths, query parameters and payload body adds latency and complexity. We have also formalized a set of errors that we believe are more directly applicable to API uses cases than the HTTP status codes.</p>
