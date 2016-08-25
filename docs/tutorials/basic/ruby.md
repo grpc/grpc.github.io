@@ -108,7 +108,7 @@ rpc ListFeatures(Rectangle) returns (stream Feature) {}
 - A *client-side streaming RPC* where the client writes a sequence of messages
   and sends them to the server, again using a provided stream. Once the client
   has finished writing the messages, it waits for the server to read them all
-  and return its response. You specify a server-side streaming method by placing
+  and return its response. You specify a client-side streaming method by placing
   the `stream` keyword before the *request* type.
 
 ```protobuf
