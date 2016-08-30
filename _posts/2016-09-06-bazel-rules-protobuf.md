@@ -1,3 +1,15 @@
+---
+layout: post
+title: Building gRPC services with bazel and rules_protobuf
+published: true
+permalink: blog/bazel_rules_protobuf
+attribution: Originally written by Paul Johnston.
+author: Paul Cody Johnston
+company: PubRef.org
+company-link: https://pubref.org
+thumbnail: https://avatars3.githubusercontent.com/u/10408150?v=3&s=200
+---
+
 # Building gRPC services with Bazel and rules_protobuf
 
 [gRPC](https://grpc.io) makes it easier to build high-performance
