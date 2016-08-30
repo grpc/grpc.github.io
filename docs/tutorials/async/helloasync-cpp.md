@@ -40,30 +40,30 @@ the following to make an asynchronous call:
 - Initiate the RPC and create a handle for it. Bind the RPC to a
   `CompletionQueue`.
 
-    ```
+```
     CompletionQueue cq;
     std::unique_ptr<ClientAsyncResponseReader<HelloReply> > rpc(
         stub_->AsyncSayHello(&context, request, &cq));
-    ```
+```
 
 - Ask for the reply and final status, with a unique tag
 
-    ```
+```
     Status status;
     rpc->Finish(&reply, &status, (void*)1);
-    ```
+```
 
 - Wait for the completion queue to return the next tag. The reply and status are
   ready once the tag passed into the corresponding `Finish()` call is returned.
 
-    ```
+```
     void* got_tag;
     bool ok = false;
     cq.Next(&got_tag, &ok);
     if (ok && got_tag == (void*)1) {
       // check reply and status
     }
-    ```
+```
 
 You can see the complete client example in
 [greeter&#95;async&#95;client.cc](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/cpp/helloworld/greeter_async_client.cc).
@@ -76,28 +76,28 @@ asynchronously is:
 
 - Build a server exporting the async service
 
-    ```
+```
     helloworld::Greeter::AsyncService service;
     ServerBuilder builder;
     builder.AddListeningPort("0.0.0.0:50051", InsecureServerCredentials());
     builder.RegisterAsyncService(&service);
     auto cq = builder.AddCompletionQueue();
     auto server = builder.BuildAndStart();
-    ```
+```
 
 - Request one RPC, providing a unique tag
 
-    ```
+```
     ServerContext context;
     HelloRequest request;
     ServerAsyncResponseWriter<HelloReply> responder;
     service.RequestSayHello(&context, &request, &responder, &cq, &cq, (void*)1);
-    ```
+```
 
 - Wait for the completion queue to return the tag. The context, request and
   responder are ready once the tag is retrieved.
 
-    ```
+```
     HelloReply reply;
     Status status;
     void* got_tag;
@@ -107,19 +107,19 @@ asynchronously is:
       // set reply and status
       responder.Finish(reply, status, (void*)2);
     }
-    ```
+```
 
 - Wait for the completion queue to return the tag. The RPC is finished when the
   tag is back.
 
-    ```
+```
     void* got_tag;
     bool ok = false;
     cq.Next(&got_tag, &ok);
     if (ok && got_tag == (void*)2) {
       // clean up
     }
-    ```
+```
 
 This basic flow, however, doesn't take into account the server handling multiple
 requests concurrently. To deal with this, our complete async server example uses
