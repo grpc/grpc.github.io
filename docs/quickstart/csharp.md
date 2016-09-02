@@ -214,8 +214,8 @@ From the `examples/csharp/helloworld-from-cli` directory:
 > /path/to/nuget install Grpc.Tools
 ```
 
-* Note that you don't have to update your NuGet executable to the latest version
-  in order to install the Grpc.Tools package.
+* Note that you may have to update your NuGet executable to the latest version
+  in order to install the Grpc.Tools package, depending on your operating system.
 
 ### Commands to generate the gRPC code
 Note that you may have to change the `platform_architecture` directory names (e.g. windows_x86, linux_x64) in the commands below based on your environment.
