@@ -122,7 +122,7 @@ rpc ListFeatures(Rectangle) returns (stream Feature) {}
 - A *client-side streaming RPC* where the client writes a sequence of messages
   and sends them to the server, again using a provided stream. Once the client
   has finished writing the messages, it waits for the server to read them all
-  and return its response. You specify a server-side streaming method by placing
+  and return its response. You specify a client-side streaming method by placing
   the `stream` keyword before the *request* type.
 
 ```proto
@@ -349,7 +349,7 @@ public StreamObserver<Point> recordRoute(final StreamObserver<RouteSummary> resp
 
 As you can see, like the previous method types our method gets a
 `StreamObserver` response observer parameter, but this time it returns a
-`StreamObserver` for the client to write its `Point`s. 
+`StreamObserver` for the client to write its `Point`s.
 
 In the method body we instantiate an anonymous `StreamObserver` to return, in
 which we:
@@ -484,7 +484,7 @@ asyncStub = RouteGuideGrpc.newStub(channel);
 
 ### Calling service methods
 
-Now let's look at how we call our service methods. 
+Now let's look at how we call our service methods.
 
 #### Simple RPC
 

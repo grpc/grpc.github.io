@@ -24,7 +24,7 @@ guide](https://developers.google.com/protocol-buffers/docs/proto3) and [C#
 generated code
 reference](https://developers.google.com/protocol-buffers/docs/reference/csharp-generated).
 For information about the new version in the protocol buffers Github repository,
-see the [release notes](https://github.com/google/protobuf/releases). 
+see the [release notes](https://github.com/google/protobuf/releases).
 
 <div id="toc"></div>
 
@@ -111,7 +111,7 @@ rpc ListFeatures(Rectangle) returns (stream Feature) {}
 - A *client-side streaming RPC* where the client writes a sequence of messages
   and sends them to the server, again using a provided stream. Once the client
   has finished writing the messages, it waits for the server to read them all
-  and return its response. You specify a server-side streaming method by placing
+  and return its response. You specify a client-side streaming method by placing
   the `stream` keyword before the *request* type.
 
 ```protobuf
@@ -410,9 +410,9 @@ response) RPCs.
 Calling the simple RPC `GetFeature` in a synchronous way is nearly as
 straightforward as calling a local method.
 
-```csharp 
-Point request = new Point { Latitude = 409146138, Longitude = -746188906 }; 
-Feature feature = client.GetFeature(request); 
+```csharp
+Point request = new Point { Latitude = 409146138, Longitude = -746188906 };
+Feature feature = client.GetFeature(request);
 ```
 
 As you can see, we create and populate a request protocol buffer object (in our
@@ -424,9 +424,9 @@ thrown, indicating the status code of the problem.
 Alternatively, if you are in an async context, you can call an asynchronous
 version of the method and use the `await` keyword to await the result:
 
-```csharp 
-Point request = new Point { Latitude = 409146138, Longitude = -746188906 }; 
-Feature feature = await client.GetFeatureAsync(request); 
+```csharp
+Point request = new Point { Latitude = 409146138, Longitude = -746188906 };
+Feature feature = await client.GetFeatureAsync(request);
 ```
 
 #### Streaming RPCs
@@ -473,7 +473,7 @@ using (var call = client.RecordRoute())
 Finally, let's look at our bidirectional streaming RPC `RouteChat`. In this
 case, we write the request to `RequestStream` and receive the responses from
 `ResponseStream`. As you can see from the example, the streams are independent
-of each other. 
+of each other.
 
 ```csharp
 using (var call = client.RouteChat())
@@ -506,7 +506,7 @@ using (var call = client.RouteChat())
 
 #### Using Xamarin Studio or Monodevelop on OS X or Linux
 
-- See the [quickstart](../../quickstart/csharp.html) for instructions on downloading gRPC 
+- See the [quickstart](../../quickstart/csharp.html) for instructions on downloading gRPC
   nuget dependencies and building the solution with these IDEs.
 
 Run the server, which will listen on port 50052:
