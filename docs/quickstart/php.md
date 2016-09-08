@@ -20,11 +20,11 @@ working example.</p>
 
 ### Debian/Ubuntu
 ```sh
-$ [sudo] apt-get install php5 php5-dev php-pear
+$ [sudo] apt-get install php5 php5-dev php-pear zlib1g-dev
 
 OR
 
-$ [sudo] apt-get install php7.0 php7.0-dev
+$ [sudo] apt-get install php7.0 php7.0-dev zlib1g-dev
 ```
 
 ### Mac OS
@@ -98,6 +98,7 @@ From the `examples/node/dynamic_codegen` directory:
 1. Run the server
 
    ```sh
+   $ npm install
    $ node greeter_server.js
    ```
 
@@ -172,7 +173,7 @@ Next we need to update the gRPC code used by our application to use the new
 service definition. From the `examples/php` directory:
 
 ```
-$ proto-gen-php -i . -o . helloworld.proto
+$ protoc-gen-php -i . -o . helloworld.proto
 ```
 
 This regenerates `helloworld.php`, which contains our generated client classes,
