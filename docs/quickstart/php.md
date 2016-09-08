@@ -63,6 +63,13 @@ and client stubs from
 but you'll need the tools for the rest of our quickstart, as well as later
 tutorials and your own projects.
 
+To install `protoc`:
+
+The simplest way to do this is to download pre-compiled binaries for your platform(`protoc-<version>-<platform>.zip`) from here: https://github.com/google/protobuf/releases
+
+  * Unzip this file.
+  * Update the environment variable `PATH` to include the path to the protoc binary file.
+
 To install Protobuf-PHP, run:
 
 ```sh
