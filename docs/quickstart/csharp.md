@@ -25,26 +25,25 @@ Using the .NET Core SDK on Windows, OS X, or Linux, you'll need:
 
 * The .NET Core SDK command line tools. 
 * The .NET framework 4.5 (for OS X and Linux, the open source .NET Framework implementation, "Mono", at version 4+, is suitable) 
-* A NuGet executable (to download the Grpc.Tools package that contains protoc and protobuf binaries for code generation)
 * Git (to download the sample code)
 
 On Windows, using Visual Studio, you'll need: 
 
-* .NET Framework 4.5+, Visual Studio 2013 or 2015.
+* .NET Framework 4.5+
+* Visual Studio 2013 or 2015.
 * Git (to download the sample code)
 
 On OS X, using Xamarin Studio, you'll need:
 
-* Mono 4+
-* Xamarin Studio 5.9+
-* A NuGet executable (to download the Grpc.Tools package that contains protoc and protobuf binaries for code generation)
+* Mono 4.4.2+
+* Xamarin Studio 6.0+
 * Git (to download the sample code)
 
 On Linux, using the Monodevelop IDE, you'll need:
 
-* Mono 4+
+* Mono 4.4.2+
 * MonoDevelop 5.9+
-* A NuGet executable (to download the Grpc.Tools package that contains protoc and protobuf binaries for code generation)
+* A NuGet executable, at version 2.12+ (you'll need to restore NuGet package dependencies from the command line)
 * Git (to download the sample code)
 
 ## Download the example
@@ -77,6 +76,11 @@ dependencies for you (Grpc, Grpc.Tools and Google.Protobuf NuGet packages).
 * Open the solution `Greeter.sln` with Visual Studio.
 * Build the solution (this will automatically download NuGet dependencies)
 
+### Using Xamarin Studio
+* Open the solution `Greeter.sln` with Xamarin Studio.
+* Project->"Restore NuGet Packages"
+* Build the solution (this will automatically download NuGet dependencies)
+
 ### Using .NET Core SDK from the command line
 From the `examples/csharp/helloworld-from-cli` directory:
 
@@ -85,16 +89,16 @@ From the `examples/csharp/helloworld-from-cli` directory:
 > dotnet build **/project.json
 ```
 
-### Using Xamarin Studio or Monodevelop IDEs
-The C# gRPC package currently depends on System.Interactive.Async 3.0.0, which cannot be downloaded on older NuGet versions.
-NuGet is too old in Xamarin Studio on OS X and Monodevelop on Linux as well as via apt-get.
+### Using the Monodevelop IDE
+The C# gRPC package currently depends on System.Interactive.Async 3.0.0, which requires NuGet 2.12+ to install.
+The NuGet included on the latest versions of Monodevelop is too old to install gRPC C#.
 
 One possible workaround is as follows:
 
-* Upgrade your NuGet installation with `/path/to/nuget update -self`. 
+* Install NuGet 2.12+ so that it's available from the command line.
 * From the `examples/csharp/helloworld` directory, run `/path/to/nuget restore`. 
 * Now that the NuGet dependencies are restored into their proper package folders, build
-  the solution from your IDE.
+  the solution from the Monodevelop IDE.
   
 ## Run a gRPC application
 
@@ -199,23 +203,30 @@ The Grpc.Tools NuGet package contains the protoc and protobuf C# plugin binaries
 
 ### Obtaining the Grpc.Tools NuGet package
 
-#### Using Visual Studio, Xamarin Studio, or Monodevelop IDEs
+#### Using Visual Studio
 
 This example project already depends on the `Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}` NuGet package, so it should be included in `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE, 
 or when you restore packages via `/path/to/nuget restore` on the command line.
 
-#### Using the .NET Core SDK
-
-From the `examples/csharp/helloworld-from-cli` directory:
+#### If you have a NuGet client that is __not__ at version 2.12
 
 ```
-> mkdir packages
-> cd packages
-> /path/to/nuget install Grpc.Tools
+$ mkdir packages && cd packages
+$ /path/to/nuget install Grpc.Tools
 ```
 
-* Note that you may have to update your NuGet executable to the latest version
-  in order to install the Grpc.Tools package, depending on your operating system.
+#### If you have a NuGet client that is at version 2.12
+
+NuGet 2.12 does not install the files from the Grpc.Tools package necessary on Linux and OS X.
+Without changing the version of NuGet that you're using, a possible workaround to obtaining the binaries included in the Grpc.Tools package 
+is by simply downloading the NuGet package and unzipping without a NuGet client, as follows.
+From the directory of you're example:
+
+```
+$ temp_dir=packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tmp
+$ curl_url=https://www.nuget.org/api/v2/package/Grpc.Tools/{{ Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}
+$ mkdir -p $temp_dir && cd $temp_dir && curl -sL $curl_url > tmp.zip; unzip tmp.zip && cd .. && cp -r tmp/tools . && rm -rf tmp && cd ../..
+```
 
 ### Commands to generate the gRPC code
 Note that you may have to change the `platform_architecture` directory names (e.g. windows_x86, linux_x64) in the commands below based on your environment.
