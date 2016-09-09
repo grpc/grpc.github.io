@@ -202,24 +202,21 @@ up to the calling application layer.
 
 The following mapping from RST_STREAM error codes to GRPC error codes is applied.
 
-HTTP2 Code|GRPC Code
-----------|-----------
-NO_ERROR(0)|INTERNAL - An explicit GRPC status of OK should have been sent but
-this might be used to aggressively lameduck in some scenarios.
-PROTOCOL_ERROR(1)|INTERNAL INTERNAL_ERROR(2)|INTERNAL
-FLOW&#95;CONTROL&#95;ERROR(3)|INTERNAL SETTINGS_TIMEOUT(4)|INTERNAL
-STREAM_CLOSED|No mapping as there is no open stream to propagate to.
-Implementations should log. FRAME&#95;SIZE&#95;ERROR|INTERNAL
-REFUSED&#95;STREAM|UNAVAILABLE - Indicates that no processing occurred and the
-request can be retried, possibly elsewhere. CANCEL(8)|Mapped to call
-cancellation when sent by a client.Mapped to CANCELLED when sent by a server.
-Note that servers should only use this mechanism when they need to cancel a call
-but the payload byte sequence is incomplete. COMPRESSION_ERROR|INTERNAL
-CONNECT_ERROR|INTERNAL ENHANCE&#95;YOUR&#95;CALM|RESOURCE_EXHAUSTED ...with
-additional error detail provided by runtime to indicate that the exhausted
-resource is bandwidth. INADEQUATE&#95;SECURITY| PERMISSION&#95;DENIED … with
-additional detail indicating that permission was denied as protocol is not
-secure enough for call.
+| HTTP2 Code              | GRPC Code  |
+| ----------------------- | ---------- |
+| `NO_ERROR`(0)           | `INTERNAL` - An explicit GRPC status of OK should have been sent but this might be used to aggressively lameduck in some scenarios. |
+| `PROTOCOL_ERROR`(1)     | `INTERNAL` |
+| `INTERNAL_ERROR`(2)     | `INTERNAL` |
+| `FLOW_CONTROL_ERROR`(3) | `INTERNAL` |
+| `SETTINGS_TIMEOUT`(4)   | `INTERNAL` |
+| `STREAM_CLOSED`         | No mapping as there is no open stream to propagate to. Implementations should log. |
+| `FRAME_SIZE_ERROR`      | `INTERNAL` |
+| `REFUSED_STREAM`        | `UNAVAILABLE` - Indicates that no processing occurred and the request can be retried, possibly elsewhere. |
+| `CANCEL`(8)             | Mapped to call cancellation when sent by a client. Mapped to `CANCELLED` when sent by a server. Note that servers should only use this mechanism when they need to cancel a call but the payload byte sequence is incomplete. |
+| `COMPRESSION_ERROR`     | `INTERNAL` |
+| `CONNECT_ERROR`         | `INTERNAL` |
+| `ENHANCE_YOUR_CALM`     | `RESOURCE_EXHAUSTED` … with additional error detail provided by runtime to indicate that the exhausted resource is bandwidth. |
+| `INADEQUATE_SECURITY`   | `PERMISSION_DENIED` … with additional detail indicating that permission was denied as protocol is not secure enough for call. |
 
 
 ### Security
