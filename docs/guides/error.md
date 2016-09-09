@@ -43,11 +43,8 @@ Server threw an exception (or did something other than returning a status code t
 
 Case | Status code
 -----|-----------
-No data transmitted before deadline expires. Also applies to cases where some
-data is transmitted and no other failures are detected before the deadline
-expires | GRPC&#95;STATUS&#95;DEADLINE_EXCEEDED Some data transmitted (for
-example, the request metadata has been written to the TCP connection) before the
-connection breaks | GRPC&#95;STATUS&#95;UNAVAILABLE
+No data transmitted before deadline expires. Also applies to cases where some data is transmitted and no other failures are detected before the deadline expires | GRPC&#95;STATUS&#95;DEADLINE_EXCEEDED
+Some data transmitted (for example, the request metadata has been written to the TCP connection) before the connection breaks | GRPC&#95;STATUS&#95;UNAVAILABLE
 
 
 ### Protocol errors
