@@ -208,7 +208,7 @@ call.responseHeaders[@"www-authenticate"]
 Note that, as gRPC metadata elements are mapped to HTTP/2 headers (or trailers),
 the keys of the response metadata are always ASCII strings in lowercase.
 
-Many uses cases of response metadata involve getting more details about an RPC
+Many use cases of response metadata involve getting more details about an RPC
 error. For convenience, when a `NSError` instance is passed to an RPC handler
 block, the response headers and trailers dictionaries can also be accessed this
 way:
