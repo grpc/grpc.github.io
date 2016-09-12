@@ -35,13 +35,13 @@ On Windows, using Visual Studio, you'll need:
 
 On OS X, using Xamarin Studio, you'll need:
 
-* Mono 4.4.2+
-* Xamarin Studio 6.0+
+* Mono 4.4.2+ (or Mono 4+ is sufficient if you manually update nuget to version 2.12+) 
+* Xamarin Studio 6.0+ 
 * Git (to download the sample code)
 
 On Linux, using the Monodevelop IDE, you'll need:
 
-* Mono 4.4.2+
+* Mono 4.4.2+ (or Mono 4+ is sufficient if you manually update nuget to version 2.12+) 
 * MonoDevelop 5.9+
 * A NuGet executable, at version 2.12+ (you'll need to restore NuGet package dependencies from the command line)
 * Git (to download the sample code)
@@ -90,10 +90,15 @@ From the `examples/csharp/helloworld-from-cli` directory:
 ```
 
 ### Using the Monodevelop IDE
-The C# gRPC package currently depends on System.Interactive.Async 3.0.0, which requires NuGet 2.12+ to install.
-The NuGet included on the latest versions of Monodevelop is too old to install gRPC C#.
+Using the Monodevelop IDE, you can build and edit a solution that uses gRPC 
+without issues, but unfortunately a workaround is necessary in order to initially restore
+a NuGet dependency on C# gRPC.
 
-One possible workaround is as follows:
+The problem is that C# gRPC package currently depends on 
+System.Interactive.Async 3.0.0, which requires NuGet 2.12+ to install.
+The NuGet included on the latest versions of Monodevelop is too old to install gRPC C#.
+You can work around this issue by restoring the C# gRPC NuGet dependency from the command line
+, and then proceeding to build and edit from the Monodevelop IDE, as follows:
 
 * Install NuGet 2.12+ so that it's available from the command line.
 * From the `examples/csharp/helloworld` directory, run `/path/to/nuget restore`. 
