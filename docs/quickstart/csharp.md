@@ -35,7 +35,7 @@ On Windows, using Visual Studio, you'll need:
 
 On OS X, using Xamarin Studio, you'll need:
 
-* Mono 4.4.2+ (or Mono 4+ is sufficient if you manually update nuget to version 2.12+) 
+* Mono 4.4.2+ (or Mono 4+ is sufficient if you manually update NuGet to version 2.12+) 
 * Xamarin Studio 6.0+ 
 * Git (to download the sample code)
 
@@ -97,8 +97,10 @@ a NuGet dependency on C# gRPC.
 The problem is that C# gRPC package currently depends on 
 System.Interactive.Async 3.0.0, which requires NuGet 2.12+ to install.
 The NuGet included on the latest versions of Monodevelop is too old to install gRPC C#.
-You can work around this issue by restoring the C# gRPC NuGet dependency from the command line
-, and then proceeding to build and edit from the Monodevelop IDE, as follows:
+
+If you don't want to change the version of NuGet that you're using, 
+a possible workaround to get these files is to download the NuGet 
+package and unzip without a NuGet client, as follows.
 
 * Install NuGet 2.12+ so that it's available from the command line.
 * From the `examples/csharp/helloworld` directory, run `/path/to/nuget restore`. 
@@ -204,7 +206,7 @@ message HelloReply {
 
 Next we need to update the gRPC code used by our application to use the new service definition. 
 
-The Grpc.Tools NuGet package contains the protoc and protobuf C# plugin binaries you will need to generate the code. 
+The `Grpc.Tools` NuGet package contains the protoc and protobuf C# plugin binaries you will need to generate the code. 
 
 ### Obtaining the Grpc.Tools NuGet package
 
@@ -222,10 +224,10 @@ $ /path/to/nuget install Grpc.Tools
 
 #### If you have a NuGet client that is at version 2.12
 
-NuGet 2.12 does not install the files from the Grpc.Tools package necessary on Linux and OS X.
-Without changing the version of NuGet that you're using, a possible workaround to obtaining the binaries included in the Grpc.Tools package 
+NuGet 2.12 does not install the files from the `Grpc.Tools` package necessary on Linux and OS X.
+Without changing the version of NuGet that you're using, a possible workaround to obtaining the binaries included in the `Grpc.Tools` package 
 is by simply downloading the NuGet package and unzipping without a NuGet client, as follows.
-From the directory of you're example:
+From your example directory:
 
 ```
 $ temp_dir=packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tmp
