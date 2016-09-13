@@ -245,9 +245,10 @@ with the appropriate information, and then `return` it along with an `nil` error
 to tell gRPC that we've finished dealing with the RPC and that the `Feature` can
 be returned to the client.
 
-#### Server-side streaming RPC Now let's look at one of our streaming RPCs.
-`ListFeatures` is a server-side streaming RPC, so we need to send back multiple
-`Feature`s to our client.
+#### Server-side streaming RPC
+
+Now let's look at one of our streaming RPCs. `ListFeatures` is a server-side
+streaming RPC, so we need to send back multiple `Feature`s to our client.
 
 ```go
 func (s *routeGuideServer) ListFeatures(rect *pb.Rectangle, stream pb.RouteGuide_ListFeaturesServer) error {
@@ -274,14 +275,16 @@ finished writing responses. Should any error happen in this call, we return a
 non-`nil` error; the gRPC layer will translate it into an appropriate RPC status
 to be sent on the wire.
 
-#### Client-side streaming RPC Now let's look at something a little more
-complicated: the client-side streaming method `RecordRoute`, where we get a
-stream of `Point`s from the client and return a single `RouteSummary` with
-information about their trip. As you can see, this time the method doesn't have
-a request parameter at all. Instead, it gets a `RouteGuide_RecordRouteServer`
-stream, which the server can use to both read *and* write messages - it can
-receive client messages using its `Recv()` method and return its single response
-using its `SendAndClose()` method.
+#### Client-side streaming RPC
+
+Now let's look at something a little more complicated: the client-side
+streaming method `RecordRoute`, where we get a stream of `Point`s from the
+client and return a single `RouteSummary` with information about their trip. As
+you can see, this time the method doesn't have a request parameter at all.
+Instead, it gets a `RouteGuide_RecordRouteServer` stream, which the server can
+use to both read *and* write messages - it can receive client messages using
+its `Recv()` method and return its single response using its `SendAndClose()`
+method.
 
 ```go
 func (s *routeGuideServer) RecordRoute(stream pb.RouteGuide_RecordRouteServer) error {
