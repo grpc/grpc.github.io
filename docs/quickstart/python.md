@@ -162,10 +162,12 @@ message HelloReply {
 ## Generate gRPC code
 
 Next we need to update the gRPC code used by our application to use the new
-service definition. From the `examples/python/helloworld` directory:
+service definition. 
 
-```
-$ python run_codegen.py
+From the `examples/python/helloworld` directory, run:
+
+```sh
+$ python -m grpc.tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/route_guide.proto
 ```
 
 This regenerates `helloworld_pb2.py`, which contains our generated client and
