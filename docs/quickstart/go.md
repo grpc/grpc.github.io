@@ -69,7 +69,7 @@ gRPC services are defined in a proto file, which is used to generate a correspon
 This `helloworld.pb.go` file contains:
 
   * Generated client and server code.
-  * Code for populating, serializing, and retrieving our `HelloRequest` and `HelloResponse` message types.
+  * Code for populating, serializing, and retrieving our `HelloRequest` and `HelloReply` message types.
 
 ## Try it!
 
@@ -98,7 +98,7 @@ buffers; you can find out lots more about how to define a service in a `.proto`
 file in [What is gRPC?](http://www.grpc.io/docs/#what-is-grpc) and [gRPC Basics:
 Go][]. For now all you need to know is that both the server and the client
 "stub" have a `SayHello` RPC method that takes a `HelloRequest` parameter from
-the client and returns a `HelloResponse` from the server, and that this method
+the client and returns a `HelloReply` from the server, and that this method
 is defined like this:
 
 ```protobuf
