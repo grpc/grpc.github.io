@@ -76,6 +76,9 @@ defines it as a *package*.  `BUILD` files contain *rules* that define
 *targets* which can be selected using the *target pattern syntax*.
 Rules are written in a python-like language called
 [*skylark*](https://bazel.io/versions/master/docs/skylark/index.html).
+Syklark has stronger deterministic guarantees than python but is
+intentionally minimal, excluding language features such as recursion,
+classes, and lambdas.
 
 ## 1.1: Package Structure
 
@@ -188,7 +191,7 @@ py_library      rule  @com_github_google_protobuf//:protobuf_python
 
 This is possible because the protobuf team provides a
 [BUILD file](https://github.com/google/protobuf/blob/master/BUILD) at
-the root of their repository.  Thanks protobuf team!  Later we'll
+the root of their repository.  Thanks Protobuf team!  Later we'll
 learn how to "inject" our own BUILD files into repositories that don't
 already have one.
 
@@ -371,7 +374,7 @@ come from?
 
 By using the variant workspace rule `new_git_repository`, we can
 provide our
-[own BUILD file](https://github.com/pubref/rules_protobuf/blob/master/bzl/build_file/com_github_madler_zlib.BUILD)
+[own BUILD file](https://github.com/pubref/rules_protobuf/blob/master/protobuf/build_file/com_github_madler_zlib.BUILD)
 (which defines the `cc_library` target) as follows:
 
 ```python
@@ -404,7 +407,7 @@ the following three phases:
 1. Loading: Read the WORKSPACE and required BUILD files. Generate a
    dependency graph.
 
-2. Analysis: for all nodes in the graph, Which nodes are actually
+2. Analysis: for all nodes in the graph, which nodes are actually
    required for this build? Do we have all the necessary
    resources available?
 
@@ -412,14 +415,108 @@ the following three phases:
    generate outputs.
 
 Hopefully you now have enough conceptual knowledge of bazel to be
-productive.  So let's *make something* already!
+productive.
+## 1.6: rules_protobuf
+
+[rules_protobuf](https://github.com/pubref/rules_protobuf) is an
+extension to bazel that takes care of:
+
+1. Building the protocol buffer compiler `protoc`,
+
+2. Downloading and/or building all the necessary protoc-gen plugins.
+
+2. Downloading and/or building all the necessary gRPC-related support
+   libraries.
+
+3. Invoking protoc for you (on demand), smoothing out the
+  idiosyncracies of different protoc plugins.
+
+It works by passing one or more `proto_language` specifications to the
+`proto_compile` rule.  A `proto_language` rule contains the metadata
+about how to invoke the plugin and the predicted file outputs, while
+the `proto_compile` rule interprets a `proto_language` spec and builds
+the appropriate command-line arguments to `protoc`.  For example,
+here's how we can generate outputs for multiple languages
+simultaneously:
+
+```python
+ proto_compile(
+   name = "pluriproto",
+   protos = [":protos"],
+   langs = [
+       "//cpp",
+       "//csharp",
+       "//closure",
+       "//ruby",
+       "//java",
+       "//java:nano",
+       "//python",
+       "//objc",
+       "//node",
+   ],
+   verbose = 1,
+   with_grpc = True,
+ )
+```
+
+```sh
+$ bazel build :pluriproto
+# ************************************************************
+cd $(bazel info execution_root) && bazel-out/host/bin/external/com_github_google_protobuf/protoc \
+--plugin=protoc-gen-grpc-java=bazel-out/host/genfiles/third_party/protoc_gen_grpc_java/protoc_gen_grpc_java \
+--plugin=protoc-gen-grpc=bazel-out/host/bin/external/com_github_grpc_grpc/grpc_cpp_plugin \
+--plugin=protoc-gen-grpc-nano=bazel-out/host/genfiles/third_party/protoc_gen_grpc_java/protoc_gen_grpc_java \
+--plugin=protoc-gen-grpc-csharp=bazel-out/host/genfiles/external/nuget_grpc_tools/protoc-gen-grpc-csharp \
+--plugin=protoc-gen-go=bazel-out/host/bin/external/com_github_golang_protobuf/protoc_gen_go \
+--descriptor_set_out=bazel-genfiles/examples/proto/pluriproto.descriptor_set \
+--ruby_out=bazel-genfiles \
+--python_out=bazel-genfiles \
+--cpp_out=bazel-genfiles \
+--grpc_out=bazel-genfiles \
+--objc_out=bazel-genfiles \
+--csharp_out=bazel-genfiles/examples/proto \
+--java_out=bazel-genfiles/examples/proto/pluriproto_java.jar \
+--javanano_out=ignore_services=true:bazel-genfiles/examples/proto/pluriproto_nano.jar \
+--js_out=import_style=closure,error_on_name_conflict,binary,library=examples/proto/pluriproto:bazel-genfiles \
+--js_out=import_style=commonjs,error_on_name_conflict,binary:bazel-genfiles \
+--go_out=plugins=grpc,Mexamples/proto/common.proto=github.com/pubref/rules_protobuf/examples/proto/pluriproto:bazel-genfiles \
+--grpc-java_out=bazel-genfiles/examples/proto/pluriproto_java.jar \
+--grpc-nano_out=ignore_services=true:bazel-genfiles/examples/proto/pluriproto_nano.jar \
+--grpc-csharp_out=bazel-genfiles/examples/proto \
+--proto_path=. \
+examples/proto/common.proto
+# ************************************************************
+examples/proto/common_pb.rb
+examples/proto/pluriproto_java.jar
+examples/proto/pluriproto_nano.jar
+examples/proto/common_pb2.py
+examples/proto/common.pb.h
+examples/proto/common.pb.cc
+examples/proto/common.grpc.pb.h
+examples/proto/common.grpc.pb.cc
+examples/proto/Common.pbobjc.h
+examples/proto/Common.pbobjc.m
+examples/proto/pluriproto.js
+examples/proto/Common.cs
+examples/proto/CommonGrpc.cs
+examples/proto/common.pb.go
+examples/proto/common_pb.js
+examples/proto/pluriproto.descriptor_set
+```
+
+The various `*_proto_library` rules (that we'll be using below)
+internally invoke this `proto_compile` rule, then consume the
+generated outputs and compile them with the requisite libraries into
+`.class`, `.so`, `.a` (or whatever) objects.
+
+So let's *make something* already! We'll use bazel and rules_protobuf
+to build a gRPC application.
 
 ---
 
 # 2: Building a gRPC service with rules_protobuf
 
-Let's go ahead and use bazel and rules_protobuf to help build own gRPC
-application. The application will involve communication between two
+The application will involve communication between two
 different gRPC services:
 
 ## 2.1: Services
@@ -440,7 +537,7 @@ different gRPC services:
 
 ## 2.2: Compiled Programs
 
-For the demo, we'll use 5 different compiled programs written in 3
+For the demo, we'll use 6 different compiled programs written in 4
 languages:
 
 * A `GreeterTimer` client (go).  This command-line interface requires
@@ -452,7 +549,7 @@ languages:
   defined externally in
   `@org_pubref_rules_protobuf//examples/helloworld/proto:helloworld.proto`.
 
-* Three `Greeter` server implementations (C++, java, go).
+* Four `Greeter` server implementations (C++, java, go, and C#).
   rules_protobuf already provides these example implementations, so
   we'll just use them directly.
 
@@ -524,13 +621,15 @@ message HelloReply {
 }
 ```
 
-The `common.Config` message type is not particularly functional but
-serves to demonstrate the use of imports.  rules_protobuf can help
-with more complex setups having multiple proto → proto dependencies.
+> The `common.Config` message type is not particularly functional here
+> but serves to demonstrate the use of imports.  rules_protobuf can
+> help with more complex setups having multiple proto → proto
+> dependencies.
 
 ## 2.4: Build the grpc_greetertimer example application.
 
-This demo application can be cloned at https://github.com/pubref/grpc_greetertimer.
+This demo application can be cloned at
+https://github.com/pubref/grpc_greetertimer.
 
 ### 2.4.1: Create the Project Layout
 
@@ -543,42 +642,42 @@ Here's the directory layout and relevant BUILD files we'll be using:
 ~/grpc_greetertimer$ touch proto/BUILD
 ~/grpc_greetertimer$ touch proto/greetertimer.proto
 ~/grpc_greetertimer$ touch go/BUILD
+~/grpc_greetertimer$ touch go/main.go
 ~/grpc_greetertimer$ touch java/org/pubref/grpc/greetertimer/BUILD
 ~/grpc_greetertimer$ touch java/org/pubref/grpc/greetertimer/GreeterTimerServer.java
 ```
 
 ### 2.4.2: The WORKSPACE
 
-We'll begin by creating the
-[WORKSPACE](./WORKSPACE)
-file with a reference to the rules_protobuf repository.  We load the
-main entrypoint skylark file
-[rules.bzl](https://github.com/pubref/rules_protobuf/blob/master/bzl/rules.bzl)
+We'll begin by creating the [WORKSPACE](./WORKSPACE) file with a
+reference to the rules_protobuf repository.  We load the main
+entrypoint skylark file
+[rules.bzl](https://github.com/pubref/rules_protobuf/blob/master/protobuf/rules.bzl)
 in the `//bzl` package and call its `protobuf_repositories` function
 with the languages to we want to use (in this case `java` and `go`).
-We also load [rules_go](https://github.com/bazelbuild/rules_go) (not shown).
+We also load [rules_go](https://github.com/bazelbuild/rules_go) for go
+compile support (not shown).
 
 ```python
-# //:WORKSPACE
+# File //:WORKSPACE
 workspace(name = "org_pubref_grpc_greetertimer")
 
 git_repository(
     name = "org_pubref_rules_protobuf",
     remote = "https://github.com/pubref/rules_protobuf.git",
-    tag = "v0.5.1",
+    tag = "v0.6.0",
 )
 
-load("@org_pubref_rules_protobuf//bzl:rules.bzl", "protobuf_repositories")
+# Load language-specific dependencies
+load("@org_pubref_rules_protobuf//java:rules.bzl", "java_proto_repositories")
+java_proto_repositories()
 
-protobuf_repositories(
-    verbose = 1,
-    with_java = True,
-    with_go = True,
-)
+load("@org_pubref_rules_protobuf//go:rules.bzl", "go_proto_repositories")
+go_proto_repositories()
 ```
 
 > Refer to the
-> [repositories.bzl file](https://github.com/pubref/rules_protobuf/bzl/repositories.bzl),
+> [repositories.bzl file](https://github.com/pubref/rules_protobuf/protobuf/internal/repositories.bzl),
 > if you are interested in inspecting the dependencies.
 
 Bazel won't actually *fetch* something unless we actually need it by
@@ -604,7 +703,7 @@ response to the client.
 
 
 ```java
-//java/org/pubref/grpc/greetertimer:GreeterTimerServer.java
+/* File //java/org/pubref/grpc/greetertimer:GreeterTimerServer.java */
 
   while (remaining-- > 0) {
 
@@ -635,6 +734,8 @@ which point the call is complete.  A summary of each BatchResponse is
 simply printed out to the terminal.
 
 ```go
+// File: //go:main.go
+
 func submit(client greeterTimer.GreeterTimerClient, request *greeterTimer.TimerRequest) error {
 	stream, err := client.TimeHello(context.Background(), request)
 	if err != nil {
@@ -663,8 +764,8 @@ file. This rule won't actually *do* anything unless we depend on it
 somewhere else.
 
 ```python
-# //proto:BUILD
-load("@org_pubref_rules_protobuf//bzl:go/rules.bzl", "go_proto_library")
+# File: //proto:BUILD
+load("@org_pubref_rules_protobuf//go:rules.bzl", "go_proto_library")
 
 go_proto_library(
     name = "go_default_library",
@@ -677,12 +778,12 @@ go_proto_library(
 
 The go client implementation depends on the `go_proto_library` as
 source file provider to the `go_binary` rule.  We also pass in some
-compile-time dependencies which can be accessed on the `GO.grpc`
-struct.
+compile-time dependencies named in the
+`GRPC_COMPILE_DEPS` list.
 
 ```python
 load("@io_bazel_rules_go//go:def.bzl", "go_binary")
-load("@org_pubref_rules_protobuf//bzl:go/class.bzl", GO = "CLASS")
+load("@org_pubref_rules_protobuf//go:rules.bzl", "GRPC_COMPILE_DEPS")
 
 go_binary(
     name = "hello_client",
@@ -691,7 +792,7 @@ go_binary(
     ],
     deps = [
         "//proto:go_default_library",
-    ] + GO.grpc.compile_deps,
+    ] + GRPC_COMPILE_DEPS,
 )
 ```
 
@@ -703,8 +804,9 @@ Here's what happens when we invoke bazel to actually build the client
 binary:
 
 1. Bazel checks to see if the inputs (files) that the binary depends
-on have changed (by merkel tree).  Bazel recognizes that the output
-files for the `//proto:go_default_library` have not been built.
+on have changed (by content hash and filestamps).  Bazel recognizes
+that the output files for the `//proto:go_default_library` have not
+been built.
 
 1. Bazel checks to see if all the necessary inputs (including tools)
    for the `go_proto_library` are available.  If not, download and
@@ -744,8 +846,11 @@ java_binary(
     deps = [
         ":timer_protos",
         "@org_pubref_rules_protobuf//examples/helloworld/proto:java",
-    ] + JAVA.grpc.compile_deps,
-    runtime_deps = JAVA.grpc.netty_runtime_deps,
+        "@org_pubref_rules_protobuf//java:grpc_compiletime_deps",
+    ],
+    runtime_deps = [
+        "@org_pubref_rules_protobuf//java:netty_runtime_deps",
+    ],
 )
 ```
 
@@ -755,10 +860,9 @@ java_binary(
 an external `java_proto_library` rule that generates the greeter service
 client stub in our own workspace.
 
-3. Finally, we name the `JAVA.grpc.compile_deps` and the additional
-`JAVA.grpc.netty_runtime_deps` for the executable jar.  If these jar
-files have not yet been downloaded from maven central, they will be
-fetch as soon as we need them:
+3. Finally, we name the compile-time and run-time dependencies for the
+executable jar.  If these jar files have not yet been downloaded from
+maven central, they will be fetch as soon as we need them:
 
 
 ```sh
@@ -773,13 +877,14 @@ that can be run independently in a jvm.
 
 ### 2.4.7: Run it!
 
-First, we'll start a greeter server (choose one):
+First, we'll start a greeter server (one at a time):
 
 ```sh
 ~/grpc_greetertimer$ cd ~/rules_protobuf
 ~/rules_protobuf$ bazel run examples/helloworld/go/server
 ~/rules_protobuf$ bazel run examples/helloworld/cpp/server
 ~/rules_protobuf$ bazel run examples/helloworld/java/org/pubref/rules_protobuf/examples/helloworld/server:netty
+~/rules_protobuf$ bazel run examples/helloworld/csharp/GreeterServer
 INFO: Server started, listening on 50051
 ```
 
@@ -797,52 +902,68 @@ Finally, in a third terminal, invoke the greetertimer client:
 ~/rules_protobuf$ bazel run examples/helloworld/java/org/pubref/rules_protobuf/examples/helloworld/server:netty
 
 ~/grpc_greeterclient$ bazel run //go:client -- -total_size 10000 -batch_size 1000
-2016/08/29 17:31:04 1001 hellos (0 errs, 8999 remaining): 1.7 hellos/ms or ~590µs per hello
+17:31:04 1001 hellos (0 errs, 8999 remaining): 1.7 hellos/ms or ~590µs per hello
 # ... plus a few runs to warm up the jvm...
-2016/08/29 17:31:13 1001 hellos (0 errs, 8999 remaining): 6.7 hellos/ms or ~149µs per hello
-2016/08/29 17:31:13 1001 hellos (0 errs, 7998 remaining): 9.0 hellos/ms or ~111µs per hello
-2016/08/29 17:31:13 1001 hellos (0 errs, 6997 remaining): 8.9 hellos/ms or ~112µs per hello
-2016/08/29 17:31:13 1001 hellos (0 errs, 5996 remaining): 9.2 hellos/ms or ~109µs per hello
-2016/08/29 17:31:13 1001 hellos (0 errs, 4995 remaining): 9.4 hellos/ms or ~106µs per hello
-2016/08/29 17:31:13 1001 hellos (0 errs, 3994 remaining): 9.0 hellos/ms or ~111µs per hello
-2016/08/29 17:31:13 1001 hellos (0 errs, 2993 remaining): 9.4 hellos/ms or ~107µs per hello
-2016/08/29 17:31:13 1001 hellos (0 errs, 1992 remaining): 9.4 hellos/ms or ~107µs per hello
-2016/08/29 17:31:13 1001 hellos (0 errs, 991 remaining): 9.1 hellos/ms or ~110µs per hello
-2016/08/29 17:31:14 991 hellos (0 errs, -1 remaining): 9.0 hellos/ms or ~111µs per hello```
+17:31:13 1001 hellos (0 errs, 8999 remaining): 6.7 hellos/ms or ~149µs per hello
+17:31:13 1001 hellos (0 errs, 7998 remaining): 9.0 hellos/ms or ~111µs per hello
+17:31:13 1001 hellos (0 errs, 6997 remaining): 8.9 hellos/ms or ~112µs per hello
+17:31:13 1001 hellos (0 errs, 5996 remaining): 9.2 hellos/ms or ~109µs per hello
+17:31:13 1001 hellos (0 errs, 4995 remaining): 9.4 hellos/ms or ~106µs per hello
+17:31:13 1001 hellos (0 errs, 3994 remaining): 9.0 hellos/ms or ~111µs per hello
+17:31:13 1001 hellos (0 errs, 2993 remaining): 9.4 hellos/ms or ~107µs per hello
+17:31:13 1001 hellos (0 errs, 1992 remaining): 9.4 hellos/ms or ~107µs per hello
+17:31:13 1001 hellos (0 errs, 991 remaining): 9.1 hellos/ms or ~110µs per hello
+17:31:14 991 hellos (0 errs, -1 remaining): 9.0 hellos/ms or ~111µs per hello```
 
 ```sh
 # Timings for the go server
 ~/rules_protobuf$ bazel run examples/helloworld/go/server
 
 ~/grpc_greeterclient$ bazel run //go:client -- -total_size 10000 -batch_size 1000
-2016/08/29 17:32:33 1001 hellos (0 errs, 8999 remaining): 7.5 hellos/ms or ~134µs per hello
-2016/08/29 17:32:33 1001 hellos (0 errs, 7998 remaining): 7.9 hellos/ms or ~127µs per hello
-2016/08/29 17:32:34 1001 hellos (0 errs, 6997 remaining): 7.8 hellos/ms or ~128µs per hello
-2016/08/29 17:32:34 1001 hellos (0 errs, 5996 remaining): 7.7 hellos/ms or ~130µs per hello
-2016/08/29 17:32:34 1001 hellos (0 errs, 4995 remaining): 7.9 hellos/ms or ~126µs per hello
-2016/08/29 17:32:34 1001 hellos (0 errs, 3994 remaining): 8.0 hellos/ms or ~125µs per hello
-2016/08/29 17:32:34 1001 hellos (0 errs, 2993 remaining): 7.6 hellos/ms or ~132µs per hello
-2016/08/29 17:32:34 1001 hellos (0 errs, 1992 remaining): 7.9 hellos/ms or ~126µs per hello
-2016/08/29 17:32:34 1001 hellos (0 errs, 991 remaining): 7.9 hellos/ms or ~127µs per hello
-2016/08/29 17:32:34 991 hellos (0 errs, -1 remaining): 7.8 hellos/ms or ~128µs per hello
+17:32:33 1001 hellos (0 errs, 8999 remaining): 7.5 hellos/ms or ~134µs per hello
+17:32:33 1001 hellos (0 errs, 7998 remaining): 7.9 hellos/ms or ~127µs per hello
+17:32:34 1001 hellos (0 errs, 6997 remaining): 7.8 hellos/ms or ~128µs per hello
+17:32:34 1001 hellos (0 errs, 5996 remaining): 7.7 hellos/ms or ~130µs per hello
+17:32:34 1001 hellos (0 errs, 4995 remaining): 7.9 hellos/ms or ~126µs per hello
+17:32:34 1001 hellos (0 errs, 3994 remaining): 8.0 hellos/ms or ~125µs per hello
+17:32:34 1001 hellos (0 errs, 2993 remaining): 7.6 hellos/ms or ~132µs per hello
+17:32:34 1001 hellos (0 errs, 1992 remaining): 7.9 hellos/ms or ~126µs per hello
+17:32:34 1001 hellos (0 errs, 991 remaining): 7.9 hellos/ms or ~127µs per hello
+17:32:34 991 hellos (0 errs, -1 remaining): 7.8 hellos/ms or ~128µs per hello
 ```
-
 
 ```sh
 # Timings for the C++ server
 ~/rules_protobuf$ bazel run examples/helloworld/cpp:server
 
 ~/grpc_greeterclient$ bazel run //go:client -- -total_size 10000 -batch_size 1000
-2016/08/29 17:33:10 1001 hellos (0 errs, 8999 remaining): 9.1 hellos/ms or ~110µs per hello
-2016/08/29 17:33:10 1001 hellos (0 errs, 7998 remaining): 9.0 hellos/ms or ~111µs per hello
-2016/08/29 17:33:10 1001 hellos (0 errs, 6997 remaining): 9.1 hellos/ms or ~110µs per hello
-2016/08/29 17:33:10 1001 hellos (0 errs, 5996 remaining): 8.6 hellos/ms or ~116µs per hello
-2016/08/29 17:33:10 1001 hellos (0 errs, 4995 remaining): 9.0 hellos/ms or ~111µs per hello
-2016/08/29 17:33:10 1001 hellos (0 errs, 3994 remaining): 9.0 hellos/ms or ~111µs per hello
-2016/08/29 17:33:10 1001 hellos (0 errs, 2993 remaining): 9.1 hellos/ms or ~110µs per hello
-2016/08/29 17:33:10 1001 hellos (0 errs, 1992 remaining): 9.0 hellos/ms or ~111µs per hello
-2016/08/29 17:33:10 1001 hellos (0 errs, 991 remaining): 9.0 hellos/ms or ~111µs per hello
-2016/08/29 17:33:11 991 hellos (0 errs, -1 remaining): 9.0 hellos/ms or ~111µs per hello
+17:33:10 1001 hellos (0 errs, 8999 remaining): 9.1 hellos/ms or ~110µs per hello
+17:33:10 1001 hellos (0 errs, 7998 remaining): 9.0 hellos/ms or ~111µs per hello
+17:33:10 1001 hellos (0 errs, 6997 remaining): 9.1 hellos/ms or ~110µs per hello
+17:33:10 1001 hellos (0 errs, 5996 remaining): 8.6 hellos/ms or ~116µs per hello
+17:33:10 1001 hellos (0 errs, 4995 remaining): 9.0 hellos/ms or ~111µs per hello
+17:33:10 1001 hellos (0 errs, 3994 remaining): 9.0 hellos/ms or ~111µs per hello
+17:33:10 1001 hellos (0 errs, 2993 remaining): 9.1 hellos/ms or ~110µs per hello
+17:33:10 1001 hellos (0 errs, 1992 remaining): 9.0 hellos/ms or ~111µs per hello
+17:33:10 1001 hellos (0 errs, 991 remaining): 9.0 hellos/ms or ~111µs per hello
+17:33:11 991 hellos (0 errs, -1 remaining): 9.0 hellos/ms or ~111µs per hello
+```
+
+```sh
+# Timings for the C# server
+~/rules_protobuf$ bazel run examples/helloworld/csharp/GreeterServer
+
+~/grpc_greeterclient$ bazel run //go:client -- -total_size 10000 -batch_size 1000
+17:34:37 1001 hellos (0 errs, 8999 remaining): 6.0 hellos/ms or ~166µs per hello
+17:34:37 1001 hellos (0 errs, 7998 remaining): 6.7 hellos/ms or ~150µs per hello
+17:34:37 1001 hellos (0 errs, 6997 remaining): 6.8 hellos/ms or ~148µs per hello
+17:34:37 1001 hellos (0 errs, 5996 remaining): 6.8 hellos/ms or ~147µs per hello
+17:34:37 1001 hellos (0 errs, 4995 remaining): 6.7 hellos/ms or ~150µs per hello
+17:34:38 1001 hellos (0 errs, 3994 remaining): 6.7 hellos/ms or ~150µs per hello
+17:34:38 1001 hellos (0 errs, 2993 remaining): 6.7 hellos/ms or ~149µs per hello
+17:34:38 1001 hellos (0 errs, 1992 remaining): 6.7 hellos/ms or ~149µs per hello
+17:34:38 1001 hellos (0 errs, 991 remaining): 6.8 hellos/ms or ~148µs per hello
+17:34:38 991 hellos (0 errs, -1 remaining): 6.8 hellos/ms or ~147µs per hello
 ```
 
 The informal analysis demonstrated comparable timings for c++, go, and
@@ -850,7 +971,8 @@ java greeter service implementations.  The c++ server had the overall
 fastest and most consistent performance.  The go implementation was
 also very consistent, but slightly slower than C++.  Java demonstrated
 some initial relative slowness likely due to the JVM warming up but
-soon converged on timings similar to the C++ implementation.
+soon converged on timings similar to the C++ implementation.  C# has
+consistent performance but marginally slower.
 
 ## 2.5: Summary
 
@@ -867,16 +989,17 @@ files or use the `output_to_workspace` option to place the generated
 files alongside the protobuf definitions.
 
 In addition to helping with c++, java, and golang code, rules_protobuf
-also supports (in part) javascript, ruby, and python.  Finally, it has
-full support for the
+also supports (in part) javascript, ruby, and python, but not yet with
+gRPC.
+
+Finally, rules_protobuf has full support for the
 [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway) project
 via the
-[grpc_gateway_proto_library](https://github.com/pubref/rules_protobuf/tree/master/bzl/grpc_gateway)
+[grpc_gateway_proto_library](https://github.com/pubref/rules_protobuf/tree/master/grpc_gateway#grpc_gateway_proto_library)
 and
-[grpc_gateway_binary(https://github.com/pubref/rules_protobuf/tree/master/bzl/grpc_gateway) rules.
+[grpc_gateway_binary](https://github.com/pubref/rules_protobuf/tree/master/grpc_gateway#grpc_gateway_binary) rules, so you can easily bridge your gRPC apps with HTTP/1.1 gateways.
 
 And... that's a wrap.  Happy procedure calling!
-
 
 > Paul Johnston is the principal at [PubRef](https://pubref.org)
 > ([@pub_ref](https://twitter.com/pub_ref)), a solutions provider for
