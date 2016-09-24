@@ -988,10 +988,6 @@ projects that do need this, one can manually copy over the generated
 files or use the `output_to_workspace` option to place the generated
 files alongside the protobuf definitions.
 
-In addition to helping with c++, java, and golang code, rules_protobuf
-also supports (in part) javascript, ruby, and python, but not yet with
-gRPC.
-
 Finally, rules_protobuf has full support for the
 [grpc-gateway](https://github.com/grpc-ecosystem/grpc-gateway) project
 via the
