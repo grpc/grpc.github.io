@@ -10,7 +10,7 @@ company-link: https://pubref.org
 thumbnail: https://avatars3.githubusercontent.com/u/10408150?v=3&s=200
 ---
 
-# Building gRPC services with Bazel and rules_protobuf
+# Building gRPC services with [Bazel](https://bazel.io) and [rules_protobuf](https://github.com/pubref/rules_protobuf/)
 
 [gRPC](https://grpc.io) makes it easier to build high-performance
 microservices by providing generated service entrypoints in a variety
@@ -978,14 +978,13 @@ consistent performance but marginally slower.
 
 Bazel assists in the construction of gRPC applications by providing a
 capable build environment for services built in a multitude of
-languages.  rules_protobuf complements bazel by packaging up all the
+languages.  [rules_protobuf](https://github.com/pubref/rules_protobuf/) complements bazel by packaging up all the
 dependencies needed and abstracting away the need to call protoc
 directly.
 
-In this workflow one does need to check in the generated source code
-as it is always generated on-demand within your workspace.  For
-projects that do need this, one can manually copy over the generated
-files or use the `output_to_workspace` option to place the generated
+In this workflow one does not need to check in the generated source code
+(it is always generated on-demand within your workspace).  For
+projects that *do* require this, one can use the `output_to_workspace` option to place the generated
 files alongside the protobuf definitions.
 
 Finally, rules_protobuf has full support for the
@@ -994,6 +993,8 @@ via the
 [grpc_gateway_proto_library](https://github.com/pubref/rules_protobuf/tree/master/grpc_gateway#grpc_gateway_proto_library)
 and
 [grpc_gateway_binary](https://github.com/pubref/rules_protobuf/tree/master/grpc_gateway#grpc_gateway_binary) rules, so you can easily bridge your gRPC apps with HTTP/1.1 gateways.
+
+Refer to the [complete list of supported languages and gRPC versions](https://github.com/pubref/rules_protobuf/#rules) for more information.
 
 And... that's a wrap.  Happy procedure calling!
 
