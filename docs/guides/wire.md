@@ -180,7 +180,7 @@ grpc-java-android/0.9.1 (gingerbread/1.2.4; nexus5; tmobile)
 
 ### Stream Identification
 All GRPC calls need to specify an internal ID. We will use HTTP2 stream-ids as
-call identifiers in this scheme. NOTE: These id’s are contextual to an open
+call identifiers in this scheme. NOTE: These ids are contextual to an open
 HTTP2 session and will not be unique within a given process that is handling
 more than one HTTP2 session nor can they be used as GUIDs.
 
