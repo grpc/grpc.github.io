@@ -188,18 +188,15 @@ install the tool:
 
 ```sh
 $ cd examples/php
-$ php composer.phar install
-$ cd vendor/stanley-cheung/protobuf-php
-$ gem install rake ronn
-$ rake pear:package version=1.0
-$ sudo pear install Protobuf-1.0.tgz
+$ composer install
+$ sudo pear install Console_CommandLine
 ```
 
 To generate the client stub implementation .php file:
 
 ```sh
 $ cd php/route_guide
-$ protoc-gen-php -i . -o . ./route_guide.proto
+$ ../vendor/stanley-cheung/protobuf-php/protoc-gen-php.php -i . -o . ./route_guide.proto
 ```
 
 A `route_guide.php` file will be generated in the `php/route_guide` directory.
