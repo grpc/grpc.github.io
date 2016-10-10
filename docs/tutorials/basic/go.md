@@ -319,7 +319,7 @@ func (s *routeGuideServer) RecordRoute(stream pb.RouteGuide_RecordRouteServer) e
 }
 ```
 
-In the method body we use the `RouteGuide_RecordRouteServer`s `Recv()` method to
+In the method body we use the `RouteGuide_RecordRouteServer`'s `Recv()` method to
 repeatedly read in our client's requests to a request object (in this case a
 `Point`) until there are no more messages: the server needs to check the the
 error returned from `Read()` after each call. If this is `nil`, the stream is
