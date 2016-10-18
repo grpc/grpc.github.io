@@ -32,7 +32,8 @@ Request-Headers are delivered as HTTP2 headers in HEADERS + CONTINUATION frames.
 * **Call-Definition** → Method Scheme Path TE [Authority] [Timeout] [Content-Type] [Message-Type] [Message-Encoding] [Message-Accept-Encoding] [User-Agent]
 * **Method** →  “:method POST”
 * **Scheme** → “:scheme ”  (“http” / “https”)
-* **Path** → “:path”  {_path identifying method within exposed API_}
+* **Path** → “:path” / Service-Name / {_method name_}
+* **Service-Name** → {_IDL-specific service name_}
 * **Authority** → “:authority” {_virtual host name of authority_}
 * **TE** → “te” “trailers”  # Used to detect incompatible proxies
 * **Timeout** → “grpc-timeout” TimeoutValue TimeoutUnit
@@ -260,10 +261,8 @@ be closed with a CANCELLED status.
 ## Appendix A - GRPC for Protobuf
 
 The service interfaces declared by protobuf are easily mapped onto GRPC by code
-generation extensions to protoc. The following defines the mapping to be used
+generation extensions to protoc. The following defines the mapping to be used.
 
-
-* **Path** → / Service-Name / {_method name_}
 * **Service-Name** → ?( {_proto package name_} "." ) {_service name_}
 * **Message-Type** → {_fully qualified proto message name_}
 * **Content-Type** → "application/grpc+proto"
