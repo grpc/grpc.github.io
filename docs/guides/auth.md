@@ -90,7 +90,7 @@ more languages in our Examples section below.
 
 ```cpp
 // Create a default SSL ChannelCredentials object.
-auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
+auto creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
 // Create a channel using the credentials created in the previous step.
 auto channel = grpc::CreateChannel(server_name, creds);
 // Create a stub on the channel.
