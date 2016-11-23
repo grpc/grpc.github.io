@@ -218,7 +218,9 @@ private static class RouteGuideService extends RouteGuideGrpc.RouteGuideImplBase
 }
 ```
 
-#### Simple RPC `RouteGuideService` implements all our service methods. Let's
+#### Simple RPC
+
+`RouteGuideService` implements all our service methods. Let's
 look at the simplest type first, `GetFeature`, which just gets a `Point` from
 the client and returns the corresponding feature information from its database
 in a `Feature`.
@@ -261,6 +263,7 @@ To return our response to the client and complete the call:
    finished dealing with the RPC.
 
 #### Server-side streaming RPC
+
 Next let's look at one of our streaming RPCs. `ListFeatures` is a server-side
 streaming RPC, so we need to send back multiple `Feature`s to our client.
 
@@ -302,6 +305,7 @@ RPC, we use the response observer's `onCompleted()` method to tell gRPC that
 we've finished writing responses.
 
 #### Client-side streaming RPC
+
 Now let's look at something a little more complicated: the client-side streaming
 method `RecordRoute`, where we get a stream of `Point`s from the client and
 return a single `RouteSummary` with information about their trip.
@@ -361,8 +365,9 @@ which we:
   method's own response observer's `onNext()` with our `RouteSummary`, and then
   call its `onCompleted()` method to finish the call from the server side.
 
-#### Bidirectional streaming RPC Finally, let's look at our bidirectional
-streaming RPC `RouteChat()`.
+#### Bidirectional streaming RPC
+
+Finally, let's look at our bidirectional streaming RPC `RouteChat()`.
 
 ```java
 @Override
