@@ -163,13 +163,13 @@ $ pip install grpcio-tools
 Use the following command to generate the Python code:
 
 ```
-$ python -m grpc.tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/route_guide.proto
+$ python -m grpc_tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/route_guide.proto
 ```
 
 Note that as we've already provided a version of the generated code in the
 example directory, running this command regenerates the appropriate file rather
-than creates a new one. The generated code file is called `route_guide_pb2.py`
-and contains:
+than creates a new one. The generated code files are called
+`route_guide_pb2.py` and `route_guide_pb2_grpc.py` and contain:
 
 - classes for the messages defined in route_guide.proto
 - classes for the service defined in route_guide.proto
@@ -201,11 +201,11 @@ You can find the example `RouteGuide` server in
 ### Implementing RouteGuide
 
 `route_guide_server.py` has a `RouteGuideServicer` class that subclasses the
-generated class `route_guide_pb2.RouteGuideServicer`:
+generated class `route_guide_pb2_grpc.RouteGuideServicer`:
 
 ```python
 # RouteGuideServicer provides an implementation of the methods of the RouteGuide service.
-class RouteGuideServicer(route_guide_pb2.RouteGuideServicer):
+class RouteGuideServicer(route_guide_pb2_grpc.RouteGuideServicer):
 ```
 
 `RouteGuideServicer` implements all the `RouteGuide` service methods.
@@ -307,7 +307,7 @@ start up a gRPC server so that clients can actually use your service:
 ```python
 def serve():
   server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-  route_guide_pb2.add_RouteGuideServicer_to_server(
+  route_guide_pb2_grpc.add_RouteGuideServicer_to_server(
       RouteGuideServicer(), server)
   server.add_insecure_port('[::]:50051')
   server.start()
@@ -327,12 +327,12 @@ You can see the complete example client code in
 
 To call service methods, we first need to create a *stub*.
 
-We instantiate the `RouteGuideStub` class of the `route_guide_pb2`
+We instantiate the `RouteGuideStub` class of the `route_guide_pb2_grpc`
 module, generated from our .proto.
 
 ```python
 channel = grpc.insecure_channel('localhost:50051')
-stub = route_guide_pb2.RouteGuideStub(channel)
+stub = route_guide_pb2_grpc.RouteGuideStub(channel)
 ```
 
 ### Calling service methods
