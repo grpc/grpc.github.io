@@ -247,7 +247,7 @@ From the `examples/csharp/helloworld` directory, or the `examples/csharp/hellowo
 **Windows**
 
 ```
-> packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tools/windows_x86/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tools/windows_x86/grpc_csharp_plugin.exe
+> packages\Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}\tools\windows_x86\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tools/windows_x86/grpc_csharp_plugin.exe
 ```
 
 **Linux (or OS X by using macosx_x64 directory)**
