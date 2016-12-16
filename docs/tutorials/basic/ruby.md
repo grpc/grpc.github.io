@@ -282,9 +282,10 @@ so that clients can actually use our service. The following snippet shows how we
 do this for our `RouteGuide` service:
 
 ```ruby
+addr = "0.0.0.0:8080"
 s = GRPC::RpcServer.new
-s.add_http2_port(port, :this_port_is_insecure)
-logger.info("... running insecurely on #{port}")
+s.add_http2_port(addr, :this_port_is_insecure)
+logger.info("... running insecurely on #{addr}")
 s.handle(ServerImpl.new(feature_db))
 s.run_till_terminated
 ```
