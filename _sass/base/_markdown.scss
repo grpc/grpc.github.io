@@ -41,6 +41,10 @@
       margin: 0;
     }
   }
+  
+  ol {
+    list-style: decimal;
+  }
 
   h1 {
     color: $secondBrandColor;
