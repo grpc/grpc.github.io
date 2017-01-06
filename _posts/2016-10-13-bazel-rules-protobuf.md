@@ -418,6 +418,7 @@ the following three phases:
 
 Hopefully you now have enough conceptual knowledge of bazel to be
 productive.
+
 ## 1.6: rules_protobuf
 
 [rules_protobuf](https://github.com/pubref/rules_protobuf) is an
