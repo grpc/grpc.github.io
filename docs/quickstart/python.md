@@ -162,15 +162,17 @@ message HelloReply {
 ## Generate gRPC code
 
 Next we need to update the gRPC code used by our application to use the new
-service definition. From the `examples/python/helloworld` directory:
+service definition. 
 
-```
-$ python run_codegen.py
+From the `examples/python/helloworld` directory, run:
+
+```sh
+$ python -m grpc_tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/helloworld.proto
 ```
 
-This regenerates `helloworld_pb2.py`, which contains our generated client and
-server classes, as well as classes for populating, serializing, and retrieving
-our request and response types.
+This regenerates `helloworld_pb2.py` which contains our generated request and
+response classes and `helloworld_pb2_grpc.py` which contains our generated
+client and server classes.
 
 ## Update and run the application
 
@@ -183,7 +185,7 @@ In the same directory, open `greeter_server.py`. Implement the new method like
 this:
 
 ```
-class Greeter(helloworld_pb2.GreeterServicer):
+class Greeter(helloworld_pb2_grpc.GreeterServicer):
 
   def SayHello(self, request, context):
     return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
@@ -200,7 +202,7 @@ In the same directory, open `greeter_client.py`. Call the new method like this:
 ```
 def run():
   channel = grpc.insecure_channel('localhost:50051')
-  stub = helloworld_pb2.GreeterStub(channel)
+  stub = helloworld_pb2_grpc.GreeterStub(channel)
   response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'))
   print("Greeter client received: " + response.message)
   response = stub.SayHelloAgain(helloworld_pb2.HelloRequest(name='you'))
