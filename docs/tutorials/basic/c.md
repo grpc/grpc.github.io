@@ -178,6 +178,7 @@ $ protoc -I ../../protos --cpp_out=. ../../protos/route_guide.proto
 ```
 
 Running this command generates the following files in your current directory:
+
 - `route_guide.pb.h`, the header which declares your generated message classes
 - `route_guide.pb.cc`, which contains the implementation of your message classes
 - `route_guide.grpc.pb.h`, the header which declares your generated service
@@ -186,9 +187,11 @@ Running this command generates the following files in your current directory:
   classes
 
 These contain:
+
 - All the protocol buffer code to populate, serialize, and retrieve our request
   and response message types
 - A class called `RouteGuide` that contains
+
    - a remote interface type (or *stub*) for clients to call with the methods
      defined in the `RouteGuide` service.
    - two abstract interfaces for servers to implement, also with the methods
@@ -205,6 +208,7 @@ to [Creating the client](#client) (though you might find it interesting
 anyway!).
 
 There are two parts to making our `RouteGuide` service do its job:
+
 - Implementing the service interface generated from our service definition:
   doing the actual "work" of our service.
 - Running a gRPC server to listen for requests from clients and return the
