@@ -59,15 +59,15 @@ Then change your current directory to `grpc-go/examples/route_guide`:
 $ cd $GOPATH/src/google.golang.org/grpc/examples/route_guide
 ```
 
-You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Go quick start guide](https://github.com/grpc/grpc-go/tree/master/examples).
+You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Go quick start guide](/docs/quickstart/go.html).
 
 
 ## Defining the service
 
 Our first step (as you'll know from the [Overview](/docs/index.html)) is to
 define the gRPC *service* and the method *request* and *response* types using
-[protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
-You can see the complete .proto file in
+[protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the
+complete .proto file in
 [`examples/route_guide/routeguide/route_guide.proto`](https://github.com/grpc/grpc-go/blob/master/examples/route_guide/routeguide/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
