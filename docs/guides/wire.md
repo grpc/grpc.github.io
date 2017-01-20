@@ -32,7 +32,7 @@ Request-Headers are delivered as HTTP2 headers in HEADERS + CONTINUATION frames.
 * **Call-Definition** → Method Scheme Path TE [Authority] [Timeout] [Content-Type] [Message-Type] [Message-Encoding] [Message-Accept-Encoding] [User-Agent]
 * **Method** →  “:method POST”
 * **Scheme** → “:scheme ”  (“http” / “https”)
-* **Path** → “:path” / Service-Name / {_method name_}
+* **Path** → “:path” “/”  Service-Name “/”  {_method name_}
 * **Service-Name** → {_IDL-specific service name_}
 * **Authority** → “:authority” {_virtual host name of authority_}
 * **TE** → “te” “trailers”  # Used to detect incompatible proxies
