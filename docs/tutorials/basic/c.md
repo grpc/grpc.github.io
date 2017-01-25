@@ -253,8 +253,8 @@ finished dealing with the RPC and that the `Feature` can be returned to the
 client.
 
 Note that all service methods can (and will!) be called from multiple threads at
-the same time. So you have to make sure that your method implementations are
-thread safe. In our example case here, `feature_list_` is never changed after
+the same time. You have to make sure that your method implementations are
+thread safe. In our example, `feature_list_` is never changed after
 construction, so it is safe by design. But if `feature_list_` would change during
 the lifetime of the service, we would need to synchronize access to this member.
 
