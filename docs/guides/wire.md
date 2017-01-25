@@ -243,7 +243,9 @@ accepted streams until they complete or the connection is terminated.
 Servers should send GOAWAY before terminating a connection to reliably inform
 clients which work has been accepted by the server and is being executed.
 
-#### PING Frame Both clients and servers can send a PING frame that the peer
+#### PING Frame
+
+Both clients and servers can send a PING frame that the peer
 must respond to by precisely echoing what they received. This is used to assert
 that the connection is still live as well as providing a means to estimate
 end-to-end latency. If a server initiated PING does not receive a response
@@ -253,7 +255,9 @@ cause all calls to be closed with an UNAVAILABLE status. Note that the frequency
 of PINGs is highly dependent on the network environment, implementations are
 free to adjust PING frequency based on network and application requirements.
 
-#### Connection failure If a detectable connection failure occurs on the client
+#### Connection failure
+
+If a detectable connection failure occurs on the client
 all calls will be closed with an UNAVAILABLE status. For servers open calls will
 be closed with a CANCELLED status.
 
