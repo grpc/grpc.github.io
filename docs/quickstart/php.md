@@ -53,7 +53,7 @@ Install gRPC:
 $ [sudo] pecl install grpc
 ```
 
-### Install Protobuf-PHP
+### Install Protobuf
 
 You will need to install the protocol buffer compiler `protoc` and the special
 plugin for generating server and client code from `.proto` service definitions.
@@ -70,18 +70,12 @@ The simplest way to do this is to download pre-compiled binaries for your platfo
   * Unzip this file.
   * Update the environment variable `PATH` to include the path to the protoc binary file.
 
-To install Protobuf-PHP, run:
+To compile the gRPC PHP Protoc Plugin:
 
 ```sh
-$ git clone https://github.com/stanley-cheung/Protobuf-PHP
-$ cd Protobuf-PHP
-$ rake pear:package version=1.0
-$ [sudo] pear install Protobuf-1.0.tgz
-```
-> If you did not have 'rake' or 'ronn' installed, please install them using this command:
-> ```sh
-> $ gem install rake ronn
-> ```
+$ git clone https://github.com/grpc/grpc
+$ cd grpc && git submodule update --init
+$ make grpc_php_plugin
 
 ## Download the example
 
@@ -100,12 +94,13 @@ $ composer install
 
 ## Run a gRPC application
 
-From the `examples/node/dynamic_codegen` directory:
+From the `examples/node` directory:
 
 1. Run the server
 
    ```sh
    $ npm install
+   $ cd dynamic_codegen
    $ node greeter_server.js
    ```
 
@@ -180,7 +175,11 @@ Next we need to update the gRPC code used by our application to use the new
 service definition. From the `examples/php` directory:
 
 ```
-$ protoc-gen-php -i . -o . helloworld.proto
+$ protoc --proto_path=examples/protos \
+  --php_out=examples/php \
+  --grpc_out=examples/php \
+  --plugin=protoc-gen-grpc=bins/opt/grpc_php_plugin \
+  ./examples/protos/helloworld.proto
 ```
 
 This regenerates `helloworld.php`, which contains our generated client classes,
@@ -213,7 +212,7 @@ function sayHelloAgain(call, callback) {
 In the same directory, open `greeter_client.php`. Call the new method like this:
 
 ```php
-    $request = new helloworld\HelloRequest();
+    $request = new Helloworld\HelloRequest();
     $request->setName($name);
     list($reply, $status) = $client->SayHello($request)->wait();
     $message = $reply->getMessage();
@@ -249,4 +248,3 @@ In another terminal, from the `examples/php` directory:
 
 [helloworld.proto]:../protos/helloworld.proto
 [gRPC Basics: PHP]:http://www.grpc.io/docs/tutorials/basic/php.html
-
