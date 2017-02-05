@@ -76,6 +76,7 @@ To compile the gRPC PHP Protoc Plugin:
 $ git clone https://github.com/grpc/grpc
 $ cd grpc && git submodule update --init
 $ make grpc_php_plugin
+```
 
 ## Download the example
 
