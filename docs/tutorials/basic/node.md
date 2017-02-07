@@ -75,7 +75,7 @@ $ cd examples/node
 
 You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
-[the Node.js quick start guide](../docs/installation/node.html).
+[the Node.js quick start guide](/docs/quickstart/node.html).
 
 
 ## Defining the service
