@@ -62,8 +62,7 @@ $ cd examples/cpp/route_guide
 
 You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
-[the C++ quick start guide](https://github.com/grpc/grpc/tree/
-{{ site.data.config.grpc_release_branch }}/examples/cpp).
+[the C++ quick start guide](/docs/quickstart/cpp.html).
 
 
 ## Defining the service
