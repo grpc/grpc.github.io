@@ -18,16 +18,21 @@ working example.</p>
 * `pecl`: version 1.9 or higher
 * `composer`
 
-### Debian/Ubuntu
+### Install PHP and PECL on Debian/Ubuntu
+
+PHP 5.5 or above
+
 ```sh
 $ [sudo] apt-get install php5 php5-dev php-pear zlib1g-dev
-
-OR
-
-$ [sudo] apt-get install php7.0 php7.0-dev zlib1g-dev
 ```
 
-### Mac OS
+PHP 7.0 or above
+
+```sh
+$ [sudo] apt-get install php7.0 php7.0-dev php-pear zlib1g-dev
+```
+
+### Install PECL on Mac OS
 ```sh
 $ brew install autoconf
 
@@ -35,23 +40,42 @@ $ curl -O http://pear.php.net/go-pear.phar
 $ [sudo] php -d detect_unicode=0 go-pear.phar
 ```
 
-### Composer
+If you are using Mac OS El Capitan (10.11) or above and have not installed
+`pecl` before, you might have to temporarily [disable](http://blog.g-design.net/post/137712472685/configuring-apache-and-php-after-updating-to-os-x)
+System Integrity Protection, or "SIP" before proceeding.
+
+To disable SIP take the following steps :
+
+ * Reboot into recovery mode by holding down Command+R on reboot
+ * Access the Terminal from the dropdown menu
+ * Run the command: `csrutil disable`
+ * Reboot
+
+To re-enable SIP again boot into recovery mode and run the command
+`csrutil enable`.
+
+### Install Composer
 ```sh
 $ curl -sS https://getcomposer.org/installer | php
 $ [sudo] mv composer.phar /usr/local/bin/composer
 ```
 
-Note that currently you can only create clients in PHP for gRPC services -
-you can find out how to create gRPC servers in our other tutorials,
-e.g. [Node.js](node-quickstart.md).
+### Install gRPC PHP Extension
 
-### Install gRPC
-
-Install gRPC:
+Install gRPC extension:
 
 ```sh
 $ [sudo] pecl install grpc
 ```
+
+After installing the gRPC extension, make sure you add this line to your
+`php.ini` file (e.g. `/etc/php5/cli/php.ini`, `/etc/php5/apache2/php.ini`,
+or `/usr/local/etc/php/5.6/php.ini`), depending on where your PHP installation
+is.
+
+```sh
+extension=grpc.so
+``` 
 
 ### Install Protobuf
 
@@ -84,6 +108,10 @@ You'll need a local copy of the example code to work through this quickstart.
 Download the example code from our Github repository (the following command
 clones the entire repository, but you just need the examples for this quickstart
 and other tutorials):
+
+Note that currently you can only create clients in PHP for gRPC services -
+you can find out how to create gRPC servers in our other tutorials,
+e.g. [Node.js](node-quickstart.md).
 
 ```sh
 $ # Clone the repository to get the example code:
@@ -173,9 +201,9 @@ message HelloReply {
 ## Generate gRPC code
 
 Next we need to update the gRPC code used by our application to use the new
-service definition. From the `examples/php` directory:
+service definition. From the `grpc` root directory:
 
-```
+```sh
 $ protoc --proto_path=examples/protos \
   --php_out=examples/php \
   --grpc_out=examples/php \
@@ -183,7 +211,7 @@ $ protoc --proto_path=examples/protos \
   ./examples/protos/helloworld.proto
 ```
 
-This regenerates `helloworld.php`, which contains our generated client classes,
+This regenerates the protobuf files, which contain our generated client classes,
 as well as classes for populating, serializing, and retrieving our request and
 response types.
 
