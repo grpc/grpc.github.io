@@ -273,7 +273,7 @@ In another terminal, from the `examples/php` directory:
   [Overview](http://www.grpc.io/docs/)
 - Work through a more detailed tutorial in [gRPC Basics: PHP][]
 - Explore the gRPC PHP core API in its [reference
-  documentation](http://www.grpc.io/grpc/php/namespaces/Grpc.html)
+  documentation](http://www.grpc.io/grpc/php/namespace-Grpc.html)
 
 [helloworld.proto]:../protos/helloworld.proto
 [gRPC Basics: PHP]:http://www.grpc.io/docs/tutorials/basic/php.html
