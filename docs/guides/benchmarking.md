@@ -25,7 +25,14 @@ visualization.
 
   * [Multi-language performance dashboard @v1.0.0](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5712453606309888)
   * [Multi-language performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5760820306771968)
-  * [C++ detailed performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5685265389584384)
+  * [C++ detailed performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5632763172487168)
+
+Additional benchmarking provides fine grained insights into where
+CPU is spent.
+
+  * [C++ full-stack microbenchmarks](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5684961520648192)
+  * [C Core filter benchmarks](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5740240702537728)
+  * [C Core shared component benchmarks](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5641826627223552&container=789696829&widget=512792852)
 
 ## Performance testing design
 
