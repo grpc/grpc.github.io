@@ -24,7 +24,7 @@ the master branch, and these numbers are reported to a dashboard for
 visualization.
 
   * [Multi-language performance dashboard @v1.0.0](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5712453606309888)
-  * [Multi-language performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5760820306771968)
+  * [Multi-language performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584)
   * [C++ detailed performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5632763172487168)
 
 Additional benchmarking provides fine grained insights into where
