@@ -32,6 +32,14 @@ PHP 7.0 or above
 $ [sudo] apt-get install php7.0 php7.0-dev php-pear zlib1g-dev
 ```
 
+### Install PHP and PECL on CentOS/RHEL 7
+
+```sh
+$ [sudo] rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+$ [sudo] rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+$ [sudo] yum install php56w php56w-devel php-pear phpunit gcc zlib-devel
+```
+
 ### Install PECL on Mac OS
 ```sh
 $ brew install autoconf
@@ -75,7 +83,11 @@ is.
 
 ```sh
 extension=grpc.so
-``` 
+```
+
+Note: for users on CentOS/RHEL 6, unfortunately this step won't work. Please
+follow the instructions [here](https://github.com/grpc/grpc/tree/master/src/php#build-from-source)
+to compile the PECL extension from source.
 
 ### Install Protobuf
 
