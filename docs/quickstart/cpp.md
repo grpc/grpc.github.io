@@ -23,11 +23,15 @@ To install gRPC on your system, follow the instructions to build from source
 
 While not mandatory, gRPC usually leverages Protocol Buffers v3 for service
 definitions and data serialization. If you don't already have it installed on
-your system, you can install the version cloned alongside gRPC:
+your system, you can install the version cloned alongside gRPC. First ensure
+that you are running these commands from within your cloned gRPC repository
+from the previous step.
 
 ```sh
-$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
+$ git submodule update --init
 $ cd grpc/third_party/protobuf
+$ ./autogen.sh
+$ ./configure
 $ make
 $ sudo make install
 ```
