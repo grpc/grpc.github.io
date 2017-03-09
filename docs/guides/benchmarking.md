@@ -23,9 +23,9 @@ workflow. Multi-language performance tests run hourly against
 the master branch, and these numbers are reported to a dashboard for
 visualization.
 
-  * [Multi-language performance dashboard @v1.0.0](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5712453606309888)
-  * [Multi-language performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584)
-  * [C++ detailed performance dashboard @master](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5632763172487168)
+  * [Multi-language performance dashboard @latest_release (lastest available stable release)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5636470266134528) 
+  * [Multi-language performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584)
+  * [C++ detailed performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5632763172487168)
 
 Additional benchmarking provides fine grained insights into where
 CPU is spent.
