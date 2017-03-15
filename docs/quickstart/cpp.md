@@ -170,7 +170,7 @@ class GreeterServiceImpl final : public Greeter::Service {
      // ... (pre-existing code)
   }
 
-  Status SayHelloAgain(ServerContext* context, const HelloRequest* request
+  Status SayHelloAgain(ServerContext* context, const HelloRequest* request,
                        HelloReply* reply) override {
     std::string prefix("Hello again ");
     reply->set_message(prefix + request->name());
