@@ -28,25 +28,24 @@ making a call.
 
 The following authentication mechanisms are built-in to gRPC:
 
-   * **SSL/TLS**: gRPC has SSL/TLS integration and promotes the use of SSL/TLS
-     to authenticate the server, and to encrypt all the data exchanged between
-     the client and the server. Optional mechanisms are available for clients to
-     provide certificates for mutual authentication.
+- **SSL/TLS**: gRPC has SSL/TLS integration and promotes the use of SSL/TLS
+to authenticate the server, and to encrypt all the data exchanged between
+the client and the server. Optional mechanisms are available for clients to
+provide certificates for mutual authentication.
+- **Token-based authentication with Google**: gRPC provides a generic
+mechanism (described below) to attach metadata based credentials to requests
+and responses. Additional support for acquiring access tokens
+(typically OAuth2 tokens) while accessing Google APIs through gRPC is
+provided for certain auth flows: you can see how this works in our code
+examples below. In general this mechanism must be used *as well as* SSL/TLS
+on the channel - Google will not allow connections without SSL/TLS, and
+most gRPC language implementations will not let you send credentials on an
+unencrypted channel.
 
-   * **Token-based authentication with Google**: gRPC provides a generic
-     mechanism (described below) to attach metadata based credentials to
-     requests and responses. Additional support for acquiring access tokens
-     (typically OAuth2 tokens) while accessing Google APIs through gRPC is
-     provided for certain auth flows: you can see how this works in our code
-     examples below. In general this mechanism must be used *as well as* SSL/TLS
-     on the channel - Google will not allow connections without SSL/TLS, and
-     most gRPC language implementations will not let you send credentials on an
-     unencrypted channel.
-
-     <p class="note"> <strong>WARNING</strong>: Google credentials should only
-     be used to connect to Google services. Sending a Google issued OAuth2 token
-     to a non-Google service could result in this token being stolen and used to
-     impersonate the client to Google services.</p>
+<p class="note"> <strong>WARNING</strong>: Google credentials should only
+be used to connect to Google services. Sending a Google issued OAuth2 token
+to a non-Google service could result in this token being stolen and used to
+impersonate the client to Google services.</p>
 
 ## Authentication API
 
