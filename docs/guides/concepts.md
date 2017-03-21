@@ -199,10 +199,7 @@ complete before a client has sent all its requests.
 
 Either the client or the server can cancel an RPC at any time. A cancellation
 terminates the RPC immediately so that no further work is done. It is *not* an
-"undo": changes made before the cancellation will not be rolled back. Of course,
-RPCs invoked via a synchronous RPC method call cannot be cancelled because
-program control is not returned to the application until after the RPC has
-terminated.
+"undo": changes made before the cancellation will not be rolled back.
 
 <a name="metadata"></a>
 
