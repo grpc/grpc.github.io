@@ -92,7 +92,7 @@ more languages in our Examples section below.
 // Create a default SSL ChannelCredentials object.
 auto creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
 // Create a channel using the credentials created in the previous step.
-auto channel = grpc::CreateChannel(server_name, creds);
+auto channel = grpc::CreateChannel(server_name, channel_creds);
 // Create a stub on the channel.
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 // Make actual RPC calls on the stub.
