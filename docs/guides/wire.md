@@ -193,7 +193,9 @@ HTTP2 session and will not be unique within a given process that is handling
 more than one HTTP2 session nor can they be used as GUIDs.
 
 
-### Data Frames DATA frame boundaries have no relation to **Delimited-Message**
+### Data Frames
+
+DATA frame boundaries have no relation to **Delimited-Message**
 boundaries and implementations should make no assumptions about their alignment.
 
 
