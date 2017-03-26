@@ -270,6 +270,9 @@ Install an older version of `activesupport`, then install CocoaPods:
 [sudo] gem install activesupport -v 4.2.6
 [sudo] gem install cocoapods
 ```
+**When installing dependencies with CocoaPods, error prompt `Unable to find a specification for !ProtoCompiler-gRPCPlugin`**
+
+Update the local clone of spec repo by running `pod repo update`
 
 **Compiler error when compiling `objective_c_plugin.cc`**
 
