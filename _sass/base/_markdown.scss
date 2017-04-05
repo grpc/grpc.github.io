@@ -29,12 +29,13 @@
   }
 
   // Lists
-  ol,
-  ul {
+  // Lists
+  ol,ul {
     list-style: initial;
-    list-style-position: inside;
+    list-style-position: disc outside;
     font-size: 15px;
     font-weight: 300;
+    margin-left: 1em;
     margin: 0 20px;
 
     @media (max-width: 768px) {
