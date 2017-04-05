@@ -227,12 +227,11 @@ Just like we did before, from the `examples/python/helloworld` directory:
 
 ## What's next
 
-- Read a full explanation of this example and how gRPC works in our
-  [Overview](http://www.grpc.io/docs/)
+- Read a full explanation of how gRPC works in [What is gRPC?](../guides/) and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: Python][]
 - Explore the gRPC Python core API in its [reference
   documentation](http://www.grpc.io/grpc/python/)
 
 [helloworld.proto]:../protos/helloworld.proto
-[gRPC Basics: Python]:http://www.grpc.io/docs/tutorials/basic/python.html
+[gRPC Basics: Python]:../tutorials/basic/python.html
 
