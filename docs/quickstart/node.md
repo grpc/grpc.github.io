@@ -170,7 +170,8 @@ Just like we did before, from the `examples/node/dynamic_codegen` directory:
 
 ## What's next
 
- - Read a full explanation of how gRPC works in [What is gRPC?](../guides/) and [gRPC Concepts](../guides/concepts.html)
+ - Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
+   and [gRPC Concepts](../guides/concepts.html)
  - Work through a more detailed tutorial in [gRPC Basics: Node][]
  - Explore the gRPC Node core API in its [reference
    documentation](http://www.grpc.io/grpc/node/)
