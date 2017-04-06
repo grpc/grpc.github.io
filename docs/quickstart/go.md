@@ -206,7 +206,8 @@ Greeting: Hello again world
 
 ## What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](../guides/) and [gRPC Concepts](../guides/concepts.html)
+- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
+  and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: Go][]
 - Explore the gRPC Go core API in its [reference
   documentation](https://godoc.org/google.golang.org/grpc)
