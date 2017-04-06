@@ -167,7 +167,8 @@ Just like we did before, from the `examples` directory:
 
 ## What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](../guides/) and [gRPC Concepts](../guides/concepts.html)
+- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
+  and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: Android Java][]
 - Explore the gRPC Java core API in its [reference
   documentation](http://www.grpc.io/grpc-java/javadoc/)
