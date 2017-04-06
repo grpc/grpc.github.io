@@ -189,7 +189,8 @@ Just like we did before, from the `examples/ruby` directory:
 
 ## What's next
 
- - Read a full explanation of how gRPC works in [What is gRPC?](../guides/) and [gRPC Concepts](../guides/concepts.html)
+ - Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
+   and [gRPC Concepts](../guides/concepts.html)
  - Work through a more detailed tutorial in [gRPC Basics: Ruby][]
  - Explore the gRPC Ruby core API in its [reference
    documentation](http://www.rubydoc.info/gems/grpc)
