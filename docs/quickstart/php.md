@@ -281,7 +281,8 @@ In another terminal, from the `examples/php` directory:
 
 ## What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](../guides/) and [gRPC Concepts](../guides/concepts.html)
+- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
+  and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: PHP][]
 - Explore the gRPC PHP core API in its [reference
   documentation](http://www.grpc.io/grpc/php/namespace-Grpc.html)
