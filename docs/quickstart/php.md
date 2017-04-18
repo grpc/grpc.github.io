@@ -10,13 +10,22 @@ working example.</p>
 
 <div id="toc"></div>
 
-## Before you begin
-
 ### Prerequisites
 
 * `php`: version 5.5 or higher, 7.0 or higher
-* `pecl`: version 1.9 or higher
+* `pecl`: version 1.9 or higher (on Linux)
 * `composer`
+
+## Install on Mac OS X
+
+```sh
+$ brew install homebrew/php/php56-grpc
+```
+
+For PHP 7.0/7.1, please install the `php70-grpc` or `php71-grpc` formula, respectively.
+
+
+## Install on Linux
 
 ### Install PHP and PECL on Debian/Ubuntu
 
@@ -40,34 +49,6 @@ $ [sudo] rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 $ [sudo] yum install php56w php56w-devel php-pear phpunit gcc zlib-devel
 ```
 
-### Install PECL on Mac OS
-```sh
-$ brew install autoconf
-
-$ curl -O http://pear.php.net/go-pear.phar
-$ [sudo] php -d detect_unicode=0 go-pear.phar
-```
-
-If you are using Mac OS El Capitan (10.11) or above and have not installed
-`pecl` before, you might have to temporarily [disable](http://blog.g-design.net/post/137712472685/configuring-apache-and-php-after-updating-to-os-x)
-System Integrity Protection, or "SIP" before proceeding.
-
-To disable SIP take the following steps :
-
- * Reboot into recovery mode by holding down Command+R on reboot
- * Access the Terminal from the dropdown menu
- * Run the command: `csrutil disable`
- * Reboot
-
-To re-enable SIP again boot into recovery mode and run the command
-`csrutil enable`.
-
-### Install Composer
-```sh
-$ curl -sS https://getcomposer.org/installer | php
-$ [sudo] mv composer.phar /usr/local/bin/composer
-```
-
 ### Install gRPC PHP Extension
 
 Install gRPC extension:
@@ -88,6 +69,17 @@ extension=grpc.so
 Note: for users on CentOS/RHEL 6, unfortunately this step won't work. Please
 follow the instructions [here](https://github.com/grpc/grpc/tree/master/src/php#build-from-source)
 to compile the PECL extension from source.
+
+
+## Install other prerequisites for both Mac OS X and Linux
+
+
+### Install Composer
+```sh
+$ curl -sS https://getcomposer.org/installer | php
+$ [sudo] mv composer.phar /usr/local/bin/composer
+```
+
 
 ### Install Protobuf
 
