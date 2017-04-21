@@ -23,9 +23,9 @@
   }
 
   .about-lists {
-    list-style: disc inside;
+    list-style: disc outside;
+    margin-left: 1em;
     padding-left: 1em;
-    text-indent: -1em;
   }
 
   .intro {

@@ -206,10 +206,10 @@ Greeting: Hello again world
 
 ## What's next
 
-- Read a full explanation of this example and how gRPC works in our
-  [Overview](http://www.grpc.io/docs/)
+- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
+  and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: Go][]
 - Explore the gRPC Go core API in its [reference
   documentation](https://godoc.org/google.golang.org/grpc)
 
-[gRPC Basics: Go]:http://www.grpc.io/docs/tutorials/basic/go.html
+[gRPC Basics: Go]:../tutorials/basic/go.html

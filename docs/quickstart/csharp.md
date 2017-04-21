@@ -364,11 +364,11 @@ Or if using the .NET Core SDK, from the `examples/csharp/helloworld-from-cli` di
 
 ## What's next
 
-- Read a full explanation of this example and how gRPC works in our
-  [Overview](http://www.grpc.io/docs/)
+- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
+  and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: C#][]
 - Explore the gRPC C# core API in its [reference
   documentation](http://www.grpc.io/grpc/csharp/)
 
 [helloworld.proto]:../protos/helloworld.proto
-[gRPC Basics: C#]:http://www.grpc.io/docs/tutorials/basic/csharp.html
+[gRPC Basics: C#]:../tutorials/basic/csharp.html
