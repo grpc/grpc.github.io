@@ -126,10 +126,8 @@ generated:
 will have a constructor that takes a `grpc.Channel` object and initializes the
 stub.  For each method in the service, the initializer adds a corresponding
 attribute to the stub object with the same name.  Depending on the RPC type
-(*i.e.* unary or streaming), the value of that attribute will be the output of
-`unary_unary`, `unary_streaming`, `stream_unary`, or `stream_stream` returned
-from the [channel](http://www.grpc.io/grpc/python/_modules/grpc.html#Channel),
-which will be callable objects of type
+(*i.e.* unary or streaming), the value of that attribute will be callable
+objects of type
 [UnaryUnaryMultiCallable](http://www.grpc.io/grpc/python/grpc.html?#grpc.UnaryUnaryMultiCallable),
 [UnaryStreamMultiCallable](http://www.grpc.io/grpc/python/grpc.html?#grpc.UnaryStreamMultiCallable),
 [StreamUnaryMultiCallable](http://www.grpc.io/grpc/python/grpc.html?#grpc.StreamUnaryMultiCallable),
