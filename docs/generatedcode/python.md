@@ -140,8 +140,9 @@ or
 class is intended to serve as the superclass of a service implementation.  For
 each method in the service, a corresponding function in the `Servicer` class
 will be synthesized which is intended to be overriden in the actual service
-implementation.  Note that the comments in the `.proto` file will be
-transferred over as docstrings in the generated code element.
+implementation.  Comments associated with code elements
+in the `.proto` file will be transferred over as docstrings in
+the generated python code.
 
 ### Registration Function
 
