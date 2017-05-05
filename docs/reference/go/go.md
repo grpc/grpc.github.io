@@ -23,6 +23,10 @@ are declared in the `service` declarations in `.proto` files as follows:
 Note that type message types `MsgA` and `MsgB` are just placeholders for arbitrary protobuf message types. Also note that the descriptions
 further on this document refer to the example RPC signatures in this subsection.
 
+Thread-safety: note that client-side RPC invocations and server-side RPC handlers <i>are thread-safe</i> and are meant
+to be ran on concurrent go-routines. But also note that for <i>individual streams</i>, incoming and outgoing data is bi-directional but serial;
+so e.g. <i>individual streams</i> do not support <i>concurrent reads</i> or <i>concurrent writes</i> (but reads are safely concurrent <i>with</i> writes).
+
 #### Unary Method signature
 `rpc Foo(MsgA) returns (MsgB)`
 
