@@ -2,7 +2,6 @@
 bodyclass: docs
 headline: Go Generated Code Guide
 layout: docs
-sidenav: doc-side-quickstart-nav.html
 type: markdown
 ---
 
@@ -11,21 +10,11 @@ type: markdown
 <div id="toc"></div>
 
 ## Compiler Invocation and Results of Code Generation
-This section provides instructions for using the `grpc` plugin to `protoc-gen-go`, when compiling `.proto` files with `protoc`.
-See https://developers.google.com/protocol-buffers/docs/reference/go-generated for detailed instructions on 
-how to use the `protoc` compiler the `protoc-gen-go` plugin.
+This section provides instructions for using the [grpc plugin](https://godoc.org/github.com/golang/protobuf/protoc-gen-go/grpc) to `protoc-gen-go`, when compiling `.proto` files with `protoc`.
+See the Protocol Buffers [Go Generated Code Guide](https://developers.google.com/protocol-buffers/docs/reference/go-generated) for detailed instructions on 
+how to use `protoc` compiler with the `protoc-gen-go` plugin.
 
-When `protoc` is invoked with a `--go_out=plugins=grpc:` argument, gRPC stub and service interface code gets generated
-from the `.proto` files specified in the rest of the command. The names of the output files are computed in the same way as though the "plain" Go
-`protoc-gen-go` was used (as per the description in https://developers.google.com/protocol-buffers/docs/reference/go-generated). But additional content
-is added to the generated `.pb.go` files as follows:
-
-Each `service Foo` in the `.proto` file results in a `FooClient interface` and a `FooServer interface` in the `.pb.go` file.
-  * For example, a declaration of `service Foo` in `bar.proto` results in a `type FooServer interface` and a `type FooClient interface` in `bar.pb.go`.
-  
-Each `rpc` declaration within a `service` definition in the `.proto` files results in a corresponding method on the `Server` and `Client` interfaces.
-Method arguments and return values differ depending on whether the method is on the client or server interface, and on the type of RPC 
-(e.g. unary, client-streaming, server-streaming, bidi-streaming).
+You can find out how to define a gRPC service in a .proto file in [Service Definitions](../guides/concepts.html#service-definition).
 
 ### Different RPC types and their RPC signatures in proto files
 The different types RPC's (unary, client-streaming, server-streaming, and bidi-streaming),
@@ -38,18 +27,18 @@ further on this document refer to the example RPC signatures in this subsection.
 `rpc Foo(MsgA) returns (MsgB)`
 
 #### Server-streaming Method signature
-`rpc Foo(stream MsgA)`
+`rpc Foo(MsgA) returns (stream MsgB)`
 
 #### Client-streaming Method signature
-`rpc Foo(MsgA) returns (stream MsgB)`
+`rpc Foo(stream MsgA) returns (MsgB)`
 
 #### Bidi-streaming Method signatures
 `rpc Foo(stream MsgA) returns (stream MsgB)`
     
 ## Using the generated service interfaces:
 
-#### Implementation and Registration of a service definition
-On server side, each `service Bar` in the `.proto` file results in the function: `func RegisterFooServer(s *grpc.Server, srv BarServer)`.
+#### Methods on generated server interfaces
+On the server side, each `service Bar` in the `.proto` file results in the function: `func RegisterBarServer(s *grpc.Server, srv BarServer)`.
 The application can define a concrete implementation of the `BarServer` interface and register it with a `grpc.Server` instance 
 (before starting the server instance) by using this function.
 
@@ -75,7 +64,7 @@ type <ServiceName>_FooServer interface {
 }
 ```
 
-The server-side handler can send a stream of protobuf messages to the client through this parameters' `Send` method. End-of-stream for the server-to-client
+The server-side handler can send a stream of protobuf messages to the client through this parameter's `Send` method. End-of-stream for the server-to-client
 stream is caused by the `return` of the handler method.
   
 #### Client-streaming methods
@@ -145,7 +134,7 @@ type <ServiceName>_FooClient interface {
 ```
 
 The stream begins when the client calls the `Foo` method on the stub. 
-The client can then repeatedly call the `Recv` method on the returned `<ServiceName>_FooClient` return value in order to read the server-to-client response stream. 
+The client can then repeatedly call the `Recv` method on the returned `<ServiceName>_FooClient` <i>stream</i> in order to read the server-to-client response stream. 
 This `Recv` method returns `(nil, io.EOF)` once the server-to-client stream has been completely read through.
 
 #### Client-Streaming methods
@@ -194,8 +183,8 @@ End-of-stream for the server-to-client stream is indicated by a return value of 
 End-of-stream for the client-to-server stream can be indicated from the client by calling the `CloseSend` method on the stream.
 
 ### Packages and Namespaces
-When the `prococ` compiler is invoked with `--go_out=plugins=grpc:`, the `proto package` to `Go package` "translation"
-works the same as when the `protoc-gen-go` plugin is used without the `grpc` plugin (as described in https://developers.google.com/protocol-buffers/docs/reference/go-generated).
+When the `prococ` compiler is invoked with `--go_out=plugins=grpc:`, the `proto package` to Go package translation
+works the same as when the `protoc-gen-go` plugin is used without the `grpc` plugin.
 
 So, for example, if `foo.proto` declares itself to be in `package foo`, then the generated `foo.pb.go` file will also be in
-the "Go package" `foo`.
+the Go package `foo`.
