@@ -75,7 +75,7 @@ As we're generating Java code in this example, we've specified a `java_package`
 file option in our .proto:
 
 ```proto
-option java_package = "io.grpc.examples";
+option java_package = "io.grpc.examples.routeguide";
 ```
 
 This specifies the package we want to use for our generated Java classes. If no
