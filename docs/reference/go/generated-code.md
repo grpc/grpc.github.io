@@ -1,6 +1,6 @@
 ---
 bodyclass: docs
-headline: Go Generated Code Guide
+headline: Go Generated Code Reference
 layout: docs
 type: markdown
 ---
