@@ -27,10 +27,12 @@ and other tutorials):
 ```sh
 $ # Clone the repository to get the example code
 $ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
-$ # Navigate to the dynamic codegen "hello, world" Node example:
-$ cd grpc/examples/node/dynamic_codegen
+$ # Navigate Node example:
+$ cd grpc/examples/node
 $ # Install the example's dependencies
 $ npm install
+$ # Navigate to the dynamic codegen "hello, world" Node example:
+$ cd dynamic_codegen
 ```
 
 ## Run a gRPC application
