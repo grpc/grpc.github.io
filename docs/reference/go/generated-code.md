@@ -13,6 +13,7 @@ You can find out how to define a gRPC service in a `.proto` file in [Service Def
 <p class="note"><strong>Thread-safety</strong>: note that client-side RPC invocations and server-side RPC handlers <i>are thread-safe</i> and are meant
 to be ran on concurrent goroutines. But also note that for <i>individual streams</i>, incoming and outgoing data is bi-directional but serial;
 so e.g. <i>individual streams</i> do not support <i>concurrent reads</i> or <i>concurrent writes</i> (but reads are safely concurrent <i>with</i> writes).
+</p>
 
 ## Methods on generated server interfaces
 On the server side, each `service Bar` in the `.proto` file results in the function:
