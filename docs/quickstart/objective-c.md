@@ -69,7 +69,7 @@ $ [sudo] make install
 ## Install protoc compiler
 ```sh
 $ brew tap grpc/grpc
-$ brew install google-protobuf
+$ brew install protobuf
 ```
 
 ## Run the server
@@ -276,7 +276,7 @@ Update the local clone of spec repo by running `pod repo update`
 
 **Compiler error when compiling `objective_c_plugin.cc`**
 
-Removing `google-protobuf` package with Homebrew before building gRPC may solve
+Removing `protobuf` package with Homebrew before building gRPC may solve
 this problem. We are working on a more elegant fix.
 
 **When building HellowWorld, error prompt `ld: unknown option: --no-as-needed`**
@@ -305,7 +305,7 @@ clone from Github, and build again.
 
 **Cannot find `protoc` when building HelloWorld**
 
-Run `brew install google-protobuf` to get `protoc` compiler.
+Run `brew install protobuf` to get `protoc` compiler.
 
 ## What's next
 
