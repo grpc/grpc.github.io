@@ -270,6 +270,9 @@ Install an older version of `activesupport`, then install CocoaPods:
 [sudo] gem install activesupport -v 4.2.6
 [sudo] gem install cocoapods
 ```
+**When installing dependencies with CocoaPods, error prompt `Unable to find a specification for !ProtoCompiler-gRPCPlugin`**
+
+Update the local clone of spec repo by running `pod repo update`
 
 **Compiler error when compiling `objective_c_plugin.cc`**
 
@@ -303,3 +306,13 @@ clone from Github, and build again.
 **Cannot find `protoc` when building HelloWorld**
 
 Run `brew install protobuf` to get `protoc` compiler.
+
+## What's next
+
+- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
+  and [gRPC Concepts](../guides/concepts.html)
+- Work through a more detailed tutorial in [gRPC Basics: Objective-C][]
+- Explore the Objective-C core API in its [reference
+  documentation](http://cocoadocs.org/docsets/gRPC/)
+
+[gRPC Basics: Objective-C]:../tutorials/basic/objective-c.html

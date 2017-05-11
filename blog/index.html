@@ -10,7 +10,7 @@ headline:  'gRPC Blog'
 		<div class="col-md-11 nofloat center-block">
 			<div class="col-sm-8 col-md-9 ">
 				{% for post in paginator.posts %}
-						<a href="{{ site.baseurl }}{{ post.url }}"><h4  id="{{post.id}}" class="post-title">{{ post.title }}</h4></a>
+						<a href="{{ site.baseurl }}{{ post.url }}"><h1  id="{{post.id}}" class="post-title">{{ post.title }}</h1></a>
 
 						<div class="post-date">
 							{{ post.date | date: '%B %d, %Y' }}

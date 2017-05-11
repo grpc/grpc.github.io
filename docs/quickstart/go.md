@@ -43,7 +43,7 @@ Install the protoc compiler that is used to generate gRPC service code. The simp
 Next, install the protoc plugin for Go
 
 ```
-$ go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
+$ go get -u github.com/golang/protobuf/protoc-gen-go
 ```
 
 The compiler plugin, protoc-gen-go, will be installed in $GOBIN, defaulting to $GOPATH/bin. It must be in your $PATH for the protocol compiler, protoc, to find it.  
@@ -206,10 +206,10 @@ Greeting: Hello again world
 
 ## What's next
 
-- Read a full explanation of this example and how gRPC works in our
-  [Overview](http://www.grpc.io/docs/)
+- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
+  and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: Go][]
 - Explore the gRPC Go core API in its [reference
   documentation](https://godoc.org/google.golang.org/grpc)
 
-[gRPC Basics: Go]:http://www.grpc.io/docs/tutorials/basic/go.html
+[gRPC Basics: Go]:../tutorials/basic/go.html

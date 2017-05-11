@@ -61,7 +61,7 @@ server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
 file in [gRPC Basics: Java][]. For now all you need to know is that both the
 server and the client "stub" have a `SayHello` RPC method that takes a
-`HelloRequest` parameter from the client and returns a `HelloResponse` from the
+`HelloRequest` parameter from the client and returns a `HelloReply` from the
 server, and that this method is defined like this:
 
 
@@ -196,11 +196,11 @@ Just like we did before, from the `examples` directory:
 
 ## What's next
 
-- Read a full explanation of this example and how gRPC works in our
-  [Overview](http://www.grpc.io/docs/)
+- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
+  and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: Java][]
 - Explore the gRPC Java core API in its [reference
   documentation](http://www.grpc.io/grpc-java/javadoc/)
 
-[gRPC Basics: Java]:http://www.grpc.io/docs/tutorials/basic/java.html
+[gRPC Basics: Java]:../tutorials/basic/java.html
 
