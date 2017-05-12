@@ -1,6 +1,11 @@
 ---
 layout: post
 title:  gRPC in Helm
+published: true
+permalink: blog/helmgrpc
+author: 
+company: The Helm Project
+company-link: https://helm.sh/
 ---
 
 Helm is the package manager for Kubernetes. Helm provides its users with a customizable mechanism for
