@@ -300,22 +300,38 @@ channel = grpc.secure_channel('myservice.example.com:443', creds)
 stub = helloworld_pb2.GreeterStub(channel)
 ```
 
-#### Authenticate with Google
+#### Authenticate with Google using a JWT
 
 ```python
 import grpc
 import helloworld_pb2
-from oauth2client import client
 
-transport_creds = grpc.ssl_channel_credentials(open('roots.pem').read())
-credentials = client.GoogleCredentials.get_application_default()
-scoped_credentials = credentials.create_scoped([scope])
-def oauth2token_credentials(context, callback):
-  callback([('authorization', 'Bearer %s' % scoped_credentials.get_access_token().access_token)], None)
+from google import auth as google_auth
+from google.auth import jwt as google_auth_jwt
+from google.auth.transport import grpc as google_auth_transport_grpc
 
-auth_creds = grpc.metadata_call_credentials(oauth2token_credentials)
-channel_creds = grpc.composite_channel_credentials(transport_creds, auth_creds)
-channel = grpc.secure_channel('greeter.googleapis.com:443', channel_creds)
+credentials, _ = google_auth.default()
+jwt_creds = google_auth_jwt.OnDemandCredentials.from_signing_credentials(
+    credentials)
+channel = google_auth_transport_grpc.secure_authorized_channel(
+    jwt_creds, None, 'greeter.googleapis.com:443')
+stub = helloworld_pb2.GreeterStub(channel)
+```
+
+#### Authenticate with Google using an Oauth2 token
+
+```python
+import grpc
+import helloworld_pb2
+
+from google import auth as google_auth
+from google.auth.transport import grpc as google_auth_transport_grpc
+from google.auth.transport import requests as google_auth_transport_requests
+
+credentials, _ = google_auth.default(scopes=(scope,))
+request = google_auth_transport_requests.Request()
+channel = google_auth_transport_grpc.secure_authorized_channel(
+    credentials, request, 'greeter.googleapis.com:443')
 stub = helloworld_pb2.GreeterStub(channel)
 ```
 
