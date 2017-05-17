@@ -69,9 +69,8 @@ client interface code - if you don't already, follow the setup instructions in
 
 Our first step (as you'll know from the [Overview](/docs/index.html)) is to
 define the gRPC *service* and the method *request* and *response* types using
-[protocol buffers]
-(https://developers.google.com/protocol-buffers/docs/overview). You can see the
-complete .proto file in
+[protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
+You can see the complete .proto file in
 [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/
 {{ site.data.config.grpc_release_branch }}/examples/protos/route_guide.proto).
 
