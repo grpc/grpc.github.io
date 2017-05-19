@@ -488,7 +488,7 @@ for (int i = 0; i < kPoints; i++) {
 }
 writer->WritesDone();
 Status status = writer->Finish();
-if (status.IsOk()) {
+if (status.ok()) {
   std::cout << "Finished trip with " << stats.point_count() << " points\n"
             << "Passed " << stats.feature_count() << " features\n"
             << "Travelled " << stats.distance() << " meters\n"
