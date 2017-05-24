@@ -112,7 +112,7 @@ buffers; you can find out lots more about how to define a service in a `.proto`
 file in [What is gRPC?]() and [gRPC Basics: Python][]. For now all you need
 to know is that both the server and the client "stub" have a `SayHello` RPC
 method that takes a `HelloRequest` parameter from the client and returns a
-`HelloResponse` from the server, and that this method is defined like this:
+`HelloReply` from the server, and that this method is defined like this:
 
 
 ```
