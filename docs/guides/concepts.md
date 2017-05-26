@@ -30,14 +30,14 @@ desired.
 
 ```
 service HelloService {
-  rpc SayHello (HelloRequest) returns (HelloResponse);
+  rpc SayHello (HelloRequest) returns (HelloReply);
 }
 
 message HelloRequest {
   string greeting = 1;
 }
 
-message HelloResponse {
+message HelloReply {
   string reply = 1;
 }
 ```
@@ -49,7 +49,7 @@ gRPC lets you define four kinds of service method:
   single response back, just like a normal function call.
 
 ```
-rpc SayHello(HelloRequest) returns (HelloResponse){
+rpc SayHello(HelloRequest) returns (HelloReply){
 }
 ```
 
@@ -58,7 +58,7 @@ rpc SayHello(HelloRequest) returns (HelloResponse){
   returned stream until there are no more messages.
 
 ```
-rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse){
+rpc LotsOfReplies(HelloRequest) returns (stream HelloReply){
 }
 ```
 
@@ -68,7 +68,7 @@ rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse){
   its response.
 
 ```
-rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {
+rpc LotsOfGreetings(stream HelloRequest) returns (HelloReply) {
 }
 ```
 
@@ -81,7 +81,7 @@ rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {
   stream is preserved.
 
 ```
-rpc BidiHello(stream HelloRequest) returns (stream HelloResponse){
+rpc BidiHello(stream HelloRequest) returns (stream HelloReply){
 }
 ```
 
