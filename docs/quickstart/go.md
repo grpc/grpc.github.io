@@ -150,7 +150,7 @@ Next we need to update the gRPC code used by our application to use the new
 service definition. From the same examples dir as above (`$GOPATH/src/google.golang.org/grpc/examples/helloworld`)
 
 ```sh
-$ protoc -I helloworld/ helloworld/helloworld.proto --go_out=plugins=grpc:helloworld
+$ protoc -I helloworld/ helloworld/helloworld/helloworld.proto --go_out=plugins=grpc:helloworld
 ```
 
 This regenerates the helloworld.pb.go with our new changes.
