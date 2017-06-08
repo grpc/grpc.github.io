@@ -398,6 +398,13 @@ Run the server, which will listen on port 50051:
 ```
 $ # from examples/ruby
 $ bundle exec route_guide/route_guide_server.rb
+# I don't know what the solution is but this will fail because in the server.rb file, we have this gaurd:
+```
+if ARGV.length == 0
+    fail 'Please specify the path to the route_guide json database'
+  end
+```
+# So what should the ARGV be?
 ```
 Run the client (in a different terminal):
 
