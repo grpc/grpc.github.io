@@ -55,7 +55,7 @@ and other tutorials):
 
 ```sh
 $ # Clone the repository to get the example code:
-$ git clone -b v1.0.x https://github.com/grpc/grpc 
+$ git clone -b v1.3.x https://github.com/grpc/grpc 
 $ cd grpc
 ```
 
