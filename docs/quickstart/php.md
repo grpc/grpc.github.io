@@ -101,8 +101,8 @@ The simplest way to do this is to download pre-compiled binaries for your platfo
 To compile the gRPC PHP Protoc Plugin:
 
 ```sh
-$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
-$ cd grpc && git submodule update --init
+$ git clone --recursive -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
+$ cd grpc
 $ make grpc_php_plugin
 ```
 
