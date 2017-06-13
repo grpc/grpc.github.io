@@ -42,21 +42,32 @@ In Client side load balancing, the client is aware of multiple backend servers a
   </tr>
   <tr>
     <td>Pros</td>
-    <td>Simple client
-No client-side awareness of backend
-Works with untrusted clients</td>
-    <td>High performance because elimination of extra hop</td>
+    <td>
+    
+* Simple client
+* No client-side awareness of backend
+* Works with untrusted clients
+</td>
+    <td>
+    
+* High performance because elimination of extra hop
+</td>
   </tr>
   <tr>
     <td>Cons</td>
-    <td>LB is in the data path
-Higher latency
-LB throughput may limit scalability</td>
-    <td>Complex client
-Client keeps track of server load and health
-Client implements load balancing algorithm
-Per-language implementation and maintenance burden
-Client needs to be trusted, or the trust boundary needs to be handled by a lookaside LB.</td>
+    <td>
+    
+* LB is in the data path
+* Higher latency
+* LB throughput may limit scalability
+</td>
+    <td>
+    
+* Complex client
+* Client keeps track of server load and health
+* Client implements load balancing algorithm
+* Per-language implementation and maintenance burden
+* Client needs to be trusted, or the trust boundary needs to be handled by a lookaside LB.</td>
   </tr>
 </table>
 
@@ -71,8 +82,12 @@ In L7 (application level) load balancing, the LB terminates and parses the HTTP/
 
 <table>
   <tr>
-    <td>Use case</td>
-    <td>Recommendation</td>
+    <td>
+    Use case
+    </td>
+    <td>
+    Recommendation
+    </td>
   </tr>
   <tr>
     <td>RPC load varies a lot among connections</td>
@@ -119,31 +134,56 @@ Depending upon the particular deployment and constraints, we suggest the followi
     <td>Recommendation</td>
   </tr>
   <tr>
-    <td>Very high traffic between clients and servers
-Clients can be trusted</td>
-    <td>Thick client-side Load Balancing
-Client side LB with ZooKeeper/Etcd/Consul/Eureka. ZooKeeper Example.</td>
+    <td>
+    
+* Very high traffic between clients and servers
+* Clients can be trusted
+</td>
+    <td>
+    
+* Thick client-side Load Balancing
+* Client side LB with ZooKeeper/Etcd/Consul/Eureka. [ZooKeeper Example](https://github.com/makdharma/grpc-zookeeper-lb).
+
+</td>
   </tr>
   <tr>
-    <td>Traditional setup - Many clients connecting to Services behind a proxy
-Need trust boundary between servers and clients</td>
-    <td>Proxy Load Balancing
-L3/L4 LB with GCLB (if using GCP)
-L3/L4 LB with haproxy - Config file
-Nginx coming soon
-If need session stickiness - L7 LB with Envoy as proxy</td>
+    <td>
+    
+* Traditional setup - Many clients connecting to Services behind a proxy
+* Need trust boundary between servers and clients
+</td>
+    <td>
+    
+* Proxy Load Balancing
+* L3/L4 LB with GCLB (if using GCP)
+* L3/L4 LB with haproxy - [Config file](https://gist.github.com/thpham/114d20de8472b2cef966)
+* Nginx coming soon
+* If need session stickiness - L7 LB with Envoy as proxy
+</td>
   </tr>
   <tr>
-    <td>Microservices - N clients, M servers in the Data center
-Very high perf requirements (low latency, high traffic)
-Client can be untrusted</td>
-    <td>Look-aside Load Balancing
-Client-side LB using gRPC-LB protocol. Roll your own implementation (Q2’17), hosted gRPC-LB (Q4’17)</td>
+    <td>
+    
+* Microservices - N clients, M servers in the Data center
+* Very high perf requirements (low latency, high traffic)
+* Client can be untrusted
+</td>
+    <td>
+    
+* Look-aside Load Balancing
+* Client-side LB using [gRPC-LB protocol](https://github.com/grpc/grpc/blob/master/doc/load-balancing.md). Roll your own implementation (Q2’17), hosted gRPC-LB (Q4’17)
+</td>
   </tr>
   <tr>
-    <td>Existing Service-mesh like setup using Linkerd or Istio</td>
-    <td>Service Mesh
-Use built-in LB with Istio/Linkerd, or Envoy. Example.</td>
+    <td>
+    
+* Existing Service-mesh like setup using Linkerd or Istio
+</td>
+    <td>
+    
+* Service Mesh
+* Use built-in LB with Istio/Linkerd, or Envoy.
+</td>
   </tr>
 </table>
 
