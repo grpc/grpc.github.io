@@ -189,10 +189,29 @@ stub = Helloworld::Greeter::Stub.new('localhost:50051', :this_channel_is_insecur
 
 #### With server authentication SSL/TLS
 
+See [ChannelCredentials constructor](https://github.com/grpc/grpc/blob/master/src/ruby/ext/grpc/rb_channel_credentials.c#L127..L140) for allowed options.
+
 ```ruby
-creds = GRPC::Core::Credentials.new(load_certs)  # load_certs typically loads a CA roots file
+ca_cert = File.read('ca.pem')
+client_key = File.read('client.key')
+client_cert = File.read('client.pem')
+creds = GRPC::Core::ChannelCredentials.new()
+creds = GRPC::Core::ChannelCredentials.new(ca_cert)
+creds = GRPC::Core::ChannelCredentials.new(ca_cert, client_key, client_cert)
 stub = Helloworld::Greeter::Stub.new('myservice.example.com', creds)
 ```
+
+You can also specify additional channel options using:
+```ruby
+creds = GRPC::Core::ChannelCredentials.new(ca_cert, client_key, client_cert)
+stub = Helloworld::Greeter::Stub.new('1.2.3.4:56789', creds, channel_args: {
+  # override the hostname if you are connecting to a specific IP and using
+  # custom root CA and signed certs on both client and server.
+  GRPC::Core::Channel::SSL_TARGET => "myservice.example.com",
+})
+```
+
+See also the [list of available channel options](https://github.com/grpc/grpc/blob/master/include/grpc/impl/codegen/grpc_types.h#L242..L249) and the [variables exported under GRPC::Core::Channel](https://github.com/grpc/grpc/blob/master/src/ruby/ext/grpc/rb_channel.c#L811..L819).
 
 #### Authenticate with Google
 
