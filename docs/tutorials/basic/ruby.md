@@ -397,11 +397,13 @@ Run the server, which will listen on port 50051:
 
 ```
 $ # from examples/ruby
-$ bundle exec route_guide/route_guide_server.rb
+$ bundle exec route_guide/route_guide_server.rb ../python/route_guide/route_guide_db.json
+$ # (note that the route_guide_db.json file is actually language-agnostic; it's just
+$ # located in the python folder).
 ```
 Run the client (in a different terminal):
 
 ```
 $ # from examples/ruby
-$ bundle exec route_guide/route_guide_client.rb
+$ bundle exec route_guide/route_guide_client.rb ../python/route_guide/route_guide_db.json
 ```
