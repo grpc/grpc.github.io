@@ -201,17 +201,24 @@ creds = GRPC::Core::ChannelCredentials.new(ca_cert, client_key, client_cert)
 stub = Helloworld::Greeter::Stub.new('myservice.example.com', creds)
 ```
 
-You can also specify additional channel options using:
+You can also specify [additional options when creating the stub](https://github.com/grpc/grpc/blob/master/src/ruby/lib/grpc/generic/client_stub.rb#L56..L91).
 ```ruby
 creds = GRPC::Core::ChannelCredentials.new(ca_cert, client_key, client_cert)
-stub = Helloworld::Greeter::Stub.new('1.2.3.4:56789', creds, channel_args: {
-  # override the hostname if you are connecting to a specific IP and using
-  # custom root CA and signed certs on both client and server.
-  GRPC::Core::Channel::SSL_TARGET => "myservice.example.com",
-})
+stub = Helloworld::Greeter::Stub.new('1.2.3.4:56789', creds,
+  timeout: 60, # in seconds
+  channel_args: {
+    # Additional channel arguments for customization. Only set options that you need.
+    GRPC::Core::Channel::MAX_MESSAGE_LENGTH => 1 << 20, # in bytes, so this limits messages to 1 MB
+    GRPC::Core::Channel::MAX_CONCURRENT_STREAMS => 27,
+    GRPC::Core::Channel::SSL_TARGET => "myservice.example.com", # not for production
+    # You can also set args using the raw channel arg strings as symbols.
+    :"grpc.max_connection_idle_ms" => 3000,
+  })
 ```
 
-See also the [list of available channel options](https://github.com/grpc/grpc/blob/master/include/grpc/impl/codegen/grpc_types.h#L242..L249) and the [variables exported under GRPC::Core::Channel](https://github.com/grpc/grpc/blob/master/src/ruby/ext/grpc/rb_channel.c#L811..L819).
+References:
+* [list of available channel args](https://github.com/grpc/grpc/blob/master/include/grpc/impl/codegen/grpc_types.h#L242..L249)
+* [variables exported under GRPC::Core::Channel](https://github.com/grpc/grpc/blob/master/src/ruby/ext/grpc/rb_channel.c#L811..L819).
 
 #### Authenticate with Google
 
