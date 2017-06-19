@@ -81,7 +81,7 @@ and other tutorials):
 
 ```sh
 $ # Clone the repository to get the example code:
-$ git clone https://github.com/grpc/grpc
+$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
 $ # Navigate to the "hello, world" Python example:
 $ cd grpc/examples/python/helloworld
 ```
