@@ -71,6 +71,12 @@ follow the instructions [here](https://github.com/grpc/grpc/tree/master/src/php#
 to compile the PECL extension from source.
 
 
+### Install on Windows
+
+You can download the pre-compiled gRPC extension from the PECL
+[website](https://pecl.php.net/package/grpc)
+
+
 ## Install other prerequisites for both Mac OS X and Linux
 
 
