@@ -71,6 +71,12 @@ follow the instructions [here](https://github.com/grpc/grpc/tree/master/src/php#
 to compile the PECL extension from source.
 
 
+### Install on Windows
+
+You can download the pre-compiled gRPC extension from the PECL
+[website](https://pecl.php.net/package/grpc)
+
+
 ## Install other prerequisites for both Mac OS X and Linux
 
 
@@ -81,7 +87,22 @@ $ [sudo] mv composer.phar /usr/local/bin/composer
 ```
 
 
-### Install Protobuf
+### Install Protobuf Runtime Library
+
+There are two protobuf runtime libraries to choose from. They are identical in terms of APIs offered. The C implementation provides better performance, while the native implementation is easier to install.
+
+To install the PECL extension
+```sh
+$ [sudo] pecl install protobuf
+```
+
+To install the Composer package
+```sh
+$ composer require "google/protobuf:^v3.3.0"
+```
+
+
+### Install Protobuf Plugin
 
 You will need to install the protocol buffer compiler `protoc` and the special
 plugin for generating server and client code from `.proto` service definitions.
