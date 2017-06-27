@@ -18,6 +18,8 @@ gRPC is a modern RPC protocol implemented on top of HTTP/2. HTTP/2 is a Layer 7 
 
 5. Idiomatic client/server library implementations in many languages
 
+In addition, gRPC integrates seamlessly with ecosystem components like service discovery, name resolver, load balancer, tracing and monitoring, among others. 
+
 ## Load balancing options
 
 ### Proxy or Client side?
