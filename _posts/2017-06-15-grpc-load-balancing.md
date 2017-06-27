@@ -173,7 +173,7 @@ Depending upon the particular deployment and constraints, we suggest the followi
     <td>
     
 * Look-aside Load Balancing
-* Client-side LB using [gRPC-LB protocol](https://github.com/grpc/grpc/blob/master/doc/load-balancing.md). Roll your own implementation (Q2’17), hosted gRPC-LB (Q4’17)
+* Client-side LB using [gRPC-LB protocol](https://github.com/grpc/grpc/blob/master/doc/load-balancing.md). Roll your own implementation (Q2’17), hosted gRPC-LB in the works.
 </td>
   </tr>
   <tr>
