@@ -70,10 +70,6 @@ clients and servers at master:
   * Python
   * Ruby
 
-PHP does not have any performance testing because our performance
-tests are implemented as gRPC servers, which are not supported in
-PHP. Mobile performance testing is also currently not supported.
-
 Additionally, all languages derived from C core have limited
 performance testing (smoke testing) conducted at every pull request.
 
@@ -82,6 +78,12 @@ performance tests, all languages are tested as clients against a C++
 server, and as servers against a C++ client. This test aims to provide
 the current upper bound of performance for a given language's client or
 server implementation without testing the other side.
+
+Although PHP or mobile environments do not support a gRPC server
+(which is needed for our performance tests), their client-side
+performance can be benchmarked using a proxy WorkerService written in
+another language. This code is implemented for PHP but is not yet in 
+continuous testing mode.
 
 <a name="Scenarios under test"></a>
 
