@@ -1,6 +1,7 @@
 kramdown:
   input: GFM
   hard_wrap: false
+  parse_block_html: true
 
 markdown:
   kramdown
@@ -12,7 +13,7 @@ githuburl: https://github.com/grpc/grpc.github.io/
 sass:
   style: compressed
   
-paginate: 2
+paginate: 5
 
 paginate_path: "/blog/page:num/"
 
