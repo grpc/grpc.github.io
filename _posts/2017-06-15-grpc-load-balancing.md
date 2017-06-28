@@ -1,8 +1,18 @@
-## Introduction
+---
+layout: post
+title: gRPC Load Balancing
+published: true
+permalink: blog/loadbalancing
+author: Makarand Dharmapurikar
+company: Google
+company-link: https://www.google.com
+---
 
-This document describes various load balancing scenarios seen when deploying gRPC. If you use [gRPC](http://grpc.io) with multiple backends, this document is for you.
+This post describes various load balancing scenarios seen when deploying gRPC. If you use [gRPC](http://grpc.io) with multiple backends, this document is for you.
 
 A large scale gRPC deployment typically has a number of identical back-end instances, and a number of clients. Each server has a certain capacity. Load balancing is used for distributing the load from clients optimally across available servers.
+
+<!--more-->
 
 ### Why gRPC?
 
@@ -44,32 +54,35 @@ The following table outlines the pros and cons of each model.
   </tr>
   <tr>
     <td>Pros</td>
-    <td>
+    <td markdown="1">
     
 * Simple client
 * No client-side awareness of backend
 * Works with untrusted clients
+
 </td>
-    <td>
+    <td markdown="1">
     
 * High performance because elimination of extra hop
 </td>
   </tr>
   <tr>
     <td>Cons</td>
-    <td>
+    <td markdown="1">
     
 * LB is in the data path
 * Higher latency
 * LB throughput may limit scalability
 </td>
-    <td>
+    <td markdown="1">
     
 * Complex client
 * Client keeps track of server load and health
 * Client implements load balancing algorithm
 * Per-language implementation and maintenance burden
-* Client needs to be trusted, or the trust boundary needs to be handled by a lookaside LB.</td>
+* Client needs to be trusted, or the trust boundary needs to be handled by a lookaside LB.
+
+</td>
   </tr>
 </table>
 
@@ -136,12 +149,12 @@ Depending upon the particular deployment and constraints, we suggest the followi
     <td>Recommendation</td>
   </tr>
   <tr>
-    <td>
+    <td markdown="1">
     
 * Very high traffic between clients and servers
 * Clients can be trusted
 </td>
-    <td>
+    <td markdown="1">
     
 * Thick client-side load balancing
 * Client side LB with ZooKeeper/Etcd/Consul/Eureka. [ZooKeeper Example](https://github.com/makdharma/grpc-zookeeper-lb).
@@ -149,12 +162,12 @@ Depending upon the particular deployment and constraints, we suggest the followi
 </td>
   </tr>
   <tr>
-    <td>
+    <td markdown="1">
     
 * Traditional setup - Many clients connecting to services behind a proxy
 * Need trust boundary between servers and clients
 </td>
-    <td>
+    <td markdown="1">
     
 * Proxy Load Balancing
 * L3/L4 LB with GCLB (if using GCP)
@@ -164,29 +177,27 @@ Depending upon the particular deployment and constraints, we suggest the followi
 </td>
   </tr>
   <tr>
-    <td>
+    <td markdown="1">
     
 * Microservices - N clients, M servers in the data center
 * Very high performance requirements (low latency, high traffic)
 * Client can be untrusted
 </td>
-    <td>
+    <td markdown="1">
     
 * Look-aside Load Balancing
 * Client-side LB using [gRPC-LB protocol](https://github.com/grpc/grpc/blob/master/doc/load-balancing.md). Roll your own implementation (Q2’17), hosted gRPC-LB in the works.
 </td>
   </tr>
   <tr>
-    <td>
+    <td markdown="1">
     
 * Existing Service-mesh like setup using Linkerd or Istio
 </td>
-    <td>
+    <td markdown="1">
     
 * Service Mesh
 * Use built-in LB with [Istio](https://istio.io/), or [Envoy](https://github.com/lyft/envoy).
 </td>
   </tr>
 </table>
-
-
