@@ -3,7 +3,7 @@ layout: post
 title: gRPC Load Balancing
 published: true
 permalink: blog/loadbalancing
-author: Makarand Dharmapurikar
+author: makdharma
 company: Google
 company-link: https://www.google.com
 ---
