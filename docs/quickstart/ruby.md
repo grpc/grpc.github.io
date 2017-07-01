@@ -135,7 +135,7 @@ service definition. From the `examples/ruby/` directory:
 $ grpc_tools_ruby_protoc -I ../protos --ruby_out=lib --grpc_out=lib ../protos/helloworld.proto
 ```
 
-This regenerates `lib/helloworld_services.rb`, which contains our generated
+This regenerates `lib/helloworld_services_pb.rb`, which contains our generated
 client and server classes.
 
 ### Update the server
