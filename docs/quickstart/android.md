@@ -200,6 +200,6 @@ enter `10.0.2.2` and `50051` as the `Host` and `Port`.
   and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: Android Java][]
 - Explore the gRPC Java core API in its [reference
-  documentation](http://www.grpc.io/grpc-java/javadoc/)
+  documentation](/grpc-java/javadoc/)
 
 [gRPC Basics: Android Java]:../tutorials/basic/android.html

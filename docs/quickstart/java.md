@@ -200,7 +200,7 @@ Just like we did before, from the `examples` directory:
   and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: Java][]
 - Explore the gRPC Java core API in its [reference
-  documentation](http://www.grpc.io/grpc-java/javadoc/)
+  documentation](/grpc-java/javadoc/)
 
 [gRPC Basics: Java]:../tutorials/basic/java.html
 

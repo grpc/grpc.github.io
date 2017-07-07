@@ -15,10 +15,10 @@ var playerInfoList = [
     {type: 'yt', key: 'nz-LcdoMYWA'}, 
     {type: 'yt', key: 'sZx3oZt7LVg'}, 
     {type: 'yt', key: 'RvUP7vX2P4s'}, 
-    {type: 'slideshare', key: 'http://www.slideshare.net/sujatatibre/g-rpc-talk-with-intel-3'}, 
-    {type: 'slideshare', key: 'http://www.slideshare.net/VarunTalwar4/grpc-design-and-implementation'},
-    {type: 'slideshare', key: 'http://www.slideshare.net/VarunTalwar4/grpc-overview'},
-    {type: 'slideshare', key: 'http://www.ustream.tv/recorded/86187859'}
+    {type: 'slideshare', key: 'https://www.slideshare.net/sujatatibre/g-rpc-talk-with-intel-3'}, 
+    {type: 'slideshare', key: 'https://www.slideshare.net/VarunTalwar4/grpc-design-and-implementation'},
+    {type: 'slideshare', key: 'https://www.slideshare.net/VarunTalwar4/grpc-overview'},
+    {type: 'slideshare', key: 'https://www.ustream.tv/recorded/86187859'}
 ];  
 
 function createPlayer(key) {

@@ -128,11 +128,11 @@ stub.  For each method in the service, the initializer adds a corresponding
 attribute to the stub object with the same name.  Depending on the RPC type
 (*i.e.* unary or streaming), the value of that attribute will be callable
 objects of type
-[UnaryUnaryMultiCallable](http://www.grpc.io/grpc/python/grpc.html?#grpc.UnaryUnaryMultiCallable),
-[UnaryStreamMultiCallable](http://www.grpc.io/grpc/python/grpc.html?#grpc.UnaryStreamMultiCallable),
-[StreamUnaryMultiCallable](http://www.grpc.io/grpc/python/grpc.html?#grpc.StreamUnaryMultiCallable),
+[UnaryUnaryMultiCallable](/grpc/python/grpc.html?#grpc.UnaryUnaryMultiCallable),
+[UnaryStreamMultiCallable](/grpc/python/grpc.html?#grpc.UnaryStreamMultiCallable),
+[StreamUnaryMultiCallable](/grpc/python/grpc.html?#grpc.StreamUnaryMultiCallable),
 or
-[StreamStreamMultiCallable](http://www.grpc.io/grpc/python/grpc.html?#grpc.StreamStreamMultiCallable).
+[StreamStreamMultiCallable](/grpc/python/grpc.html?#grpc.StreamStreamMultiCallable).
 
 ### Servicer
 
@@ -152,5 +152,5 @@ object, so that the server would be able to appropriately route the queries to
 the respective servicer.  This function takes an object that implements the
 `Servicer`, typically an instance of a subclass of the generated `Servicer`
 code element described above, and a
-[`grpc.Server`](http://www.grpc.io/grpc/python/_modules/grpc.html#Server)
+[`grpc.Server`](/grpc/python/_modules/grpc.html#Server)
 object.

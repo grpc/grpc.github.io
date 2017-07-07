@@ -21,7 +21,7 @@ instructions in
 ## Overview
 
 gRPC uses the
-[`CompletionQueue`](http://www.grpc.io/grpc/cpp/classgrpc_1_1_completion_queue.html)
+[`CompletionQueue`](/grpc/cpp/classgrpc_1_1_completion_queue.html)
 API for asynchronous operations. The basic work flow
 is as follows:
 

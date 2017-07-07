@@ -235,12 +235,12 @@ Now let's look at something a bit more complicated - a streaming RPC.
 
 As you can see, here the request object is a `Rectangle` in which our client
 wants to find `Feature`s, but instead of returning a simple response we need to
-return an [Enumerator](http://ruby-doc.org//core-2.2.0/Enumerator.html) that
+return an [Enumerator](https://ruby-doc.org//core-2.2.0/Enumerator.html) that
 yields the responses. In the method, we use a helper class `RectangleEnum`, to
 act as an Enumerator implementation.
 
 Similarly, the client-side streaming method `record_route` uses an
-[Enumerable](http://ruby-doc.org//core-2.2.0/Enumerable.html), but here it's
+[Enumerable](https://ruby-doc.org//core-2.2.0/Enumerable.html), but here it's
 obtained from the call object, which we've ignored in the earlier examples.
 `call.each_remote_read` yields each message sent by the client in turn.
 
@@ -267,8 +267,8 @@ end
 ```
 
 Here the method receives an
-[Enumerable](http://ruby-doc.org//core-2.2.0/Enumerable.html), but also returns
-an [Enumerator](http://ruby-doc.org//core-2.2.0/Enumerator.html) that yields the
+[Enumerable](https://ruby-doc.org//core-2.2.0/Enumerable.html), but also returns
+an [Enumerator](https://ruby-doc.org//core-2.2.0/Enumerator.html) that yields the
 responses.  The implementation demonstrates how to set these up so that the
 requests and responses can be handled concurrently.  Although each side will
 always get the other's messages in the order they were written, both the client

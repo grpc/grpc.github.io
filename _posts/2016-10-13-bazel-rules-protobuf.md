@@ -10,7 +10,7 @@ company-link: https://pubref.org
 thumbnail: https://avatars3.githubusercontent.com/u/10408150?v=3&s=200
 ---
 
-[gRPC](https://grpc.io) makes it easier to build high-performance
+[gRPC](/) makes it easier to build high-performance
 microservices by providing generated service entrypoints in a variety
 of different languages.  [Bazel](https://bazel.io) complements these
 efforts with a capable and fast polyglot build environment. 
@@ -56,7 +56,7 @@ Great. Let's get started!
 their internal build tool called "Blaze".  Blaze originated from the
 challenges of managing a large monorepo with code written in a variety
 of languages.  Blaze was the inspiration for other capable and fast
-build tools including [Pants](http://www.pantsbuild.org/) and
+build tools including [Pants](https://www.pantsbuild.org/) and
 [Buck](https://buckbuild.com/).  Bazel is conceptually simple but
 there are some core concepts & terminology to understand:
 
@@ -237,7 +237,7 @@ bad. Here's a closer look:
 
 * The `@` (at-sign) selects an external workspace. These are
   established by
-  [workspace rules](http://bazel.io/docs/be/workspace.html#workspace-rules)
+  [workspace rules](https://bazel.io/docs/be/workspace.html#workspace-rules)
   that bind a name to something fetched over the network (or your
   filesystem).
 
@@ -288,11 +288,11 @@ These rules assume that the remote resource or URL contains a
 WORKSPACE file at the top of the file tree and BUILD files that define
 rule targets.  These are referred to as *bazel repositories*.
 
-* [git_repository](http://bazel.io/docs/be/workspace.html#git_repository):
+* [git_repository](https://bazel.io/docs/be/workspace.html#git_repository):
   external bazel dependency from a git repository.  The rule requires
   `commit` (or `tag`).
 
-* [http_archive](http://bazel.io/docs/be/workspace.html#http_archive):
+* [http_archive](https://bazel.io/docs/be/workspace.html#http_archive):
   an external zip or tar.gz dependency from a URL. It is highly
   recommended to name a sha265 for security.
 
@@ -309,15 +309,15 @@ available. As always, it is recommended to provide a known sha265 for
 security to prevent a malicious agent from slipping in tainted code
 via a compromised network.
 
-* [http_jar](http://bazel.io/docs/be/workspace.html#http_jar):
+* [http_jar](https://bazel.io/docs/be/workspace.html#http_jar):
   external jar from a URL. The jar file is available as a
   `java_library` dependency as `@WORKSPACE_NAME//jar`.
 
-* [maven_jar](http://bazel.io/docs/be/workspace.html#maven_jar):
+* [maven_jar](https://bazel.io/docs/be/workspace.html#maven_jar):
   external jar from a URL. The jar file is available as a
   `java_library` dependency as `@WORKSPACE_NAME//jar`.
 
-* [http_file](http://bazel.io/docs/be/workspace.html#http_file):
+* [http_file](https://bazel.io/docs/be/workspace.html#http_file):
   external file from a URL. The resource is available as a `filegroup`
   via `@WORKSPACE_NAME//file`.
 
@@ -392,12 +392,12 @@ This `new_*` family of workspace rules keeps your repository lean and
 allows you to vendor in pretty much any type of network-available
 resource.  Awesome!
 
-* [new_git_repository](http://bazel.io/docs/be/workspace.html#new_git_repository)
-* [new_local_repository](http://bazel.io/docs/be/workspace.html#new_local_repository)
-* [new_http_archive](http://bazel.io/docs/be/workspace.html#new_http_archive)
+* [new_git_repository](https://bazel.io/docs/be/workspace.html#new_git_repository)
+* [new_local_repository](https://bazel.io/docs/be/workspace.html#new_local_repository)
+* [new_http_archive](https://bazel.io/docs/be/workspace.html#new_http_archive)
 
 > You can also
-> [write your own repository rules](http://bazel.io/docs/skylark/repository_rules.html)
+> [write your own repository rules](https://bazel.io/docs/skylark/repository_rules.html)
 > that have custom logic to pull resources from the net and bind it
 > into bazel's view of the universe.
 
