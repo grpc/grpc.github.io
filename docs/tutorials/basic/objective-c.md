@@ -281,7 +281,7 @@ RTGRouteGuide *service = [[RTGRouteGuide alloc] initWithHost:kHostAddress];
 Notice that before constructing our service object we've told the gRPC library
 to use insecure connections for that host:port pair. This is because the server
 we will be using to test our client doesn't use
-[TLS](http://en.wikipedia.org/wiki/Transport_Layer_Security). This is fine
+[TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security). This is fine
 because it will be running locally on our development machine. The most common
 case, though, is connecting with a gRPC server on the internet, running gRPC
 over TLS. For that case, the `useInsecureConnectionsForHost:` call isn't needed,

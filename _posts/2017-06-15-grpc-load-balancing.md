@@ -8,7 +8,7 @@ company: Google
 company-link: https://www.google.com
 ---
 
-This post describes various load balancing scenarios seen when deploying gRPC. If you use [gRPC](http://grpc.io) with multiple backends, this document is for you.
+This post describes various load balancing scenarios seen when deploying gRPC. If you use [gRPC](/) with multiple backends, this document is for you.
 
 A large scale gRPC deployment typically has a number of identical back-end instances, and a number of clients. Each server has a certain capacity. Load balancing is used for distributing the load from clients optimally across available servers.
 

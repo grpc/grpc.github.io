@@ -6,7 +6,7 @@ permalink: blog/mobile-benchmarks
 attribution: Originally written by David Cao with additional content by Makarand and others at Google.
 author: David Cao
 company: Google
-company-link: http://cloud.google.com
+company-link: https://cloud.google.com
 thumbnail: ../img/gcp-icon.png?raw=true
 ---
 

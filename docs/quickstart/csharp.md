@@ -368,7 +368,7 @@ Or if using the .NET Core SDK, from the `examples/csharp/helloworld-from-cli` di
   and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: C#][]
 - Explore the gRPC C# core API in its [reference
-  documentation](http://www.grpc.io/grpc/csharp/)
+  documentation](/grpc/csharp/)
 
 [helloworld.proto]:../protos/helloworld.proto
 [gRPC Basics: C#]:../tutorials/basic/csharp.html

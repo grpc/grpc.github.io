@@ -86,7 +86,7 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [What is gRPC?](http://www.grpc.io/docs/#what-is-grpc) and [gRPC Basics:
+file in [What is gRPC?](/docs/#what-is-grpc) and [gRPC Basics:
 C++][]. For now all you need to know is that both the server and the client
 "stub" have a `SayHello` RPC method that takes a `HelloRequest` parameter from
 the client and returns a `HelloResponse` from the server, and that this method
@@ -264,6 +264,6 @@ Just like we did before, from the `examples/cpp/helloworld` directory:
   and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: C++][]
 - Explore the gRPC C++ core API in its [reference
-  documentation](http://www.grpc.io/grpc/cpp/)
+  documentation](/grpc/cpp/)
 
 [gRPC Basics: C++]:../tutorials/basic/c.html

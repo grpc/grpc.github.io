@@ -231,7 +231,7 @@ Just like we did before, from the `examples/python/helloworld` directory:
   and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: Python][]
 - Explore the gRPC Python core API in its [reference
-  documentation](http://www.grpc.io/grpc/python/)
+  documentation](/grpc/python/)
 
 [helloworld.proto]:../protos/helloworld.proto
 [gRPC Basics: Python]:../tutorials/basic/python.html
