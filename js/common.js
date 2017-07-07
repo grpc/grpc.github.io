@@ -241,7 +241,7 @@ $.getScript("https://cdn.rawgit.com/google/code-prettify/master/loader/run_prett
 });
 
 // Collapsible navbar menu, using https://github.com/jordnkr/collapsible
-$.getScript("/grpc.github.io/js/jquery.collapsible.js", function(){
+$.getScript("/js/jquery.collapsible.js", function(){
   highlightActive();
   $('.submenu').collapsible();
 });

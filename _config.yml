@@ -6,7 +6,7 @@ kramdown:
 markdown:
   kramdown
 
-baseurl: /grpc.github.io
+baseurl:
 
 githuburl: https://github.com/grpc/grpc.github.io/
 
