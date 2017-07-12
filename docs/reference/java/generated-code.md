@@ -46,7 +46,7 @@ unary, server-streaming, client-streaming, and bidirectional-streaming.
 
 The service stub signature for a unary RPC method `unaryExample`:
 
-```
+```java
 public void unaryExample(
     RequestType request,
     StreamObserver<ResponseType> responseObserver)
@@ -57,7 +57,7 @@ public void unaryExample(
 The service stub signature for a server-streaming RPC method
 `serverStreamingExample`:
 
-```
+```java
 public void serverStreamingExample(
     RequestType request,
     StreamObserver<ResponseType> responseObserver)
@@ -73,7 +73,7 @@ response)`.
 The service stub signature for a client-streaming RPC method
 `clientStreamingExample`:
 
-```
+```java
 public StreamObserver<RequestType> clientStreamingExample(
     StreamObserver<ResponseType> responseObserver)
 ```
@@ -83,7 +83,7 @@ public StreamObserver<RequestType> clientStreamingExample(
 The service stub signature for a bidirectional-streaming RPC method
 `bidirectionalStreamingExample`:
 
-```
+```java
 public StreamObserver<RequestType> bidirectionalStreamingExample(
     StreamObserver<ResponseType> responseObserver)
 ```
@@ -119,7 +119,7 @@ channel)` static method.
 
 The aynschronous stub signature for a unary RPC method `unaryExample`:
 
-```
+```java
 public void unaryExample(
     RequestType request,
     StreamObserver<ResponseType> responseObserver)
@@ -130,7 +130,7 @@ public void unaryExample(
 The aynschronous stub signature for a server-streaming RPC method
 `serverStreamingExample`:
 
-```
+```java
 public void serverStreamingExample(
     RequestType request,
     StreamObserver<ResponseType> responseObserver)
@@ -141,7 +141,7 @@ public void serverStreamingExample(
 The aynschronous stub signature for a client-streaming RPC method
 `clientStreamingExample`:
 
-```
+```java
 public StreamObserver<RequestType> clientStreamingExample(
     StreamObserver<ResponseType> responseObserver)
 ```
@@ -151,7 +151,7 @@ public StreamObserver<RequestType> clientStreamingExample(
 The aynschronous stub signature for a bidirectional-streaming RPC method
 `bidirectionalStreamingExample`:
 
-```
+```java
 public StreamObserver<RequestType> bidirectionalStreamingExample(
     StreamObserver<ResponseType> responseObserver)
 ```
@@ -172,7 +172,7 @@ A new blocking stub is instantiated via the
 
 The blocking stub signature for a unary RPC method `unaryExample`:
 
-```
+```java
 public ResponseType unaryExample(RequestType request)
 ```
 
@@ -181,7 +181,7 @@ public ResponseType unaryExample(RequestType request)
 The blocking stub signature for a server-streaming RPC method
 `serverStreamingExample`:
 
-```
+```java
 public Iterator<ResponseType> serverStreamingExample(RequestType request)
 ```
 
@@ -201,7 +201,7 @@ channel)` static method.
 
 The future stub signature for a unary RPC method `unaryExample`:
 
-```
+```java
 public ListenableFuture<ResponseType> unaryExample(RequestType request)
 ```
 
