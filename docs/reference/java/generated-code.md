@@ -17,7 +17,7 @@ option.
 For example, if `ServiceName` is defined in a .proto file containing the
 following:
 
-```
+```protobuf
 package grpcexample;
 
 option java_package = "io.grpc.examples";
