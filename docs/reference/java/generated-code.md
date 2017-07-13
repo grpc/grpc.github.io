@@ -209,13 +209,12 @@ public ListenableFuture<ResponseType> unaryExample(RequestType request)
 
 Typically the build system handles creation of the gRPC generated code.
 
-For protobuf-based codegen, you can put your proto files in the `src/main/proto`
+For protobuf-based codegen, you can put your `.proto` files in the `src/main/proto`
 and `src/test/proto` directories along with an appropriate plugin.
 
-For protobuf-based codegen integrated with the Maven build system, you can use
-[protobuf-maven-plugin][] (Eclipse and NetBeans users should also look at
-`os-maven-plugin`'s
-[IDE documentation](https://github.com/trustin/os-maven-plugin#issues-with-eclipse-m2e-or-other-ides)):
+A typical [protobuf-maven-plugin][] configuration for generating gRPC and Protocol
+Buffers code would look like the following:
+
 ```xml
 <build>
   <extensions>
@@ -248,10 +247,13 @@ For protobuf-based codegen integrated with the Maven build system, you can use
 </build>
 ```
 
+Eclipse and NetBeans users should also look at `os-maven-plugin`'s
+[IDE documentation](https://github.com/trustin/os-maven-plugin#issues-with-eclipse-m2e-or-other-ides).
+
 [protobuf-maven-plugin]: https://www.xolstice.org/protobuf-maven-plugin/
 
-For protobuf-based codegen integrated with the Gradle build system, you can use
-[protobuf-gradle-plugin][]:
+A typical [protobuf-gradle-plugin][] configuration would look like the following:
+
 ```gradle
 apply plugin: 'java'
 apply plugin: 'com.google.protobuf'
@@ -286,9 +288,9 @@ protobuf {
 
 [protobuf-gradle-plugin]: https://github.com/google/protobuf-gradle-plugin
 
-Bazel users can use the
+Bazel developers can use the
 [`java_grpc_library`](https://github.com/grpc/grpc-java/blob/master/java_grpc_library.bzl)
-bazel rule, as follows:
+rule, typically as follows:
 
 ```
 load("@grpc_java//:java_grpc_library.bzl", "java_grpc_library")
@@ -309,6 +311,9 @@ java_grpc_library(
     deps = [":helloworld_java_proto"],
 )
 ```
+
+Android developers please see https://grpc.io/docs/tutorials/basic/android.html#generating-client-code
+for reference.
 
 If you wish to invoke the protobuf plugin for gRPC Java directly,
 the command-line syntax is as follows:
