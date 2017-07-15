@@ -210,7 +210,7 @@ Let's take a closer look at how it works.
 ### Implementing RouteGuide
 
 As you can see, our server has a `RouteGuideService` class that extends the
-generated `RouteGuideGrpc.RoutGuideImplBase` abstract class:
+generated `RouteGuideGrpc.RouteGuideImplBase` abstract class:
 
 ```java
 private static class RouteGuideService extends RouteGuideGrpc.RouteGuideImplBase {
