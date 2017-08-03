@@ -1,6 +1,6 @@
 # gRPC-Go performance improvements
 
-Recently we've been working on improving gRPC-Go performance.This includes improving network utilization, optimizing CPU usage and memory allocations. After several optimizations and new features we've been able to improve quite significantly, especially on high-latency networks. So much so that out-of-box our performance is as good as Go's native HTTP library.
+For past few months we've been working on improving gRPC-Go performance.This includes improving network utilization, optimizing CPU usage and memory allocations. Most of our recent effort has been focused around revamping gRPC-go flow control. After several optimizations and new features we've been able to improve quite significantly, especially on high-latency networks. We expect users that are working with high-latency networks and large messages to see an order of magnitude performance gain. 
 Please refer to some benchmark results at the end.
 
 This blog is a summary of all that we have done so far (in chronological order) to improve performance and our near-future plans.
@@ -12,7 +12,7 @@ This blog is a summary of all that we have done so far (in chronological order) 
 
 [Code link](https://github.com/grpc/grpc-go/pull/1248)
 
-This is an optimization used by gRPC-C to achieve performance benefits for large messages. The idea is that when there's an active read by the application on the receive side, we can effectively bypass stream-level flow control to request the whole message. This proves to be very helpful when the message is big. Since the application is already committed to reading and has allocated enough memory for it, it makes sense that we send a pro-active large window update (if necessary) to get the whole message rather than receiving it in chunks and sending window updates when we run low on window.
+This is an optimization used by gRPC-C to achieve performance benefits for large messages. The idea is that when there's an active read by the application on the receive side, we can effectively bypass stream-level flow control to request the whole message. This proves to be very helpful when the message is big. Since the application is already committed to reading and has allocated enough memory for it, it makes sense that we send a proactive large window update (if necessary) to get the whole message rather than receiving it in chunks and sending window updates when we run low on window.
 
 This optimization alone provided a 10x improvement for large messages on high-latency networks.
 
