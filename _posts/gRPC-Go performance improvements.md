@@ -27,7 +27,7 @@ However, this begs at least two questions:
 
 1. Won't a client be able to send as much data as it wants to the server by creating new streams when one runs out?
 
-2. Why even have connection-level flow control if the stream-level flow control is enough.
+2. Why even have connection-level flow control if the stream-level flow control is enough?
 
 The answer to the first question is short and simple: no. A server has an option to limit the number of streams that it intends to serve concurrently. Therefore, although at first it may seem like a problem, it really is not.
 
