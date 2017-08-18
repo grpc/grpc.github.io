@@ -16,10 +16,11 @@ within many teams at Google, and outside (eg: Facebook, Netflix).
 
 <!--more-->
 
-Flatbuffers enables maximum throughput by directly using gRPC's slice buffers with zero-copy. An incoming rpc may be processed directly from gRPCs internal buffers, and you constructing new message will write directly to internal buffers without intermediate steps.
+Flatbuffers enables maximum throughput by directly using gRPC's slice buffers with zero-copy<sup>1</sup> for the common use cases. An incoming rpc may be processed directly from gRPCs internal buffers, and you constructing new message will write directly to internal buffers without intermediate steps.
 
 So far, this is supported in the C++ implementation of FlatBuffers. There is also an implementation in Go, which is not entirely zero copy, but still very low on allocation cost (see below). Other languages are in the works.
 
+<sup>1<sup> Advanced use cases, such as resizing, will result in copying, zero-copy here refers to the general case.  
 
 ### Example Usage
 
@@ -55,7 +56,7 @@ Unlike protocol buffers, where these types represent a tree of C++ objects, here
 
 ```
 auto request = request_msg->GetRoot();
-auto = request->name()->str();
+auto name = request->name()->str();
 ```
 
 Building a response is equally simple
