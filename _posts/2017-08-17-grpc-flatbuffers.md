@@ -20,7 +20,7 @@ Flatbuffers enables maximum throughput by directly using gRPC's slice buffers wi
 
 So far, this is supported in the C++ implementation of FlatBuffers. There is also an implementation in Go, which is not entirely zero copy, but still very low on allocation cost (see below). Other languages are in the works.
 
-<sup>1<sup> Advanced use cases, such as resizing, will result in copying, zero-copy here refers to the general case.  
+<sup>1</sup>Advanced use cases, such as resizing, will result in copying, zero-copy here refers to the general case.  
 
 ### Example Usage
 
