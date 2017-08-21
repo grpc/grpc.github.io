@@ -9,6 +9,8 @@ company-link: https://www.indeed.com
 
 **Next Community Meeting:** Thursday, August 31, 2017 11am Pacific Time (US and Canada)
 
+<!--more-->
+
 ## General Announcements
 
 Call for Papers: CloudNativeCon
