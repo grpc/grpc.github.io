@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Announcing out of the box support for gRPC in the Flatbuffers serializaton library.
+title: Announcing out of the box support for gRPC in the Flatbuffers serialization library.
 published: true
 permalink: blog/flatbuffers
 author: Wouter van Oortmerssen
