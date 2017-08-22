@@ -12,7 +12,7 @@ Benchmark results at the end.
 
 This blog summarizes the work we have done so far (in chronological order) to improve performance and lays out our near-future plans.
 
-<!-- more -->
+<!--more-->
 
 ## Recently Implemented Optimizations
 
