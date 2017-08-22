@@ -12,6 +12,8 @@ githuburl: https://github.com/grpc/grpc.github.io/
 
 sass:
   style: compressed
+
+plugins: [jekyll-paginate]
   
 paginate: 5
 
