@@ -7,7 +7,7 @@ company: Google
 company-link: google.com
 --- 
 
-For past few months we've been working on improving gRPC-Go performance. This includes improving network utilization, optimizing CPU usage and memory allocations. Most of our recent effort has been focused around revamping gRPC-go flow control. After several optimizations and new features we've been able to improve quite significantly, especially on high-latency networks. We expect users that are working with high-latency networks and large messages to see an order of magnitude performance gain. 
+For past few months we've been working on improving gRPC-Go performance. This includes improving network utilization, optimizing CPU usage and memory allocations. Most of our recent effort has been focused around revamping gRPC-Go flow control. After several optimizations and new features we've been able to improve quite significantly, especially on high-latency networks. We expect users that are working with high-latency networks and large messages to see an order of magnitude performance gain. 
 Benchmark results at the end.
 
 This blog summarizes the work we have done so far (in chronological order) to improve performance and lays out our near-future plans.
