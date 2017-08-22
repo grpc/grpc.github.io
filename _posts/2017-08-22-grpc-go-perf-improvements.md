@@ -120,6 +120,7 @@ For every data frame read from the wire a new memory allocation takes place. The
   * [Code link](https://github.com/grpc/grpc-go/compare/master...MakMukhi:grpc_vs_http)
   
   ##### No Latency Network
+
   | GRPC | HTTP 2.0 | HTTP 1.1 |
   | --------------|:-------------:|-----------:| 
   |5.097809ms|16.107461ms|18.298959ms |  
@@ -134,6 +135,7 @@ For every data frame read from the wire a new memory allocation takes place. The
   |3.481094ms|4.621215ms|7.001607ms
   
   ##### Network with RTT of 16ms
+
   | GRPC | HTTP 2.0 | HTTP 1.1 |
   | --------------|:-------------:|-----------:| 
   |118.837625ms|84.453913ms|58.858109ms
@@ -148,6 +150,7 @@ For every data frame read from the wire a new memory allocation takes place. The
   |20.452023ms|20.781208ms|20.278481ms
   
   ##### Network with RTT of 64ms
+
   | GRPC | HTTP 2.0 | HTTP 1.1 |
   | --------------|:-------------:|-----------:|
   |455.072669ms|275.290241ms|208.826314ms
