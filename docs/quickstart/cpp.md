@@ -201,7 +201,7 @@ class GreeterClient {
     HelloReply reply;
     ClientContext context;
 
-    // Here we can the stub's newly available method we just added.
+    // Here we call the stub's newly available method we just added.
     Status status = stub_->SayHelloAgain(&context, request, &reply);
     if (status.ok()) {
       return reply.message();
