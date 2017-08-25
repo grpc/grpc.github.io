@@ -174,7 +174,7 @@ public void greet(String name) {
 
 ### Run!
 
-Just like we did before, from the `examples` directory:
+Just like we did before, from the `examples` directory (remember to delete the build directory):
 
 1. Compile the client and server
 
