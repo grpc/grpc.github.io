@@ -30,7 +30,7 @@ Look for the release in your corresponding language.
 
 ## Platform Updates
 
-gRPC RPM Now Available for Fedora Linux (26 and up).
+gRPC RPM now available for Fedora Linux (26 and up).
 
 ## Language Updates
 
