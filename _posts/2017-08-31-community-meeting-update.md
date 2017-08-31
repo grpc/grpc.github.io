@@ -14,7 +14,7 @@ company-link: https://www.indeed.com
 ## General Announcements
 
 Mark Roth gave a deep dive into service configuration.
-The goal is to allow service owners to specify default parameters for their service.
+The goal of service configuration is to allow service owners to specify default parameters for their service.
 These parameters are resolved during name resolution.
 A service configuration can contain the load balancer policy and a list of method configurations.
 You can provide a wildcard configuration that applies to all methods of the given service.
