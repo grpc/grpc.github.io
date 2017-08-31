@@ -17,7 +17,7 @@ Mark Roth gave a deep dive into service configuration.
 The goal is to allow service owners to specify default parameters for their service.
 These parameters are resolved during name resolution.
 A service configuration can contain the load balancer policy and a list of method configurations.
-You can provide a wildcard configuration which will apply to all methods of the given service.
+You can provide a wildcard configuration that applies to all methods of the given service.
 If your method needs to be tuned, you can override the global with a method level configuration.
 In these configurations, you can specify the request timeout, maximum request size, and maximum response size.
 For more information about service configuration, see the [gRFC document](https://github.com/grpc/proposal/blob/master/A2-service-configs-in-dns.md).
