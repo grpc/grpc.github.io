@@ -13,7 +13,7 @@ company-link: https://www.indeed.com
 
 ## General Announcements
 
-Mark Roth gave a deep dive into service configuration.
+Mark Roth gave a deep dive into [service configuration](https://github.com/grpc/grpc/blob/master/doc/service_config.md).
 The goal of service configuration is to allow service owners to specify default parameters for their service.
 These parameters are resolved during name resolution.
 A service configuration can contain the load balancer policy and a list of method configurations.
