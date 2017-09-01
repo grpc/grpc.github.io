@@ -43,7 +43,7 @@ Release notes available [here](https://github.com/grpc/grpc-go/releases/tag/v1.6
 Java's 1.6.0 and 1.6.1 is available.
 The code in these two versions are identical.
 1.6.0 tag was deleted due to an invalid tag.
-Release notes will be available today [here](https://github.com/grpc/grpc-java/releases/tag/v1.6.1).
+Release notes available [here](https://github.com/grpc/grpc-java/releases/tag/v1.6.1).
 
 ## Resources
 
