@@ -163,7 +163,7 @@ $ pip install grpcio-tools
 Use the following command to generate the Python code:
 
 ```
-$ python -m grpc_tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/route_guide.proto
+$ python -m grpc_tools.protoc -I../../protos --python_out=. --grpc_python_out=grpc_2_0:. ../../protos/route_guide.proto
 ```
 
 Note that as we've already provided a version of the generated code in the
