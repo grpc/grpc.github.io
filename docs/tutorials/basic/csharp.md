@@ -15,14 +15,11 @@ By walking through this example you'll learn how to:
 - Use the C# gRPC API to write a simple client and server for your service.
 
 It assumes that you have read the [Overview](/docs/index.html) and are familiar
-with [protocol buffers]
-(https://developers.google.com/protocol-buffers/docs/overview). Note that the
+with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the
 example in this tutorial uses the proto3 version of the protocol buffers
 language, which is currently in beta release: you can find out more in the
-[proto3 language
-guide](https://developers.google.com/protocol-buffers/docs/proto3) and [C#
-generated code
-reference](https://developers.google.com/protocol-buffers/docs/reference/csharp-generated).
+[proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and 
+[C# generated code reference](https://developers.google.com/protocol-buffers/docs/reference/csharp-generated).
 For information about the new version in the protocol buffers Github repository,
 see the [release notes](https://github.com/google/protobuf/releases).
 
@@ -67,9 +64,8 @@ instructions](https://github.com/grpc/grpc/tree/
 
 Our first step (as you'll know from the [Overview](/docs/index.html)) is to
 define the gRPC *service* and the method *request* and *response* types using
-[protocol buffers]
-(https://developers.google.com/protocol-buffers/docs/overview). You can see the
-complete .proto file in
+[protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). 
+You can see the complete .proto file in
 [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/
 {{ site.data.config.grpc_release_branch }}/examples/protos/route_guide.proto).
 
