@@ -30,7 +30,7 @@ For installation instructions, follow this guide: [Getting Started - The Go Prog
 Use the following command to install gRPC.
 
 ```sh
-$ go get google.golang.org/grpc
+$ go get -u google.golang.org/grpc
 ```
 
 #### Install Protocol Buffers v3
