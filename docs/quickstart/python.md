@@ -14,7 +14,9 @@ working example.</p>
 
 ### Prerequisites
 
-Ensure you have `pip` version 8 or higher:
+gRPC Python is supported for use with Python 2.7 or Python 3.4 or higher.
+
+Ensure you have `pip` version 9.0.1 or higher:
 
 ```sh
 $ python -m pip install --upgrade pip
