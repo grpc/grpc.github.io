@@ -193,6 +193,6 @@ Just like we did before, from the `examples/ruby` directory:
    and [gRPC Concepts](../guides/concepts.html)
  - Work through a more detailed tutorial in [gRPC Basics: Ruby][]
  - Explore the gRPC Ruby core API in its [reference
-   documentation](https://www.rubydoc.info/gems/grpc)
+   documentation](http://www.rubydoc.info/gems/grpc)
 
 [gRPC Basics: Ruby]:../tutorials/basic/ruby.html
