@@ -169,7 +169,7 @@ service definition.
 From the `examples/python/helloworld` directory, run:
 
 ```sh
-$ python -m grpc_tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/helloworld.proto
+$ python -m grpc_tools.protoc -I../../protos --python_out=. --grpc_python_out=grpc_2_0:. ../../protos/helloworld.proto
 ```
 
 This regenerates `helloworld_pb2.py` which contains our generated request and
