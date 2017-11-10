@@ -43,7 +43,7 @@ message HelloResponse {
 ```
 
 
-gRPC lets you define four kinds of service method:
+gRPC lets you define four kinds of service methods:
 
 - Unary RPCs where the client sends a single request to the server and gets a
   single response back, just like a normal function call.
@@ -65,7 +65,7 @@ rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse){
 - Client streaming RPCs where the client writes a sequence of messages and sends
   them to the server, again using a provided stream. Once the client has
   finished writing the messages, it waits for the server to read them and return
-  its response.
+  a single response.
 
 ```
 rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {
