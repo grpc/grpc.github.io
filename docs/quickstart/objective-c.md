@@ -111,7 +111,7 @@ by pressing the Run button on the top left corner of Xcode window. You can check
 the calling code in `main.m` and see the results in Xcode's console.
 
 The code sends a `HLWHelloRequest` containing the string "Objective-C" to a
-local server. The server responds with a `HLWHelloResponse`, which contains a
+local server. The server responds with a `HLWHelloReply`, which contains a
 string "Hello Objective-C" that is then output to the console.
 
 Congratulations! You've just run a client-server application with gRPC.
@@ -125,7 +125,7 @@ file in Protocol Buffers
 [website](https://developers.google.com/protocol-buffers/). For now all you 
 need to know is that both the server and the client "stub" have a `SayHello`
 RPC method that takes a `HelloRequest` parameter from the client and returns a
-`HelloResponse` from the server, and that this method is defined like this:
+`HelloReply` from the server, and that this method is defined like this:
 
 ```
 // The greeting service definition.
