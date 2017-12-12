@@ -124,7 +124,7 @@ parts of our example application.
 
 ### Update the server
 
-Check out the Java quickstart [here](/docs/quickstart/java.md#update-the-server).
+Check out the Java quickstart [here](/docs/quickstart/java.html#update-the-server).
 
 ### Update the client
 
