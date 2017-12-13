@@ -12,120 +12,249 @@ working example.</p>
 
 ### Prerequisites
 
-* `php`: version 5.5 or higher, 7.0 or higher
-* `pecl`: version 1.9 or higher (on Linux)
+* `php` 5.5 or above, 7.0 or above
+* `pecl`
 * `composer`
+* `phpunit` (optional)
 
-## Install on Mac OS X
+**Install PHP and PECL on Ubuntu/Debian:**
+
+For PHP5:
+
+```sh
+$ sudo apt-get install php5 php5-dev php-pear phpunit
+```
+
+For PHP7:
+
+```sh
+$ sudo apt-get install php7.0 php7.0-dev php-pear phpunit
+```
+or
+```sh
+$ sudo apt-get install php php-dev php-pear phpunit
+```
+
+**Install PHP and PECL on CentOS/RHEL 7:**
+
+```sh
+$ sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+$ sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+$ sudo yum install php56w php56w-devel php-pear phpunit gcc zlib-devel
+```
+
+**Install PHP and PECL on Mac:**
 
 ```sh
 $ brew install homebrew/php/php56-grpc
+$ curl -O http://pear.php.net/go-pear.phar
+$ sudo php -d detect_unicode=0 go-pear.phar
 ```
 
-For PHP 7.0/7.1, please install the `php70-grpc` or `php71-grpc` formula, respectively.
-
-
-## Install on Linux
-
-### Install PHP and PECL on Debian/Ubuntu
-
-PHP 5.5 or above
+**Install Composer (Linux or Mac):**
 
 ```sh
-$ [sudo] apt-get install php5 php5-dev php-pear zlib1g-dev
+$ curl -sS https://getcomposer.org/installer | php
+$ sudo mv composer.phar /usr/local/bin/composer
 ```
 
-PHP 7.0 or above
+**Install PHPUnit (Linux or Mac):**
 
 ```sh
-$ [sudo] apt-get install php7.0 php7.0-dev php-pear zlib1g-dev
+$ wget https://phar.phpunit.de/phpunit-old.phar
+$ chmod +x phpunit-old.phar
+$ sudo mv phpunit-old.phar /usr/bin/phpunit
 ```
 
-### Install PHP and PECL on CentOS/RHEL 7
+## Install the gRPC PHP extension
+
+There are two ways to install gRPC PHP extension.
+* `pecl`
+* `build from source`
+
+### Using PECL
 
 ```sh
-$ [sudo] rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-$ [sudo] rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
-$ [sudo] yum install php56w php56w-devel php-pear phpunit gcc zlib-devel
+sudo pecl install grpc
 ```
 
-### Install gRPC PHP Extension
-
-Install gRPC extension:
+or specific version
 
 ```sh
-$ [sudo] pecl install grpc
+sudo pecl install grpc-1.7.0
 ```
 
-After installing the gRPC extension, make sure you add this line to your
-`php.ini` file (e.g. `/etc/php5/cli/php.ini`, `/etc/php5/apache2/php.ini`,
-or `/usr/local/etc/php/5.6/php.ini`), depending on where your PHP installation
-is.
+Note: for users on CentOS/RHEL 6, unfortunately this step won’t work. 
+Please follow the instructions below to compile the PECL extension from source.
+
+#### Install on Windows
+
+You can download the pre-compiled gRPC extension from the PECL
+[website](https://pecl.php.net/package/grpc)
+
+### Build from Source with gRPC C core library
+
+Clone this repository
+
+```sh
+$ git clone -b $(curl -L https://grpc.io/release) https://github.com/grpc/grpc
+```
+
+#### Build and install the gRPC C core library
+
+```sh
+$ cd grpc
+$ git submodule update --init
+$ make
+$ sudo make install
+```
+
+#### Build and install gRPC PHP extension
+
+Compile the gRPC PHP extension
+
+```sh
+$ cd grpc/src/php/ext/grpc
+$ phpize
+$ ./configure
+$ make
+$ sudo make install
+```
+
+This will compile and install the gRPC PHP extension into the 
+standard PHP extension directory. You should be able to run 
+the [unit tests](#unit-tests), with the PHP extension installed.
+
+
+### Update php.ini
+
+After installing the gRPC extension, make sure you add this line 
+to your `php.ini` file, (e.g. `/etc/php5/cli/php.ini`, 
+`/etc/php5/apache2/php.ini`, or `/usr/local/etc/php/5.6/php.ini`), 
+depending on where your PHP installation is.
 
 ```sh
 extension=grpc.so
 ```
 
-Note: for users on CentOS/RHEL 6, unfortunately this step won't work. Please
-follow the instructions [here](https://github.com/grpc/grpc/tree/master/src/php#build-from-source)
-to compile the PECL extension from source.
+**Add the gRPC PHP library as a Composer dependency**
 
+You need to add this to your project's `composer.json` file.
 
-### Install on Windows
+```
+  "require": {
+    "grpc/grpc": "v1.7.0"
+  }
+```
 
-You can download the pre-compiled gRPC extension from the PECL
-[website](https://pecl.php.net/package/grpc)
+To run tests with generated stub code from `.proto` files, you will also 
+need the `composer` and `protoc` binaries. You can find out how to get these below.
 
 
 ## Install other prerequisites for both Mac OS X and Linux
 
+* `protoc: protobuf compiler`
+* `protobuf.so: protobuf runtime library`
+* `grpc_php_plugin: Generates PHP gRPC service interface out of Protobuf IDL`
 
-### Install Composer
+### Install Protobuf compiler
+
+If you don't have it already, you need to install the protobuf compiler
+`protoc`, version 3.4.0+ (the newer the better) for the current gRPC version.
+If you installed already, make the protobuf version is compatible to the 
+grpc version you installed. If you build grpc.so from the souce, you can check
+the version of grpc inside package.xml file.
+
+The compatibility between the grpc and protobuf version is listed as table below:
+
+grpc | protobuf
+--- | --- 
+v1.0.0 | 3.0.0(GA)
+v1.0.1 | 3.0.2
+v1.1.0 | 3.1.0 
+v1.2.0 | 3.2.0 
+v1.2.0 | 3.2.0 
+v1.3.4 | 3.3.0 
+v1.3.5 | 3.2.0
+v1.4.0 | 3.3.0 
+v1.6.0 | 3.4.0
+
+If `protoc` hasn't been installed, you can download the `protoc` binaries from
+[the protocol buffers Github repository](https://github.com/google/protobuf/releases).
+Then unzip this file and Update the environment variable `PATH` to include the path to 
+the protoc binary file./protobuf/releases).
+Then unzip this file and Update the environment variable `PATH` to include the path to 
+the protoc binary file.
+
+If you really must compile `protoc` from source, you can run the following
+commands, but this is risky because there is no easy way to uninstall /
+upgrade to a newer release.
+
 ```sh
-$ curl -sS https://getcomposer.org/installer | php
-$ [sudo] mv composer.phar /usr/local/bin/composer
+$ cd grpc/third_party/protobuf
+$ ./autogen.sh && ./configure && make
+$ sudo make install
 ```
 
+### Protobuf Runtime library
 
-### Install Protobuf Runtime Library
+There are two protobuf runtime libraries to choose from. They are identical
+in terms of APIs offered. The C implementation provides better performance, 
+while the native implementation is easier to install. Make sure the installed 
+protobuf version works with grpc version.
 
-There are two protobuf runtime libraries to choose from. They are identical in terms of APIs offered. The C implementation provides better performance, while the native implementation is easier to install.
+#### 1. C implementation (for better performance)
 
-To install the PECL extension
-```sh
-$ [sudo] pecl install protobuf
+``` sh
+$ sudo pecl install protobuf
+```
+or specific version
+
+``` sh
+$ sudo pecl install protobuf-3.4.0
 ```
 
-To install the Composer package
+After protobuf extension is installed, Update php.ini by adding this line 
+to your `php.ini` file, (e.g. `/etc/php5/cli/php.ini`, 
+`/etc/php5/apache2/php.ini`, or `/usr/local/etc/php/5.6/php.ini`), 
+depending on where your PHP installation is.
+
 ```sh
-$ composer require "google/protobuf:^v3.3.0"
+extension=protobuf.so
 ```
 
+#### 2. PHP implementation (for easier installation)
 
-### Install Protobuf Plugin
+Add this to your `composer.json` file:
 
-You will need to install the protocol buffer compiler `protoc` and the special
-plugin for generating server and client code from `.proto` service definitions.
-For the first part of our quickstart example, we've already generated the server
-and client stubs from
-[helloworld.proto](https://github.com/grpc/grpc/tree/{{site.data.config.grpc_release_branch}}/examples/protos/helloworld.proto),
-but you'll need the tools for the rest of our quickstart, as well as later
-tutorials and your own projects.
+```
+  "require": {
+    "google/protobuf": "^v3.3.0"
+  }
+```
 
-To install `protoc`:
+### PHP Protoc Plugin
 
-The simplest way to do this is to download pre-compiled binaries for your platform(`protoc-<version>-<platform>.zip`) from here: https://github.com/google/protobuf/releases
+You need the gRPC PHP protoc plugin to generate the client stub classes.
+It can generate server and client code from .proto service definitions.
 
-  * Unzip this file.
-  * Update the environment variable `PATH` to include the path to the protoc binary file.
+It should already been compiled when you run `make` from the root directory
+of this repo. The plugin can be found in the `bins/opt` directory. We are
+planning to provide a better way to download and install the plugin
+in the future.
 
-To compile the gRPC PHP Protoc Plugin:
+You can also just build the gRPC PHP protoc plugin by running:
 
 ```sh
-$ git clone --recursive -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
+$ git clone -b $(curl -L https://grpc.io/release) https://github.com/grpc/grpc
 $ cd grpc
+$ git submodule update --init
 $ make grpc_php_plugin
 ```
+
+Plugin may use the new feature of the new protobuf version, thus please also
+make sure that the protobuf version installed is compatible with the grpc version 
+you build this plugin.
 
 ## Download the example
 
@@ -141,8 +270,11 @@ e.g. [Node.js](node-quickstart.md).
 ```sh
 $ # Clone the repository to get the example code:
 $ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
+$ # Build grpc_php_plugin to generate proto files if not build before
+$ cd grpc && git submodule update --init && make grpc_php_plugin
 $ # Navigate to the "hello, world" PHP example:
-$ cd grpc/examples/php
+$ cd examples/php
+$ ./greeter_proto_gen.sh
 $ composer install
 ```
 
@@ -236,6 +368,13 @@ $ protoc --proto_path=examples/protos \
   ./examples/protos/helloworld.proto
 ```
 
+or running the helper script under the `grpc/example/php` directory if you build
+grpc-php-plugin by source:
+
+```sh
+$ ./greeter_proto_gen.sh
+```
+
 This regenerates the protobuf files, which contain our generated client classes,
 as well as classes for populating, serializing, and retrieving our request and
 response types.
@@ -257,6 +396,14 @@ function sayHello(call, callback) {
 
 function sayHelloAgain(call, callback) {
   callback(null, {message: 'Hello again, ' + call.request.name});
+}
+
+function main() {
+  var server = new grpc.Server();
+  server.addProtoService(hello_proto.Greeter.service,
+                         {sayHello: sayHello, sayHelloAgain: sayHelloAgain});
+  server.bind('0.0.0.0:50051', grpc.ServerCredentials.createInsecure());
+  server.start();
 }
 ...
 ```
