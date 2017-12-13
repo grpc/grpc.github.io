@@ -102,7 +102,7 @@ in development. You can find out more in the [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3) and the
 [reference documentation](https://developers.google.com/protocol-buffers/docs/reference/overview)
 available for each language. The reference documentation also includes a
-[formal spec](https://developers.google.com/protocol-buffers/docs/reference/proto3-spec)
+[formal specification](https://developers.google.com/protocol-buffers/docs/reference/proto3-spec)
 for the `.proto` file format.
 
 In general, while you can use proto2 (the current default protocol buffers
