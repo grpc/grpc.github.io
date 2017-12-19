@@ -16,33 +16,28 @@ working example.</p>
 
 #### Install gRPC
 
-To install gRPC on your system, follow the instructions to build from source
-[here](https://github.com/grpc/grpc/blob/master/INSTALL.md).
+To install gRPC on your system, follow the [instructions to build from source]
+(https://github.com/grpc/grpc/blob/master/INSTALL.md).
+
+To run the example code, please ensure `pkg-config` is installed on your
+machine before you build and install gRPC in the previous step, since the
+example `Makefile`s try to look up the installed gRPC path using `pkg-config`.
+On Debian-based systems like Ubuntu, this can usually be done via
+`sudo apt-get install pkg-config`.
 
 #### Install Protocol Buffers v3
 
-While not mandatory, gRPC usually leverages Protocol Buffers v3 for service
-definitions and data serialization. If you don't already have it installed on
+While not mandatory to use gRPC, gRPC applications usually leverage Protocol
+Buffers v3 for service definitions and data serialization, and our example code
+uses Protocol Buffers as well as gRPC. If you don't already have it installed on
 your system, you can install the version cloned alongside gRPC. First ensure
-that you are running these commands from within your cloned gRPC repository
-from the previous step.
+that you are running these commands in the gRPC tree you just built in the from
+the previous step.
 
 ```sh
-$ git submodule update --init
-$ cd grpc/third_party/protobuf
-$ ./autogen.sh
-$ ./configure
-$ make
-$ sudo make install
+$ cd third_party/protobuf
+$ make && sudo make install
 ```
-
-See [the official Protocol Buffers install
-guide](https://github.com/google/protobuf/blob/master/src/README.md) for
-details.
-
-Note that you also need `pkg-config` installed on your system. On Ubuntu/Debian
-systems, this can be done via `sudo apt-get install pkg-config`.
-
 
 ## Build the example
 
