@@ -13,6 +13,8 @@ Objective-C with a simple working example.</p>
 ## Before you begin
 
 ### System requirement
+The minimum deployment iOS version for gRPC is 7.0.
+
 OS X El Capitan (version 10.11) or above is required to build and run this
 Quickstart.
 
