@@ -67,6 +67,23 @@ L7](https://github.com/grpc/proposal/blob/master/L7-go-metadata-api.md)), and
 also for designing the new resolver/balancer API ([gRFC
 L9](https://github.com/grpc/proposal/pull/30)).
 
+## Regression Testing
+
+Every PR in our repo must pass our unit and end-to-end tests.  Our current test
+coverage is 85%.  Anytime a regression is identified, we add a test that covers
+the failing scenario, both to prove to ourselves that the problem is resolved by
+the fix, and to prevent it from reoccurring in the future.  This helps us
+improve our overall coverage numbers as well.  We also intend to re-enable
+coverage reporting for all PRs, but in a non-blocking fashion ([related
+issue](https://github.com/grpc/grpc-go/issues/1676)).
+
+In addition to testing for correctness, any PR that we suspect will impact
+performance is run though our benchmarks.  We have a set of benchmarks both in
+our [open source repo](https://github.com/grpc/grpc-go/tree/master/benchmark)
+and also within Google.  These comprise a variety of workloads that we believe
+are most important for our users, both streaming and unary, and some are
+specifically designed to measure our optimal QPS, throughput, or latency.
+
 ## Releases
 
 The GA release of gRPC-Go was made in conjunction with the other languages in
