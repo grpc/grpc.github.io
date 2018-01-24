@@ -45,10 +45,11 @@ headline: 'Frequently Asked Questions'
                     <li class="submenu">
                         <h6 class="arrow-r">Who’s using this and why?</h6>
                         <div class="submenu-content">
+                            <p> gRPC is a CNCF project.</p>
+
                             <p>Google has been using a lot of the underlying technologies and concepts in gRPC for a long time. The current implementation is being used in several of Google’s cloud products and Google externally facing APIs. It is also being used by <a href="https://corner.squareup.com/2015/02/grpc.html">Square</a>,  <a href="https://github.com/Netflix/ribbon">Netflix</a>, <a href="https://blog.gopheracademy.com/advent-2015/etcd-distributed-key-value-store-with-grpc-http2/">CoreOS</a>, <a href="https://blog.docker.com/2015/12/containerd-daemon-to-control-runc/">Docker</a>, <a href="https://github.com/cockroachdb/cockroach">Cockroachdb</a>, <a href="https://github.com/CiscoDevNet/grpc-getting-started">Cisco</a>, <a href="https://github.com/Juniper/open-nti">Juniper Networks</a> and many other organizations and individuals.</p>
                         </div>
                     </li>
-
 
                     <li class="submenu">
                         <h6 class="arrow-r">What programming languages are supported?</h6>
@@ -87,10 +88,27 @@ headline: 'Frequently Asked Questions'
                     <li class="submenu">
                         <h6 class="arrow-r">What is the roadmap?</h6>
                         <div class="submenu-content">
-                            <p>The roadmap is being tracked in GitHub <a target="_blank" href="{{ site.data.config.milestones_link }}">milestones</a>. Please refer to the respective milestones in the gRPC, gRPC-java and gRPC-go repositories under the GitHub gRPC org.</p>
+                            <p>The gRPC project has an RFC process, through which new features are designed and approved for implementation. They are tracked in <a target="_blank" href="https://github.com/grpc/proposal"> this repository</a>. </p>
                         </div>
                     </li>
-
+                    <li class="submenu">
+                        <h6 class="arrow-r">What is the latest gRPC Version?</h6>
+                        <div class="submenu-content">
+                            <p>The latest release branch is {{site.data.config.grpc_release_branch}}</p>
+                        </div>
+                    </li>
+                    <li class="submenu">
+                        <h6 class="arrow-r">How long are gRPC releases supported for?</h6>
+                        <div class="submenu-content">
+                            <p>The gRPC project does not do LTS releases. Given the rolling release model above, we support the current, latest release and the release prior to that. Support here means bug fixes and security fixes.</p>
+                        </div>
+                    </li>
+                    <li class="submenu">
+                        <h6 class="arrow-r">When do gRPC releases happen?</h6>
+                        <div class="submenu-content">
+                            <p>The gRPC project works in a model where the tip of the master branch is stable at all times. The project (across the various runtimes) targets to ship checkpoint releases every 6 weeks on a best effort basis. If for some reason, a release is skipped by a particular runtime, we may opt to skip that release altogether, and ship the next release, along with the other runtimes and catch up.</p>
+                        </div>
+                    </li>
                     <li class="submenu">
                         <h6 class="arrow-r">Can I use it in the browser?</h6>
                         <div class="submenu-content">
@@ -102,7 +120,7 @@ headline: 'Frequently Asked Questions'
                     <li class="submenu">
                         <h6 class="arrow-r">Can I use gRPC with my favorite data format (JSON, Protobuf, Thrift, XML) ?</h6>
                         <div class="submenu-content">
-                            <p>Yes. gRPC is designed to be extensible to support multiple content types. The initial release contains support for Protobuf and we welcome contributions to add support for others.</p>
+                            <p>Yes. gRPC is designed to be extensible to support multiple content types. The initial release contains support for Protobuf and with external support for other content types such as FlatBuffers and Thrift, at varying levels of maturity.</p>
                         </div>
                     </li>
 
