@@ -15,7 +15,7 @@ working example.</p>
 
 ### Prerequisites
 
- * `node`: version 1.1 or higher
+ * `node`: version 4.0.0 or higher
 
 ## Download the example
 

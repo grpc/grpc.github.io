@@ -100,9 +100,10 @@ as well as a Go language generator from the [golang/protobuf Github
 repo](https://github.com/golang/protobuf), with more languages
 in development. You can find out more in the [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3) and the
-reference documentation for each language (where available), and see the major
-differences from the current default version in the release notes. Even more
-proto3 documentation is coming soon.
+[reference documentation](https://developers.google.com/protocol-buffers/docs/reference/overview)
+available for each language. The reference documentation also includes a
+[formal specification](https://developers.google.com/protocol-buffers/docs/reference/proto3-spec)
+for the `.proto` file format.
 
 In general, while you can use proto2 (the current default protocol buffers
 version), we recommend that you use proto3 with gRPC as it lets you use the

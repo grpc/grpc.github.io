@@ -378,12 +378,12 @@ service. You can see our complete example client code in
 To call service methods, we first need to create a *stub*.
 
 First we need to create a gRPC *channel* for our stub, specifying the server
-address and port we want to connect to and any special channel arguments - in
-our case we'll use the default `ChannelArguments` and no SSL:
+address and port we want to connect to - in our case we'll use no SSL:
 
 ```cpp
-grpc::CreateChannel("localhost:50051", grpc::InsecureCredentials(), ChannelArguments());
+grpc::CreateChannel("localhost:50051", grpc::InsecureCredentials());
 ```
+Note: In order to set additional options for the *channeL*, use the `grpc::CreateCustomChannel()` api with any special channel arguments - `grpc::ChannelArguments`
 
 Now we can use the channel to create our stub using the `NewStub` method provided in the `RouteGuide` class we generated from our .proto.
 

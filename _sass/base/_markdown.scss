@@ -4,7 +4,7 @@
   // Text Blocks
   p {
     margin: 10px 0;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.5;
     @media (min-width: $tablet) {
       margin: 20px 0;
@@ -34,7 +34,7 @@
     list-style: initial;
     list-style-position: disc outside;
     font-size: 15px;
-    font-weight: 300;
+    font-weight: 400;
     margin-left: 1em;
     margin: 0 20px;
 
@@ -61,7 +61,7 @@
   h3 {
     color: $dark-gray;
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 1px;
     margin-bottom: 20px; 
     margin-top: 30px;
@@ -71,8 +71,8 @@
   h4 {
     margin: 30px 0 20px;
     font-size: 16px;
-    font-weight: 300;
-    color: $dark-gray;
+    font-weight: 450;
+    color: $black;
     
     // Text immediately following h4 should have same level of indention  
     + p {

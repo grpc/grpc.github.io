@@ -17,7 +17,7 @@ working example.</p>
 
 #### Go version
 
-gRPC works with Go 1.5 or higher.
+gRPC requires Go 1.6 or higher.
 
 ```sh
 $ go version

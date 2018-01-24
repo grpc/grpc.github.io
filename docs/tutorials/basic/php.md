@@ -51,10 +51,17 @@ command:
 $ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
 ```
 
-Then change your current directory to `examples/php/route_guide`:
+You need grpc-php-plugin to help you generate proto files. You can build it from source:
+
+```
+$ cd grpc && git submodule update --init && make grpc_php_plugin
+```
+
+Then change your current directory to `examples/php/route_guide` and generate proto files:
 
 ```
 $ cd examples/php/route_guide
+$ ./route_guide_proto_gen.sh
 ```
 
 Our example is a simple route mapping application that lets clients get
@@ -200,10 +207,18 @@ $ protoc --proto_path=examples/protos \
   ./examples/protos/route_guide.proto
 ```
 
+or running the helper script under the `grpc/example/php/route_guide` directory if you build
+grpc-php-plugin by source:
+
+```sh
+$ ./route_guide_proto_gen.sh
+```
+
 A number of files will be generated in the `examples/php/route_guide` directory.
 You do not need to modify those files.
 
-To load these generated files, add this section to your `composer.json` file
+To load these generated files, add this section to your `composer.json` file under
+`examples/php` directory
 
 ```json
   "autoload": {
