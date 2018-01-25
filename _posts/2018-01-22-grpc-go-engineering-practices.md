@@ -20,14 +20,15 @@ considerably better place than we were a year ago.
 
 ## Repo Health
 
-When I first joined the team, we had 45 open PRs, the oldest of which was over a
-year old at the time.  As a new team member and maintainer, the accumulation of
-stale PRs made it difficult to assess priorities and understand the state of
-things.  For our contributors, neglecting PRs was both disrespectful and an
-inconvenience when we started asking for rebases due to other commits.  To
-resolve this, we made a concerted effort to either merge or close all of those
-PRs, and we now hold weekly meetings to review the status of every active PR to
-prevent the situation from reoccurring.
+When I first joined the gRPC-Go team, they had been without their previous
+technical lead for a few months.  At that time, we had 45 open PRs, the oldest
+of which was over a year old at the time.  As a new team member and maintainer,
+the accumulation of stale PRs made it difficult to assess priorities and
+understand the state of things.  For our contributors, neglecting PRs was both
+disrespectful and an inconvenience when we started asking for rebases due to
+other commits.  To resolve this, we made a concerted effort to either merge or
+close all of those PRs, and we now hold weekly meetings to review the status of
+every active PR to prevent the situation from reoccurring.
 
 At the same time, we had 103 open issues, many of which were already fixed or
 outdated or untriaged.  Since then, we fixed or closed 85 of those and put in
