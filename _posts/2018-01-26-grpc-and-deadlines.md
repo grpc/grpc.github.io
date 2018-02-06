@@ -18,7 +18,7 @@ In general, when you don't set a deadline resources will be held for all in-flig
 
 To avoid this, services should specify the longest default deadline they technically support, and clients should wait until the response is no longer useful to them. For the service this can be as simple as providing a comment in the .proto file. For the client this involves setting useful deadlines.
 
-There is no single answer to "What is a good deadline/timeout value?". Your service might be as simple as the Greeter in our quick start guides, in which case 100 ms would be fine. Your service might be as complex as a globally-distributed and strongly consistent database. The deadline for a client query will be different from how long they should wait for you to drop their table.
+There is no single answer to "What is a good deadline/timeout value?". Your service might be as simple as the [Greeter](https://github.com/grpc/grpc/blob/master/examples/protos/helloworld.proto) in our quick start guides, in which case 100 ms would be fine. Your service might be as complex as a globally-distributed and strongly consistent database. The deadline for a client query will be different from how long they should wait for you to drop their table.
 
 So what do you need to consider to make an informed choice of deadline? Factors to take into account include the end to end latency of the whole system, which RPCs are serial, and which can be made in parallel. You should to be able to put numbers on it, even if it's a rough calculation. Engineers need to understand the service and then set a deliberate deadline for the RPCs between clients and servers.
 
@@ -28,30 +28,30 @@ In gRPC, both the client and server make their own independent and local determi
 
 As a client you should always set a deadline for how long you are willing to wait for a reply from the server. Here's an example using the greeting service from our [Quick Start Guides]({{ site.baseurl }}/docs/quickstart/):
 
-**C++**
+### C++
 
 
-```
-  ClientContext context;
-  time_point deadline = std::chrono::system_clock::now() + 
-      std::chrono::milliseconds(100);
-  context.set_deadline(deadline);
-```
-
-
-**GO LANG**
-
-
-```
-    clientDeadline := time.Now().Add(time.Duration(*deadlineMs) * time.Millisecond)
-    ctx, cancel := context.WithDeadline(ctx, clientDeadline)
+```cpp
+ClientContext context;
+time_point deadline = std::chrono::system_clock::now() + 
+    std::chrono::milliseconds(100);
+context.set_deadline(deadline);
 ```
 
 
-**JAVA**
+### Go
 
 
+```go
+clientDeadline := time.Now().Add(time.Duration(*deadlineMs) * time.Millisecond)
+ctx, cancel := context.WithDeadline(ctx, clientDeadline)
 ```
+
+
+### Java
+
+
+```java
 response = blockingStub.withDeadlineAfter(deadlineMs, TimeUnit.MILLISECONDS).sayHello(request);
 ```
 
@@ -63,29 +63,29 @@ This sets the deadline to 100ms from when the client RPC is set to when the resp
 
 On the server side, the server can query to see if a particular RPC is no longer wanted. Before a server starts work on a response it is very important to check if there is still a client waiting for it. This is especially important to do before starting expensive processing.
 
-**C++**
+### C++
 
 
-```
+```cpp
 if (context->IsCancelled()) {
   return Status(StatusCode::CANCELLED, "Deadline exceeded or Client cancelled, abandoning.");
 }
 ```
 
 
-**GO LANG**
+### Go
 
 
-```
+```go
 if ctx.Err() == context.Canceled {
 	return status.New(codepb.CANCELLED, "Client cancelled, abandoning.")
 ```
 
 
-**JAVA**
+### Java
 
 
-```
+```java
 if (Context.current().isCancelled()) {
   responseObserver.onError(Status.CANCELLED.withDescription("Cancelled by client").asRuntimeException());
   return;
@@ -100,24 +100,24 @@ Is it useful for a server to continue with the request, when you know your clien
 
 What if you set a deadline but a new release or server version causes a bad regression? The deadline could be too small, resulting in all your requests timing out with `DEADLINE_EXCEEDED`, or too large and your user tail latency is now massive. You can use a flag to set and adjust the deadline.
 
-**C++**
+### C++
 
 
-```
+```cpp
 #include <gflags/gflags.h>
 DEFINE_int32(deadline_ms, 20*1000, "Deadline in milliseconds.");
 
-  ClientContext context;
-  time_point deadline = std::chrono::system_clock::now() + 
-      std::chrono::milliseconds(FLAGS_deadline_ms);
-  context.set_deadline(deadline);
+ClientContext context;
+time_point deadline = std::chrono::system_clock::now() + 
+    std::chrono::milliseconds(FLAGS_deadline_ms);
+context.set_deadline(deadline);
 ```
 
 
-**GO LANG**
+### Go
 
 
-```
+```go
 var deadlineMs = flag.Int("deadline_ms", 20*1000, "Default deadline in milliseconds.")
 
 clientDeadline := time.Duration(*deadlineMs) * time.Millisecond
@@ -125,12 +125,12 @@ ctx, cancel := context.WithTimeout(ctx, clientDeadline)
 ```
 
 
-**JAVA**
+### Java
 
 
-```
- @Option(name="--deadline_ms", usage="Deadline in milliseconds.")
-  private int deadlineMs = 20*1000;
+```java
+@Option(name="--deadline_ms", usage="Deadline in milliseconds.")
+private int deadlineMs = 20*1000;
 
 response = blockingStub.withDeadlineAfter(deadlineMs, TimeUnit.MILLISECONDS).sayHello(request);
 ```
