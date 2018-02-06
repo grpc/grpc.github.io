@@ -15,7 +15,7 @@ working example.</p>
 ### Prerequisites
 
 *   `JDK`: version 7 or higher
-*   Android SDK
+*   Android SDK: API level 14 or higher
 *   An android device set up for [USB
     debugging](https://developer.android.com/studio/command-line/adb.html#Enabling)
     or an [Android Virtual

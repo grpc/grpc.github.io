@@ -15,7 +15,7 @@ bodyclass: post
         <article class="post-wrapper">
           <h1>{{ page.title }}</h1>
           <div class="postdate">
-            Posted on {{ page.date | date: "%A, %B %d %Y" }}.
+            Posted on {{ page.date | date: "%A, %B %d, %Y" }} {% if page.author %} by {{ page.author }} {% endif %}
           </div>
           <div class="content">
             {{ content }}
