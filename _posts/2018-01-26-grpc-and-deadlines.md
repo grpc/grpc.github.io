@@ -22,7 +22,7 @@ There is no single answer to "What is a good deadline/timeout value?". Your serv
 
 So what do you need to consider to make an informed choice of deadline? Factors to take into account include the end to end latency of the whole system, which RPCs are serial, and which can be made in parallel. You should to be able to put numbers on it, even if it's a rough calculation. Engineers need to understand the service and then set a deliberate deadline for the RPCs between clients and servers.
 
-In gRPC, both the client and server make their own independent and local determination about whether the remote procedure call (RPC) was successful. This means their conclusions may not match! An RPC that finished successfully on the server side can fail on the client side. For example, the server can send the response, but the reply can arrive at the client after their deadline has expired. The client will already have terminated with the status error `DEADLINE_EXCEEDED`.
+In gRPC, both the client and server make their own independent and local determination about whether the remote procedure call (RPC) was successful. This means their conclusions may not match! An RPC that finished successfully on the server side can fail on the client side. For example, the server can send the response, but the reply can arrive at the client after their deadline has expired. The client will already have terminated with the status error `DEADLINE_EXCEEDED`. This should be checked for and managed at the application level.
 
 ## Setting a deadline
 
