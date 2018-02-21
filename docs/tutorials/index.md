@@ -23,6 +23,7 @@ first, see our [Quickstarts]({{site.baseurl}}/docs/quickstart).
  - [Android Java](basic/android.html)
  - [Objective-C](basic/objective-c.html)
  - [PHP](basic/php.html)
+ - [Dart](basic/dart.html)
 
 We also have a growing number of tutorials on follow-on topics, with more in the
 pipeline.

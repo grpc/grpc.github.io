@@ -32,3 +32,4 @@ You can read more about gRPC in general in [What is gRPC?]({{site.baseurl}}/docs
  - [C#](csharp.html)
  - [Objective-C](objective-c.html)
  - [PHP](php.html)
+ - [Dart](dart.html)

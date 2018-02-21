@@ -553,3 +553,50 @@ $opts = [
 ];
 $client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
 ```
+
+### Dart
+
+#### Base case - no encryption or authentication
+
+```dart
+final channel = new ClientChannel('localhost', port: 50051,
+    options: new ChannelOptions.insecure());
+final client = new GreeterClient(channel);
+```
+
+#### With server authentication SSL/TLS
+
+```dart
+// Load a custom roots file.
+final trustedRoot = new File('roots.pem').readAsBytesSync();
+final channelCredentials =
+    new ChannelOptions.secure(certificate: trustedRoot);
+final channel = new ClientChannel('myservice.example.com', options: channelCredentials);
+final client = new GreeterClient(channel);
+```
+
+#### Authenticate with Google
+
+```dart
+// Uses publicly trusted roots by default.
+final channel = new ClientChannel('greeter.googleapis.com');
+final serviceAccountJson =
+     new File('service-account.json').readAsStringSync();
+final credentials = new JwtServiceAccountAuthenticator(serviceAccountJson);
+final client =
+    new GreeterClient(channel, options: credentials.toCallOptions);
+```
+
+#### Authenticate a single RPC call
+
+```dart
+// Uses publicly trusted roots by default.
+final channel = new ClientChannel('greeter.googleapis.com');
+final client = new GreeterClient(channel);
+...
+final serviceAccountJson =
+     new File('service-account.json').readAsStringSync();
+final credentials = new JwtServiceAccountAuthenticator(serviceAccountJson);
+final response =
+    await client.sayHello(request, options: credentials.toCallOptions);
+```
