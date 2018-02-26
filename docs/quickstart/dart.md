@@ -16,7 +16,7 @@ working example.</p>
 
 #### Dart SDK
 
-gRPC requires Dart SDK version 1.24.3 or higher.
+gRPC requires Dart SDK version 1.24.3 or higher. Dart gRPC supports Flutter and Server platforms.
 
 For installation instructions, follow this guide: [Install Dart](https://www.dartlang.org/install)
 
@@ -27,7 +27,7 @@ Buffers v3 for service definitions and data serialization, and our example code
 uses Protocol Buffers as well as gRPC.
 
 The simplest way to install the protoc compiler is to download pre-compiled
-binaries for your platform (`protoc-<version>-<platform>.zip`) from here:
+binaries for your operating system (`protoc-<version>-<os>.zip`) from here:
 [https://github.com/google/protobuf/releases](https://github.com/google/protobuf/releases)
 
   * Unzip this file.
@@ -40,7 +40,7 @@ Next, install the protoc plugin for Dart
 $ pub global activate protoc_plugin
 ```
 
-The compiler plugin, `protoc-gen-dart`, will be installed in `$HOME/.pub-cache/bin`.
+The compiler plugin, `protoc-gen-dart`, is installed in `$HOME/.pub-cache/bin`.
 It must be in your $PATH for the protocol compiler, protoc, to find it.
 
 ```sh
@@ -61,7 +61,7 @@ $ # Navigate to the "Hello World" Dart example:
 $ cd grpc-dart/example/helloworld
 ```
 
-## Try it!
+## Run a gRPC application
 
 From the `example/helloworld` directory:
 
@@ -224,8 +224,6 @@ Just like we did before, from the `example/helloworld` directory:
 - Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
   and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: Dart][]
-- Explore the gRPC Dart core API in its [reference
-  documentation](https://dartdocs.org/documentation/grpc/0.3.0/)
 
 [gRPC Basics: Dart]:../tutorials/basic/dart.html
 

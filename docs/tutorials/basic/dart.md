@@ -157,6 +157,7 @@ From the `route_guide` example directory run :
 
 Running this command generates the following files in the `lib/src/generated`
 directory under the `route_guide` example directory:
+
 - `route_guide.pb.dart`
 - `route_guide.pbenum.dart`
 - `route_guide.pbgrpc.dart`
