@@ -381,7 +381,7 @@ First we need to create a gRPC *channel* for our stub, specifying the server
 address and port we want to connect to - in our case we'll use no SSL:
 
 ```cpp
-grpc::CreateChannel("localhost:50051", grpc::InsecureCredentials());
+grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
 ```
 Note: In order to set additional options for the *channeL*, use the `grpc::CreateCustomChannel()` api with any special channel arguments - `grpc::ChannelArguments`
 
