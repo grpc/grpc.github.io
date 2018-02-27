@@ -14,7 +14,7 @@ company-link: https://www.google.com
 
 When you use gRPC, the gRPC library takes care of communication, marshalling, unmarshalling, and deadline enforcement. Deadlines allow gRPC clients to specify how long they are willing to wait for an RPC to complete before the RPC is terminated with the error `DEADLINE_EXCEEDED`. By default this deadline is a very large number, dependent on the language implementation. How deadlines are specified is also language-dependent. Some language APIs work in terms of a **deadline**, a fixed point in time by which the RPC should complete. Others use a **timeout**, a duration of time after which the RPC times out.
 
-In general, when you don't set a deadline, resources will be held for all in-flight requests, and all requests can potentially reach the maximum timeout. This puts the service at risk of running out of resources, like memory, and subsequently crashing, as well as maximizing the latency of the service.
+In general, when you don't set a deadline, resources will be held for all in-flight requests, and all requests can potentially reach the maximum timeout. This puts the service at risk of running out of resources, like memory, which would increase the latency of the service, or could crash the entire process in the worst case.
 
 To avoid this, services should specify the longest default deadline they technically support, and clients should wait until the response is no longer useful to them. For the service this can be as simple as providing a comment in the .proto file. For the client this involves setting useful deadlines.
 
