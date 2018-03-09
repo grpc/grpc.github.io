@@ -177,6 +177,67 @@ languages. The following sections demonstrate how authentication and
 authorization features described above appear in each language: more languages
 are coming soon.
 
+### Go
+
+#### Base case - no encryption or authentication
+
+Client:
+
+``` go
+conn, _ := grpc.Dial("localhost:50051", grpc.WithInsecure())
+// error handling omitted
+client := pb.NewGreeterClient(conn)
+// ...
+```
+
+Server:
+
+``` go
+s := grpc.NewServer()
+lis, _ := net.Listen("tcp", "localhost:50051")
+// error handling omitted
+s.Serve(lis)
+```
+
+#### With server authentication SSL/TLS
+
+Client:
+
+``` go
+creds := credentials.NewClientTLSFromCert(certFile, "")
+conn, _ := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(creds))
+// error handling omitted
+client := pb.NewGreeterClient(conn)
+// ...
+```
+
+Server:
+
+``` go
+creds := credentials.NewClientTLSFromCert(certFile, "")
+s := grpc.NewServer(grpc.Creds(creds))
+lis, _ := net.Listen("tcp", "localhost:50051")
+// error handling omitted
+s.Serve(lis)
+```
+
+#### Authenticate with Google
+
+``` go
+pool, _ := x509.SystemCertPool()
+// error handling omitted
+creds := credentials.NewClientTLSFromCert(pool, "")
+perRPC, _ := oauth.NewServiceAccountFromFile("service-account.json", scope)
+conn, _ := grpc.Dial(
+	"greeter.googleapis.com",
+	grpc.WithTransportCredentials(creds),
+	grpc.WithPerRPCCredentials(perRPC),
+)
+// error handling omitted
+client := pb.NewGreeterClient(conn)
+// ...
+```
+
 ### Ruby
 
 #### Base case - no encryption or authentication
