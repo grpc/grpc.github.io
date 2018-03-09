@@ -177,6 +177,41 @@ languages. The following sections demonstrate how authentication and
 authorization features described above appear in each language: more languages
 are coming soon.
 
+### Go
+
+#### Base case - no encryption or authentication
+
+``` go
+conn, _ := grpc.Dial("localhost:50051", grpc.WithInsecure())
+// error handling omitted
+client := pb.NewGreeterClient(conn)
+// ...
+```
+
+#### With server authentication SSL/TLS
+
+``` go
+creds := credentials.NewClientTLSFromCert(certFile, "")
+conn, _ := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(creds))
+// error handling omitted
+client := pb.NewGreeterClient(conn)
+// ...
+```
+
+#### Authenticate with Google
+
+``` go
+creds := credentials.NewClientTLSFromCert(certFile, "")
+conn, _ := grpc.Dial(
+	"localhost:50051",
+	grpc.WithTransportCredentials(creds),
+	grpc.WithPerRPCCredentials(oauth.NewComputeEngine()),
+)
+// error handling omitted
+client := pb.NewGreeterClient(conn)
+// ...
+```
+
 ### Ruby
 
 #### Base case - no encryption or authentication
