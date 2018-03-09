@@ -181,6 +181,8 @@ are coming soon.
 
 #### Base case - no encryption or authentication
 
+Client:
+
 ``` go
 conn, _ := grpc.Dial("localhost:50051", grpc.WithInsecure())
 // error handling omitted
@@ -188,7 +190,18 @@ client := pb.NewGreeterClient(conn)
 // ...
 ```
 
+Server:
+
+``` go
+s := grpc.NewServer()
+lis, _ := net.Listen("tcp", "localhost:50051")
+// error handling omitted
+s.Serve(lis)
+```
+
 #### With server authentication SSL/TLS
+
+Client:
 
 ``` go
 creds := credentials.NewClientTLSFromCert(certFile, "")
@@ -198,14 +211,27 @@ client := pb.NewGreeterClient(conn)
 // ...
 ```
 
-#### Authenticate with Google
+Server:
 
 ``` go
 creds := credentials.NewClientTLSFromCert(certFile, "")
+s := grpc.NewServer(grpc.Creds(creds))
+lis, _ := net.Listen("tcp", "localhost:50051")
+// error handling omitted
+s.Serve(lis)
+```
+
+#### Authenticate with Google
+
+``` go
+pool, _ := x509.SystemCertPool()
+// error handling omitted
+creds := credentials.NewClientTLSFromCert(pool, "")
+perRPC, _ := oauth.NewServiceAccountFromFile("service-account.json", scope)
 conn, _ := grpc.Dial(
-	"localhost:50051",
+	"greeter.googleapis.com",
 	grpc.WithTransportCredentials(creds),
-	grpc.WithPerRPCCredentials(oauth.NewComputeEngine()),
+	grpc.WithPerRPCCredentials(perRPC),
 )
 // error handling omitted
 client := pb.NewGreeterClient(conn)
