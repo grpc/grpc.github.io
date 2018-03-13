@@ -553,3 +553,41 @@ $opts = [
 ];
 $client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
 ```
+
+### Go 
+
+#### Base case - No encryption or authentication
+
+```go
+import (
+    "google.golang.org/grpc"
+    pb "google.golang.org/grpc/examples/helloworld/helloworld"
+)
+
+channel, _ := grpc.Dial("localhost:50051", grpc.WithInsecure())
+client := pb.NewGreeterClient(channel)
+```
+
+#### With server authentication SSL/TLS
+
+```go
+import "google.golang.org/grpc/credentials"
+
+creds := credentials.NewClientTLSFromFile("roots.pem", "")
+channel, _ := grpc.Dial(
+    "localhost:443", grpc.WithTransportCredentials(creds)
+)
+client := pb.NewGreeterClient(channel)
+```
+
+#### Authenticate with Google
+
+```go
+import "google.golang.org/grpc/credentials/oauth"
+
+auth, _ := oauth.NewApplicationDefault(context.Background(), "")
+channel, _ := grpc.Dial(
+    "greeter.googleapis.com", grpc.WithPerRPCCredentials(auth)
+)
+client := pb.NewGreeterClient(channel)
+```
