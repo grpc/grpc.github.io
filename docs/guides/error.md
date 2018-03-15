@@ -6,7 +6,7 @@ sidenav: doc-side-guides-nav.html
 title: Error Handling
 type: markdown
 ---
-<p class="lead"> This page describes how gRPC deals with errors, including gRPC's built-in error codes.</p>
+<p class="lead"> This page describes how gRPC deals with errors, including gRPC's built-in error codes. Example code in different languages can be found <a href="https://github.com/avinassh/grpc-errors">here</a>.</p>
 
 <div id="toc" class="toc mobile-toc"></div>
 
@@ -60,3 +60,5 @@ Unauthenticated: credentials failed to get metadata | GRPC&#95;STATUS&#95;UNAUTH
 Invalid host set in authority metadata | GRPC&#95;STATUS&#95;UNAUTHENTICATED
 Error parsing response protocol buffer | GRPC&#95;STATUS&#95;INTERNAL
 Error parsing request protocol buffer | GRPC&#95;STATUS&#95;INTERNAL
+
+
