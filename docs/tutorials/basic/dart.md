@@ -8,6 +8,9 @@ type: markdown
 <p class="lead">This tutorial provides a basic Dart programmer's introduction to
 working with gRPC.</p>
 
+<p class="note">Dart gRPC is currently in beta. Please help us out by
+[filing issues](https://github.com/grpc/grpc-dart/issues/new) if you encounter any.</p>
+
 By walking through this example you'll learn how to:
 
 - Define a service in a .proto file.
@@ -164,6 +167,7 @@ directory under the `route_guide` example directory:
 - `route_guide.pbjson.dart`
 
 This contains:
+
 - All the protocol buffer code to populate, serialize, and retrieve our request
   and response message types
 - An interface type (or *stub*) for clients to call with the methods defined in
@@ -366,19 +370,19 @@ do this for our `RouteGuide` service:
 ```dart
 Future<Null> main(List<String> args) async {
   final server =
-      new grpc.Server.insecure([new RouteGuideService()], port: 8080);
-  await server.serve();
+      new grpc.Server([new RouteGuideService()]);
+  await server.serve(port: 8080);
   print('Server listening...');
 }
 ```
 
 To build and start a server, we:
 
-1. Create an instance of the gRPC server using `new grpc.Server.insecure()`,
-   giving a list of service implementations and the port to listen on.
-1. Call `serve()` on the server to start listening for requests. The server
-   will continue to serve requests asynchronously until `shutdown()` is called
-   on it.
+1. Create an instance of the gRPC server using `new grpc.Server()`,
+   giving a list of service implementations.
+1. Call `serve()` on the server to start listening for requests, optionally passing
+   in the address and port to listen on. The server will continue to serve requests
+   asynchronously until `shutdown()` is called on it.
 
 <a name="client"></a>
 

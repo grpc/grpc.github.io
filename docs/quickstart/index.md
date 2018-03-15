@@ -24,12 +24,12 @@ For more tutorials and examples, see our [Tutorials]({{site.baseurl}}/docs/tutor
 You can read more about gRPC in general in [What is gRPC?]({{site.baseurl}}/docs/guides). 
 
  - [C++](cpp.html)
- - [Java](java.html)
- - [Python](python.html)
- - [Go](go.html)
- - [Ruby](ruby.html)
- - [Node.js](node.html)
  - [C#](csharp.html)
+ - [Dart](dart.html)
+ - [Go](go.html)
+ - [Java](java.html)
+ - [Node.js](node.html)
  - [Objective-C](objective-c.html)
  - [PHP](php.html)
- - [Dart](dart.html)
+ - [Python](python.html)
+ - [Ruby](ruby.html)
