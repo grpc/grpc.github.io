@@ -400,7 +400,9 @@ with the server. We create this by passing the server address and port number to
 
 ```dart
 final channel = new ClientChannel('127.0.0.1',
-    port: 8080, options: const ChannelOptions.insecure());
+    port: 8080,
+    options: const ChannelOptions(
+        credentials: const ChannelCredentials.insecure()));
 ```
 
 You can use `ChannelOptions` to set TLS options (e.g., trusted certificates) for
