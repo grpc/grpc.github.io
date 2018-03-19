@@ -559,9 +559,11 @@ $client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
 #### Base case - no encryption or authentication
 
 ```dart
-final channel = new ClientChannel('localhost', port: 50051,
-    options: new ChannelOptions.insecure());
-final client = new GreeterClient(channel);
+final channel = new ClientChannel('localhost',
+      port: 50051,
+      options: const ChannelOptions(
+          credentials: const ChannelCredentials.insecure()));
+final stub = new GreeterClient(channel);
 ```
 
 #### With server authentication SSL/TLS
@@ -570,8 +572,10 @@ final client = new GreeterClient(channel);
 // Load a custom roots file.
 final trustedRoot = new File('roots.pem').readAsBytesSync();
 final channelCredentials =
-    new ChannelOptions.secure(certificate: trustedRoot);
-final channel = new ClientChannel('myservice.example.com', options: channelCredentials);
+    new ChannelCredentials.secure(certificates: trustedRoot);
+final channelOptions = new ChannelOptions(credentials: channelCredentials);
+final channel = new ClientChannel('myservice.example.com',
+    options: channelOptions);
 final client = new GreeterClient(channel);
 ```
 
