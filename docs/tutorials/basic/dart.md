@@ -9,7 +9,7 @@ type: markdown
 working with gRPC.</p>
 
 <p class="note">Dart gRPC is currently in beta. Please help us out by
-<a href="https://github.com/grpc/grpc-dart/issues/new"> filing issues</a>
+<a href="https://github.com/grpc/grpc-dart/issues/new">filing issues</a>
 if you encounter any.</p>
 
 By walking through this example you'll learn how to:
