@@ -13,7 +13,7 @@ working example.</p>
 ## Before you begin
 
 <p class="note">Dart gRPC is currently in beta. Please help us out by
-<a href="https://github.com/grpc/grpc-dart/issues/new"> filing issues</a>
+<a href="https://github.com/grpc/grpc-dart/issues/new">filing issues</a>
 if you encounter any.</p>
 
 ### Prerequisites
