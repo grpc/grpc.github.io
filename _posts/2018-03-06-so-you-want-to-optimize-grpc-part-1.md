@@ -14,6 +14,8 @@ A common question with gRPC is how to make it fast.  The gRPC library offers use
 performance RPCs, but it isn't always clear how to achieve this.  Because this question is common 
 enough I thought I would try to show my thought process when tuning programs.
 
+<!--more-->
+
 ## Setup
 
 Consider a basic key-value service that is used by multiple other programs.  The service needs to
@@ -81,10 +83,6 @@ request:
     }
   }
 ```
-
-the code checks that it is as expected
-c    ode checks that it is expected
-
 
 A random key is created, along with a random value.  The request is sent to the server, and the
 client waits for the response.  When the response is returned, the code checks that it is as 
