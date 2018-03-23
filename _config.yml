@@ -8,7 +8,7 @@ markdown:
 
 baseurl:
 
-githuburl: https://github.com/grpc/grpc.github.io/
+githuburl: https://github.com/grpc/grpc.github.io
 
 sass:
   style: compressed

@@ -228,7 +228,7 @@ $(document).ready(function() {
         $("#generalInstructions").hide();
         $("#continueEdit").show();
         $("#continueEditButton").text("Edit " + forwarding);
-        $("#continueEditButton").attr("href", "{{ site.githuburl }}edit/master/" + forwarding)
+        $("#continueEditButton").attr("href", "{{ site.githuburl }}/edit/master/" + forwarding)
     } else {
         $("#generalInstructions").show();
         $("#continueEdit").hide();
