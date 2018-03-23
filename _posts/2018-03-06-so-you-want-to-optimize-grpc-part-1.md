@@ -4,11 +4,10 @@ title: So You Want to Optimize gRPC - Part 1
 published: true
 permalink: blog/optimizing-grpc-part-1
 author: Carl Mastrangelo
+author-link: https://github.com/carl-mastrangelo
 company: Google
 company-link: https://www.google.com
 ---
-
-# Optimizing gRPC - Part 1
 
 A common question with gRPC is how to make it fast.  The gRPC library offers users access to high
 performance RPCs, but it isn't always clear how to achieve this.  Because this question is common 
