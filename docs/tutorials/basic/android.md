@@ -200,6 +200,7 @@ Now for something a little more complicated: the client-side streaming method `R
 private String recordRoute(List<Point> points, int numPoints, RouteGuideStub asyncStub)
         throws InterruptedException, RuntimeException {
     final StringBuffer logs = new StringBuffer();
+    final Throwable failed = null;
     appendLogs(logs, "*** RecordRoute");
 
     final CountDownLatch finishLatch = new CountDownLatch(1);
@@ -281,6 +282,7 @@ private String routeChat(RouteGuideStub asyncStub) throws InterruptedException,
     final StringBuffer logs = new StringBuffer();
     appendLogs(logs, "*** RouteChat");
     final CountDownLatch finishLatch = new CountDownLatch(1);
+    final Throwable failed = null;
     StreamObserver<RouteNote> requestObserver =
             asyncStub.routeChat(new StreamObserver<RouteNote>() {
                 @Override
