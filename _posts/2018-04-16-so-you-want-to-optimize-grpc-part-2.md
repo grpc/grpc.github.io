@@ -9,15 +9,15 @@ company: Google
 company-link: https://www.google.com
 ---
 
-How fast can gRPC go?  Pretty fast if you understand how modern clients and servers are built.  In
-[part 1](/blog/optimizing-grpc-part-1) I showed how to get an easy **60%** improvement.  In this 
+How fast is gRPC?  Pretty fast if you understand how modern clients and servers are built.  In
+[part 1](/blog/optimizing-grpc-part-1), I showed how to get an easy **60%** improvement.  In this 
 post I show how to get a **10000%** improvement.
 
 <!--more-->
 
 ## Setup
 
-As in [part 1](/blog/optimizing-grpc-part-1), we will be starting with an existing, Java based 
+As in [part 1](/blog/optimizing-grpc-part-1), we will be starting with an existing, Java based, 
 key-value service.  The service will be offering concurrent access for creating, reading, updating,
 and deleting keys and values.  All the code can be seen 
 [here](https://github.com/carl-mastrangelo/kvstore/tree/03-nonblocking-server) if you want to try 
@@ -27,9 +27,9 @@ it out.
 ## Server Concurrency
 
 Let's look at the [KvService](https://github.com/carl-mastrangelo/kvstore/blob/f422b1b6e7c69f8c07f96ed4ddba64757242352c/src/main/java/io/grpc/examples/KvService.java)
-class first.  This service handles the RPCs sent by the client, making sure that none of them
+class.  This service handles the RPCs sent by the client, making sure that none of them
 accidentally corrupt the state of storage.  To ensure this, the service uses the `synchronized`
-key word to ensure only RPC is active at a time:
+keyword to ensure only one RPC is active at a time:
 
 ```java
   private final Map<ByteBuffer, ByteBuffer> store = new HashMap<>();
@@ -50,20 +50,21 @@ key word to ensure only RPC is active at a time:
 ```
 
 While this code is thread safe, it comes at a high price: only one RPC can ever be active!  We 
-need some way of allowing multiple operations to happen safely at the same time.
+need some way of allowing multiple operations to happen safely at the same time.  Otherwise,
+the program can't take advantage of all the available processors.
 
 ### Breaking the Lock
 
 To solve this, we need to know a little more about the _semantics_ of our RPCs.  The more we know
-about how the RPCs are suppposed to work, the more optimizations we can make.  For a key value 
+about how the RPCs are supposed to work, the more optimizations we can make.  For a key-value 
 service, we notice that _operations to different keys don't interfere with each other_.  When
-we update key `foo`, it has no bearing on the value stored for key `bar`.  But, our server is 
+we update key 'foo', it has no bearing on the value stored for key 'bar'.  But, our server is 
 written such that operations to any key must be synchronized with respect to each other.  If we
 could make operations to different keys happen concurrently, our server could handle a lot more 
-RPCs.
+load.
 
-With the idea in place, we need to figure out how to modify the server to take advantage.  The 
-`synchronized` key word causes Java to acquire a lock on `this`, which is the instance of 
+With the idea in place, we need to figure out how to modify the server.  The 
+`synchronized` keyword causes Java to acquire a lock on `this`, which is the instance of 
 `KvService`.  The lock is acquired when the `create` method is entered, and released on return.
 The reason we need synchronization is to protect the `store` Map.  Since it is implemented as a
 [`HashMap`](https://en.wikipedia.org/wiki/Hash_table), modifications to it change the internal 
@@ -73,11 +74,11 @@ synchronized, we can't just remove the synchronization on the method.
 However, Java offers a solution here: `ConcurrentHashMap`.  This class offers the ability to 
 safely access the contents of the map concurrently.  For example, in our usage we want to check
 if a key is present.   If not present, we want to add it, else we want to return an error.  The 
-`putIfAbsent` method let's us atomically check if a value is present, add it not, and tells us
-what it did.
+`putIfAbsent` method atomically checks if a value is present, adds it if not, and tells us if 
+it succeeded.
 
-Concurrent maps provide stronger gaurantees about the safety of `putIfAbsent`, so we can swap the 
-`HashMap` to a `ConcurrentHashMap` and remove the `synchronized`:
+Concurrent maps provide stronger guarantees about the safety of `putIfAbsent`, so we can swap the 
+`HashMap` to a `ConcurrentHashMap` and remove `synchronized`:
 
 ```java
   private final ConcurrentMap<ByteBuffer, ByteBuffer> store = new ConcurrentHashMap<>();
@@ -122,16 +123,16 @@ However, the `update` method is a little trickier.  Let's take a look at what it
 
 Updating a key to a new value needs two interactions with the `store`:
 
-1.  Check to see if the key exists at all
+1.  Check to see if the key exists at all.
 2.  Update the previous value to the new value.
 
 Unfortunately `ConcurrentMap` doesn't have a straightforward method to do this.  Since we may not
 be the only ones modifying the map, we need to handle the possibility that our assumptions
 have changed.  We read the old value out, but by the time we replace it, it may have been deleted.
 
-To reconcile this, let's retry in the event that `replace` fails.   It returns true if the replace
+To reconcile this, let's retry if `replace` fails.   It returns true if the replace
 was successful.  (`ConcurrentMap` asserts that the operations will not corrupt the internal 
-structure, but doesn't say that they will succeed!).  We will use a do-while loop:
+structure, but doesn't say that they will succeed!)  We will use a do-while loop:
 
 ```java
   @Override
@@ -154,10 +155,10 @@ structure, but doesn't say that they will succeed!).  We will use a do-while loo
 The code wants to fail if it ever sees null, but never if there is a non-null previous value.  One
 thing to note is that if _another_ RPC modifies the value between the `store.get()` call and the
 `store.replace()` call, it will fail.  This is a non-fatal error for us, so we will just try again.
-Once it is sure it has successfully put the new value in, it can respond back to the user.
+Once it has successfully put the new value in, the service can respond back to the user.
 
 There is one other possibility that could happen: two RPCs could update the same value and 
-overwrite each others work.  While this may be okay for some applications, it would not be 
+overwrite each other's work.  While this may be okay for some applications, it would not be 
 suitable for APIs that provide transactionality.  It is out of scope for this post to show how to
 fix this, but be aware it can happen.
 
@@ -165,7 +166,7 @@ fix this, but be aware it can happen.
 
 In the last post, we modified the client to be asynchronous and use the gRPC ListenableFuture API.
 To avoid running out of memory, the client was modified to have at most **100** active RPCs at a 
-time.  As we can see from the server code though, performance was bottlenecked on acquiring locks.
+time.  As we now see from the server code, performance was bottlenecked on acquiring locks.
 Since we have removed those, we expect to see a 100x improvement.  The same amount of work is done
 per RPC, but a lot more are happening at the same time.  Let's see if our hypothesis holds:
 
@@ -198,17 +199,17 @@ our client.  This is why understanding your code and API semantics is important.
 properties of the key-value API, namely the independence of operations on different keys, the code
 is now much faster.
 
-One noteworthy artifict of this code is the `user` timing in the results.  Previous the user time 
+One noteworthy artifact of this code is the `user` timing in the results.  Previously the user time 
 was only 9 seconds, meaning that the CPU was active only 9 of the 60 seconds the code was running.
-After, the usage went up by more than 5x to 52 seconds.  The reason is that more CPU cores are 
-active.  The `KvServer` is simulating work by sleeping for a few millisecond.  In a real 
+Afterwards, the usage went up by more than 5x to 52 seconds.  The reason is that more CPU cores are 
+active.  The `KvServer` is simulating work by sleeping for a few milliseconds.  In a real 
 application, it would be doing useful work and not have such a dramatic change.  Rather than 
 scaling per the number of RPCs, it would scale per the number of cores.  Thus, if your machine had 
 12 cores, you would expect to see a 12x improvement.  Still not bad though!
 
 ### More Errors
 
-If you ran this code yourself, you will see a lot more log spam in the form:
+If you run this code yourself, you will see a lot more log spam in the form:
 
 ```
 Apr 16, 2018 10:38:40 AM io.grpc.examples.KvClient$3 onFailure
@@ -225,8 +226,8 @@ post showing how to fix this.
 
 
 There are a lot of opportunities to optimize your gRPC code.  To take advantage of these, you
-need to understand what your code is doing.  This post shows how to convert a lock based service into
+need to understand what your code is doing.  This post shows how to convert a lock-based service into
 a low-contention, lock-free service.  Always make sure to measure before and after your changes.
 
-In Part 3, we will optimize the code even further.  2400 RPC/s is just the beginning!
+In Part 3, we will optimize the code even further.  2,400 RPC/s is just the beginning!
 
