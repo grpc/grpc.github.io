@@ -17,8 +17,8 @@ post I show how to get a **10000%** improvement.
 
 ## Setup
 
-As in [part 1](/blog/optimizing-grpc-part-1), we will be starting with an existing, Java based, 
-key-value service.  The service will be offering concurrent access for creating, reading, updating,
+As in [part 1](/blog/optimizing-grpc-part-1), we will start with an existing, Java based, 
+key-value service.  The service will offer concurrent access for creating, reading, updating,
 and deleting keys and values.  All the code can be seen 
 [here](https://github.com/carl-mastrangelo/kvstore/tree/03-nonblocking-server) if you want to try 
 it out. 
@@ -223,7 +223,6 @@ is more likely.  To solve this we will need to modify the API definition.   Stay
 post showing how to fix this.
 
 ## Conclusion
-
 
 There are a lot of opportunities to optimize your gRPC code.  To take advantage of these, you
 need to understand what your code is doing.  This post shows how to convert a lock-based service into
