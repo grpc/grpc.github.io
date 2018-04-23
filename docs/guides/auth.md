@@ -204,7 +204,7 @@ s.Serve(lis)
 Client:
 
 ``` go
-creds := credentials.NewClientTLSFromCert(certFile, "")
+creds := credentials.NewClientTLSFromFile(certFile, "")
 conn, _ := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(creds))
 // error handling omitted
 client := pb.NewGreeterClient(conn)
@@ -214,7 +214,7 @@ client := pb.NewGreeterClient(conn)
 Server:
 
 ``` go
-creds := credentials.NewClientTLSFromCert(certFile, "")
+creds := credentials.NewServerTLSFromFile(certFile, keyFile)
 s := grpc.NewServer(grpc.Creds(creds))
 lis, _ := net.Listen("tcp", "localhost:50051")
 // error handling omitted
@@ -552,4 +552,55 @@ $opts = [
   'update_metadata' => $auth->getUpdateMetadataFunc(),
 ];
 $client = new helloworld\GreeterClient('greeter.googleapis.com', $opts);
+```
+
+### Dart
+
+#### Base case - no encryption or authentication
+
+```dart
+final channel = new ClientChannel('localhost',
+      port: 50051,
+      options: const ChannelOptions(
+          credentials: const ChannelCredentials.insecure()));
+final stub = new GreeterClient(channel);
+```
+
+#### With server authentication SSL/TLS
+
+```dart
+// Load a custom roots file.
+final trustedRoot = new File('roots.pem').readAsBytesSync();
+final channelCredentials =
+    new ChannelCredentials.secure(certificates: trustedRoot);
+final channelOptions = new ChannelOptions(credentials: channelCredentials);
+final channel = new ClientChannel('myservice.example.com',
+    options: channelOptions);
+final client = new GreeterClient(channel);
+```
+
+#### Authenticate with Google
+
+```dart
+// Uses publicly trusted roots by default.
+final channel = new ClientChannel('greeter.googleapis.com');
+final serviceAccountJson =
+     new File('service-account.json').readAsStringSync();
+final credentials = new JwtServiceAccountAuthenticator(serviceAccountJson);
+final client =
+    new GreeterClient(channel, options: credentials.toCallOptions);
+```
+
+#### Authenticate a single RPC call
+
+```dart
+// Uses publicly trusted roots by default.
+final channel = new ClientChannel('greeter.googleapis.com');
+final client = new GreeterClient(channel);
+...
+final serviceAccountJson =
+     new File('service-account.json').readAsStringSync();
+final credentials = new JwtServiceAccountAuthenticator(serviceAccountJson);
+final response =
+    await client.sayHello(request, options: credentials.toCallOptions);
 ```
