@@ -117,7 +117,7 @@ channel)` static method.
 
 #### Unary
 
-The aynschronous stub signature for a unary RPC method `unaryExample`:
+The asynchronous stub signature for a unary RPC method `unaryExample`:
 
 ```java
 public void unaryExample(
@@ -127,7 +127,7 @@ public void unaryExample(
 
 #### Server-streaming
 
-The aynschronous stub signature for a server-streaming RPC method
+The asynchronous stub signature for a server-streaming RPC method
 `serverStreamingExample`:
 
 ```java
@@ -138,7 +138,7 @@ public void serverStreamingExample(
 
 #### Client-streaming
 
-The aynschronous stub signature for a client-streaming RPC method
+The asynchronous stub signature for a client-streaming RPC method
 `clientStreamingExample`:
 
 ```java
@@ -148,7 +148,7 @@ public StreamObserver<RequestType> clientStreamingExample(
 
 #### Bidirectional-streaming
 
-The aynschronous stub signature for a bidirectional-streaming RPC method
+The asynchronous stub signature for a bidirectional-streaming RPC method
 `bidirectionalStreamingExample`:
 
 ```java
