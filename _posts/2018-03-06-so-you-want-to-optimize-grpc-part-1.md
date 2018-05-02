@@ -388,7 +388,6 @@ requests, so it seems like we have more work to do in the future.  But for now, 
 seem to have worked.
 
 
-
 ## Conclusion
 
 There are a lot of opportunities to optimize your gRPC code.  To take advantage of these, you
@@ -396,5 +395,5 @@ need to understand what your code is doing, and what your code is supposed to do
 the very basics of how to approach and think about optimization.  Always make sure to measure
 before and after your changes, and use these measurements to guide your optimizations.
 
-In Part 2, we will continue optimize the server part of the code.
+In [Part 2](/blog/optimizing-grpc-part-2), we will continue optimizing the server part of the code.
 
