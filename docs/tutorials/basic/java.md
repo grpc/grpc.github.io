@@ -19,8 +19,7 @@ with [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
 that the example in this tutorial uses the
 [proto3](https://github.com/google/protobuf/releases) version of the protocol
-buffers language, which is currently in beta release: you can find out more in
-the [proto3 language
+buffers language: you can find out more in the [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3) and [Java
 generated code
 guide](https://developers.google.com/protocol-buffers/docs/reference/java-generated),
