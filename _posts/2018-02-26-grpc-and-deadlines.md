@@ -78,7 +78,8 @@ if (context->IsCancelled()) {
 
 ```go
 if ctx.Err() == context.Canceled {
-	return status.New(codepb.CANCELLED, "Client cancelled, abandoning.")
+	return status.New(codes.Canceled, "Client cancelled, abandoning.")
+}
 ```
 
 
