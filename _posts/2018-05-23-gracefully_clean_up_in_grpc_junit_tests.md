@@ -8,8 +8,6 @@ company: Google
 company-link: https://www.google.com
 ---
 
-Let's gracefully clean up in gRPC JUnit tests
-
 As a good programmer, it's important that you remember to always clean up gRPC resources such as client channels, servers, and previously attached Contexts whenever they are no longer needed. This is even true for JUnit tests, because otherwise leaked resource will not only linger in your machine forever in some cases but also interfere with subsequent tests. A not-so-bad case is that subsequent tests can not pass because of the leaked resource in the previous test. The worst case is that some subsequent tests pass but in fact they wouldn't have passed if the previously passed test had not leaked resource.
 
 <!--more-->
