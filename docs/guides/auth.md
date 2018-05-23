@@ -485,11 +485,11 @@ var stub = new helloworld.Greeter('myservice.example.com', ssl_creds);
 
 ```js
 // Authenticating with Google
-var GoogleAuth = require('google-auth-library'); // from https://www.npmjs.com/package/google-auth-library
+var {auth} = require('google-auth-library'); // from https://www.npmjs.com/package/google-auth-library
 ...
 var ssl_creds = grpc.credentials.createSsl(root_certs);
-(new GoogleAuth()).getApplicationDefault(function(err, auth) {
-  var call_creds = grpc.credentials.createFromGoogleCredential(auth);
+auth.getApplicationDefault(function(err, client) {
+  var call_creds = grpc.credentials.createFromGoogleCredential(client);
   var combined_creds = grpc.credentials.combineChannelCredentials(ssl_creds, call_creds);
   var stub = new helloworld.Greeter('greeter.googleapis.com', combined_credentials);
 });
