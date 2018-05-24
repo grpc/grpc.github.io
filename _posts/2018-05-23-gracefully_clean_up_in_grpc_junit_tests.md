@@ -47,7 +47,7 @@ public class MyTest {
     // assume channel and server are not null
     channel.shutdown();
     server.shutdown();
-    // fail the test if cannot gracefully shutdown 
+    // fail the test if cannot gracefully shutdown
     try {
       assert channel.awaitTermination(5, TimeUnit.SECONDS) : "channel cannot be gracefully shutdown";
       assert server.awaitTermination(5, TimeUnit.SECONDS) : "server cannot be gracefully shutdown";
@@ -60,7 +60,7 @@ public class MyTest {
 }
 ```
 
-But that's tedious. You need to write the shutdown boilerplate by yourself. So gRPC testing library introduced something to make it less tedious. 
+But that's tedious. You need to write the shutdown boilerplate by yourself. So gRPC testing library introduced something to make it less tedious.
 
 A JUnit rule `GrpcServerRule` was first introduced to eliminate the shutdown boilerplate. With this rule, it creates an In-Process server and channel at the beginning of the test and shuts them down at the end of test automatically. But it is inflexible and too restrictive in the sense that it does not support transports other than In-Process transports, multiple channels to the server, custom channel or server builder options, and configuration inside individual test methods.
 
@@ -101,11 +101,11 @@ public class MyTest {
     ...
     grpcCleanup.register(
     	serverBuilder.addService(myServiceImpl).build().start());
-    anagedChannel channel = grpcCleanup.register(
+    managedChannel channel = grpcCleanup.register(
     	channelBuilder.maxInboundMessageSize(1024).build());
     ...
   }
 }
 ```
 
-Now with `GrpcCleanupRuel` you don't need to worry about graceful shutdown of gRPC servers and channels in JUnit test.
+Now with `GrpcCleanupRule` you don't need to worry about graceful shutdown of gRPC servers and channels in JUnit test.
