@@ -101,7 +101,7 @@ public class MyTest {
     ...
     grpcCleanup.register(
     	serverBuilder.addService(myServiceImpl).build().start());
-    managedChannel channel = grpcCleanup.register(
+    ManagedChannel channel = grpcCleanup.register(
     	channelBuilder.maxInboundMessageSize(1024).build());
     ...
   }
