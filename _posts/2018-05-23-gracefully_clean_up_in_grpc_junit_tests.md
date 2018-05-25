@@ -4,6 +4,7 @@ title: Let's gracefully clean up in gRPC JUnit tests
 published: false
 permalink: blog/gracefully_clean_up_in_grpc_junit_tests
 author: Dapeng Zhang
+author-link: https://github.com/dapengzhang0
 company: Google
 company-link: https://www.google.com
 ---
