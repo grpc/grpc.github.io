@@ -62,9 +62,9 @@ public class MyTest {
 
 But that's tedious. You need to write the shutdown boilerplate by yourself. So gRPC testing library introduced something to make it less tedious.
 
-A JUnit rule `GrpcServerRule` was first introduced to eliminate the shutdown boilerplate. With this rule, it creates an In-Process server and channel at the beginning of the test and shuts them down at the end of test automatically. But it is inflexible and too restrictive in the sense that it does not support transports other than In-Process transports, multiple channels to the server, custom channel or server builder options, and configuration inside individual test methods.
+A JUnit rule [`GrpcServerRule`][GrpcServerRule] was first introduced to eliminate the shutdown boilerplate. With this rule, it creates an In-Process server and channel at the beginning of the test and shuts them down at the end of test automatically. But it is inflexible and too restrictive in the sense that it does not support transports other than In-Process transports, multiple channels to the server, custom channel or server builder options, and configuration inside individual test methods.
 
-A more preferable JUnit rule `GrpcCleanupRule` was introduced, which also eliminates the shutdown boilerplate. Unlike `GrpcServerRule`, `GrpcCleanupRule` does not create any server or channel automatically at all. Users should create and start the server by themselves, and create channels by themselves, just as in plain tests. With this rule, users just need to register every resource (channel or server) that needs to be shut down at the end of test, and the rule will then shut them down gracefully automatically.
+A more preferable JUnit rule [`GrpcCleanupRule`][GrpcCleanupRule] was introduced (and will be available from gRPC release v1.13.0), which also eliminates the shutdown boilerplate. Unlike `GrpcServerRule`, `GrpcCleanupRule` does not create any server or channel automatically at all. Users should create and start the server by themselves, and create channels by themselves, just as in plain tests. With this rule, users just need to register every resource (channel or server) that needs to be shut down at the end of test, and the rule will then shut them down gracefully automatically.
 
 You can register resources either before running test methods
 
@@ -108,4 +108,7 @@ public class MyTest {
 }
 ```
 
-Now with `GrpcCleanupRule` you don't need to worry about graceful shutdown of gRPC servers and channels in JUnit test.
+Now with [`GrpcCleanupRule`][GrpcCleanupRule] you don't need to worry about graceful shutdown of gRPC servers and channels in JUnit test. So try it out and clean up in your tests!
+
+[GrpcServerRule]:https://github.com/grpc/grpc-java/blob/v1.1.x/testing/src/main/java/io/grpc/testing/GrpcServerRule.java
+[GrpcCleanupRule]:https://github.com/grpc/grpc-java/blob/master/testing/src/main/java/io/grpc/testing/GrpcCleanupRule.java
