@@ -29,6 +29,10 @@
   width: 100%; 
 }
 
+.clickable-header {
+  cursor: pointer;
+}
+
 .toc {
   border-left: 2px solid $light-gray;
   display: none !important;
