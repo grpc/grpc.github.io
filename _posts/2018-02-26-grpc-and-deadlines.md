@@ -78,7 +78,8 @@ if (context->IsCancelled()) {
 
 ```go
 if ctx.Err() == context.Canceled {
-	return status.New(codepb.CANCELLED, "Client cancelled, abandoning.")
+	return status.New(codes.Canceled, "Client cancelled, abandoning.")
+}
 ```
 
 
@@ -120,8 +121,7 @@ context.set_deadline(deadline);
 ```go
 var deadlineMs = flag.Int("deadline_ms", 20*1000, "Default deadline in milliseconds.")
 
-clientDeadline := time.Duration(*deadlineMs) * time.Millisecond
-ctx, cancel := context.WithTimeout(ctx, clientDeadline)
+ctx, cancel := context.WithTimeout(ctx, time.Duration(*deadlineMs) * time.Millisecond)
 ```
 
 

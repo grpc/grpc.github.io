@@ -417,7 +417,10 @@ Android and non-Android Java in the gRPC Java
 documentation.
 
 To enable TLS on a server, a certificate chain and private key need to be
-specified in PEM format. The standard TLS port is 443, but we use 8443 below to
+specified in PEM format. Such private key should not be using a password.
+The order of certificates in the chain matters: more specifically, the certificate
+at the top has to be the host CA, while the one at the very bottom
+has to be the root CA. The standard TLS port is 443, but we use 8443 below to
 avoid needing extra permissions from the OS.
 
 ```java
