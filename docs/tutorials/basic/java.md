@@ -463,7 +463,7 @@ address and port we want to connect to:
 
 ```java
 public RouteGuideClient(String host, int port) {
-  this(ManagedChannelBuilder.forAddress(host, port).usePlaintext(true));
+  this(ManagedChannelBuilder.forAddress(host, port).usePlaintext());
 }
 
 /** Construct client for accessing RouteGuide server using the existing channel. */
