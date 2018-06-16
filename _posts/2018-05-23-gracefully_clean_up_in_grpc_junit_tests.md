@@ -9,7 +9,7 @@ company: Google
 company-link: https://www.google.com
 ---
 
-As a good programmer, you should always remember to clean up gRPC resources such as client channels, servers, and previously attached Contexts whenever they are no longer needed. 
+It is best practice to always clean up gRPC resources such as client channels, servers, and previously attached Contexts whenever they are no longer needed. 
 
 This is even true for JUnit tests, because otherwise leaked resources may not only linger in your machine forever, but also interfere with subsequent tests. A not-so-bad case is that subsequent tests can't pass because of a leaked resource from the previous test. The worst case is that some subsequent tests pass that wouldn't have passed at all if the previously passed test had not leaked a resource.
 
@@ -63,11 +63,11 @@ public class MyTest {
 }
 ```
 
-However, having to add all this to every test so it shuts down gracefully gives you more work to do, as you need to write the shutdown boilerplate by yourself. Because of this, the gRPC testing library introduced something to make the job less tedious.
+However, having to add all this to every test so it shuts down gracefully gives you more work to do, as you need to write the shutdown boilerplate by yourself. Because of this, the gRPC testing library has helper rules to make this job less tedious.
 
-Initially, a JUnit rule [`GrpcServerRule`][GrpcServerRule] was introduced to eliminate the shutdown boilerplate. This rule creates an In-Process server and channel at the beginning of the test ,and shuts them down at the end of test automatically. However, users found this rule too restrictive in that it does not support transports other than In-Process transports, multiple channels to the server, custom channel or server builder options, and configuration inside individual test methods.
+Initially, a JUnit rule [`GrpcServerRule`][GrpcServerRule] was introduced to eliminate the shutdown boilerplate. This rule creates an In-Process server and channel at the beginning of the test, and shuts them down at the end of test automatically. However, users found this rule too restrictive in that it does not support transports other than In-Process transports, multiple channels to the server, custom channel or server builder options, and configuration inside individual test methods.
 
-A more flexible JUnit rule [`GrpcCleanupRule`][GrpcCleanupRule] was introduced from gRPC release v1.13.0, which also eliminates the shutdown boilerplate. However unlike GrpcServerRule, GrpcCleanupRule does not create any server or channel automatically at all. Users create and start the server by themselves, and create channels by themselves, just as in plain tests. With this rule, users just need to register every resource (channel or server) that needs to be shut down at the end of test, and the rule will then shut them down gracefully automatically.
+A more flexible JUnit rule [`GrpcCleanupRule`][GrpcCleanupRule] was introduced in gRPC release v1.13, which also eliminates the shutdown boilerplate. However unlike `GrpcServerRule`, `GrpcCleanupRule` does not create any server or channel automatically at all. Users create and start the server by themselves, and create channels by themselves, just as in plain tests. With this rule, users just need to register every resource (channel or server) that needs to be shut down at the end of test, and the rule will then shut them down gracefully automatically.
 
 You can register resources either before running test methods
 
@@ -114,4 +114,4 @@ public class MyTest {
 Now with [`GrpcCleanupRule`][GrpcCleanupRule] you don't need to worry about graceful shutdown of gRPC servers and channels in JUnit test. So try it out and clean up in your tests!
 
 [GrpcServerRule]:https://github.com/grpc/grpc-java/blob/v1.1.x/testing/src/main/java/io/grpc/testing/GrpcServerRule.java
-[GrpcCleanupRule]:https://github.com/grpc/grpc-java/blob/master/testing/src/main/java/io/grpc/testing/GrpcCleanupRule.java
+[GrpcCleanupRule]:https://github.com/grpc/grpc-java/blob/v1.13.x/testing/src/main/java/io/grpc/testing/GrpcCleanupRule.java
