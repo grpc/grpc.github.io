@@ -21,6 +21,10 @@ working example.</p>
     or an [Android Virtual
     Device](https://developer.android.com/studio/run/managing-avds.html)
 
+Note: gRPC Java does not support running a server on an Android device. For this
+quickstart, the Android client app will connect to a server running on your
+local (non-Android) computer.
+
 ## Download the example
 
 You'll need a local copy of the example code to work through this quickstart.
