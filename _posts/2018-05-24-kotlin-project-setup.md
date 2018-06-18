@@ -11,10 +11,10 @@ company-link: https://www.google.com
 
 # Kotlin Gradle projects and gRPC
 
-Did you know that gRPC Java now has out of box support for Kotlin projects built with Gradle? Kotlin is a modern, statically typed language developed by JetBrains that targets the JVM and Android. It is generally easy for Kotlin programs to interoperate with existing Java libraries. We have added support to the [protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin/releases) so that the generated Java libraries are automatically picked up by Kotlin. You can now add the protobuf-gradle-plugin to your Kotlin project, and use gRPC just like you would with a typical Java project.
+Did you know that gRPC Java now has out of box support for Kotlin projects built with Gradle? [Kotlin](https://kotlinlang.org/) is a modern, statically typed language developed by JetBrains that targets the JVM and Android. It is generally easy for Kotlin programs to interoperate with existing Java libraries. To improve this experience further, we have added support to the [protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin/releases) so that the generated Java libraries are automatically picked up by Kotlin. You can now add the protobuf-gradle-plugin to your Kotlin project, and use gRPC just like you would with a typical Java project.
 
 <!--more-->
-The follow examples show you how to configure a project for a JVM application and an Android application using Kotlin.
+The following examples show you how to configure a project for a JVM application and an Android application using Kotlin.
 
 ### Kotlin gRPC client and server
 
@@ -50,8 +50,15 @@ dependencies {
   // The rest of the projects dep are added below, refer to example URL
 }
 
+// The standard protobuf block, same as normal gRPC Java projects
 protobuf {
-  // The normal gRPC configuration goes here, refer to example URL
+  protoc { artifact = 'com.google.protobuf:protoc:3.5.1-1' }
+    plugins {
+      grpc { artifact = "io.grpc:protoc-gen-grpc-java:${grpcVersion}" }
+    }
+    generateProtoTasks {
+      all()*.plugins { grpc {} }
+    }
 }
 ```
 
