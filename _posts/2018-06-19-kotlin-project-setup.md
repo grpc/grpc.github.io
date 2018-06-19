@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Kotlin Gradle projects and gRPC
-published: false
+published: true
 permalink: blog/kotlin-gradle-projects
 author: Spencer Fang
 author-link: https://github.com/zpencer
