@@ -9,8 +9,14 @@ var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // Array of videoIds
-// The key corresponds to the data attributes in about/index.html
+// The key corresponds to the data attributes in docs/talks/index.html
+// TODO(jtattermusch): is there a way to not require editing this when adding new videos?
 var playerInfoList = [
+    {type: 'yt', key: '5QH67PXNbaI'},
+    {type: 'yt', key: 'F2znfxn_5Hg'},
+    {type: 'yt', key: 'rf5fw_O4tnU'},
+    {type: 'yt', key: 'F2WYEFLTKEw'},
+    {type: 'yt', key: 'UZcvnApm81U'},
     {type: 'yt', key: 'UOIJNygDNlE'}, 
     {type: 'yt', key: 'nz-LcdoMYWA'}, 
     {type: 'yt', key: 'sZx3oZt7LVg'}, 
@@ -25,7 +31,7 @@ function createPlayer(key) {
   $('#player').append('<iframe id="ytplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/'+key+'" frameborder="0" allowfullscreen>');
 }
 
-// click event for presentations/talks in about 
+// click event for presentations/talks in docs/talks
 $('.pt').on('click', function() {
   var self = this,
       video = playerInfoList.filter(function(obj) {

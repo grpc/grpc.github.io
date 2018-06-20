@@ -49,7 +49,7 @@ download the example, clone the `grpc` repository by running the following
 command:
 
 ```sh
-$ git clone -b v1.0.x https://github.com/grpc/grpc
+$ git clone -b v1.12.x https://github.com/grpc/grpc
 $ cd grpc
 ```
 
