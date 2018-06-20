@@ -126,6 +126,6 @@ Just like the non-Android project, run `./gradlew generateProto generateProto` t
 
 Finally, test out the Android app by opening the project in Android Studio and selecting `Run > Run 'app'`.
 
-![]({{ site.baseurl }}/img/kotlin-project-android-app.png){:height="813px" width="404px"}
+<img src="https://grpc.io/img/kotlin-project-android-app.png" alt="Kotlin Android app example" style="max-width: 404px">
 
 We are excited about improving the gRPC experience for Kotlin developers. Please add enhancement ideas or bugs to the [protobuf-gradle-plugin issue tracker](https://github.com/google/protobuf-gradle-plugin/issues) or the [grpc-java issue tracker](https://github.com/grpc/grpc-java/issues). 
