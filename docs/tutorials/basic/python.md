@@ -16,10 +16,8 @@ By walking through this example you'll learn how to:
 
 It assumes that you have read the [Overview](/docs/index.html) and are familiar
 with [protocol
-buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
-that the example in this tutorial uses the proto3 version of the protocol
-buffers language, which is currently in beta release: you can find out more in
-the [proto3 language
+buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
+find out more in the [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3) and [Python
 generated code
 guide](https://developers.google.com/protocol-buffers/docs/reference/python-generated),
@@ -158,6 +156,13 @@ First, install the grpcio-tools package:
 
 ```
 $ pip install grpcio-tools
+```
+
+Then, install the googleapis-common-proto package which is a collection of
+generated python classes for some common protos:
+
+```
+$ pip install googleapis-common-protos
 ```
 
 Use the following command to generate the Python code:

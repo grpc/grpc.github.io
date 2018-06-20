@@ -352,6 +352,8 @@ stub = helloworld_pb2.GreeterStub(channel)
 
 #### With server authentication SSL/TLS
 
+Client:
+
 ```python
 import grpc
 import helloworld_pb2
@@ -359,6 +361,22 @@ import helloworld_pb2
 creds = grpc.ssl_channel_credentials(open('roots.pem').read())
 channel = grpc.secure_channel('myservice.example.com:443', creds)
 stub = helloworld_pb2.GreeterStub(channel)
+```
+
+Server:
+
+```python
+import grpc
+import helloworld_pb2
+
+server = grpc.server(futures.ThreadPoolExecutor(max_workers=10)
+private_key = open('key.pem').read()
+certificate_chain = open('chain.pem').read()
+server_credentials = grpc.ssl_server_credentials( ( (private_key, certificate_chain), ) )
+# Adding GreeterServicer to server omitted
+server.add_secure_port('myservice.example.com:443', server_credentials)
+server.start()
+# Server sleep omitted
 ```
 
 #### Authenticate with Google using a JWT
@@ -417,7 +435,10 @@ Android and non-Android Java in the gRPC Java
 documentation.
 
 To enable TLS on a server, a certificate chain and private key need to be
-specified in PEM format. The standard TLS port is 443, but we use 8443 below to
+specified in PEM format. Such private key should not be using a password.
+The order of certificates in the chain matters: more specifically, the certificate
+at the top has to be the host CA, while the one at the very bottom
+has to be the root CA. The standard TLS port is 443, but we use 8443 below to
 avoid needing extra permissions from the OS.
 
 ```java
