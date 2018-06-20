@@ -157,7 +157,7 @@ Next we need to generate the gRPC client and server interfaces from our .proto
 service definition. We do this using the protocol buffer compiler `protoc` with
 a special gRPC C++ plugin.
 
-For simplicity, we've provided a [makefile](https://github.com/grpc/grpc/blob/
+For simplicity, we've provided a [Makefile](https://github.com/grpc/grpc/blob/
 {{ site.data.config.grpc_release_branch }}/examples/cpp/route_guide/Makefile)
 that runs `protoc` for you with the appropriate plugin, input, and output (if
 you want to run this yourself, make sure you've installed protoc and followed
