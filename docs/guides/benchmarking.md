@@ -33,6 +33,7 @@ CPU is spent.
   * [C++ full-stack microbenchmarks](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5684961520648192)
   * [C Core filter benchmarks](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5740240702537728)
   * [C Core shared component benchmarks](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5641826627223552&container=789696829&widget=512792852)
+  * [CHTTP2 microbenchmarks](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5732910535540736)
 
 ## Performance testing design
 
