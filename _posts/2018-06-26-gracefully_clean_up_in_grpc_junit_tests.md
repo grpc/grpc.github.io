@@ -15,8 +15,7 @@ This is even true for JUnit tests, because otherwise leaked resources may not on
 
 <!--more-->
 
-So cleanup, cleanup, cleanup...\
-and fail the test if any cleanup is not successful.
+So cleanup, cleanup, cleanup... and fail the test if any cleanup is not successful.
 
 A typical example is
 
@@ -26,7 +25,7 @@ public class MyTest {
   private ManagedChannel channel;
   ...
   @After
-  public void tearDown() InterruptedException {
+  public void tearDown() throws InterruptedException {
     // assume channel and server are not null
     channel.shutdownNow();
     server.shutdownNow();
