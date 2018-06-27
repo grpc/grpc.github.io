@@ -17,7 +17,7 @@ working example.</p>
 #### Install gRPC
 
 To install gRPC on your system, follow the [instructions to build from
-source](https://github.com/grpc/grpc/blob/master/INSTALL.md).
+source](https://github.com/grpc/grpc/blob/master/BUILDING.md).
 
 To run the example code, please ensure `pkg-config` is installed on your
 machine before you build and install gRPC in the previous step, since the
