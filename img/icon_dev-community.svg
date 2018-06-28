@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 54.8 54.8" style="enable-background:new 0 0 54.8 54.8;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#B8B8B8;}
+	.st1{fill:#FFFFFF;}
+	.st2{font-family:'Joystick';}
+	.st3{font-size:20px;}
+</style>
+<font horiz-adv-x="2048">
+<!-- Joystick (C) (Neale Davidson). 2012-2015. All Rights Reserved -->
+<!-- Copyright: Copyright 2018 Adobe System Incorporated. All rights reserved. -->
+<font-face font-family="Joystick" units-per-em="2048" underline-position="-217" underline-thickness="150"/>
+<missing-glyph horiz-adv-x="1650" d="M0,200l0,1100C0,1433 67,1500 200,1500l1100,0C1433,1500 1500,1433 1500,1300l0,-1100C1500,67 1433,0 1300,0l-1100,0C67,0 0,67 0,200M1475,201l0,1099C1475,1417 1417,1475 1300,1475l-1100,0C84,1475 26,1417 25,1300l0,-1100C26,83 84,25 200,25l1101,0C1417,25 1475,84 1475,201z"/>
+<glyph unicode="D" horiz-adv-x="950" d="M800,400C800,283 763,188 688,113C613,38 514,0 392,0l-392,0l0,1400l400,0C517,1400 613,1363 688,1288C763,1213 800,1117 800,1000M550,400l0,600C550,1050 533,1088 500,1113C467,1138 433,1150 400,1150l-150,0l0,-900l150,0C433,250 467,263 500,288C533,313 550,350 550,400z"/>
+<glyph unicode="E" horiz-adv-x="850" d="M700,0l-525,0C125,0 83,17 50,50C17,83 0,125 0,175l0,1050C0,1275 17,1317 50,1350C83,1383 125,1400 175,1400l525,0l0,-250l-450,0l0,-325l275,0l0,-250l-275,0l0,-325l450,0z"/>
+<glyph unicode="V" horiz-adv-x="1200" d="M525,0C442,0 375,58 325,175l-325,1225l275,0l250,-962l250,962l275,0l-325,-1225C675,58 608,0 525,0z"/>
+</font>
+
+	<path class="st0" d="M27.4,9.3c-10,0-18.1,8.1-18.1,18.1s8.1,18.1,18.1,18.1c10,0,18.1-8.1,18.1-18.1C45.5,17.4,37.4,9.3,27.4,9.3z
+	"/>
+<text transform="matrix(1 0 0 1 13.7304 34.3016)" class="st1 st2 st3">DEV</text>
+</svg>
