@@ -169,13 +169,23 @@ message Point {
 The Node.js library dynamically generates service descriptors and client stub
 definitions from `.proto` files loaded at runtime.
 
-To load a `.proto` file, simply `require` the gRPC library, then use its
-`load()` method:
+To load a `.proto` file, simply `require` the gRPC proto loader library and use its
+`loadSync()` method, then pass the output to the gRPC library's `loadPackageDefinition` method:
 
 ```js
 var PROTO_PATH = __dirname + '/../../../protos/route_guide.proto';
 var grpc = require('grpc');
-var protoDescriptor = grpc.load(PROTO_PATH);
+var protoLoader = require('@grpc/proto-loader');
+// Suggested options for similarity to existing grpc.load behavior
+var packageDefinition = protoLoader.loadSync(
+    PROTO_PATH,
+    {keepCase: true,
+     longs: String,
+     enums: String,
+     defaults: true,
+     oneofs: true
+    });
+var protoDescriptor = grpc.loadPackageDefinition(packageDefinition);
 // The protoDescriptor object has the full package hierarchy
 var routeguide = protoDescriptor.routeguide;
 ```
