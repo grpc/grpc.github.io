@@ -39,10 +39,10 @@ CPU is spent.
 
 Each language implements a performance testing worker that implements
 a gRPC
-[WorkerService](https://github.com/grpc/grpc/blob/master/src/proto/grpc/testing/services.proto). This
+[WorkerService](https://github.com/grpc/grpc/blob/master/src/proto/grpc/testing/worker_service.proto). This
 service directs the worker to act as either a client or a server for
 the actual benchmark test, represented as
-[BenchmarkService](https://github.com/grpc/grpc/blob/master/src/proto/grpc/testing/services.proto). That
+[BenchmarkService](https://github.com/grpc/grpc/blob/master/src/proto/grpc/testing/benchmark_service.proto). That
 service has two methods:
 
   * UnaryCall - a unary RPC of a simple request that specifies the number of bytes to return in the response
