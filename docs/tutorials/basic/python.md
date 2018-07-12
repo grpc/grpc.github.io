@@ -14,7 +14,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the Python gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/index.html) and are familiar
+It assumes that you have read the [Overview](/docs/guides/#overview) and are familiar
 with [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
 find out more in the [proto3 language
@@ -64,7 +64,7 @@ client interface code - if you don't already, follow the setup instructions in
 
 ## Defining the service
 
-Your first step (as you'll know from the [Overview](/docs/index.html)) is to
+Your first step (as you'll know from the [Overview](/docs/guides/#overview)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can

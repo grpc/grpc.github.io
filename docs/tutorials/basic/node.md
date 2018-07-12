@@ -439,7 +439,7 @@ var call = client.listFeatures(rectangle);
           feature.location.latitude/COORD_FACTOR + ', ' +
           feature.location.longitude/COORD_FACTOR);
   });
-  call.on('data', function() {
+  call.on('end', function() {
     // The server has finished sending
   });
   call.on('error', function(e) {
