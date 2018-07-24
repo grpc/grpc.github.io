@@ -1,6 +1,6 @@
 ---
 layout: post
-title: HTTP/2: Smarter At Scale
+title: HTTP/2 Smarter At Scale
 published: true
 permalink: blog/http2_smarter_at_scale
 author: Jean de Klerk
