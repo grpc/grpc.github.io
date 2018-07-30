@@ -139,12 +139,16 @@ extension=grpc.so
 
 **Add the gRPC PHP library as a Composer dependency**
 
-You need to add this to your project's `composer.json` file.
+You'll need to add the gRPC library to your project. You can install the latest version by running:
 
+```sh
+  composer require grpc/grpc
 ```
-  "require": {
-    "grpc/grpc": "v1.7.0"
-  }
+
+Alternatively, you can specify a version constraint (e.g., `^1.9.0`) like so:
+
+```sh
+  composer require "grpc/grpc:^1.9.0"
 ```
 
 To run tests with generated stub code from `.proto` files, you will also 
@@ -225,12 +229,16 @@ extension=protobuf.so
 
 #### 2. PHP implementation (for easier installation)
 
-Add this to your `composer.json` file:
+You'll need to add protobuf to your project. To use the latest version, run:
 
+```sh
+  composer require google/protobuf
 ```
-  "require": {
-    "google/protobuf": "^v3.3.0"
-  }
+
+Alternatively, you can specify a version constraint (e.g., `^3.6.0`) like so:
+
+```sh
+  composer require "google/protobuf:^3.6.0"
 ```
 
 ### PHP Protoc Plugin
