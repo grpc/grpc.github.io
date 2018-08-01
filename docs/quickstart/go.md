@@ -177,7 +177,7 @@ func (s *server) SayHelloAgain(ctx context.Context, in *pb.HelloRequest) (*pb.He
 Edit `greeter_client/main.go` to add the following code to the main function.
 
 ```go
-r, err = c.SayHelloAgain(context.Background(), &pb.HelloRequest{Name: name})
+r, err = c.SayHelloAgain(ctx, &pb.HelloRequest{Name: name})
 if err != nil {
         log.Fatalf("could not greet: %v", err)
 }
