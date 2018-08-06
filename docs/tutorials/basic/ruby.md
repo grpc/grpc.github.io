@@ -43,12 +43,12 @@ updating.
 ## Example code and setup
 
 The example code for our tutorial is in
-[grpc/grpc/examples/ruby/route_guide](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_branch }}/examples/ruby/route_guide).
+[grpc/grpc/examples/ruby/route_guide](https://github.com/grpc/grpc/tree/{{ site.data.config.grpc_release_tag }}/examples/ruby/route_guide).
 To download the example, clone the `grpc` repository by running the following
 command:
 
 ```
-$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
+$ git clone -b {{ site.data.config.grpc_release_tag }} https://github.com/grpc/grpc
 $ cd grpc
 ```
 
@@ -69,7 +69,7 @@ define the gRPC *service* and the method *request* and *response* types using
 [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
 see the complete .proto file in
-[`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/protos/route_guide.proto).
+[`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -155,7 +155,7 @@ a special gRPC Ruby plugin.
 
 If you want to run this yourself, make sure you've installed protoc and followed
 the gRPC Ruby plugin [installation
-instructions](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/INSTALL.md) first):
+instructions](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/INSTALL.md) first):
 
 Once that's done, the following command can be used to generate the ruby code.
 
@@ -191,7 +191,7 @@ There are two parts to making our `RouteGuide` service do its job:
   service responses.
 
 You can find our example `RouteGuide` server in
-[examples/ruby/route_guide/route_guide_server.rb](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/ruby/route_guide/route_guide_server.rb).
+[examples/ruby/route_guide/route_guide_server.rb](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/examples/ruby/route_guide/route_guide_server.rb).
 Let's take a closer look at how it works.
 
 ### Implementing RouteGuide
@@ -305,7 +305,7 @@ this, we:
 
 In this section, we'll look at creating a Ruby client for our `RouteGuide`
 service. You can see our complete example client code in
-[examples/ruby/route_guide/route_guide_client.rb](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_branch }}/examples/ruby/route_guide/route_guide_client.rb).
+[examples/ruby/route_guide/route_guide_client.rb](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/examples/ruby/route_guide/route_guide_client.rb).
 
 ### Creating a stub
 

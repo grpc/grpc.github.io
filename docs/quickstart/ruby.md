@@ -29,7 +29,7 @@ Ruby's gRPC tools include the protocol buffer compiler `protoc` and the special
 plugin for generating server and client code from the `.proto` service
 definitions. For the first part of our quickstart example, we've already
 generated the server and client stubs from
-[helloworld.proto](https://github.com/grpc/grpc/tree/{{site.data.config.grpc_release_branch}}/examples/protos/helloworld.proto),
+[helloworld.proto](https://github.com/grpc/grpc/tree/{{site.data.config.grpc_release_tag}}/examples/protos/helloworld.proto),
 but you'll need the tools for the rest of our quickstart, as well as later
 tutorials and your own projects.
 
@@ -48,7 +48,7 @@ and other tutorials):
 
 ```sh
 $ # Clone the repository to get the example code:
-$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
+$ git clone -b {{ site.data.config.grpc_release_tag }} https://github.com/grpc/grpc
 $ # Navigate to the "hello, world" Ruby example:
 $ cd grpc/examples/ruby
 ```
