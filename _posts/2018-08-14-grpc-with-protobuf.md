@@ -31,7 +31,7 @@ Let's continue with the [Key-Value](https://github.com/carl-mastrangelo/kvstore/
 
 ## What is a Service Anyways?
 
-From the point of view of gRPC, a _Service_ is a collection of _Methods_.   In Java, a method is represented as a [`MethodDecriptor`](https://grpc.io/grpc-java/javadoc/io/grpc/MethodDescriptor.html).  Each `MethodDescriptor` includes the name of the method, a `Marshaller` for encoding requests, and a `Marshaller` for encoding responses.  They also include addition detail, like if the call is streaming.   For simplicitly, we'll stick with unary RPCs which have a single request and single response.
+From the point of view of gRPC, a _Service_ is a collection of _Methods_.   In Java, a method is represented as a [`MethodDecriptor`](https://grpc.io/grpc-java/javadoc/io/grpc/MethodDescriptor.html).  Each `MethodDescriptor` includes the name of the method, a `Marshaller` for encoding requests, and a `Marshaller` for encoding responses.  They also include addition detail, like if the call is streaming.   For simplicity, we'll stick with unary RPCs which have a single request and single response.
 
 Since we won't be generating any code, we'll need to write the message classes ourselves.  There are four methods, each which have a request and a response type.  This means we need to make eight messages:
 
