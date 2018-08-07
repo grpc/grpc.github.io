@@ -9,19 +9,21 @@ company: Google
 company-link: https://www.google.com
 ---
 
-So you've bought into this whole RPC thing and want to try it out, but aren't quite sure about Protocol Buffers.  Your existing code your own objects, or perhaps you have code that needs a particular encoding.   What do do?
+So you've bought into this whole RPC thing and want to try it out, but aren't quite sure about Protocol Buffers.  Your existing code your own objects, or perhaps you have code that needs a particular encoding.   What to do?
 
-Forutantely, gRPC is encoding agnostic!  You can still get a lot of the benefits of gRPC without using Protobuf.  In this post we'll go through how to make gRPC work with other encodings and types.  Let's try using JSON!
+Forutantely, gRPC is encoding agnostic!  You can still get a lot of the benefits of gRPC without using Protobuf.  In this post we'll go through how to make gRPC work with other encodings and types.  Let's try using JSON.
 
 <!--more-->
 
 gRPC is actually a collection of technologies that have high cohesion, rather than a singular, monolithic framework.  This means its possible to swap out parts of gRPC and still take advantage of gRPC's benefits.  GSON is a popular library for Java for doing JSON encoding so it would be cool to plug it in to gRPC.  For our purposes, let's remove all the protobuf related things and replace them with GSON:
 
-* <span style="color:red">- Protobuf wire encoding</span>
-* <span style="color:red">- Protobuf generated message types</span>
-* <span style="color:red">- gPRC generated stub types</span>
-* <span style="color:green">+ JSON wire encoding</span>
-* <span style="color:green">+ GSON message types</span>
+```diff
+- Protobuf wire encoding
+- Protobuf generated message types
+- gPRC generated stub types
++ JSON wire encoding
++ GSON message types
+```
 
 Previously, Protobuf and gRPC were generating code for us, but we would like to use our own types.  Additionally, we are going to be using our own encoding too.  GSON allows us to bring our own types in our code, but provides a way of serializing those types into bytes.
 
