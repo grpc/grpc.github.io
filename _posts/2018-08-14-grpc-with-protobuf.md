@@ -15,17 +15,17 @@ Forutantely, gRPC is encoding agnostic!  You can still get a lot of the benefits
 
 <!--more-->
 
-gRPC is actually a collection of technologies that have high cohesion, rather than a singular, monolithic framework.  This means its possible to swap out parts of gRPC and still take advantage of gRPC's benefits.  GSON is a popular library for Java for doing JSON encoding so it would be cool to plug it in to gRPC.  For our purposes, let's remove all the protobuf related things and replace them with GSON:
+gRPC is actually a collection of technologies that have high cohesion, rather than a singular, monolithic framework.  This means its possible to swap out parts of gRPC and still take advantage of gRPC's benefits.  [Gson](https://github.com/google/gson) is a popular library for Java for doing JSON encoding so it would be cool to plug it in to gRPC.  For our purposes, let's remove all the protobuf related things and replace them with Gson:
 
 ```diff
 - Protobuf wire encoding
 - Protobuf generated message types
 - gPRC generated stub types
 + JSON wire encoding
-+ GSON message types
++ Gson message types
 ```
 
-Previously, Protobuf and gRPC were generating code for us, but we would like to use our own types.  Additionally, we are going to be using our own encoding too.  GSON allows us to bring our own types in our code, but provides a way of serializing those types into bytes.
+Previously, Protobuf and gRPC were generating code for us, but we would like to use our own types.  Additionally, we are going to be using our own encoding too.  Gson allows us to bring our own types in our code, but provides a way of serializing those types into bytes.
 
 Let's continue with the [Key-Value](https://github.com/carl-mastrangelo/kvstore/tree/04-gson-marshaller) store service.  We will be modifying the code used my previous [So You Want to Optimize gRPC](https://grpc.io/blog/optimizing-grpc-part-2) post.
 
@@ -174,7 +174,7 @@ $ # no proto deps!
 
 ## Optimizing the Code
 
-While GSON is not as fast as Protobuf, there's no sense in not picking the low hanging fruit.  Running the code we see the performance is pretty slow:
+While Gson is not as fast as Protobuf, there's no sense in not picking the low hanging fruit.  Running the code we see the performance is pretty slow:
 
 ```sh
 ./gradlew installDist
