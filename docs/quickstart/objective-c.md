@@ -57,7 +57,7 @@ Quickstart. Copy the source code from Github
 [repository](https://github.com/grpc/grpc):
 
 ```sh
-$ git clone --recursive -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc.git
+$ git clone --recursive -b {{ site.data.config.grpc_release_tag }} https://github.com/grpc/grpc.git
 ```
 
 ## Install gRPC plugins and libraries

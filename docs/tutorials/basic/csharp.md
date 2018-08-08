@@ -44,7 +44,7 @@ updating.
 
 The example code for our tutorial is in
 [grpc/grpc/examples/csharp/route_guide](https://github.com/grpc/grpc/tree/
-{{ site.data.config.grpc_release_branch }}/examples/csharp/route_guide). To
+{{ site.data.config.grpc_release_tag }}/examples/csharp/route_guide). To
 download the example, clone the `grpc` repository by running the following
 command:
 
@@ -58,7 +58,7 @@ All the files for this tutorial are in the directory
 `examples/csharp/route_guide/RouteGuide.sln` from Visual Studio, Monodevelop or
 Xamarin Studio. For additional installation details, see the [How to use
 instructions](https://github.com/grpc/grpc/tree/
-{{ site.data.config.grpc_release_branch }}/src/csharp#how-to-use).
+{{ site.data.config.grpc_release_tag }}/src/csharp#how-to-use).
 
 ## Defining the service
 
@@ -67,7 +67,7 @@ define the gRPC *service* and the method *request* and *response* types using
 [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). 
 You can see the complete .proto file in
 [`examples/protos/route_guide.proto`](https://github.com/grpc/grpc/blob/
-{{ site.data.config.grpc_release_branch }}/examples/protos/route_guide.proto).
+{{ site.data.config.grpc_release_tag }}/examples/protos/route_guide.proto).
 
 To define a service, you specify a named `service` in your .proto file:
 
@@ -163,13 +163,13 @@ To generate the code, the following command should be run from the
 - Windows
 
   ```
-  > packages\Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}\tools\windows_x86\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}\tools\windows_x86\grpc_csharp_plugin.exe
+  > packages\Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\grpc_csharp_plugin.exe
   ```
 
 - Linux (or Mac OS X by using `macosx_x64` directory).
 
   ```
-  $ packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
+  $ packages/Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
   ```
 
 Running the appropriate command for your OS regenerates the following files in
@@ -203,7 +203,7 @@ There are two parts to making our `RouteGuide` service do its job:
 
 You can find our example `RouteGuide` server in
 [examples/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs](https://github.com/grpc/grpc/blob/
-{{ site.data.config.grpc_release_branch }}/examples/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs).
+{{ site.data.config.grpc_release_tag }}/examples/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs).
 Let's take a closer look at how it works.
 
 ### Implementing RouteGuide
@@ -374,7 +374,7 @@ do this, we:
 In this section, we'll look at creating a C# client for our `RouteGuide`
 service. You can see our complete example client code in
 [examples/csharp/route_guide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc/blob/
-{{ site.data.config.grpc_release_branch }}/examples/csharp/route_guide/RouteGuideClient/Program.cs).
+{{ site.data.config.grpc_release_tag }}/examples/csharp/route_guide/RouteGuideClient/Program.cs).
 
 ### Creating a client object
 

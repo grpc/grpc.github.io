@@ -55,7 +55,7 @@ and other tutorials):
 
 ```sh
 $ # Clone the repository to get the example code:
-$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc 
+$ git clone -b {{ site.data.config.grpc_release_tag }} https://github.com/grpc/grpc 
 $ cd grpc
 ```
 
@@ -212,7 +212,7 @@ The `Grpc.Tools` NuGet package contains the protoc and protobuf C# plugin binari
 
 #### Using Visual Studio
 
-This example project already depends on the `Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}` NuGet package, so it should be included in `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE, 
+This example project already depends on the `Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}` NuGet package, so it should be included in `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE, 
 or when you restore packages via `/path/to/nuget restore` on the command line.
 
 #### If you have a NuGet client that is __not__ at version 2.12
@@ -230,8 +230,8 @@ is by simply downloading the NuGet package and unzipping without a NuGet client,
 From your example directory:
 
 ```
-$ temp_dir=packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tmp
-$ curl_url=https://www.nuget.org/api/v2/package/Grpc.Tools/{{ Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}
+$ temp_dir=packages/Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tmp
+$ curl_url=https://www.nuget.org/api/v2/package/Grpc.Tools/{{ Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}
 $ mkdir -p $temp_dir && cd $temp_dir && curl -sL $curl_url > tmp.zip; unzip tmp.zip && cd .. && cp -r tmp/tools . && rm -rf tmp && cd ../..
 ```
 
@@ -247,13 +247,13 @@ From the `examples/csharp/helloworld` directory, or the `examples/csharp/hellowo
 **Windows**
 
 ```
-> packages\Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}\tools\windows_x86\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tools/windows_x86/grpc_csharp_plugin.exe
+> packages\Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/windows_x86/grpc_csharp_plugin.exe
 ```
 
 **Linux (or OS X by using macosx_x64 directory)**
 
 ```
-$ packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.{{ site.data.config.grpc_release_branch | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
+$ packages/Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
 ```
 
 Running the appropriate command for your OS regenerates the following files in

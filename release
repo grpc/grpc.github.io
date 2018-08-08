@@ -2,4 +2,4 @@
 permalink: /release
 ---
 
-{{ site.data.config.grpc_release_branch }}
+{{ site.data.config.grpc_release_tag }}

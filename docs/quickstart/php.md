@@ -269,7 +269,7 @@ e.g. [Node.js](node-quickstart.md).
 
 ```sh
 $ # Clone the repository to get the example code:
-$ git clone -b {{ site.data.config.grpc_release_branch }} https://github.com/grpc/grpc
+$ git clone -b {{ site.data.config.grpc_release_tag }} https://github.com/grpc/grpc
 $ # Build grpc_php_plugin to generate proto files if not build before
 $ cd grpc && git submodule update --init && make grpc_php_plugin
 $ # Navigate to the "hello, world" PHP example:
