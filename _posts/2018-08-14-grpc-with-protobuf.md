@@ -153,7 +153,7 @@ To update the server, we need to create a key-value service and implementation. 
   }
 ```
 
-`KeyValueServiceImplBase` will serve as both the service definition (which describes which methods the server can handle) and as a the implementation (which describes what to do for each method).  It serves as the glue between gRPC and our application logic.  Practically no changes are needed to swap from Proto to GSON in the server code:
+`KeyValueServiceImplBase` will serve as both the service definition (which describes which methods the server can handle) and as the implementation (which describes what to do for each method).  It serves as the glue between gRPC and our application logic.  Practically no changes are needed to swap from Proto to GSON in the server code:
 
 ```java
 final class KvService extends KvGson.KeyValueServiceImplBase {
