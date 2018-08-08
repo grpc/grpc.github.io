@@ -9,7 +9,7 @@ company: Google
 company-link: https://www.google.com
 ---
 
-So you've bought into this whole RPC thing and want to try it out, but aren't quite sure about Protocol Buffers.  Your existing code your own objects, or perhaps you have code that needs a particular encoding.   What to do?
+So you've bought into this whole RPC thing and want to try it out, but aren't quite sure about Protocol Buffers.  Your existing code encodes your own objects, or perhaps you have code that needs a particular encoding.   What to do?
 
 Forutantely, gRPC is encoding agnostic!  You can still get a lot of the benefits of gRPC without using Protobuf.  In this post we'll go through how to make gRPC work with other encodings and types.  Let's try using JSON.
 
@@ -221,7 +221,7 @@ Almost **10x** faster than before!  We can still take advantage of gRPC's effici
 
 ## Conclusion
 
-gRPC lets you use encoders other than Protobuf.  It has no dependency on Protobuf and was specially made to work with a wide variety of environments.  We can see that with a little extra boilerplate, we can use any encoder we want.  While this post only covered JSON, gRPC is compatible with Thrift, Avro, Flatbuffers, Cap’n Proto, and even raw bytes!  gRPC let's you be in control of how your data is handled.  (We still recommend Protobuf though due to strong backwards compatibility and performance it gives you.)
+gRPC lets you use encoders other than Protobuf.  It has no dependency on Protobuf and was specially made to work with a wide variety of environments.  We can see that with a little extra boilerplate, we can use any encoder we want.  While this post only covered JSON, gRPC is compatible with Thrift, Avro, Flatbuffers, Cap’n Proto, and even raw bytes!  gRPC let's you be in control of how your data is handled.  (We still recommend Protobuf though due to strong backwards compatibility, type checking, and performance it gives you.)
 
-All the code is avaialable on [Github](https://github.com/carl-mastrangelo/kvstore/tree/04-gson-marshaller) if you would like to see a fullly working implementation.
+All the code is avaialable on [Github](https://github.com/carl-mastrangelo/kvstore/tree/04-gson-marshaller) if you would like to see a fully working implementation.
 
