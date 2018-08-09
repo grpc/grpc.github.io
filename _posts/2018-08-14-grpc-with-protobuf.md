@@ -11,7 +11,7 @@ company-link: https://www.google.com
 
 So you've bought into this whole RPC thing and want to try it out, but aren't quite sure about Protocol Buffers.  Your existing code encodes your own objects, or perhaps you have code that needs a particular encoding.  What to do?
 
-Forutantely, gRPC is encoding agnostic!  You can still get a lot of the benefits of gRPC without using Protobuf.  In this post we'll go through how to make gRPC work with other encodings and types.  Let's try using JSON.
+Fortunately, gRPC is encoding agnostic!  You can still get a lot of the benefits of gRPC without using Protobuf.  In this post we'll go through how to make gRPC work with other encodings and types.  Let's try using JSON.
 
 <!--more-->
 
