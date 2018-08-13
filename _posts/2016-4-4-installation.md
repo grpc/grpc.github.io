@@ -32,7 +32,7 @@ Go | Linux, Mac, Windows | `go get google.golang.org/grpc`
 Objective-C | Mac | Runtime source fetched automatically from Github by Cocoapods
 C# | Windows | Install [gRPC NuGet package](https://www.nuget.org/packages/Grpc/) from your IDE (Visual Studio, Monodevelop, Xamarin Studio)
 Java | Linux, Mac, Windows | Use our [Maven and Gradle plugins](https://github.com/grpc/grpc-java/blob/master/README.md) that provide gRPC with [statically linked `boringssl`](https://github.com/grpc/grpc-java/blob/master/SECURITY.md#openssl-statically-linked-netty-tcnative-boringssl-static)
-C++ | Linux, Mac, Windows | Currently requires [manual build and install](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/INSTALL.md)
+C++ | Linux, Mac, Windows | Currently requires [manual build and install](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/src/cpp/README.md)
 
 You can find out more about installation in our [Getting Started guide](/docs/#install-grpc) and Github repositories. Do send us your feedback on our [mailing list](https://groups.google.com/forum/#!forum/grpc-io) or file issues on our issue tracker if you run into any problems.
 
