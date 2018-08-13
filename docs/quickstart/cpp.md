@@ -16,8 +16,7 @@ working example.</p>
 
 #### Install gRPC
 
-To install gRPC on your system, follow the [instructions to build from
-source](https://github.com/grpc/grpc/blob/master/BUILDING.md).
+To install gRPC on your system, follow the [instructions to install gRPC C++ via make](https://github.com/grpc/grpc/blob/master/src/cpp/README.md#make).
 
 To run the example code, please ensure `pkg-config` is installed on your
 machine before you build and install gRPC in the previous step, since the
@@ -55,7 +54,7 @@ $ make
 
 Most failures at this point are a result of a faulty installation (or having
 installed gRPC to a non-standard location. Check out [the installation
-instructions for details](https://github.com/grpc/grpc/blob/master/INSTALL.md)).
+instructions for details](https://github.com/grpc/grpc/blob/master/src/cpp/README.md#make)).
 
 ## Try it!
 
