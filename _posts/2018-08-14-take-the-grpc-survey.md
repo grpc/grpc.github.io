@@ -4,15 +4,13 @@ title: Take the gRPC Survey!
 published: true
 permalink: blog/take-the-grpc-survey
 author: Kailash Sethuraman
-author-link: https://github.com/hsaliak@
+author-link: https://github.com/hsaliak
 company: Google
 company-link: https://www.google.com
 ---
 
 ## The gRPC Project wants your feedback!
-The gRPC project is looking for feedback to improve the gRPC experience. 
-To do this, we are running a [gRPC user survey](http://bit.ly/gRPC18survey). We invite you to participate
- and provide input that will help us better plan and prioritize.
+The gRPC project is looking for feedback to improve the gRPC experience. To do this, we are running a [gRPC user survey](http://bit.ly/gRPC18survey). We invite you to participate  and provide input that will help us better plan and prioritize.
 
 <!--more-->
 
