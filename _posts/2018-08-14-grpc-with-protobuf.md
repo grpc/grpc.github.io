@@ -15,7 +15,7 @@ Fortunately, gRPC is encoding agnostic!  You can still get a lot of the benefits
 
 <!--more-->
 
-gRPC is actually a collection of technologies that have high cohesion, rather than a singular, monolithic framework.  This means its possible to swap out parts of gRPC and still take advantage of gRPC's benefits.  [Gson](https://github.com/google/gson) is a popular library for Java for doing JSON encoding so it would be cool to plug it in to gRPC.  For our purposes, let's remove all the protobuf related things and replace them with Gson:
+gRPC is actually a collection of technologies that have high cohesion, rather than a singular, monolithic framework.  This means its possible to swap out parts of gRPC and still take advantage of gRPC's benefits.  [Gson](https://github.com/google/gson) is a popular library for Java for doing JSON encoding.  Let's remove all the protobuf related things and replace them with Gson:
 
 ```diff
 - Protobuf wire encoding
@@ -31,7 +31,7 @@ Let's continue with the [Key-Value](https://github.com/carl-mastrangelo/kvstore/
 
 ## What is a Service Anyways?
 
-From the point of view of gRPC, a _Service_ is a collection of _Methods_.  In Java, a method is represented as a [`MethodDescriptor`](https://grpc.io/grpc-java/javadoc/io/grpc/MethodDescriptor.html).  Each `MethodDescriptor` includes the name of the method, a `Marshaller` for encoding requests, and a `Marshaller` for encoding responses.  They also include addition detail, such as if the call is streaming or not.  For simplicity, we'll stick with unary RPCs which have a single request and single response.
+From the point of view of gRPC, a _Service_ is a collection of _Methods_.  In Java, a method is represented as a [`MethodDescriptor`](https://grpc.io/grpc-java/javadoc/io/grpc/MethodDescriptor.html).  Each `MethodDescriptor` includes the name of the method, a `Marshaller` for encoding requests, and a `Marshaller` for encoding responses.  They also include additional detail, such as if the call is streaming or not.  For simplicity, we'll stick with unary RPCs which have a single request and single response.
 
 Since we won't be generating any code, we'll need to write the message classes ourselves.  There are four methods, each which have a request and a response type.  This means we need to make eight messages:
 
