@@ -102,11 +102,15 @@ Given a `Class` object for a some request or response, this function will produc
           .build();
 ```
 
-Note that if we were using Protobuf, we would use the existing Protobuf marshaller, and the method descriptors would be generated automatically.
+Note that if we were using Protobuf, we would use the existing Protobuf marshaller, and the 
+[method descriptors](https://github.com/carl-mastrangelo/kvstore/blob/03-nonblocking-server/build/generated/source/proto/main/grpc/io/grpc/examples/proto/KeyValueServiceGrpc.java#L44)
+would be generated automatically.
 
 ## Sending RPCs
 
-We need to update our [`KvClient`](https://github.com/carl-mastrangelo/kvstore/blob/b225d28c7c2f3c356b0f3753384b3329f2ab5911/src/main/java/io/grpc/examples/KvClient.java#L98), the gRPC client used in the previous post, to use our MethodDescriptors.  Additionally, since we won't be using any Protobuf types, the code needs to use `ByteBuffer` rather than `ByteString`.  That said, we can still use the `grpc-stub` package on Maven to issue the RPC.  Using the _Create_ method again as an example, here's how to make an RPC:
+Now that we can marshal JSON requests and responses, we need to update our 
+[`KvClient`](https://github.com/carl-mastrangelo/kvstore/blob/b225d28c7c2f3c356b0f3753384b3329f2ab5911/src/main/java/io/grpc/examples/KvClient.java#L98), 
+the gRPC client used in the previous post, to use our MethodDescriptors.  Additionally, since we won't be using any Protobuf types, the code needs to use `ByteBuffer` rather than `ByteString`.  That said, we can still use the `grpc-stub` package on Maven to issue the RPC.  Using the _Create_ method again as an example, here's how to make an RPC:
 
 ```java
     ByteBuffer key = createRandomKey();
@@ -137,6 +141,7 @@ To update the server, we need to create a key-value service and implementation. 
 
     public abstract void delete(/*...*/);
 
+    /* Called by the Server to wire up methods to the handlers */
     @Override
     public final ServerServiceDefinition bindService() {
       ServerServiceDefinition.Builder ssd = ServerServiceDefinition.builder(SERVICE_NAME);
