@@ -63,10 +63,6 @@ $ cd grpc
 
 * The examples are in the directory, `examples/csharp/helloworld`.
 
-#### Using the .NET Core SDK
-
-* A .NET Core SDK version of the hello world examples are in the directory, `examples/csharp/helloworld-from-cli`.
-
 The example in this walkthrough already adds the necessary
 dependencies for you (Grpc, Grpc.Tools and Google.Protobuf NuGet packages).
 
