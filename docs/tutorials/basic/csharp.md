@@ -55,8 +55,8 @@ $ cd grpc
 
 All the files for this tutorial are in the directory
 `examples/csharp/RouteGuide`. Open the solution
-`examples/csharp/RouteGuide/RouteGuide.sln` from Visual Studio, Monodevelop or
-Xamarin Studio. For additional installation details, see the [How to use
+`examples/csharp/RouteGuide/RouteGuide.sln` from Visual Studio (Windows or Mac) or Visual Studio Code.
+For additional installation details, see the [How to use
 instructions](https://github.com/grpc/grpc/tree/
 {{ site.data.config.grpc_release_tag }}/src/csharp#how-to-use).
 
@@ -496,30 +496,28 @@ using (var call = client.RouteChat())
 
 ### Build the client and server:
 
-#### Using Visual Studio
+#### Using Visual Studio (or Visual Studio For Mac)
 
 - Open the solution `examples/csharp/RouteGuide/RouteGuide.sln` and select **Build**.
 
-#### Using Xamarin Studio or Monodevelop on OS X or Linux
+#### Using "dotnet" command line tool
 
-- See the [quickstart](../../quickstart/csharp.html) for instructions on downloading gRPC
-  nuget dependencies and building the solution with these IDEs.
+- Run `dotnet build RouteGuide.sln` from the `examples/csharp/RouteGuide` directory.
+  See the [quickstart](../../quickstart/csharp.html) for additional instructions on building 
+  the gRPC example with the `dotnet` command line tool.
 
 Run the server, which will listen on port 50052:
 
 ```
-> cd RouteGuideServer/bin/Debug
-> RouteGuideServer.exe
+> cd RouteGuideServer/bin/Debug/netcoreapp1.0
+> dotnet exec RouteGuideServer.dll
 ```
 
 Run the client (in a different terminal):
 
 ```
-> cd RouteGuideClient/bin/Debug
-> RouteGuideClient.exe
+> cd RouteGuideClient/bin/Debug/netcoreapp1.0
+> dotnet exec RouteGuideClient.dll
 ```
 
 You can also run the server and client directly from Visual Studio.
-
-On Linux or Mac, use `mono RouteGuideServer.exe` and `mono RouteGuideClient.exe`
-to run the server and client.
