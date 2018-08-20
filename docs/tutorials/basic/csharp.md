@@ -43,8 +43,8 @@ updating.
 ## Example code and setup
 
 The example code for our tutorial is in
-[grpc/grpc/examples/csharp/route_guide](https://github.com/grpc/grpc/tree/
-{{ site.data.config.grpc_release_tag }}/examples/csharp/route_guide). To
+[grpc/grpc/examples/csharp/RouteGuide](https://github.com/grpc/grpc/tree/
+{{ site.data.config.grpc_release_tag }}/examples/csharp/RouteGuide). To
 download the example, clone the `grpc` repository by running the following
 command:
 
@@ -54,8 +54,8 @@ $ cd grpc
 ```
 
 All the files for this tutorial are in the directory
-`examples/csharp/route_guide`. Open the solution
-`examples/csharp/route_guide/RouteGuide.sln` from Visual Studio, Monodevelop or
+`examples/csharp/RouteGuide`. Open the solution
+`examples/csharp/RouteGuide/RouteGuide.sln` from Visual Studio, Monodevelop or
 Xamarin Studio. For additional installation details, see the [How to use
 instructions](https://github.com/grpc/grpc/tree/
 {{ site.data.config.grpc_release_tag }}/src/csharp#how-to-use).
@@ -158,7 +158,7 @@ binaries you will need to generate the code.
 Once that's done, you can generate the C# code:
 
 To generate the code, the following command should be run from the
-`examples/csharp/route_guide` directory:
+`examples/csharp/RouteGuide` directory:
 
 - Windows
 
@@ -202,8 +202,8 @@ There are two parts to making our `RouteGuide` service do its job:
   service responses.
 
 You can find our example `RouteGuide` server in
-[examples/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs](https://github.com/grpc/grpc/blob/
-{{ site.data.config.grpc_release_tag }}/examples/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs).
+[examples/csharp/RouteGuide/RouteGuideServer/RouteGuideImpl.cs](https://github.com/grpc/grpc/blob/
+{{ site.data.config.grpc_release_tag }}/examples/csharp/RouteGuide/RouteGuideServer/RouteGuideImpl.cs).
 Let's take a closer look at how it works.
 
 ### Implementing RouteGuide
@@ -373,8 +373,8 @@ do this, we:
 
 In this section, we'll look at creating a C# client for our `RouteGuide`
 service. You can see our complete example client code in
-[examples/csharp/route_guide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc/blob/
-{{ site.data.config.grpc_release_tag }}/examples/csharp/route_guide/RouteGuideClient/Program.cs).
+[examples/csharp/RouteGuide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc/blob/
+{{ site.data.config.grpc_release_tag }}/examples/csharp/RouteGuide/RouteGuideClient/Program.cs).
 
 ### Creating a client object
 
@@ -498,7 +498,7 @@ using (var call = client.RouteChat())
 
 #### Using Visual Studio
 
-- Open the solution `examples/csharp/route_guide/RouteGuide.sln` and select **Build**.
+- Open the solution `examples/csharp/RouteGuide/RouteGuide.sln` and select **Build**.
 
 #### Using Xamarin Studio or Monodevelop on OS X or Linux
 
