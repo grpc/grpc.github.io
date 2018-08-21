@@ -156,7 +156,7 @@ If you want to run this yourself, the `Grpc.Tools` NuGet package contains the
 binaries you will need to generate the code. You can fetch a copy of
 the `Grpc.Tools` package into your local nuget cache by clicking
 "Restore NuGet Packages" in Visual Studio or running `dotnet restore RouteGuide.sln`
-from the `examples/csharp/RouteGuide`.
+from the `examples/csharp/RouteGuide` directory.
 
 Once that's done, you can generate the C# code:
 
