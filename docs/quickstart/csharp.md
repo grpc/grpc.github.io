@@ -22,7 +22,7 @@ example by using either an IDE and its build tools,
 or by using the the .NET Core SDK command line tools.
 
 First, make sure you have installed the
-[https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/src/csharp/README.md#prerequisites](gRPC C# prerequisites).
+[gRPC C# prerequisites](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/src/csharp/README.md#prerequisites).
 You will also need Git to download the sample code.
 
 ## Download the example
@@ -39,7 +39,7 @@ $ cd grpc
 ```
 
 This document will walk you through the "Hello World" example.
-It can be found in the directory `examples/csharp/Helloworld`.
+The projects and source files can be found in the `examples/csharp/Helloworld` directory.
 
 The example in this walkthrough already adds the necessary
 dependencies for you (Grpc, Grpc.Tools and Google.Protobuf NuGet packages).
@@ -47,7 +47,7 @@ dependencies for you (Grpc, Grpc.Tools and Google.Protobuf NuGet packages).
 ## Build the example
 
 ### Using Visual Studio (or Visual Studio for Mac)
-* Open the solution `Greeter.sln` with Visual Studio.
+* Open the solution `Greeter.sln` with Visual Studio
 * Build the solution
 
 ### Using .NET Core SDK from the command line
@@ -60,7 +60,7 @@ From the `examples/csharp/Helloworld` directory:
 (if you're using dotnet SDK 1.x you need to run dotnet restore Greeter.sln first)
 
 *NOTE: If you want to use gRPC C# from a project that uses the old-style .csproj files (supported by Visual Studio 2013, 2015 and older versions of Mono), please refer to the
-[https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/examples/csharp/HelloworldLegacyCsproj/README.md](Greeter using legacy .csproj) example.*
+[Greeter using legacy .csproj](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/examples/csharp/HelloworldLegacyCsproj/README.md) example.*
 
 ## Run a gRPC application
 
@@ -145,8 +145,8 @@ The `Grpc.Tools` NuGet package contains the protoc and protobuf C# plugin binari
 
 ### Obtaining the Grpc.Tools NuGet package
 
-This example project already depends on the `Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}` NuGet package,
-so the package will be downloaded to your local NuGet cache as soon as you restore the nuget packages by clicking "Restore NuGet Packages" in Visual Studio or running dotnet restore RouteGuide.sln from the `examples/csharp/RouteGuide` directory.
+This example project already depends on the `Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}` NuGet package
+and the package will be downloaded to your local NuGet cache as soon as you restore the nuget packages by clicking "Restore NuGet Packages" in Visual Studio or running `dotnet restore RouteGuide.sln` from the `examples/csharp/RouteGuide` directory.
 
 ### Commands to generate the gRPC code
 Note that you may have to change the `platform_architecture` directory names (e.g. windows_x86, linux_x64) in the commands below based on your environment.
@@ -234,7 +234,7 @@ public static void Main(string[] args)
 ### Rebuild the modified example
 
 Rebuild the newly modified example just like we first built the original
-example by running the `dotnet build Greeter.sln`.
+example by running `dotnet build Greeter.sln`.
 
 ### Run!
 
