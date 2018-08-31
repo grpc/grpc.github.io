@@ -512,14 +512,14 @@ using (var call = client.RouteChat())
 Run the server, which will listen on port 50052:
 
 ```
-> cd RouteGuideServer/bin/Debug/netcoreapp1.0
+> cd RouteGuideServer/bin/Debug/netcoreapp2.1
 > dotnet exec RouteGuideServer.dll
 ```
 
 Run the client (in a different terminal):
 
 ```
-> cd RouteGuideClient/bin/Debug/netcoreapp1.0
+> cd RouteGuideClient/bin/Debug/netcoreapp2.1
 > dotnet exec RouteGuideClient.dll
 ```
 

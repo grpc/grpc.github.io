@@ -57,8 +57,6 @@ From the `examples/csharp/Helloworld` directory:
 > dotnet build Greeter.sln
 ```
 
-(if you're using dotnet SDK 1.x you need to run dotnet restore Greeter.sln first)
-
 *NOTE: If you want to use gRPC C# from a project that uses the old-style .csproj files (supported by Visual Studio 2013, 2015 and older versions of Mono), please refer to the
 [Greeter using legacy .csproj](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/examples/csharp/HelloworldLegacyCsproj/README.md) example.*
 
@@ -70,14 +68,14 @@ From the `examples/csharp/Helloworld` directory:
 
 ```
 > cd GreeterServer
-> dotnet run -f netcoreapp1.0
+> dotnet run -f netcoreapp2.1
 ```
 
 * In another terminal, run the client
 
 ```
 > cd GreeterClient
-> dotnet run -f netcoreapp1.0
+> dotnet run -f netcoreapp2.1
 ```
 
 Congratulations! You've just run a client-server application with gRPC.
@@ -244,14 +242,14 @@ Just like we did before, from the `examples/csharp/Helloworld` directory:
 
 ```
 > cd GreeterServer
-> dotnet run -f netcoreapp1.0
+> dotnet run -f netcoreapp2.1
 ```
 
 * In another terminal, run the client
 
 ```
 > cd GreeterClient
-> dotnet run -f netcoreapp1.0
+> dotnet run -f netcoreapp2.1
 ```
 
 ## What's next
