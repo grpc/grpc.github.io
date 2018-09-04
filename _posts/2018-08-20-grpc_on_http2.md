@@ -1,6 +1,6 @@
 ---
 layout: post
-title: gRPC On HTTP/2: Engineering A Robust, High Performance Protocol
+title: gRPC on HTTP/2: Engineering a Robust, High Performance Protocol
 published: true
 permalink: blog/grpc_on_http2
 author: Jean de Klerk
@@ -72,5 +72,5 @@ Developers choosing protocols must choose those that meet today’s demands as w
 ## Footnotes
 
 1. In Go, a gRPC channel is called ClientConn because the word “channel” has a language-specific meaning.
-2. gRPC uses the HTTP/2 default max size for a data frame of 16kb. A message over 16kb will span multiple data frames, whereas a message below that size will share a data frame with some number of other messages.
+2. gRPC uses the HTTP/2 default max size for a data frame of 16kb. A message over 16kb may span multiple data frames, whereas a message below that size may share a data frame with some number of other messages.
 3. This is the behavior of the RoundRobin balancer, but not every load balancer does or must behave this way.
