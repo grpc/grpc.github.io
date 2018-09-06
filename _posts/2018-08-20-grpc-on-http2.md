@@ -15,11 +15,11 @@ In a [previous article](https://grpc.io/blog/http2_smarter_at_scale), we explore
 
 To begin, let’s dive into how gRPC concepts relate to HTTP/2 concepts. gRPC introduces three new concepts: *channels* [1], *remote procedure calls* (RPCs), and *messages*. The relationship between the three is simple: each channel may have many RPCs while each RPC may have many messages.
 
-<img src="https://grpc.io/img/channels_mapping_2.png" alt="Channel Mapping" style="max-width: 800px">
+<img src="https://grpc.io/img/channels_mapping_2.png" title="Channel Mapping" alt="Channel Mapping" style="max-width: 800px">
 
 Let’s take a look at how gRPC semantics relate to HTTP/2:
 
-<img src="https://grpc.io/img/grpc_on_http2_mapping_2.png" alt="gRPC on HTTP/2" style="max-width: 800px">
+<img src="https://grpc.io/img/grpc_on_http2_mapping_2.png" title="gRPC on HTTP/2" alt="gRPC on HTTP/2" style="max-width: 800px">
 
 Channels are a key concept in gRPC. Streams in HTTP/2 enable multiple concurrent conversations on a single connection; channels extend this concept by enabling multiple streams over multiple concurrent connections. On the surface, channels provide an easy interface for users to send messages into; underneath the hood, though, an incredible amount of engineering goes into keeping these connections alive, healthy, and utilized.
 
@@ -29,7 +29,7 @@ Channels represent virtual connections to an endpoint, which in reality may be b
 
 In order to keep connections alive, healthy, and utilized, gRPC utilizes a number of components, foremost among them *name resolvers* and *load balancers*. The resolver turns names into addresses and then hands these addresses to the load balancer. The load balancer is in charge of creating connections from these addresses and load balancing RPCs between connections.
 
-<img src="https://grpc.io/img/dns_to_load_balancer_mapping_3.png" alt="Resolvers and Load Balancers" style="max-width: 800px">
+<img src="https://grpc.io/img/dns_to_load_balancer_mapping_3.png" title="Resolvers and Load Balancers" alt="Resolvers and Load Balancers" style="max-width: 800px">
 
 <img src="https://grpc.io/img/load_balance_round_robins_2.png" alt="Round Robin Load Balancer" style="max-width: 800px">
 
@@ -41,7 +41,7 @@ Resolvers and load balancers solve small but crucial problems in a gRPC system. 
 
 Once configured, gRPC will keep the pool of connections - as defined by the resolver and balancer - healthy, alive, and utilized.
 
-When a connection fails, the load balancer will begin to reconnect using the last known list of addresses [3]. Meanwhile, the resolver will begin attempting to re-resolve the list of addresses. This is useful in a number of scenarios. If the proxy is no longer reachable, for example, we’d want the resolver to update the list of addresses to not include that proxy’s address. To take another example: DNS entries might change over time, and so the list of addresses might need to be periodically updated. In this manner and others, gRPC is designed for long-term resiliency.
+When a connection fails, the load balancer will begin to reconnect using the last known list of addresses [3]. Meanwhile, the resolver will begin attempting to re-resolve the list of host names. This is useful in a number of scenarios. If the proxy is no longer reachable, for example, we’d want the resolver to update the list of addresses to not include that proxy’s address. To take another example: DNS entries might change over time, and so the list of addresses might need to be periodically updated. In this manner and others, gRPC is designed for long-term resiliency.
 
 Once resolution is finished, the load balancer is informed of the new addresses. If addresses have changed, the load balancer may spin down connections to addresses not present in the new list or create connections to addresses that weren’t previously there.
 
@@ -49,7 +49,7 @@ Once resolution is finished, the load balancer is informed of the new addresses.
 
 The effectiveness of gRPC's connection management hinges upon its ability to identify failed connections. There are generally two types of connection failures: clean failures, in which the failure is communicated, and the less-clean failure, in which the failure is not communicated.
 
-Let’s consider a clean, easy-to-observe failure. Clean failures can occur when an endpoint intentionally kills the connection. For example, the endpoint may have gracefully shut down, or a timer may have been exceeded, prompting the endpoint to close the connection. When connections close cleanly, TCP semantics suffice: closing a connection causes the [FIN handshake](http://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm) to occur. This ends the HTTP/2 connection, which ends the gRPC connection. gRPC will immediately begin reconnecting (as described above). This is quite clean and requires no additional HTTP/2 or gRPC semantics.
+Let’s consider a clean, easy-to-observe failure. Clean failures can occur when an endpoint intentionally kills the connection. For example, the endpoint may have gracefully shut down, or a timer may have been exceeded, prompting the endpoint to close the connection. When connections close cleanly, TCP semantics suffice: closing a connection causes the [FIN handshake](https://www.tcpipguide.com/free/t_TCPConnectionTermination-2.htm) to occur. This ends the HTTP/2 connection, which ends the gRPC connection. gRPC will immediately begin reconnecting (as described above). This is quite clean and requires no additional HTTP/2 or gRPC semantics.
 
 The less clean version is where the endpoint dies or hangs without informing the client. In this case, TCP might undergo retry for as long as 10 minutes before the connection is considered failed. Of course, failing to recognize that the connection is dead for 10 minutes is unacceptable. gRPC solves this problem using HTTP/2 semantics: when configured using KeepAlive, gRPC will periodically send [HTTP/2 PING frames](https://http2.github.io/http2-spec/#PING). These frames bypass flow control and are used to establish whether the connection is alive. If a PING response does not return within a timely fashion, gRPC will consider the connection failed, close the connection, and begin reconnecting (as described above).
 
@@ -57,9 +57,9 @@ In this way, gRPC keeps a pool of connections healthy and uses HTTP/2 to ascerta
 
 ## Keeping Connections Alive
 
-As mentioned above, KeepAlive provides a valuable benefit: periodically checking the health of the connection by sending an HTTP/2 PING to determine whether the connection is still alive. However it has another equally useful benefit: signaling liveness to proxies.
+As mentioned above, KeepAlive provides a valuable benefit: periodically checking the health of the connection by sending an HTTP/2 PING to determine whether the connection is still alive. However, it has another equally useful benefit: signaling liveness to proxies.
 
-Consider a client sending data to a server through a proxy. The client and server may be happy to keep a connection alive indefinitely, sending data as necessary. Proxies, on the other hand, are often quite resource constrained and may kill idle connections to save resources. Google Cloud Platform (GCP) load balancers disconnect apparently-idle connections after [10 minutes](https://cloud.google.com/compute/docs/troubleshooting#communicatewithinternet), and Amazon Web Services Elastic Load Balancers (AWS ELBs) disconnect them after [60 seconds](http://aws.amazon.com/articles/1636185810492479).
+Consider a client sending data to a server through a proxy. The client and server may be happy to keep a connection alive indefinitely, sending data as necessary. Proxies, on the other hand, are often quite resource constrained and may kill idle connections to save resources. Google Cloud Platform (GCP) load balancers disconnect apparently-idle connections after [10 minutes](https://cloud.google.com/compute/docs/troubleshooting#communicatewithinternet), and Amazon Web Services Elastic Load Balancers (AWS ELBs) disconnect them after [60 seconds](https://aws.amazon.com/articles/1636185810492479).
 
 With gRPC periodically sending HTTP/2 PING frames on connections, the perception of a non-idle connection is created. Endpoints using the aforementioned idle kill rule would pass over killing these connections.
 
