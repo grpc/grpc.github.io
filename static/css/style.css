@@ -38,7 +38,7 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-weight:300;
     font-size:18pt;
-    background-image:url('../images/graphic-04.svg');
+    background-image:url('../img/graphic-04.svg');
     background-repeat: no-repeat;
     position:relative;
    background-size: 100%;
@@ -201,7 +201,7 @@ button {
     float:left;
     font-size:14pt;
     text-align:center;
-    background-image:url('../images/graphic-04.svg');
+    background-image:url('../img/graphic-04.svg');
     background-repeat: no-repeat;
     position:relative;
    background-size: 100%;
