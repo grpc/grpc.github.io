@@ -204,7 +204,7 @@ s.Serve(lis)
 Client:
 
 ``` go
-creds := credentials.NewClientTLSFromFile(certFile, "")
+creds, _ := credentials.NewClientTLSFromFile(certFile, "")
 conn, _ := grpc.Dial("localhost:50051", grpc.WithTransportCredentials(creds))
 // error handling omitted
 client := pb.NewGreeterClient(conn)
@@ -214,7 +214,7 @@ client := pb.NewGreeterClient(conn)
 Server:
 
 ``` go
-creds := credentials.NewServerTLSFromFile(certFile, keyFile)
+creds, _ := credentials.NewServerTLSFromFile(certFile, keyFile)
 s := grpc.NewServer(grpc.Creds(creds))
 lis, _ := net.Listen("tcp", "localhost:50051")
 // error handling omitted
