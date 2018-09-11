@@ -1,0 +1,13 @@
+
+{{ define "title" }}
+  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+            <div class="headertext">{{ .Title }}</div>
+  </div>
+        </div>
+        </div>
+
+    {{ .Content }}
+{{ end }}
+
