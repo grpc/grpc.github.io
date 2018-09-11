@@ -39,7 +39,7 @@ interface updating.
 The first step when creating a gRPC service is to define the service methods
 and their request and response message types using protocol buffers. In this
 example, we define our `EchoService` in a file called
-[`echo.proto`](https://github.com/grpc/grpc-web/blob/master/net/grpc/gateway/examples/echo/echo.proto).
+[`echo.proto`](https://github.com/grpc/grpc-web/blob/0.4.0/net/grpc/gateway/examples/echo/echo.proto).
 For more information about protocol buffers and proto3 syntax, please see the
 [protobuf documentation][].
 
