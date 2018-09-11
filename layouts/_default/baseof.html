@@ -10,12 +10,24 @@
     {{ end }}</title>
   </head>
   <body>
-    <!-- Code that all your templates share, like a header -->
+
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbanner{{ if not .IsHome }}sub{{ end }}">
+          <div class="logonav">
+                <img src="{{ .Site.BaseURL }}img/grpc-logo.png" style="width:10%">
+            </div>
+            <div class="topnav">
+                <a href="{{ .Site.BaseURL }}about/">About</a>
+		<a href="{{ .Site.BaseURL }}docs/">Docs</a>
+		<a href="{{ .Site.BaseURL }}blog/">Blog</a> 
+		<a href="{{ .Site.BaseURL }}community/">Community</a>
+		<a href="https://packages.grpc.io/">Packages</a> 
+		<a href="{{ .Site.BaseURL }}faq/">FAQ</a>
+            </div>
     {{ block "main" . }}
-      <!-- The part of the page that begins to differ between templates -->
     {{ end }}
     {{ block "footer" . }}
-    <!-- More shared code, perhaps a footer but that can be overridden if need be in  -->
     {{ end }}
   </body>
 </html>
