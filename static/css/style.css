@@ -1,4 +1,4 @@
- contentDiv {
+contentDiv {
     background-color: orange;
     height: 200px;
     position: relative;
@@ -31,31 +31,94 @@ body {
 
 .topbanner {
     width:100%;
-    color:white;
+    color:#0CC1C8;
     padding-top:2%;
     padding-bottom:5%;
     text-align:center;
     font-family: 'Open Sans', sans-serif;
     font-weight:300;
-    font-size:18pt;
+    font-size:16pt;
     background-image:url('../img/graphic-04.svg');
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     position:relative;
    background-size: 100%;
     
 }
 
+.topbannersub {
+    width:100%;
+    color:white;
+    padding-top:2%;
+    padding-bottom:3%;
+    text-align:left;
+    float:center;
+    font-family: 'Open Sans', sans-serif;
+    font-weight:300;
+    font-size:18pt;
+    background-image:url('../img/graphic-04.svg');
+    background-repeat: repeat;
+    position:relative;
+   background-size: 100%;
+    
+}
+
+
 .topnav {
     
     font-family: 'Open Sans', sans-serif;
     font-weight:400;
-    font-size:12pt;
+    font-size:10pt;
     letter-spacing:0.05em;
+    margin-right:5%;
     word-spacing:2em;
     color:white;
+   
+    text-align:right;
+   
+    z-index:99;
+    text-transform:uppercase;
+    
+}
+
+
+.logonav {
+    
+    font-family: 'Open Sans', sans-serif;
+    font-weight:400;
+    font-size:10pt;
+    float:left;
+    position:absolute;
+    letter-spacing:0.05em;
+    margin-left:5%;
+    word-spacing:2em;
+    color:white;
+    z-index:1;
+    text-align:left;
+    text-transform:uppercase;
+    
+}
+
+.subnav {
+    
+    font-family: 'Open Sans', sans-serif;
+    font-weight:400;
+    font-size:10pt;
+    letter-spacing:0.05em;
+background-color:#EBF2F2;
+    color:#505050;
+    padding-top:2%;
+    padding-bottom:2%;
+ 
     text-align:center;
     text-transform:uppercase;
     
+}
+
+.headertext {
+ font-size:30pt;
+ padding-top:6%;
+ 
+ text-align:center;
 }
 
 .topbannertext{
@@ -65,10 +128,19 @@ body {
 }
 
 .bannerlogo {
-    
-    padding-top:5%;
-    width:50%:
+    padding-top:4%;
+    float:left;
+
+    width:100%:
 }
+
+.bannerlogosub {
+    
+    padding-top:2%;
+    float:left;
+    width:100%:
+}
+
 
 .bannerlogo img{
     
@@ -94,11 +166,11 @@ button {
 .section2 {
     padding-top:3%;
     font-family: 'Open Sans', sans-serif;
-    width:60%;
-    font-size:15pt;
+    width:70%;
+    font-size:13pt;
     color:#505050;
-    line-height:1.5em;
-    padding-left:20%;
+    line-height:1.7em;
+    padding-left:15%;
     text-align:center;
     font-weight:100;
 }
@@ -116,6 +188,29 @@ button {
     position:relative;
 }
 
+
+.doccols {
+ 
+    margin-bottom:3%;
+    font-family: 'Open Sans', sans-serif;
+    width:100%;
+     padding-top:2%;
+     padding-bottom:2%;
+    font-weight:100;
+    background-color:#EBF2F2;
+    padding-left:15%;
+
+    float:left;
+    
+}
+
+a {
+ color:#0CC1C8;
+ font-weight:400;
+ text-decoration:none;
+ 
+}
+
 .cols {
     margin-top:5%;
      margin-bottom:3%;
@@ -128,6 +223,94 @@ button {
     float:left;
     
 }
+
+
+.quickstartcols {
+
+     margin-bottom:17%;
+    font-family: 'Open Sans', sans-serif;
+    width:80%;
+    margin-left:10%;
+    font-weight:100;
+    font-size:11pt;
+    padding-left:8%;
+    
+    float:left;
+    
+}
+
+
+.quickstartcol1 {
+
+    float:left;
+    text-align:left;
+    width:15%;
+    line-height:2em;
+    padding-top:%;
+    margin-right:2%;
+    padding:3%;
+    padding-right:0%;
+    padding-top:5%;
+
+}
+
+
+.quickstartcol2 {
+
+    float:left;
+    text-align:left;
+    width:60%;
+    line-height:1.6em;
+    padding-top:%;
+    margin-right:2%;
+    padding-left:3%;
+    padding-left:5%;
+   border-left:0.5px solid #cccccc;
+}
+
+
+
+.docscol1 {
+
+    float:left;
+    width:25%;
+    line-height:2em;
+    padding-top:%;
+    margin-right:2%;
+    padding-bottom:3%;
+}
+
+.docscol2 {
+    float:left;
+    width:25%;
+     line-height:2em;
+
+    margin-right:2%;
+    padding-bottom:3%;
+}
+
+.docscol3 {
+    float:left;
+    width:25%;
+     line-height:2em;
+   
+    margin-right:2%;
+    padding-bottom:3%;
+}
+
+.docstext {
+    font-family: 'Open Sans', sans-serif;
+    width:70%;
+    float:left;
+    font-size:12pt;
+    text-align:center;
+    padding-bottom:1%;
+    color:#707070;
+    line-height:1.5em;
+    padding-right:5%;
+    margin-top:1%;
+}
+
 
 .col1 {
     float:left;
@@ -230,7 +413,21 @@ h3 {
     font-size:18pt;
     color:#33838b;
     font-weight:300;
+    padding-top:2%;
     
 }
-
+h4 {
+    
+    font-family: 'Open Sans', sans-serif;
+    font-size:24pt;
+    padding-top:3%;
+    padding-bottom:0%;
+    color:#33838b;
+    margin-bottom:0px;
+    background-color:#EBF2F2;
+    color:#0CC1C8;
+    font-weight:300;
+    margin-top:3%;
+    
+}
 
