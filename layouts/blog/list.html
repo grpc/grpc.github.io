@@ -1,0 +1,41 @@
+
+{{ define "title" }}
+  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+
+<div class="blogcols">          
+<div class="blogcol1" style="margin-top:4%">
+
+{{ range first 1 .Pages }}
+  <h3 style="margin-top:0px;"><a href="{{.Permalink}}">{{ .Title }}</a></h3>
+  <h5>{{ .Date.Format "January 02, 2006" }}</h5>
+<p>
+  {{ .Summary }}
+</p>
+
+<a href="{{.Permalink}}">Read More</a>
+{{ end }}
+
+</div>
+
+
+
+<div class="blogcol2">
+
+<h5 style="font-size:12pt">All blog posts</h5>
+{{ range first 12 .Pages }}
+  <a href="#">{{.Title}}</a><br>
+{{ end }}
+</div>
+
+
+
+</div>
+
+{{ end }}
