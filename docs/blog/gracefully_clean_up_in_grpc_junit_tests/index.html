@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cjyabraham.github.io/grpccss/style.css">
+    <title>
+  Gracefully clean up in gRPC JUnit tests &ndash; gRPC
+</title>
+  </head>
+  <body>
+
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <div class="logonav">
+                <img src="https://cjyabraham.github.io/grpcimg/grpc-logo.png" style="width:10%">
+            </div>
+            <div class="topnav">
+                <a href="https://cjyabraham.github.io/grpcabout/">About</a>
+		<a href="https://cjyabraham.github.io/grpcdocs/">Docs</a>
+		<a href="https://cjyabraham.github.io/grpcblog/">Blog</a> 
+		<a href="https://cjyabraham.github.io/grpccommunity/">Community</a>
+		<a href="https://packages.grpc.io/">Packages</a> 
+		<a href="https://cjyabraham.github.io/grpcfaq/">FAQ</a>
+            </div>
+    
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h3 style="margin-top:0px;">Gracefully clean up in gRPC JUnit tests</h3>
+  <h5>Posted on Tuesday, June 26, 2018 by Dapeng Zhang</h5>
+  <p>
+    <p>It is best practice to always clean up gRPC resources such as client channels, servers, and previously attached Contexts whenever they are no longer needed.</p>
+
+<p>This is even true for JUnit tests, because otherwise leaked resources may not only linger in your machine forever, but also interfere with subsequent tests. A not-so-bad case is that subsequent tests can&rsquo;t pass because of a leaked resource from the previous test. The worst case is that some subsequent tests pass that wouldn&rsquo;t have passed at all if the previously passed test had not leaked a resource.</p>
+
+<p></p>
+
+<p>So cleanup, cleanup, cleanup&hellip; and fail the test if any cleanup is not successful.</p>
+
+<p>A typical example is</p>
+
+<pre><code class="language-java">public class MyTest {
+  private Server server;
+  private ManagedChannel channel;
+  ...
+  @After
+  public void tearDown() throws InterruptedException {
+    // assume channel and server are not null
+    channel.shutdownNow();
+    server.shutdownNow();
+    // fail the test if cleanup is not successful
+    assert channel.awaitTermination(5, TimeUnit.SECONDS) : &quot;channel failed to shutdown&quot;;
+    assert server.awaitTermination(5, TimeUnit.SECONDS) : &quot;server failed to shutdown&quot;;
+  }
+  ...
+}
+</code></pre>
+
+<p>or to be more graceful</p>
+
+<pre><code class="language-java">public class MyTest {
+  private Server server;
+  private ManagedChannel channel;
+  ...
+  @After
+  public void tearDown() throws InterruptedException {
+    // assume channel and server are not null
+    channel.shutdown();
+    server.shutdown();
+    // fail the test if cannot gracefully shutdown
+    try {
+      assert channel.awaitTermination(5, TimeUnit.SECONDS) : &quot;channel cannot be gracefully shutdown&quot;;
+      assert server.awaitTermination(5, TimeUnit.SECONDS) : &quot;server cannot be gracefully shutdown&quot;;
+    } finally {
+      channel.shutdownNow();
+      server.shutdownNow();
+    }
+  }
+  ...
+}
+</code></pre>
+
+<p>However, having to add all this to every test so it shuts down gracefully gives you more work to do, as you need to write the shutdown boilerplate by yourself. Because of this, the gRPC testing library has helper rules to make this job less tedious.</p>
+
+<p>Initially, a JUnit rule <a href="https://github.com/grpc/grpc-java/blob/v1.1.x/testing/src/main/java/io/grpc/testing/GrpcServerRule.java"><code>GrpcServerRule</code></a> was introduced to eliminate the shutdown boilerplate. This rule creates an In-Process server and channel at the beginning of the test, and shuts them down at the end of test automatically. However, users found this rule too restrictive in that it does not support transports other than In-Process transports, multiple channels to the server, custom channel or server builder options, and configuration inside individual test methods.</p>
+
+<p>A more flexible JUnit rule <a href="https://github.com/grpc/grpc-java/blob/v1.13.x/testing/src/main/java/io/grpc/testing/GrpcCleanupRule.java"><code>GrpcCleanupRule</code></a> was introduced in gRPC release v1.13, which also eliminates the shutdown boilerplate. However unlike <code>GrpcServerRule</code>, <code>GrpcCleanupRule</code> does not create any server or channel automatically at all. Users create and start the server by themselves, and create channels by themselves, just as in plain tests. With this rule, users just need to register every resource (channel or server) that needs to be shut down at the end of test, and the rule will then shut them down gracefully automatically.</p>
+
+<p>You can register resources either before running test methods</p>
+
+<pre><code class="language-java">public class MyTest {
+  @Rule
+  public GrpcCleanupRule grpcCleanup = new GrpcCleanupRule();
+  ...
+  private String serverName = InProcessServerBuilder.generateName();
+  private Server server = grpcCleanup.register(InProcessServerBuilder
+      .forName(serverName).directExecutor().addService(myServiceImpl).build().start());
+  private ManagedChannel channel = grpcCleanup.register(InProcessChannelBuilder
+      .forName(serverName).directExecutor().build());
+  ...
+}
+</code></pre>
+
+<p>or inside each individual test method</p>
+
+<pre><code class="language-java">public class MyTest {
+  @Rule
+  public GrpcCleanupRule grpcCleanup = new GrpcCleanupRule();
+  ...
+  private String serverName = InProcessServerBuilder.generateName();
+  private InProcessServerBuilder serverBuilder = InProcessServerBuilder
+      .forName(serverName).directExecutor();
+  private InProcessChannelBuilder channelBuilder = InProcessChannelBuilder
+      .forName(serverName).directExecutor();
+  ...
+
+  @Test
+  public void testFooBar() {
+    ...
+    grpcCleanup.register(
+    	serverBuilder.addService(myServiceImpl).build().start());
+    ManagedChannel channel = grpcCleanup.register(
+    	channelBuilder.maxInboundMessageSize(1024).build());
+    ...
+  }
+}
+</code></pre>
+
+<p>Now with <a href="https://github.com/grpc/grpc-java/blob/v1.13.x/testing/src/main/java/io/grpc/testing/GrpcCleanupRule.java"><code>GrpcCleanupRule</code></a> you don&rsquo;t need to worry about graceful shutdown of gRPC servers and channels in JUnit test. So try it out and clean up in your tests!</p>
+  </p>
+
+
+  </div>
+
+    
+    
+  </body>
+</html>

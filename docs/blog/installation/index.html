@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cjyabraham.github.io/grpccss/style.css">
+    <title>
+  gRPC - now with easy installation. &ndash; gRPC
+</title>
+  </head>
+  <body>
+
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <div class="logonav">
+                <img src="https://cjyabraham.github.io/grpcimg/grpc-logo.png" style="width:10%">
+            </div>
+            <div class="topnav">
+                <a href="https://cjyabraham.github.io/grpcabout/">About</a>
+		<a href="https://cjyabraham.github.io/grpcdocs/">Docs</a>
+		<a href="https://cjyabraham.github.io/grpcblog/">Blog</a> 
+		<a href="https://cjyabraham.github.io/grpccommunity/">Community</a>
+		<a href="https://packages.grpc.io/">Packages</a> 
+		<a href="https://cjyabraham.github.io/grpcfaq/">FAQ</a>
+            </div>
+    
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h3 style="margin-top:0px;">gRPC - now with easy installation.</h3>
+  <h5>Posted on Monday, April 04, 2016 by </h5>
+  <p>
+    <p>Today we are happy to provide an update that significantly simplifies the getting started experience for gRPC.</p>
+
+<ul>
+<li><p>For most languages, <strong>the gRPC runtime can now be installed in a single step via native package managers</strong> such as <code>npm</code> for Node.js, <code>gem</code> for Ruby and <code>pip</code> for Python. Even though our Node, Ruby and Python runtimes are wrapped on gRPC&rsquo;s C core, users now don&rsquo;t need to explicitly pre-install the C core library as a package in most Linux distributions. We autofetch it for you :-).</p></li>
+
+<li><p><strong>For Java, we have simplified the steps needed to add gRPC support to your build tools</strong> by providing plugins for Maven and Gradle. These let you easily depend on the core runtime to deploy or ship generated libraries into production environments.</p></li>
+
+<li><p>You can also use our Dockerfiles to use these updated packages - deploying microservices built on gRPC should now be a very simple experience.</p></li>
+</ul>
+
+<p></p>
+
+<p>The installation story is not yet complete: we are now focused on improving your development experience by packaging our protocol buffer plugins in the same way as the gRPC runtime. This will simplify code generation and setting up your development environment.</p>
+
+<h3 id="want-to-try-it">Want to try it?</h3>
+
+<p>Here&rsquo;s how to install the gRPC runtime today in all our supported languages:</p>
+
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Platform</th>
+<th>Command</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>Node.js</td>
+<td>Linux, Mac, Windows</td>
+<td><code>npm install grpc</code></td>
+</tr>
+
+<tr>
+<td>Python</td>
+<td>Linux, Mac, Windows</td>
+<td><code>pip install grpcio</code></td>
+</tr>
+
+<tr>
+<td>Ruby</td>
+<td>Linux, Mac, Windows</td>
+<td><code>gem install grpc</code></td>
+</tr>
+
+<tr>
+<td>PHP</td>
+<td>Linux, Mac, Windows</td>
+<td><code>pecl install grpc-beta</code></td>
+</tr>
+
+<tr>
+<td>Go</td>
+<td>Linux, Mac, Windows</td>
+<td><code>go get google.golang.org/grpc</code></td>
+</tr>
+
+<tr>
+<td>Objective-C</td>
+<td>Mac</td>
+<td>Runtime source fetched automatically from Github by Cocoapods</td>
+</tr>
+
+<tr>
+<td>C#</td>
+<td>Windows</td>
+<td>Install <a href="https://www.nuget.org/packages/Grpc/">gRPC NuGet package</a> from your IDE (Visual Studio, Monodevelop, Xamarin Studio)</td>
+</tr>
+
+<tr>
+<td>Java</td>
+<td>Linux, Mac, Windows</td>
+<td>Use our <a href="https://github.com/grpc/grpc-java/blob/master/README.md">Maven and Gradle plugins</a> that provide gRPC with <a href="https://github.com/grpc/grpc-java/blob/master/SECURITY.md#openssl-statically-linked-netty-tcnative-boringssl-static">statically linked <code>boringssl</code></a></td>
+</tr>
+
+<tr>
+<td>C++</td>
+<td>Linux, Mac, Windows</td>
+<td>Currently requires <a href="https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/src/cpp/README.md">manual build and install</a></td>
+</tr>
+</tbody>
+</table>
+
+<p>You can find out more about installation in our <a href="/docs/#install-grpc">Getting Started guide</a> and Github repositories. Do send us your feedback on our <a href="https://groups.google.com/forum/#!forum/grpc-io">mailing list</a> or file issues on our issue tracker if you run into any problems.</p>
+  </p>
+
+
+  </div>
+
+    
+    
+  </body>
+</html>

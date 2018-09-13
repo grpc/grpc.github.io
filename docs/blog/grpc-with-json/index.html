@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cjyabraham.github.io/grpccss/style.css">
+    <title>
+  gRPC &#43; JSON &ndash; gRPC
+</title>
+  </head>
+  <body>
+
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <div class="logonav">
+                <img src="https://cjyabraham.github.io/grpcimg/grpc-logo.png" style="width:10%">
+            </div>
+            <div class="topnav">
+                <a href="https://cjyabraham.github.io/grpcabout/">About</a>
+		<a href="https://cjyabraham.github.io/grpcdocs/">Docs</a>
+		<a href="https://cjyabraham.github.io/grpcblog/">Blog</a> 
+		<a href="https://cjyabraham.github.io/grpccommunity/">Community</a>
+		<a href="https://packages.grpc.io/">Packages</a> 
+		<a href="https://cjyabraham.github.io/grpcfaq/">FAQ</a>
+            </div>
+    
+            <div class="headertext">Blog</div>
+  </div>
+        </div>
+        </div>
+
+  <div class="singleblog"> 
+  <h3 style="margin-top:0px;">gRPC &#43; JSON</h3>
+  <h5>Posted on Wednesday, August 15, 2018 by Carl Mastrangelo</h5>
+  <p>
+    <p>So you&rsquo;ve bought into this whole RPC thing and want to try it out, but aren&rsquo;t quite sure about Protocol Buffers.  Your existing code encodes your own objects, or perhaps you have code that needs a particular encoding.  What to do?</p>
+
+<p>Fortunately, gRPC is encoding agnostic!  You can still get a lot of the benefits of gRPC without using Protobuf.  In this post we&rsquo;ll go through how to make gRPC work with other encodings and types.  Let&rsquo;s try using JSON.</p>
+
+<p></p>
+
+<p>gRPC is actually a collection of technologies that have high cohesion, rather than a singular, monolithic framework.  This means its possible to swap out parts of gRPC and still take advantage of gRPC&rsquo;s benefits.  <a href="https://github.com/google/gson">Gson</a> is a popular library for Java for doing JSON encoding.  Let&rsquo;s remove all the protobuf related things and replace them with Gson:</p>
+
+<pre><code class="language-diff">- Protobuf wire encoding
+- Protobuf generated message types
+- gPRC generated stub types
++ JSON wire encoding
++ Gson message types
+</code></pre>
+
+<p>Previously, Protobuf and gRPC were generating code for us, but we would like to use our own types.  Additionally, we are going to be using our own encoding too.  Gson allows us to bring our own types in our code, but provides a way of serializing those types into bytes.</p>
+
+<p>Let&rsquo;s continue with the <a href="https://github.com/carl-mastrangelo/kvstore/tree/04-gson-marshaller">Key-Value</a> store service.  We will be modifying the code used my previous <a href="https://grpc.io/blog/optimizing-grpc-part-2">So You Want to Optimize gRPC</a> post.</p>
+
+<h2 id="what-is-a-service-anyways">What is a Service Anyways?</h2>
+
+<p>From the point of view of gRPC, a <em>Service</em> is a collection of <em>Methods</em>.  In Java, a method is represented as a <a href="https://grpc.io/grpc-java/javadoc/io/grpc/MethodDescriptor.html"><code>MethodDescriptor</code></a>.  Each <code>MethodDescriptor</code> includes the name of the method, a <code>Marshaller</code> for encoding requests, and a <code>Marshaller</code> for encoding responses.  They also include additional detail, such as if the call is streaming or not.  For simplicity, we&rsquo;ll stick with unary RPCs which have a single request and single response.</p>
+
+<p>Since we won&rsquo;t be generating any code, we&rsquo;ll need to write the message classes ourselves.  There are four methods, each which have a request and a response type.  This means we need to make eight messages:</p>
+
+<pre><code class="language-java">  static final class CreateRequest {
+    byte[] key;
+    byte[] value;
+  }
+
+  static final class CreateResponse {
+  }
+
+  static final class RetrieveRequest {
+    byte[] key;
+  }
+
+  static final class RetrieveResponse {
+    byte[] value;
+  }
+
+  static final class UpdateRequest {
+    byte[] key;
+    byte[] value;
+  }
+
+  static final class UpdateResponse {
+  }
+
+  static final class DeleteRequest {
+    byte[] key;
+  }
+
+  static final class DeleteResponse {
+  }
+</code></pre>
+
+<p>Because GSON uses reflection to determine how the fields in our classes map to the serialized JSON, we don&rsquo;t need to annotate the messages.</p>
+
+<p>Our client and server logic will use the request and response types, but gRPC needs to know how to produce and consume these messages.  To do this, we need to implement a <a href="https://grpc.io/grpc-java/javadoc/io/grpc/MethodDescriptor.Marshaller.html"><code>Marshaller</code></a>.  A marshaller knows how to convert from an arbitrary type to an <code>InputStream</code>, which is then passed down into the gRPC core library.  It is also capable of doing the reverse transformation when decoding data from the network.  For GSON, here is what the marshaller looks like:</p>
+
+<pre><code class="language-java">  static &lt;T&gt; Marshaller&lt;T&gt; marshallerFor(Class&lt;T&gt; clz) {
+    Gson gson = new Gson();
+    return new Marshaller&lt;T&gt;() {
+      @Override
+      public InputStream stream(T value) {
+        return new ByteArrayInputStream(gson.toJson(value, clz).getBytes(StandardCharsets.UTF_8));
+      }
+
+      @Override
+      public T parse(InputStream stream) {
+        return gson.fromJson(new InputStreamReader(stream, StandardCharsets.UTF_8), clz);
+      }
+    };
+  }
+</code></pre>
+
+<p>Given a <code>Class</code> object for a some request or response, this function will produce a marshaller.  Using the marshallers, we can compose a full <code>MethodDescriptor</code> for each of the four CRUD methods.  Here is an example of the Method descriptor for <em>Create</em>:</p>
+
+<pre><code class="language-java">  static final MethodDescriptor&lt;CreateRequest, CreateResponse&gt; CREATE_METHOD =
+      MethodDescriptor.newBuilder(
+          marshallerFor(CreateRequest.class),
+          marshallerFor(CreateResponse.class))
+          .setFullMethodName(
+              MethodDescriptor.generateFullMethodName(SERVICE_NAME, &quot;Create&quot;))
+          .setType(MethodType.UNARY)
+          .build();
+</code></pre>
+
+<p>Note that if we were using Protobuf, we would use the existing Protobuf marshaller, and the
+<a href="https://github.com/carl-mastrangelo/kvstore/blob/03-nonblocking-server/build/generated/source/proto/main/grpc/io/grpc/examples/proto/KeyValueServiceGrpc.java#L44">method descriptors</a>
+would be generated automatically.</p>
+
+<h2 id="sending-rpcs">Sending RPCs</h2>
+
+<p>Now that we can marshal JSON requests and responses, we need to update our
+<a href="https://github.com/carl-mastrangelo/kvstore/blob/b225d28c7c2f3c356b0f3753384b3329f2ab5911/src/main/java/io/grpc/examples/KvClient.java#L98"><code>KvClient</code></a>,
+the gRPC client used in the previous post, to use our MethodDescriptors.  Additionally, since we won&rsquo;t be using any Protobuf types, the code needs to use <code>ByteBuffer</code> rather than <code>ByteString</code>.  That said, we can still use the <code>grpc-stub</code> package on Maven to issue the RPC.  Using the <em>Create</em> method again as an example, here&rsquo;s how to make an RPC:</p>
+
+<pre><code class="language-java">    ByteBuffer key = createRandomKey();
+    ClientCall&lt;CreateRequest, CreateResponse&gt; call =
+        chan.newCall(KvGson.CREATE_METHOD, CallOptions.DEFAULT);
+    KvGson.CreateRequest req = new KvGson.CreateRequest();
+    req.key = key.array();
+    req.value = randomBytes(MEAN_VALUE_SIZE).array();
+
+    ListenableFuture&lt;CreateResponse&gt; res = ClientCalls.futureUnaryCall(call, req);
+    // ...
+</code></pre>
+
+<p>As you can see, we create a new <code>ClientCall</code> object from the <code>MethodDescriptor</code>, create the request, and then send it using <code>ClientCalls.futureUnaryCall</code> in the stub library.  gRPC takes care of the rest for us.  You can also make blocking stubs or async stubs instead of future stubs.</p>
+
+<h2 id="receiving-rpcs">Receiving RPCs</h2>
+
+<p>To update the server, we need to create a key-value service and implementation.  Recall that in gRPC, a <em>Server</em> can handle one or more <em>Services</em>.  Again, what Protobuf would normally have generated for us we need to write ourselves.  Here is what the base service looks like:</p>
+
+<pre><code class="language-java">  static abstract class KeyValueServiceImplBase implements BindableService {
+    public abstract void create(
+        KvGson.CreateRequest request, StreamObserver&lt;CreateResponse&gt; responseObserver);
+
+    public abstract void retrieve(/*...*/);
+
+    public abstract void update(/*...*/);
+
+    public abstract void delete(/*...*/);
+
+    /* Called by the Server to wire up methods to the handlers */
+    @Override
+    public final ServerServiceDefinition bindService() {
+      ServerServiceDefinition.Builder ssd = ServerServiceDefinition.builder(SERVICE_NAME);
+      ssd.addMethod(CREATE_METHOD, ServerCalls.asyncUnaryCall(
+          (request, responseObserver) -&gt; create(request, responseObserver)));
+
+      ssd.addMethod(RETRIEVE_METHOD, /*...*/);
+      ssd.addMethod(UPDATE_METHOD, /*...*/);
+      ssd.addMethod(DELETE_METHOD, /*...*/);
+      return ssd.build();
+    }
+  }
+</code></pre>
+
+<p><code>KeyValueServiceImplBase</code> will serve as both the service definition (which describes which methods the server can handle) and as the implementation (which describes what to do for each method).  It serves as the glue between gRPC and our application logic.  Practically no changes are needed to swap from Proto to GSON in the server code:</p>
+
+<pre><code class="language-java">final class KvService extends KvGson.KeyValueServiceImplBase {
+
+  @Override
+  public void create(
+      KvGson.CreateRequest request, StreamObserver&lt;KvGson.CreateResponse&gt; responseObserver) {
+    ByteBuffer key = ByteBuffer.wrap(request.key);
+    ByteBuffer value = ByteBuffer.wrap(request.value);
+    // ...
+  }
+</code></pre>
+
+<p>After implementing all the methods on the server, we now have a fully functioning gRPC Java, JSON encoding RPC system.  And to show you there is nothing up my sleeve:</p>
+
+<pre><code class="language-sh">$ ./gradlew :dependencies | grep -i proto
+$ # no proto deps!
+</code></pre>
+
+<h2 id="optimizing-the-code">Optimizing the Code</h2>
+
+<p>While Gson is not as fast as Protobuf, there&rsquo;s no sense in not picking the low hanging fruit.  Running the code we see the performance is pretty slow:</p>
+
+<pre><code class="language-sh">./gradlew installDist
+time ./build/install/kvstore/bin/kvstore
+
+INFO: Did 215.883 RPCs/s
+</code></pre>
+
+<p>What happened?  In the previous <a href="https://grpc.io/blog/optimizing-grpc-part-2">optimization</a> post, we saw the Protobuf version do nearly <em>2,500 RPCs/s</em>.  JSON is slow, but not <em>that</em> slow.  We can see what the problem is by printing out the JSON data as it goes through the marshaller:</p>
+
+<pre><code>{&quot;key&quot;:[4,-100,-48,22,-128,85,115,5,56,34,-48,-1,-119,60,17,-13,-118]}
+</code></pre>
+
+<p>That&rsquo;s not right!  Looking at a <code>RetrieveRequest</code>, we see that the key bytes are being encoded as an array, rather than as a byte string.  The wire size is much larger than it needs to be, and may not be compatible with other JSON code.  To fix this, let&rsquo;s tell GSON to encode and decode this data as base64 encoded bytes:</p>
+
+<pre><code class="language-java">  private static final Gson gson =
+      new GsonBuilder().registerTypeAdapter(byte[].class, new TypeAdapter&lt;byte[]&gt;() {
+    @Override
+    public void write(JsonWriter out, byte[] value) throws IOException {
+      out.value(Base64.getEncoder().encodeToString(value));
+    }
+
+    @Override
+    public byte[] read(JsonReader in) throws IOException {
+      return Base64.getDecoder().decode(in.nextString());
+    }
+  }).create();
+</code></pre>
+
+<p>Using this in our marshallers, we can see a dramatic performance difference:</p>
+
+<pre><code class="language-sh">./gradlew installDist
+time ./build/install/kvstore/bin/kvstore
+
+INFO: Did 2,202.2 RPCs/s
+</code></pre>
+
+<p>Almost <strong>10x</strong> faster than before!  We can still take advantage of gRPC&rsquo;s efficiency while bringing our own encoders and messages.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>gRPC lets you use encoders other than Protobuf.  It has no dependency on Protobuf and was specially made to work with a wide variety of environments.  We can see that with a little extra boilerplate, we can use any encoder we want.  While this post only covered JSON, gRPC is compatible with Thrift, Avro, Flatbuffers, Cap’n Proto, and even raw bytes!  gRPC lets you be in control of how your data is handled.  (We still recommend Protobuf though due to strong backwards compatibility, type checking, and performance it gives you.)</p>
+
+<p>All the code is avaialable on <a href="https://github.com/carl-mastrangelo/kvstore/tree/04-gson-marshaller">Github</a> if you would like to see a fully working implementation.</p>
+  </p>
+
+
+  </div>
+
+    
+    
+  </body>
+</html>

@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gRPC</title>
+    <link>https://cjyabraham.github.io/grpc/</link>
+    <description>Recent content on gRPC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 11 Sep 2018 14:11:42 +0700</lastBuildDate>
+    
+	<atom:link href="https://cjyabraham.github.io/grpc/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About gRPC</title>
+      <link>https://cjyabraham.github.io/grpc/about/</link>
+      <pubDate>Tue, 11 Sep 2018 14:11:42 +0700</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/about/</guid>
+      <description>gRPC is a modern open source high performance RPC framework that can run in any environment. It can efficiently connect services in and across data centers with pluggable support for load balancing, tracing, health checking and authentication. It is also applicable in last mile of distributed computing to connect devices, mobile applications and browsers to backend services.
+The main usage scenarios:
+ Efficiently connecting polyglot services in microservices style architecture Connecting mobile devices, browser clients to backend services Generating efficient client libraries  Core Features that make it awesome:</description>
+    </item>
+    
+    <item>
+      <title>gRPC &#43; JSON</title>
+      <link>https://cjyabraham.github.io/grpc/blog/grpc-with-json/</link>
+      <pubDate>Wed, 15 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/grpc-with-json/</guid>
+      <description>&lt;p&gt;So you&amp;rsquo;ve bought into this whole RPC thing and want to try it out, but aren&amp;rsquo;t quite sure about Protocol Buffers.  Your existing code encodes your own objects, or perhaps you have code that needs a particular encoding.  What to do?&lt;/p&gt;
+
+&lt;p&gt;Fortunately, gRPC is encoding agnostic!  You can still get a lot of the benefits of gRPC without using Protobuf.  In this post we&amp;rsquo;ll go through how to make gRPC work with other encodings and types.  Let&amp;rsquo;s try using JSON.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Take the gRPC Survey!</title>
+      <link>https://cjyabraham.github.io/grpc/blog/take-the-grpc-survey/</link>
+      <pubDate>Tue, 14 Aug 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/take-the-grpc-survey/</guid>
+      <description>&lt;h2 id=&#34;the-grpc-project-wants-your-feedback&#34;&gt;The gRPC Project wants your feedback!&lt;/h2&gt;
+
+&lt;p&gt;The gRPC project is looking for feedback to improve the gRPC experience. To do this, we are running a &lt;a href=&#34;http://bit.ly/gRPC18survey&#34;&gt;gRPC user survey&lt;/a&gt;. We invite you to participate  and provide input that will help us better plan and prioritize.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>HTTP/2 Smarter At Scale</title>
+      <link>https://cjyabraham.github.io/grpc/blog/http2_smarter_at_scale/</link>
+      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/http2_smarter_at_scale/</guid>
+      <description>&lt;p&gt;Much of the web today runs on HTTP/1.1. The spec for HTTP/1.1 was published in June of 1999, just shy of 20 years ago. A lot has changed since then, which makes it all the more remarkable that HTTP/1.1 has persisted and flourished for so long. But in some areas it’s beginning to show its age; for the most part, in that the designers weren’t building for the scale at which HTTP/1.1 would be used and the astonishing amount of traffic that it would come to handle. A not-so-bad case is that subsequent tests can&amp;rsquo;t pass because of a leaked resource from the previous test. The worst case is that some subsequent tests pass that wouldn&amp;rsquo;t have passed at all if the previously passed test had not leaked a resource.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Gracefully clean up in gRPC JUnit tests</title>
+      <link>https://cjyabraham.github.io/grpc/blog/gracefully_clean_up_in_grpc_junit_tests/</link>
+      <pubDate>Tue, 26 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/gracefully_clean_up_in_grpc_junit_tests/</guid>
+      <description>&lt;p&gt;It is best practice to always clean up gRPC resources such as client channels, servers, and previously attached Contexts whenever they are no longer needed.&lt;/p&gt;
+
+&lt;p&gt;This is even true for JUnit tests, because otherwise leaked resources may not only linger in your machine forever, but also interfere with subsequent tests. A not-so-bad case is that subsequent tests can&amp;rsquo;t pass because of a leaked resource from the previous test. The worst case is that some subsequent tests pass that wouldn&amp;rsquo;t have passed at all if the previously passed test had not leaked a resource.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>gRPC ❤ Kotlin</title>
+      <link>https://cjyabraham.github.io/grpc/blog/kotlin-gradle-projects/</link>
+      <pubDate>Tue, 19 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/kotlin-gradle-projects/</guid>
+      <description>&lt;p&gt;Did you know that gRPC Java now has out of box support for Kotlin projects built with Gradle? &lt;a href=&#34;https://kotlinlang.org/&#34;&gt;Kotlin&lt;/a&gt; is a modern, statically typed language developed by JetBrains that targets the JVM and Android. It is generally easy for Kotlin programs to interoperate with existing Java libraries. To improve this experience further, we have added support to the &lt;a href=&#34;https://github.com/google/protobuf-gradle-plugin/releases&#34;&gt;protobuf-gradle-plugin&lt;/a&gt; so that the generated Java libraries are automatically picked up by Kotlin. You can now add the protobuf-gradle-plugin to your Kotlin project, and use gRPC just like you would with a typical Java project.
+
+The following examples show you how to configure a project for a JVM application and an Android application using Kotlin.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>So You Want to Optimize gRPC - Part 2</title>
+      <link>https://cjyabraham.github.io/grpc/blog/optimizing-grpc-part-2/</link>
+      <pubDate>Mon, 16 Apr 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/optimizing-grpc-part-2/</guid>
+      <description>&lt;p&gt;How fast is gRPC?  Pretty fast if you understand how modern clients and servers are built.  In
+&lt;a href=&#34;https://cjyabraham.github.io/grpc/blog/optimizing-grpc-part-1&#34;&gt;part 1&lt;/a&gt;, I showed how to get an easy &lt;strong&gt;60%&lt;/strong&gt; improvement.  In this
+post I show how to get a &lt;strong&gt;10000%&lt;/strong&gt; improvement.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>So You Want to Optimize gRPC - Part 1</title>
+      <link>https://cjyabraham.github.io/grpc/blog/optimizing-grpc-part-1/</link>
+      <pubDate>Tue, 06 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/optimizing-grpc-part-1/</guid>
+      <description>&lt;p&gt;A common question with gRPC is how to make it fast.  The gRPC library offers users access to high
+performance RPCs, but it isn&amp;rsquo;t always clear how to achieve this.  Because this question is common
+enough I thought I would try to show my thought process when tuning programs.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>gRPC and Deadlines</title>
+      <link>https://cjyabraham.github.io/grpc/blog/deadlines/</link>
+      <pubDate>Mon, 26 Feb 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/deadlines/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;TL;DR Always set a deadline&lt;/strong&gt;. This post explains why we recommend being deliberate about setting deadlines, with useful code snippets to show you how.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>2018-01-19 gRPC-Go Engineering Practices</title>
+      <link>https://cjyabraham.github.io/grpc/blog/2018-01-22-grpc-go-engineering-practices/</link>
+      <pubDate>Mon, 22 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/2018-01-22-grpc-go-engineering-practices/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s the start of the new year, and almost the end of my first full year on the
+gRPC-Go project, so I&amp;rsquo;d like to take this opportunity to provide an update on
+the state of gRPC-Go development and give some visibility into how we manage the
+project.  For me, personally, this is the first open source project to which
+I&amp;rsquo;ve meaningfully contributed, so this year has been a learning experience for
+me.  Over this year, the team has made constant improvements to our work habits
+and communication.  I still see room for improvement, but I believe we are in a
+considerably better place than we were a year ago.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>The gRPC Meetup Kit</title>
+      <link>https://cjyabraham.github.io/grpc/blog/meetup-kit/</link>
+      <pubDate>Thu, 14 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/meetup-kit/</guid>
+      <description>If you have ever wanted to run an event around gRPC, but didn&amp;rsquo;t know where to start, or wasn&amp;rsquo;t sure what content is available - we have released the gRPC Meetup Kit!
+ The meetup kit includes a 15 minute presentation on the basic concepts of gRPC, with accompanying slides and video for either reference or playback, as well as a 45 minute codelab that takes you through the basics of gRPC in Node.</description>
+    </item>
+    
+    <item>
+      <title>2017-08-22 gRPC-Go performance Improvements</title>
+      <link>https://cjyabraham.github.io/grpc/blog/2017-08-22-grpc-go-perf-improvements/</link>
+      <pubDate>Tue, 22 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/2017-08-22-grpc-go-perf-improvements/</guid>
+      <description>&lt;p&gt;For past few months we&amp;rsquo;ve been working on improving gRPC-Go performance. This includes improving network utilization, optimizing CPU usage and memory allocations. Most of our recent effort has been focused around revamping gRPC-Go flow control. After several optimizations and new features we&amp;rsquo;ve been able to improve quite significantly, especially on high-latency networks. We expect users that are working with high-latency networks and large messages to see an order of magnitude performance gain.
+Benchmark results at the end.&lt;/p&gt;
+
+&lt;p&gt;This blog summarizes the work we have done so far (in chronological order) to improve performance and lays out our near-future plans.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>2017-08-17 Community Meeting Update</title>
+      <link>https://cjyabraham.github.io/grpc/blog/2017-08-17-community-meeting-update/</link>
+      <pubDate>Thu, 17 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/2017-08-17-community-meeting-update/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Next Community Meeting:&lt;/strong&gt; Thursday, August 31, 2017 11am Pacific Time (US and Canada)&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Announcing out of the box support for gRPC in the Flatbuffers serialization library.</title>
+      <link>https://cjyabraham.github.io/grpc/blog/flatbuffers/</link>
+      <pubDate>Thu, 17 Aug 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/flatbuffers/</guid>
+      <description>&lt;p&gt;The recent release of Flatbuffers &lt;a href=&#34;https://github.com/google/flatbuffers/releases&#34;&gt;version 1.7&lt;/a&gt; introduced truly zero-copy support for gRPC out of the box.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://google.github.io/flatbuffers/&#34;&gt;Flatbuffers&lt;/a&gt; is a serialization library that allows you to access serialized data without first unpacking it or allocating any
+additional data structures. It was originally designed for games and other resource constrained applications, but is now finding more general use, both by teams within Google and in other companies such as Netflix and Facebook.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>gRPC Load Balancing</title>
+      <link>https://cjyabraham.github.io/grpc/blog/loadbalancing/</link>
+      <pubDate>Thu, 15 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/loadbalancing/</guid>
+      <description>&lt;p&gt;This post describes various load balancing scenarios seen when deploying gRPC. If you use &lt;a href=&#34;https://cjyabraham.github.io/grpc/&#34;&gt;gRPC&lt;/a&gt; with multiple backends, this document is for you.&lt;/p&gt;
+
+&lt;p&gt;A large scale gRPC deployment typically has a number of identical back-end instances, and a number of clients. Each server has a certain capacity. Load balancing is used for distributing the load from clients optimally across available servers.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>gRPC in Helm</title>
+      <link>https://cjyabraham.github.io/grpc/blog/helmgrpc/</link>
+      <pubDate>Mon, 15 May 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/helmgrpc/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Our guest post today comes from Brian Hardock, a software engineer from Deis working on the &lt;a href=&#34;https://helm.sh/&#34;&gt;Helm&lt;/a&gt; project.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Helm is the package manager for Kubernetes. Helm provides its users with a customizable mechanism for
+managing distributed applications and controlling their deployment.&lt;/p&gt;
+
+&lt;p&gt;I have the good fortune to be a member of the phenomenal open-source Kubernetes Helm community serving as
+a core contributor. My first day working with the Helm team was spent prototyping the architecture for
+the next generation of Helm. By the end of that day, we had procured the preliminary RPC protocol data model
+used to enable communication between Helm and its in-cluster server component, Tiller.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Migration to Google Cloud Platform — gRPC &amp; grpc-gateway</title>
+      <link>https://cjyabraham.github.io/grpc/blog/yygrpc/</link>
+      <pubDate>Wed, 12 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/yygrpc/</guid>
+      <description>&lt;p&gt;Our guest post today comes from &lt;a href=&#34;https://www.linkedin.com/in/miguel-mendez-008231/&#34;&gt;Miguel Mendez&lt;/a&gt; of Yik Yak.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;This post was originally a part of the &lt;a href=&#34;https://medium.com/yik-yak-eng&#34;&gt;Yik Yak Engineering Blog&lt;/a&gt; which focused on sharing the lessons learned as we evolved Yik Yak from early-stage startup code running in Amazon Web Services to an eventual incremental rewrite, re-architecture, and live-migration to Google Cloud Platform.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;In our previous blog &lt;a href=&#34;https://medium.com/yik-yak-eng/migration-to-google-cloud-platform-overview-9b5e5c17c368&#34;&gt;post&lt;/a&gt; we gave an overview of our migration to Google Cloud Platform from Amazon Web Services. In this post we will drill down into the role that &lt;a href=&#34;https://cjyabraham.github.io/grpc/&#34;&gt;gRPC&lt;/a&gt; and &lt;a href=&#34;https://github.com/grpc-ecosystem/grpc-gateway&#34;&gt;grpc-gateway&lt;/a&gt; played in that migration and share some lessons which we picked up along the way.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Building gRPC services with bazel and rules_protobuf</title>
+      <link>https://cjyabraham.github.io/grpc/blog/bazel_rules_protobuf/</link>
+      <pubDate>Thu, 13 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/bazel_rules_protobuf/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://cjyabraham.github.io/grpc/&#34;&gt;gRPC&lt;/a&gt; makes it easier to build high-performance
+microservices by providing generated service entrypoints in a variety
+of different languages.  &lt;a href=&#34;https://bazel.io&#34;&gt;Bazel&lt;/a&gt; complements these
+efforts with a capable and fast polyglot build environment.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/pubref/rules_protobuf&#34;&gt;rules_protobuf&lt;/a&gt; extends
+bazel and makes it easier develop gRPC services.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>gRPC at VSCO</title>
+      <link>https://cjyabraham.github.io/grpc/blog/vscogrpc/</link>
+      <pubDate>Tue, 06 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/vscogrpc/</guid>
+      <description>&lt;p&gt;Our guest post today comes from Robert Sayre and Melinda Lu of VSCO.&lt;/p&gt;
+
+&lt;p&gt;Founded in 2011, &lt;a href=&#34;https://vsco.co&#34;&gt;VSCO&lt;/a&gt; is a community for expression—empowering people to create, discover and connect through images and words. VSCO is in the process of migrating their stack to gRPC.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Why we have decided to move our APIs to gRPC</title>
+      <link>https://cjyabraham.github.io/grpc/blog/vendastagrpc/</link>
+      <pubDate>Mon, 29 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/vendastagrpc/</guid>
+      <description>Our guest post today comes from Dale Hopkins, CTO of Vendasta.
+Vendasta started out 8 years ago as a point solution provider of products for small business. From the beginning we partnered with media companies and agencies who have armies of salespeople and existing relationships with those businesses to sell our software. It is estimated that over 30 million small businesses exist in the United States alone, so scalability of our SaaS solution was considered one of our top concerns from the beginning and it was the reason we started with Google App Engine and Datastore.</description>
+    </item>
+    
+    <item>
+      <title>gRPC Project is now 1.0 and ready for production deployments</title>
+      <link>https://cjyabraham.github.io/grpc/blog/gablogpost/</link>
+      <pubDate>Tue, 23 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/gablogpost/</guid>
+      <description>Today, the gRPC project has reached a significant milestone with its 1.0 release. Languages moving to 1.0 include C++, Java, Go, Node, Ruby, Python and C# across Linux, Windows, and Mac. Objective-C and Android Java support on iOS and Android is also moving to 1.0. The 1.0 release means that the core protocol and API surface are now stable with measured performance, stress tested and developers can rely on these APIs and deploy in production, they will follow semantic versioning from here.</description>
+    </item>
+    
+    <item>
+      <title>gRPC with REST and Open APIs</title>
+      <link>https://cjyabraham.github.io/grpc/blog/coreos/</link>
+      <pubDate>Mon, 09 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/coreos/</guid>
+      <description>&lt;p&gt;Our guest post today comes from Brandon Phillips of &lt;a href=&#34;https://coreos.com/&#34;&gt;CoreOS&lt;/a&gt;. CoreOS builds open source projects and products for Linux Containers. Their flagship product for consensus and discovery &lt;a href=&#34;https://coreos.com/etcd/&#34;&gt;etcd&lt;/a&gt; and their container engine &lt;a href=&#34;https://coreos.com/rkt/&#34;&gt;rkt&lt;/a&gt; are early adopters of gRPC.&lt;/p&gt;
+
+&lt;p&gt;One of the key reasons CoreOS chose gRPC is because it uses HTTP/2, enabling applications to present both a HTTP 1.1 REST/JSON API and an efficient gRPC interface on a single TCP port (available for Go). This provides developers with compatibility with the REST web ecosystem, while advancing a new, high-efficiency RPC protocol. With the recent release of Go 1.6, Go ships with a stable &lt;code&gt;net/http2&lt;/code&gt; package by default.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>gRPC - now with easy installation.</title>
+      <link>https://cjyabraham.github.io/grpc/blog/installation/</link>
+      <pubDate>Mon, 04 Apr 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/installation/</guid>
+      <description>&lt;p&gt;Today we are happy to provide an update that significantly simplifies the getting started experience for gRPC.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;For most languages, &lt;strong&gt;the gRPC runtime can now be installed in a single step via native package managers&lt;/strong&gt; such as &lt;code&gt;npm&lt;/code&gt; for Node.js, &lt;code&gt;gem&lt;/code&gt; for Ruby and &lt;code&gt;pip&lt;/code&gt; for Python. Even though our Node, Ruby and Python runtimes are wrapped on gRPC&amp;rsquo;s C core, users now don&amp;rsquo;t need to explicitly pre-install the C core library as a package in most Linux distributions. We autofetch it for you :-).&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;For Java, we have simplified the steps needed to add gRPC support to your build tools&lt;/strong&gt; by providing plugins for Maven and Gradle. These let you easily depend on the core runtime to deploy or ship generated libraries into production environments.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;You can also use our Dockerfiles to use these updated packages - deploying microservices built on gRPC should now be a very simple experience.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Google Cloud PubSub - with the power of gRPC!</title>
+      <link>https://cjyabraham.github.io/grpc/blog/pubsub/</link>
+      <pubDate>Thu, 24 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/pubsub/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://cloud.google.com/pubsub/&#34;&gt;Google Cloud PubSub&lt;/a&gt; is Google&amp;rsquo;s scalable real-time messaging service that lets users send and receive messages between independent applications. It&amp;rsquo;s an important part of Google Cloud Platform&amp;rsquo;s big data offering, and is used by customers worldwide to build their own robust, global services. However, until now, the only way to use the Cloud PubSub API was via JSON over HTTP. That&amp;rsquo;s all changed with the release of &lt;a href=&#34;https://cloud.google.com/blog/big-data/2016/03/announcing-grpc-alpha-for-google-cloud-pubsub&#34;&gt;PubSub gRPC alpha&lt;/a&gt;. Now &lt;strong&gt;users can access PubSub via gRPC&lt;/strong&gt; and benefit from all the advantages it brings.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>gRPC releases Beta, opening door for use in production environments.</title>
+      <link>https://cjyabraham.github.io/grpc/blog/beta_release/</link>
+      <pubDate>Mon, 26 Oct 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/beta_release/</guid>
+      <description>The gRPC team is excited to announce the immediate availability of gRPC Beta. This release marks an important point in API stability and going forward most API changes are expected to be additive in nature. This milestone opens the door for gRPC use in production environments.   We’re also taking a big step forward in improving the installation process. Over the past few weeks we’ve rolled out gRPC packages to Debian Stable/Backports.</description>
+    </item>
+    
+    <item>
+      <title>gRPC Motivation and Design Principles.</title>
+      <link>https://cjyabraham.github.io/grpc/blog/principles/</link>
+      <pubDate>Tue, 08 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/blog/principles/</guid>
+      <description>Motivation Google has been using a single general-purpose RPC infrastructure called Stubby to connect the large number of microservices running within and across our data centers for over a decade. Our internal systems have long embraced the microservice architecture gaining popularity today. Having a uniform, cross-platform RPC infrastructure has allowed for the rollout of fleet-wide improvements in efficiency, security, reliability and behavioral analysis critical to supporting the incredible growth seen in that period.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cjyabraham.github.io/grpc/docs/quickstart/android/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/quickstart/android/</guid>
+      <description>This guide gets you started with gRPC in Android Java with a simple working example.
+ Before you begin Prerequisites  JDK: version 7 or higher Android SDK: API level 14 or higher An android device set up for USB debugging or an Android Virtual Device  Note: gRPC Java does not support running a server on an Android device. For this quickstart, the Android client app will connect to a server running on your local (non-Android) computer.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cjyabraham.github.io/grpc/docs/quickstart/cpp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/quickstart/cpp/</guid>
+      <description>This guide gets you started with gRPC in C++ with a simple working example.
+ Before you begin Prerequisites Install gRPC To install gRPC on your system, follow the instructions to install gRPC C++ via make.
+To run the example code, please ensure pkg-config is installed on your machine before you build and install gRPC in the previous step, since the example Makefiles try to look up the installed gRPC path using pkg-config.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cjyabraham.github.io/grpc/docs/quickstart/csharp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/quickstart/csharp/</guid>
+      <description>C# Quickstart This guide gets you started with gRPC in C# with a simple working example.
+ Before you begin Prerequisites Whether you&amp;rsquo;re using Windows, OS X, or Linux, you can follow this example by using either an IDE and its build tools, or by using the the .NET Core SDK command line tools.
+Using the .NET Core SDK on Windows, OS X, or Linux, you&amp;rsquo;ll need:
+ The .</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cjyabraham.github.io/grpc/docs/quickstart/dart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/quickstart/dart/</guid>
+      <description>This guide gets you started with gRPC in Dart with a simple working example.
+ Before you begin Dart gRPC is currently in beta. Please help us out by filing issues if you encounter any.
+Prerequisites Dart SDK gRPC requires Dart SDK version 1.24.3 or higher. Dart gRPC supports Flutter and Server platforms.
+For installation instructions, follow this guide: Install Dart
+Install Protocol Buffers v3 While not mandatory to use gRPC, gRPC applications usually leverage Protocol Buffers v3 for service definitions and data serialization, and our example code uses Protocol Buffers as well as gRPC.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cjyabraham.github.io/grpc/docs/quickstart/go/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/quickstart/go/</guid>
+      <description>This guide gets you started with gRPC in Go with a simple working example.
+ Before you begin Prerequisites Go version gRPC requires Go 1.6 or higher.
+$ go version  For installation instructions, follow this guide: Getting Started - The Go Programming Language
+Install gRPC Use the following command to install gRPC.
+$ go get -u google.golang.org/grpc  Install Protocol Buffers v3 Install the protoc compiler that is used to generate gRPC service code.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cjyabraham.github.io/grpc/docs/quickstart/java/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/quickstart/java/</guid>
+      <description>This guide gets you started with gRPC in Java with a simple working example.
+ Before you begin Prerequisites  JDK: version 7 or higher  Download the example You&amp;rsquo;ll need a local copy of the example code to work through this quickstart. Download the example code from our Github repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cjyabraham.github.io/grpc/docs/quickstart/node/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/quickstart/node/</guid>
+      <description>This guide gets you started with gRPC in Node with a simple working example.
+ Before you begin Prerequisites  node: version 4.0.0 or higher  Download the example You&amp;rsquo;ll need a local copy of the example code to work through this quickstart. Download the example code from our GitHub repository (the following command clones the entire repository, but you just need the examples for this quickstart and other tutorials):</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cjyabraham.github.io/grpc/docs/quickstart/objective-c/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/quickstart/objective-c/</guid>
+      <description>This guide gets you started with gRPC on the iOS platform in Objective-C with a simple working example.
+ Before you begin System requirement The minimum deployment iOS version for gRPC is 7.0.
+OS X El Capitan (version 10.11) or above is required to build and run this Quickstart.
+Prerequisites  CocoaPods: version 1.0 or higher
+ Check status and version of CocoaPods on your system with command pod --version.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cjyabraham.github.io/grpc/docs/quickstart/php/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/quickstart/php/</guid>
+      <description>This guide gets you started with gRPC in PHP with a simple working example.
+ Prerequisites  php 5.5 or above, 7.0 or above pecl composer phpunit (optional)  Install PHP and PECL on Ubuntu/Debian:
+For PHP5:
+$ sudo apt-get install php5 php5-dev php-pear phpunit  For PHP7:
+$ sudo apt-get install php7.0 php7.0-dev php-pear phpunit  or
+$ sudo apt-get install php php-dev php-pear phpunit  Install PHP and PECL on CentOS/RHEL 7:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cjyabraham.github.io/grpc/docs/quickstart/python/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/quickstart/python/</guid>
+      <description>This guide gets you started with gRPC in Python with a simple working example.
+ Before you begin Prerequisites gRPC Python is supported for use with Python 2.7 or Python 3.4 or higher.
+Ensure you have pip version 9.0.1 or higher:
+$ python -m pip install --upgrade pip  If you cannot upgrade pip due to a system-owned installation, you can run the example in a virtualenv:
+$ python -m pip install virtualenv $ virtualenv venv $ source venv/bin/activate $ python -m pip install --upgrade pip  Install gRPC Install gRPC:</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cjyabraham.github.io/grpc/docs/quickstart/ruby/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/quickstart/ruby/</guid>
+      <description>This guide gets you started with gRPC in Ruby with a simple working example.
+ Before you begin Prerequisites  ruby: version 2 or higher  Install gRPC $ gem install grpc  Install gRPC tools Ruby&amp;rsquo;s gRPC tools include the protocol buffer compiler protoc and the special plugin for generating server and client code from the .proto service definitions. For the first part of our quickstart example, we&amp;rsquo;ve already generated the server and client stubs from helloworld.</description>
+    </item>
+    
+    <item>
+      <title>Guides</title>
+      <link>https://cjyabraham.github.io/grpc/docs/guides/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/guides/</guid>
+      <description>This document introduces you to gRPC and protocol buffers. gRPC can use protocol buffers as both its Interface Definition Language (IDL) and as its underlying message interchange format. If you’re new to gRPC and/or protocol buffers, read this! If you just want to dive in and see gRPC in action first, see our Quick Starts.
+ Overview In gRPC a client application can directly call methods on a server application on a different machine as if it was a local object, making it easier for you to create distributed applications and services.</description>
+    </item>
+    
+    <item>
+      <title>Presentations &amp; Talks</title>
+      <link>https://cjyabraham.github.io/grpc/docs/talks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/talks/</guid>
+      <description>gRPC has been talked about in many conferences and sessions. Here are a few interesting ones:
+      gRPC Intro - Jayant Kolhe, May 2018
+    gRPC Load Balancing on Kubernetes - Jan Tattermusch, May 2018
+    gRPC Deep Dive - Sree Kuchibhotla, May 2018
+    Modifying gRPC Services Over Time - Eric Anderson, Dec 2017
+    gRPC History Talk &#34;</description>
+    </item>
+    
+    <item>
+      <title>Reference</title>
+      <link>https://cjyabraham.github.io/grpc/docs/reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/reference/</guid>
+      <description>Links to the language specific automatically generated API reference documentation.
+ C++ API Java API Python API Ruby API Node.js API C# API Go API PHP API Objective-C API gRPC Core Library (for wrapped languages)  </description>
+    </item>
+    
+    <item>
+      <title>Samples</title>
+      <link>https://cjyabraham.github.io/grpc/docs/samples/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/samples/</guid>
+      <description>Here are some sample apps to help developers build certain functionalities
+ Go Secure Hello World Example Bidirectional streaming iOS client using Cloud Speech API Android app benchmarking JSON/HTTP/1.1 and gRPC  </description>
+    </item>
+    
+    <item>
+      <title>Tutorials</title>
+      <link>https://cjyabraham.github.io/grpc/docs/tutorials/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/tutorials/</guid>
+      <description>This section contains tutorials for each of our supported languages. They introduce you to gRPC&amp;rsquo;s API and associated concepts, and the different RPC types that are available. If you just want to dive straight in with a working example first, see our Quickstarts.
+ C++ C# Dart Go Java Android Java Node.js Objective-C PHP Python Ruby  We also have a growing number of tutorials on follow-on topics, with more in the pipeline.</description>
+    </item>
+    
+  </channel>
+</rss>

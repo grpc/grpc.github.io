@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cjyabraham.github.io/grpccss/style.css">
+    <title>
+   &ndash; gRPC
+</title>
+  </head>
+  <body>
+
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <div class="logonav">
+                <img src="https://cjyabraham.github.io/grpcimg/grpc-logo.png" style="width:10%">
+            </div>
+            <div class="topnav">
+                <a href="https://cjyabraham.github.io/grpcabout/">About</a>
+		<a href="https://cjyabraham.github.io/grpcdocs/">Docs</a>
+		<a href="https://cjyabraham.github.io/grpcblog/">Blog</a> 
+		<a href="https://cjyabraham.github.io/grpccommunity/">Community</a>
+		<a href="https://packages.grpc.io/">Packages</a> 
+		<a href="https://cjyabraham.github.io/grpcfaq/">FAQ</a>
+            </div>
+    
+            <div class="headertext"></div>
+  </div>
+        </div>
+        </div>
+
+  <div class="section2" style="text-align:left;margin-bottom:5%">
+    
+
+<p class="lead">This guide gets you started with gRPC in Dart with a simple
+working example.</p>
+
+<div id="toc"></div>
+
+<h2 id="before-you-begin">Before you begin</h2>
+
+<p class="note">Dart gRPC is currently in beta. Please help us out by
+<a href="https://github.com/grpc/grpc-dart/issues/new">filing issues</a>
+if you encounter any.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<h4 id="dart-sdk">Dart SDK</h4>
+
+<p>gRPC requires Dart SDK version 1.24.3 or higher. Dart gRPC supports Flutter and Server platforms.</p>
+
+<p>For installation instructions, follow this guide: <a href="https://www.dartlang.org/install">Install Dart</a></p>
+
+<h4 id="install-protocol-buffers-v3">Install Protocol Buffers v3</h4>
+
+<p>While not mandatory to use gRPC, gRPC applications usually leverage Protocol
+Buffers v3 for service definitions and data serialization, and our example code
+uses Protocol Buffers as well as gRPC.</p>
+
+<p>The simplest way to install the protoc compiler is to download pre-compiled
+binaries for your operating system (<code>protoc-&lt;version&gt;-&lt;os&gt;.zip</code>) from here:
+<a href="https://github.com/google/protobuf/releases">https://github.com/google/protobuf/releases</a></p>
+
+<ul>
+<li>Unzip this file.</li>
+<li>Update the environment variable <code>PATH</code> to include the path to the protoc
+binary file.</li>
+</ul>
+
+<p>Next, install the protoc plugin for Dart</p>
+
+<pre><code class="language-sh">$ pub global activate protoc_plugin
+</code></pre>
+
+<p>The compiler plugin, <code>protoc-gen-dart</code>, is installed in <code>$HOME/.pub-cache/bin</code>.
+It must be in your $PATH for the protocol compiler, protoc, to find it.</p>
+
+<pre><code class="language-sh">$ export PATH=$PATH:$HOME/.pub-cache/bin
+</code></pre>
+
+<h2 id="download-the-example">Download the example</h2>
+
+<p>You&rsquo;ll need a local copy of the example code to work through this quickstart.
+Download the example code from our Github repository (the following command
+clones the entire repository, but you just need the examples for this quickstart
+and other tutorials):</p>
+
+<pre><code class="language-sh">$ # Clone the repository at the latest release to get the example code:
+$ git clone https://github.com/grpc/grpc-dart
+$ # Navigate to the &quot;Hello World&quot; Dart example:
+$ cd grpc-dart/example/helloworld
+</code></pre>
+
+<h2 id="run-a-grpc-application">Run a gRPC application</h2>
+
+<p>From the <code>example/helloworld</code> directory:</p>
+
+<ol>
+<li>Download package dependencies</li>
+</ol>
+
+<pre><code class="language-sh">   $ pub get
+</code></pre>
+
+<ol>
+<li>Run the server</li>
+</ol>
+
+<pre><code class="language-sh">   $ dart bin/server.dart
+</code></pre>
+
+<ol>
+<li>In another terminal, run the client</li>
+</ol>
+
+<pre><code class="language-sh">   $ dart bin/client.dart
+</code></pre>
+
+<p>Congratulations! You&rsquo;ve just run a client-server application with gRPC.</p>
+
+<h2 id="update-a-grpc-service">Update a gRPC service</h2>
+
+<p>Now let&rsquo;s look at how to update the application with an extra method on the
+server for the client to call. Our gRPC service is defined using protocol
+buffers; you can find out lots more about how to define a service in a <code>.proto</code>
+file in <a href="../tutorials/basic/dart.html">gRPC Basics: Dart</a>. For now all you need to know is that both the
+server and the client &ldquo;stub&rdquo; have a <code>SayHello</code> RPC method that takes a
+<code>HelloRequest</code> parameter from the client and returns a <code>HelloReply</code> from the
+server, and that this method is defined like this:</p>
+
+<pre><code>// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+</code></pre>
+
+<p>Let&rsquo;s update this so that the <code>Greeter</code> service has two methods. Edit
+<code>protos/helloworld.proto</code> and update it with a new <code>SayHelloAgain</code>
+method, with the same request and response types:</p>
+
+<pre><code>// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  // Sends another greeting
+  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+</code></pre>
+
+<p>(Don&rsquo;t forget to save the file!)</p>
+
+<h2 id="generate-grpc-code">Generate gRPC code</h2>
+
+<p>Next we need to update the gRPC code used by our application to use the new
+service definition.</p>
+
+<p>From the <code>example/helloworld</code> directory, run:</p>
+
+<pre><code class="language-sh">$ protoc --dart_out=grpc:lib/src/generated -Iprotos protos/helloworld.proto
+</code></pre>
+
+<p>This regenerates the files in <code>lib/src/generated</code> which contain our generated
+request and response classes, and client and server classes.</p>
+
+<h2 id="update-and-run-the-application">Update and run the application</h2>
+
+<p>We now have new generated server and client code, but we still need to implement
+and call the new method in the human-written parts of our example application.</p>
+
+<h3 id="update-the-server">Update the server</h3>
+
+<p>In the same directory, open <code>bin/server.dart</code>. Implement the new method like
+this:</p>
+
+<pre><code class="language-dart">class GreeterService extends GreeterServiceBase {
+  @override
+  Future&lt;HelloReply&gt; sayHello(ServiceCall call, HelloRequest request) async {
+    return new HelloReply()..message = 'Hello, ${request.name}!';
+  }
+
+  @override
+  Future&lt;HelloReply&gt; sayHelloAgain(
+      ServiceCall call, HelloRequest request) async {
+    return new HelloReply()..message = 'Hello again, ${request.name}!';
+  }
+}
+...
+</code></pre>
+
+<h3 id="update-the-client">Update the client</h3>
+
+<p>In the same directory, open <code>bin/client.dart</code>. Call the new method like this:</p>
+
+<pre><code class="language-dart">Future&lt;Null&gt; main(List&lt;String&gt; args) async {
+  final channel = new ClientChannel('localhost',
+      port: 50051,
+      options: const ChannelOptions(
+          credentials: const ChannelCredentials.insecure()));
+  final stub = new GreeterClient(channel);
+
+  final name = args.isNotEmpty ? args[0] : 'world';
+
+  try {
+    var response = await stub.sayHello(new HelloRequest()..name = name);
+    print('Greeter client received: ${response.message}');
+    response = await stub.sayHelloAgain(new HelloRequest()..name = name);
+    print('Greeter client received: ${response.message}');
+  } catch (e) {
+    print('Caught error: $e');
+  }
+  await channel.shutdown();
+}
+</code></pre>
+
+<h3 id="run">Run!</h3>
+
+<p>Just like we did before, from the <code>example/helloworld</code> directory:</p>
+
+<ol>
+<li>Run the server</li>
+</ol>
+
+<pre><code class="language-sh">   $ dart bin/server.dart
+</code></pre>
+
+<ol>
+<li>In another terminal, run the client</li>
+</ol>
+
+<pre><code class="language-sh">   $ dart bin/client.dart
+</code></pre>
+
+<h2 id="what-s-next">What&rsquo;s next</h2>
+
+<ul>
+<li>Read a full explanation of how gRPC works in <a href="../guides/">What is gRPC?</a>
+and <a href="../guides/concepts.html">gRPC Concepts</a></li>
+<li>Work through a more detailed tutorial in <a href="../tutorials/basic/dart.html">gRPC Basics: Dart</a></li>
+</ul>
+
+  </div>
+
+    
+    
+  </body>
+</html>

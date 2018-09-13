@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Documentation on gRPC</title>
+    <link>https://cjyabraham.github.io/grpc/docs/</link>
+    <description>Recent content in Documentation on gRPC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 11 Sep 2018 15:45:50 +0700</lastBuildDate>
+    
+	<atom:link href="https://cjyabraham.github.io/grpc/docs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Guides</title>
+      <link>https://cjyabraham.github.io/grpc/docs/guides/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/guides/</guid>
+      <description>This document introduces you to gRPC and protocol buffers. gRPC can use protocol buffers as both its Interface Definition Language (IDL) and as its underlying message interchange format. If you’re new to gRPC and/or protocol buffers, read this! If you just want to dive in and see gRPC in action first, see our Quick Starts.
+ Overview In gRPC a client application can directly call methods on a server application on a different machine as if it was a local object, making it easier for you to create distributed applications and services.</description>
+    </item>
+    
+    <item>
+      <title>Presentations &amp; Talks</title>
+      <link>https://cjyabraham.github.io/grpc/docs/talks/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/talks/</guid>
+      <description>gRPC has been talked about in many conferences and sessions. Here are a few interesting ones:
+      gRPC Intro - Jayant Kolhe, May 2018
+    gRPC Load Balancing on Kubernetes - Jan Tattermusch, May 2018
+    gRPC Deep Dive - Sree Kuchibhotla, May 2018
+    Modifying gRPC Services Over Time - Eric Anderson, Dec 2017
+    gRPC History Talk &#34;</description>
+    </item>
+    
+    <item>
+      <title>Reference</title>
+      <link>https://cjyabraham.github.io/grpc/docs/reference/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/reference/</guid>
+      <description>Links to the language specific automatically generated API reference documentation.
+ C++ API Java API Python API Ruby API Node.js API C# API Go API PHP API Objective-C API gRPC Core Library (for wrapped languages)  </description>
+    </item>
+    
+    <item>
+      <title>Samples</title>
+      <link>https://cjyabraham.github.io/grpc/docs/samples/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/samples/</guid>
+      <description>Here are some sample apps to help developers build certain functionalities
+ Go Secure Hello World Example Bidirectional streaming iOS client using Cloud Speech API Android app benchmarking JSON/HTTP/1.1 and gRPC  </description>
+    </item>
+    
+    <item>
+      <title>Tutorials</title>
+      <link>https://cjyabraham.github.io/grpc/docs/tutorials/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cjyabraham.github.io/grpc/docs/tutorials/</guid>
+      <description>This section contains tutorials for each of our supported languages. They introduce you to gRPC&amp;rsquo;s API and associated concepts, and the different RPC types that are available. If you just want to dive straight in with a working example first, see our Quickstarts.
+ C++ C# Dart Go Java Android Java Node.js Objective-C PHP Python Ruby  We also have a growing number of tutorials on follow-on topics, with more in the pipeline.</description>
+    </item>
+    
+  </channel>
+</rss>

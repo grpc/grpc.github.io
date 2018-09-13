@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cjyabraham.github.io/grpccss/style.css">
+    <title>
+   &ndash; gRPC
+</title>
+  </head>
+  <body>
+
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <div class="logonav">
+                <img src="https://cjyabraham.github.io/grpcimg/grpc-logo.png" style="width:10%">
+            </div>
+            <div class="topnav">
+                <a href="https://cjyabraham.github.io/grpcabout/">About</a>
+		<a href="https://cjyabraham.github.io/grpcdocs/">Docs</a>
+		<a href="https://cjyabraham.github.io/grpcblog/">Blog</a> 
+		<a href="https://cjyabraham.github.io/grpccommunity/">Community</a>
+		<a href="https://packages.grpc.io/">Packages</a> 
+		<a href="https://cjyabraham.github.io/grpcfaq/">FAQ</a>
+            </div>
+    
+            <div class="headertext"></div>
+  </div>
+        </div>
+        </div>
+
+  <div class="section2" style="text-align:left;margin-bottom:5%">
+    
+
+<p class="lead">This guide gets you started with gRPC in Java with a simple
+working example.</p>
+
+<div id="toc"></div>
+
+<h2 id="before-you-begin">Before you begin</h2>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<ul>
+<li><code>JDK</code>: version 7 or higher</li>
+</ul>
+
+<h2 id="download-the-example">Download the example</h2>
+
+<p>You&rsquo;ll need a local copy of the example code to work through this quickstart.
+Download the example code from our Github repository (the following command
+clones the entire repository, but you just need the examples for this quickstart
+and other tutorials):</p>
+
+<pre><code class="language-sh">$ # Clone the repository at the latest release to get the example code:
+$ git clone -b {{ site.data.config.grpc_java_release_tag }} https://github.com/grpc/grpc-java
+$ # Navigate to the Java examples:
+$ cd grpc-java/examples
+</code></pre>
+
+<h2 id="run-a-grpc-application">Run a gRPC application</h2>
+
+<p>From the <code>examples</code> directory:</p>
+
+<ol>
+<li>Compile the client and server</li>
+</ol>
+
+<pre><code class="language-sh">   $ ./gradlew installDist
+</code></pre>
+
+<ol>
+<li>Run the server</li>
+</ol>
+
+<pre><code class="language-sh">   $ ./build/install/examples/bin/hello-world-server
+</code></pre>
+
+<ol>
+<li>In another terminal, run the client</li>
+</ol>
+
+<pre><code class="language-sh">   $ ./build/install/examples/bin/hello-world-client
+</code></pre>
+
+<p>Congratulations! You&rsquo;ve just run a client-server application with gRPC.</p>
+
+<h2 id="update-a-grpc-service">Update a gRPC service</h2>
+
+<p>Now let&rsquo;s look at how to update the application with an extra method on the
+server for the client to call. Our gRPC service is defined using protocol
+buffers; you can find out lots more about how to define a service in a <code>.proto</code>
+file in <a href="../tutorials/basic/java.html">gRPC Basics: Java</a>. For now all you need to know is that both the
+server and the client &ldquo;stub&rdquo; have a <code>SayHello</code> RPC method that takes a
+<code>HelloRequest</code> parameter from the client and returns a <code>HelloReply</code> from the
+server, and that this method is defined like this:</p>
+
+<pre><code>// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+</code></pre>
+
+<p>Let&rsquo;s update this so that the <code>Greeter</code> service has two methods. Edit
+<code>src/main/proto/helloworld.proto</code> and update it with a new <code>SayHelloAgain</code>
+method, with the same request and response types:</p>
+
+<pre><code>// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  // Sends another greeting
+  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+</code></pre>
+
+<p>(Don&rsquo;t forget to save the file!)</p>
+
+<h2 id="update-and-run-the-application">Update and run the application</h2>
+
+<p>When we recompile the example, normal compilation will regenerate
+<code>GreeterGrpc.java</code>, which contains our generated gRPC client and server classes.
+This also regenerates classes for populating, serializing, and retrieving our
+request and response types.</p>
+
+<p>However, we still need to implement and call the new method in the human-written
+parts of our example application.</p>
+
+<h3 id="update-the-server">Update the server</h3>
+
+<p>In the same directory, open
+<code>src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java</code>. Implement the
+new method like this:</p>
+
+<pre><code>private class GreeterImpl extends GreeterGrpc.GreeterImplBase {
+
+  @Override
+  public void sayHello(HelloRequest req, StreamObserver&lt;HelloReply&gt; responseObserver) {
+    HelloReply reply = HelloReply.newBuilder().setMessage(&quot;Hello &quot; + req.getName()).build();
+    responseObserver.onNext(reply);
+    responseObserver.onCompleted();
+  }
+
+  @Override
+  public void sayHelloAgain(HelloRequest req, StreamObserver&lt;HelloReply&gt; responseObserver) {
+    HelloReply reply = HelloReply.newBuilder().setMessage(&quot;Hello again &quot; + req.getName()).build();
+    responseObserver.onNext(reply);
+    responseObserver.onCompleted();
+  }
+}
+...
+</code></pre>
+
+<h3 id="update-the-client">Update the client</h3>
+
+<p>In the same directory, open
+<code>src/main/java/io/grpc/examples/helloworld/HelloWorldClient.java</code>. Call the new
+method like this:</p>
+
+<pre><code>public void greet(String name) {
+  logger.info(&quot;Will try to greet &quot; + name + &quot; ...&quot;);
+  HelloRequest request = HelloRequest.newBuilder().setName(name).build();
+  HelloReply response;
+  try {
+    response = blockingStub.sayHello(request);
+  } catch (StatusRuntimeException e) {
+    logger.log(Level.WARNING, &quot;RPC failed: {0}&quot;, e.getStatus());
+    return;
+  }
+  logger.info(&quot;Greeting: &quot; + response.getMessage());
+  try {
+    response = blockingStub.sayHelloAgain(request);
+  } catch (StatusRuntimeException e) {
+    logger.log(Level.WARNING, &quot;RPC failed: {0}&quot;, e.getStatus());
+    return;
+  }
+  logger.info(&quot;Greeting: &quot; + response.getMessage());
+}
+</code></pre>
+
+<h3 id="run">Run!</h3>
+
+<p>Just like we did before, from the <code>examples</code> directory:</p>
+
+<ol>
+<li>Compile the client and server</li>
+</ol>
+
+<pre><code class="language-sh">   $ ./gradlew installDist
+</code></pre>
+
+<ol>
+<li>Run the server</li>
+</ol>
+
+<pre><code class="language-sh">   $ ./build/install/examples/bin/hello-world-server
+</code></pre>
+
+<ol>
+<li>In another terminal, run the client</li>
+</ol>
+
+<pre><code class="language-sh">   $ ./build/install/examples/bin/hello-world-client
+</code></pre>
+
+<h2 id="what-s-next">What&rsquo;s next</h2>
+
+<ul>
+<li>Read a full explanation of how gRPC works in <a href="../guides/">What is gRPC?</a>
+and <a href="../guides/concepts.html">gRPC Concepts</a></li>
+<li>Work through a more detailed tutorial in <a href="../tutorials/basic/java.html">gRPC Basics: Java</a></li>
+<li>Explore the gRPC Java core API in its <a href="/grpc-java/javadoc/">reference
+documentation</a></li>
+</ul>
+
+  </div>
+
+    
+    
+  </body>
+</html>

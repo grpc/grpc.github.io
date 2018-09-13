@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cjyabraham.github.io/grpccss/style.css">
+    <title>
+   &ndash; gRPC
+</title>
+  </head>
+  <body>
+
+    <div id="landing-content">
+      <div class="row">
+        <div class="topbannersub">
+          <div class="logonav">
+                <img src="https://cjyabraham.github.io/grpcimg/grpc-logo.png" style="width:10%">
+            </div>
+            <div class="topnav">
+                <a href="https://cjyabraham.github.io/grpcabout/">About</a>
+		<a href="https://cjyabraham.github.io/grpcdocs/">Docs</a>
+		<a href="https://cjyabraham.github.io/grpcblog/">Blog</a> 
+		<a href="https://cjyabraham.github.io/grpccommunity/">Community</a>
+		<a href="https://packages.grpc.io/">Packages</a> 
+		<a href="https://cjyabraham.github.io/grpcfaq/">FAQ</a>
+            </div>
+    
+            <div class="headertext"></div>
+  </div>
+        </div>
+        </div>
+
+  <div class="section2" style="text-align:left;margin-bottom:5%">
+    
+
+<p class="lead">This guide gets you started with gRPC in Python with a simple
+working example.</p>
+
+<div id="toc"></div>
+
+<h2 id="before-you-begin">Before you begin</h2>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<p>gRPC Python is supported for use with Python 2.7 or Python 3.4 or higher.</p>
+
+<p>Ensure you have <code>pip</code> version 9.0.1 or higher:</p>
+
+<pre><code class="language-sh">$ python -m pip install --upgrade pip
+</code></pre>
+
+<p>If you cannot upgrade <code>pip</code> due to a system-owned installation, you can
+run the example in a virtualenv:</p>
+
+<pre><code class="language-sh">$ python -m pip install virtualenv
+$ virtualenv venv
+$ source venv/bin/activate
+$ python -m pip install --upgrade pip
+</code></pre>
+
+<h3 id="install-grpc">Install gRPC</h3>
+
+<p>Install gRPC:</p>
+
+<pre><code class="language-sh">$ python -m pip install grpcio
+</code></pre>
+
+<p>Or, to install it system wide:</p>
+
+<pre><code class="language-sh">$ sudo python -m pip install grpcio
+</code></pre>
+
+<p>On El Capitan OSX, you may get the following error:</p>
+
+<pre><code class="language-sh">$ OSError: [Errno 1] Operation not permitted: '/tmp/pip-qwTLbI-uninstall/System/Library/Frameworks/Python.framework/Versions/2.7/Extras/lib/python/six-1.4.1-py2.7.egg-info'
+</code></pre>
+
+<p>You can work around this using:</p>
+
+<pre><code class="language-sh">$ python -m pip install grpcio --ignore-installed
+</code></pre>
+
+<h3 id="install-grpc-tools">Install gRPC tools</h3>
+
+<p>Python&rsquo;s gRPC tools include the protocol buffer compiler <code>protoc</code> and the
+special plugin for generating server and client code from <code>.proto</code> service
+definitions. For the first part of our quickstart example, we&rsquo;ve already
+generated the server and client stubs from
+<a href="https://github.com/grpc/grpc/tree/{{site.data.config.grpc_release_tag}}/examples/protos/helloworld.proto">helloworld.proto</a>,
+but you&rsquo;ll need the tools for the rest of our quickstart, as well as later
+tutorials and your own projects.</p>
+
+<p>To install gRPC tools, run:</p>
+
+<pre><code class="language-sh">$ python -m pip install grpcio-tools googleapis-common-protos
+</code></pre>
+
+<h2 id="download-the-example">Download the example</h2>
+
+<p>You&rsquo;ll need a local copy of the example code to work through this quickstart.
+Download the example code from our Github repository (the following command
+clones the entire repository, but you just need the examples for this quickstart
+and other tutorials):</p>
+
+<pre><code class="language-sh">$ # Clone the repository to get the example code:
+$ git clone -b {{ site.data.config.grpc_release_tag }} https://github.com/grpc/grpc
+$ # Navigate to the &quot;hello, world&quot; Python example:
+$ cd grpc/examples/python/helloworld
+</code></pre>
+
+<h2 id="run-a-grpc-application">Run a gRPC application</h2>
+
+<p>From the <code>examples/python/helloworld</code> directory:</p>
+
+<ol>
+<li>Run the server</li>
+</ol>
+
+<pre><code class="language-sh">   $ python greeter_server.py
+</code></pre>
+
+<ol>
+<li>In another terminal, run the client</li>
+</ol>
+
+<pre><code class="language-sh">   $ python greeter_client.py
+</code></pre>
+
+<p>Congratulations! You&rsquo;ve just run a client-server application with gRPC.</p>
+
+<h2 id="update-a-grpc-service">Update a gRPC service</h2>
+
+<p>Now let&rsquo;s look at how to update the application with an extra method on the
+server for the client to call. Our gRPC service is defined using protocol
+buffers; you can find out lots more about how to define a service in a <code>.proto</code>
+file in <a href="../guides/">What is gRPC?</a> and <a href="../tutorials/basic/python.html">gRPC Basics: Python</a>. For now all you need
+to know is that both the server and the client &ldquo;stub&rdquo; have a <code>SayHello</code> RPC
+method that takes a <code>HelloRequest</code> parameter from the client and returns a
+<code>HelloResponse</code> from the server, and that this method is defined like this:</p>
+
+<pre><code>// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+</code></pre>
+
+<p>Let&rsquo;s update this so that the <code>Greeter</code> service has two methods. Edit
+<code>examples/protos/helloworld.proto</code> and update it with a new <code>SayHelloAgain</code>
+method, with the same request and response types:</p>
+
+<pre><code>// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply) {}
+  // Sends another greeting
+  rpc SayHelloAgain (HelloRequest) returns (HelloReply) {}
+}
+
+// The request message containing the user's name.
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings
+message HelloReply {
+  string message = 1;
+}
+</code></pre>
+
+<p>(Don&rsquo;t forget to save the file!)</p>
+
+<h2 id="generate-grpc-code">Generate gRPC code</h2>
+
+<p>Next we need to update the gRPC code used by our application to use the new
+service definition.</p>
+
+<p>From the <code>examples/python/helloworld</code> directory, run:</p>
+
+<pre><code class="language-sh">$ python -m grpc_tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/helloworld.proto
+</code></pre>
+
+<p>This regenerates <code>helloworld_pb2.py</code> which contains our generated request and
+response classes and <code>helloworld_pb2_grpc.py</code> which contains our generated
+client and server classes.</p>
+
+<h2 id="update-and-run-the-application">Update and run the application</h2>
+
+<p>We now have new generated server and client code, but we still need to implement
+and call the new method in the human-written parts of our example application.</p>
+
+<h3 id="update-the-server">Update the server</h3>
+
+<p>In the same directory, open <code>greeter_server.py</code>. Implement the new method like
+this:</p>
+
+<pre><code>class Greeter(helloworld_pb2_grpc.GreeterServicer):
+
+  def SayHello(self, request, context):
+    return helloworld_pb2.HelloReply(message='Hello, %s!' % request.name)
+
+  def SayHelloAgain(self, request, context):
+    return helloworld_pb2.HelloReply(message='Hello again, %s!' % request.name)
+...
+</code></pre>
+
+<h3 id="update-the-client">Update the client</h3>
+
+<p>In the same directory, open <code>greeter_client.py</code>. Call the new method like this:</p>
+
+<pre><code>def run():
+  channel = grpc.insecure_channel('localhost:50051')
+  stub = helloworld_pb2_grpc.GreeterStub(channel)
+  response = stub.SayHello(helloworld_pb2.HelloRequest(name='you'))
+  print(&quot;Greeter client received: &quot; + response.message)
+  response = stub.SayHelloAgain(helloworld_pb2.HelloRequest(name='you'))
+  print(&quot;Greeter client received: &quot; + response.message)
+</code></pre>
+
+<h3 id="run">Run!</h3>
+
+<p>Just like we did before, from the <code>examples/python/helloworld</code> directory:</p>
+
+<ol>
+<li>Run the server</li>
+</ol>
+
+<pre><code class="language-sh">   $ python greeter_server.py
+</code></pre>
+
+<ol>
+<li>In another terminal, run the client</li>
+</ol>
+
+<pre><code class="language-sh">   $ python greeter_client.py
+</code></pre>
+
+<h2 id="what-s-next">What&rsquo;s next</h2>
+
+<ul>
+<li>Read a full explanation of how gRPC works in <a href="../guides/">What is gRPC?</a>
+and <a href="../guides/concepts.html">gRPC Concepts</a></li>
+<li>Work through a more detailed tutorial in <a href="../tutorials/basic/python.html">gRPC Basics: Python</a></li>
+<li>Explore the gRPC Python core API in its <a href="/grpc/python/">reference
+documentation</a></li>
+</ul>
+
+  </div>
+
+    
+    
+  </body>
+</html>
