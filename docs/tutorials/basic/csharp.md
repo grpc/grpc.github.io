@@ -386,7 +386,7 @@ Then, we create an instance of the `RouteGuite.RouteGuideClient` class generated
 from our .proto, passing the channel as an argument.
 
 ```csharp
-Channel channel = new Channel("127.0.0.1:50052", ChannelCredentials.Insecure)
+Channel channel = new Channel("127.0.0.1:50052", ChannelCredentials.Insecure);
 var client = new RouteGuide.RouteGuideClient(channel);
 
 // YOUR CODE GOES HERE
