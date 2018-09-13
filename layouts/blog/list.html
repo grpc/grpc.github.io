@@ -30,7 +30,7 @@
 
 <h5 style="font-size:12pt">All blog posts</h5>
 {{ range first 12 .Pages }}
-  <a href="#">{{.Title}}</a><br>
+  <a href="{{.Permalink}}">{{.Title}}</a><br>
 {{ end }}
 </div>
 
