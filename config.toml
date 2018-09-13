@@ -1,4 +1,3 @@
-baseURL = "https://cjyabraham.github.io/grpc"
+baseURL = "https://cjyabraham.github.io/"
 languageCode = "en-us"
 title = "gRPC"
-publishDir = "docs"
