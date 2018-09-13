@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: Dart Quickstart
-sidenav: doc-side-quickstart-nav.html
-type: markdown
+layout: quickstart
+title: Dart Quickstart
 ---
 <p class="lead">This guide gets you started with gRPC in Dart with a simple
 working example.</p>

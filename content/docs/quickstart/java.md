@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: Java Quickstart
-sidenav: doc-side-quickstart-nav.html
-type: markdown
+layout: quickstart
+title: Java Quickstart
 ---
 <p class="lead">This guide gets you started with gRPC in Java with a simple
 working example.</p>

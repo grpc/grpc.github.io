@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: Python Quickstart
-sidenav: doc-side-quickstart-nav.html
-type: markdown
+layout: quickstart
+title: Python Quickstart
 ---
 <p class="lead">This guide gets you started with gRPC in Python with a simple
 working example.</p>

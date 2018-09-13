@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: Objective-C Quickstart
-sidenav: doc-side-quickstart-nav.html
-type: markdown
+layout: quickstart
+title: Objective-C Quickstart
 ---
 <p class="lead">This guide gets you started with gRPC on the iOS platform in
 Objective-C with a simple working example.</p>

@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-headline: C# Quick Start
-layout: docs
-sidenav: doc-side-quickstart-nav.html
-type: markdown
+title: C# Quick Start
+layout: quickstart
 ---
 
 <h1 class="page-header">C# Quickstart</h1>

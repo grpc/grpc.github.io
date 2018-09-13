@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: C++ Quickstart
-sidenav: doc-side-quickstart-nav.html
-type: markdown
+layout: quickstart
+title: C++ Quickstart
 ---
 <p class="lead">This guide gets you started with gRPC in C++ with a simple
 working example.</p>

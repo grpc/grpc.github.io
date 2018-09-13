@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-headline: Ruby Quick Start
-layout: docs
-sidenav: doc-side-quickstart-nav.html
-type: markdown
+title: Ruby Quick Start
+layout: quickstart
 ---
 
 <p class="lead">This guide gets you started with gRPC in Ruby with a simple

@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: PHP Quickstart
-sidenav: doc-side-quickstart-nav.html
-type: markdown
+layout: quickstart
+title: PHP Quickstart
 ---
 <p class="lead">This guide gets you started with gRPC in PHP with a simple
 working example.</p>
