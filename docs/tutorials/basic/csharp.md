@@ -43,8 +43,8 @@ updating.
 ## Example code and setup
 
 The example code for our tutorial is in
-[grpc/grpc/examples/csharp/route_guide](https://github.com/grpc/grpc/tree/
-{{ site.data.config.grpc_release_tag }}/examples/csharp/route_guide). To
+[grpc/grpc/examples/csharp/RouteGuide](https://github.com/grpc/grpc/tree/
+{{ site.data.config.grpc_release_tag }}/examples/csharp/RouteGuide). To
 download the example, clone the `grpc` repository by running the following
 command:
 
@@ -54,9 +54,9 @@ $ cd grpc
 ```
 
 All the files for this tutorial are in the directory
-`examples/csharp/route_guide`. Open the solution
-`examples/csharp/route_guide/RouteGuide.sln` from Visual Studio, Monodevelop or
-Xamarin Studio. For additional installation details, see the [How to use
+`examples/csharp/RouteGuide`. Open the solution
+`examples/csharp/RouteGuide/RouteGuide.sln` from Visual Studio (Windows or Mac) or Visual Studio Code.
+For additional installation details, see the [How to use
 instructions](https://github.com/grpc/grpc/tree/
 {{ site.data.config.grpc_release_tag }}/src/csharp#how-to-use).
 
@@ -153,23 +153,26 @@ service definition. We do this using the protocol buffer compiler `protoc` with
 a special gRPC C# plugin.
 
 If you want to run this yourself, the `Grpc.Tools` NuGet package contains the
-binaries you will need to generate the code.
-
-Once that's done, you can generate the C# code:
+binaries you will need to generate the code. You can fetch a copy of
+the `Grpc.Tools` package into your local nuget cache by clicking
+"Restore NuGet Packages" in Visual Studio or running `dotnet restore RouteGuide.sln`
+from the `examples/csharp/RouteGuide` directory. Once that's done, you can generate the C# code.
 
 To generate the code, the following command should be run from the
-`examples/csharp/route_guide` directory:
+`examples/csharp/RouteGuide` directory:
 
 - Windows
 
   ```
-  > packages\Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\grpc_csharp_plugin.exe
+  @rem Local nuget cache on Windows is located in %UserProfile%\.nuget\packages
+  > %UserProfile%\.nuget\packages\Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=%UserProfile%\.nuget\packages\Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\grpc_csharp_plugin.exe
   ```
 
 - Linux (or Mac OS X by using `macosx_x64` directory).
 
   ```
-  $ packages/Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
+  # Local nuget cache on Linux and Mac is located in ~/.nuget/packages
+  $ ~/.nuget/packages/grpc.tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=~/.nuget/packages/grpc.tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
   ```
 
 Running the appropriate command for your OS regenerates the following files in
@@ -202,8 +205,8 @@ There are two parts to making our `RouteGuide` service do its job:
   service responses.
 
 You can find our example `RouteGuide` server in
-[examples/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs](https://github.com/grpc/grpc/blob/
-{{ site.data.config.grpc_release_tag }}/examples/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs).
+[examples/csharp/RouteGuide/RouteGuideServer/RouteGuideImpl.cs](https://github.com/grpc/grpc/blob/
+{{ site.data.config.grpc_release_tag }}/examples/csharp/RouteGuide/RouteGuideServer/RouteGuideImpl.cs).
 Let's take a closer look at how it works.
 
 ### Implementing RouteGuide
@@ -373,8 +376,8 @@ do this, we:
 
 In this section, we'll look at creating a C# client for our `RouteGuide`
 service. You can see our complete example client code in
-[examples/csharp/route_guide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc/blob/
-{{ site.data.config.grpc_release_tag }}/examples/csharp/route_guide/RouteGuideClient/Program.cs).
+[examples/csharp/RouteGuide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc/blob/
+{{ site.data.config.grpc_release_tag }}/examples/csharp/RouteGuide/RouteGuideClient/Program.cs).
 
 ### Creating a client object
 
@@ -496,30 +499,28 @@ using (var call = client.RouteChat())
 
 ### Build the client and server:
 
-#### Using Visual Studio
+#### Using Visual Studio (or Visual Studio For Mac)
 
-- Open the solution `examples/csharp/route_guide/RouteGuide.sln` and select **Build**.
+- Open the solution `examples/csharp/RouteGuide/RouteGuide.sln` and select **Build**.
 
-#### Using Xamarin Studio or Monodevelop on OS X or Linux
+#### Using "dotnet" command line tool
 
-- See the [quickstart](../../quickstart/csharp.html) for instructions on downloading gRPC
-  nuget dependencies and building the solution with these IDEs.
+- Run `dotnet build RouteGuide.sln` from the `examples/csharp/RouteGuide` directory.
+  See the [quickstart](../../quickstart/csharp.html) for additional instructions on building 
+  the gRPC example with the `dotnet` command line tool.
 
 Run the server, which will listen on port 50052:
 
 ```
-> cd RouteGuideServer/bin/Debug
-> RouteGuideServer.exe
+> cd RouteGuideServer/bin/Debug/netcoreapp2.1
+> dotnet exec RouteGuideServer.dll
 ```
 
 Run the client (in a different terminal):
 
 ```
-> cd RouteGuideClient/bin/Debug
-> RouteGuideClient.exe
+> cd RouteGuideClient/bin/Debug/netcoreapp2.1
+> dotnet exec RouteGuideClient.dll
 ```
 
 You can also run the server and client directly from Visual Studio.
-
-On Linux or Mac, use `mono RouteGuideServer.exe` and `mono RouteGuideClient.exe`
-to run the server and client.
