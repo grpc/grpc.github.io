@@ -1,0 +1,41 @@
+
+{{ define "title" }}
+  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+            <div class="headertext">Documentation</div>
+  </div>
+        </div>
+        </div>
+
+    {{ partial "docs-topnav.html" . }}
+
+<div class="quickstartcols">          
+
+<div class="quickstartcol1">
+
+Quick Start<br>
+<a href="#">C++</a><br>
+<a href="#">C#</a><br>
+<a href="#">Dart</a><br>
+<a href="#">Go</a><br>
+<a href="#">Java</a><br>
+<a href="#">Android</a><br>
+<a href="#">Java</a><br>
+<a href="#">Node.js</a><br>
+<a href="#">Objective-C</a><br>
+<a href="#">PHP</a><br>
+<a href="#">Python</a><br>
+<a href="#">Ruby</a>
+</div>
+
+<div class="quickstartcol2" style="margin-top:4%">
+<h3 style="margin-top:0px;">{{ .Title }}</h3>
+
+    {{ .Content }}
+</div>
+</div>
+
+</div>
+{{ end }}
+
