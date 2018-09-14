@@ -15,17 +15,17 @@
 <div class="quickstartcol1">
 
 Quick Start<br>
-<a href="{{ .Site.BaseURL }}docs/quickstart/cpp/">C++</a><br>
-<a href="{{ .Site.BaseURL }}docs/quickstart/csharp/">C#</a><br>
-<a href="{{ .Site.BaseURL }}docs/quickstart/dart/">Dart</a><br>
-<a href="{{ .Site.BaseURL }}docs/quickstart/go/">Go</a><br>
-<a href="{{ .Site.BaseURL }}docs/quickstart/java/">Java</a><br>
-<a href="{{ .Site.BaseURL }}docs/quickstart/android/">Android</a><br>
-<a href="{{ .Site.BaseURL }}docs/quickstart/node/">Node.js</a><br>
-<a href="{{ .Site.BaseURL }}docs/quickstart/objective-c/">Objective-C</a><br>
-<a href="{{ .Site.BaseURL }}docs/quickstart/php/">PHP</a><br>
-<a href="{{ .Site.BaseURL }}docs/quickstart/python/">Python</a><br>
-<a href="{{ .Site.BaseURL }}docs/quickstart/ruby/">Ruby</a>
+<a href="{{ .Site.BaseURL }}docs/quickstart/cpp/">{{ if in .RelPermalink "cpp" }}+{{ end }}C++</a><br>
+<a href="{{ .Site.BaseURL }}docs/quickstart/csharp/">{{ if in .RelPermalink "csharp" }}+{{ end }}C#</a><br>
+<a href="{{ .Site.BaseURL }}docs/quickstart/dart/">{{ if in .RelPermalink "dart" }}+{{ end }}Dart</a><br>
+<a href="{{ .Site.BaseURL }}docs/quickstart/go/">{{ if in .RelPermalink "go" }}+{{ end }}Go</a><br>
+<a href="{{ .Site.BaseURL }}docs/quickstart/java/">{{ if in .RelPermalink "java" }}+{{ end }}Java</a><br>
+<a href="{{ .Site.BaseURL }}docs/quickstart/android/">{{ if in .RelPermalink "android" }}+{{ end }}Android</a><br>
+<a href="{{ .Site.BaseURL }}docs/quickstart/node/">{{ if in .RelPermalink "node" }}+{{ end }}Node.js</a><br>
+<a href="{{ .Site.BaseURL }}docs/quickstart/objective-c/">{{ if in .RelPermalink "objective-c" }}+{{ end }}Objective-C</a><br>
+<a href="{{ .Site.BaseURL }}docs/quickstart/php/">{{ if in .RelPermalink "php" }}+{{ end }}PHP</a><br>
+<a href="{{ .Site.BaseURL }}docs/quickstart/python/">{{ if in .RelPermalink "python" }}+{{ end }}Python</a><br>
+<a href="{{ .Site.BaseURL }}docs/quickstart/ruby/">{{ if in .RelPermalink "ruby" }}+{{ end }}Ruby</a>
 </div>
 
 <div class="quickstartcol2" style="margin-top:4%">

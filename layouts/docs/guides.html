@@ -15,11 +15,11 @@
 <div class="quickstartcol1">
 
 Guides<br>
-<a href="{{ .Site.BaseURL }}docs/guides/">What is gRPC?</a><br>
-<a href="{{ .Site.BaseURL }}docs/guides/concepts/">gRPC Concepts</a><br>
-<a href="{{ .Site.BaseURL }}docs/guides/auth/">Authentication</a><br>
-<a href="{{ .Site.BaseURL }}docs/guides/error/">Error handling and debugging</a><br>
-<a href="{{ .Site.BaseURL }}docs/guides/benchmarking/">Benchmarking</a><br>
+<a href="{{ .Site.BaseURL }}docs/guides/">{{ if eq (countrunes .RelPermalink) 13 }}+{{ end }}What is gRPC?</a><br>
+<a href="{{ .Site.BaseURL }}docs/guides/concepts/">{{ if in .RelPermalink "concepts" }}+{{ end }}gRPC Concepts</a><br>
+<a href="{{ .Site.BaseURL }}docs/guides/auth/">{{ if in .RelPermalink "auth" }}+{{ end }}Authentication</a><br>
+<a href="{{ .Site.BaseURL }}docs/guides/error/">{{ if in .RelPermalink "error" }}+{{ end }}Error handling and debugging</a><br>
+<a href="{{ .Site.BaseURL }}docs/guides/benchmarking/">{{ if in .RelPermalink "benchmarking" }}+{{ end }}Benchmarking</a><br>
 <a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md">gRPC Wire format</a><br>
 Related Guides<br>
 <a href="https://developers.google.com/protocol-buffers/docs/overview">Protocol Buffers</a><br>
