@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: gRPC Basics - Node.js
-sidenav: doc-side-tutorial-nav.html
-type: markdown
+layout: tutorials
+title: gRPC Basics - Node.js
 ---
 <p class="lead">This tutorial provides a basic Node.js programmer's introduction
 to working with gRPC.</p>

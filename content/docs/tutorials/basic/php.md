@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: gRPC Basics - PHP
-sidenav: doc-side-tutorial-nav.html
-type: markdown
+layout: tutorials
+title: gRPC Basics - PHP
 ---
 <p class="lead">This tutorial provides a basic PHP programmer's introduction to
 working with gRPC.</p>

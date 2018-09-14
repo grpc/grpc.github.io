@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: OAuth2 on gRPC - Objective-C
-sidenav: doc-side-tutorial-nav.html
-type: markdown
+layout: tutorials
+title: OAuth2 on gRPC - Objective-C
 ---
 <p class="lead">This example demonstrates how to use OAuth2 on gRPC to make
 authenticated API calls on behalf of a user.</p>

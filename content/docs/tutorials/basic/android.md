@@ -1,9 +1,6 @@
 ---
-layout: docs
-bodyclass: docs
-headline: gRPC Basics - Android Java
-sidenav: doc-side-tutorial-nav.html
-type: markdown
+layout: tutorials
+title: gRPC Basics - Android Java
 ---
 
 <p class="lead">This tutorial provides a basic Android Java programmer's introduction to working with gRPC.</p>

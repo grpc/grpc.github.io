@@ -1,11 +1,6 @@
 ---
-bodyclass: docs
-headline: Tutorials
-layout: docs
+layout: tutorials
 title: Tutorials
-type: markdown
-sidenav: doc-side-tutorial-nav.html
-customjs: //survey.g.doubleclick.net/async_survey?site=dgxvheagfp4ai24o6y2ammm5fe
 ---
 
 This section contains tutorials for each of our supported languages. They

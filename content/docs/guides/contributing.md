@@ -1,10 +1,6 @@
 ---
-bodyclass: docs
-headline: Contribution Guidelines
-layout: docs
-sidenav: doc-side-guides-nav.html
+layout: guides
 title: Contribution Guidelines
-type: markdown
 ---
 
 # Contribution Guidelines

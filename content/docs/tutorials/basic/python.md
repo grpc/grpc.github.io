@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: gRPC Basics - Python
-sidenav: doc-side-tutorial-nav.html
-type: markdown
+layout: tutorials
+title: gRPC Basics - Python
 ---
 <p class="lead">This tutorial provides a basic Python programmer's introduction
 to working with gRPC.</p>

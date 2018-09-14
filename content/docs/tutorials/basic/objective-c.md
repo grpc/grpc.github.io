@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: gRPC Basics - Objective-C
-sidenav: doc-side-tutorial-nav.html
-type: markdown
+layout: tutorials
+title: gRPC Basics - Objective-C
 ---
 <p class="lead">This tutorial provides a basic Objective-C programmer's
 introduction to working with gRPC.</p>

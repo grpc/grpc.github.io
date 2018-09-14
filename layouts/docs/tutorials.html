@@ -1,0 +1,43 @@
+
+{{ define "title" }}
+  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+            <div class="headertext">Documentation</div>
+  </div>
+        </div>
+        </div>
+
+    {{ partial "docs-topnav.html" . }}
+
+<div class="quickstartcols">          
+
+<div class="quickstartcol1">
+
+Guides<br>
+<a href="{{ .Site.BaseURL }}docs/tutorials/async/helloasync-cpp/">Async - C++</a><br>
+<a href="{{ .Site.BaseURL }}docs/tutorials/auth/oauth2-objective-c/">Auth - Objective C</a><br>
+Basic <br>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/c/">C++</a><br>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/csharp/">C#</a><br>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/dart/">Dart</a><br>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/go/">Go</a><br>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/java/">Java</a><br>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/android/">Android Java</a><br>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/objective-c/">Objective-C</a><br>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/php/">PHP</a><br>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/python/">Python</a><br>
+<a href="{{ .Site.BaseURL }}docs/tutorials/basic/ruby/">Ruby</a><br>
+
+</div>
+
+<div class="quickstartcol2" style="margin-top:4%">
+<h3 style="margin-top:0px;">{{ .Title }}</h3>
+
+    {{ .Content }}
+</div>
+</div>
+
+</div>
+{{ end }}
+

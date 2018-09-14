@@ -1,0 +1,37 @@
+
+{{ define "title" }}
+  {{ .Title }} &ndash; {{ .Site.Title }}
+{{ end }}
+{{ define "main" }}
+            <div class="headertext">Documentation</div>
+  </div>
+        </div>
+        </div>
+
+    {{ partial "docs-topnav.html" . }}
+
+<div class="quickstartcols">          
+
+<div class="quickstartcol1">
+
+Guides<br>
+<a href="{{ .Site.BaseURL }}docs/guides/">What is gRPC?</a><br>
+<a href="{{ .Site.BaseURL }}docs/guides/concepts/">gRPC Concepts</a><br>
+<a href="{{ .Site.BaseURL }}docs/guides/auth/">Authentication</a><br>
+<a href="{{ .Site.BaseURL }}docs/guides/error/">Error handling and debugging</a><br>
+<a href="{{ .Site.BaseURL }}docs/guides/benchmarking/">Benchmarking</a><br>
+<a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md">gRPC Wire format</a><br>
+Related Guides<br>
+<a href="https://developers.google.com/protocol-buffers/docs/overview">Protocol Buffers</a><br>
+</div>
+
+<div class="quickstartcol2" style="margin-top:4%">
+<h3 style="margin-top:0px;">{{ .Title }}</h3>
+
+    {{ .Content }}
+</div>
+</div>
+
+</div>
+{{ end }}
+

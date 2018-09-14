@@ -1,10 +1,6 @@
 ---
-bodyclass: docs
-headline: Authentication
-layout: docs
-sidenav: doc-side-guides-nav.html
+layout: guides
 title: Authentication
-type: markdown
 ---
 <p class="lead">This document provides an overview of gRPC authentication,
 including our built-in supported auth mechanisms, how to plug in your own
