@@ -18,12 +18,12 @@
                 <img src="{{ .Site.BaseURL }}img/grpc-logo.png" style="width:10%">
             </div>
             <div class="topnav">
-                <a href="{{ .Site.BaseURL }}about/">About</a>
-		<a href="{{ .Site.BaseURL }}docs/">Docs</a>
-		<a href="{{ .Site.BaseURL }}blog/">Blog</a> 
-		<a href="{{ .Site.BaseURL }}community/">Community</a>
+                <a href="{{ .Site.BaseURL }}about/">{{ if in .RelPermalink "about" }}+{{ end }}About</a>
+		<a href="{{ .Site.BaseURL }}docs/">{{ if in .RelPermalink "docs" }}+{{ end }}Docs</a>
+		<a href="{{ .Site.BaseURL }}blog/">{{ if in .RelPermalink "blog" }}+{{ end }}Blog</a> 
+		<a href="{{ .Site.BaseURL }}community/">{{ if in .RelPermalink "community" }}+{{ end }}Community</a>
 		<a href="https://packages.grpc.io/">Packages</a> 
-		<a href="{{ .Site.BaseURL }}faq/">FAQ</a>
+		<a href="{{ .Site.BaseURL }}faq/">{{ if in .RelPermalink "faq" }}+{{ end }}FAQ</a>
             </div>
     {{ block "main" . }}
     {{ end }}
