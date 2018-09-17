@@ -280,7 +280,7 @@ std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 
 ```cpp
 auto channel_creds = grpc::SslCredentials(grpc::SslCredentialsOptions());
-auto channel = grpc::CreateChannel("myservice.example.com", creds);
+auto channel = grpc::CreateChannel("myservice.example.com", channel_creds);
 std::unique_ptr<Greeter::Stub> stub(Greeter::NewStub(channel));
 ...
 ```
