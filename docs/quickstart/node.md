@@ -175,5 +175,6 @@ Just like we did before, from the `examples/node/dynamic_codegen` directory:
  - Work through a more detailed tutorial in [gRPC Basics: Node][]
  - Explore the gRPC Node core API in its [reference
    documentation](/grpc/node/)
+ - We do have more than one grpc implementation for nodejs. [Learn about the pros and cons of each here](https://github.com/grpc/grpc-node/blob/master/PACKAGE-COMPARISON.md).
 
 [gRPC Basics: Node]:../tutorials/basic/node.html
