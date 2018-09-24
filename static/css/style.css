@@ -73,7 +73,6 @@ body {
     word-spacing:2em;
     color:white;
     text-align:right; 
-    z-index:99;
     text-transform:uppercase;
     
 }
@@ -94,9 +93,16 @@ body {
     margin-left:5%;
     word-spacing:2em;
     color:white;
-    z-index:1;
+    width:10%;
+    z-index:10;
     text-align:left;
     text-transform:uppercase;
+    
+}
+
+.logonav img{
+    
+    width:100% !important;
     
 }
 
