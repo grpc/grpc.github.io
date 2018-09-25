@@ -2,7 +2,8 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ .Site.BaseURL }}css/style.css">
     <title>{{ block "title" . }}
@@ -14,20 +15,56 @@
     <div id="landing-content">
       <div class="row">
         <div class="topbanner{{ if not .IsHome }}sub{{ end }}">
-          <div class="logonav">
-                <img src="{{ .Site.BaseURL }}img/grpc-logo.png" style="width:10%">
+
+	  <nav class="navbar navbar-expand-md navbar-dark topnav">
+            <a class="navbar-brand" href="{{ .Site.BaseURL }}">
+                <img src="{{ .Site.BaseURL }}img/grpc-logo.png" width="114" height="50">
+            </a>
+	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+            <div class="topnav, collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav mr-auto">
+                <li class="nav-item {{ if in .RelPermalink "about" }}active{{ end }}">
+		  <a class="nav-link" href="{{ .Site.BaseURL }}about/">About</a>
+		</li>
+                <li class="nav-item dropdown {{ if in .RelPermalink "docs" }}active{{ end }}">
+		  <a class="nav-link dropdown-toggle" href="{{ .Site.BaseURL }}docs/" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		    Docs
+		  </a>
+		  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+		    <a class="dropdown-item" href="{{ .Site.BaseURL }}docs/">Overview</a>
+		    <a class="dropdown-item" href="{{ .Site.BaseURL }}docs/quickstart/">Quick Start</a>
+		    <a class="dropdown-item" href="{{ .Site.BaseURL }}docs/guides/">Guides</a>
+		    <a class="dropdown-item" href="{{ .Site.BaseURL }}docs/tutorials/">Tutorials</a>
+		    <a class="dropdown-item" href="{{ .Site.BaseURL }}docs/reference/">Reference</a>
+		    <a class="dropdown-item" href="{{ .Site.BaseURL }}docs/samples/">Samples</a>
+		    <a class="dropdown-item" href="{{ .Site.BaseURL }}docs/talks/">Presentations</a>
+		  </div>
+		</li>
+                <li class="nav-item {{ if in .RelPermalink "blog" }}active{{ end }}">
+		  <a class="nav-link" href="{{ .Site.BaseURL }}blog/">Blog</a> 
+		</li>
+                <li class="nav-item {{ if in .RelPermalink "community" }}active{{ end }}">
+		  <a class="nav-link" href="{{ .Site.BaseURL }}community/">Community</a>
+		</li>
+                <li class="nav-item">
+		  <a class="nav-link" href="https://packages.grpc.io/">Packages</a> 
+		</li>
+                <li class="nav-item {{ if in .RelPermalink "faq" }}active{{ end }}">
+		  <a class="nav-link" href="{{ .Site.BaseURL }}faq/">FAQ</a>
+		</li>
+	      </ul>
             </div>
-            <div class="topnav">
-                <a href="{{ .Site.BaseURL }}about/">{{ if in .RelPermalink "about" }}+{{ end }}About</a>
-		<a href="{{ .Site.BaseURL }}docs/">{{ if in .RelPermalink "docs" }}+{{ end }}Docs</a>
-		<a href="{{ .Site.BaseURL }}blog/">{{ if in .RelPermalink "blog" }}+{{ end }}Blog</a> 
-		<a href="{{ .Site.BaseURL }}community/">{{ if in .RelPermalink "community" }}+{{ end }}Community</a>
-		<a href="https://packages.grpc.io/">Packages</a> 
-		<a href="{{ .Site.BaseURL }}faq/">{{ if in .RelPermalink "faq" }}+{{ end }}FAQ</a>
-            </div>
+	  </nav>
     {{ block "main" . }}
     {{ end }}
     {{ block "footer" . }}
     {{ end }}
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
   </body>
 </html>

@@ -70,15 +70,16 @@ body {
     font-size:10pt;
     letter-spacing:0.05em;
     margin-right:5%;
-    word-spacing:2em;
     color:white;
     text-align:right; 
     text-transform:uppercase;
     
 }
 .topnav a {
-    color:#ffffff;
-    
+    color:#ffffff;    
+}
+.topnav .dropdown-menu a {
+    color:#212529;    
 }
 
 
