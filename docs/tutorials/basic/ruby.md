@@ -314,7 +314,7 @@ To call service methods, we first need to create a *stub*.
 We use the `Stub` class of the `RouteGuide` module generated from our .proto.
 
 ```ruby
-stub = RouteGuide::Stub.new('localhost:50051')
+stub = RouteGuide::Stub.new('localhost:50051', :this_channel_is_insecure)
 ```
 
 ### Calling service methods
