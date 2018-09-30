@@ -181,20 +181,21 @@ button {
 .section2 {
     padding-top:3%;
     font-family: 'Open Sans', sans-serif;
-    width:70%;
+    width:85%;
+    font-weight:100;
     font-size:13pt;
     color:#505050;
     line-height:1.7em;
-    padding-left:15%;
+    padding-left:12.5%;
     text-align:center;
-    font-weight:100;
+   
 }
 
 
 .section3 {
     font-family: 'Open Sans', sans-serif;
-    width:80%;
-    padding-left:10%;
+    width:100%;
+    padding-left:%;
     font-weight:100;
     float:left;
     margin-bottom:5%;
@@ -430,6 +431,8 @@ margin-top:4%;
 
 
 .companybox {
+ margin-left:15%;
+ margin-top:3%;
    
 }
 
@@ -451,7 +454,7 @@ margin-top:4%;
 
 .section4 {
     font-family: 'Open Sans', sans-serif;
-    width:90%;
+    width:100%;
     background-size:100%;
     float:left;
     font-size:14pt;
@@ -463,7 +466,8 @@ margin-top:4%;
     padding-bottom:7%;
     padding-left:5%;
     padding-right:5%;
-    padding-top:3%;
+    padding-top:5%;
+    font-weight:100;
     color:white;
     margin-top:2%;
 }
@@ -553,13 +557,7 @@ h5 {
     text-align:center;
 }
 
-.section2 {
-    width:85%;
-    padding-left:7.5%;
-    padding-top:6%;
-    padding-bottom:2%;
-    text-align:center;
-}
+
 
 .doccols {
     margin-bottom:3%;
