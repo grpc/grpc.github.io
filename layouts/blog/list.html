@@ -29,9 +29,10 @@
 <div class="blogcol2">
 
 <h5 style="font-size:12pt">All blog posts</h5>
-{{ range first 12 .Pages }}
+{{ range .Paginator.Pages }}
   <a href="{{.Permalink}}">{{.Title}}</a><br>
 {{ end }}
+{{ template "_internal/pagination.html" . }}
 </div>
 
 
