@@ -8,7 +8,7 @@ type: markdown
 This guide describes the code generated with the [grpc plugin](https://godoc.org/github.com/golang/protobuf/protoc-gen-go/grpc) to `protoc-gen-go`
 when compiling `.proto` files with `protoc`.
 
-You can find out how to define a gRPC service in a `.proto` file in [Service Definitions](../guides/concepts.html#service-definition).
+You can find out how to define a gRPC service in a `.proto` file in [Service Definitions](../../guides/concepts.html#service-definition).
 
 <p class="note"><strong>Thread-safety</strong>: note that client-side RPC invocations and server-side RPC handlers <i>are thread-safe</i> and are meant
 to be run on concurrent goroutines. But also note that for <i>individual streams</i>, incoming and outgoing data is bi-directional but serial;
