@@ -14,15 +14,17 @@ working example from the browser.</p>
 
 * `docker` and `docker-compose`
 
-Please refer to [Docker website][] on how to install Docker.
+This demo requires Docker Compose file
+[version 3](https://docs.docker.com/compose/compose-file/). Please refer to
+[Docker website][] on how to install Docker.
 
 ## Run an Echo example from the browser!
 
 ```sh
 $ git clone https://github.com/grpc/grpc-web
 $ cd grpc-web
-$ docker-compose pull prereqs common echo-server envoy commonjs-client
-$ docker-compose up -d echo-server envoy commonjs-client
+$ docker-compose pull prereqs common node-server envoy commonjs-client
+$ docker-compose up -d node-server envoy commonjs-client
 ```
 
 Open a browser tab, and go to:
@@ -33,21 +35,30 @@ http://localhost:8081/echotest.html
 
 To shutdown, run `docker-compose down`.
 
-## Install the gRPC-Web protoc plugin
 
-In order to generate service stub from your protobuf defintions, you will need
-the `protoc-gen-grpc-web` protoc plugin.
+## What is Happening?
 
-```sh
-$ git clone https://github.com/grpc/grpc-web
-$ cd grpc-web && sudo make install-plugin
-```
+In this demo, there are three key components:
+
+ 1. `node-server`: This is a standard gRPC Server, implemented in Node.
+ This server listens at port `:9090` and implements the service's business
+ logic.
+ 
+ 2. `envoy`: This is the Envoy proxy. It listens at `:8080` and forwards the
+ browser's gRPC-Web requests to port `:9090`. This is done via a config file
+ `envoy.yaml`.
+ 
+ 3. `commonjs-client`: This component generates the client stub class using
+ the `protoc-gen-grpc-web` protoc plugin, compiles all the JS dependencies
+ using `webpack`, and hosts the static content `echotest.html` and
+ `dist/main.js` using a simple web server at port `:8081`. Once the user
+ interacts with the webpage, it sends a gRPC-Web request to the Envoy proxy
+ endpoint at `:8080`.
+
 
 ## What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
-  and [gRPC Concepts](../guides/concepts.html)
 - Work through a more detailed tutorial in [gRPC Basics: Web][]
 
-[Docker website]:https://docs.docker.com/compose/install/
+[Docker website]:https://docs.docker.com/compose/install/#install-compose
 [gRPC Basics: Web]:../tutorials/basic/web.html

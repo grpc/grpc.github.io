@@ -21,7 +21,7 @@ buffers](https://developers.google.com/protocol-buffers/docs/overview).
 
 <a name="why-grpc"></a>
 
-## Why use gRPC?
+## Why use gRPC and gRPC-Web?
 
 With gRPC you can define your service once in a .proto file and implement
 clients and servers in any of gRPC's supported languages, which in turn can be
@@ -29,7 +29,8 @@ run in environments ranging from servers inside Google to your own tablet - all
 the complexity of communication between different languages and environments is
 handled for you by gRPC. You also get all the advantages of working with
 protocol buffers, including efficient serialization, a simple IDL, and easy
-interface updating.
+interface updating. gRPC-Web lets you access gRPC services built in this manner
+from browsers using an idiomatic API.
 
 
 <a name="setup"></a>
@@ -59,20 +60,17 @@ service EchoService {
 
 ## Implement gRPC Backend Server
 
-Next, we implement our EchoService interface using C++ in the backend gRPC
+Next, we implement our EchoService interface using Node in the backend gRPC
 `EchoServer`. This will handle requests from clients. See the file
-[`echo_server.cc`](https://github.com/grpc/grpc-web/blob/master/net/grpc/gateway/examples/echo/echo_server.cc)
+[`node-server/server.js`](https://github.com/grpc/grpc-web/blob/master/net/grpc/gateway/examples/echo/node-server/server.js)
 for details.
 
 You can implement the server in any language supported by gRPC. Please see
 the [main page][] for more details.
 
-```cpp
-Status EchoServiceImpl::Echo(ServerContext* context,
-                             const EchoRequest* request,
-                             EchoResponse* response) {
-  response->set_message(request->message());
-  return Status::OK;
+```js
+function doEcho(call, callback) {
+  callback(null, {message: call.request.message});
 }
 ```
 
@@ -115,7 +113,7 @@ this:
     type: logical_dns
     http2_protocol_options: {}
     lb_policy: round_robin
-    hosts: [{ socket_address: { address: echo-server, port_value: 9090 }}]
+    hosts: [{ socket_address: { address: node-server, port_value: 9090 }}]
 ```
 
 You may also need to add some CORS setup to make sure the browser can request
