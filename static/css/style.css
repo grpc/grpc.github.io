@@ -176,7 +176,7 @@ body {
 
 .bannerlogo {
     padding-top:2%;
-    float:l%;eft;
+    float:left;
 
     width:100%:
 }
@@ -645,7 +645,7 @@ h5 {
  
 .bannerlogo img{
  
- width:45% !important;
+ width:35% !important;
 }
  
 }
@@ -659,12 +659,17 @@ h5 {
     
     
 }
+.bannerlogo img{
+ 
+ width:60% !important;
+}
+
  .topbannertext{
    width:70% !important;
    margin-left:15% !important;
-   padding-top:1%;
-   font-size:1.2em !important;
-   padding-bottom:0%;
+   padding-top:2%;
+   font-size:1em !important;
+   padding-bottom:0% !important;
 }
 
 
@@ -843,19 +848,22 @@ h5 {
   padding-top:4%;
   padding-bottom:4%;
  }
- .
+ 
  
  .companybox img {
   
   width:20%;
+  
  }
+ 
  .section2 {
   padding-bottom:4%;
  }
  
  .section3 {
-  width:90%;
-  padding-left:5%;
+  width:100%;
+  padding-left:%;
+  margin-bottom:7%;
  }
  
  button {
@@ -869,7 +877,7 @@ h5 {
     padding-top:3%;
     padding-bottom:3%;
     margin:1%;
-    margin-bottom:2%:
+    margin-bottom:2%;
     letter-spacing:0.07em;
     font-size:13pt;
 }
@@ -901,6 +909,9 @@ h5 {
   
   font-size:1.5em;
  }
- 
+ .companybox {
+ margin-left:10%;
+
+   
  
 }
