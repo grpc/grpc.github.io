@@ -21,7 +21,7 @@
 
 <a href="{{.Permalink}}">Read More</a>
 {{ end }}
-
+{{ template "_internal/pagination.html" . }}
 </div>
 
 
@@ -32,7 +32,7 @@
 {{ range .Paginator.Pages }}
   <a href="{{.Permalink}}">{{.Title}}</a><br>
 {{ end }}
-{{ template "_internal/pagination.html" . }}
+
 </div>
 
 

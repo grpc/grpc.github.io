@@ -25,6 +25,11 @@ color:#0CC1C8 !important;
  
 }
 
+.pagination {
+ 
+ padding-top:10%;
+}
+
 
 .dropdown-item {
  font-size:0.8em;
