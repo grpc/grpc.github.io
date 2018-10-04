@@ -12,7 +12,7 @@
 <div class="blogcols">          
 <div class="blogcol1" style="margin-top:4%">
 
-{{ range first 1 .Pages }}
+{{ range .Paginator.Pages }}
   <h3 style="margin-top:0px;"><a href="{{.Permalink}}">{{ .Title }}</a></h3>
   <h5>{{ .Date.Format "January 02, 2006" }}</h5>
 <p>
@@ -29,7 +29,7 @@
 <div class="blogcol2">
 
 <h5 style="font-size:12pt">All blog posts</h5>
-{{ range .Paginator.Pages }}
+{{ range .Pages }}
   <a href="{{.Permalink}}">{{.Title}}</a><br>
 {{ end }}
 
