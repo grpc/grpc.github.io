@@ -164,7 +164,7 @@ protoc-gen-grpc plugin requires fullpath of "grpc_csharp_plugin" executable inst
 
 ```
 # Local nuget cache on Linux and Mac is located in ~/.nuget/packages
-$ ~/.nuget/packages/grpc.tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=/Users/<HOME_FOLDER>/.nuget/packages/grpc.tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
+$ ~/.nuget/packages/grpc.tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=${HOME}/.nuget/packages/grpc.tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
 ```
 
 Running the appropriate command for your OS regenerates the following files in
