@@ -12,6 +12,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // The key corresponds to the data attributes in docs/talks/index.html
 // TODO(jtattermusch): is there a way to not require editing this when adding new videos?
 var playerInfoList = [
+    {type: 'yt', key: 'OZ_Qmklc4zE'},
     {type: 'yt', key: '5QH67PXNbaI'},
     {type: 'yt', key: 'F2znfxn_5Hg'},
     {type: 'yt', key: 'rf5fw_O4tnU'},
@@ -20,15 +21,22 @@ var playerInfoList = [
     {type: 'yt', key: 'UOIJNygDNlE'}, 
     {type: 'yt', key: 'nz-LcdoMYWA'}, 
     {type: 'yt', key: 'sZx3oZt7LVg'}, 
-    {type: 'yt', key: 'RvUP7vX2P4s'}, 
+    {type: 'yt', key: 'RvUP7vX2P4s' }, 
+    {type: 'vimeo', key: '190648663'}, 
     {type: 'slideshare', key: 'https://www.slideshare.net/sujatatibre/g-rpc-talk-with-intel-3'}, 
     {type: 'slideshare', key: 'https://www.slideshare.net/VarunTalwar4/grpc-design-and-implementation'},
     {type: 'slideshare', key: 'https://www.slideshare.net/VarunTalwar4/grpc-overview'},
     {type: 'slideshare', key: 'https://www.ustream.tv/recorded/86187859'}
 ];  
 
-function createPlayer(key) {
-  $('#player').append('<iframe id="ytplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/'+key+'" frameborder="0" allowfullscreen>');
+function createPlayer(type, key) {
+  var url = 'https://www.youtube.com/embed/';
+
+  if (type === 'vimeo') {
+    url = 'https://player.vimeo.com/video/';
+  }
+
+  $('#player').append('<iframe type="text/html" width="640" height="390" src="' + url + key +'" frameborder="0" allowfullscreen>');
 }
 
 // click event for presentations/talks in docs/talks
@@ -39,8 +47,8 @@ $('.pt').on('click', function() {
       })[0];
 
 
-  if (video.type == 'yt') {
-    createPlayer(video.key);
+  if (video.type == 'yt' || video.type == 'vimeo') {
+    createPlayer(video.type, video.key);
   } else {
     window.open(video.key);
   }
