@@ -358,7 +358,8 @@ Client:
 import grpc
 import helloworld_pb2
 
-creds = grpc.ssl_channel_credentials(open('roots.pem').read())
+with open('roots.pem', 'rb') as f:
+    creds = grpc.ssl_channel_credentials(f.read())
 channel = grpc.secure_channel('myservice.example.com:443', creds)
 stub = helloworld_pb2.GreeterStub(channel)
 ```
@@ -368,10 +369,13 @@ Server:
 ```python
 import grpc
 import helloworld_pb2
+from concurrent import futures
 
-server = grpc.server(futures.ThreadPoolExecutor(max_workers=10)
-private_key = open('key.pem').read()
-certificate_chain = open('chain.pem').read()
+server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
+with open('key.pem', 'rb') as f:
+    private_key = f.read()
+with open('chain.pem', 'rb') as f:
+    certificate_chain = f.read()
 server_credentials = grpc.ssl_server_credentials( ( (private_key, certificate_chain), ) )
 # Adding GreeterServicer to server omitted
 server.add_secure_port('myservice.example.com:443', server_credentials)
