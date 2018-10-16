@@ -23,7 +23,7 @@ guide](https://developers.google.com/protocol-buffers/docs/proto3) and the [Go
 generated code
 guide](https://developers.google.com/protocol-buffers/docs/reference/go-generated),
 and see the [release notes](https://github.com/google/protobuf/releases) for the
-new version in the protocol buffers Github repository.
+new version in the protocol buffers GitHub repository.
 
 <div id="toc"></div>
 

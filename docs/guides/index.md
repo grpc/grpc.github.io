@@ -95,8 +95,8 @@ time, our examples use a new flavor of protocol buffers called proto3, which
 has a slightly simplified syntax, some useful new features, and supports
 lots more languages. This is currently available in Java, C++, Python,
 Objective-C, C#, a lite-runtime (Android Java), Ruby, and JavaScript from the
-[protocol buffers Github repo](https://github.com/google/protobuf/releases),
-as well as a Go language generator from the [golang/protobuf Github
+[protocol buffers GitHub repo](https://github.com/google/protobuf/releases),
+as well as a Go language generator from the [golang/protobuf GitHub
 repo](https://github.com/golang/protobuf), with more languages
 in development. You can find out more in the [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3) and the
