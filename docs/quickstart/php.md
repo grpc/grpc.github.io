@@ -180,7 +180,7 @@ v1.4.0 | 3.3.0
 v1.6.0 | 3.4.0
 
 If `protoc` hasn't been installed, you can download the `protoc` binaries from
-[the protocol buffers Github repository](https://github.com/google/protobuf/releases).
+[the protocol buffers GitHub repository](https://github.com/google/protobuf/releases).
 Then unzip this file and Update the environment variable `PATH` to include the path to 
 the protoc binary file./protobuf/releases).
 Then unzip this file and Update the environment variable `PATH` to include the path to 
@@ -259,7 +259,7 @@ you build this plugin.
 ## Download the example
 
 You'll need a local copy of the example code to work through this quickstart.
-Download the example code from our Github repository (the following command
+Download the example code from our GitHub repository (the following command
 clones the entire repository, but you just need the examples for this quickstart
 and other tutorials):
 

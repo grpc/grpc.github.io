@@ -22,7 +22,7 @@ buffers language, which is currently in alpha release: you can find out more in
 the [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3) and see the
 [release notes](https://github.com/google/protobuf/releases) for the new version
-in the protocol buffers Github repository.
+in the protocol buffers GitHub repository.
 
 <div id="toc"></div>
 
