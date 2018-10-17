@@ -92,7 +92,7 @@ service.RegisterChannelzServiceToServer(s)
 ```
 
 A web tool called
-[grpc-zpages](https://github.com/grpc/grpc-experiments/tree/master/grpc-zpages)
+[grpc-zpages](https://github.com/grpc/grpc-experiments/tree/master/gdebug)
 has been developed to conveniently serve channelz data through a web page.
 First, configure the web app to connect to the gRPC port that's serving the
 channelz service (see instructions from the previous link). Then, open the
