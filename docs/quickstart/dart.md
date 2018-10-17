@@ -20,7 +20,7 @@ if you encounter any.</p>
 
 #### Dart SDK
 
-gRPC requires Dart SDK version 1.24.3 or higher. Dart gRPC supports Flutter and Server platforms.
+gRPC requires Dart SDK version 2.0 or higher. Dart gRPC supports Flutter and Server platforms.
 
 For installation instructions, follow this guide: [Install Dart](https://www.dartlang.org/install)
 
