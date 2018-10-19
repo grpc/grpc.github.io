@@ -93,7 +93,7 @@ service RouteGuide {
 ```
 
 Then we define `rpc` methods inside our service definition, specifying their
-request and response types. gRPC lets you define four kinds of service method,
+request and response types. gRPC lets you define four kinds of service methods,
 all of which are used in the `RouteGuide` service:
 
 - A *simple RPC* where the client sends a request to the server using the stub
