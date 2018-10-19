@@ -46,11 +46,13 @@ $ sudo yum install php56w php56w-devel php-pear phpunit gcc zlib-devel
 **Install PHP and PECL on Mac:**
 
 ```sh
-$ brew install homebrew/homebrew-core/php@5.6
+$ brew install homebrew/homebrew-core/php@7.1
+$ echo 'export PATH="/usr/local/opt/php@7.1/bin:$PATH"' >> ~/.zshrc
+$ echo 'export PATH="/usr/local/opt/php@7.1/sbin:$PATH"' >> ~/.zshrc
+$ source ~/.zshrc
 $ curl -O http://pear.php.net/go-pear.phar
 $ sudo php -d detect_unicode=0 go-pear.phar
 ```
-(For Mac, set Installation base to /usr/local instead of /usr for pear)
 
 **Install Composer (Linux or Mac):**
 
