@@ -3,7 +3,7 @@ layout: post
 title: gRPC-Web is Generally Available
 published: true
 permalink: blog/grpc-web-ga
-author: Luc Perkins - CNCF, Stanley Cheung - Google, Kailash Sethuraman - Google.
+author: Luc Perkins - CNCF, Stanley Cheung - Google, Kailash Sethuraman - Google
 ---
 
 We are excited to announce the GA release of
