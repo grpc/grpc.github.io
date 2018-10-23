@@ -27,7 +27,7 @@ gRPC-Web, just like gRPC, lets you define the service "contract" between client
 auto generated. To do this, you have a choice between the [Closure](https://developers.google.com/closure/compiler/) compiler
 or the more widely used [CommonJS](https://requirejs.org/docs/commonjs.html).
 This development process removes the need to manage concerns such as creating
-custom JSOn seralization and deserialization logic, wrangling HTTP status codes
+custom JSON seralization and deserialization logic, wrangling HTTP status codes
 (which can vary across REST APIs), managing content type negotiation etc.
 
 From a broader architectural perspective, gRPC-Web enables end-to-end gRPC. The diagram below illustrates this:
