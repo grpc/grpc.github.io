@@ -9,7 +9,8 @@ author: Luc Perkins - CNCF, Stanley Cheung - Google, Kailash Sethuraman - Google
 We are excited to announce the GA release of
 [gRPC-Web](https://www.npmjs.com/package/grpc-web), a JavaScript client library
 that enables web apps to communicate directly with gRPC backend services,
-without requiring an HTTP server to act as an intermediary.
+without requiring an HTTP server to act as an intermediary. "GA" means that
+gRPC-Web is now Generally Available and stable and qualified for production use.
 
 <!--more-->
 
