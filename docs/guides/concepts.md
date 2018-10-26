@@ -55,7 +55,8 @@ rpc SayHello(HelloRequest) returns (HelloResponse){
 
 - Server streaming RPCs where the client sends a request to the server and gets
   a stream to read a sequence of messages back. The client reads from the
-  returned stream until there are no more messages.
+  returned stream until there are no more messages. gRPC guarantees message
+  ordering within an individual RPC call.
 
 ```
 rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse){
@@ -65,7 +66,8 @@ rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse){
 - Client streaming RPCs where the client writes a sequence of messages and sends
   them to the server, again using a provided stream. Once the client has
   finished writing the messages, it waits for the server to read them and return
-  its response.
+  its response.  Again gRPC guarantees message ordering within an individual RPC
+  call.
 
 ```
 rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {
