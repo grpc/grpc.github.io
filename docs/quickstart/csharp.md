@@ -28,7 +28,7 @@ You will also need Git to download the sample code.
 ## Download the example
 
 You'll need a local copy of the example code to work through this quickstart.
-Download the example code from our Github repository (the following command
+Download the example code from our GitHub repository (the following command
 clones the entire repository, but you just need the examples for this quickstart
 and other tutorials):
 
@@ -159,10 +159,12 @@ From the `examples/csharp/Helloworld` directory:
 ```
 
 **Linux (or OS X by using macosx_x64 directory)**
+Note:
+protoc-gen-grpc plugin requires fullpath of "grpc_csharp_plugin" executable instead of short form with "~" symbol. Make sure to change <HOME_FOLDER phrase in below command according to your local machine.
 
 ```
 # Local nuget cache on Linux and Mac is located in ~/.nuget/packages
-$ ~/.nuget/packages/packages/grpc.tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=~/.nuget/packages/grpc.tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
+$ ~/.nuget/packages/grpc.tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=${HOME}/.nuget/packages/grpc.tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
 ```
 
 Running the appropriate command for your OS regenerates the following files in

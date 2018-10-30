@@ -20,7 +20,7 @@ if you encounter any.</p>
 
 #### Dart SDK
 
-gRPC requires Dart SDK version 1.24.3 or higher. Dart gRPC supports Flutter and Server platforms.
+gRPC requires Dart SDK version 2.0 or higher. Dart gRPC supports Flutter and Server platforms.
 
 For installation instructions, follow this guide: [Install Dart](https://www.dartlang.org/install)
 
@@ -54,7 +54,7 @@ $ export PATH=$PATH:$HOME/.pub-cache/bin
 ## Download the example
 
 You'll need a local copy of the example code to work through this quickstart.
-Download the example code from our Github repository (the following command
+Download the example code from our GitHub repository (the following command
 clones the entire repository, but you just need the examples for this quickstart
 and other tutorials):
 

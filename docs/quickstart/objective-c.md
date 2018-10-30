@@ -53,7 +53,7 @@ Quickstart.
 ## Download the example
 
 You'll need a local copy of the sample app source code to work through this
-Quickstart. Copy the source code from Github
+Quickstart. Copy the source code from GitHub
 [repository](https://github.com/grpc/grpc):
 
 ```sh
@@ -302,7 +302,7 @@ The package `libtool` is missing. Install `libtool` should solve this problem.
 **When building grpc, error prompt `cannot find install-sh, install.sh, or shtool`**
 
 Some of the auto generated files are corrupt. Remove the entire gRPC directory, 
-clone from Github, and build again.
+clone from GitHub, and build again.
 
 **Cannot find `protoc` when building HelloWorld**
 

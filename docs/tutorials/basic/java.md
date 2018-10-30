@@ -24,7 +24,7 @@ guide](https://developers.google.com/protocol-buffers/docs/proto3) and [Java
 generated code
 guide](https://developers.google.com/protocol-buffers/docs/reference/java-generated),
 and see the [release notes](https://github.com/google/protobuf/releases) for the
-new version in the protocol buffers Github repository.
+new version in the protocol buffers GitHub repository.
 
 <div id="toc"></div>
 
@@ -93,7 +93,7 @@ service RouteGuide {
 ```
 
 Then we define `rpc` methods inside our service definition, specifying their
-request and response types. gRPC lets you define four kinds of service method,
+request and response types. gRPC lets you define four kinds of service methods,
 all of which are used in the `RouteGuide` service:
 
 - A *simple RPC* where the client sends a request to the server using the stub
