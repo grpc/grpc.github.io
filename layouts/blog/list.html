@@ -20,6 +20,7 @@
 </p>
 
 <a href="{{.Permalink}}">Read More</a>
+<br><br><br>
 {{ end }}
 {{ template "_internal/pagination.html" . }}
 </div>
@@ -28,9 +29,9 @@
 
 <div class="blogcol2">
 
-<h5 style="font-size:12pt">All blog posts</h5>
+<h5 style="font-size:12pt;margin-bottom:20px">All blog posts</h5>
 {{ range .Pages }}
-  <a href="{{.Permalink}}">{{.Title}}</a><br>
+  <a href="{{.Permalink}}">{{.Title}}</a><br><br>
 {{ end }}
 
 </div>

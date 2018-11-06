@@ -152,11 +152,38 @@ body {
     
 }
 
+.subnav a:hover {
+   color:#0CC1C8;
+
+    
+}
+
+.subnav a:active {
+   color:#0CC1C8;
+
+    
+}
+.subnav a:selected:link, a:selected:active{
+   
+     color:#0CC1C8;
+    
+}
+
+.subnav a:focus {
+   color:#0CC1C8;
+   font-weight:700;
+    
+}
+
 .navbar-brand {
   padding-top:0.5em !important;
   padding-left:1.8em !important;
  
+}
+
+col-md-9 faq-container {
  
+ max-width:100% !important;
  
 }
 .headertext {
@@ -209,6 +236,7 @@ button {
     margin:2%;
     letter-spacing:0.07em;
     font-size:13pt;
+    cursor:pointer;
 }
 
 .section2 {
@@ -307,13 +335,14 @@ a {
 .quickstartcol1 {
 
     float:left;
+    font-size:0.8em;
     text-align:left;
     width:17%;
     line-height:2em;
     padding-top:%;
     margin-right:2%;
     padding:3%;
-    padding-right:0%;
+    padding-right:5%;
     padding-top:5%;
 
 }
@@ -353,7 +382,7 @@ a {
     margin-left:15%;
     font-weight:100;
     font-size:11pt;
-margin-top:4%;
+    margin-top:4%;
     float:left;
     
 }
@@ -378,6 +407,7 @@ margin-top:4%;
 .blogcol2 {
 
     float:left;
+    width:20%;
     text-align:left;
     width:20%;
     line-height:2em;
@@ -398,7 +428,7 @@ margin-top:4%;
     width:28%;
     line-height:2em;
     padding-top:%;
-    margin-right:2%;
+    margin-right:5%;
     padding-bottom:3%;
 }
 
@@ -406,7 +436,7 @@ margin-top:4%;
     float:left;
     width:28%;
      line-height:2em;
-    margin-right:2%;
+    margin-right:5%;
     padding-bottom:3%;
 }
 
@@ -414,21 +444,20 @@ margin-top:4%;
     float:left;
     width:28%;
      line-height:2em;
-   
     margin-right:2%;
     padding-bottom:3%;
 }
 
 .docstext {
     font-family: 'Open Sans', sans-serif;
-    width:70%;
+    width:90%;
     float:left;
     font-size:12pt;
     padding-bottom:1%;
     color:#707070;
     line-height:1.5em;
     padding-right:5%;
-    margin-top:1%;
+    margin-bottom:5%;
 }
 
 
@@ -534,7 +563,7 @@ h1 {
 h2 {
     
     font-family: 'Open Sans', sans-serif;
-    font-size:1.7em;
+    font-size:1.5em;
     color:#0CC1C8;
     margin-bottom:3%;
     margin-top:3%;
@@ -550,7 +579,7 @@ h2 {
 h3 {
     
     font-family: 'Open Sans', sans-serif;
-    font-size:18pt;
+    font-size:14pt;
     color:#266B6B;
     font-weight:300;
     padding-top:2%;
@@ -581,10 +610,6 @@ h5 {
 
 @media screen and (max-width: 1100px) {
  
- 
- 
- 
-
 
   .col1image {
   padding-bottom: 0%;
@@ -657,6 +682,14 @@ h5 {
     width:100%;
     background-image:url('../img/graphic-04-mobile.svg');
     
+}
+
+.topbannersub {
+    width:100%;
+    background-image:url('../img/graphic-04-mobile.svg');
+    background-repeat: repeat;
+    position:relative;
+   background-size: 100%;
     
 }
 .bannerlogo img{
@@ -672,6 +705,43 @@ h5 {
    padding-bottom:0% !important;
 }
 
+.singleblog {
+
+    margin-bottom:10%;
+    font-family: 'Open Sans', sans-serif;
+    width:90%;
+    margin-left:5%;
+    font-weight:100;
+    font-size:11pt;
+    margin-top:4%;
+    float:left;
+    
+}
+
+.blogcols {
+    margin-bottom:17%;
+    font-family: 'Open Sans', sans-serif;
+    width:100%;
+    margin-left:2%;
+    font-weight:100;
+    font-size:11pt;
+    float:left; 
+}
+
+.blogcol1 {
+
+    float:left;
+    text-align:left;
+    width:90%;
+    line-height:1.6em;
+    padding-top:%;
+    margin-right:2%;
+    padding:3%;
+    padding-right:3%;
+    padding-top:2%;
+    font-size:10pt;
+
+}
 
 
 .col1image {
@@ -682,7 +752,7 @@ h5 {
  }
 
  h2 {
-  font-size:3em !important;
+  font-size:1.5em !important;
   padding-top:2%;
   padding-bottom:2%;
  }
@@ -700,6 +770,12 @@ h5 {
     
 }
 
+.blogcol2 {
+
+    display:none;
+  
+}
+
 
 .quickstartcol1 {
 
@@ -708,8 +784,8 @@ h5 {
     width:25%;
     line-height:2em;
     padding-top:%;
-    margin-right:0%;
     padding:0%;
+    margin-right:3%;
     padding-right:0%;
     padding-top:5%;
 
@@ -724,11 +800,10 @@ h5 {
     line-height:1.6em;
     padding-top:%;
     margin-right:2%;
-    padding-left:1%;
+    padding-left:2%;
     padding-left:4%;
    border-left:0.5px solid #cccccc;
 }
-
 
 }
 
@@ -793,11 +868,18 @@ h5 {
 
 .docstext {
   
-  width:80%;
+  width:95%;
   font-size:0.9em;
   padding-left:5%;
+  padding-bottom:5%;
   text-align:center;
 }
+ 
+ .dropdown-menu {
+  opacity:0.9;
+  float:right !important;
+  width:50%;
+ }
  
  .topbannertext {
   
@@ -838,7 +920,7 @@ h5 {
  }
  
  h2 {
-  font-size:2.2em;
+  font-size:1.5em;
   padding-top:4%;
   padding-bottom:4%;
  }
@@ -877,7 +959,7 @@ h5 {
     padding-top:3%;
     padding-bottom:3%;
     margin:1%;
-    margin-bottom:2%;
+    margin-bottom:10%;
     letter-spacing:0.07em;
     font-size:13pt;
 }
