@@ -35,7 +35,9 @@ library, shared by client and server projects in the [C# `Helloworld` example
 directory
 ](https://github.com/grpc/grpc/tree/master/examples/csharp/Helloworld/Greeter).
 
-Start by creating a new library project.
+### Create a new project
+
+Let's start by creating a new library project.
 
 ```
 ~/work$ dotnet new classlib -o MyGreeter
@@ -76,6 +78,8 @@ info : PackageReference for package 'Grpc.Tools' version '1.17.0' added to file 
 info : PackageReference for package 'Google.Protobuf' version '3.6.1' added to file '/home/kkm/work/MyGreeter/MyGreeter.csproj'.
 ```
 
+### Add `.proto` files to the project
+
 **Next comes an important part.** First of all, by default, a `.csproj` project
 file automatically finds all `.cs` files in its directory, although
 [Microsoft now recommends suppressing this globbing
@@ -112,6 +116,8 @@ reference. Your resulting project file should now look like this:
 
 </Project>
 ```
+
+### Build it!
 
 At this point you can build the project with the `dotnet build` command to
 compile the `.proto` file and the library assembly. For this walkthrough, we'll
@@ -152,6 +158,8 @@ Of course, you can also add `.cs` files to the same project: It is a regular C#
 project building a .NET library, after all. This is done in our [RouteGuide
 ](https://github.com/grpc/grpc/tree/master/examples/csharp/RouteGuide/RouteGuide)
 example.
+
+### Where are the generated files?
 
 You may wonder where the proto compiler and gRPC plugin output C# files are. By
 default, they are placed in the same directory as other generated files, such
