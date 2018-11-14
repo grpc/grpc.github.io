@@ -1,6 +1,6 @@
 ---
 layout: post
-title: gRPC Meets .NET SDK And Visual Studio
+title: gRPC Meets .NET SDK And Visual Studio: Automatic Codegen On Build
 published: true
 permalink: blog/grpc-dotnet-build
 author: Kirill 'kkm' Katsnelson
@@ -8,6 +8,7 @@ author-link: https://github.com/kkm000
 company: SmartAction
 company-link: https://www.smartaction.ai
 ---
+
 As part of Microsoft's move towards its cross-platform .NET offering, they have
 greatly simplified the project file format, and allowed a tight integration of
 third-party code generators with .NET projects. We are listening, and now proud
@@ -15,41 +16,48 @@ to introduce integrated compilation of Protocol Buffer and gRPC service
 `.proto` files in .NET C# projects starting with the version 1.17 of the
 Grpc.Tools NuGet package, now available from Nuget.org.
 
+You no longer need separate scripts to generate code from `.proto` files: The
+.NET build magic handles this for you. The integrated tools locate the proto
+compiler and gRPC plugin, standard Protocol Buffer imports, and track
+dependencies before invoking the code generators, so that the generated C#
+source files are never out of date, at the same time keeping regeneration to
+the minimum required. In essence, `.proto` files are treated as first-class
+sources in a .NET C# project.
+
 <!--more-->
 
 ## A Walkthrough
 
-Now you can include `.proto` files along with C# source files into `.csproj`
-project files. In this blog post, we'll walk through the simplest and probably
-the most common scenario of creating a library from `.proto` files using the
-cross-platform `dotnet` command. We will implement essentially a clone of the
-`Greeter` library, shared by client and server projects in the [C# `Helloworld`
-example directory
+In this blog post, we'll walk through the simplest and probably the most common
+scenario of creating a library from `.proto` files using the cross-platform
+`dotnet` command. We will implement essentially a clone of the `Greeter`
+library, shared by client and server projects in the [C# `Helloworld` example
+directory
 ](https://github.com/grpc/grpc/tree/master/examples/csharp/Helloworld/Greeter).
 
 Start by creating a new library project.
 
 ```
-kkm@yupana:~/work$ dotnet new classlib -o MyGreeter
+~/work$ dotnet new classlib -o MyGreeter
 The template "Class library" was created successfully.
 
-kkm@yupana:~/work$ cd MyGreeter
-kkm@yupana:~/work/MyGreeter$ ls -lF
+~/work$ cd MyGreeter
+~/work/MyGreeter$ ls -lF
 total 12
 -rw-rw-r-- 1 kkm kkm   86 Nov  9 16:10 Class1.cs
 -rw-rw-r-- 1 kkm kkm  145 Nov  9 16:10 MyGreeter.csproj
 drwxrwxr-x 2 kkm kkm 4096 Nov  9 16:10 obj/
 ```
 
-The `dotnet new` command has created the file `Class1.cs` that we won't need, so
-it's ok to remove it. Also, we need some `.proto` files to compile. For this
-exercise, we'll copy an example file [`examples/protos/helloworld.proto`
+Observe that the `dotnet new` command has created the file `Class1.cs` that
+we won't need, so remove it. Also, we need some `.proto` files to compile. For
+this exercise, we'll copy an example file [`examples/protos/helloworld.proto`
 ](https://github.com/grpc/grpc/blob/master/examples/protos/helloworld.proto)
 from the gRPC distribution.
 
 ```
-kkm@yupana:~/work/MyGreeter$ rm Class1.cs
-kkm@yupana:~/work/MyGreeter$ wget -q https://raw.githubusercontent.com/grpc/grpc/master/examples/protos/helloworld.proto
+~/work/MyGreeter$ rm Class1.cs
+~/work/MyGreeter$ wget -q https://raw.githubusercontent.com/grpc/grpc/master/examples/protos/helloworld.proto
 ```
 
 (on Windows, use `del Class1.cs`, and, if you do not have the wget command,
@@ -60,11 +68,11 @@ and use a *Save As...* command from your Web browser).
 Next, add required NuGet packages to the project:
 
 ```
-kkm@yupana:~/work/MyGreeter$ dotnet add package Grpc
+~/work/MyGreeter$ dotnet add package Grpc
 info : PackageReference for package 'Grpc' version '1.17.0' added to file '/home/kkm/work/MyGreeter/MyGreeter.csproj'.
-kkm@yupana:~/work/MyGreeter$ dotnet add package Grpc.Tools
+~/work/MyGreeter$ dotnet add package Grpc.Tools
 info : PackageReference for package 'Grpc.Tools' version '1.17.0' added to file '/home/kkm/work/MyGreeter/MyGreeter.csproj'.
-kkm@yupana:~/work/MyGreeter$ dotnet add package Google.Protobuf
+~/work/MyGreeter$ dotnet add package Google.Protobuf
 info : PackageReference for package 'Google.Protobuf' version '3.6.1' added to file '/home/kkm/work/MyGreeter/MyGreeter.csproj'.
 ```
 
@@ -73,15 +81,19 @@ file automatically finds all `.cs` files in its directory, although
 [Microsoft now recommends suppressing this globbing
 behavior](https://docs.microsoft.com/dotnet/core/tools/csproj#recommendation),
 so we too decided against globbing `.proto` files. Thus the `.proto`
-files must be added to the project explicitly. Second of all, it is important
-to add a property `PrivateAssets="All"` to the Grpc.Tools package reference,
-so that it will not be needlessly fetched by the consumers of your new library.
-This makes sense, as the package only contains compiler, code generators and
-import files, which are not needed outside of the project where the `.proto`
-files have been compiled. So you must edit the file `MyGreeter.csproj` and
-add the `helloworld.proto` to be compiled, and the `PrivateAssets` property to
-the Grpc.Tools package reference. Your resulting project file should now look
-like this:
+files must be added to the project explicitly.
+
+Second of all, it is important to add a property `PrivateAssets="All"` to the
+Grpc.Tools package reference, so that it will not be needlessly fetched by the
+consumers of your new library. This makes sense, as the package only contains
+compilers, code generators and import files, which are not needed outside of
+the project where the `.proto` files have been compiled. While not strictly
+required in this simple walkthrough, it must be your standard practice to do
+that always.
+
+So edit the file `MyGreeter.csproj` to add the `helloworld.proto` so that it
+will be compiled, and the `PrivateAssets` property to the Grpc.Tools package
+reference. Your resulting project file should now look like this:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -93,24 +105,25 @@ like this:
   <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.6.1" />
     <PackageReference Include="Grpc" Version="1.17.0" />
+                                                     <!--  Add attribute as shown below. -->
     <PackageReference Include="Grpc.Tools" Version="1.17.0" PrivateAssets="All" />
-    <ProtoBuf Include="helloworld.proto" />
+    <Protobuf Include="helloworld.proto" />  <!-- Add this entire line. -->
   </ItemGroup>
 
 </Project>
 ```
 
-At this point you can build the project with `dotnet build` command to compile
-the `.proto` file and the library assembly. For this walkthrough, we'll add a
-logging switch `-v:n` to the command, so we can see that the command to compile
-the `helloworld.proto` file was in fact run. You may find it a good idea to do
-that the very first time you compile a project!
+At this point you can build the project with the `dotnet build` command to
+compile the `.proto` file and the library assembly. For this walkthrough, we'll
+add a logging switch `-v:n` to the command, so we can see that the command to
+compile the `helloworld.proto` file was in fact run. You may find it a good
+idea to always do that the very first time you compile a project!
 
 Note that many output lines are omitted below, as the build output is quite
 verbose.
 
 ```
-kkm@yupana:~/work/MyGreeter$ dotnet build -v:n
+~/work/MyGreeter$ dotnet build -v:n
 
 Build started 11/9/18 5:33:44 PM.
   1:7>Project "/home/kkm/work/MyGreeter/MyGreeter.csproj" on node 1 (Build target(s)).
@@ -129,6 +142,12 @@ Build started 11/9/18 5:33:44 PM.
 Build succeeded.
 ```
 
+If at this point you invoke the `dotnet build -v:n` command again, `protoc`
+would not be invoked, and no C# sources would be compiled. But if you change
+the `helloworld.proto` source, then its outputs will be regenerated and then
+recompiled by the C# compiler during the build. This is a regular dependency
+tracking behavior that you expect from modifying any source file.
+
 Of course, you can also add `.cs` files to the same project: It is a regular C#
 project building a .NET library, after all. This is done in our [RouteGuide
 ](https://github.com/grpc/grpc/tree/master/examples/csharp/RouteGuide/RouteGuide)
@@ -144,7 +163,7 @@ tools like the debugger. You can see other autogenerated sources in that
 directory, too:
 
 ```
-kkm@yupana:~/work/MyGreeter$ find obj -name '*.cs'
+~/work/MyGreeter$ find obj -name '*.cs'
 obj/Debug/netstandard2.0/MyGreeter.AssemblyInfo.cs
 obj/Debug/netstandard2.0/Helloworld.cs
 obj/Debug/netstandard2.0/HelloworldGrpc.cs
@@ -156,8 +175,8 @@ command prompt).
 ## There Is More To It
 
 While the simplest default behavior is adequate in many cases, there are many
-ways to fine-tune your `.proto` compilation process in a large project. Refer
-to the [documentation file BUILD-INTEGRATION.md
+ways to fine-tune your `.proto` compilation process in a large project. We
+encourage you to read the [documentation file BUILD-INTEGRATION.md
 ](https://github.com/grpc/grpc/blob/master/src/csharp/BUILD-INTEGRATION.md)
 for available options if you find that the default arrangement does not suit
 your workflow. The package also extends the Visual Studio's Properties window,
@@ -172,4 +191,5 @@ your feedback. Did something not work as expected? Do you have a scenario that
 is not easy to cover with the new tools? Do you have an idea how to improve the
 workflow in general? Please read the documentation carefully, and then [open an
 issue](https://github.com/grpc/grpc/issues) in the gRPC code repository on
-GitHub.
+GitHub. Your feedback is important to determine the future direction for our
+build integration work!
