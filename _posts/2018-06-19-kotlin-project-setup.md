@@ -8,6 +8,7 @@ author-link: https://github.com/zpencer
 company: Google
 company-link: https://www.google.com
 ---
+
 Did you know that gRPC Java now has out of box support for Kotlin projects built with Gradle? [Kotlin](https://kotlinlang.org/) is a modern, statically typed language developed by JetBrains that targets the JVM and Android. It is generally easy for Kotlin programs to interoperate with existing Java libraries. To improve this experience further, we have added support to the [protobuf-gradle-plugin](https://github.com/google/protobuf-gradle-plugin/releases) so that the generated Java libraries are automatically picked up by Kotlin. You can now add the protobuf-gradle-plugin to your Kotlin project, and use gRPC just like you would with a typical Java project.
 <!--more-->
 The following examples show you how to configure a project for a JVM application and an Android application using Kotlin.
