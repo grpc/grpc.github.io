@@ -1,6 +1,6 @@
 ---
 layout: post
-title: gRPC on HTTP/2: Engineering a Robust, High Performance Protocol
+title: gRPC on HTTP/2 Engineering a Robust, High Performance Protocol
 published: true
 permalink: blog/grpc_on_http2
 author: Jean de Klerk
