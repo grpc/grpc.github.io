@@ -14,11 +14,11 @@ Here is a high level overview of the gRPC Stacks.  Each of the **10** default la
 <!--more-->
 
 
-There are three main stacks in gRPC: C-core, Go, and Java.  Most of the languages are thin wrappers on top of the [C-based](https://github.com/grpc/grpc/tree/v1.16.1/src/core) gRPC core library:
+There are three main stacks in gRPC: C-core, Go, and Java.  Most of the languages are thin wrappers on top of the [C-based](https://github.com/grpc/grpc/tree/master/src/core) gRPC core library:
 
 <p><img src="https://grpc.io/img/grpc-core-stack.svg" alt="gRPC Core Stack" style="max-width: 800px" /></p>
 
-For example, a Python application calls into the generated Python stubs.  These call pass through interceptors, and into the wrapping library where the call is translated into C calls.  The gRPC C-core will encode the RPC as HTTP/2, optionally encrypt the data with TLS, and then pass write it to the network.
+For example, a Python application calls into the generated Python stubs.  These calls pass through interceptors, and into the wrapping library where the call is translated into C calls.  The gRPC C-core will encode the RPC as HTTP/2, optionally encrypt the data with TLS, and then write it to the network.
 
 One of the cool things about gRPC is that you can swap these pieces out.  For example, you could use C# instead, and use an In-Process transport.  This would save you from having to go all the way down to the OS network layer.   Another example is trying out the QUIC protocol, which allows you to open new connections quickly.  Being able to run over a variety of transports based on the environment makes gRPC really flexible.
 
