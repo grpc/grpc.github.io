@@ -158,13 +158,6 @@ First, install the grpcio-tools package:
 $ pip install grpcio-tools
 ```
 
-Then, install the googleapis-common-proto package which is a collection of
-generated python classes for some common protos:
-
-```
-$ pip install googleapis-common-protos
-```
-
 Use the following command to generate the Python code:
 
 ```
