@@ -23,7 +23,7 @@ This demo requires Docker Compose file
 ```sh
 $ git clone https://github.com/grpc/grpc-web
 $ cd grpc-web
-$ docker-compose pull prereqs common node-server envoy commonjs-client
+$ docker-compose pull
 $ docker-compose up -d node-server envoy commonjs-client
 ```
 
