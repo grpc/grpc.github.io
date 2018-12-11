@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Visualizing gRPC Language Stacks
-published: false
+published: true
 permalink: blog/grpc-stacks
 author: Carl Mastrangelo
 author-link: https://carlmastrangelo.com
