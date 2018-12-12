@@ -57,7 +57,7 @@ $ cd grpc-java/examples
 
    ```sh
    $ cd android/helloworld
-   $ ./gradlew installDebug
+   $ ../../gradlew installDebug
    ```
 
 Congratulations! You've just run a client-server application with gRPC.
@@ -170,7 +170,7 @@ Just like we did before, from the `examples` directory:
 
    ```sh
    $ cd android/helloworld
-   $ ./gradlew installDebug
+   $ ../../gradlew installDebug
    ```
 
 #### Connecting to the Hello World server via USB
