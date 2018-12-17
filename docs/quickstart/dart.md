@@ -10,12 +10,6 @@ working example.</p>
 
 <div id="toc"></div>
 
-## Before you begin
-
-<p class="note">Dart gRPC is currently in beta. Please help us out by
-<a href="https://github.com/grpc/grpc-dart/issues/new">filing issues</a>
-if you encounter any.</p>
-
 ### Prerequisites
 
 #### Dart SDK
@@ -233,3 +227,8 @@ Just like we did before, from the `example/helloworld` directory:
 
 [gRPC Basics: Dart]:../tutorials/basic/dart.html
 
+
+## Reporting issues
+Should you encounter an issue, please help us out by
+<a href="https://github.com/grpc/grpc-dart/issues/new">filing issues</a>
+in our issue tracker.</p>
