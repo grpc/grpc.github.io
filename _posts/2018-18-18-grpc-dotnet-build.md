@@ -1,6 +1,6 @@
 ---
 layout: post
-title: gRPC Meets .NET SDK And Visual Studio: Automatic Codegen On Build
+title: "gRPC Meets .NET SDK And Visual Studio: Automatic Codegen On Build"
 published: true
 permalink: blog/grpc-dotnet-build
 author: Kirill 'kkm' Katsnelson
