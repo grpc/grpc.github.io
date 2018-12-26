@@ -456,7 +456,7 @@ get a `Readable` stream object back. The client can use the `Readable`'s
 callback will not cause the stream to be closed. The `'error'` event
 indicates that an error has occurred and the stream has been closed. The
 `'end'` event indicates that the server has finished sending and no errors
-occured. Only one of `'error'` or `'end'` will be emitted. Finally, the
+occurred. Only one of `'error'` or `'end'` will be emitted. Finally, the
 `'status'` event fires when the server sends the status.
 
 The client-side streaming method `RecordRoute` is similar, except there we pass
