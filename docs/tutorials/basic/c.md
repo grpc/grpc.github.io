@@ -383,7 +383,7 @@ address and port we want to connect to - in our case we'll use no SSL:
 ```cpp
 grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
 ```
-Note: In order to set additional options for the *channeL*, use the `grpc::CreateCustomChannel()` api with any special channel arguments - `grpc::ChannelArguments`
+Note: In order to set additional options for the *channel*, use the `grpc::CreateCustomChannel()` api with any special channel arguments - `grpc::ChannelArguments`
 
 Now we can use the channel to create our stub using the `NewStub` method provided in the `RouteGuide` class we generated from our .proto.
 
