@@ -12,19 +12,16 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 // The key corresponds to the data attributes in docs/talks/index.html
 // TODO(jtattermusch): is there a way to not require editing this when adding new videos?
 var playerInfoList = [
-    {type: 'yt', key: '5QH67PXNbaI'},
+    {type: 'yt', key: 'OZ_Qmklc4zE'},
     {type: 'yt', key: 'F2znfxn_5Hg'},
-    {type: 'yt', key: 'rf5fw_O4tnU'},
+    {type: 'yt', key: 'S7WIYLcPS1Y'},
     {type: 'yt', key: 'F2WYEFLTKEw'},
     {type: 'yt', key: 'UZcvnApm81U'},
     {type: 'yt', key: 'UOIJNygDNlE'}, 
+    {type: 'yt', key: 'RvUP7vX2P4s'},
     {type: 'yt', key: 'nz-LcdoMYWA'}, 
-    {type: 'yt', key: 'sZx3oZt7LVg'}, 
-    {type: 'yt', key: 'RvUP7vX2P4s'}, 
-    {type: 'slideshare', key: 'https://www.slideshare.net/sujatatibre/g-rpc-talk-with-intel-3'}, 
-    {type: 'slideshare', key: 'https://www.slideshare.net/VarunTalwar4/grpc-design-and-implementation'},
-    {type: 'slideshare', key: 'https://www.slideshare.net/VarunTalwar4/grpc-overview'},
-    {type: 'slideshare', key: 'https://www.ustream.tv/recorded/86187859'}
+    {type: 'yt', key: 'sZx3oZt7LVg'},
+    {type: 'vimeo', key: 'https://vimeo.com/190648663'}
 ];  
 
 function createPlayer(key) {
