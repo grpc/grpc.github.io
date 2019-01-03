@@ -20,9 +20,7 @@ buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
 find out more in the [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3) and [Python
 generated code
-guide](https://developers.google.com/protocol-buffers/docs/reference/python-generated),
-and see the [release notes](https://github.com/google/protobuf/releases) for the
-new version in the protocol buffers GitHub repository.
+guide](https://developers.google.com/protocol-buffers/docs/reference/python-generated).
 
 <div id="toc"></div>
 
