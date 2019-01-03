@@ -42,7 +42,7 @@ This document will walk you through the "Hello World" example.
 The projects and source files can be found in the `examples/csharp/Helloworld` directory.
 
 The example in this walkthrough already adds the necessary
-dependencies for you (Grpc, Grpc.Tools and Google.Protobuf NuGet packages).
+dependencies for you (`Grpc`, `Grpc.Tools` and `Google.Protobuf` NuGet packages).
 
 ## Build the example
 
@@ -57,8 +57,8 @@ From the `examples/csharp/Helloworld` directory:
 > dotnet build Greeter.sln
 ```
 
-*NOTE: If you want to use gRPC C# from a project that uses the old-style .csproj files (supported by Visual Studio 2013, 2015 and older versions of Mono), please refer to the
-[Greeter using legacy .csproj](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/examples/csharp/HelloworldLegacyCsproj/README.md) example.*
+*NOTE: If you want to use gRPC C# from a project that uses the "classic" .csproj files (supported by Visual Studio 2013, 2015 and older versions of Mono), please refer to the
+[Greeter using "classic" .csproj](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/examples/csharp/HelloworldLegacyCsproj/README.md) example.*
 
 ## Run a gRPC application
 
@@ -139,44 +139,27 @@ message HelloReply {
 
 Next we need to update the gRPC code used by our application to use the new service definition. 
 
-The `Grpc.Tools` NuGet package contains the protoc and protobuf C# plugin binaries you will need to generate the code. 
+The `Grpc.Tools` NuGet package contains the protoc and protobuf C# plugin binaries needed
+to generate the code. Starting from version 1.17 the package also integrates with
+MSBuild to provide [automatic C# code generation](https://github.com/grpc/grpc/blob/master/src/csharp/BUILD-INTEGRATION.md)
+from `.proto` files.
 
-### Obtaining the Grpc.Tools NuGet package
+This example project already depends on the `Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}` NuGet package so just re-building the solution
+is enough to regenerate the code from our modified `.proto` file.
 
-This example project already depends on the `Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}` NuGet package
-and the package will be downloaded to your local NuGet cache as soon as you restore the nuget packages by clicking "Restore NuGet Packages" in Visual Studio or running `dotnet restore RouteGuide.sln` from the `examples/csharp/RouteGuide` directory.
+You can rebuild just like we first built the original
+example by running `dotnet build Greeter.sln` or by clicking "Build" in Visual Studio.
 
-### Commands to generate the gRPC code
-Note that you may have to change the `platform_architecture` directory names (e.g. windows_x86, linux_x64) in the commands below based on your environment.
+The build regenerates the following files
+under the `Greeter/obj/Debug/TARGET_FRAMEWORK` directory:
 
-From the `examples/csharp/Helloworld` directory:
-
-**Windows**
-
-```
-@rem Local nuget cache on Windows is located in %UserProfile%\.nuget\packages
-> %UserProfile%\.nuget\packages\grpc.tools\{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\protoc.exe -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=%UserProfile%\.nuget\packages\grpc.tools\{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\grpc_csharp_plugin.exe
-```
-
-**Linux (or OS X by using macosx_x64 directory)**
-Note:
-protoc-gen-grpc plugin requires fullpath of "grpc_csharp_plugin" executable instead of short form with "~" symbol. Make sure to change <HOME_FOLDER phrase in below command according to your local machine.
-
-```
-# Local nuget cache on Linux and Mac is located in ~/.nuget/packages
-$ ~/.nuget/packages/grpc.tools/{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out Greeter --grpc_out Greeter ../../protos/helloworld.proto --plugin=protoc-gen-grpc=${HOME}/.nuget/packages/grpc.tools/{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
-```
-
-Running the appropriate command for your OS regenerates the following files in
-the directory:
-
-* Greeter/Helloworld.cs contains all the protocol buffer code to populate,
+* `Helloworld.cs` contains all the protocol buffer code to populate,
   serialize, and retrieve our request and response message types
-* Greeter/HelloworldGrpc.cs provides generated client and server classes,
+* `HelloworldGrpc.cs` provides generated client and server classes,
   including:
-    * an abstract class Greeter.GreeterBase to inherit from when defining
+    * an abstract class `Greeter.GreeterBase` to inherit from when defining
       Greeter service implementations
-    * a class Greeter.GreeterClient that can be used to access remote Greeter
+    * a class `Greeter.GreeterClient` that can be used to access remote Greeter
       instances
     
 ## Update and run the application
@@ -234,7 +217,7 @@ public static void Main(string[] args)
 ### Rebuild the modified example
 
 Rebuild the newly modified example just like we first built the original
-example by running `dotnet build Greeter.sln`.
+example by running `dotnet build Greeter.sln` or by clicking "Build" in Visual Studio.
 
 ### Run!
 
