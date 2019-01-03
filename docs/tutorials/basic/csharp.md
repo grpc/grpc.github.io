@@ -149,38 +149,24 @@ message Point {
 ## Generating client and server code
 
 Next we need to generate the gRPC client and server interfaces from our .proto
-service definition. We do this using the protocol buffer compiler `protoc` with
-a special gRPC C# plugin.
+service definition. This can be done by invoking the protocol buffer compiler `protoc` with
+a special gRPC C# plugin from the command line, but starting from version
+1.17 the `Grpc.Tools` NuGet package integrates with MSBuild to provide [automatic C# code generation](https://github.com/grpc/grpc/blob/master/src/csharp/BUILD-INTEGRATION.md)
+from `.proto` files, which gives much better developer experience by running
+the right commands for you as part of the build.
 
-If you want to run this yourself, the `Grpc.Tools` NuGet package contains the
-binaries you will need to generate the code. You can fetch a copy of
-the `Grpc.Tools` package into your local nuget cache by clicking
-"Restore NuGet Packages" in Visual Studio or running `dotnet restore RouteGuide.sln`
-from the `examples/csharp/RouteGuide` directory. Once that's done, you can generate the C# code.
+This example already has a dependency on `Grpc.Tools` NuGet package and the
+`route_guide.proto` has already been added to the project, so the only thing
+needed to generate the client and server code is to build the solution.
+That can be done by running `dotnet build RouteGuide.sln` or building directly
+in Visual Studio.
 
-To generate the code, the following command should be run from the
-`examples/csharp/RouteGuide` directory:
+The build regenerates the following files
+under the `RouteGuide/obj/Debug/TARGET_FRAMEWORK` directory:
 
-- Windows
-
-  ```
-  @rem Local nuget cache on Windows is located in %UserProfile%\.nuget\packages
-  > %UserProfile%\.nuget\packages\Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=%UserProfile%\.nuget\packages\Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\grpc_csharp_plugin.exe
-  ```
-
-- Linux (or Mac OS X by using `macosx_x64` directory).
-
-  ```
-  # Local nuget cache on Linux and Mac is located in ~/.nuget/packages
-  $ ~/.nuget/packages/grpc.tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=~/.nuget/packages/grpc.tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
-  ```
-
-Running the appropriate command for your OS regenerates the following files in
-the RouteGuide directory:
-
-- `RouteGuide/RouteGuide.cs` contains all the protocol buffer code to populate,
+- `RouteGuide.cs` contains all the protocol buffer code to populate,
   serialize, and retrieve our request and response message types
-- `RouteGuide/RouteGuideGrpc.cs` provides generated client and server classes,
+- `RouteGuideGrpc.cs` provides generated client and server classes,
   including:
    - an abstract class `RouteGuide.RouteGuideBase` to inherit from when defining
      RouteGuide service implementations
