@@ -112,32 +112,20 @@ Here’s a table that summarizes the different features supported:
 For more information on this table, please see
 [my compatibility test repo on github](https://github.com/johanbrandhorst/grpc-web-compatibility-test).
 
-## Compatibility issues
-
-Of course, with two different proxies also come compatibility issues. Here’s a
-table that summarizes the different combinations of proxy and client and how
-well they work:
-
-| Proxy / Client   | Improbable | Google (`grpcweb`) | Google (`grpcwebtext`)           |
-| ---------------- | ---------- | ------------------ | -------------------------------- |
-| Improbable proxy | ✔️️        | ✔️                 | ❌<sup id="a21">[21](#f21)</sup> |
-| Envoy proxy      | ✔️         | ✔️️                | ✔️                               |
-
-For more information on this table, please see
-[my compatibility test repo on github](https://github.com/johanbrandhorst/grpc-web-compatibility-test).
-
-Generally, the Envoy proxy implementation implements the entire spec, while the
-Improbable proxy only supports the features necessary to work with the
-Improbable client.
-
 The compatibility tests may evolve into some automated test framework to enforce
 and document the various compatibilities in the future.
+
+## Compatibility issues
+
+Of course, with two different proxies also come compatibility issues.
+Fortunately, these have recently been ironed out, so you can expect to use
+either client with either proxy.
 
 # The future
 
 The Google implementation announced version 1.0 and general availability in
-October 2018<sup id="a22">[22](#f22)</sup> and has published a roadmap of future
-goals<sup id="a23">[23](#f23)</sup>, including:
+October 2018<sup id="a21">[21](#f21)</sup> and has published a roadmap of future
+goals<sup id="a22">[22](#f22)</sup>, including:
 
 - An efficient JSON-like message encoding
 - In-process proxies for Node, Python, Java and more
@@ -147,7 +135,7 @@ goals<sup id="a23">[23](#f23)</sup>, including:
 
 Google is looking for feedback on what features are important to the community,
 so if you think any of these are particularly valuable to you, then please fill
-in their survey<sup id="a24">[24](#f24)</sup>.
+in their survey<sup id="a23">[23](#f23)</sup>.
 
 Recent talks between the two projects have agreed on promoting the Google client
 and Envoy proxy as preferred solutions for new users. The Improbable client and
@@ -166,8 +154,9 @@ team and the greater community are collaborating on the official client to the
 benefit of the gRPC community at large. Since the GA announcement the community
 contributions to the Google gRPC-Web repo has increased dramatically.
 
-The Envoy proxy implementation remains the most well-supported proxy, but there
-is no in-process proxy available, unlike with the Improbable proxy.
+When choosing between the two proxies, there's no difference in capability, so
+it becomes a matter of your deployment model. Envoy will suit some
+scenarios, while an in-process Go proxy has its own advantages.
 
 If you’re getting started with gRPC-Web today, first try the Google client. It
 has strict API compatibility guarantees and is built on the rock-solid Google
@@ -205,9 +194,6 @@ browser, and marks an exciting time for frontend developers!
     part of the gRPC-Web spec, and is not recommended for production use. [↩](#a19)
 20. <div id="f20"></div>`grpcweb` allows server streaming methods to be called, but
     it doesn't return data until the stream has closed. [↩](#a20)
-21. <div id="f21"></div>The Improbable proxy does not support the
-    `application/grpc-web-text` content-type.
-    [(issue)](https://github.com/improbable-eng/grpc-web/issues/254) [↩](#a21)
-22. <div id="f22"></div> https://grpc.io/blog/grpc-web-ga [↩](#a22)
-23. <div id="f23"></div> https://github.com/grpc/grpc-web/blob/master/ROADMAP.md [↩](#a23)
-24. <div id="f24"></div> https://docs.google.com/forms/d/1NjWpyRviohn5jaPntosBHXRXZYkh_Ffi4GxJZFibylM [↩](#a24)
+21. <div id="f21"></div> https://grpc.io/blog/grpc-web-ga [↩](#a21)
+22. <div id="f22"></div> https://github.com/grpc/grpc-web/blob/master/ROADMAP.md [↩](#a22)
+23. <div id="f23"></div> https://docs.google.com/forms/d/1NjWpyRviohn5jaPntosBHXRXZYkh_Ffi4GxJZFibylM [↩](#a23)
