@@ -19,9 +19,7 @@ buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
 that the example in this tutorial uses the
 [proto3](https://github.com/google/protobuf/releases) version of the protocol
 buffers language. You can find out more in the
-[proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3)
-and see the [release notes](https://github.com/google/protobuf/releases) for
-the new version in the protocol buffers GitHub repository.
+[proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3).
 
 <div id="toc"></div>
 

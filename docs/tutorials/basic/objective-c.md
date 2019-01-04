@@ -17,13 +17,11 @@ By walking through this example you'll learn how to:
 It assumes a passing familiarity with [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
 that the example in this tutorial uses the proto3 version of the protocol
-buffers language, which is currently in beta release: you can find out more in
+buffers language: you can find out more in
 the [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3) and the
 [Objective-C generated code
-guide](https://developers.google.com/protocol-buffers/docs/reference/objective-c-generated),
-and see the [release notes](https://github.com/google/protobuf/releases) for the
-new version in the protocol buffers GitHub repository.
+guide](https://developers.google.com/protocol-buffers/docs/reference/objective-c-generated).
 
 <div id="toc"></div>
 

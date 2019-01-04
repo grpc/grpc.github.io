@@ -22,9 +22,7 @@ that the example in this tutorial uses the
 buffers language: you can find out more in the [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3) and [Java
 generated code
-guide](https://developers.google.com/protocol-buffers/docs/reference/java-generated),
-and see the [release notes](https://github.com/google/protobuf/releases) for the
-new version in the protocol buffers GitHub repository.
+guide](https://developers.google.com/protocol-buffers/docs/reference/java-generated).
 
 <div id="toc"></div>
 
