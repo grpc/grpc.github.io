@@ -190,8 +190,8 @@ browser, and marks an exciting time for frontend developers!
 17. <div id="f17"></div> https://www.envoyproxy.io/docs/envoy/latest/configuration/http_filters/grpc_web_filter [↩](#a17)
 18. <div id="f18"></div> https://streams.spec.whatwg.org/ [↩](#a18)
 19. <div id="f19"></div>The Improbable client supports client-side and
-    bi-directional streaming with an experimentalwebsocket transport. This is not
-    part of the gRPC-Web spec, and is not recommended for production use. [↩](#a19)
+    bi-directional streaming with an experimental websocket transport. This is
+    not part of the gRPC-Web spec, and is not recommended for production use. [↩](#a19)
 20. <div id="f20"></div>`grpcweb` allows server streaming methods to be called, but
     it doesn't return data until the stream has closed. [↩](#a20)
 21. <div id="f21"></div> https://grpc.io/blog/grpc-web-ga [↩](#a21)
