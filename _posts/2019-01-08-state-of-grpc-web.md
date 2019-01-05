@@ -1,7 +1,7 @@
 ---
 layout: post
 title: The state of gRPC in the browser
-published: false
+published: true
 permalink: blog/state-of-grpc-web
 author: Johan Brandhorst
 author-link: https://jbrandhorst.com
@@ -37,7 +37,7 @@ implementing something that could be called "gRPC for the browser". They soon
 discovered each other's existence and got together to define a
 spec<sup id="a2">[2](#f2)</sup> for the new protocol.
 
-## The gRPC-Web spec
+## The gRPC-Web Spec
 
 It is currently impossible to implement the HTTP/2 gRPC
 spec<sup id="a3">[3](#f3)</sup> in the browser, as there is simply no browser
@@ -52,7 +52,7 @@ HTTP/2 spec, and then defines the differences. These notably include:
 - A mandatory proxy for translating between gRPC-Web requests and gRPC HTTP/2
   responses.
 
-## The tech
+## The Tech
 
 The basic idea is to have the browser send normal HTTP requests (with Fetch or
 XHR) and have a small proxy in front of the gRPC server to translate the
@@ -61,7 +61,7 @@ requests and responses to something the browser can use.
 <p><img src="https://grpc.io/img/grpc-web-proxy.png"
   alt="The role of the gRPC-Web proxy" style="max-width: 800px" /></p>
 
-# The two implementations
+# The Two Implementations
 
 The teams at Google and Improbable both went on to implement the spec in two
 different repositories<sup id="a5">[5](#f5),</sup><sup id="a6">[6](#f6)</sup>,
@@ -84,7 +84,7 @@ extension<sup id="a16">[16](#f16)</sup>, but has since doubled down on an Envoy
 proxy HTTP filter<sup id="a17">[17](#f17)</sup>, which is available in all
 versions since v1.4.0.
 
-## Feature sets
+## Feature Sets
 
 The gRPC HTTP/2 implementations all support the four method types: unary,
 server-side, client-side, and bi-directional streaming. However, the gRPC-Web
@@ -115,13 +115,13 @@ For more information on this table, please see
 The compatibility tests may evolve into some automated test framework to enforce
 and document the various compatibilities in the future.
 
-## Compatibility issues
+## Compatibility Issues
 
 Of course, with two different proxies also come compatibility issues.
 Fortunately, these have recently been ironed out, so you can expect to use
 either client with either proxy.
 
-# The future
+# The Future
 
 The Google implementation announced version 1.0 and general availability in
 October 2018<sup id="a21">[21](#f21)</sup> and has published a roadmap of future
