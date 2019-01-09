@@ -29,6 +29,8 @@ addition in the toolbox of frontend developers.
 In this post, I'll describe some of the history of gRPC in the browser, explore
 the state of the world today, and share some thoughts on the future.
 
+<!--more-->
+
 # Beginnings
 
 In the summer of 2016, both a team at Google and
