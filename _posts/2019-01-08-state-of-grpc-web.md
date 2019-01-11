@@ -72,7 +72,7 @@ conformant to the spec, and for a long time neither was compatible with the
 other's proxy<sup id="a7">[7](#f7),</sup><sup id="a8">[8](#f8)</sup>.
 
 The Improbable gRPC-Web client<sup id="a9">[9](#f9)</sup> is implemented in
-TypeScript and available on npm as `grpc-web-client`<sup id="a10">[10](#f10)</sup>.
+TypeScript and available on npm as `@improbable-eng/grpc-web`<sup id="a10">[10](#f10)</sup>.
 There is also a Go proxy available, both as a package that can be imported into
 existing Go gRPC servers<sup id="a11">[11](#f11)</sup>, and as a standalone
 proxy that can be used to expose an arbitrary gRPC server to a gRPC-Web
@@ -182,7 +182,7 @@ browser, and marks an exciting time for frontend developers!
 7. <div id="f7"></div> <a href="https://github.com/improbable-eng/grpc-web/issues/162">https://github.com/improbable-eng/grpc-web/issues/162</a> [↩](#a7)
 8. <div id="f8"></div> <a href="https://github.com/grpc/grpc-web/issues/91">https://github.com/grpc/grpc-web/issues/91</a> [↩](#a8)
 9. <div id="f9"></div> <a href="https://github.com/improbable-eng/grpc-web/tree/master/ts">https://github.com/improbable-eng/grpc-web/tree/master/ts</a> [↩](#a9)
-10. <div id="f10"></div> <a href="https://www.npmjs.com/package/grpc-web-client">https://www.npmjs.com/package/grpc-web-client</a> [↩](#a10)
+10. <div id="f10"></div> <a href="https://www.npmjs.com/package/@improbable-eng/grpc-web">https://www.npmjs.com/package/@improbable-eng/grpc-web</a> [↩](#a10)
 11. <div id="f11"></div> <a href="https://github.com/improbable-eng/grpc-web/tree/master/go/grpcweb">https://github.com/improbable-eng/grpc-web/tree/master/go/grpcweb</a> [↩](#a11)
 12. <div id="f12"></div> <a href="https://github.com/improbable-eng/grpc-web/tree/master/go/grpcwebproxy">https://github.com/improbable-eng/grpc-web/tree/master/go/grpcwebproxy</a> [↩](#a12)
 13. <div id="f13"></div> <a href="https://github.com/grpc/grpc-web/tree/master/javascript/net/grpc/web">https://github.com/grpc/grpc-web/tree/master/javascript/net/grpc/web</a> [↩](#a13)
