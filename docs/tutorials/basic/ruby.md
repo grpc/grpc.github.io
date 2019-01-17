@@ -153,7 +153,7 @@ a special gRPC Ruby plugin.
 
 If you want to run this yourself, make sure you've installed protoc and followed
 the gRPC Ruby plugin [installation
-instructions](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/src/cpp/README.md#make) first):
+instructions](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/src/ruby/README.md) first):
 
 Once that's done, the following command can be used to generate the ruby code.
 
