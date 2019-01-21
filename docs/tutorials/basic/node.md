@@ -385,7 +385,7 @@ need to call the RouteGuide stub constructor, specifying the server address and
 port.
 
 ```js
-new example.RouteGuide('localhost:50051', grpc.credentials.createInsecure());
+new routeguide.RouteGuide('localhost:50051', grpc.credentials.createInsecure());
 ```
 
 ### Calling service methods
