@@ -172,7 +172,7 @@ End-of-stream for the server-to-client stream is indicated by a return value of 
 End-of-stream for the client-to-server stream can be indicated from the client by calling the `CloseSend` method on the stream.
 
 ## Packages and Namespaces
-When the `prococ` compiler is invoked with `--go_out=plugins=grpc:`, the `proto package` to Go package translation
+When the `protoc` compiler is invoked with `--go_out=plugins=grpc:`, the `proto package` to Go package translation
 works the same as when the `protoc-gen-go` plugin is used without the `grpc` plugin.
 
 So, for example, if `foo.proto` declares itself to be in `package foo`, then the generated `foo.pb.go` file will also be in
