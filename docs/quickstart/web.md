@@ -18,6 +18,10 @@ This demo requires Docker Compose file
 [version 3](https://docs.docker.com/compose/compose-file/). Please refer to
 [Docker website][] on how to install Docker.
 
+### On Windows
+- Install docker desktop and switch to linux containers
+- [Login](https://docs.docker.com/engine/reference/commandline/login/) into docker before you run `docker-compose pull` 
+
 ## Run an Echo example from the browser!
 
 ```sh
