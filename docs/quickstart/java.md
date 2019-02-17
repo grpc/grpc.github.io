@@ -201,6 +201,8 @@ Just like we did before, from the `examples` directory:
 - Work through a more detailed tutorial in [gRPC Basics: Java][]
 - Explore the gRPC Java core API in its [reference
   documentation](/grpc-java/javadoc/)
+- Try gRPC with [Spring](https://spring.io/) using the unofficial
+  [grpc-spring-boot-starter](https://github.com/yidongnan/grpc-spring-boot-starter) library
 
 [gRPC Basics: Java]:../tutorials/basic/java.html
 

@@ -683,3 +683,4 @@ Follow the instructions in the example directory
 [README](https://github.com/grpc/grpc-java/blob/master/examples/README.md) to
 build and run the client and server.
 
+Would you like to use gRPC with [Spring](https://spring.io/)? Try the unofficial [grpc-spring-boot-starter](https://github.com/yidongnan/grpc-spring-boot-starter) library.
