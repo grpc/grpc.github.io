@@ -558,8 +558,8 @@ for _, note := range notes {
 		log.Fatalf("Failed to send a note: %v", err)
 	}
 }
-stream.CloseSend()
 <-waitc
+stream.CloseSend()
 ```
 
 The syntax for reading and writing here is very similar to our client-side
