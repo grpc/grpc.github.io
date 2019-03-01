@@ -510,7 +510,9 @@ if err != nil {
 }
 for _, point := range points {
 	if err := stream.Send(point); err != nil {
-		_, err := stream.CloseAndRecv()
+		if err == io.EOF {
+			break
+		}
 		log.Fatalf("%v.Send(%v) = %v", stream, point, err)
 	}
 }
