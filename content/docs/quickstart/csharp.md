@@ -3,7 +3,6 @@ title: C# Quick Start
 layout: quickstart
 ---
 
-<h1 class="page-header">C# Quickstart</h1>
 
 <p class="lead">This guide gets you started with gRPC in C# with a simple
 working example.</p>
@@ -20,11 +19,11 @@ or by using the the .NET Core SDK command line tools.
 
 Using the .NET Core SDK on Windows, OS X, or Linux, you'll need:
 
-* The .NET Core SDK command line tools. 
-* The .NET framework 4.5 (for OS X and Linux, the open source .NET Framework implementation, "Mono", at version 4+, is suitable) 
+* The .NET Core SDK command line tools.
+* The .NET framework 4.5 (for OS X and Linux, the open source .NET Framework implementation, "Mono", at version 4+, is suitable)
 * Git (to download the sample code)
 
-On Windows, using Visual Studio, you'll need: 
+On Windows, using Visual Studio, you'll need:
 
 * .NET Framework 4.5+
 * Visual Studio 2013 or 2015.
@@ -32,13 +31,13 @@ On Windows, using Visual Studio, you'll need:
 
 On OS X, using Xamarin Studio, you'll need:
 
-* Mono 4.4.2+ (or Mono 4+ is sufficient if you manually update NuGet to version 2.12+) 
-* Xamarin Studio 6.0+ 
+* Mono 4.4.2+ (or Mono 4+ is sufficient if you manually update NuGet to version 2.12+)
+* Xamarin Studio 6.0+
 * Git (to download the sample code)
 
 On Linux, using the Monodevelop IDE, you'll need:
 
-* Mono 4.4.2+ (or Mono 4+ is sufficient if you manually update nuget to version 2.12+) 
+* Mono 4.4.2+ (or Mono 4+ is sufficient if you manually update nuget to version 2.12+)
 * MonoDevelop 5.9+
 * A NuGet executable, at version 2.12+ (you'll need to restore NuGet package dependencies from the command line)
 * Git (to download the sample code)
@@ -52,7 +51,7 @@ and other tutorials):
 
 ```sh
 $ # Clone the repository to get the example code:
-$ git clone -b {{ site.data.config.grpc_release_tag }} https://github.com/grpc/grpc 
+$ git clone -b {{ site.data.config.grpc_release_tag }} https://github.com/grpc/grpc
 $ cd grpc
 ```
 
@@ -83,23 +82,23 @@ From the `examples/csharp/helloworld-from-cli` directory:
 ```
 
 ### Using the Monodevelop IDE
-Using the Monodevelop IDE, you can build and edit a solution that uses gRPC 
+Using the Monodevelop IDE, you can build and edit a solution that uses gRPC
 without issues, but unfortunately a workaround is necessary in order to initially restore
 a NuGet dependency on C# gRPC.
 
-The problem is that C# gRPC package currently depends on 
+The problem is that C# gRPC package currently depends on
 System.Interactive.Async 3.0.0, which requires NuGet 2.12+ to install.
 The NuGet included on the latest versions of Monodevelop is too old to install gRPC C#.
 
-If you don't want to change the version of NuGet that you're using, 
-a possible workaround to get these files is to download the NuGet 
+If you don't want to change the version of NuGet that you're using,
+a possible workaround to get these files is to download the NuGet
 package and unzip without a NuGet client, as follows.
 
 * Install NuGet 2.12+ so that it's available from the command line.
-* From the `examples/csharp/helloworld` directory, run `/path/to/nuget restore`. 
+* From the `examples/csharp/helloworld` directory, run `/path/to/nuget restore`.
 * Now that the NuGet dependencies are restored into their proper package folders, build
   the solution from the Monodevelop IDE.
-  
+
 ## Run a gRPC application
 
 ### Using Visual Studio, Xamarin Studio, or Monodevelop IDEs
@@ -197,15 +196,15 @@ message HelloReply {
 
 ## Generate gRPC code
 
-Next we need to update the gRPC code used by our application to use the new service definition. 
+Next we need to update the gRPC code used by our application to use the new service definition.
 
-The `Grpc.Tools` NuGet package contains the protoc and protobuf C# plugin binaries you will need to generate the code. 
+The `Grpc.Tools` NuGet package contains the protoc and protobuf C# plugin binaries you will need to generate the code.
 
 ### Obtaining the Grpc.Tools NuGet package
 
 #### Using Visual Studio
 
-This example project already depends on the `Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}` NuGet package, so it should be included in `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE, 
+This example project already depends on the `Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}` NuGet package, so it should be included in `examples/csharp/helloworld/packages` when the `Greeter.sln` solution is built from your IDE,
 or when you restore packages via `/path/to/nuget restore` on the command line.
 
 #### If you have a NuGet client that is __not__ at version 2.12
@@ -218,7 +217,7 @@ $ /path/to/nuget install Grpc.Tools
 #### If you have a NuGet client that is at version 2.12
 
 NuGet 2.12 does not install the files from the `Grpc.Tools` package necessary on Linux and OS X.
-Without changing the version of NuGet that you're using, a possible workaround to obtaining the binaries included in the `Grpc.Tools` package 
+Without changing the version of NuGet that you're using, a possible workaround to obtaining the binaries included in the `Grpc.Tools` package
 is by simply downloading the NuGet package and unzipping without a NuGet client, as follows.
 From your example directory:
 
@@ -260,7 +259,7 @@ the directory:
       Greeter service implementations
     * a class Greeter.GreeterClient that can be used to access remote Greeter
       instances
-    
+
 ## Update and run the application
 
 We now have new generated server and client code, but we still need to implement
@@ -303,7 +302,7 @@ public static void Main(string[] args)
 
     var reply = client.SayHello(new HelloRequest { Name = user });
     Console.WriteLine("Greeting: " + reply.Message);
-    
+
     var secondReply = client.SayHelloAgain(new HelloRequest { Name = user });
     Console.WriteLine("Greeting: " + secondReply.Message);
 
@@ -319,7 +318,7 @@ Rebuild the newly modified example just like we first built the original
 example:
 
 * With solution Greeter.sln open from Visual Studio, Monodevelop (on Linux) or Xamarin Studio (on OS X)
-* Build the solution 
+* Build the solution
 
 ### Run!
 

@@ -11,10 +11,20 @@
     100% {bottom: 0;}
 }
 
+html {
+
+  overflow-x: hidden;
+}
+
+.pt-thumbnail {
+
+  width:100% !important;
+}
+
 
 .page-item.active .page-link
 
-{ 
+{
 background-color:#0CC1C8 !important;
 border-color:#0CC1C8;
 color:#ffffff !important;
@@ -22,11 +32,25 @@ color:#ffffff !important;
 
 .page-link {
 color:#0CC1C8 !important;
- 
+
+}
+
+
+.plus {
+  color:#333333;
+  display:inline;
+  margin-right:2%;
+}
+
+
+.plusmain {
+  color:#333333;
+  display:inline;
+
 }
 
 .pagination {
- 
+
  padding-top:10%;
 }
 
@@ -50,7 +74,7 @@ color:#0CC1C8 !important;
 
 
 body {
-    
+
     margin:0 auto;
 }
 
@@ -67,7 +91,7 @@ body {
     background-repeat: repeat;
     position:relative;
    background-size: 100%;
-    
+
 }
 
 .topbannersub {
@@ -84,32 +108,32 @@ body {
     background-repeat: repeat;
     position:relative;
    background-size: 100%;
-    
+
 }
 
 
 .topnav {
-    
+
     font-family: 'Open Sans', sans-serif;
     font-weight:400;
     font-size:10pt;
     letter-spacing:0.05em;
     margin-right:5%;
     color:white;
-    text-align:right; 
+    text-align:right;
     text-transform:uppercase;
-    
+
 }
 .topnav a {
-    color:#ffffff;    
+    color:#ffffff;
 }
 .topnav .dropdown-menu a {
-    color:#212529;    
+    color:#212529;
 }
 
 
 .logonav {
-    
+
     font-family: 'Open Sans', sans-serif;
     font-weight:400;
     font-size:10pt;
@@ -123,17 +147,17 @@ body {
     z-index:10;
     text-align:left;
     text-transform:uppercase;
-    
+
 }
 
 .logonav img{
-    
+
     width:100% !important;
-    
+
 }
 
 .subnav {
-    
+
     font-family: 'Open Sans', sans-serif;
     font-weight:400;
     font-size:10pt;
@@ -144,52 +168,53 @@ body {
     padding-bottom:2%;
     text-align:center;
     text-transform:uppercase;
-    
+
 }
 .subnav a {
-   
+
     color:#606060;
-    
+
 }
 
 .subnav a:hover {
    color:#0CC1C8;
+   text-decoration:none;
 
-    
+
 }
 
 .subnav a:active {
    color:#0CC1C8;
 
-    
+
 }
-.subnav a:selected:link, a:selected:active{
-   
+.subnav.selected a:selected:link, a:selected:active{
+
      color:#0CC1C8;
-    
+
 }
 
 .subnav a:focus {
    color:#0CC1C8;
    font-weight:700;
-    
+
 }
 
 .navbar-brand {
   padding-top:0.5em !important;
   padding-left:1.8em !important;
- 
+
 }
 
 col-md-9 faq-container {
- 
+
  max-width:100% !important;
- 
+
 }
 .headertext {
  font-size:30pt;
  padding-top:6%;
- 
+
  text-align:center;
 }
 
@@ -209,7 +234,7 @@ col-md-9 faq-container {
 }
 
 .bannerlogosub {
-    
+
     padding-top:2%;
     float:left;
     width:100%:
@@ -217,8 +242,8 @@ col-md-9 faq-container {
 
 
 .bannerlogo img{
-    
-    
+
+
     width:50%:
 }
 
@@ -249,7 +274,7 @@ button {
     line-height:1.7em;
     padding-left:16%;
     text-align:center;
-   
+
 }
 
 
@@ -275,90 +300,169 @@ button {
     line-height:1.7em;
     padding-left:20%;
     text-align:left;
-   
+
+  }
+
+.videosection {
+      padding-top:3%;
+      padding-bottom:3%;
+      font-family: 'Open Sans', sans-serif;
+      width:80%;
+      font-weight:100;
+      font-size:1em;
+      color:#606060;
+      line-height:1.7em;
+      padding-left:20%;
+      text-align:left;
+
+    }
+
+
+.docusecasesection {
+      font-family: 'Open Sans', sans-serif;
+      width:100%;
+      margin-top:2%;
+      font-weight:100;
+      float:left;
+}
+.docusecasesection h4{
+    font-size:2.3em !important;
+    padding-top:3%;
+    padding-left:5%;
+    padding-right:5%;
 }
 
-.doccols {
- 
-    margin-bottom:3%;
-    margin-top:2%;
+.doclangsection {
     font-family: 'Open Sans', sans-serif;
     width:100%;
-    padding-top:4%;
-    padding-bottom:4%;
+    margin-top:4%;
     font-weight:100;
     background-color:#EBF2F2;
+    float:left;
+
+}
+.doclangsection h4 {
+  font-size:2.3em !important;
+  padding-top:3%;
+  padding-left:5%;
+  padding-right:5%;
+
+}
+
+
+.docprojectsection {
+    font-family: 'Open Sans', sans-serif;
+    width:100%;
+    margin-top:2%;
+    font-weight:100;
+    background-color:#EBF2F2;
+    float:left;
+
+}
+.docprojectsection h4 {
+  font-size:2.3em !important;
+  padding-left:5%;
+  padding-right:5%;
+  padding-top:3%;
+
+}
+
+
+
+
+.doccols {
+    margin-bottom:3%;
+    font-family: 'Open Sans', sans-serif;
+    width:100%;
+    padding-top:1%;
+    padding-bottom:4%;
+    font-weight:100;
     padding-left:15%;
     float:left;
-    
+
 }
 
 a {
    color:#0CC1C8;
    font-weight:400;
    text-decoration:none;
- 
+
 }
 
 .cols {
     margin-top:5%;
-     margin-bottom:3%;
+    margin-bottom:3%;
     font-family: 'Open Sans', sans-serif;
-    width:100%;
     font-size:0.95em;
     color:#505050;
     font-weight:100;
     background-color:#EBF2F2;
-    padding-left:10%;
+    padding-left:15%;
     padding-top:2%;
     padding-bottom:1%;
     float:left;
-    
+
 }
 
 
 .quickstartcols {
-
-     margin-bottom:17%;
+    margin-bottom:17%;
     font-family: 'Open Sans', sans-serif;
-    width:100%;
     margin-left:10%;
+    width:100%;
     font-weight:100;
     font-size:11pt;
-    padding-left:8%;
-    
+    padding-left:5%;
     float:left;
-    
+
 }
 
 
 .quickstartcol1 {
-
     float:left;
-    font-size:0.8em;
+    line-height:1em !important;
+    display:block;
+    font-size:0.9em;
     text-align:left;
-    width:17%;
-    line-height:2em;
+    width:20%;
     padding-top:%;
-    margin-right:2%;
+    margin-right:0%;
     padding:3%;
-    padding-right:5%;
     padding-top:5%;
 
 }
 
 
 .quickstartcol2 {
-
     float:left;
     text-align:left;
     width:60%;
     line-height:1.6em;
     padding-top:%;
     margin-right:2%;
-    padding-left:3%;
-    padding-left:4%;
+    padding-left:5%;
    border-left:0.5px solid #cccccc;
+}
+
+
+.quickstartcol1 h8{
+    font-size:1.2em;
+    display:block;
+    line-height:1.3em;
+    margin-bottom:10%;
+  }
+
+
+.quickstartcol1 a {
+    line-height:1.5em;
+    margin-bottom:10%;
+    margin-top:4%;
+    display:block;
+}
+
+.quickstartcol1 .active {
+    color:#266B6B !important;
+    font-weight:bold;
 }
 
 .blogcols {
@@ -371,7 +475,7 @@ a {
     font-size:11pt;
     padding-left:8%;
     float:left;
-    
+
 }
 
 .singleblog {
@@ -384,7 +488,7 @@ a {
     font-size:11pt;
     margin-top:4%;
     float:left;
-    
+
 }
 
 .blogcol1 {
@@ -464,16 +568,18 @@ a {
 .col1 {
     float:left;
     width:40%;
+    text-align:left;
+    display: block;
+    padding-right:2%;
     padding-top:2%;
-    margin-right:2%;
-    padding-bottom:3%;
+    padding-bottom:2%;
 }
 
 .col2 {
     float:left;
     width:40%;
-     padding-top:2%;
-        padding-bottom:2%;
+     padding-top:1%;
+    padding-bottom:2%;
 }
 
 .col1image{
@@ -494,13 +600,13 @@ a {
 }
 
 .colpart1 {
-    
+
     float:left;
     padding-bottom:2%;
 }
 
 .colpart2 {
-    
+
     float:left;
     padding-top:2%;
 }
@@ -509,7 +615,7 @@ a {
 .companybox {
  margin-left:15%;
  margin-top:3%;
-   
+
 }
 
 .companybox img{
@@ -550,25 +656,25 @@ a {
 
 
 h1 {
-    
+
     font-family: 'Open Sans', sans-serif;
     font-size:2.5em;
     color:#0CC1C8;
     margin-bottom:3%;
     margin-top:1%;
     font-weight:300;
-    
+
 }
 
 h2 {
-    
+
     font-family: 'Open Sans', sans-serif;
     font-size:1.5em;
     color:#0CC1C8;
     margin-bottom:3%;
     margin-top:3%;
     font-weight:300;
-    
+
 }
 
 .lead {
@@ -577,19 +683,18 @@ h2 {
 
 
 h3 {
-    
+
     font-family: 'Open Sans', sans-serif;
-    font-size:14pt;
     color:#266B6B;
     font-weight:300;
     padding-top:2%;
     padding-bottom:1%;
-    
+
 }
 h4 {
-    
+
     font-family: 'Open Sans', sans-serif;
-    font-size:1.7em;
+    font-size:1.5em;
     padding-top:3%;
     padding-bottom:0%;
     color:#33838b;
@@ -597,19 +702,29 @@ h4 {
     color:#0CC1C8;
     font-weight:300;
     margin-top:3%;
-    
+
 }
 
 h5 {
-    
+
     font-family: 'Open Sans', sans-serif;
     font-size:9pt;
     font-weight:300;
-    
+
 }
 
+h6 {
+  font-size:1.4em;
+  font-family: 'Open Sans', sans-serif;
+  color:#266B6B;
+  font-weight:300;
+  padding-top:2%;
+  padding-bottom:1%;
+}
+
+
 @media screen and (max-width: 1100px) {
- 
+
 
   .col1image {
   padding-bottom: 0%;
@@ -618,7 +733,7 @@ h5 {
   margin-right:5%;
   width:20%;
   }
- 
+
 .col1 {
   width:80%;
   padding-bottom:0%;
@@ -629,32 +744,40 @@ h5 {
   padding-bottom:0%;
     margin-bottom:0%;
  }
- 
+
  .cols {
-  padding-bottom:3%;
+  padding-bottom:5%;
   padding-left:15%;
  }
- 
+
+ .col1 h3 {
+  font-size:0.5em !important;
+ }
+
+ .col2 h3 {
+  font-size:0.5em !important;
+ }
+
  .section4 {
   background-repeat:repeat;
  }
- 
+
  .col1image {
   padding-bottom: 3%;
   margin-bottom:0%;
   margin-right:5%;
-  
+
  }
  .colpart1 {
   padding-bottom:0%;
-  
+
  }
- 
+
  .colpart2 {
   padding-top:0%;
    padding-bottom:0%;
  }
- 
+
  .section2 {
     padding-top:3%;
     font-family: 'Open Sans', sans-serif;
@@ -665,23 +788,23 @@ h5 {
     line-height:1.7em;
     padding-left:10%;
     text-align:center;
-   
+
 }
- 
+
 .bannerlogo img{
- 
+
  width:35% !important;
 }
- 
+
 }
- 
+
 
 @media screen and (max-width: 900px) {
- 
+
 .topbanner {
     width:100%;
     background-image:url('../img/graphic-04-mobile.svg');
-    
+
 }
 
 .topbannersub {
@@ -690,10 +813,10 @@ h5 {
     background-repeat: repeat;
     position:relative;
    background-size: 100%;
-    
+
 }
 .bannerlogo img{
- 
+
  width:60% !important;
 }
 
@@ -715,7 +838,7 @@ h5 {
     font-size:11pt;
     margin-top:4%;
     float:left;
-    
+
 }
 
 .blogcols {
@@ -725,7 +848,7 @@ h5 {
     margin-left:2%;
     font-weight:100;
     font-size:11pt;
-    float:left; 
+    float:left;
 }
 
 .blogcol1 {
@@ -748,7 +871,7 @@ h5 {
   padding-bottom: 3%;
   margin-bottom:5%;
   margin-right:5%;
-  
+
  }
 
  h2 {
@@ -756,7 +879,7 @@ h5 {
   padding-top:2%;
   padding-bottom:2%;
  }
- 
+
  .quickstartcols {
 
     margin-bottom:17%;
@@ -767,13 +890,30 @@ h5 {
     font-size:11pt;
     padding-left:5%;
     float:left;
-    
+
 }
+.quickstartcols img{
+
+   width:100% !important;
+
+}
+
+.quickstartcol2 h3{
+   font-size:2.3em !important;
+}
+
+
+
+.quickstartcol2 h1{
+   font-size:2em !important;
+}
+
+
 
 .blogcol2 {
 
     display:none;
-  
+
 }
 
 
@@ -809,19 +949,20 @@ h5 {
 
 
 @media screen and (max-width: 700px) {
- 
- .headertext { 
+
+
+ .headertext {
  padding-top:15%;
  }
- 
- .subnav {  
+
+ .subnav {
   font-size:1em;
   padding-top:3%;
   padding-bottom:3%;
   padding-left:2%;
   padding-right:2%;
  }
- 
+
  .docscol1 {
     float:left;
     width:90%;
@@ -863,91 +1004,91 @@ h5 {
     background-color:#EBF2F2;
     padding-left:5%;
     float:left;
-    
+
 }
 
 .docstext {
-  
+
   width:95%;
   font-size:0.9em;
   padding-left:5%;
   padding-bottom:5%;
   text-align:center;
 }
- 
+
  .dropdown-menu {
   opacity:0.9;
   float:right !important;
   width:50%;
  }
- 
+
  .topbannertext {
-  
+
   margin-bottom:5%;
   width:80%;
   margin-left:10%;
   font-size:1em;
  }
- 
+
  .section4 {
-  
+
    background-image:url('../img/graphic-04-mobile.svg');
  }
- 
+
  .button {
-  
+
  padding-bottom:5%;
  }
- 
+
  .col1 {
   width:90%;
  }
  .col2 {
   width:90%;
  }
- 
+
  .cols {
   padding-bottom:8%;
  }
- 
+
  .section4 {
   background-repeat:repeat;
  }
+
  .col1image {
-  
-  margin-right:5%;
-  
+   margin-right:5%;
+   margin-bottom:10% !important;
  }
- 
+
  h2 {
   font-size:1.5em;
   padding-top:4%;
   padding-bottom:4%;
  }
- 
+
  h1 {
   font-size:2.2em;
   padding-top:4%;
   padding-bottom:4%;
  }
- 
- 
+
+
  .companybox img {
-  
+
   width:20%;
-  
+
  }
- 
+
  .section2 {
   padding-bottom:4%;
  }
- 
+
  .section3 {
   width:100%;
   padding-left:%;
   margin-bottom:7%;
  }
- 
+
  button {
     font-family: 'Open Sans', sans-serif;
     background-color:white;
@@ -962,38 +1103,64 @@ h5 {
     margin-bottom:10%;
     letter-spacing:0.07em;
     font-size:13pt;
-}
 
-.col1image {
-  padding-bottom: 3%;
-  margin-bottom:10% !important;
-  margin-right:3%;
-  
  }
  .colpart1 {
   padding-bottom:5%;
-  
+  text-align:left;
+
  }
- 
+
  .colpart2 {
   padding-top:0%;
    padding-bottom:0%;
  }
- 
+
+.coltext1 {
+ text-align:left;
+ display:block;
+}
+
  .cols {
-  padding-bottom:8%;
+  padding-bottom:14%;
   padding-top:5%;
   font-size:0.9em !important;
   padding-left:8%;
  }
- 
+
  h3 {
-  
-  font-size:1.5em;
+  font-size:1.8em;
  }
+
  .companybox {
  margin-left:10%;
 
-   
- 
+}
+
+.videosection {
+      padding-top:3%;
+      padding-bottom:3%;
+      font-family: 'Open Sans', sans-serif;
+      width:90%;
+      font-weight:100;
+      font-size:1em;
+      color:#606060;
+      line-height:1.7em;
+      padding-left:10%;
+      text-align:left;
+
+    }
+
+}
+
+@media screen and (max-width:450px){
+
+  .col1image {
+    padding-bottom: 5%;
+    margin-bottom:20% !important;
+    margin-right:3%;
+    width:30%;
+    display:block;
+
+}
 }

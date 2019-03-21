@@ -2,7 +2,6 @@
 layout: tutorials
 title: Asynchronous Basics - C++
 ---
-<h1 class="page-header">Asynchronous Basics: C++</h1>
 
 This tutorial shows you how to write a simple server and client in C++ using
 gRPC's asynchronous/non-blocking APIs. It assumes you are already familiar with

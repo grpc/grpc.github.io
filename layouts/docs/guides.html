@@ -10,19 +10,19 @@
 
     {{ partial "docs-topnav.html" . }}
 
-<div class="quickstartcols">          
+<div class="quickstartcols">
 
 <div class="quickstartcol1">
 
-Guides<br>
-<a href="{{ .Site.BaseURL }}docs/guides/">{{ if eq (countrunes .RelPermalink) 13 }}+{{ end }}What is gRPC?</a><br>
-<a href="{{ .Site.BaseURL }}docs/guides/concepts/">{{ if in .RelPermalink "concepts" }}+{{ end }}gRPC Concepts</a><br>
-<a href="{{ .Site.BaseURL }}docs/guides/auth/">{{ if in .RelPermalink "auth" }}+{{ end }}Authentication</a><br>
-<a href="{{ .Site.BaseURL }}docs/guides/error/">{{ if in .RelPermalink "error" }}+{{ end }}Error handling and debugging</a><br>
-<a href="{{ .Site.BaseURL }}docs/guides/benchmarking/">{{ if in .RelPermalink "benchmarking" }}+{{ end }}Benchmarking</a><br>
-<a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md">gRPC Wire format</a><br>
-Related Guides<br>
-<a href="https://developers.google.com/protocol-buffers/docs/overview">Protocol Buffers</a><br>
+<h8>Guides</h8>
+<a href="{{ .Site.BaseURL }}docs/guides/">{{ if eq (countrunes .RelPermalink) 13 }}<div class="plus">+</div>{{ end }}What is gRPC?</a>
+<a href="{{ .Site.BaseURL }}docs/guides/concepts/">{{ if in .RelPermalink "concepts" }}<div class="plus">+</div>{{ end }}gRPC Concepts</a>
+<a href="{{ .Site.BaseURL }}docs/guides/auth/">{{ if in .RelPermalink "auth" }}<div class="plus">+</div>{{ end }}Authentication</a>
+<a href="{{ .Site.BaseURL }}docs/guides/error/">{{ if in .RelPermalink "error" }}<div class="plus">+</div>{{ end }}Error handling and debugging</a>
+<a href="{{ .Site.BaseURL }}docs/guides/benchmarking/">{{ if in .RelPermalink "benchmarking" }}<div class="plus">+</div>{{ end }}Benchmarking</a>
+<a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md">gRPC Wire format</a>
+<h8 style="margin-top:25%">Related Guides</h8>
+<a href="https://developers.google.com/protocol-buffers/docs/overview">Protocol Buffers</a>
 </div>
 
 <div class="quickstartcol2" style="margin-top:4%">
@@ -34,4 +34,3 @@ Related Guides<br>
 
 </div>
 {{ end }}
-

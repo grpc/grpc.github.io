@@ -3,7 +3,7 @@ layout: guides
 title: gRPC Concepts
 ---
 <p class="lead">This document introduces some key gRPC concepts with an overview
-of gRPC's architecture and RPC life cycle.</p> 
+of gRPC's architecture and RPC life cycle.</p>
 
 It assumes that you've read [What is gRPC?]({{site.baseurl}}/docs/guides). For
 language-specific details, see the Quick Start, tutorial, and reference
@@ -219,4 +219,3 @@ state, including <code>connected</code> and <code>idle</code>.
 
 How gRPC deals with closing down channels is language-dependent. Some languages
 also permit querying channel state.
-

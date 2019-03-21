@@ -1,9 +1,9 @@
 <div class="subnav d-none d-md-block">
-  <a href="{{ .Site.BaseURL }}docs/">{{ if eq (countrunes .RelPermalink) 6 }}{{ end }}Overview</a>
-|  <a href="{{ .Site.BaseURL }}docs/quickstart/">{{ if in .RelPermalink "quickstart" }}{{ end }}Quick Start</a>
-|  <a href="{{ .Site.BaseURL }}docs/guides/">{{ if in .RelPermalink "guides" }}<b> </b>{{ end }}Guides</a>
-|  <a href="{{ .Site.BaseURL }}docs/tutorials/">{{ if in .RelPermalink "tutorials" }}{{ end }}Tutorials</a>
-|  <a href="{{ .Site.BaseURL }}docs/reference/">{{ if in .RelPermalink "reference" }}{{ end }}Reference</a>
-|  <a href="{{ .Site.BaseURL }}docs/samples/">{{ if in .RelPermalink "samples" }}{{ end }}Samples</a>
-|  <a href="{{ .Site.BaseURL }}docs/talks/">{{ if in .RelPermalink "talks" }}{{ end }}Presentations</a>
+  <a href="{{ .Site.BaseURL }}docs/">{{ if eq (countrunes .RelPermalink) 6 }}<div class="plusmain">+</div>{{ end }}Overview</a>
+|  <a href="{{ .Site.BaseURL }}docs/quickstart/">{{ if in .RelPermalink "quickstart" }}<div class="plusmain">+</div>{{ end }}Quick Start</a>
+|  <a href="{{ .Site.BaseURL }}docs/guides/">{{ if in .RelPermalink "guides" }}<div class="plusmain">+</div>{{ end }}Guides</a>
+|  <a href="{{ .Site.BaseURL }}docs/tutorials/">{{ if in .RelPermalink "tutorials" }}<div class="plusmain">+</div>{{ end }}Tutorials</a>
+|  <a href="{{ .Site.BaseURL }}docs/reference/">{{ if in .RelPermalink "reference" }}<div class="plusmain">+</div>{{ end }}Reference</a>
+|  <a href="{{ .Site.BaseURL }}docs/samples/">{{ if in .RelPermalink "samples" }}<div class="plusmain">+</div>{{ end }}Samples</a>
+|  <a href="{{ .Site.BaseURL }}docs/talks/">{{ if in .RelPermalink "talks" }}<div class="plusmain">+</div>{{ end }}Presentations</a>
 </div>
