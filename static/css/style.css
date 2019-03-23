@@ -49,6 +49,8 @@ color:#0CC1C8 !important;
 
 }
 
+
+
 .pagination {
 
  padding-top:10%;
@@ -183,7 +185,7 @@ body {
 
 }
 
-.subnav a:active {
+.subnav a:active, .subnav a.active {
    color:#0CC1C8;
 
 
