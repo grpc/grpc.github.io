@@ -15,11 +15,11 @@
 <div class="quickstartcol1">
 
 <h8>Guides</h8>
-<a href="{{ .Site.BaseURL }}docs/guides/">{{ if eq (countrunes .RelPermalink) 13 }}<div class="plus">+</div>{{ end }}What is gRPC?</a>
-<a href="{{ .Site.BaseURL }}docs/guides/concepts/">{{ if in .RelPermalink "concepts" }}<div class="plus">+</div>{{ end }}gRPC Concepts</a>
-<a href="{{ .Site.BaseURL }}docs/guides/auth/">{{ if in .RelPermalink "auth" }}<div class="plus">+</div>{{ end }}Authentication</a>
-<a href="{{ .Site.BaseURL }}docs/guides/error/">{{ if in .RelPermalink "error" }}<div class="plus">+</div>{{ end }}Error handling and debugging</a>
-<a href="{{ .Site.BaseURL }}docs/guides/benchmarking/">{{ if in .RelPermalink "benchmarking" }}<div class="plus">+</div>{{ end }}Benchmarking</a>
+<a href="{{ .Site.BaseURL }}docs/guides/" {{ if eq (countrunes .RelPermalink) 13 }}class="active"{{ end }}>What is gRPC?</a>
+<a href="{{ .Site.BaseURL }}docs/guides/concepts/" {{ if in .RelPermalink "concepts" }}class="active"{{ end }}>gRPC Concepts</a>
+<a href="{{ .Site.BaseURL }}docs/guides/auth/" {{ if in .RelPermalink "auth" }}class="active"{{ end }}>Authentication</a>
+<a href="{{ .Site.BaseURL }}docs/guides/error/" {{ if in .RelPermalink "error" }}class="active"{{ end }}>Error handling and debugging</a>
+<a href="{{ .Site.BaseURL }}docs/guides/benchmarking/" {{ if in .RelPermalink "benchmarking" }}class="active"{{ end }}>Benchmarking</a>
 <a href="https://github.com/grpc/grpc/blob/master/doc/PROTOCOL-HTTP2.md">gRPC Wire format</a>
 <h8 style="margin-top:25%">Related Guides</h8>
 <a href="https://developers.google.com/protocol-buffers/docs/overview">Protocol Buffers</a>
