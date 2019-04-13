@@ -1,3 +1,10 @@
+---
+author: Johan Brandhorst
+author-link: https://jbrandhorst.com/
+date: "2019-01-08T00:00:00Z"
+published: true
+title: The state of gRPC in the browser
+---
 
 _This is a guest post by_
 _[Johan Brandhorst](https://jbrandhorst.com), Software Engineer at_
@@ -50,7 +57,7 @@ The basic idea is to have the browser send normal HTTP requests (with Fetch or
 XHR) and have a small proxy in front of the gRPC server to translate the
 requests and responses to something the browser can use.
 
-<p><img src="https://grpc.io/img/grpc-web-proxy.png"
+<p><img src="/img/grpc-web-proxy.png"
   alt="The role of the gRPC-Web proxy" style="max-width: 800px" /></p>
 
 # The Two Implementations

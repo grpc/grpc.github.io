@@ -38,11 +38,11 @@ In addition, gRPC integrates seamlessly with ecosystem components like service d
 
 Deciding between proxy versus client-side load balancing is a primary architectural choice. In Proxy load balancing, the client issues RPCs to the a Load Balancer (LB) proxy. The LB distributes the RPC call to one of the available backend servers that implement the actual logic for serving the call. The LB keeps track of load on each backend and implements algorithms for distributing load fairly. The clients themselves do not know about the backend servers. Clients can be untrusted. This architecture is typically used for user facing services where clients from open internet can connect to servers in a data center, as shown in the picture below. In this scenario, clients make requests to LB (#1). The LB passes on the request to one of the backends (#2), and the backends report load to LB (#3).
 
-![image alt text](../img/image_0.png)
+![image alt text](/img/image_0.png)
 
 In Client side load balancing, the client is aware of multiple backend servers and chooses one to use for each RPC. The client gets load reports from backend servers and the client implements the load balancing algorithms. In simpler configurations server load is not considered and client can just round-robin between available servers. This is shown in the picture below. As you can see, the client makes request to a specific backend (#1). The backends respond with load information (#2), typically on the same connection on which client RPC is executed. The client then updates its internal state.
 
-![image alt text](../img/image_1.png)
+![image alt text](/img/image_1.png)
 
 The following table outlines the pros and cons of each model.
 
@@ -137,7 +137,7 @@ With lookaside load balancing, the load balancing smarts are implemented in a sp
 
 The picture below illustrates this approach. The client gets at least one address from lookaside LB (#1). Then the client uses this address to make a RPC (#2), and server sends load report to the LB (#3). The lookaside LB communicates with other infrastructure such as name resolution, service discovery, and so on (#4).
 
-![image alt text](../img/image_2.png)
+![image alt text](/img/image_2.png)
 
 ## Recommendations and best practices
 

@@ -233,7 +233,7 @@ bit more.  When I first started working with bazel I found the
 target-pattern syntax somewhat intimidating.  It's actually not too
 bad. Here's a closer look:
 
-![]({{ site.baseurl }}/img/target-pattern-syntax.png)
+![](/img/target-pattern-syntax.png)
 
 * The `@` (at-sign) selects an external workspace. These are
   established by
@@ -368,7 +368,7 @@ graphviz format and pipe this to dot to generate the figure:
                   --output graph | dot -Tpng -O
 ```
 
-![]({{ site.baseurl }}/img/zlib-deps.png)
+![](/img/zlib-deps.png)
 
 So we can see that all grpc-related C code ultimately depends on this
 library.  But, there is no BUILD file in Mark's repo... where did it
