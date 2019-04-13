@@ -1,12 +1,5 @@
----
-attribution: Originally written by Louis Ryan with help from others at Google.
-date: "2015-09-08T00:00:00Z"
-published: true
-title: gRPC Motivation and Design Principles.
-url: blog/principles
----
 
-<h1>Motivation</h1>
+<h2>Motivation</h2>
 
 <p>Google has been using a single general-purpose RPC infrastructure called Stubby to connect the large number of microservices running within and across our data centers for over a decade. Our internal systems have long embraced the microservice architecture gaining popularity today. Having a uniform, cross-platform RPC infrastructure has allowed for the rollout of fleet-wide improvements in efficiency, security, reliability and behavioral analysis critical to supporting the incredible growth seen in that period.
 </p>
@@ -15,7 +8,7 @@ url: blog/principles
 
 <p>Stubby has many great features - however, it's not based on any standard and is too tightly coupled to our internal infrastructure to be considered suitable for public release. With the advent of SPDY, HTTP/2, and QUIC, many of these same features have appeared in public standards, together with other features that Stubby does not provide. It became clear that it was time to rework Stubby to take advantage of this standardization, and to extend its applicability to mobile, IoT, and Cloud use-cases.</p>
 
-<h1>Principles &amp; Requirements</h1>
+<h2>Principles &amp; Requirements</h2>
 
 <p><strong>Services not Objects, Messages not References</strong> - Promote the microservices design philosophy of coarse-grained message exchange between systems while avoiding the <a href="https://martinfowler.com/articles/distributed-objects-microservices.html">pitfalls of distributed objects</a> and the <a href="https://en.wikipedia.org/wiki/Fallacies_of_distributed_computing">fallacies of ignoring the network</a>.</p>
 
