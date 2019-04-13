@@ -1,3 +1,10 @@
+---
+attribution: Originally written by Lisa Carey with help from others at Google.
+date: "2016-04-04T00:00:00Z"
+published: true
+title: gRPC - now with easy installation.
+url: blog/installation
+---
 
 Today we are happy to provide an update that significantly simplifies the getting started experience for gRPC.
 
