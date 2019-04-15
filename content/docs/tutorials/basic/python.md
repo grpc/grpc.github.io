@@ -17,9 +17,7 @@ buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
 find out more in the [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3) and [Python
 generated code
-guide](https://developers.google.com/protocol-buffers/docs/reference/python-generated),
-and see the [release notes](https://github.com/google/protobuf/releases) for the
-new version in the protocol buffers Github repository.
+guide](https://developers.google.com/protocol-buffers/docs/reference/python-generated).
 
 <div id="toc"></div>
 
@@ -32,7 +30,7 @@ clients.
 
 With gRPC you can define your service once in a .proto file and implement
 clients and servers in any of gRPC's supported languages, which in turn can be
-run in environments ranging from servers inside Google to your own tablet, with
+run in environments ranging from servers inside Google to your own tablet -
 all the complexity of communication between different languages and environments
 is handled for you by gRPC. You also get all the advantages of working with
 protocol buffers, including efficient serialization, a simple IDL, and easy
@@ -153,13 +151,6 @@ First, install the grpcio-tools package:
 
 ```
 $ pip install grpcio-tools
-```
-
-Then, install the googleapis-common-proto package which is a collection of
-generated python classes for some common protos:
-
-```
-$ pip install googleapis-common-protos
 ```
 
 Use the following command to generate the Python code:

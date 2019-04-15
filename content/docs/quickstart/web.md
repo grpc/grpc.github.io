@@ -58,4 +58,4 @@ In this demo, there are three key components:
 - Work through a more detailed tutorial in [gRPC Basics: Web][]
 
 [Docker website]:https://docs.docker.com/compose/install/#install-compose
-[gRPC Basics: Web]:../tutorials/basic/web.html
+[gRPC Basics: Web]:../../tutorials/basic/web/

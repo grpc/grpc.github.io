@@ -14,13 +14,11 @@ It assumes that you have read the [Overview](/docs/index.html) and are familiar
 with [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
 that the example in this tutorial uses the proto3 version of the protocol
-buffers language, which is currently in beta release: you can find out more in
+buffers language: you can find out more in
 the [proto3 language
 guide](https://developers.google.com/protocol-buffers/docs/proto3) and [C++
 generated code
-guide](https://developers.google.com/protocol-buffers/docs/reference/cpp-generated),
-and see the [release notes](https://github.com/google/protobuf/releases) for the
-new version in the protocol buffers Github repository.
+guide](https://developers.google.com/protocol-buffers/docs/reference/cpp-generated).
 
 <div id="toc"></div>
 
@@ -380,7 +378,7 @@ address and port we want to connect to - in our case we'll use no SSL:
 ```cpp
 grpc::CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
 ```
-Note: In order to set additional options for the *channeL*, use the `grpc::CreateCustomChannel()` api with any special channel arguments - `grpc::ChannelArguments`
+Note: In order to set additional options for the *channel*, use the `grpc::CreateCustomChannel()` api with any special channel arguments - `grpc::ChannelArguments`
 
 Now we can use the channel to create our stub using the `NewStub` method provided in the `RouteGuide` class we generated from our .proto.
 

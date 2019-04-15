@@ -15,11 +15,8 @@ with [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
 that the example in this tutorial uses the
 [proto3](https://github.com/google/protobuf/releases) version of the protocol
-buffers language, which is currently in alpha release: you can find out more in
-the [proto3 language
-guide](https://developers.google.com/protocol-buffers/docs/proto3) and see the
-[release notes](https://github.com/google/protobuf/releases) for the new version
-in the protocol buffers Github repository.
+buffers language. You can find out more in the
+[proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3).
 
 <div id="toc"></div>
 
@@ -385,7 +382,7 @@ need to call the RouteGuide stub constructor, specifying the server address and
 port.
 
 ```js
-new example.RouteGuide('localhost:50051', grpc.credentials.createInsecure());
+new routeguide.RouteGuide('localhost:50051', grpc.credentials.createInsecure());
 ```
 
 ### Calling service methods

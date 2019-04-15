@@ -14,11 +14,9 @@ By walking through this example you'll learn how to:
 It assumes that you have read the [Overview](/docs/index.html) and are familiar
 with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the
 example in this tutorial uses the proto3 version of the protocol buffers
-language, which is currently in beta release: you can find out more in the
+language: you can find out more in the
 [proto3 language guide](https://developers.google.com/protocol-buffers/docs/proto3) and 
 [C# generated code reference](https://developers.google.com/protocol-buffers/docs/reference/csharp-generated).
-For information about the new version in the protocol buffers Github repository,
-see the [release notes](https://github.com/google/protobuf/releases).
 
 <div id="toc"></div>
 
@@ -40,8 +38,8 @@ updating.
 ## Example code and setup
 
 The example code for our tutorial is in
-[grpc/grpc/examples/csharp/route_guide](https://github.com/grpc/grpc/tree/
-{{ site.data.config.grpc_release_tag }}/examples/csharp/route_guide). To
+[grpc/grpc/examples/csharp/RouteGuide](https://github.com/grpc/grpc/tree/
+{{ site.data.config.grpc_release_tag }}/examples/csharp/RouteGuide). To
 download the example, clone the `grpc` repository by running the following
 command:
 
@@ -51,9 +49,9 @@ $ cd grpc
 ```
 
 All the files for this tutorial are in the directory
-`examples/csharp/route_guide`. Open the solution
-`examples/csharp/route_guide/RouteGuide.sln` from Visual Studio, Monodevelop or
-Xamarin Studio. For additional installation details, see the [How to use
+`examples/csharp/RouteGuide`. Open the solution
+`examples/csharp/RouteGuide/RouteGuide.sln` from Visual Studio (Windows or Mac) or Visual Studio Code.
+For additional installation details, see the [How to use
 instructions](https://github.com/grpc/grpc/tree/
 {{ site.data.config.grpc_release_tag }}/src/csharp#how-to-use).
 
@@ -146,35 +144,24 @@ message Point {
 ## Generating client and server code
 
 Next we need to generate the gRPC client and server interfaces from our .proto
-service definition. We do this using the protocol buffer compiler `protoc` with
-a special gRPC C# plugin.
+service definition. This can be done by invoking the protocol buffer compiler `protoc` with
+a special gRPC C# plugin from the command line, but starting from version
+1.17 the `Grpc.Tools` NuGet package integrates with MSBuild to provide [automatic C# code generation](https://github.com/grpc/grpc/blob/master/src/csharp/BUILD-INTEGRATION.md)
+from `.proto` files, which gives much better developer experience by running
+the right commands for you as part of the build.
 
-If you want to run this yourself, the `Grpc.Tools` NuGet package contains the
-binaries you will need to generate the code.
+This example already has a dependency on `Grpc.Tools` NuGet package and the
+`route_guide.proto` has already been added to the project, so the only thing
+needed to generate the client and server code is to build the solution.
+That can be done by running `dotnet build RouteGuide.sln` or building directly
+in Visual Studio.
 
-Once that's done, you can generate the C# code:
+The build regenerates the following files
+under the `RouteGuide/obj/Debug/TARGET_FRAMEWORK` directory:
 
-To generate the code, the following command should be run from the
-`examples/csharp/route_guide` directory:
-
-- Windows
-
-  ```
-  > packages\Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\protoc.exe -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages\Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}\tools\windows_x86\grpc_csharp_plugin.exe
-  ```
-
-- Linux (or Mac OS X by using `macosx_x64` directory).
-
-  ```
-  $ packages/Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/protoc -I../../protos --csharp_out RouteGuide --grpc_out RouteGuide ../../protos/route_guide.proto --plugin=protoc-gen-grpc=packages/Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}/tools/linux_x64/grpc_csharp_plugin
-  ```
-
-Running the appropriate command for your OS regenerates the following files in
-the RouteGuide directory:
-
-- `RouteGuide/RouteGuide.cs` contains all the protocol buffer code to populate,
+- `RouteGuide.cs` contains all the protocol buffer code to populate,
   serialize, and retrieve our request and response message types
-- `RouteGuide/RouteGuideGrpc.cs` provides generated client and server classes,
+- `RouteGuideGrpc.cs` provides generated client and server classes,
   including:
    - an abstract class `RouteGuide.RouteGuideBase` to inherit from when defining
      RouteGuide service implementations
@@ -199,8 +186,8 @@ There are two parts to making our `RouteGuide` service do its job:
   service responses.
 
 You can find our example `RouteGuide` server in
-[examples/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs](https://github.com/grpc/grpc/blob/
-{{ site.data.config.grpc_release_tag }}/examples/csharp/route_guide/RouteGuideServer/RouteGuideImpl.cs).
+[examples/csharp/RouteGuide/RouteGuideServer/RouteGuideImpl.cs](https://github.com/grpc/grpc/blob/
+{{ site.data.config.grpc_release_tag }}/examples/csharp/RouteGuide/RouteGuideServer/RouteGuideImpl.cs).
 Let's take a closer look at how it works.
 
 ### Implementing RouteGuide
@@ -370,8 +357,8 @@ do this, we:
 
 In this section, we'll look at creating a C# client for our `RouteGuide`
 service. You can see our complete example client code in
-[examples/csharp/route_guide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc/blob/
-{{ site.data.config.grpc_release_tag }}/examples/csharp/route_guide/RouteGuideClient/Program.cs).
+[examples/csharp/RouteGuide/RouteGuideClient/Program.cs](https://github.com/grpc/grpc/blob/
+{{ site.data.config.grpc_release_tag }}/examples/csharp/RouteGuide/RouteGuideClient/Program.cs).
 
 ### Creating a client object
 
@@ -383,7 +370,7 @@ Then, we create an instance of the `RouteGuite.RouteGuideClient` class generated
 from our .proto, passing the channel as an argument.
 
 ```csharp
-Channel channel = new Channel("127.0.0.1:50052", ChannelCredentials.Insecure)
+Channel channel = new Channel("127.0.0.1:50052", ChannelCredentials.Insecure);
 var client = new RouteGuide.RouteGuideClient(channel);
 
 // YOUR CODE GOES HERE
@@ -493,30 +480,28 @@ using (var call = client.RouteChat())
 
 ### Build the client and server:
 
-#### Using Visual Studio
+#### Using Visual Studio (or Visual Studio For Mac)
 
-- Open the solution `examples/csharp/route_guide/RouteGuide.sln` and select **Build**.
+- Open the solution `examples/csharp/RouteGuide/RouteGuide.sln` and select **Build**.
 
-#### Using Xamarin Studio or Monodevelop on OS X or Linux
+#### Using "dotnet" command line tool
 
-- See the [quickstart](../../quickstart/csharp.html) for instructions on downloading gRPC
-  nuget dependencies and building the solution with these IDEs.
+- Run `dotnet build RouteGuide.sln` from the `examples/csharp/RouteGuide` directory.
+  See the [quickstart](../../quickstart/csharp.html) for additional instructions on building 
+  the gRPC example with the `dotnet` command line tool.
 
 Run the server, which will listen on port 50052:
 
 ```
-> cd RouteGuideServer/bin/Debug
-> RouteGuideServer.exe
+> cd RouteGuideServer/bin/Debug/netcoreapp2.1
+> dotnet exec RouteGuideServer.dll
 ```
 
 Run the client (in a different terminal):
 
 ```
-> cd RouteGuideClient/bin/Debug
-> RouteGuideClient.exe
+> cd RouteGuideClient/bin/Debug/netcoreapp2.1
+> dotnet exec RouteGuideClient.dll
 ```
 
 You can also run the server and client directly from Visual Studio.
-
-On Linux or Mac, use `mono RouteGuideServer.exe` and `mono RouteGuideClient.exe`
-to run the server and client.

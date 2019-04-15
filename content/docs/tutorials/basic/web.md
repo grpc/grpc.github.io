@@ -1,10 +1,8 @@
 ---
-bodyclass: docs
-layout: docs
-headline: gRPC Basics - Web
-sidenav: doc-side-tutorial-nav.html
-type: markdown
+layout: tutorials
+title: gRPC Basics - Web
 ---
+
 <p class="lead">This tutorial provides a basic introduction on how to use
 gRPC-Web from browsers.</p>
 

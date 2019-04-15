@@ -5,10 +5,6 @@ title: gRPC Basics - Dart
 <p class="lead">This tutorial provides a basic Dart programmer's introduction to
 working with gRPC.</p>
 
-<p class="note">Dart gRPC is currently in beta. Please help us out by
-<a href="https://github.com/grpc/grpc-dart/issues/new">filing issues</a>
-if you encounter any.</p>
-
 By walking through this example you'll learn how to:
 
 - Define a service in a .proto file.
@@ -18,11 +14,9 @@ By walking through this example you'll learn how to:
 It assumes that you have read the [Overview](/docs/index.html) and are familiar
 with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the
 example in this tutorial uses the proto3 version of the protocol buffers
-language, which is currently in beta release: you can find out more in the
+language: you can find out more in the
 [proto3 language
-guide](https://developers.google.com/protocol-buffers/docs/proto3),
-and see the [release notes](https://github.com/google/protobuf/releases) for the
-new version in the protocol buffers Github repository.
+guide](https://developers.google.com/protocol-buffers/docs/proto3).
 
 <div id="toc"></div>
 
@@ -543,3 +537,10 @@ Likewise, to run the client:
 ```sh
 $ dart bin/client.dart
 ```
+
+## Reporting issues
+
+Should you encounter an issue, please help us out by
+<a href="https://github.com/grpc/grpc-dart/issues/new">filing issues</a>
+in our issue tracker.</p>
+
