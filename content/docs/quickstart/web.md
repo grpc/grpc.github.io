@@ -1,9 +1,6 @@
 ---
-bodyclass: docs
-layout: docs
-headline: Web Quickstart
-sidenav: doc-side-quickstart-nav.html
-type: markdown
+title: Web Quick Start
+layout: quickstart
 ---
 <p class="lead">This guide gets you started with gRPC-Web with a simple
 working example from the browser.</p>

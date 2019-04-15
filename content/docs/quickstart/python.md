@@ -68,13 +68,13 @@ tutorials and your own projects.
 To install gRPC tools, run:
 
 ```sh
-$ python -m pip install grpcio-tools googleapis-common-protos
+$ python -m pip install grpcio-tools
 ```
 
 ## Download the example
 
 You'll need a local copy of the example code to work through this quickstart.
-Download the example code from our Github repository (the following command
+Download the example code from our GitHub repository (the following command
 clones the entire repository, but you just need the examples for this quickstart
 and other tutorials):
 
@@ -111,7 +111,7 @@ buffers; you can find out lots more about how to define a service in a `.proto`
 file in [What is gRPC?][] and [gRPC Basics: Python][]. For now all you need
 to know is that both the server and the client "stub" have a `SayHello` RPC
 method that takes a `HelloRequest` parameter from the client and returns a
-`HelloResponse` from the server, and that this method is defined like this:
+`HelloReply` from the server, and that this method is defined like this:
 
 
 ```
@@ -235,4 +235,3 @@ Just like we did before, from the `examples/python/helloworld` directory:
 [helloworld.proto]:../protos/helloworld.proto
 [gRPC Basics: Python]:../tutorials/basic/python.html
 [What is gRPC?]: ../guides/
-

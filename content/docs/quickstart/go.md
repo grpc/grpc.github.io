@@ -2,7 +2,6 @@
 title: Go Quick Start
 layout: quickstart
 ---
-
 <p class="lead">This guide gets you started with gRPC in Go with a simple
 working example.</p>
 

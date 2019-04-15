@@ -159,7 +159,7 @@ need the `composer` and `protoc` binaries. You can find out how to get these bel
 If you don't have it already, you need to install the protobuf compiler
 `protoc`, version 3.4.0+ (the newer the better) for the current gRPC version.
 If you installed already, make sure the protobuf version is compatible with the 
-grpc version you installed. If you build grpc.so from souce, you can check
+grpc version you installed. If you build grpc.so from source, you can check
 the version of grpc inside package.xml file.
 
 The compatibility between the grpc and protobuf version is listed as table below:
@@ -177,7 +177,7 @@ v1.4.0 | 3.3.0
 v1.6.0 | 3.4.0
 
 If `protoc` hasn't been installed, you can download the `protoc` binaries from
-[the protocol buffers Github repository](https://github.com/google/protobuf/releases).
+[the protocol buffers GitHub repository](https://github.com/google/protobuf/releases).
 Then unzip this file and Update the environment variable `PATH` to include the path to 
 the protoc binary file./protobuf/releases).
 Then unzip this file and Update the environment variable `PATH` to include the path to 
@@ -256,7 +256,7 @@ you build this plugin.
 ## Download the example
 
 You'll need a local copy of the example code to work through this quickstart.
-Download the example code from our Github repository (the following command
+Download the example code from our GitHub repository (the following command
 clones the entire repository, but you just need the examples for this quickstart
 and other tutorials):
 

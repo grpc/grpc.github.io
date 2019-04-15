@@ -4,6 +4,7 @@ headline: Go Generated Code Reference
 layout: docs
 type: markdown
 ---
+# Go Generated Code Reference
 
 This guide describes the code generated with the [grpc plugin](https://godoc.org/github.com/golang/protobuf/protoc-gen-go/grpc) to `protoc-gen-go`
 when compiling `.proto` files with `protoc`.

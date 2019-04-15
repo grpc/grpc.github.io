@@ -2,7 +2,6 @@
 title: Node Quick Start
 layout: quickstart
 ---
-
 <p class="lead">This guide gets you started with gRPC in Node with a simple
 working example.</p>
 
@@ -56,7 +55,7 @@ buffers; you can find out lots more about how to define a service in a `.proto`
 file in [gRPC Basics: Node][]. For now all you need
 to know is that both the server and the client "stub" have a `SayHello` RPC
 method that takes a `HelloRequest` parameter from the client and returns a
-`HelloResponse` from the server, and that this method is defined like this:
+`HelloReply` from the server, and that this method is defined like this:
 
 
 ```proto
@@ -172,5 +171,6 @@ Just like we did before, from the `examples/node/dynamic_codegen` directory:
  - Work through a more detailed tutorial in [gRPC Basics: Node][]
  - Explore the gRPC Node core API in its [reference
    documentation](/grpc/node/)
+ - We do have more than one grpc implementation for nodejs. [Learn about the pros and cons of each here](https://github.com/grpc/grpc-node/blob/master/PACKAGE-COMPARISON.md).
 
 [gRPC Basics: Node]:../tutorials/basic/node.html
