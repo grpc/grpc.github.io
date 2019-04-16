@@ -22,7 +22,7 @@ visualization.
 
   * [Multi-language performance dashboard @latest_release (lastest available stable release)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5636470266134528) 
   * [Multi-language performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5652536396611584)
-  * [C++ detailed performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5632763172487168)
+  * [C++ detailed performance dashboard @master (latest dev version)](https://performance-dot-grpc-testing.appspot.com/explore?dashboard=5685265389584384)
 
 Additional benchmarking provides fine grained insights into where
 CPU is spent.

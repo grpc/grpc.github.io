@@ -3,7 +3,7 @@ layout: guides
 title: gRPC Concepts
 ---
 <p class="lead">This document introduces some key gRPC concepts with an overview
-of gRPC's architecture and RPC life cycle.</p>
+of gRPC's architecture and RPC life cycle.</p> 
 
 It assumes that you've read [What is gRPC?]({{site.baseurl}}/docs/guides). For
 language-specific details, see the Quick Start, tutorial, and reference
@@ -51,7 +51,8 @@ rpc SayHello(HelloRequest) returns (HelloResponse){
 
 - Server streaming RPCs where the client sends a request to the server and gets
   a stream to read a sequence of messages back. The client reads from the
-  returned stream until there are no more messages.
+  returned stream until there are no more messages. gRPC guarantees message
+  ordering within an individual RPC call.
 
 ```
 rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse){
@@ -61,7 +62,8 @@ rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse){
 - Client streaming RPCs where the client writes a sequence of messages and sends
   them to the server, again using a provided stream. Once the client has
   finished writing the messages, it waits for the server to read them and return
-  its response.
+  its response.  Again gRPC guarantees message ordering within an individual RPC
+  call.
 
 ```
 rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {
@@ -219,3 +221,4 @@ state, including <code>connected</code> and <code>idle</code>.
 
 How gRPC deals with closing down channels is language-dependent. Some languages
 also permit querying channel state.
+
