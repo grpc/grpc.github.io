@@ -17,7 +17,7 @@ example by using either an IDE and its build tools,
 or by using the the .NET Core SDK command line tools.
 
 First, make sure you have installed the
-[gRPC C# prerequisites](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/src/csharp/README.md#prerequisites).
+[gRPC C# prerequisites](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/src/csharp/README.md#prerequisites).
 You will also need Git to download the sample code.
 
 ## Download the example
@@ -29,7 +29,7 @@ and other tutorials):
 
 ```sh
 $ # Clone the repository to get the example code:
-$ git clone -b {{ site.data.config.grpc_release_tag }} https://github.com/grpc/grpc 
+$ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc 
 $ cd grpc
 ```
 
@@ -53,7 +53,7 @@ From the `examples/csharp/Helloworld` directory:
 ```
 
 *NOTE: If you want to use gRPC C# from a project that uses the "classic" .csproj files (supported by Visual Studio 2013, 2015 and older versions of Mono), please refer to the
-[Greeter using "classic" .csproj](https://github.com/grpc/grpc/blob/{{ site.data.config.grpc_release_tag }}/examples/csharp/HelloworldLegacyCsproj/README.md) example.*
+[Greeter using "classic" .csproj](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/examples/csharp/HelloworldLegacyCsproj/README.md) example.*
 
 ## Run a gRPC application
 
