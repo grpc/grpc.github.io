@@ -9,7 +9,7 @@ type: markdown
 This guide describes the code generated with the [grpc plugin](https://godoc.org/github.com/golang/protobuf/protoc-gen-go/grpc) to `protoc-gen-go`
 when compiling `.proto` files with `protoc`.
 
-You can find out how to define a gRPC service in a `.proto` file in [Service Definitions](../guides/concepts.html#service-definition).
+You can find out how to define a gRPC service in a `.proto` file in [Service Definitions](/docs/guides/concepts/#service-definition).
 
 <p class="note"><strong>Thread-safety</strong>: note that client-side RPC invocations and server-side RPC handlers <i>are thread-safe</i> and are meant
 to be run on concurrent goroutines. But also note that for <i>individual streams</i>, incoming and outgoing data is bi-directional but serial;
@@ -173,7 +173,7 @@ End-of-stream for the server-to-client stream is indicated by a return value of 
 End-of-stream for the client-to-server stream can be indicated from the client by calling the `CloseSend` method on the stream.
 
 ## Packages and Namespaces
-When the `prococ` compiler is invoked with `--go_out=plugins=grpc:`, the `proto package` to Go package translation
+When the `protoc` compiler is invoked with `--go_out=plugins=grpc:`, the `proto package` to Go package translation
 works the same as when the `protoc-gen-go` plugin is used without the `grpc` plugin.
 
 So, for example, if `foo.proto` declares itself to be in `package foo`, then the generated `foo.pb.go` file will also be in
