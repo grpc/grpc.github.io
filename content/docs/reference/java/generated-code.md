@@ -292,7 +292,7 @@ Bazel developers can use the
 [`java_grpc_library`](https://github.com/grpc/grpc-java/blob/master/java_grpc_library.bzl)
 rule, typically as follows:
 
-```
+```java
 load("@grpc_java//:java_grpc_library.bzl", "java_grpc_library")
 
 proto_library(
@@ -318,7 +318,7 @@ for reference.
 If you wish to invoke the protobuf plugin for gRPC Java directly,
 the command-line syntax is as follows:
 
-```
+```sh
 $ protoc --plugin=protoc-gen-grpc-java \
   --grpc-java_out="$OUTPUT_FILE" --proto_path="$DIR_OF_PROTO_FILE" "$PROTO_FILE"
 ```
