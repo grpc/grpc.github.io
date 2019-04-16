@@ -26,7 +26,7 @@ In gRPC, both the client and server make their own independent and local determi
 
 ## Setting a deadline
 
-As a client you should always set a deadline for how long you are willing to wait for a reply from the server. Here's an example using the greeting service from our [Quick Start Guides]({{ site.baseurl }}/docs/quickstart/):
+As a client you should always set a deadline for how long you are willing to wait for a reply from the server. Here's an example using the greeting service from our [Quick Start Guides](/docs/quickstart/):
 
 ### C++
 

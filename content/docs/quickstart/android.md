@@ -31,7 +31,7 @@ and other tutorials):
 
 ```sh
 $ # Clone the repository at the latest release to get the example code:
-$ git clone -b {{ site.data.config.grpc_java_release_tag }} https://github.com/grpc/grpc-java
+$ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-java
 $ # Navigate to the Java examples:
 $ cd grpc-java/examples
 ```

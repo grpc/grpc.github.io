@@ -5,7 +5,7 @@ title: gRPC Concepts
 <p class="lead">This document introduces some key gRPC concepts with an overview
 of gRPC's architecture and RPC life cycle.</p> 
 
-It assumes that you've read [What is gRPC?]({{site.baseurl}}/docs/guides). For
+It assumes that you've read [What is gRPC?](/docs/guides). For
 language-specific details, see the Quick Start, tutorial, and reference
 documentation for your chosen language(s), where available (complete reference
 docs are coming soon).
@@ -202,8 +202,7 @@ terminates the RPC immediately so that no further work is done. It is *not* an
 
 ### Metadata
 
-Metadata is information about a particular RPC call (such as <a href="
-{{ site.baseurl }}/docs/guides/auth.html">authentication details</a>) in the
+Metadata is information about a particular RPC call (such as <a href="/docs/guides/auth.html">authentication details</a>) in the
 form of a list of key-value pairs, where the keys are strings and the values are
 typically strings (but can be binary data). Metadata is opaque to gRPC itself -
 it lets the client provide information associated with the call to the server

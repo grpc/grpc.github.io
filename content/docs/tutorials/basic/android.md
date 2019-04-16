@@ -27,7 +27,7 @@ With gRPC we can define our service once in a .proto file and implement clients 
 The example code for our tutorial is in [grpc-java's examples/android](https://github.com/grpc/grpc-java/tree/{{< param grpc_release_tag >}}/examples/android). To download the example, clone the `grpc-java` repository by running the following command:
 
 ```
-$ git clone -b {{ site.data.config.grpc_java_release_tag }} https://github.com/grpc/grpc-java.git
+$ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-java.git
 ```
 
 Then change your current directory to `grpc-java/examples/android`:

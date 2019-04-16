@@ -139,7 +139,7 @@ to generate the code. Starting from version 1.17 the package also integrates wit
 MSBuild to provide [automatic C# code generation](https://github.com/grpc/grpc/blob/master/src/csharp/BUILD-INTEGRATION.md)
 from `.proto` files.
 
-This example project already depends on the `Grpc.Tools.{{ site.data.config.grpc_release_tag | remove_first: "v" }}` NuGet package so just re-building the solution
+This example project already depends on the `Grpc.Tools.{{< param grpc_release_tag_no_v >}}` NuGet package so just re-building the solution
 is enough to regenerate the code from our modified `.proto` file.
 
 You can rebuild just like we first built the original
