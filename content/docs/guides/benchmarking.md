@@ -45,7 +45,7 @@ service has two methods:
   * UnaryCall - a unary RPC of a simple request that specifies the number of bytes to return in the response
   * StreamingCall - a streaming RPC that allows repeated ping-pongs of request and response messages akin to the UnaryCall
 
-![gRPC performance testing worker diagram](testing_framework.png)
+![gRPC performance testing worker diagram](/img/testing_framework.png)
 
 These workers are controlled by a
 [driver](https://github.com/grpc/grpc/blob/master/test/cpp/qps/qps_json_driver.cc)
