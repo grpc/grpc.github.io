@@ -38,13 +38,13 @@ Install the protoc compiler that is used to generate gRPC service code. The simp
 
 Next, install the protoc plugin for Go
 
-```
+```sh
 $ go get -u github.com/golang/protobuf/protoc-gen-go
 ```
 
 The compiler plugin, protoc-gen-go, will be installed in $GOBIN, defaulting to $GOPATH/bin. It must be in your $PATH for the protocol compiler, protoc, to find it.  
 
-```
+```sh
 $ export PATH=$PATH:$GOPATH/bin
 ```
 
@@ -56,7 +56,7 @@ The grpc code that was fetched with `go get google.golang.org/grpc` also contain
 
 Change to the example directory
 
-```
+```sh
 $ cd $GOPATH/src/google.golang.org/grpc/examples/helloworld
 ```
 
@@ -74,13 +74,13 @@ This `helloworld.pb.go` file contains:
 To compile and run the server and client code, the `go run` command can be used.
 In the examples directory:
 
-```
+```sh
 $ go run greeter_server/main.go
 ```
 
 From a different terminal:
 
-```
+```sh
 $ go run greeter_client/main.go
 ```
 
@@ -94,7 +94,7 @@ Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
 file in [What is gRPC?](/docs/guides) and [gRPC Basics:
-Go][]. For now all you need to know is that both the server and the client
+Go](/docs/tutorials/basic/go/). For now all you need to know is that both the server and the client
 "stub" have a `SayHello` RPC method that takes a `HelloRequest` parameter from
 the client and returns a `HelloReply` from the server, and that this method
 is defined like this:
@@ -204,10 +204,8 @@ Greeting: Hello again world
 
 ## What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
-  and [gRPC Concepts](../guides/concepts.html)
-- Work through a more detailed tutorial in [gRPC Basics: Go][]
+- Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
+  and [gRPC Concepts](/docs/guides/concepts/)
+- Work through a more detailed tutorial in [gRPC Basics: Go](/docs/tutorials/basic/go/)
 - Explore the gRPC Go core API in its [reference
   documentation](https://godoc.org/google.golang.org/grpc)
-
-[gRPC Basics: Go]:../tutorials/basic/go.html

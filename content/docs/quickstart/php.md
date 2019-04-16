@@ -138,7 +138,7 @@ extension=grpc.so
 
 You need to add this to your project's `composer.json` file.
 
-```
+```json
   "require": {
     "grpc/grpc": "v1.7.0"
   }
@@ -224,7 +224,7 @@ extension=protobuf.so
 
 Add this to your `composer.json` file:
 
-```
+```json
   "require": {
     "google/protobuf": "^v3.3.0"
   }
@@ -262,7 +262,7 @@ and other tutorials):
 
 Note that currently you can only create clients in PHP for gRPC services -
 you can find out how to create gRPC servers in our other tutorials,
-e.g. [Node.js](node-quickstart.md).
+e.g. [Node.js](/docs/tutorials/basic/node/).
 
 ```sh
 $ # Clone the repository to get the example code:
@@ -302,13 +302,13 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [gRPC Basics: PHP][]. For now all you need to know is that both the
+file in [gRPC Basics: PHP](/docs/tutorials/basic/php/). For now all you need to know is that both the
 server and the client "stub" have a `SayHello` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloResponse` from
 the server, and that this method is defined like this:
 
 
-```
+```php
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -330,7 +330,7 @@ Let's update this so that the `Greeter` service has two methods. Edit
 `examples/protos/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
-```
+```php
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -438,11 +438,8 @@ In another terminal, from the `examples/php` directory:
 
 ## What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
-  and [gRPC Concepts](../guides/concepts.html)
-- Work through a more detailed tutorial in [gRPC Basics: PHP][]
+- Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
+  and [gRPC Concepts](/docs/guides/concepts/)
+- Work through a more detailed tutorial in [gRPC Basics: PHP](/docs/tutorials/basic/php/)
 - Explore the gRPC PHP core API in its [reference
   documentation](/grpc/php/namespace-Grpc.html)
-
-[helloworld.proto]:../protos/helloworld.proto
-[gRPC Basics: PHP]:../tutorials/basic/php.html

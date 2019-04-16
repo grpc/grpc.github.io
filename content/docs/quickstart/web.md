@@ -13,7 +13,7 @@ working example from the browser.</p>
 
 This demo requires Docker Compose file
 [version 3](https://docs.docker.com/compose/compose-file/). Please refer to
-[Docker website][] on how to install Docker.
+[Docker website](https://docs.docker.com/compose/install/#install-compose) on how to install Docker.
 
 ## Run an Echo example from the browser!
 
@@ -26,7 +26,7 @@ $ docker-compose up -d node-server envoy commonjs-client
 
 Open a browser tab, and go to:
 
-```
+```sh
 http://localhost:8081/echotest.html
 ```
 
@@ -55,7 +55,4 @@ In this demo, there are three key components:
 
 ## What's next
 
-- Work through a more detailed tutorial in [gRPC Basics: Web][]
-
-[Docker website]:https://docs.docker.com/compose/install/#install-compose
-[gRPC Basics: Web]:../../tutorials/basic/web/
+- Work through a more detailed tutorial in [gRPC Basics: Web](/docs/tutorials/basic/web/)

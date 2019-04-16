@@ -52,7 +52,7 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [gRPC Basics: Node][]. For now all you need
+file in [gRPC Basics: Node](/docs/tutorials/basic/node/). For now all you need
 to know is that both the server and the client "stub" have a `SayHello` RPC
 method that takes a `HelloRequest` parameter from the client and returns a
 `HelloReply` from the server, and that this method is defined like this:
@@ -166,11 +166,9 @@ Just like we did before, from the `examples/node/dynamic_codegen` directory:
 
 ## What's next
 
- - Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
-   and [gRPC Concepts](../guides/concepts.html)
- - Work through a more detailed tutorial in [gRPC Basics: Node][]
+ - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
+   and [gRPC Concepts](/docs/guides/concepts/)
+ - Work through a more detailed tutorial in [gRPC Basics: Node](/docs/tutorials/basic/node/)
  - Explore the gRPC Node core API in its [reference
    documentation](/grpc/node/)
  - We do have more than one grpc implementation for nodejs. [Learn about the pros and cons of each here](https://github.com/grpc/grpc-node/blob/master/PACKAGE-COMPARISON.md).
-
-[gRPC Basics: Node]:../tutorials/basic/node.html

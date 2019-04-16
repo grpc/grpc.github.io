@@ -64,13 +64,13 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [gRPC Basics: Android Java][]. For now all you need to know is that both the
+file in [gRPC Basics: Android Java](/docs/tutorials/basic/android/). For now all you need to know is that both the
 server and the client "stub" have a `SayHello` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloResponse` from the
 server, and that this method is defined like this:
 
 
-```
+```java
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -91,7 +91,7 @@ Let's update this so that the `Greeter` service has two methods. Edit
 `src/main/proto/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
-```
+```java
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -125,7 +125,7 @@ parts of our example application.
 
 ### Update the server
 
-Check out the Java quickstart [here](/docs/quickstart/java.html#update-the-server).
+Check out the Java quickstart [here](/docs/quickstart/java/#update-the-server).
 
 ### Update the client
 
@@ -133,7 +133,7 @@ In the same directory, open
 `app/src/main/java/io/grpc/helloworldexample/HelloworldActivity.java`. Call the new
 method like this:
 
-```
+```java
     try {
         HelloRequest message = HelloRequest.newBuilder().setName(mMessage).build();
         HelloReply reply = stub.sayHello(message);
@@ -177,7 +177,7 @@ configure USB port forwarding to allow the device to communicate with the server
 running on your computer. This is done via the `adb` command line tool as
 follows:
 
-```
+```sh
 adb reverse tcp:8080 tcp:50051
 ```
 
@@ -197,10 +197,8 @@ enter `10.0.2.2` and `50051` as the `Host` and `Port`.
 
 ## What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
-  and [gRPC Concepts](../guides/concepts.html)
-- Work through a more detailed tutorial in [gRPC Basics: Android Java][]
+- Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
+  and [gRPC Concepts](/docs/guides/concepts/)
+- Work through a more detailed tutorial in [gRPC Basics: Android Java](/docs/tutorials/basic/android/)
 - Explore the gRPC Java core API in its [reference
   documentation](/grpc-java/javadoc/)
-
-[gRPC Basics: Android Java]:../tutorials/basic/android.html

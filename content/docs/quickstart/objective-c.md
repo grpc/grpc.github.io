@@ -126,7 +126,7 @@ need to know is that both the server and the client "stub" have a `SayHello`
 RPC method that takes a `HelloRequest` parameter from the client and returns a
 `HelloResponse` from the server, and that this method is defined like this:
 
-```
+```c
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -148,7 +148,7 @@ Let's update this so that the `Greeter` service has two methods. Edit
 `examples/protos/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
-```
+```c
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -181,7 +181,7 @@ As you remember, gRPC doesn't provide a server API for Objective-C. Instead, we
 need to update the C++ sample server. Open
 `examples/cpp/helloworld/greeter_server.cc`. Implement the new method like this:
 
-```
+```c++
 class GreeterServiceImpl final : public Greeter::Service {
   Status SayHello(ServerContext* context, const HelloRequest* request,
                   HelloReply* reply) override {
@@ -202,7 +202,7 @@ class GreeterServiceImpl final : public Greeter::Service {
 
 Edit `examples/objective-c/helloworld/main.m` to call the new method like this:
 
-```
+```c
 int main(int argc, char * argv[]) {
   @autoreleasepool {
     [GRPCCall useInsecureConnectionsForHost:kHostAddress];
@@ -307,10 +307,8 @@ Run `brew install protobuf` to get `protoc` compiler.
 
 ## What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
-  and [gRPC Concepts](../guides/concepts.html)
-- Work through a more detailed tutorial in [gRPC Basics: Objective-C][]
+- Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
+  and [gRPC Concepts](/docs/guides/concepts/)
+- Work through a more detailed tutorial in [gRPC Basics: Objective-C](/docs/tutorials/basic/objective-c/)
 - Explore the Objective-C core API in its [reference
   documentation](http://cocoadocs.org/docsets/gRPC/)
-
-[gRPC Basics: Objective-C]:../tutorials/basic/objective-c.html

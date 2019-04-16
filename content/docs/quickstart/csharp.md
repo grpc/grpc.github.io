@@ -48,7 +48,7 @@ dependencies for you (`Grpc`, `Grpc.Tools` and `Google.Protobuf` NuGet packages)
 ### Using .NET Core SDK from the command line
 From the `examples/csharp/Helloworld` directory:
 
-```
+```sh
 > dotnet build Greeter.sln
 ```
 
@@ -61,14 +61,14 @@ From the `examples/csharp/Helloworld` directory:
 
 * Run the server
 
-```
+```sh
 > cd GreeterServer
 > dotnet run -f netcoreapp2.1
 ```
 
 * In another terminal, run the client
 
-```
+```sh
 > cd GreeterClient
 > dotnet run -f netcoreapp2.1
 ```
@@ -80,13 +80,13 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [gRPC Basics: C#][]. For now all you need to know is that both the
+file in [gRPC Basics: C#](/docs/tutorials/basic/csharp/). For now all you need to know is that both the
 server and the client "stub" have a `SayHello` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloResponse` from the
 server, and that this method is defined like this:
 
 
-```
+```C#
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -108,7 +108,7 @@ Let's update this so that the `Greeter` service has two methods. Edit
 `examples/protos/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
-```
+```C#
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -167,7 +167,7 @@ and call the new method in the human-written parts of our example application.
 With the `Greeter.sln` open in your IDE, open `GreeterServer/Program.cs`.
 Implement the new method by editing the GreeterImpl class like this:
 
-```
+```C#
 class GreeterImpl : Greeter.GreeterBase
 {
     // Server side handler of the SayHello RPC
@@ -189,7 +189,7 @@ class GreeterImpl : Greeter.GreeterBase
 With the same `Greeter.sln` open in your IDE, open `GreeterClient/Program.cs`.
 Call the new method like this:
 
-```
+```C#
 public static void Main(string[] args)
 {
     Channel channel = new Channel("127.0.0.1:50051", ChannelCredentials.Insecure);
@@ -220,25 +220,22 @@ Just like we did before, from the `examples/csharp/Helloworld` directory:
 
 * Run the server
 
-```
+```sh
 > cd GreeterServer
 > dotnet run -f netcoreapp2.1
 ```
 
 * In another terminal, run the client
 
-```
+```sh
 > cd GreeterClient
 > dotnet run -f netcoreapp2.1
 ```
 
 ## What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
-  and [gRPC Concepts](../guides/concepts.html)
-- Work through a more detailed tutorial in [gRPC Basics: C#][]
+- Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
+  and [gRPC Concepts](/docs/guides/concepts/)
+- Work through a more detailed tutorial in [gRPC Basics: C#](/docs/tutorials/basic/csharp/)
 - Explore the gRPC C# core API in its [reference
   documentation](/grpc/csharp/api/Grpc.Core.html)
-
-[helloworld.proto]:../protos/helloworld.proto
-[gRPC Basics: C#]:../tutorials/basic/csharp.html

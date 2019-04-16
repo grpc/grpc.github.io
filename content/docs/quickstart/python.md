@@ -108,13 +108,13 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [What is gRPC?][] and [gRPC Basics: Python][]. For now all you need
+file in [What is gRPC?](/docs/guides/) and [gRPC Basics: Python](/docs/tutorials/basic/python/). For now all you need
 to know is that both the server and the client "stub" have a `SayHello` RPC
 method that takes a `HelloRequest` parameter from the client and returns a
 `HelloReply` from the server, and that this method is defined like this:
 
 
-```
+```proto
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -136,7 +136,7 @@ Let's update this so that the `Greeter` service has two methods. Edit
 `examples/protos/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
-```
+```proto
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -183,7 +183,7 @@ and call the new method in the human-written parts of our example application.
 In the same directory, open `greeter_server.py`. Implement the new method like
 this:
 
-```
+```py
 class Greeter(helloworld_pb2_grpc.GreeterServicer):
 
   def SayHello(self, request, context):
@@ -198,7 +198,7 @@ class Greeter(helloworld_pb2_grpc.GreeterServicer):
 
 In the same directory, open `greeter_client.py`. Call the new method like this:
 
-```
+```py
 def run():
   channel = grpc.insecure_channel('localhost:50051')
   stub = helloworld_pb2_grpc.GreeterStub(channel)
@@ -226,12 +226,8 @@ Just like we did before, from the `examples/python/helloworld` directory:
 
 ## What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?][]
-  and [gRPC Concepts](../guides/concepts.html)
-- Work through a more detailed tutorial in [gRPC Basics: Python][]
+- Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
+  and [gRPC Concepts](/docs/guides/concepts/)
+- Work through a more detailed tutorial in [gRPC Basics: Python](/docs/tutorials/basic/python/)
 - Explore the gRPC Python core API in its [reference
   documentation](/grpc/python/)
-
-[helloworld.proto]:../protos/helloworld.proto
-[gRPC Basics: Python]:../tutorials/basic/python.html
-[What is gRPC?]: ../guides/

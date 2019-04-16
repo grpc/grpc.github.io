@@ -77,8 +77,8 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [What is gRPC?](/docs/#what-is-grpc) and [gRPC Basics:
-C++][]. For now all you need to know is that both the server and the client
+file in [What is gRPC?](/docs/guides/) and [gRPC Basics:
+C++](/docs/tutorials/basic/c/). For now all you need to know is that both the server and the client
 "stub" have a `SayHello` RPC method that takes a `HelloRequest` parameter from
 the client and returns a `HelloResponse` from the server, and that this method
 is defined like this:
@@ -154,7 +154,7 @@ In the same directory, open `greeter_server.cc`. Implement the new method like
 this:
 
 
-```
+```c++
 class GreeterServiceImpl final : public Greeter::Service {
   Status SayHello(ServerContext* context, const HelloRequest* request,
                   HelloReply* reply) override {
@@ -177,7 +177,7 @@ A new `SayHelloAgain` method is now available in the stub. We'll follow the same
 pattern as for the already present `SayHello` and add a new `SayHelloAgain`
 method to `GreeterClient`:
 
-```
+```c++
 class GreeterClient {
  public:
   // ...
@@ -207,7 +207,7 @@ class GreeterClient {
 
 Finally, we exercise this new method in `main`:
 
-```
+```c++
 int main(int argc, char** argv) {
   // ...
   std::string reply = greeter.SayHello(user);
@@ -243,7 +243,7 @@ Just like we did before, from the `examples/cpp/helloworld` directory:
    ```
 
    You should see the updated output:
-   ```
+   ```sh
    $ ./greeter_client
    Greeter received: Hello world
    Greeter received: Hello again world
@@ -251,10 +251,8 @@ Just like we did before, from the `examples/cpp/helloworld` directory:
 
 ## What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
-  and [gRPC Concepts](../guides/concepts.html)
-- Work through a more detailed tutorial in [gRPC Basics: C++][]
+- Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
+  and [gRPC Concepts](/docs/guides/concepts/)
+- Work through a more detailed tutorial in [gRPC Basics: C++](/docs/tutorials/basic/c/)
 - Explore the gRPC C++ core API in its [reference
   documentation](/grpc/cpp/)
-
-[gRPC Basics: C++]:../tutorials/basic/c.html

@@ -56,13 +56,13 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [gRPC Basics: Java][]. For now all you need to know is that both the
+file in [gRPC Basics: Java](/docs/tutorials/basic/java/). For now all you need to know is that both the
 server and the client "stub" have a `SayHello` RPC method that takes a
 `HelloRequest` parameter from the client and returns a `HelloReply` from the
 server, and that this method is defined like this:
 
 
-```
+```java
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -83,7 +83,7 @@ Let's update this so that the `Greeter` service has two methods. Edit
 `src/main/proto/helloworld.proto` and update it with a new `SayHelloAgain`
 method, with the same request and response types:
 
-```
+```java
 // The greeting service definition.
 service Greeter {
   // Sends a greeting
@@ -121,7 +121,7 @@ In the same directory, open
 `src/main/java/io/grpc/examples/helloworld/HelloWorldServer.java`. Implement the
 new method like this:
 
-```
+```java
 private class GreeterImpl extends GreeterGrpc.GreeterImplBase {
 
   @Override
@@ -147,7 +147,7 @@ In the same directory, open
 `src/main/java/io/grpc/examples/helloworld/HelloWorldClient.java`. Call the new
 method like this:
 
-```
+```java
 public void greet(String name) {
   logger.info("Will try to greet " + name + " ...");
   HelloRequest request = HelloRequest.newBuilder().setName(name).build();
@@ -193,11 +193,9 @@ Just like we did before, from the `examples` directory:
 
 ## What's next
 
-- Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
-  and [gRPC Concepts](../guides/concepts.html)
-- Work through a more detailed tutorial in [gRPC Basics: Java][]
+- Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
+  and [gRPC Concepts](/docs/guides/concepts/)
+- Work through a more detailed tutorial in [gRPC Basics: Java](/docs/tutorials/basic/java/)
 - Explore the gRPC Java core API in its [reference
   documentation](/grpc-java/javadoc/)
-
-[gRPC Basics: Java]:../tutorials/basic/java.html
 

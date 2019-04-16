@@ -73,7 +73,7 @@ Congratulations! You've just run a client-server application with gRPC.
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
 buffers; you can find out lots more about how to define a service in a `.proto`
-file in [gRPC Basics: Ruby][]. For now all you need
+file in [gRPC Basics: Ruby](/docs/tutorials/basic/ruby/). For now all you need
 to know is that both the server and the client "stub" have a `SayHello` RPC
 method that takes a `HelloRequest` parameter from the client and returns a
 `HelloResponse` from the server, and that this method is defined like this:
@@ -157,7 +157,7 @@ end
 
 In the same directory, open `greeter_client.rb`. Call the new method like this:
 
-```
+```rb
 def main
   stub = Helloworld::Greeter::Stub.new('localhost:50051', :this_channel_is_insecure)
   user = ARGV.size > 0 ?  ARGV[0] : 'world'
@@ -186,10 +186,8 @@ Just like we did before, from the `examples/ruby` directory:
 
 ## What's next
 
- - Read a full explanation of how gRPC works in [What is gRPC?](../guides/)
-   and [gRPC Concepts](../guides/concepts.html)
- - Work through a more detailed tutorial in [gRPC Basics: Ruby][]
+ - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
+   and [gRPC Concepts](/docs/guides/concepts/)
+ - Work through a more detailed tutorial in [gRPC Basics: Ruby](/docs/tutorials/basic/ruby/)
  - Explore the gRPC Ruby core API in its [reference
    documentation](http://www.rubydoc.info/gems/grpc)
-
-[gRPC Basics: Ruby]:../tutorials/basic/ruby.html
