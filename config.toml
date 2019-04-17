@@ -1,0 +1,10 @@
+baseURL = "https://cjyabraham.github.io/"
+languageCode = "en-us"
+title = "gRPC"
+pygmentsCodeFences = true
+
+[params]
+	grpc_release_tag = "v1.20.0"
+	grpc_release_tag_no_v = "1.20.0"
+	grpc_java_release_tag = "v1.20.0"
+	milestones_link = "https://github.com/grpc/grpc/milestones"
