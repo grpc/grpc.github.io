@@ -3,6 +3,7 @@ author: Luc Perkins - CNCF, Stanley Cheung - Google, Kailash Sethuraman - Google
 date: "2018-10-23T00:00:00Z"
 published: true
 title: gRPC-Web is Generally Available
+url: blog/grpc-web-ga
 ---
 
 We are excited to announce the GA release of
