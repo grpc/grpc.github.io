@@ -312,8 +312,7 @@ java_grpc_library(
 )
 ```
 
-Android developers please see https://grpc.io/docs/tutorials/basic/android.html#generating-client-code
-for reference.
+Android developers please see [this](/docs/tutorials/basic/android/#generating-client-code) for reference.
 
 If you wish to invoke the protobuf plugin for gRPC Java directly,
 the command-line syntax is as follows:

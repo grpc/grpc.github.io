@@ -41,7 +41,7 @@ of `MsgB` messages.
 
 `<ServiceName>_FooServer` has an embedded `grpc.ServerStream` and the following interface:
 
-```
+```go
 type <ServiceName>_FooServer interface {
 	Send(*MsgB) error
 	grpc.ServerStream
@@ -60,7 +60,7 @@ In this context, `<ServiceName>_FooServer` can be used both to read the client-t
 
 `<ServiceName>_FooServer` has an embedded `grpc.ServerStream` and the following interface:
 
-```
+```go
 type <ServiceName>_FooServer interface {
 	SendAndClose(*MsgA) error
 	Recv() (*MsgB, error)
@@ -81,7 +81,7 @@ These methods have the following signature on the generated service interface:
 In this context, `<ServiceName>_FooServer` can be used to access both the client-to-server message stream and the server-to-client message stream.
 `<ServiceName>_FooServer` has an embedded `grpc.ServerStream` and the following interface:
 
-```
+```go
 type <ServiceName>_FooServer interface {
 	Send(*MsgA) error
 	Recv() (*MsgB, error)
@@ -114,7 +114,7 @@ In this context, `<ServiceName>_FooClient` represents the server-to-client `stre
 
 This stream has an embedded `grpc.ClientStream` and the following interface:
 
-```
+```go
 type <ServiceName>_FooClient interface {
 	Recv() (*MsgB, error)
 	grpc.ClientStream
@@ -134,7 +134,7 @@ In this context, `<ServiceName>_FooClient` represents the client-to-server `stre
 
 `<ServiceName>_FooClient` has an embedded `grpc.ClientStream` and the following interface:
 
-```
+```go
 type <ServiceName>_FooClient interface {
 	Send(*MsgA) error
 	CloseAndRecv() (*MsgA, error)
@@ -156,7 +156,7 @@ In this context, `<ServiceName>_FooClient` represents both the client-to-server 
 
 `<ServiceName>_FooClient` has an embedded `grpc.ClientStream` and the following interface:
 
-```
+```go
 type <ServiceName>_FooClient interface {
 	Send(*MsgA) error
 	Recv() (*MsgB, error)
