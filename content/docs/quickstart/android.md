@@ -1,6 +1,7 @@
 ---
 layout: quickstart
 title: Android Java Quickstart
+aliases: [/docs/quickstart/android.html]
 ---
 <p class="lead">This guide gets you started with gRPC in Android Java with a simple
 working example.</p>

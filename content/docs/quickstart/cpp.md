@@ -1,6 +1,7 @@
 ---
 layout: quickstart
 title: C++ Quickstart
+aliases: [/docs/quickstart/cpp.html]
 ---
 <p class="lead">This guide gets you started with gRPC in C++ with a simple
 working example.</p>
@@ -230,13 +231,13 @@ Just like we did before, from the `examples/cpp/helloworld` directory:
    $ make
    ```
 
-1. Run the server
+2. Run the server
 
    ```sh
    $ ./greeter_server
    ```
 
-2. On a different terminal, run the client
+3. On a different terminal, run the client
 
    ```sh
    $ ./greeter_client

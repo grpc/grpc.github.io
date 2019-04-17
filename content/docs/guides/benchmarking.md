@@ -1,6 +1,7 @@
 ---
 layout: guides
 title: Benchmarking
+aliases: [/docs/guides/benchmarking.html]
 ---
 <p class="lead">gRPC is designed to support high-performance
 open-source RPCs in many languages. This document describes the

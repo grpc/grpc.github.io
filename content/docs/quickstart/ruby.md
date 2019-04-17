@@ -1,6 +1,7 @@
 ---
 title: Ruby Quick Start
 layout: quickstart
+aliases: [/docs/quickstart/ruby.html]
 ---
 
 <p class="lead">This guide gets you started with gRPC in Ruby with a simple

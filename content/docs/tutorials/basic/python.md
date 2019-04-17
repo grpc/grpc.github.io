@@ -1,6 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - Python
+aliases: [/docs/tutorials/basic/python.html]
 ---
 This tutorial provides a basic Python programmer's introduction
 to working with gRPC.

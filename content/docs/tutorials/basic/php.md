@@ -1,6 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - PHP
+aliases: [/docs/tutorials/basic/php.html]
 ---
 This tutorial provides a basic PHP programmer's introduction to
 working with gRPC.

@@ -1,6 +1,7 @@
 ---
 title: Node Quick Start
 layout: quickstart
+aliases: [/docs/quickstart/node.html]
 ---
 <p class="lead">This guide gets you started with gRPC in Node with a simple
 working example.</p>

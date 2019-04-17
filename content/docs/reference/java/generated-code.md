@@ -3,6 +3,7 @@ bodyclass: docs
 headline: Java Generated Code Reference
 layout: docs
 type: markdown
+aliases: [/docs/reference/java/generated-code.html]
 ---
 
 # Java Generated Code Reference

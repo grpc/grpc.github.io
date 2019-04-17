@@ -1,6 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - Go
+aliases: [/docs/tutorials/basic/go.html]
 ---
 This tutorial provides a basic Go programmer's introduction to
 working with gRPC.

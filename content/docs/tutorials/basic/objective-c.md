@@ -1,6 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - Objective-C
+aliases: [/docs/tutorials/basic/objective-c.html]
 ---
 This tutorial provides a basic Objective-C programmer's
 introduction to working with gRPC.

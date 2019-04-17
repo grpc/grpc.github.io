@@ -1,6 +1,7 @@
 ---
 layout: tutorials
 title: gRPC Basics - Web
+aliases: [/docs/tutorials/basic/web.html]
 ---
 
 This tutorial provides a basic introduction on how to use

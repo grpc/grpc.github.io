@@ -3,6 +3,7 @@ bodyclass: docs
 headline: Go Generated Code Reference
 layout: docs
 type: markdown
+aliases: [/docs/reference/go/generated-code.html]
 ---
 # Go Generated Code Reference
 
