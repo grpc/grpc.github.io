@@ -6,15 +6,15 @@ type: markdown
 
 <p class="lead">gRPC has been talked about in many conferences and sessions. Here are a few interesting ones:</p>
 
-  {{< youtube OZ_Qmklc4zE >}}
-  {{< youtube F2znfxn_5Hg >}}
-  {{< youtube S7WIYLcPS1Y >}}
-  {{< youtube F2WYEFLTKEw >}}
-  {{< youtube UZcvnApm81U >}}
-  {{< youtube UOIJNygDNlE >}}
-  {{< youtube RvUP7vX2P4s >}}
-  {{< youtube nz-LcdoMYWA >}}
-  {{< youtube sZx3oZt7LVg >}}
+  {{< youtube OZ_Qmklc4zE >}}<br><br>
+  {{< youtube F2znfxn_5Hg >}}<br><br>
+  {{< youtube S7WIYLcPS1Y >}}<br><br>
+  {{< youtube F2WYEFLTKEw >}}<br><br>
+  {{< youtube UZcvnApm81U >}}<br><br>
+  {{< youtube UOIJNygDNlE >}}<br><br>
+  {{< youtube RvUP7vX2P4s >}}<br><br>
+  {{< youtube nz-LcdoMYWA >}}<br><br>
+  {{< youtube sZx3oZt7LVg >}}<br><br>
   {{< vimeo 190648663 >}}
 
 <h3>Slides only</h3>

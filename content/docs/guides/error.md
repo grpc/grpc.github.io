@@ -34,7 +34,7 @@ Deadline expired before server returned status | GRPC&#95;STATUS&#95;DEADLINE_EX
 Method not found on server | GRPC&#95;STATUS&#95;UNIMPLEMENTED
 Server shutting down | GRPC&#95;STATUS&#95;UNAVAILABLE
 Server threw an exception (or did something other than returning a status code to terminate the RPC) | GRPC&#95;STATUS&#95;UNKNOWN
-
+<br>
 
 ### Network failures
 
@@ -42,7 +42,7 @@ Case | Status code
 -----|-----------
 No data transmitted before deadline expires. Also applies to cases where some data is transmitted and no other failures are detected before the deadline expires | GRPC&#95;STATUS&#95;DEADLINE_EXCEEDED
 Some data transmitted (for example, the request metadata has been written to the TCP connection) before the connection breaks | GRPC&#95;STATUS&#95;UNAVAILABLE
-
+<br>
 
 ### Protocol errors
 
@@ -57,5 +57,3 @@ Unauthenticated: credentials failed to get metadata | GRPC&#95;STATUS&#95;UNAUTH
 Invalid host set in authority metadata | GRPC&#95;STATUS&#95;UNAUTHENTICATED
 Error parsing response protocol buffer | GRPC&#95;STATUS&#95;INTERNAL
 Error parsing request protocol buffer | GRPC&#95;STATUS&#95;INTERNAL
-
-

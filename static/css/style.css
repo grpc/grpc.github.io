@@ -15,6 +15,28 @@ html {
 
   overflow-x: hidden;
 }
+td {
+
+  padding-right:5% !important;
+}
+
+p img {
+width:100%;
+}
+
+.btn {
+
+  margin-top:2%;
+  margin-left:0%;
+  margin-right:0%;
+  margin-bottom:2%:
+  color:#116068;
+  background-color:white;
+  border:2px solid #116068;
+}
+.btn a {
+  color:#116068;
+}
 
 .pt-thumbnail {
 
@@ -35,6 +57,59 @@ color:#0CC1C8 !important;
 
 }
 
+.testimonialsection {
+vertical-align:top;
+  float:left;
+  text-align:center;
+  width:33%;
+  padding-right:4%;
+  font-size:0.8em;
+  line-height:1.5em;
+  color:#333333 !important;
+  font-style: italic;
+  padding-top:2%;
+}
+
+
+.testimonialrow {
+vertical-align:top;
+display:inline-block;
+  float:left;
+  width:100% !Important;
+  padding-right:4%;
+  padding-top:2%;
+}
+
+
+.testimonialsection img{
+display:inline-block;
+width:60%;
+
+padding-bottom:6%;
+vertical-align:top;
+}
+
+.testimonialimage{
+margin-bottom:5%;
+padding:3%;
+vertical-align:top;
+}
+
+
+.testimonialquote {
+
+  float:left;
+  text-align:;
+  font-size:3em;
+  color:#333333 !important;
+  font-style: italic;
+  padding:2%;
+}
+
+.aboutsection2 {
+
+  float:left;
+}
 
 .plus {
   color:#333333;
@@ -717,6 +792,16 @@ h5 {
 
 h6 {
   font-size:1.4em;
+  font-family: 'Open Sans', sans-serif;
+  color:#266B6B;
+  font-weight:300;
+  padding-top:2%;
+  padding-bottom:1%;
+}
+
+
+h8 {
+  font-size:2em;
   font-family: 'Open Sans', sans-serif;
   color:#266B6B;
   font-weight:300;
