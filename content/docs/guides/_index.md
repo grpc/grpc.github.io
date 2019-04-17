@@ -33,7 +33,7 @@ file with a `.proto` extension. Protocol buffer data is structured as
 containing a series of name-value pairs called *fields*. Here's a simple
 example:
 
-```
+```proto
 message Person {
   string name = 1;
   int32 id = 2;
@@ -54,7 +54,7 @@ As you'll see in more detail in our examples, you define gRPC services
 in ordinary proto files, with RPC method parameters and return types specified as
 protocol buffer messages:
 
-```
+```proto
 // The greeter service definition.
 service Greeter {
   // Sends a greeting

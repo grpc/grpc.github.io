@@ -24,7 +24,7 @@ Definition Language (IDL) for describing both the service interface and the
 structure of the payload messages. It is possible to use other alternatives if
 desired.
 
-```
+```proto
 service HelloService {
   rpc SayHello (HelloRequest) returns (HelloResponse);
 }
@@ -44,7 +44,7 @@ gRPC lets you define four kinds of service method:
 - Unary RPCs where the client sends a single request to the server and gets a
   single response back, just like a normal function call.
 
-```
+```proto
 rpc SayHello(HelloRequest) returns (HelloResponse){
 }
 ```
@@ -54,7 +54,7 @@ rpc SayHello(HelloRequest) returns (HelloResponse){
   returned stream until there are no more messages. gRPC guarantees message
   ordering within an individual RPC call.
 
-```
+```proto
 rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse){
 }
 ```
@@ -65,7 +65,7 @@ rpc LotsOfReplies(HelloRequest) returns (stream HelloResponse){
   its response.  Again gRPC guarantees message ordering within an individual RPC
   call.
 
-```
+```proto
 rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {
 }
 ```
@@ -78,7 +78,7 @@ rpc LotsOfGreetings(stream HelloRequest) returns (HelloResponse) {
   some other combination of reads and writes. The order of messages in each
   stream is preserved.
 
-```
+```proto
 rpc BidiHello(stream HelloRequest) returns (stream HelloResponse){
 }
 ```
@@ -202,7 +202,7 @@ terminates the RPC immediately so that no further work is done. It is *not* an
 
 ### Metadata
 
-Metadata is information about a particular RPC call (such as <a href="/docs/guides/auth.html">authentication details</a>) in the
+Metadata is information about a particular RPC call (such as <a href="/docs/guides/auth/">authentication details</a>) in the
 form of a list of key-value pairs, where the keys are strings and the values are
 typically strings (but can be binary data). Metadata is opaque to gRPC itself -
 it lets the client provide information associated with the call to the server
