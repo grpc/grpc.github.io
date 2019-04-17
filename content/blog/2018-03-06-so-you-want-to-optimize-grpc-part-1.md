@@ -133,7 +133,7 @@ is called.
 Since the code is safe and correct, let's see how it performs.  For my measurement I'm using my
 Ubuntu system with a 12 core processor and 32 GB of memory.  Let's build and run the code:
 
-```
+```sh
 $ ./gradlew installDist
 $ time ./build/install/kvstore/bin/kvstore
 Feb 26, 2018 1:10:07 PM io.grpc.examples.KvRunner runClient
@@ -291,7 +291,7 @@ just log the event and move on.  You will see a few such log statements if you r
 
 If you start up this program and run it, you'll notice that it doesn't work:
 
-```
+```sh
 WARNING: An exception was thrown by io.grpc.netty.NettyClientStream$Sink$1.operationComplete()
 java.lang.OutOfMemoryError: unable to create new native thread
 	at java.lang.Thread.start0(Native Method)
@@ -348,7 +348,7 @@ Now the code runs successfully, and doesn't run out of memory.
 
 Building and running the code again looks a lot better:
 
-```
+```sh
 $ ./gradlew installDist
 $ time ./build/install/kvstore/bin/kvstore
 Feb 26, 2018 2:40:47 PM io.grpc.examples.KvRunner runClient

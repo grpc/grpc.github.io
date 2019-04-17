@@ -7,7 +7,7 @@ title: gRPC on HTTP/2 Engineering a Robust, High Performance Protocol
 url: blog/grpc_on_http2
 ---
 
-In a [previous article](https://grpc.io/blog/http2_smarter_at_scale), we explored how HTTP/2 dramatically increases network efficiency and enables real-time communication by providing a framework for long-lived connections. In this article, we’ll look at how gRPC builds on HTTP/2’s long-lived connections to create a performant, robust platform for inter-service communication. We will explore the relationship between gRPC and HTTP/2, how gRPC manages HTTP/2 connections, and how gRPC uses HTTP/2 to keep connections alive, healthy, and utilized.
+In a [previous article](/blog/http2_smarter_at_scale), we explored how HTTP/2 dramatically increases network efficiency and enables real-time communication by providing a framework for long-lived connections. In this article, we’ll look at how gRPC builds on HTTP/2’s long-lived connections to create a performant, robust platform for inter-service communication. We will explore the relationship between gRPC and HTTP/2, how gRPC manages HTTP/2 connections, and how gRPC uses HTTP/2 to keep connections alive, healthy, and utilized.
 <!--more-->
 
 ## gRPC Semantics

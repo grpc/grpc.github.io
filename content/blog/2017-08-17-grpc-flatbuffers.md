@@ -27,7 +27,7 @@ Let's look at an example of how this works.
 ### Use Flatbuffers as an IDL
 Start with an `.fbs` schema (similar to .proto, if you are familiar with protocol buffers) that declares an RPC service: 
 
-```
+```proto
 table HelloReply {
   message:string;
 }
@@ -53,13 +53,13 @@ To generate C++ code from this, run: `flatc --cpp --grpc example.fbs`, much like
 The server implementation is very similar to protocol buffers, except now the request and response messages are of type `flatbuffers::grpc::Message<HelloRequest> *`. 
 Unlike protocol buffers, where these types represent a tree of C++ objects, here they are merely handles to a flat object in the underlying gRPC slice. You can access the data directly:
 
-```
+```cpp
 auto request = request_msg->GetRoot();
 auto name = request->name()->str();
 ```
 
 Building a response is equally simple
-```
+```cpp
 auto msg_offset = mb_.CreateString("Hello, " + name);
 auto hello_offset = CreateHelloReply(mb_, msg_offset);
 mb_.Finish(hello_offset);

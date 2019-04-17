@@ -172,7 +172,7 @@ per RPC, but a lot more are happening at the same time.  Let's see if our hypoth
 
 Before:
 
-```
+```sh
 $ ./gradlew installDist
 $ time ./build/install/kvstore/bin/kvstore
 Apr 16, 2018 10:38:42 AM io.grpc.examples.KvRunner runClient
@@ -185,7 +185,7 @@ sys	0m1.660s
 
 After:
 
-```
+```sh
 Apr 16, 2018 10:36:48 AM io.grpc.examples.KvRunner runClient
 INFO: Did 2,449.8 RPCs/s
 
@@ -211,7 +211,7 @@ scaling per the number of RPCs, it would scale per the number of cores.  Thus, i
 
 If you run this code yourself, you will see a lot more log spam in the form:
 
-```
+```sh
 Apr 16, 2018 10:38:40 AM io.grpc.examples.KvClient$3 onFailure
 INFO: Key not found
 io.grpc.StatusRuntimeException: NOT_FOUND
