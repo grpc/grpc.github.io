@@ -4,7 +4,6 @@ title: Presentations & Talks
 type: markdown
 ---
 
-<div class="videosection">
 <p class="lead">gRPC has been talked about in many conferences and sessions. Here are a few interesting ones:</p>
 
   {{< youtube OZ_Qmklc4zE >}}
@@ -24,6 +23,3 @@ type: markdown
   <li><a target="_blank" href="https://www.slideshare.net/sujatatibre/g-rpc-talk-with-intel-3">Google and Intel speak on NFV and SFC Service Delivery</a></li>
   <li><a target="_blank" href="https://www.slideshare.net/VarunTalwar4/grpc-design-and-implementation">gRPC Design and Implementation, Stanford Platforms Lab, March 2016</a></li>
 </ul>
-
-
-</div>

@@ -2,7 +2,6 @@
 bodyclass: docs
 layout: docs
 headline: Python Generated Code Reference
-type: markdown
 aliases: [/docs/reference/python/generated-code.html]
 ---
 
