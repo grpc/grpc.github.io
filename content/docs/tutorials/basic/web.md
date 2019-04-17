@@ -3,8 +3,8 @@ layout: tutorials
 title: gRPC Basics - Web
 ---
 
-<p class="lead">This tutorial provides a basic introduction on how to use
-gRPC-Web from browsers.</p>
+This tutorial provides a basic introduction on how to use
+gRPC-Web from browsers.
 
 By walking through this example you'll learn how to:
 
@@ -212,4 +212,4 @@ Now embed `dist/main.js` into your project and see it in action!
 
 
 [protobuf documentation]:https://developers.google.com/protocol-buffers/
-[main page]:https://grpc.io/docs/
+[main page]:/docs/

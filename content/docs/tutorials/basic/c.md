@@ -2,7 +2,7 @@
 layout: tutorials
 title: gRPC Basics - C++ 
 ---
-<p class="lead">This tutorial provides a basic C++ programmer's introduction to working with gRPC.</p>
+This tutorial provides a basic C++ programmer's introduction to working with gRPC.
 
 By walking through this example you'll learn how to:
 
@@ -10,7 +10,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the C++ gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/index.html) and are familiar
+It assumes that you have read the [Overview](/docs/) and are familiar
 with [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
 that the example in this tutorial uses the proto3 version of the protocol
@@ -45,24 +45,24 @@ The example code for our tutorial is in
 download the example, clone the `grpc` repository by running the following
 command:
 
-```
+```sh
 $ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
 ```
 
 Then change your current directory to `examples/cpp/route_guide`:
 
-```
+```sh
 $ cd examples/cpp/route_guide
 ```
 
 You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
-[the C++ quick start guide](/docs/quickstart/cpp.html).
+[the C++ quick start guide](/docs/quickstart/cpp).
 
 
 ## Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/index.html)) is to
+Our first step (as you'll know from the [Overview](/docs/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview).
 You can see the complete .proto file in
@@ -71,7 +71,7 @@ You can see the complete .proto file in
 
 To define a service, you specify a named `service` in your .proto file:
 
-```
+```c
 service RouteGuide {
    ...
 }
@@ -84,7 +84,7 @@ all of which are used in the `RouteGuide` service:
 - A *simple RPC* where the client sends a request to the server using the stub
   and waits for a response to come back, just like a normal function call.
 
-```
+```c
 // Obtains the feature at a given position.
 rpc GetFeature(Point) returns (Feature) {}
 ```
@@ -95,7 +95,7 @@ rpc GetFeature(Point) returns (Feature) {}
   example, you specify a server-side streaming method by placing the `stream`
   keyword before the *response* type.
 
-```
+```c
 // Obtains the Features available within the given Rectangle.  Results are
 // streamed rather than returned at once (e.g. in a response message with a
 // repeated field), as the rectangle may cover a large area and contain a
@@ -109,7 +109,7 @@ rpc ListFeatures(Rectangle) returns (stream Feature) {}
   and return its response. You specify a client-side streaming method by placing
   the `stream` keyword before the *request* type.
 
-```
+```c
 // Accepts a stream of Points on a route being traversed, returning a
 // RouteSummary when traversal is completed.
 rpc RecordRoute(stream Point) returns (RouteSummary) {}
@@ -124,7 +124,7 @@ rpc RecordRoute(stream Point) returns (RouteSummary) {}
   stream is preserved. You specify this type of method by placing the `stream`
   keyword before both the request and the response.
 
-```
+```c
 // Accepts a stream of RouteNotes sent while a route is being traversed,
 // while receiving other RouteNotes (e.g. from other users).
 rpc RouteChat(stream RouteNote) returns (stream RouteNote) {}
@@ -134,7 +134,7 @@ Our .proto file also contains protocol buffer message type definitions for all
 the request and response types used in our service methods - for example, here's
 the `Point` message type:
 
-```
+```c
 // Points are represented as latitude-longitude pairs in the E7 representation
 // (degrees multiplied by 10**7 and rounded to the nearest integer).
 // Latitudes should be in the range +/- 90 degrees and longitude should be in
@@ -159,13 +159,13 @@ you want to run this yourself, make sure you've installed protoc and followed
 the gRPC code [installation instructions](https://github.com/grpc/grpc/blob/
 {{< param grpc_release_tag >}}/src/cpp/README.md#make) first):
 
-```
+```sh
 $ make route_guide.grpc.pb.cc route_guide.pb.cc
 ```
 
 which actually runs:
 
-```
+```sh
 $ protoc -I ../../protos --grpc_out=. --plugin=protoc-gen-grpc=`which grpc_cpp_plugin` ../../protos/route_guide.proto
 $ protoc -I ../../protos --cpp_out=. ../../protos/route_guide.proto
 ```
@@ -350,13 +350,13 @@ void RunServer(const std::string& db_path) {
 As you can see, we build and start our server using a `ServerBuilder`. To do this, we:
 
 1. Create an instance of our service implementation class `RouteGuideImpl`.
-1. Create an instance of the factory `ServerBuilder` class.
-1. Specify the address and port we want to use to listen for client requests
+2. Create an instance of the factory `ServerBuilder` class.
+3. Specify the address and port we want to use to listen for client requests
    using the builder's `AddListeningPort()` method.
-1. Register our service implementation with the builder.
-1. Call `BuildAndStart()` on the builder to create and start an RPC server for
+4. Register our service implementation with the builder.
+5. Call `BuildAndStart()` on the builder to create and start an RPC server for
    our service.
-1. Call `Wait()` on the server to do a blocking wait until process is killed or
+6. Call `Wait()` on the server to do a blocking wait until process is killed or
    `Shutdown()` is called.
 
 <a name="client"></a>
@@ -519,16 +519,16 @@ independently.
 
 Build client and server:
 
-```
+```sh
 $ make
 ```
 Run the server, which will listen on port 50051:
 
-```
+```sh
 $ ./route_guide_server
 ```
 Run the client (in a different terminal):
 
-```
+```sh
 $ ./route_guide_client
 ```

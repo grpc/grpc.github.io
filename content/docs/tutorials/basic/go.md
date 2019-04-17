@@ -2,8 +2,8 @@
 layout: tutorials
 title: gRPC Basics - Go
 ---
-<p class="lead">This tutorial provides a basic Go programmer's introduction to
-working with gRPC.</p>
+This tutorial provides a basic Go programmer's introduction to
+working with gRPC.
 
 By walking through this example you'll learn how to:
 
@@ -11,7 +11,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the Go gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/index.html) and are familiar
+It assumes that you have read the [Overview](/docs/) and are familiar
 with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the
 example in this tutorial uses the proto3 version of the protocol buffers
 language: you can find out more in the
@@ -44,22 +44,22 @@ The example code for our tutorial is in
 To download the example, clone the `grpc-go` repository by running the following
 command:
 
-```
+```sh
 $ go get google.golang.org/grpc
 ```
 
 Then change your current directory to `grpc-go/examples/route_guide`:
 
-```
+```sh
 $ cd $GOPATH/src/google.golang.org/grpc/examples/route_guide
 ```
 
-You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Go quick start guide](/docs/quickstart/go.html).
+You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Go quick start guide](/docs/quickstart/go/).
 
 
 ## Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/index.html)) is to
+Our first step (as you'll know from the [Overview](/docs/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the
 complete .proto file in
@@ -144,7 +144,7 @@ message Point {
 Next we need to generate the gRPC client and server interfaces from our .proto
 service definition. We do this using the protocol buffer compiler `protoc` with
 a special gRPC Go plugin. 
-This is similar to what we did in the [quickstart guide](../../quickstart/go.html)
+This is similar to what we did in the [quickstart guide](/docs/quickstart/go/)
 
 From the `route_guide` example directory run :
 
@@ -380,9 +380,9 @@ To build and start a server, we:
 
 1. Specify the port we want to use to listen for client requests using `lis, err
    := net.Listen("tcp", fmt.Sprintf(":%d", *port))`.
-1. Create an instance of the gRPC server using `grpc.NewServer()`.
-1. Register our service implementation with the gRPC server.
-1. Call `Serve()` on the server with our port details to do a blocking wait
+2. Create an instance of the gRPC server using `grpc.NewServer()`.
+3. Register our service implementation with the gRPC server.
+4. Call `Serve()` on the server with our port details to do a blocking wait
    until the process is killed or `Stop()` is called.
 
 <a name="client"></a>

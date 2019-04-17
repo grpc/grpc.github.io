@@ -2,8 +2,8 @@
 layout: tutorials
 title: gRPC Basics - Dart
 ---
-<p class="lead">This tutorial provides a basic Dart programmer's introduction to
-working with gRPC.</p>
+This tutorial provides a basic Dart programmer's introduction to
+working with gRPC.
 
 By walking through this example you'll learn how to:
 
@@ -11,7 +11,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the Dart gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/index.html) and are familiar
+It assumes that you have read the [Overview](/docs/) and are familiar
 with [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). Note that the
 example in this tutorial uses the proto3 version of the protocol buffers
 language: you can find out more in the
@@ -42,22 +42,22 @@ The example code for our tutorial is in
 To download the example, clone the `grpc-dart` repository by running the following
 command:
 
-```
+```sh
 $ git clone https://github.com/grpc/grpc-dart.git
 ```
 
 Then change your current directory to `grpc-dart/example/route_guide`:
 
-```
+```sh
 $ cd grpc-dart/example/route_guide
 ```
 
-You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Dart quick start guide](/docs/quickstart/dart.html).
+You also should have the relevant tools installed to generate the server and client interface code - if you don't already, follow the setup instructions in [the Dart quick start guide](/docs/quickstart/dart/).
 
 
 ## Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/index.html)) is to
+Our first step (as you'll know from the [Overview](/docs/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol buffers](https://developers.google.com/protocol-buffers/docs/overview). You can see the
 complete .proto file in
@@ -142,7 +142,7 @@ message Point {
 Next we need to generate the gRPC client and server interfaces from our .proto
 service definition. We do this using the protocol buffer compiler `protoc` with
 a special Dart plugin.
-This is similar to what we did in the [quickstart guide](../../quickstart/dart.html)
+This is similar to what we did in the [quickstart guide](/docs/quickstart/)
 
 From the `route_guide` example directory run :
 

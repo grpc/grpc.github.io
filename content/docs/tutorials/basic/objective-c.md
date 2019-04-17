@@ -2,8 +2,8 @@
 layout: tutorials
 title: gRPC Basics - Objective-C
 ---
-<p class="lead">This tutorial provides a basic Objective-C programmer's
-introduction to working with gRPC.</p>
+This tutorial provides a basic Objective-C programmer's
+introduction to working with gRPC.
 
 By walking through this example you'll learn how to:
 
@@ -52,7 +52,7 @@ The example code for our tutorial is in
 To download the example, clone the `grpc` repository by running the following
 commands:
 
-```
+```sh
 $ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
 $ cd grpc
 $ git submodule update --init
@@ -60,7 +60,7 @@ $ git submodule update --init
 
 Then change your current directory to `examples/objective-c/route_guide`:
 
-```
+```sh
 $ cd examples/objective-c/route_guide
 ```
 
@@ -82,7 +82,7 @@ setup instructions](https://github.com/grpc/homebrew-grpc).
 To try the sample app, we need a gRPC server running locally. Let's compile and
 run, for example, the C++ server in this repository:
 
-```
+```sh
 $ pushd ../../cpp/route_guide
 $ make
 $ ./route_guide_server &
@@ -91,7 +91,7 @@ $ popd
 
 Now have Cocoapods generate and install the client library for our .proto files:
 
-```
+```sh
 $ pod install
 ```
 
@@ -212,13 +212,13 @@ that runs `protoc` for you with the appropriate plugin, input, and output, and
 describes how to compile the generated files. You just need to run in this
 directory (`examples/objective-c/route_guide`):
 
-```
+```sh
 $ pod install
 ```
 
 which, before installing the generated library in the XCode project of this sample, runs:
 
-```
+```sh
 $ protoc -I ../../protos --objc_out=Pods/RouteGuide --objcgrpc_out=Pods/RouteGuide ../../protos/route_guide.proto
 ```
 
@@ -262,7 +262,7 @@ To call service methods, we first need to create a service object, an instance
 of the generated `RTGRouteGuide` class. The designated initializer of the class
 expects a `NSString *` with the server address and port we want to connect to:
 
-```
+```objective-c
 #import <GRPCClient/GRPCCall+Tests.h>
 #import <RouteGuide/RouteGuide.pbrpc.h>
 
@@ -294,7 +294,7 @@ without worrying about freezing your UI or the OS killing your app.
 Calling the simple RPC `GetFeature` is as straightforward as calling any other
 asynchronous method on Cocoa.
 
-```
+```objective-c
 RTGPoint *point = [RTGPoint message];
 point.latitude = 40E7;
 point.longitude = -74E7;
@@ -317,7 +317,7 @@ argument. If, instead, some RPC error happens, the handler block is called with
 a `nil` response argument, and we can read the details of the problem from the
 error argument.
 
-```
+```objective-c
 NSLog(@"Found feature called %@ at %@.", response.name, response.location);
 ```
 
@@ -327,7 +327,7 @@ Now let's look at our streaming methods. Here's where we call the
 response-streaming method `ListFeatures`, which results in our client app
 receiving a stream of geographical `RTGFeature`s:
 
-```
+```objective-c
 [service listFeaturesWithRequest:rectangle
                     eventHandler:^(BOOL done, RTGFeature *response, NSError *error) {
   if (response) {
@@ -349,7 +349,7 @@ the cient. This stream is passed to the method as an object that conforms to the
 `NSArray` object:
 
 
-```
+```objective-c
 #import <gRPC/GRXWriter+Immediate.h>
 
 ...
@@ -383,7 +383,7 @@ Finally, let's look at our bidirectional streaming RPC `RouteChat()`. The way to
 call a bidirectional streaming RPC is just a combination of how to call
 request-streaming RPCs and response-streaming RPCs.
 
-```
+```objective-c
 [service routeChatWithRequestsWriter:notesWriter handler:^(BOOL done, RTGRouteNote *note, NSError *error) {
   if (note) {
     NSLog(@"Got message %@ at %@", note.message, note.location);

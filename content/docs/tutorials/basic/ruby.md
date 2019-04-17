@@ -2,7 +2,7 @@
 layout: tutorials
 title: gRPC Basics - Ruby
 ---
-<p class="lead">This tutorial provides a basic Ruby programmer's introduction to working with gRPC.</p>
+This tutorial provides a basic Ruby programmer's introduction to working with gRPC.
 
 By walking through this example you'll learn how to:
 
@@ -10,7 +10,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the Ruby gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/index.html) and are familiar
+It assumes that you have read the [Overview](/docs/) and are familiar
 with [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
 that the example in this tutorial uses the proto3 version of the protocol
@@ -42,24 +42,24 @@ The example code for our tutorial is in
 To download the example, clone the `grpc` repository by running the following
 command:
 
-```
+```sh
 $ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
 $ cd grpc
 ```
 
 Then change your current directory to `examples/ruby/route_guide`:
 
-```
+```sh
 $ cd examples/ruby/route_guide
 ```
 
 You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
-[the Ruby quick start guide](/docs/quickstart/ruby.html).
+[the Ruby quick start guide](/docs/quickstart/ruby/).
 
 ## Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/index.html)) is to
+Our first step (as you'll know from the [Overview](/docs/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
@@ -154,7 +154,7 @@ instructions](https://github.com/grpc/grpc/blob/{{< param grpc_release_tag >}}/s
 
 Once that's done, the following command can be used to generate the ruby code.
 
-```
+```sh
 $ grpc_tools_ruby_protoc -I ../../protos --ruby_out=../lib --grpc_out=../lib ../../protos/route_guide.proto
 ```
 
@@ -384,13 +384,13 @@ streams operate completely independently.
 
 Build client and server:
 
-```
+```sh
 $ # from examples/ruby
 $ gem install bundler && bundle install
 ```
 Run the server, which will listen on port 50051:
 
-```
+```sh
 $ # from examples/ruby
 $ bundle exec route_guide/route_guide_server.rb ../python/route_guide/route_guide_db.json
 $ # (note that the route_guide_db.json file is actually language-agnostic; it's just
@@ -398,7 +398,7 @@ $ # located in the python folder).
 ```
 Run the client (in a different terminal):
 
-```
+```sh
 $ # from examples/ruby
 $ bundle exec route_guide/route_guide_client.rb ../python/route_guide/route_guide_db.json
 ```

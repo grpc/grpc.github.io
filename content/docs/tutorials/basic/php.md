@@ -2,8 +2,8 @@
 layout: tutorials
 title: gRPC Basics - PHP
 ---
-<p class="lead">This tutorial provides a basic PHP programmer's introduction to
-working with gRPC.</p>
+This tutorial provides a basic PHP programmer's introduction to
+working with gRPC.
 
 By walking through this example you'll learn how to:
 
@@ -18,7 +18,7 @@ buffers language.
 
 Also note that currently you can only create clients in PHP for gRPC services -
 you can find out how to create gRPC servers in our other tutorials, e.g.
-[Node.js](/docs/tutorials/basic/node.html).
+[Node.js](/docs/tutorials/basic/node/).
 
 <div id="toc"></div>
 
@@ -44,19 +44,19 @@ The example code for our tutorial is in
 To download the example, clone the `grpc` repository by running the following
 command:
 
-```
+```sh
 $ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
 ```
 
 You need grpc-php-plugin to help you generate proto files. You can build it from source:
 
-```
+```sh
 $ cd grpc && git submodule update --init && make grpc_php_plugin
 ```
 
 Then change your current directory to `examples/php/route_guide` and generate proto files:
 
-```
+```sh
 $ cd examples/php/route_guide
 $ ./route_guide_proto_gen.sh
 ```
@@ -69,7 +69,7 @@ clients.
 You also should have the relevant tools installed to generate the client
 interface code (and a server in another language, for testing). You can obtain
 the latter by following [these setup
-instructions](/docs/tutorials/basic/node.html).
+instructions](/docs/tutorials/basic/node/).
 
 
 <a name="try"></a>
@@ -79,7 +79,7 @@ instructions](/docs/tutorials/basic/node.html).
 To try the sample app, we need a gRPC server running locally. Let's compile and
 run, for example, the Node.js server in this repository:
 
-```
+```sh
 $ cd ../../node
 $ npm install
 $ cd dynamic_codegen/route_guide
@@ -88,7 +88,7 @@ $ nodejs ./route_guide_server.js --db_path=route_guide_db.json
 
 Run the PHP client (in a different terminal):
 
-```
+```sh
 $ ./run_route_guide_client.sh
 ```
 

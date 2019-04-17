@@ -2,8 +2,8 @@
 layout: tutorials
 title: OAuth2 on gRPC - Objective-C
 ---
-<p class="lead">This example demonstrates how to use OAuth2 on gRPC to make
-authenticated API calls on behalf of a user.</p>
+This example demonstrates how to use OAuth2 on gRPC to make
+authenticated API calls on behalf of a user.
 
 By walking through it you'll also learn how to use the Objective-C gRPC API to:
 
@@ -15,8 +15,8 @@ By walking through it you'll also learn how to use the Objective-C gRPC API to:
 
 It assumes you know the basics on how to make gRPC API calls using the
 Objective-C client library, as shown in [gRPC Basics:
-Objective-C](/docs/tutorials/basic/objective-c.html) and the
-[overview](/docs/index.html), and are familiar with OAuth2 concepts like _access
+Objective-C](/docs/tutorials/basic/objective-c/) and the
+[overview](/docs/), and are familiar with OAuth2 concepts like _access
 token_.
 
 <div id="toc"></div>
@@ -30,7 +30,7 @@ The example code for our tutorial is in
 {{< param grpc_release_tag >}}/examples/objective-c/auth_sample). To
 download the example, clone this repository by running the following commands:
 
-```
+```sh
 $ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
 $ cd grpc
 $ git submodule update --init
@@ -38,7 +38,7 @@ $ git submodule update --init
 
 Then change your current directory to `examples/objective-c/auth_sample`:
 
-```
+```sh
 $ cd examples/objective-c/auth_sample
 ```
 
@@ -71,7 +71,7 @@ following [these setup instructions](https://github.com/grpc/homebrew-grpc).
 To try the sample app, first have Cocoapods generate and install the client library for our .proto
 files:
 
-```
+```sh
 $ pod install
 ```
 

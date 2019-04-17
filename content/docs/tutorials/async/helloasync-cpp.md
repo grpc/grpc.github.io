@@ -6,9 +6,9 @@ title: Asynchronous Basics - C++
 This tutorial shows you how to write a simple server and client in C++ using
 gRPC's asynchronous/non-blocking APIs. It assumes you are already familiar with
 writing simple synchronous gRPC code, as described in [gRPC Basics:
-C++](/docs/tutorials/basic/c.html). The example used in this tutorial follows on
+C++](/docs/tutorials/basic/c/). The example used in this tutorial follows on
 from the basic [Greeter example](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/cpp/helloworld) we used in the
-[overview](/docs/index.html). You'll find it along with installation
+[overview](/docs/). You'll find it along with installation
 instructions in
 [grpc/examples/cpp/helloworld](https://github.com/grpc/grpc/tree/{{< param grpc_release_tag >}}/examples/cpp/helloworld).
 
@@ -36,7 +36,7 @@ the following to make an asynchronous call:
 - Initiate the RPC and create a handle for it. Bind the RPC to a
   `CompletionQueue`.
 
-```
+```c
     CompletionQueue cq;
     std::unique_ptr<ClientAsyncResponseReader<HelloReply> > rpc(
         stub_->AsyncSayHello(&context, request, &cq));
@@ -44,7 +44,7 @@ the following to make an asynchronous call:
 
 - Ask for the reply and final status, with a unique tag
 
-```
+```c
     Status status;
     rpc->Finish(&reply, &status, (void*)1);
 ```
@@ -52,7 +52,7 @@ the following to make an asynchronous call:
 - Wait for the completion queue to return the next tag. The reply and status are
   ready once the tag passed into the corresponding `Finish()` call is returned.
 
-```
+```c
     void* got_tag;
     bool ok = false;
     cq.Next(&got_tag, &ok);
@@ -72,7 +72,7 @@ asynchronously is:
 
 - Build a server exporting the async service
 
-```
+```c
     helloworld::Greeter::AsyncService service;
     ServerBuilder builder;
     builder.AddListeningPort("0.0.0.0:50051", InsecureServerCredentials());
@@ -83,7 +83,7 @@ asynchronously is:
 
 - Request one RPC, providing a unique tag
 
-```
+```c
     ServerContext context;
     HelloRequest request;
     ServerAsyncResponseWriter<HelloReply> responder;
@@ -93,7 +93,7 @@ asynchronously is:
 - Wait for the completion queue to return the tag. The context, request and
   responder are ready once the tag is retrieved.
 
-```
+```c
     HelloReply reply;
     Status status;
     void* got_tag;
@@ -108,7 +108,7 @@ asynchronously is:
 - Wait for the completion queue to return the tag. The RPC is finished when the
   tag is back.
 
-```
+```c
     void* got_tag;
     bool ok = false;
     cq.Next(&got_tag, &ok);
@@ -122,7 +122,7 @@ requests concurrently. To deal with this, our complete async server example uses
 a `CallData` object to maintain the state of each RPC, and uses the address of
 this object as the unique tag for the call.
 
-```
+```c
   class CallData {
    public:
     // Take in the "service" instance (in this case representing an asynchronous
@@ -172,7 +172,7 @@ this object as the unique tag for the call.
 For simplicity the server only uses one completion queue for all events, and
 runs a main loop in `HandleRpcs` to query the queue:
 
-```
+```c
   void HandleRpcs() {
     // Spawn a new CallData instance to serve new clients.
     new CallData(&service_, cq_.get());
@@ -203,7 +203,7 @@ running `cq_ = builder.AddCompletionQueue()`. Looking at
 Refer to `ServerBuilder::AddCompletionQueue`'s full docstring for more details.
 What this means in our example is that `ServerImpl's` destructor looks like:
 
-```
+```c
   ~ServerImpl() {
     server_->Shutdown();
     // Always shutdown the completion queue after the server.

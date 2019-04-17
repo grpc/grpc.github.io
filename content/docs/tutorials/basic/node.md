@@ -2,15 +2,15 @@
 layout: tutorials
 title: gRPC Basics - Node.js
 ---
-<p class="lead">This tutorial provides a basic Node.js programmer's introduction
-to working with gRPC.</p>
+This tutorial provides a basic Node.js programmer's introduction
+to working with gRPC.
 
 By walking through this example you'll learn how to:
 
 - Define a service in a .proto file.
 - Use the Node.js gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/index.html) and are familiar
+It assumes that you have read the [Overview](/docs/) and are familiar
 with [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
 that the example in this tutorial uses the
@@ -69,12 +69,12 @@ $ cd examples/node
 
 You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
-[the Node.js quick start guide](/docs/quickstart/node.html).
+[the Node.js quick start guide](/docs/quickstart/node/).
 
 
 ## Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/index.html)) is to
+Our first step (as you'll know from the [Overview](/docs/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can

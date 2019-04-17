@@ -2,8 +2,8 @@
 layout: tutorials
 title: gRPC Basics - Java
 ---
-<p class="lead">This tutorial provides a basic Java programmer's introduction to
-working with gRPC.</p>
+This tutorial provides a basic Java programmer's introduction to
+working with gRPC.
 
 By walking through this example you'll learn how to:
 
@@ -11,7 +11,7 @@ By walking through this example you'll learn how to:
 - Generate server and client code using the protocol buffer compiler.
 - Use the Java gRPC API to write a simple client and server for your service.
 
-It assumes that you have read the [Overview](/docs/index.html) and are familiar
+It assumes that you have read the [Overview](/docs/) and are familiar
 with [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). Note
 that the example in this tutorial uses the
@@ -45,20 +45,20 @@ The example code for our tutorial is in
 To download the example, clone the latest release in `grpc-java` repository by
 running the following command:
 
-```
+```sh
 $ git clone -b {{< param grpc_java_release_tag >}} https://github.com/grpc/grpc-java.git
 ```
 
 Then change your current directory to `grpc-java/examples`:
 
-```
+```sh
 $ cd grpc-java/examples
 ```
 
 
 ## Defining the service
 
-Our first step (as you'll know from the [Overview](/docs/index.html)) is to
+Our first step (as you'll know from the [Overview](/docs/)) is to
 define the gRPC *service* and the method *request* and *response* types using
 [protocol
 buffers](https://developers.google.com/protocol-buffers/docs/overview). You can
@@ -252,8 +252,8 @@ To return our response to the client and complete the call:
 1. We construct and populate a `Feature` response object to return to the
    client, as specified in our service definition. In this example, we do this
    in a separate private `checkFeature()` method.
-1. We use the response observer's `onNext()` method to return the `Feature`.
-1. We use the response observer's `onCompleted()` method to specify that we've
+2. We use the response observer's `onNext()` method to return the `Feature`.
+3. We use the response observer's `onCompleted()` method to specify that we've
    finished dealing with the RPC.
 
 #### Server-side streaming RPC

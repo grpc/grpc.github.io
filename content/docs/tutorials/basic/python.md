@@ -2,8 +2,8 @@
 layout: tutorials
 title: gRPC Basics - Python
 ---
-<p class="lead">This tutorial provides a basic Python programmer's introduction
-to working with gRPC.</p>
+This tutorial provides a basic Python programmer's introduction
+to working with gRPC.
 
 By walking through this example you'll learn how to:
 
@@ -43,19 +43,19 @@ The example code for this tutorial is in
 To download the example, clone the `grpc` repository by running the following
 command:
 
-```
+```sh
 $ git clone -b {{< param grpc_release_tag >}} https://github.com/grpc/grpc
 ```
 
 Then change your current directory to `examples/python/route_guide` in the repository:
 
-```
+```sh
 $ cd grpc/examples/python/route_guide
 ```
 
 You also should have the relevant tools installed to generate the server and
 client interface code - if you don't already, follow the setup instructions in
-[the Python quick start guide](/docs/quickstart/python.html).
+[the Python quick start guide](/docs/quickstart/python).
 
 ## Defining the service
 
@@ -149,13 +149,13 @@ service definition.
 
 First, install the grpcio-tools package:
 
-```
+```sh
 $ pip install grpcio-tools
 ```
 
 Use the following command to generate the Python code:
 
-```
+```sh
 $ python -m grpc_tools.protoc -I../../protos --python_out=. --grpc_python_out=. ../../protos/route_guide.proto
 ```
 
@@ -394,13 +394,13 @@ for received_route_note in stub.RouteChat(sent_route_note_iterator):
 
 Run the server, which will listen on port 50051:
 
-```
+```sh
 $ python route_guide_server.py
 ```
 
 Run the client (in a different terminal):
 
-```
+```sh
 $ python route_guide_client.py
 ```
 
