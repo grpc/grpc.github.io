@@ -103,14 +103,19 @@ For every data frame read from the wire a new memory allocation takes place. The
   * The time taken for each RPC was measured.
   * [Code link](https://github.com/grpc/grpc-go/compare/master...MakMukhi:http_greeter)
 
-| Message Size | GRPC          | HTTP 1.1   |
-| ------------ |:-------------:| ----------:|
-|1 KB|~152 ms|~152 ms|
-|10 KB|~152 ms|~152 ms|
-|100 KB|~152 ms|~152 ms|
-|1 MB|~156 ms|~156 ms|
-|10 MB|~622 ms|~630ms|
-|100 MB|~5 sec|~5 sec|
+
+<table>
+<tr><th>Message Size </th><th>GRPC </th><th>HTTP 1.1</th></tr>
+
+<tr><td>1 KB</td><td>~152 ms</td><td>~152 ms</td></tr>
+<tr><td>10 KB</td><td>~152 ms</td><td>~152 ms</td></tr>
+<tr><td>10 KB</td><td>~152 ms</td><td>~152 ms</td></tr>
+<tr><td>1 MB</td><td>~152 ms</td><td>~152 ms</td></tr>
+<tr><td>10 MB</td><td>~622 ms</td><td>~630 ms</td></tr>
+<tr><td>100 MB</td><td>~5 sec</td><td>~5 sec</td></tr>
+
+
+</table>
 
 * Benchmark on simulated network:
   * Server and client were launched on the same machine and different network latencies were simulated.

@@ -8,9 +8,9 @@ working example.</p>
 
 <div id="toc"></div>
 
-## Before you begin
+### Before you begin
 
-### Prerequisites
+#### Prerequisites
 
 #### Install gRPC
 
@@ -36,7 +36,7 @@ $ cd third_party/protobuf
 $ make && sudo make install
 ```
 
-## Build the example
+###  Build the example
 
 Always assuming you have gRPC properly installed, go into the example's
 directory:
@@ -54,7 +54,7 @@ Most failures at this point are a result of a faulty installation (or having
 installed gRPC to a non-standard location. Check out [the installation
 instructions for details](https://github.com/grpc/grpc/blob/master/src/cpp/README.md#make)).
 
-## Try it!
+### Try it!
 
 From the `examples/cpp/helloworld` directory, run the server, which will listen
 on port 50051:
@@ -73,7 +73,7 @@ client side output.
 Congratulations! You've just run a client-server application with gRPC.
 
 
-## Update a gRPC service
+### Update a gRPC service
 
 Now let's look at how to update the application with an extra method on the
 server for the client to call. Our gRPC service is defined using protocol
@@ -131,7 +131,7 @@ message HelloReply {
 
 (Don't forget to save the file!)
 
-## Generate gRPC code
+### Generate gRPC code
 
 Next we need to update the gRPC code used by our application to use the new
 service definition. From the `examples/cpp/helloworld` directory:
@@ -144,12 +144,12 @@ This regenerates `helloworld.pb.{h,cc}` and `helloworld.grpc.pb.{h,cc}`, which
 contains our generated client and server classes, as well as classes for
 populating, serializing, and retrieving our request and response types.
 
-## Update and run the application
+### Update and run the application
 
 We now have new generated server and client code, but we still need to implement
 and call the new method in the human-written parts of our example application.
 
-### Update the server
+#### Update the server
 
 In the same directory, open `greeter_server.cc`. Implement the new method like
 this:
@@ -172,7 +172,7 @@ class GreeterServiceImpl final : public Greeter::Service {
 
 ```
 
-### Update the client
+#### Update the client
 
 A new `SayHelloAgain` method is now available in the stub. We'll follow the same
 pattern as for the already present `SayHello` and add a new `SayHelloAgain`
@@ -222,7 +222,7 @@ int main(int argc, char** argv) {
 
 ```
 
-### Run!
+#### Run!
 
 Just like we did before, from the `examples/cpp/helloworld` directory:
 
@@ -250,7 +250,7 @@ Just like we did before, from the `examples/cpp/helloworld` directory:
    Greeter received: Hello again world
    ```
 
-## What's next
+### What's next
 
 - Read a full explanation of how gRPC works in [What is gRPC?](/docs/guides/)
   and [gRPC Concepts](/docs/guides/concepts/)
