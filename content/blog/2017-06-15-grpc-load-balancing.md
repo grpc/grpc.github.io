@@ -18,7 +18,7 @@ A large scale gRPC deployment typically has a number of identical back-end insta
 
 gRPC is a modern RPC protocol implemented on top of HTTP/2. HTTP/2 is a Layer 7 (Application layer) protocol, that runs on top of a TCP (Layer 4 - Transport layer) protocol, which runs on top of IP (Layer 3 - Network layer) protocol. gRPC has many [advantages](https://http2.github.io/faq/#why-is-http2-binary) over traditional HTTP/REST/JSON mechanism such as
 
-1. Binary protocol (HTTP/2), 
+1. Binary protocol (HTTP/2),
 
 2. Multiplexing many requests on one connection (HTTP/2)
 
@@ -28,7 +28,7 @@ gRPC is a modern RPC protocol implemented on top of HTTP/2. HTTP/2 is a Layer 7 
 
 5. Idiomatic client/server library implementations in many languages
 
-In addition, gRPC integrates seamlessly with ecosystem components like service discovery, name resolver, load balancer, tracing and monitoring, among others. 
+In addition, gRPC integrates seamlessly with ecosystem components like service discovery, name resolver, load balancer, tracing and monitoring, among others.
 
 ## Load balancing options
 
@@ -53,29 +53,27 @@ The following table outlines the pros and cons of each model.
     <td>Client Side</td>
   </tr>
   <tr>
-    <td>Pros</td>
-    <td markdown="1">
-    
-* Simple client
+    <td style="width:10% !important">Pros</td>
+    <td>
+le client
 * No client-side awareness of backend
 * Works with untrusted clients
-
 </td>
-    <td markdown="1">
-    
+    <td>
+
 * High performance because elimination of extra hop
 </td>
   </tr>
   <tr>
     <td>Cons</td>
-    <td markdown="1">
-    
+    <td>
+
 * LB is in the data path
 * Higher latency
 * LB throughput may limit scalability
 </td>
-    <td markdown="1">
-    
+    <td>
+
 * Complex client
 * Client keeps track of server load and health
 * Client implements load balancing algorithm
@@ -150,12 +148,12 @@ Depending upon the particular deployment and constraints, we suggest the followi
   </tr>
   <tr>
     <td markdown="1">
-    
+
 * Very high traffic between clients and servers
 * Clients can be trusted
 </td>
     <td markdown="1">
-    
+
 * Thick client-side load balancing
 * Client side LB with ZooKeeper/Etcd/Consul/Eureka. [ZooKeeper Example](https://github.com/makdharma/grpc-zookeeper-lb).
 
@@ -163,12 +161,12 @@ Depending upon the particular deployment and constraints, we suggest the followi
   </tr>
   <tr>
     <td markdown="1">
-    
+
 * Traditional setup - Many clients connecting to services behind a proxy
 * Need trust boundary between servers and clients
 </td>
     <td markdown="1">
-    
+
 * Proxy Load Balancing
 * L3/L4 LB with GCLB (if using GCP)
 * L3/L4 LB with haproxy - [Config file](https://gist.github.com/thpham/114d20de8472b2cef966)
@@ -178,24 +176,24 @@ Depending upon the particular deployment and constraints, we suggest the followi
   </tr>
   <tr>
     <td markdown="1">
-    
+
 * Microservices - N clients, M servers in the data center
 * Very high performance requirements (low latency, high traffic)
 * Client can be untrusted
 </td>
     <td markdown="1">
-    
+
 * Look-aside Load Balancing
 * Client-side LB using [gRPC-LB protocol](https://github.com/grpc/grpc/blob/master/doc/load-balancing.md). Roll your own implementation (Q2’17), hosted gRPC-LB in the works.
 </td>
   </tr>
   <tr>
     <td markdown="1">
-    
+
 * Existing Service-mesh like setup using Linkerd or Istio
 </td>
     <td markdown="1">
-    
+
 * Service Mesh
 * Use built-in LB with [Istio](https://istio.io/), or [Envoy](https://github.com/lyft/envoy).
 </td>

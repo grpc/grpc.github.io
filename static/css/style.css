@@ -5,6 +5,38 @@
     width: 200px;
 }
 
+table {
+margin-top:3%;
+margin-bottom:3%;
+width:75% !important;
+}
+
+tr {
+padding:5% !!important;
+line-height:1.2em;
+border:0.5px solid #cccccc;
+}
+
+td {
+  min-width:20%;
+word-break:break-word;
+  font-size:0.9em;
+text-align:left;
+border:0.5px solid #cccccc;
+padding:2%;
+}
+
+th {
+    line-height:2em;
+    background-color:#efefef;
+text-align:left;
+padding:2%;
+border:0.5px solid #cccccc;
+padding:5% !!important;
+}
+
+
+
 @keyframes bouncing {
     0% {bottom: 0;}
     50% {bottom: 20px;}
@@ -15,17 +47,19 @@ html {
 
   overflow-x: hidden;
 }
-td {
 
-  padding-right:5% !important;
+
 }
 
 p img {
 width:100%;
 }
 
-.btn {
+p {
 
+}
+
+.btn {
   margin-top:2%;
   margin-left:0%;
   margin-right:0%;
@@ -353,6 +387,18 @@ button {
     text-align:center;
 
 }
+.docssection2 {
+    padding-top:1%;
+    font-family: 'Open Sans', sans-serif;
+    width:100%;
+    font-weight:100;
+    font-size:1em;
+    color:#606060;
+    line-height:1.7em;
+    padding-left:0%;
+    text-align:center;
+
+}
 
 
 .section3 {
@@ -370,12 +416,12 @@ button {
     padding-top:3%;
     padding-bottom:3%;
     font-family: 'Open Sans', sans-serif;
-    width:90%;
+    width:85%;
     font-weight:100;
     font-size:1em;
     color:#606060;
     line-height:1.7em;
-    padding-left:20%;
+    padding-left:15%;
     text-align:left;
 
   }
@@ -454,7 +500,7 @@ button {
     padding-top:1%;
     padding-bottom:4%;
     font-weight:100;
-    padding-left:15%;
+    padding-left:10%;
     float:left;
 
 }
@@ -549,7 +595,7 @@ a {
     width:90%;
     margin-left:8%;
     font-weight:100;
-    font-size:11pt;
+    font-size:1.2em;
     padding-left:8%;
     float:left;
 
@@ -580,7 +626,7 @@ a {
     padding-left:0px;
     padding-right:3%;
     padding-top:2%;
-    font-size:10pt;
+    font-size:0.8em !important;
 
 }
 
@@ -593,7 +639,7 @@ a {
     width:20%;
     line-height:2em;
     padding-top:1%;
-    font-size:0.9em;
+    font-size:0.7em;
     margin-right:2%;
     padding-left:3%;
     padding-left:3%;
@@ -602,12 +648,34 @@ a {
 }
 
 
+.docscol1 a{
+
+    padding-bottom:3% !important;
+}
+
+.docscol2 {
+    float:left;
+    width:28%;
+     line-height:1.6em;
+    margin-right:5%;
+    padding-bottom:3%;
+}
+
+.docscol3 {
+    float:left;
+    display:block;
+    width:28%;
+     line-height:1.6em;
+    margin-right:2%;
+    padding-bottom:3%;
+}
+
 
 .docscol1 {
 
     float:left;
     width:28%;
-    line-height:2em;
+    line-height:1.6em;
     padding-top:%;
     margin-right:5%;
     padding-bottom:3%;
@@ -616,7 +684,7 @@ a {
 .docscol2 {
     float:left;
     width:28%;
-     line-height:2em;
+     line-height:1.6em;
     margin-right:5%;
     padding-bottom:3%;
 }
@@ -624,7 +692,7 @@ a {
 .docscol3 {
     float:left;
     width:28%;
-     line-height:2em;
+     line-height:1.6em;
     margin-right:2%;
     padding-bottom:3%;
 }
@@ -813,6 +881,42 @@ h8 {
 @media screen and (max-width: 1100px) {
 
 
+  table {
+  margin-top:4%;
+  margin-bottom:4%;
+  width:100% !important;
+  }
+
+  tr {
+  padding:5% !!important;
+  line-height:1.2em;
+  border:0.5px solid #cccccc;
+  }
+
+  td {
+
+  font-size:0.9em;
+  text-align:left;
+  border:0.5px solid #cccccc;
+  padding:2%;
+  }
+
+  th {
+  line-height:2em;
+  background-color:#efefef;
+  text-align:left;
+  padding:2%;
+  border:0.5px solid #cccccc;
+  padding:5% !!important;
+  }
+
+
+
+  .refsection {
+      width:90%;
+      padding-left:10%;
+
+    }
   .col1image {
   padding-bottom: 0%;
   padding-top:0%;
@@ -934,7 +1038,7 @@ h8 {
     width:100%;
     margin-left:2%;
     font-weight:100;
-    font-size:11pt;
+font-size:0.8em;
     float:left;
 }
 
@@ -949,7 +1053,7 @@ h8 {
     padding:3%;
     padding-right:3%;
     padding-top:2%;
-    font-size:10pt;
+    font-size:0.8em;
 
 }
 
