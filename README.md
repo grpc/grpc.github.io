@@ -1,4 +1,5 @@
-# grpc.github.io
-grpc.io website source.
+ARCHIVED REPOSITORY
 
-The website uses [Jekyll](https://jekyllrb.com/) templates and is hosted on GitHub Pages. Please make sure you are familiar with these before editing.
+The new grpc.io website isn't hosted on github pages anymore. Therefore, this one is now readonly, and the new repository for the website is at https://github.com/grpc/grpc.io
+
+
