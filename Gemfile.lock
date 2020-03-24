@@ -20,7 +20,7 @@ GEM
     colorator (0.1)
     execjs (2.5.2)
     fast-stemmer (1.0.2)
-    ffi (1.9.8)
+    ffi (1.12.2)
     gemoji (2.1.0)
     github-pages (34)
       RedCloth (= 4.2.9)
