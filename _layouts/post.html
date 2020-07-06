@@ -8,6 +8,7 @@ bodyclass: post
   {% include nav.html %}
 </div>
 
+{% include obsolete.html %}
 <div class="container markdown">
   <div class="row">
     <div class="col-md-11 nofloat center-block">
@@ -15,8 +16,8 @@ bodyclass: post
         <article class="post-wrapper">
           <h1>{{ page.title }}</h1>
           <div class="postdate">
-            Posted on {{ page.date | date: "%A, %B %d, %Y" }} 
-            {% if page.author %} 
+            Posted on {{ page.date | date: "%A, %B %d, %Y" }}
+            {% if page.author %}
             by {%if page.author-link %}<a href="{{ page.author-link }}">{{ page.author }}</a>{% else %}{{ page.author }}{% endif %}
             {% endif %}
           </div>
