@@ -2,10 +2,11 @@
 layout: null
 ---
 
-User-agent: *
+user-agent: *
 # Disallow indexing of any pages, except API docs
+# The following allow rule matches /grpc and /grpc-java pages, etc.
 # https://developers.google.com/search/reference/robots_txt#url-matching-based-on-path-values
-Allow: /grpc  # Matches /grpc, /grpc-java, etc.
-Disallow: /
+allow: /grpc
+disallow: /
 
-Sitemap: {{ site.baseurl }}/sitemap.xml
+sitemap: {{ site.baseurl }}/sitemap.xml
