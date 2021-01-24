@@ -3,6 +3,9 @@ layout: null
 ---
 
 User-agent: *
+# Disallow indexing of any pages, except API docs
+# https://developers.google.com/search/reference/robots_txt#url-matching-based-on-path-values
+Allow: /grpc  # Matches /grpc, /grpc-java, etc.
 Disallow: /
 
 Sitemap: {{ site.baseurl }}/sitemap.xml
