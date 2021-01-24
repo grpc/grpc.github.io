@@ -1,5 +1,0 @@
----
-permalink: /release
----
-
-{{ site.data.config.grpc_release_tag }}
