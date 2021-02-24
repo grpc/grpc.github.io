@@ -346,7 +346,7 @@ do this for our `RouteGuide` service:
 ```js
 function getServer() {
   var server = new grpc.Server();
-  server.addProtoService(routeguide.RouteGuide.service, {
+  server.addService(routeguide.RouteGuide.service, {
     getFeature: getFeature,
     listFeatures: listFeatures,
     recordRoute: recordRoute,
