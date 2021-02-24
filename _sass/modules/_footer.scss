@@ -200,6 +200,10 @@ footer {
   .stack-overflow {
     @include social-icon('../img/icon_stack-overflow.svg');
   }
+  
+   .dev-community {
+    @include social-icon('../img/icon_dev-community.svg');
+  }
 
   .youtube {
     @include social-icon('../img/icon_youtube.svg');
